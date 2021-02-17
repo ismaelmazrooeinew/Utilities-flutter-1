@@ -1,0 +1,25 @@
+name: utilities
+description: A new Flutter package project.
+version: 0.0.1
+author: SinaMN75
+homepage: SinaMN75.ir
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.0
+  font_awesome_flutter: ^8.11.0
+  http: ^0.12.2
+  data_connection_checker: ^0.3.4
+  url_launcher: ^5.5.0
+  get: ^3.24.0
+  get_storage: ^1.4.0
+  package_info: ^0.4.3+2
+  carousel_slider: ^3.0.0
