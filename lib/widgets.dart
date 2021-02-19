@@ -5,6 +5,8 @@ import 'package:utilities/utilities.dart';
 export 'package:cupertino_icons/cupertino_icons.dart';
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
+export 'package:pull_to_refresh/pull_to_refresh.dart';
+export 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 part 'widgets/auto_size_text.dart';
 
