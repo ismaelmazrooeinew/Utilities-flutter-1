@@ -1,15 +1,6 @@
 part of '../../widgets.dart';
 
-Widget scaffold({
-  @required Widget body,
-  AppBar appBar,
-  Drawer drawer,
-  FloatingActionButton floatingActionButton,
-  BottomNavigationBar bottomNavigationBar,
-  EdgeInsets padding,
-  Color color
-}) =>
-    GestureDetector(
+Widget scaffold({@required Widget body, AppBar appBar, Drawer drawer, FloatingActionButton floatingActionButton, BottomNavigationBar bottomNavigationBar, EdgeInsets padding, Color color}) => GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Scaffold(
         backgroundColor: color,
@@ -42,4 +33,19 @@ Widget listViewBuilder({
       shrinkWrap: true,
       itemBuilder: itemBuilder,
       itemCount: itemCount,
+    );
+
+Widget pullRefresh({
+  @required RefreshController controller,
+  Function onLoading,
+  Function onRefresh,
+  Widget child,
+}) =>
+    SmartRefresher(
+      controller: controller,
+      onLoading: onLoading,
+      onRefresh: onRefresh,
+      enablePullDown: true,
+      enablePullUp: true,
+      child: child,
     );
