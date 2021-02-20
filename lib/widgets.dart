@@ -10,9 +10,9 @@ export 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 part 'widgets/auto_size_text.dart';
 
-part 'widgets/container/container.dart';
+part 'widgets/container.dart';
 
-part 'widgets/extras/intractable.dart';
+part 'widgets/intractable.dart';
 
 part 'widgets/menu/combo_box.dart';
 
