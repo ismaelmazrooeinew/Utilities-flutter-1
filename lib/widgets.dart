@@ -12,7 +12,7 @@ part 'widgets/auto_size_text.dart';
 
 part 'widgets/container.dart';
 
-part 'widgets/intractable.dart';
+part 'widgets/extra.dart';
 
 part 'widgets/menu/combo_box.dart';
 
