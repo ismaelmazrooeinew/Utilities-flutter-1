@@ -5,6 +5,7 @@ import 'dart:ui';
 
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -22,12 +23,17 @@ export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
 export 'package:intl/intl.dart';
 export 'package:meta/meta.dart';
+export 'package:file_picker/file_picker.dart';
 
 part 'utils/alert.dart';
 
 part 'utils/availability.dart';
 
 part 'utils/color.dart';
+
+part 'utils/download.dart';
+
+part 'utils/file.dart';
 
 part 'utils/get.dart';
 
@@ -44,5 +50,3 @@ part 'utils/share.dart';
 part 'utils/string.dart';
 
 part 'utils/utils.dart';
-
-part 'utils/download.dart';
