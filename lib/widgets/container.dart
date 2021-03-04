@@ -17,7 +17,6 @@ Widget scaffold({
         appBar: appBar,
         drawer: drawer,
         resizeToAvoidBottomInset: false,
-        resizeToAvoidBottomPadding: false,
         floatingActionButton: floatingActionButton,
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         bottomNavigationBar: bottomNavigationBar,
