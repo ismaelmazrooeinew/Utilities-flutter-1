@@ -21,7 +21,6 @@ export 'dart:convert';
 
 export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
-export 'package:intl/intl.dart';
 export 'package:meta/meta.dart';
 export 'package:file_picker/file_picker.dart';
 

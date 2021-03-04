@@ -4,11 +4,11 @@ Future request(String url, EHttpMethod httpMethod, action(http.Response response
   Map<String, String> headers = {"Content-Type": "application/json"};
 
   http.Response response;
-  if (httpMethod == EHttpMethod.get) response = await http.get(url, headers: headers);
-  if (httpMethod == EHttpMethod.post) response = body == null ? await http.post(url, headers: headers) : await http.post(url, body: body.toJson(), headers: headers);
-  if (httpMethod == EHttpMethod.put) response = await http.put(url, body: body.toJson(), headers: headers);
-  if (httpMethod == EHttpMethod.patch) response = await http.patch(url, body: body.toJson(), headers: headers);
-  if (httpMethod == EHttpMethod.delete) response = await http.delete(url, headers: headers);
+  if (httpMethod == EHttpMethod.get) response = await http.get(Uri.parse(url), headers: headers);
+  if (httpMethod == EHttpMethod.post) response = body == null ? await http.post(Uri.parse(url), headers: headers) : await http.post(Uri.parse(url), body: body.toJson(), headers: headers);
+  if (httpMethod == EHttpMethod.put) response = await http.put(Uri.parse(url), body: body.toJson(), headers: headers);
+  if (httpMethod == EHttpMethod.patch) response = await http.patch(Uri.parse(url), body: body.toJson(), headers: headers);
+  if (httpMethod == EHttpMethod.delete) response = await http.delete(Uri.parse(url), headers: headers);
 
   if (body != null)
     response.completeLog(params: body.toJson());
