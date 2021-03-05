@@ -1,8 +1,8 @@
 part of '../widgets.dart';
 
-Widget divider({double width, double height, Color color = Colors.grey, EdgeInsets padding}) => Container(
+Widget divider({double width, double height = 0.6, Color color = Colors.grey, EdgeInsets padding}) => Container(
       margin: padding,
       width: width != null ? width : screenWidth,
-      height: height != null ? height : 1,
+      height: height,
       color: color,
     );
