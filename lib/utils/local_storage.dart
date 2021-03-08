@@ -1,33 +1,15 @@
 part of '../utilities.dart';
 
-Future setData(String key, dynamic value) async {
-  final box = GetStorage();
-  box.write(key, value);
-}
+Future setData(String key, dynamic value) async => Hive.box(key).put(key, value);
 
-Future<int> getInt(String key) async {
-  final box = GetStorage();
-  return box.read(key);
-}
+Future<int> getInt(String key) async => Hive.box(key).get(key);
 
-Future<bool> getBool(String key) async {
-  final box = GetStorage();
-  return box.read(key);
-}
+Future<bool> getBool(String key) async => Hive.box(key).get(key);
 
-Future<double> getDouble(String key) async {
-  final box = GetStorage();
-  return box.read(key);
-}
+Future<double> getDouble(String key) async => Hive.box(key).get(key);
 
-Future<String> getString(String key) async {
-  final box = GetStorage();
-  return box.read(key);
-}
+Future<String> getString(String key) async => Hive.box(key).get(key);
 
-Future<dynamic> getData(String key) async {
-  final box = GetStorage();
-  return box.read(key);
-}
+Future<dynamic> getData(String key) async => Hive.box(key).get(key);
 
-Future clearData() async => await GetStorage().erase();
+Future clearData() async => await Hive.deleteFromDisk();
