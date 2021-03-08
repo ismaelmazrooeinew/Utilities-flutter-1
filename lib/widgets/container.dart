@@ -11,22 +11,20 @@ Widget scaffold({
   ImageProvider backgroundImage,
 }) =>
     GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-      child: Scaffold(
-        backgroundColor: color,
-        appBar: appBar,
-        drawer: drawer,
-        resizeToAvoidBottomInset: false,
-        floatingActionButton: floatingActionButton,
-        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-        bottomNavigationBar: bottomNavigationBar,
-        body: Container(
-          decoration: backgroundImage != null ? BoxDecoration(image: DecorationImage(image: backgroundImage, fit: BoxFit.cover)) : null,
-          padding: padding,
-          child: body,
-        ),
-      ),
-    );
+        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+        child: Scaffold(
+            backgroundColor: color,
+            appBar: appBar,
+            drawer: drawer,
+            resizeToAvoidBottomInset: false,
+            floatingActionButton: floatingActionButton,
+            floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+            bottomNavigationBar: bottomNavigationBar,
+            body: Container(
+              decoration: backgroundImage != null ? BoxDecoration(image: DecorationImage(image: backgroundImage, fit: BoxFit.cover)) : null,
+              padding: padding,
+              child: body,
+            )));
 
 Widget listView({
   @required List<Widget> children,
@@ -90,3 +88,5 @@ Widget pullRefresh({
       enablePullUp: true,
       child: child,
     );
+
+Widget radius({@required Widget child, @required double radius}) => ClipRRect(borderRadius: BorderRadius.circular(radius), child: child);

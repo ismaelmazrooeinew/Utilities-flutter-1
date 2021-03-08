@@ -1,6 +1,6 @@
 part of '../widgets.dart';
 
-Widget appTextHeadLine1(
+Widget textHeadLine1(
   String text, {
   Color color,
   double fontSize,
@@ -9,15 +9,14 @@ Widget appTextHeadLine1(
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.headline1.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
-        textAlign: textAlign,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.headline1.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
+          textAlign: textAlign,
+        ));
 
-Widget appTextHeadLine2(
+Widget textHeadLine2(
   String text, {
   Color color,
   double fontSize,
@@ -26,15 +25,14 @@ Widget appTextHeadLine2(
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.headline2.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
-        textAlign: textAlign,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.headline2.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
+          textAlign: textAlign,
+        ));
 
-Widget appTextHeadLine3(
+Widget textHeadLine3(
   String text, {
   Color color,
   double fontSize,
@@ -43,15 +41,14 @@ Widget appTextHeadLine3(
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.headline3.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
-        textAlign: textAlign,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.headline3.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
+          textAlign: textAlign,
+        ));
 
-Widget appTextHeadLine4(
+Widget textHeadLine4(
   String text, {
   Color color,
   double fontSize,
@@ -60,15 +57,14 @@ Widget appTextHeadLine4(
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.headline4.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
-        textAlign: textAlign,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.headline4.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
+          textAlign: textAlign,
+        ));
 
-Widget appTextHeadLine5(
+Widget textHeadLine5(
   String text, {
   Color color,
   double fontSize,
@@ -77,15 +73,14 @@ Widget appTextHeadLine5(
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.headline5.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
-        textAlign: textAlign,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.headline5.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
+          textAlign: textAlign,
+        ));
 
-Widget appTextHeadLine6(
+Widget textHeadLine6(
   String text, {
   Color color,
   double fontSize,
@@ -94,15 +89,14 @@ Widget appTextHeadLine6(
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.headline6.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
-        textAlign: textAlign,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.headline6.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
+          textAlign: textAlign,
+        ));
 
-Widget appTextSubtitle1(
+Widget textSubtitle1(
   String text, {
   Color color,
   double fontSize,
@@ -111,15 +105,14 @@ Widget appTextSubtitle1(
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.subtitle1.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
-        textAlign: textAlign,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.subtitle1.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
+          textAlign: textAlign,
+        ));
 
-Widget appTextSubtitle2(
+Widget textSubtitle2(
   String text, {
   Color color,
   double fontSize,
@@ -128,15 +121,14 @@ Widget appTextSubtitle2(
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.subtitle2.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
-        textAlign: textAlign,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.subtitle2.copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
+          textAlign: textAlign,
+        ));
 
-Widget appTextBody1(
+Widget textBody1(
   String text, {
   Color color,
   double fontSize,
@@ -146,17 +138,16 @@ Widget appTextBody1(
   int maxLines,
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.bodyText1.copyWith(color: color, fontSize: fontSize, fontWeight: fontWeight),
-        textAlign: textAlign,
-        maxLines: maxLines,
-        overflow: TextOverflow.ellipsis,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.bodyText1.copyWith(color: color, fontSize: fontSize, fontWeight: fontWeight),
+          textAlign: textAlign,
+          maxLines: maxLines,
+          overflow: TextOverflow.ellipsis,
+        ));
 
-Widget appTextBody2(
+Widget textBody2(
   String text, {
   Color color,
   double fontSize,
@@ -165,15 +156,14 @@ Widget appTextBody2(
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.bodyText2.copyWith(color: color, fontSize: fontSize, fontWeight: fontWeight),
-        textAlign: textAlign,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.bodyText2.copyWith(color: color, fontSize: fontSize, fontWeight: fontWeight),
+          textAlign: textAlign,
+        ));
 
-Widget appTextCaption(
+Widget textCaption(
   String text, {
   Color color,
   double fontSize,
@@ -183,12 +173,11 @@ Widget appTextCaption(
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
     Padding(
-      padding: padding,
-      child: Text(
-        text,
-        style: theme.textTheme.caption.copyWith(color: color, fontSize: fontSize, fontWeight: fontWeight),
-        textAlign: textAlign,
-        maxLines: maxLines,
-        overflow: maxLines == null ? null : TextOverflow.ellipsis,
-      ),
-    );
+        padding: padding,
+        child: Text(
+          text,
+          style: theme.textTheme.caption.copyWith(color: color, fontSize: fontSize, fontWeight: fontWeight),
+          textAlign: textAlign,
+          maxLines: maxLines,
+          overflow: maxLines == null ? null : TextOverflow.ellipsis,
+        ));
