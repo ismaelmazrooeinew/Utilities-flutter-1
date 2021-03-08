@@ -19,3 +19,5 @@ part 'widgets/menu/combo_box.dart';
 part 'widgets/menu/drop_down_form_field.dart';
 
 part 'widgets/table.dart';
+
+part 'widgets/text.dart';
