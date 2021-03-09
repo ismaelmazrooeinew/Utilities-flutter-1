@@ -24,6 +24,7 @@ export 'package:meta/meta.dart';
 export 'package:file_picker/file_picker.dart';
 export 'package:hive/hive.dart';
 export 'package:hive_flutter/hive_flutter.dart';
+export 'package:intl/intl.dart';
 
 part 'utils/alert.dart';
 
