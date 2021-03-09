@@ -9,6 +9,7 @@ Widget scaffold({
   EdgeInsets padding,
   Color color,
   ImageProvider backgroundImage,
+  bool resizeToAvoidBottomInset = false,
 }) =>
     GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
@@ -16,7 +17,7 @@ Widget scaffold({
             backgroundColor: color,
             appBar: appBar,
             drawer: drawer,
-            resizeToAvoidBottomInset: false,
+            resizeToAvoidBottomInset: resizeToAvoidBottomInset,
             floatingActionButton: floatingActionButton,
             floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
             bottomNavigationBar: bottomNavigationBar,
