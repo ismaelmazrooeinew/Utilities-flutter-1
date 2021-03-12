@@ -8,6 +8,8 @@ export 'package:cupertino_icons/cupertino_icons.dart';
 export 'package:flutter_rating_bar/flutter_rating_bar.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export 'package:pull_to_refresh/pull_to_refresh.dart';
+export 'package:webview_flutter/webview_flutter.dart';
+export 'package:webview_flutter/platform_interface.dart';
 
 part 'widgets/auto_size_text.dart';
 

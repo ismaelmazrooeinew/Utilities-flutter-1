@@ -1,6 +1,7 @@
 part of '../utilities.dart';
 
-shareImage({@required String title, @required String url}) async {
+shareImage({@required String title, @required String url, Function action}) async {
   var request = await HttpClient().getUrl(Uri.parse(url));
   await Share.file(title, "$title.png", await consolidateHttpClientResponseBytes(await request.close()), 'image/jpg');
+  action();
 }
