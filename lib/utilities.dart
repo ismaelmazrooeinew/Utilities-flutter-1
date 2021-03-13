@@ -15,6 +15,7 @@ import 'package:http/http.dart' as http;
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:utilities/extras.dart';
 
 export 'dart:async';
 export 'dart:convert';

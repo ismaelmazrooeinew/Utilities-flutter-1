@@ -6,6 +6,10 @@ class Array {
   static List<String> gender = ["آقا", "خانم"];
 }
 
+class Constant {
+  static String token = "token";
+}
+
 enum PageState {
   initial,
   loading,

@@ -1,7 +1,9 @@
 part of '../utilities.dart';
 
 Future request(String url, EHttpMethod httpMethod, action(http.Response response), error(http.Response response), {body}) async {
-  Map<String, String> headers = {"Content-Type": "application/json"};
+  final String token = await getString(Constant.token);
+
+  Map<String, String> headers = {"Content-Type": "application/json", "Authorization": token};
 
   http.Response response;
   if (httpMethod == EHttpMethod.get) response = await http.get(Uri.parse(url), headers: headers);
