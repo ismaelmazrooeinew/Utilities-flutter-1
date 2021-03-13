@@ -1,24 +1,27 @@
 part of '../utilities.dart';
 
-Future setData(String key, dynamic value) async => Hive.box(key).put(key, value);
+Future setData(String key, dynamic value) async {
+  await Hive.openBox(key);
+  return Hive.box(key).put(key, value);
+}
 
 Future<int> getInt(String key) async {
-  Hive.openBox(key);
+  await Hive.openBox(key);
   return Hive.box(key).get(key);
 }
 
 Future<bool> getBool(String key) async {
-  Hive.openBox(key);
+  await Hive.openBox(key);
   return Hive.box(key).get(key);
 }
 
 Future<double> getDouble(String key) async {
-  Hive.openBox(key);
+  await Hive.openBox(key);
   return Hive.box(key).get(key);
 }
 
 Future<String> getString(String key) async {
-  Hive.openBox(key);
+  await Hive.openBox(key);
   return Hive.box(key).get(key);
 }
 
