@@ -12,7 +12,7 @@ Widget scaffold({
   bool resizeToAvoidBottomInset = false,
 }) =>
     GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+        onTap: () => FocusManager.instance.primaryFocus.unfocus(),
         child: Scaffold(
             backgroundColor: color,
             appBar: appBar,
