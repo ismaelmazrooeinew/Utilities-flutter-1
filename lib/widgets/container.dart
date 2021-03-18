@@ -19,7 +19,7 @@ Widget scaffold({
             drawer: drawer,
             resizeToAvoidBottomInset: resizeToAvoidBottomInset,
             floatingActionButton: floatingActionButton,
-            floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+            floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
             bottomNavigationBar: bottomNavigationBar,
             body: Container(
               decoration: backgroundImage != null ? BoxDecoration(image: DecorationImage(image: backgroundImage, fit: BoxFit.cover)) : null,
