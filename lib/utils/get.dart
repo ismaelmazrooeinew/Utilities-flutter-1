@@ -20,6 +20,9 @@ BuildContext context = Get.context;
 double screenHeight = Get.height;
 double screenWidth = Get.width;
 ThemeData theme = Get.theme;
+Locale currentLocale = Get.locale;
+
+void updateLocale(Locale locale) => Get.updateLocale(locale);
 
 Future<String> appName() async {
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -41,9 +44,19 @@ Future<String> appBuildNumber() async {
   return packageInfo.buildNumber;
 }
 
-push(Widget page, {bool dialog = false}) => Get.to(page, fullscreenDialog: dialog, popGesture: true);
+push(Widget page, {bool dialog = false, Transition transition = Transition.cupertino}) => Get.to(
+      page,
+      fullscreenDialog: dialog,
+      popGesture: true,
+      transition: transition,
+    );
 
-dialog(Widget page, {bool dialog = false, onDismiss}) => Get.dialog(page, useSafeArea: true).then((value) => onDismiss != null ? onDismiss() : null);
+dialog(
+  Widget page, {
+  bool dialog = false,
+  onDismiss,
+}) =>
+    Get.dialog(page, useSafeArea: true).then((value) => onDismiss != null ? onDismiss() : null);
 
 pop() => Get.back();
 
