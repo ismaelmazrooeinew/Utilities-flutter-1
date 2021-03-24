@@ -2,7 +2,7 @@ part of '../widgets.dart';
 
 Widget scaffold({
   @required Widget body,
-  AppBar appBar,
+  PreferredSizeWidget appBar,
   Drawer drawer,
   FloatingActionButton floatingActionButton,
   BottomNavigationBar bottomNavigationBar,
