@@ -51,7 +51,7 @@ Widget textHeadLine3(
     Padding(
         padding: padding,
         child: Text(text,
-            style: style == null ? theme.textTheme.headline2 : style,
+            style: style == null ? theme.textTheme.headline3 : style,
             textAlign: textAlign,
             maxLines: maxLines,
             overflow: maxLines == null
@@ -71,7 +71,7 @@ Widget textHeadLine4(
     Padding(
         padding: padding,
         child: Text(text,
-            style: style == null ? theme.textTheme.headline2 : style,
+            style: style == null ? theme.textTheme.headline4 : style,
             textAlign: textAlign,
             maxLines: maxLines,
             overflow: maxLines == null
@@ -91,7 +91,7 @@ Widget textHeadLine5(
     Padding(
         padding: padding,
         child: Text(text,
-            style: style == null ? theme.textTheme.headline2 : style,
+            style: style == null ? theme.textTheme.headline5 : style,
             textAlign: textAlign,
             maxLines: maxLines,
             overflow: maxLines == null
@@ -111,7 +111,7 @@ Widget textHeadLine6(
     Padding(
         padding: padding,
         child: Text(text,
-            style: style == null ? theme.textTheme.headline2 : style,
+            style: style == null ? theme.textTheme.headline6 : style,
             textAlign: textAlign,
             maxLines: maxLines,
             overflow: maxLines == null
@@ -131,7 +131,7 @@ Widget textSubtitle1(
     Padding(
         padding: padding,
         child: Text(text,
-            style: style == null ? theme.textTheme.headline2 : style,
+            style: style == null ? theme.textTheme.subtitle1 : style,
             textAlign: textAlign,
             maxLines: maxLines,
             overflow: maxLines == null
@@ -151,7 +151,7 @@ Widget textSubtitle2(
     Padding(
         padding: padding,
         child: Text(text,
-            style: style == null ? theme.textTheme.headline2 : style,
+            style: style == null ? theme.textTheme.subtitle2 : style,
             textAlign: textAlign,
             maxLines: maxLines,
             overflow: maxLines == null
@@ -171,7 +171,7 @@ Widget textBody1(
     Padding(
         padding: padding,
         child: Text(text,
-            style: style == null ? theme.textTheme.headline2 : style,
+            style: style == null ? theme.textTheme.bodyText1 : style,
             textAlign: textAlign,
             maxLines: maxLines,
             overflow: maxLines == null
@@ -191,7 +191,7 @@ Widget textBody2(
     Padding(
         padding: padding,
         child: Text(text,
-            style: style == null ? theme.textTheme.headline2 : style,
+            style: style == null ? theme.textTheme.bodyText2 : style,
             textAlign: textAlign,
             maxLines: maxLines,
             overflow: maxLines == null
@@ -211,7 +211,7 @@ Widget textCaption(
     Padding(
         padding: padding,
         child: Text(text,
-            style: style == null ? theme.textTheme.headline2 : style,
+            style: style == null ? theme.textTheme.caption : style,
             textAlign: textAlign,
             maxLines: maxLines,
             overflow: maxLines == null
