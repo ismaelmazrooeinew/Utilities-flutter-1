@@ -2,6 +2,7 @@ part of '../widgets.dart';
 
 Widget scaffold({
   @required Widget body,
+  Key key,
   PreferredSizeWidget appBar,
   Drawer drawer,
   FloatingActionButton floatingActionButton,
@@ -14,6 +15,7 @@ Widget scaffold({
     GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus.unfocus(),
         child: Scaffold(
+            key: key,
             backgroundColor: color,
             appBar: appBar,
             drawer: drawer,
