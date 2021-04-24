@@ -14,22 +14,23 @@ dependencies:
     sdk: flutter
 
   flutter_icons: ^1.1.0
-  http: ^0.13.0
+  http: ^0.13.1
   data_connection_checker: ^0.3.4
-  url_launcher: ^6.0.2
-  get: ^3.25.6
+  url_launcher: ^6.0.3
+  get: ^4.1.4
   package_info: ^2.0.0
   carousel_slider: ^3.0.0
-  pull_to_refresh: ^1.6.4
+  pull_to_refresh: ^1.6.5
   esys_flutter_share: ^1.0.2
-  image_gallery_saver: ^1.6.8
+  image_gallery_saver: ^1.6.9
   flutter_rating_bar: ^4.0.0
-  file_picker: ^3.0.0
-  hive: ^2.0.0
+  file_picker: ^3.0.1
+  hive: ^2.0.4
   hive_flutter: ^1.0.0
   intl: ^0.17.0
-  webview_flutter: ^2.0.2
+  webview_flutter: ^2.0.4
   flutter_picker_view: ^1.1.0
+  get_storage: ^2.0.2
 
 dependency_overrides:
   path_provider: 2.0.1

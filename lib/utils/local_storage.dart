@@ -1,33 +1,18 @@
 part of '../utilities.dart';
 
-Future setData(String key, dynamic value) async {
-  await Hive.openBox(key);
-  return Hive.box(key).put(key, value);
-}
+void setData(String key, dynamic value) => GetStorage().write(key, value);
 
-Future<int> getInt(String key) async {
-  await Hive.openBox(key);
-  return Hive.box(key).get(key);
-}
+int getInt(String key) => GetStorage().read(key);
 
-Future<bool> getBool(String key) async {
-  await Hive.openBox(key);
-  return Hive.box(key).get(key);
-}
+String getString(String key) => GetStorage().read(key);
 
-Future<double> getDouble(String key) async {
-  await Hive.openBox(key);
-  return Hive.box(key).get(key);
-}
+bool getBool(String key) => GetStorage().read(key);
 
-Future<String> getString(String key) async {
-  await Hive.openBox(key);
-  return Hive.box(key).get(key);
-}
+double getDouble(String key) => GetStorage().read(key);
 
-Future<dynamic> getData(String key) async {
-  Hive.openBox(key);
-  return Hive.box(key).get(key);
-}
+dynamic getData(String key) => GetStorage().read(key);
 
-Future clearData() async => await Hive.deleteFromDisk();
+Future clearData() async {
+  GetStorage().erase();
+  await Hive.deleteFromDisk();
+}
