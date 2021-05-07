@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:package_info/package_info.dart';
@@ -24,8 +23,7 @@ export 'dart:convert';
 export 'package:get/get.dart';
 export 'package:meta/meta.dart';
 export 'package:file_picker/file_picker.dart';
-export 'package:hive/hive.dart';
-export 'package:hive_flutter/hive_flutter.dart';
+export 'package:get_storage/get_storage.dart';
 export 'package:intl/intl.dart';
 
 part 'utils/alert.dart';
