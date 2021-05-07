@@ -14,5 +14,4 @@ dynamic getData(String key) => GetStorage().read(key);
 
 Future clearData() async {
   GetStorage().erase();
-  await Hive.deleteFromDisk();
 }
