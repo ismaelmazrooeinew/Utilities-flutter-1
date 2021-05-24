@@ -1,8 +1,8 @@
 part of '../../widgets.dart';
 
 void showPicker({
-  @required List<String> list,
-  @required Function(String selectedItem) action,
+  required List<String> list,
+  required Function(String selectedItem) action,
   String title = "Select",
   String cancel = "Cancel",
   String confirm = "Confirm",
@@ -15,7 +15,7 @@ void showPicker({
       title: Text(title, style: TextStyle(fontSize: 16)),
       cancel: Text(cancel, style: TextStyle(color: Colors.grey)),
       confirm: Text(confirm, style: TextStyle(color: Colors.blue)),
-      onConfirm: (controller) => action(list[controller.selectedRowAt(section: 0)]),
+      onConfirm: (controller) => action(list[controller.selectedRowAt(section: 0)!]),
       builder: (context, popup) => Container(height: height, child: popup),
       itemExtent: 40,
       numberofRowsAtSection: (section) => list.length,
@@ -29,14 +29,14 @@ typedef PickerVoidCallBack = void Function(int section, int row);
 class PickerView extends StatefulWidget {
   final PickerRowCallBack numberofRowsAtSection;
   final PickerItemBuilder itemBuilder;
-  final PickerVoidCallBack onSelectRowChanged;
-  final double itemExtent;
+  final PickerVoidCallBack? onSelectRowChanged;
+  final double? itemExtent;
   final PickerController controller;
 
   PickerView({
-    @required this.numberofRowsAtSection,
-    @required this.itemBuilder,
-    @required this.controller,
+    required this.numberofRowsAtSection,
+    required this.itemBuilder,
+    required this.controller,
     this.itemExtent = 40,
     this.onSelectRowChanged,
   }) : super();
@@ -48,7 +48,7 @@ class PickerView extends StatefulWidget {
 }
 
 class PickerViewState extends State<PickerView> {
-  PickerController _controller;
+  late PickerController _controller;
 
   @override
   void initState() {
@@ -86,7 +86,7 @@ class PickerViewState extends State<PickerView> {
     return children;
   }
 
-  Widget _buildPickerItem({int section}) {
+  Widget _buildPickerItem({required int section}) {
     FixedExtentScrollController scrollController = _controller.scrollControllers[section];
 
     return Container(
@@ -98,7 +98,7 @@ class PickerViewState extends State<PickerView> {
         childCount: widget.numberofRowsAtSection(section),
         onSelectedItemChanged: (row) {
           if (widget.onSelectRowChanged != null) {
-            widget.onSelectRowChanged(section, row);
+            widget.onSelectRowChanged!(section, row);
           }
         },
         itemBuilder: (context, row) {
@@ -113,7 +113,7 @@ class PickerController {
   final int count;
   final List<FixedExtentScrollController> scrollControllers;
 
-  PickerController({@required this.count, List<int> selectedItems}) : scrollControllers = [] {
+  PickerController({required this.count, List<int>? selectedItems}) : scrollControllers = [] {
     for (int i = 0; i < count; i++) {
       if (selectedItems != null && i < selectedItems.length) {
         scrollControllers.add(FixedExtentScrollController(initialItem: selectedItems[i]));
@@ -129,7 +129,7 @@ class PickerController {
     });
   }
 
-  int selectedRowAt({@required int section}) {
+  int? selectedRowAt({required int section}) {
     try {
       FixedExtentScrollController scrollController = scrollControllers[section];
       if (scrollController != null) {
@@ -142,7 +142,7 @@ class PickerController {
     }
   }
 
-  void jumpToRow(int row, {@required int atSection}) {
+  void jumpToRow(int row, {required int atSection}) {
     try {
       if (scrollControllers.length <= atSection) {
         return;
@@ -154,7 +154,7 @@ class PickerController {
 
   Future<void> animateToRow(
     int row, {
-    @required int atSection,
+    required int atSection,
     Duration duration = const Duration(milliseconds: 300),
     Curve curve = Curves.easeInOut,
   }) async {
@@ -175,20 +175,20 @@ enum PickerShowMode { AlertDialog, BottomSheet }
 class PickerViewPopup extends StatelessWidget {
   final PickerRowCallBack numberofRowsAtSection;
   final PickerItemBuilder itemBuilder;
-  final PickerVoidCallBack onSelectRowChanged;
-  final ValueChanged<PickerController> onConfirm;
-  final VoidCallback onCancel;
+  final PickerVoidCallBack? onSelectRowChanged;
+  final ValueChanged<PickerController>? onConfirm;
+  final VoidCallback? onCancel;
   final PickerController controller;
-  final double itemExtent;
-  final Widget cancel;
-  final Widget confirm;
+  final double? itemExtent;
+  final Widget? cancel;
+  final Widget? confirm;
   final PickerShowMode mode;
-  final Widget title;
+  final Widget? title;
 
   PickerViewPopup._({
-    @required this.numberofRowsAtSection,
-    @required this.itemBuilder,
-    @required this.controller,
+    required this.numberofRowsAtSection,
+    required this.itemBuilder,
+    required this.controller,
     this.mode = PickerShowMode.BottomSheet,
     this.itemExtent,
     this.onSelectRowChanged,
@@ -199,20 +199,20 @@ class PickerViewPopup extends StatelessWidget {
     this.onConfirm,
   }) : super();
 
-  static Future<T> showMode<T>(
+  static Future<T?> showMode<T>(
     PickerShowMode mode, {
-    @required BuildContext context,
-    @required PickerViewBuilder builder,
-    @required PickerController controller,
-    @required PickerRowCallBack numberofRowsAtSection,
-    @required PickerItemBuilder itemBuilder,
-    PickerVoidCallBack onSelectRowChanged,
-    double itemExtent,
-    Widget title,
-    Widget cancel,
-    VoidCallback onCancel,
-    Widget confirm,
-    ValueChanged<PickerController> onConfirm,
+    required BuildContext? context,
+    required PickerViewBuilder builder,
+    required PickerController controller,
+    required PickerRowCallBack numberofRowsAtSection,
+    required PickerItemBuilder itemBuilder,
+    PickerVoidCallBack? onSelectRowChanged,
+    double? itemExtent,
+    Widget? title,
+    Widget? cancel,
+    VoidCallback? onCancel,
+    Widget? confirm,
+    ValueChanged<PickerController>? onConfirm,
   }) {
     PickerViewPopup pickerView = PickerViewPopup._(
       numberofRowsAtSection: numberofRowsAtSection,
@@ -224,25 +224,25 @@ class PickerViewPopup extends StatelessWidget {
       title: title,
       cancel: cancel,
       onCancel: () {
-        Navigator.of(context).pop();
+        Navigator.of(context!).pop();
         if (onCancel != null) onCancel();
       },
       confirm: confirm,
       onConfirm: (controller) {
-        Navigator.of(context).pop();
+        Navigator.of(context!).pop();
         if (onConfirm != null) onConfirm(controller);
       },
     );
 
     if (mode == PickerShowMode.AlertDialog) {
       return showDialog(
-          context: context,
+          context: context!,
           builder: (context) {
             return Dialog(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), child: builder(context, pickerView));
           });
     } else {
       return showModalBottomSheet(
-          context: context,
+          context: context!,
           builder: (context) {
             return builder(context, pickerView);
           });
@@ -302,7 +302,7 @@ class PickerViewPopup extends StatelessWidget {
                           child: confirm ?? Text('确定', style: TextStyle(color: Theme.of(context).accentColor)),
                           onTap: () {
                             if (onConfirm != null) {
-                              onConfirm(controller);
+                              onConfirm!(controller);
                             }
                           }),
                     )
@@ -340,7 +340,7 @@ class PickerViewPopup extends StatelessWidget {
                     child: confirm ?? Text('确定', style: TextStyle(color: Theme.of(context).accentColor)),
                     onTap: () {
                       if (onConfirm != null) {
-                        onConfirm(controller);
+                        onConfirm!(controller);
                       }
                     }),
               ],
@@ -360,7 +360,7 @@ class PickerViewPopup extends StatelessWidget {
     );
   }
 
-  Widget _buildInkWellButton({Widget child, VoidCallback onTap}) {
+  Widget _buildInkWellButton({Widget? child, VoidCallback? onTap}) {
     return Material(
         child: Ink(
       color: Colors.white,

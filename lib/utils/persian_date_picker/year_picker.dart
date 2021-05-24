@@ -7,8 +7,8 @@ import 'widget/partition.dart';
 
 class PersianYearPicker extends StatefulWidget {
   final initDate;
-  final Function(Jalali) onSelectYear;
-  final Function(String) onChangePicker;
+  final Function(Jalali?)? onSelectYear;
+  final Function(String)? onChangePicker;
 
   PersianYearPicker({this.initDate, this.onSelectYear, this.onChangePicker});
 
@@ -17,10 +17,10 @@ class PersianYearPicker extends StatefulWidget {
 }
 
 class _PersianYearPickerState extends State<PersianYearPicker> with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  int selectedYear;
-  List years;
+  late AnimationController controller;
+  late Animation<double> animation;
+  int? selectedYear;
+  late List years;
   var initDate;
   bool isSlideForward = true;
 
@@ -33,7 +33,7 @@ class _PersianYearPickerState extends State<PersianYearPicker> with TickerProvid
   _makeYearList() {
     setState(() {
       years = [];
-      for (var i = this.selectedYear - 12; i < this.selectedYear + 13; i++) {
+      for (var i = this.selectedYear! - 12; i < this.selectedYear! + 13; i++) {
         years.add(i);
       }
     });
@@ -187,7 +187,7 @@ class _PersianYearPickerState extends State<PersianYearPicker> with TickerProvid
                         opacity: 1 - animation.value,
                         child: FlatButton(
                           onPressed: () {
-                            widget.onChangePicker('month');
+                            widget.onChangePicker!('month');
                           },
                           child: Text(yearMonthNFormat(initDate)),
                         ),
@@ -211,7 +211,7 @@ class _PersianYearPickerState extends State<PersianYearPicker> with TickerProvid
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: rows,
+                      children: rows as List<Widget>,
                     ),
                   ))),
           Container(
@@ -225,7 +225,7 @@ class _PersianYearPickerState extends State<PersianYearPicker> with TickerProvid
                     style: TextStyle(fontSize: 16, color: Global.color),
                   ),
                   onPressed: () {
-                    widget.onSelectYear(initDate);
+                    widget.onSelectYear!(initDate);
                   },
                 ),
                 FlatButton(

@@ -6,16 +6,16 @@ class DropDownField extends FormField<dynamic> {
   final bool required;
   final String errorText;
   final dynamic value;
-  final List dataSource;
-  final String textField;
-  final String valueField;
-  final Function onChanged;
+  final List? dataSource;
+  final String? textField;
+  final String? valueField;
+  final Function? onChanged;
   final bool filled;
   final EdgeInsets contentPadding;
 
   DropDownField({
-    FormFieldSetter<dynamic> onSaved,
-    FormFieldValidator<dynamic> validator,
+    FormFieldSetter<dynamic>? onSaved,
+    FormFieldValidator<dynamic>? validator,
     this.titleText = 'Title',
     this.hintText = 'Select one option',
     this.required = false,
@@ -48,9 +48,9 @@ class DropDownField extends FormField<dynamic> {
                       value: value == '' ? null : value,
                       onChanged: (dynamic newValue) {
                         state.didChange(newValue);
-                        onChanged(newValue);
+                        onChanged!(newValue);
                       },
-                      items: dataSource
+                      items: dataSource!
                           .map((item) => DropdownMenuItem<dynamic>(
                                 value: item[valueField],
                                 child: Text(item[textField], overflow: TextOverflow.ellipsis),
@@ -60,7 +60,7 @@ class DropDownField extends FormField<dynamic> {
                   ),
                 ),
                 SizedBox(height: state.hasError ? 5.0 : 0.0),
-                Text(state.hasError ? state.errorText : '', style: TextStyle(color: Colors.redAccent.shade700, fontSize: state.hasError ? 12.0 : 0.0)),
+                Text(state.hasError ? state.errorText! : '', style: TextStyle(color: Colors.redAccent.shade700, fontSize: state.hasError ? 12.0 : 0.0)),
               ],
             ),
           ),

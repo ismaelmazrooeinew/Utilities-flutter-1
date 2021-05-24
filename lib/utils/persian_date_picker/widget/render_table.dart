@@ -8,7 +8,7 @@ class RenderTable extends StatefulWidget {
   final initDate;
   final startSelectedDate;
   final endSelectedDate;
-  final Function(Jalali) onSelect;
+  final Function(Jalali)? onSelect;
 
   RenderTable({
     this.initDate,
@@ -23,10 +23,10 @@ class RenderTable extends StatefulWidget {
 
 class _RenderTableState extends State<RenderTable> {
   var initDate;
-  int monthLength;
-  int currentDayOfMonth;
-  int numberOfFirstDayOfMonthInWeek;
-  List allDaysOfTable; //valid and invalid days
+  int? monthLength;
+  int? currentDayOfMonth;
+  int? numberOfFirstDayOfMonthInWeek;
+  late List allDaysOfTable; //valid and invalid days
 
   @override
   void didUpdateWidget(RenderTable oldWidget) {
@@ -39,10 +39,10 @@ class _RenderTableState extends State<RenderTable> {
         numberOfFirstDayOfMonthInWeek = initDate.copy(day: 1).weekDay;
 
         for (int i = 1; i <= 42; i++) {
-          if (i < numberOfFirstDayOfMonthInWeek) {
+          if (i < numberOfFirstDayOfMonthInWeek!) {
             allDaysOfTable.add('');
-          } else if (i < monthLength + numberOfFirstDayOfMonthInWeek) {
-            allDaysOfTable.add(i - (numberOfFirstDayOfMonthInWeek - 1));
+          } else if (i < monthLength! + numberOfFirstDayOfMonthInWeek!) {
+            allDaysOfTable.add(i - (numberOfFirstDayOfMonthInWeek! - 1));
           } else {
             allDaysOfTable.add('');
           }
@@ -62,10 +62,10 @@ class _RenderTableState extends State<RenderTable> {
     numberOfFirstDayOfMonthInWeek = initDate.copy(day: 1).weekDay;
 
     for (int i = 1; i <= 42; i++) {
-      if (i < numberOfFirstDayOfMonthInWeek) {
+      if (i < numberOfFirstDayOfMonthInWeek!) {
         allDaysOfTable.add('');
-      } else if (i < monthLength + numberOfFirstDayOfMonthInWeek) {
-        allDaysOfTable.add(i - (numberOfFirstDayOfMonthInWeek - 1));
+      } else if (i < monthLength! + numberOfFirstDayOfMonthInWeek!) {
+        allDaysOfTable.add(i - (numberOfFirstDayOfMonthInWeek! - 1));
       } else {
         allDaysOfTable.add('');
       }
@@ -86,7 +86,7 @@ class _RenderTableState extends State<RenderTable> {
         width: cellWidth,
         height: cellHeight,
         onSelect: (date) {
-          widget.onSelect(date);
+          widget.onSelect!(date!);
         },
       );
     }).toList();
@@ -108,7 +108,7 @@ class _RenderTableState extends State<RenderTable> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Column(
-          children: chunkWeeksWidget,
+          children: chunkWeeksWidget as List<Widget>,
         )
       ],
     );

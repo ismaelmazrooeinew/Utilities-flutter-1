@@ -55,7 +55,7 @@ abstract class Date {
   /// non-null
   DateFormatter get formatter;
 
-  int daysInMonth(int monthNum, int year);
+  int? daysInMonth(int monthNum, int year);
 
   String dayName(int weekDay);
 

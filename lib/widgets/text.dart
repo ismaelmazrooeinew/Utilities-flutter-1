@@ -2,9 +2,9 @@ part of '../widgets.dart';
 
 Widget textHeadLine1(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
@@ -22,9 +22,9 @@ Widget textHeadLine1(
 
 Widget textHeadLine2(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
@@ -42,9 +42,9 @@ Widget textHeadLine2(
 
 Widget textHeadLine3(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
@@ -62,9 +62,9 @@ Widget textHeadLine3(
 
 Widget textHeadLine4(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
@@ -82,9 +82,9 @@ Widget textHeadLine4(
 
 Widget textHeadLine5(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
@@ -102,9 +102,9 @@ Widget textHeadLine5(
 
 Widget textHeadLine6(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
@@ -122,9 +122,9 @@ Widget textHeadLine6(
 
 Widget textSubtitle1(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
@@ -142,9 +142,9 @@ Widget textSubtitle1(
 
 Widget textSubtitle2(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
@@ -162,9 +162,9 @@ Widget textSubtitle2(
 
 Widget textBody1(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
@@ -182,9 +182,9 @@ Widget textBody1(
 
 Widget textBody2(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>
@@ -202,9 +202,9 @@ Widget textBody2(
 
 Widget textCaption(
   String text, {
-  int maxLines,
-  TextOverflow textOverflow,
-  TextStyle style,
+  int? maxLines,
+  TextOverflow? textOverflow,
+  TextStyle? style,
   TextAlign textAlign = TextAlign.justify,
   EdgeInsets padding: const EdgeInsets.all(0),
 }) =>

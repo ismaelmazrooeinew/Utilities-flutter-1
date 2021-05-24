@@ -8,12 +8,12 @@ class CancelAction {
 
   /// The callback that is called when the action item is tapped.
   /// [onPressed] is optional by default will dismiss the Action Sheet.
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   /// The TextStyle to use for the title text. (optional)
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
-  CancelAction({@required this.title, this.onPressed, this.textStyle});
+  CancelAction({required this.title, this.onPressed, this.textStyle});
 }
 
 /// The Actions model that will use on the ActionSheet.
@@ -25,9 +25,9 @@ class BottomSheetAction {
   final VoidCallback onPressed;
 
   /// The TextStyle to use for the title text. (optional)
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
-  BottomSheetAction({@required this.title, @required this.onPressed, this.textStyle})
+  BottomSheetAction({required this.title, required this.onPressed, this.textStyle})
       : assert(title != null),
         assert(onPressed != null);
 }
@@ -43,13 +43,13 @@ class BottomSheetAction {
 ///
 /// The optional [backgroundColor] and [barrierColor] can be passed in to
 /// customize the appearance and behavior of persistent bottom sheets.
-Future<T> showAdaptiveActionSheet<T>({
-  @required BuildContext context,
-  Widget title,
-  @required List<BottomSheetAction> actions,
-  CancelAction cancelAction,
-  Color barrierColor,
-  Color bottomSheetColor,
+Future<T?> showAdaptiveActionSheet<T>({
+  required BuildContext context,
+  Widget? title,
+  required List<BottomSheetAction> actions,
+  CancelAction? cancelAction,
+  Color? barrierColor,
+  Color? bottomSheetColor,
 }) async {
   assert(context != null);
   assert(actions != null);
@@ -58,13 +58,13 @@ Future<T> showAdaptiveActionSheet<T>({
   return _show<T>(context, title, actions, cancelAction, barrierColor, bottomSheetColor);
 }
 
-Future<T> _show<T>(
+Future<T?> _show<T>(
   BuildContext context,
-  Widget title,
+  Widget? title,
   List<BottomSheetAction> actions,
-  CancelAction cancelAction,
-  Color barrierColor,
-  Color bottomSheetColor,
+  CancelAction? cancelAction,
+  Color? barrierColor,
+  Color? bottomSheetColor,
 ) {
   if (isIos)
     return _showCupertinoBottomSheet(
@@ -84,11 +84,11 @@ Future<T> _show<T>(
     );
 }
 
-Future<T> _showCupertinoBottomSheet<T>(
+Future<T?> _showCupertinoBottomSheet<T>(
   BuildContext context,
-  Widget title,
+  Widget? title,
   List<BottomSheetAction> actions,
-  CancelAction cancelAction,
+  CancelAction? cancelAction,
 ) =>
     showCupertinoModalPopup(
         context: context,
@@ -107,18 +107,18 @@ Future<T> _showCupertinoBottomSheet<T>(
                       onPressed: cancelAction.onPressed ?? () => Navigator.of(context).pop(),
                       child: Text(
                         cancelAction.title,
-                        style: cancelAction.textStyle ?? theme.textTheme.headline6.copyWith(color: Colors.lightBlue),
+                        style: cancelAction.textStyle ?? theme.textTheme.headline6!.copyWith(color: Colors.lightBlue),
                       ))
                   : null,
             ));
 
-Future<T> _showMaterialBottomSheet<T>(
+Future<T?> _showMaterialBottomSheet<T>(
   BuildContext context,
-  Widget title,
+  Widget? title,
   List<BottomSheetAction> actions,
-  CancelAction cancelAction,
-  Color barrierColor,
-  Color bottomSheetColor,
+  CancelAction? cancelAction,
+  Color? barrierColor,
+  Color? bottomSheetColor,
 ) =>
     showModalBottomSheet<T>(
         context: context,
@@ -153,7 +153,7 @@ Future<T> _showMaterialBottomSheet<T>(
                               padding: const EdgeInsets.all(16.0),
                               child: Text(
                                 cancelAction.title,
-                                style: cancelAction.textStyle ?? theme.textTheme.headline6.copyWith(color: Colors.lightBlue),
+                                style: cancelAction.textStyle ?? theme.textTheme.headline6!.copyWith(color: Colors.lightBlue),
                               ))))
               ])));
         });

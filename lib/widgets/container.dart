@@ -1,19 +1,19 @@
 part of '../widgets.dart';
 
 Widget scaffold({
-  @required Widget body,
-  Key key,
-  PreferredSizeWidget appBar,
-  Drawer drawer,
-  Widget floatingActionButton,
-  Widget bottomNavigationBar,
-  EdgeInsets padding,
-  Color color,
-  ImageProvider backgroundImage,
+  required Widget body,
+  Key? key,
+  PreferredSizeWidget? appBar,
+  Drawer? drawer,
+  Widget? floatingActionButton,
+  Widget? bottomNavigationBar,
+  EdgeInsets? padding,
+  Color? color,
+  ImageProvider? backgroundImage,
   bool resizeToAvoidBottomInset = false,
 }) =>
     GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus.unfocus(),
+        onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
         child: Scaffold(
             key: key,
             backgroundColor: color,
@@ -30,9 +30,9 @@ Widget scaffold({
             )));
 
 Widget listView({
-  @required List<Widget> children,
+  required List<Widget> children,
   EdgeInsets padding = const EdgeInsets.all(0),
-  ScrollPhysics physics,
+  ScrollPhysics? physics,
 }) =>
     Padding(
         padding: padding,
@@ -43,8 +43,8 @@ Widget listView({
         ));
 
 Widget gridView({
-  @required List<Widget> children,
-  ScrollPhysics physics,
+  required List<Widget> children,
+  ScrollPhysics? physics,
   int crossAxisCount = 2,
   EdgeInsets padding = const EdgeInsets.all(0),
 }) =>
@@ -58,9 +58,9 @@ Widget gridView({
         ));
 
 Widget listViewBuilder({
-  @required int itemCount,
-  @required IndexedWidgetBuilder itemBuilder,
-  ScrollPhysics physics,
+  required int itemCount,
+  required IndexedWidgetBuilder itemBuilder,
+  ScrollPhysics? physics,
   EdgeInsets padding = const EdgeInsets.all(0),
 }) =>
     Padding(
@@ -73,10 +73,10 @@ Widget listViewBuilder({
         ));
 
 Widget gridViewBuilder({
-  @required int itemCount,
-  @required IndexedWidgetBuilder itemBuilder,
-  @required SliverGridDelegate delegate,
-  ScrollPhysics physics,
+  required int itemCount,
+  required IndexedWidgetBuilder itemBuilder,
+  required SliverGridDelegate delegate,
+  ScrollPhysics? physics,
   EdgeInsets padding = const EdgeInsets.all(0),
 }) =>
     Padding(
@@ -90,18 +90,18 @@ Widget gridViewBuilder({
         ));
 
 Widget pullRefresh({
-  @required RefreshController controller,
-  Function onLoading,
-  Function onRefresh,
-  Widget child,
+  required RefreshController controller,
+  Function? onLoading,
+  Function? onRefresh,
+  Widget? child,
 }) =>
     SmartRefresher(
       controller: controller,
-      onLoading: onLoading,
-      onRefresh: onRefresh,
+      onLoading: onLoading as void Function()?,
+      onRefresh: onRefresh as void Function()?,
       enablePullDown: true,
       enablePullUp: true,
       child: child,
     );
 
-Widget radius({@required Widget child, @required double radius}) => ClipRRect(borderRadius: BorderRadius.circular(radius), child: child);
+Widget radius({required Widget child, required double radius}) => ClipRRect(borderRadius: BorderRadius.circular(radius), child: child);

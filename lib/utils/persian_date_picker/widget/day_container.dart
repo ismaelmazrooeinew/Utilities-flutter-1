@@ -7,7 +7,7 @@ class DayContainer extends StatefulWidget {
   final date;
   final startDate;
   final endDate;
-  final Function(Jalali) onSelect;
+  final Function(Jalali?)? onSelect;
   final width;
   final height;
 
@@ -19,7 +19,7 @@ class DayContainer extends StatefulWidget {
 
 class _DayContainerState extends State<DayContainer> {
   var date;
-  bool isDisable;
+  late bool isDisable;
 
   @override
   void initState() {
@@ -82,7 +82,7 @@ class _DayContainerState extends State<DayContainer> {
     return InkWell(
       onTap: () {
         if (date != '' && !isDisable) {
-          widget.onSelect(date);
+          widget.onSelect!(date);
         }
       },
       child: date != ''

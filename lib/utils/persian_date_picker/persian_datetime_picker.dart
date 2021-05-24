@@ -13,7 +13,7 @@ class PersianDateTimePicker extends StatefulWidget {
   final min;
   final max;
   final Color color;
-  final Function(String) onSelect;
+  final Function(String)? onSelect;
 
   PersianDateTimePicker({this.type = PickerType.date, this.initial, this.disable, this.min = '', this.max = '', this.color = Colors.blueAccent, this.onSelect});
 

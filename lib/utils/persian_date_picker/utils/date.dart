@@ -4,10 +4,10 @@ import 'consts.dart';
 
 class PersianDateUtils {
   dynamic disable;
-  String min;
-  String max;
-  PickerType type;
-  List<String> dayNames;
+  String? min;
+  String? max;
+  PickerType? type;
+  late List<String?> dayNames;
 
   PersianDateUtils() {
     disable = Global.disable;
@@ -106,11 +106,11 @@ class PersianDateUtils {
   bool _isInRangeDate(String date) {
     bool isDisable = false;
 
-    if (isValidDate(date) && isValidDate(min) && !isDisable) {
-      isDisable = stringToJalali(date) <= stringToJalali(min);
+    if (isValidDate(date) && isValidDate(min!) && !isDisable) {
+      isDisable = stringToJalali(date) <= stringToJalali(min!);
     }
-    if (isValidDate(date) && isValidDate(max) && !isDisable) {
-      isDisable = stringToJalali(date) >= stringToJalali(max);
+    if (isValidDate(date) && isValidDate(max!) && !isDisable) {
+      isDisable = stringToJalali(date) >= stringToJalali(max!);
     }
 
     return isDisable;

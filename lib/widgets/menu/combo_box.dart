@@ -2,12 +2,12 @@ part of '../../widgets.dart';
 
 class ComboBox extends StatefulWidget {
   final String initialValue;
-  final List<String> items;
-  final Function(int index, String name) onChange;
+  final List<String?> items;
+  final Function(int index, String? name)? onChange;
 
   ComboBox({
-    @required this.initialValue,
-    @required this.items,
+    required this.initialValue,
+    required this.items,
     this.onChange,
   });
 
@@ -16,7 +16,7 @@ class ComboBox extends StatefulWidget {
 }
 
 class _ComboBoxState extends State<ComboBox> {
-  String comboBoxValue;
+  String? comboBoxValue;
 
   @override
   void initState() {
@@ -36,12 +36,12 @@ class _ComboBoxState extends State<ComboBox> {
               value: comboBoxValue,
               items: widget.items
                   .map<DropdownMenuItem<String>>(
-                    (value) => DropdownMenuItem<String>(value: value, child: Padding(padding: EdgeInsets.all(10), child: Text(value))),
+                    (value) => DropdownMenuItem<String>(value: value, child: Padding(padding: EdgeInsets.all(10), child: Text(value!))),
                   )
                   .toList(),
               dropdownColor: Colors.white,
-              onChanged: (String value) {
+              onChanged: (String? value) {
                 setState(() => comboBoxValue = value);
-                widget.onChange(widget.items.indexOf(value), value);
+                widget.onChange!(widget.items.indexOf(value), value);
               })));
 }

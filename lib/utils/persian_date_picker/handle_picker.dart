@@ -9,10 +9,10 @@ import 'utils/date.dart';
 import 'year_picker.dart';
 
 class HandlePicker extends StatefulWidget {
-  final bool isRangeDate;
+  final bool? isRangeDate;
   final initDateTime;
-  final PickerType type;
-  final Function(String) onSelect;
+  final PickerType? type;
+  final Function(String)? onSelect;
 
   HandlePicker({this.isRangeDate, this.initDateTime, this.type, this.onSelect});
 
@@ -21,8 +21,8 @@ class HandlePicker extends StatefulWidget {
 }
 
 class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+  AnimationController? controller;
+  Animation<double>? animation;
 
   // var initDate;
   // var initTime;
@@ -32,7 +32,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
   var endSelectedInitTime;
   var initDateTime;
 
-  bool isSecondSelect;
+  late bool isSecondSelect;
   PickerType pickerType = PickerType.date;
 
   String outPutFormat(Date d) {
@@ -108,7 +108,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
 
     switch (widget.type) {
       case PickerType.datetime:
-        Widget picked;
+        Widget? picked;
 
         switch (pickerType) {
           case PickerType.date:
@@ -139,7 +139,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
             picked = TimePicker(
               initTime: startSelectedInitTime,
               onSelectDate: (time) {
-                widget.onSelect('$startSelectedInitDate $time');
+                widget.onSelect!('$startSelectedInitDate $time');
                 Navigator.of(context).pop();
               },
             );
@@ -149,7 +149,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
               initDate: startSelectedInitDate,
               onSelectYear: (date) {
                 setState(() {
-                  startSelectedInitDate = outPutFormat(date);
+                  startSelectedInitDate = outPutFormat(date!);
                   endSelectedInitDate = outPutFormat(date);
                   pickerType = PickerType.date;
                 });
@@ -161,7 +161,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
         picker = Container(child: picked);
         break;
       case PickerType.rangedate:
-        Widget picked;
+        Widget? picked;
         switch (pickerType) {
           case PickerType.date:
             picked = DatePicker(
@@ -174,12 +174,12 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
               },
               isRangeDate: true,
               onConfirmedDate: (date) {
-                widget.onSelect(date);
+                widget.onSelect!(date);
                 Navigator.of(context).pop();
               },
               onSelectDate: (date) {
                 var splitStartDate = startSelectedInitDate.split('/');
-                var startSelectedDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ?? Jalali.now();
+                var startSelectedDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
                 setState(() {
                   if (!isSecondSelect) {
                     startSelectedInitDate = outPutFormat(date);
@@ -213,7 +213,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
             picked = TimePicker(
               initTime: startSelectedInitTime,
               onSelectDate: (time) {
-                widget.onSelect('$startSelectedInitDate $time');
+                widget.onSelect!('$startSelectedInitDate $time');
                 Navigator.of(context).pop();
               },
             );
@@ -224,9 +224,9 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
               onSelectYear: (date) {
                 setState(() {
                   if (isSecondSelect) {
-                    endSelectedInitDate = outPutFormat(date);
+                    endSelectedInitDate = outPutFormat(date!);
                   } else {
-                    startSelectedInitDate = outPutFormat(date);
+                    startSelectedInitDate = outPutFormat(date!);
                   }
                   pickerType = PickerType.date;
                 });
@@ -245,13 +245,13 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
             child: TimePicker(
           initTime: startSelectedInitTime,
           onSelectDate: (time) {
-            widget.onSelect('$time');
+            widget.onSelect!('$time');
             Navigator.pop(context);
           },
         ));
         break;
       case PickerType.date:
-        Widget picked;
+        Widget? picked;
 
         switch (pickerType) {
           case PickerType.date:
@@ -261,7 +261,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
               isRangeDate: false,
               onConfirmedDate: (date) {
                 startSelectedInitDate = date;
-                widget.onSelect(date);
+                widget.onSelect!(date);
                 Navigator.pop(context);
               },
               onSelectDate: (date) {
@@ -282,7 +282,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
               initDate: startSelectedInitDate,
               onSelectYear: (date) {
                 setState(() {
-                  startSelectedInitDate = outPutFormat(date);
+                  startSelectedInitDate = outPutFormat(date!);
                   endSelectedInitDate = outPutFormat(date);
                   startSelectedInitDate = outPutFormat(date);
                   pickerType = PickerType.date;
@@ -300,7 +300,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
               initDate: startSelectedInitDate,
               onSelectMonth: (date) {
                 setState(() {
-                  startSelectedInitDate = outPutFormat(date);
+                  startSelectedInitDate = outPutFormat(date!);
                   endSelectedInitDate = outPutFormat(date);
                   startSelectedInitDate = outPutFormat(date);
                   pickerType = PickerType.date;
@@ -317,8 +317,8 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
             child: PersianYearPicker(
           initDate: PersianDateUtils.jalaliToString(Jalali.now().copy(year: int.parse(startSelectedInitDate))),
           onSelectYear: (date) {
-            startSelectedInitDate = outPutFormat(date);
-            widget.onSelect('${date.formatter.yyyy}');
+            startSelectedInitDate = outPutFormat(date!);
+            widget.onSelect!('${date.formatter.yyyy}');
             Navigator.pop(context);
           },
         ));
@@ -327,14 +327,14 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
         picker = PersianMonthPicker(
           initDate: PersianDateUtils.jalaliToString(Jalali.now().copy(month: int.parse(startSelectedInitDate))),
           onSelectMonth: (date) {
-            startSelectedInitDate = outPutFormat(date);
-            widget.onSelect('${date.formatter.mm}');
+            startSelectedInitDate = outPutFormat(date!);
+            widget.onSelect!('${date.formatter.mm}');
             Navigator.pop(context);
           },
         );
         break;
       default:
-        Widget picked;
+        Widget? picked;
 
         switch (pickerType) {
           case PickerType.date:
@@ -344,7 +344,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
               isRangeDate: false,
               onConfirmedDate: (date) {
                 startSelectedInitDate = date;
-                widget.onSelect('$startSelectedInitDate');
+                widget.onSelect!('$startSelectedInitDate');
                 Navigator.pop(context);
               },
               onSelectDate: (date) {
@@ -365,7 +365,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
               initDate: startSelectedInitDate,
               onSelectYear: (date) {
                 setState(() {
-                  startSelectedInitDate = outPutFormat(date);
+                  startSelectedInitDate = outPutFormat(date!);
                   endSelectedInitDate = outPutFormat(date);
                   startSelectedInitDate = outPutFormat(date);
                   pickerType = PickerType.date;
@@ -383,7 +383,7 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
               initDate: startSelectedInitDate,
               onSelectMonth: (date) {
                 setState(() {
-                  startSelectedInitDate = outPutFormat(date);
+                  startSelectedInitDate = outPutFormat(date!);
                   endSelectedInitDate = outPutFormat(date);
                   startSelectedInitDate = outPutFormat(date);
                   pickerType = PickerType.date;

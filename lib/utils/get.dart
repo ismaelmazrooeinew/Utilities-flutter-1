@@ -12,15 +12,15 @@ bool isFuchsia = GetPlatform.isFuchsia;
 bool isMobile = GetPlatform.isMobile;
 bool isWeb = GetPlatform.isWeb;
 bool isDesktop = GetPlatform.isDesktop;
-bool isLandScape = context.isLandscape;
-bool isPortrait = context.isPortrait;
-bool isTablet = context.isTablet;
-bool isPhone = context.isPhone;
-BuildContext context = Get.context;
+bool isLandScape = context!.isLandscape;
+bool isPortrait = context!.isPortrait;
+bool isTablet = context!.isTablet;
+bool isPhone = context!.isPhone;
+BuildContext? context = Get.context;
 double screenHeight = Get.height;
 double screenWidth = Get.width;
 ThemeData theme = Get.theme;
-Locale currentLocale = Get.locale;
+Locale? currentLocale = Get.locale;
 
 void updateLocale(Locale locale) => Get.updateLocale(locale);
 

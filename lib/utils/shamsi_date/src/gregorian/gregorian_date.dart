@@ -205,7 +205,7 @@ class Gregorian implements Date, Comparable<Gregorian> {
   /// Copy this date object with some fields changed
   ///
   /// non-null
-  Gregorian copy({int year, int month, int day}) {
+  Gregorian copy({int? year, int? month, int? day}) {
     if (year == null && month == null && day == null) {
       return this;
     } else {
