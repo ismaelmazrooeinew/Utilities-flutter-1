@@ -14,13 +14,13 @@ dependencies:
     sdk: flutter
 
   http: ^0.13.1
-  data_connection_checker: ^0.3.4
+  internet_connection_checker: ^0.0.1+1
   url_launcher: ^6.0.3
   get: ^4.1.4
   package_info: ^2.0.0
-  carousel_slider: ^3.0.0
+  carousel_slider: ^4.0.0-nullsafety.0
   pull_to_refresh: ^2.0.0
-  esys_flutter_share: ^1.0.2
+  share: ^2.0.1
   image_gallery_saver: ^1.6.9
   flutter_rating_bar: ^4.0.0
   file_picker: ^3.0.1
