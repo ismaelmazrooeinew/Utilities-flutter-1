@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_picker_view/flutter_picker_view.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:utilities/utilities.dart';
 
 export 'package:carousel_slider/carousel_slider.dart';
-export 'package:flutter_picker_view/flutter_picker_view.dart';
 export 'package:flutter_rating_bar/flutter_rating_bar.dart';
-export 'package:flutter_icons/flutter_icons.dart';
 export 'package:pull_to_refresh/pull_to_refresh.dart';
 export 'package:webview_flutter/platform_interface.dart';
 export 'package:webview_flutter/webview_flutter.dart';
