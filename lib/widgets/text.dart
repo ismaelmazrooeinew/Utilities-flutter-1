@@ -1,4 +1,4 @@
-part of '../widgets.dart';
+part of '../utilities.dart';
 
 Widget textHeadLine1(
   String text, {

@@ -1,4 +1,4 @@
-part of '../widgets.dart';
+part of '../utilities.dart';
 
 class AutoSizeGroup {
   final _listeners = <_AutoSizeTextState, double>{};
@@ -65,8 +65,7 @@ class AutoSizeText extends StatefulWidget {
       this.textScaleFactor,
       this.maxLines,
       this.semanticsLabel})
-      : assert(data != null, 'A non-null String must be provided to a AutoSizeText widget.'),
-        textSpan = null,
+      : textSpan = null,
         super(key: key);
 
   const AutoSizeText.rich(TextSpan this.textSpan,
@@ -89,8 +88,7 @@ class AutoSizeText extends StatefulWidget {
       this.textScaleFactor,
       this.maxLines,
       this.semanticsLabel})
-      : assert(textSpan != null, 'A non-null TextSpan must be provided to a AutoSizeText.rich widget.'),
-        data = null,
+      : data = null,
         super(key: key);
   final Key? textKey;
   final String? data;
@@ -186,7 +184,7 @@ class _AutoSizeTextState extends State<AutoSizeText> {
     var userScale = widget.textScaleFactor ?? MediaQuery.textScaleFactorOf(context!);
     int left;
     int right;
-    var presetFontSizes = widget.presetFontSizes?.reversed?.toList();
+    var presetFontSizes = widget.presetFontSizes?.reversed.toList();
     if (presetFontSizes == null) {
       num defaultFontSize = style!.fontSize!.clamp(widget.minFontSize, widget.maxFontSize);
       var defaultScale = defaultFontSize * userScale / style.fontSize!;
@@ -226,8 +224,7 @@ class _AutoSizeTextState extends State<AutoSizeText> {
       var wordWrapTp = TextPainter(
           text: TextSpan(style: text.style, text: words.join('\n')),
           textAlign: widget.textAlign ?? TextAlign.left,
-          // textDirection: widget.textDirection ?? TextDirection.ltr,
-          textScaleFactor: scale ?? 1,
+          textScaleFactor: scale,
           maxLines: words.length,
           locale: widget.locale,
           strutStyle: widget.strutStyle);
@@ -238,8 +235,7 @@ class _AutoSizeTextState extends State<AutoSizeText> {
     var tp = TextPainter(
         text: text,
         textAlign: widget.textAlign ?? TextAlign.left,
-        // textDirection: widget.textDirection ?? TextDirection.ltr,
-        textScaleFactor: scale ?? 1,
+        textScaleFactor: scale,
         maxLines: maxLines,
         locale: widget.locale,
         strutStyle: widget.strutStyle);

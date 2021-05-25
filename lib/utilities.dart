@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:camera/camera.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -13,20 +14,27 @@ import 'package:http/http.dart' as http;
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:package_info/package_info.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:utilities/extras.dart';
 
 export 'dart:async';
 export 'dart:convert';
 
+export 'package:camera/camera.dart';
 export 'package:file_picker/file_picker.dart';
 export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
 export 'package:intl/intl.dart';
 export 'package:meta/meta.dart';
 
+part 'extras/constants.dart';
+
+part 'extras/error.dart';
+
 part 'utils/alert.dart';
+
+part 'utils/camera.dart';
 
 part 'utils/availability.dart';
 
@@ -51,3 +59,19 @@ part 'utils/share.dart';
 part 'utils/string.dart';
 
 part 'utils/utils.dart';
+
+part 'widgets/auto_size_text.dart';
+
+part 'widgets/container.dart';
+
+part 'widgets/extra.dart';
+
+part 'widgets/menu/bottom_sheet.dart';
+
+part 'widgets/menu/drop_down_form_field.dart';
+
+part 'widgets/menu/picker_view.dart';
+
+part 'widgets/table.dart';
+
+part 'widgets/text.dart';

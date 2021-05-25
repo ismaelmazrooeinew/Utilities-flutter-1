@@ -1,4 +1,4 @@
-part of '../widgets.dart';
+part of '../utilities.dart';
 
 Widget tableHeader({required List<Widget> cells}) => Container(
     padding: EdgeInsets.symmetric(vertical: 15),

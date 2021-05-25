@@ -1,4 +1,4 @@
-part of '../../widgets.dart';
+part of '../../utilities.dart';
 
 void showPicker({
   required List<String> list,
@@ -65,7 +65,7 @@ class PickerViewState extends State<PickerView> {
 
   @override
   void didChangeDependencies() {
-    _controller = widget.controller ?? PickerController(count: 0);
+    _controller = widget.controller;
     super.didChangeDependencies();
   }
 
@@ -132,11 +132,7 @@ class PickerController {
   int? selectedRowAt({required int section}) {
     try {
       FixedExtentScrollController scrollController = scrollControllers[section];
-      if (scrollController != null) {
-        return scrollController.selectedItem;
-      } else {
-        return null;
-      }
+      return scrollController.selectedItem;
     } catch (err) {
       return null;
     }

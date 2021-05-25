@@ -1,4 +1,4 @@
-part of '../../widgets.dart';
+part of '../../utilities.dart';
 
 /// The cancel actions model that show
 /// under the [BottomSheetAction] (grouped separately on iOS).
@@ -27,9 +27,7 @@ class BottomSheetAction {
   /// The TextStyle to use for the title text. (optional)
   final TextStyle? textStyle;
 
-  BottomSheetAction({required this.title, required this.onPressed, this.textStyle})
-      : assert(title != null),
-        assert(onPressed != null);
+  BottomSheetAction({required this.title, required this.onPressed, this.textStyle});
 }
 
 /// A action bottom sheet that adapts to the platform (Android/iOS).
@@ -51,8 +49,6 @@ Future<T?> showAdaptiveActionSheet<T>({
   Color? barrierColor,
   Color? bottomSheetColor,
 }) async {
-  assert(context != null);
-  assert(actions != null);
   assert(barrierColor != Colors.transparent, 'The barrier color cannot be transparent.');
 
   return _show<T>(context, title, actions, cancelAction, barrierColor, bottomSheetColor);
@@ -124,7 +120,7 @@ Future<T?> _showMaterialBottomSheet<T>(
         context: context,
         elevation: 0,
         isScrollControlled: true,
-        backgroundColor: bottomSheetColor ?? theme.bottomSheetTheme?.modalBackgroundColor ?? theme.bottomSheetTheme?.backgroundColor,
+        backgroundColor: bottomSheetColor ?? theme.bottomSheetTheme.modalBackgroundColor ?? theme.bottomSheetTheme.backgroundColor,
         barrierColor: barrierColor,
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))),
         builder: (BuildContext context) {

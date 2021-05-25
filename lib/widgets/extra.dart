@@ -1,4 +1,4 @@
-part of '../widgets.dart';
+part of '../utilities.dart';
 
 Widget divider({double? width, double height = 0.6, Color color = Colors.grey, EdgeInsets? padding}) => Container(
       margin: padding,

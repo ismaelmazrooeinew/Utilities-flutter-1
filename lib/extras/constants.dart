@@ -1,4 +1,4 @@
-part of '../extras.dart';
+part of '../utilities.dart';
 
 class Array {
   static List<String> weekDays = ["شنبه", "یکشنبه", "دوشنبه", "شه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه"];
