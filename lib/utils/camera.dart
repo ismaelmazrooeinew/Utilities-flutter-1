@@ -8,7 +8,5 @@ part of '../utilities.dart';
 ///
 /// Android's min sdk version must be 21
 
-late List<CameraDescription> cameras;
-
 /// Add this to main method.
-Future<void> initCamera() async => cameras = await availableCameras();
+Future<void> initCamera(List<CameraDescription> cameras) async => cameras = await availableCameras();
