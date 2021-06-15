@@ -1,36 +1,35 @@
 part of '../utilities.dart';
 
-Future request(String url, EHttpMethod httpMethod, action(http.Response? response), error(http.Response? response), {body}) async {
-  final String? token = await getString(Constant.token);
+Future<void> request(String url, EHttpMethod httpMethod, action(http.Response? response), error(http.Response? response), {body}) async {
+  final String? token = getString(Constant.token);
 
-  Map<String, String?> headers = {"Content-Type": "application/json", "Authorization": token};
+  Map<String, String> headers = {"Content-Type": "application/json", "Authorization": token ?? ""};
 
   http.Response? response;
-  if (httpMethod == EHttpMethod.get) response = await http.get(Uri.parse(url), headers: headers as Map<String, String>?);
-  if (httpMethod == EHttpMethod.post) response = body == null ? await http.post(Uri.parse(url), headers: headers as Map<String, String>?) : await http.post(Uri.parse(url), body: body.toJson(), headers: headers as Map<String, String>?);
-  if (httpMethod == EHttpMethod.put) response = await http.put(Uri.parse(url), body: body.toJson(), headers: headers as Map<String, String>?);
-  if (httpMethod == EHttpMethod.patch) response = await http.patch(Uri.parse(url), body: body.toJson(), headers: headers as Map<String, String>?);
-  if (httpMethod == EHttpMethod.delete) response = await http.delete(Uri.parse(url), headers: headers as Map<String, String>?);
+  if (httpMethod == EHttpMethod.get) response = await http.get(Uri.parse(url), headers: headers);
+  if (httpMethod == EHttpMethod.post) response = await http.post(Uri.parse(url), body: body != null ? body.toJson() : null, headers: headers);
+  if (httpMethod == EHttpMethod.put) response = await http.put(Uri.parse(url), body: body.toJson(), headers: headers);
+  if (httpMethod == EHttpMethod.patch) response = await http.patch(Uri.parse(url), body: body.toJson(), headers: headers);
+  if (httpMethod == EHttpMethod.delete) response = await http.delete(Uri.parse(url), headers: headers);
 
   if (body != null)
     response!.completeLog(params: body.toJson());
   else
     response!.log();
-
   if (response.isSuccessful())
     action(response);
   else
     error(response);
 }
 
-Future get({
+Future<void> get({
   required String url,
   required action(http.Response? response),
   required error(http.Response? response),
 }) async =>
     await request(url, EHttpMethod.get, action, error);
 
-Future post({
+Future<void> post({
   required String url,
   required action(http.Response? response),
   required error(http.Response? response),
@@ -38,7 +37,7 @@ Future post({
 }) async =>
     await request(url, EHttpMethod.post, action, error, body: body);
 
-Future put({
+Future<void> put({
   required String url,
   required action(http.Response? response),
   required error(http.Response? response),
@@ -46,7 +45,7 @@ Future put({
 }) async =>
     await request(url, EHttpMethod.put, action, error, body: body);
 
-Future patch({
+Future<void> patch({
   required String url,
   required action(http.Response? response),
   required error(http.Response? response),
@@ -54,7 +53,7 @@ Future patch({
 }) async =>
     await request(url, EHttpMethod.patch, action, error, body: body);
 
-Future delete({
+Future<void> delete({
   required String url,
   required action(http.Response? response),
   required error(http.Response? response),
