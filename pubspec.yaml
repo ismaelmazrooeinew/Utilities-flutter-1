@@ -28,6 +28,7 @@ dependencies:
   webview_flutter: ^2.0.4
   get_storage: ^2.0.2
   camera: ^0.8.1
+  flutter_svg: ^0.22.0
 
 dependency_overrides:
   path_provider: 2.0.1

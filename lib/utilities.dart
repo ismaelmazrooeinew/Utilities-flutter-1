@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:camera/camera.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +26,7 @@ export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
 export 'package:intl/intl.dart';
 export 'package:meta/meta.dart';
+export 'package:flutter_svg/flutter_svg.dart';
 
 part 'extras/constants.dart';
 
