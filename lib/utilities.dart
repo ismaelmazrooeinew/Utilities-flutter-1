@@ -20,7 +20,6 @@ import 'package:url_launcher/url_launcher.dart';
 export 'dart:async';
 export 'dart:convert';
 
-export 'package:camera/camera.dart';
 export 'package:file_picker/file_picker.dart';
 export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
@@ -33,8 +32,6 @@ part 'extras/constants.dart';
 part 'extras/error.dart';
 
 part 'utils/alert.dart';
-
-part 'utils/camera.dart';
 
 part 'utils/availability.dart';
 
@@ -75,3 +72,5 @@ part 'widgets/menu/picker_view.dart';
 part 'widgets/table.dart';
 
 part 'widgets/text.dart';
+
+part 'widgets/textfield_tag.dart';
