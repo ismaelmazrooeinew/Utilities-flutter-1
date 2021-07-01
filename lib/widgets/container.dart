@@ -11,6 +11,7 @@ Widget scaffold({
   Color? color,
   ImageProvider? backgroundImage,
   bool resizeToAvoidBottomInset = false,
+  BoxConstraints? constraints,
 }) =>
     GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
@@ -24,6 +25,7 @@ Widget scaffold({
             floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
             bottomNavigationBar: bottomNavigationBar,
             body: Container(
+              constraints: constraints,
               decoration: backgroundImage != null ? BoxDecoration(image: DecorationImage(image: backgroundImage, fit: BoxFit.cover)) : null,
               padding: padding,
               child: body,
