@@ -6,3 +6,12 @@ Widget divider({double? width, double height = 0.6, Color color = Colors.grey, E
       height: height,
       color: color,
     );
+
+Widget dashedDivider() => Row(
+      children: [
+        for (int i = 0; i < 40; i++)
+          Expanded(
+            child: Row(children: [Expanded(child: Divider(thickness: 1)), Expanded(child: Container())]),
+          ),
+      ],
+    );
