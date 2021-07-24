@@ -7,11 +7,16 @@ Widget divider({double? width, double height = 0.6, Color color = Colors.grey, E
       color: color,
     );
 
-Widget dashedDivider() => Row(
+Widget dashedDivider({double? height}) => Row(
       children: [
         for (int i = 0; i < 40; i++)
           Expanded(
-            child: Row(children: [Expanded(child: Divider(thickness: 1)), Expanded(child: Container())]),
+            child: Row(
+              children: [
+                Expanded(child: Divider(thickness: 1, height: height)),
+                Expanded(child: Container()),
+              ],
+            ),
           ),
       ],
     );

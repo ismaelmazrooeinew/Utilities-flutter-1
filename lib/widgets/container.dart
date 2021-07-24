@@ -26,7 +26,11 @@ Widget scaffold({
             bottomNavigationBar: bottomNavigationBar,
             body: Container(
               constraints: constraints,
-              decoration: backgroundImage != null ? BoxDecoration(image: DecorationImage(image: backgroundImage, fit: BoxFit.cover)) : null,
+              decoration: backgroundImage != null
+                  ? BoxDecoration(
+                      image: DecorationImage(image: backgroundImage, fit: BoxFit.cover),
+                    )
+                  : null,
               padding: padding,
               child: body,
             )));
@@ -46,4 +50,7 @@ Widget pullRefresh({
       child: child,
     );
 
-Widget radius({required Widget child, required double radius}) => ClipRRect(borderRadius: BorderRadius.circular(radius), child: child);
+Widget radius({required Widget child, required double radius}) => ClipRRect(
+      borderRadius: BorderRadius.circular(radius),
+      child: child,
+    );
