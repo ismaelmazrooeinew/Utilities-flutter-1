@@ -1,6 +1,6 @@
 part of '../utilities.dart';
 
-class RemoteDataSource {
+class UtilitiesRemoteDataSource {
   Future<void> getIransCitiesOnline({
     required String url,
     required Function(IransCity) action,
