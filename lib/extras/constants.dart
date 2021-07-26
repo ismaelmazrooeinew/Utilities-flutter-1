@@ -8,6 +8,7 @@ class Array {
 
 class Constant {
   static String token = "token";
+  static String iransCity = "iransCity";
 }
 
 enum PageState {

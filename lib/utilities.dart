@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
-import 'dart:math' as math;
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,6 +26,10 @@ export 'package:get_storage/get_storage.dart';
 export 'package:intl/intl.dart';
 export 'package:meta/meta.dart';
 export 'package:flutter_svg/flutter_svg.dart';
+
+part 'data/datasource.dart';
+
+part 'data/models/irans_city.dart';
 
 part 'extras/constants.dart';
 
