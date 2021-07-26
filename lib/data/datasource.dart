@@ -1,7 +1,5 @@
 part of '../utilities.dart';
 
-final RemoteDataSource remote = RemoteDataSource();
-
 class RemoteDataSource {
   Future<void> getIransCitiesOnline({
     required String url,
