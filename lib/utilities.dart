@@ -26,6 +26,7 @@ export 'package:get_storage/get_storage.dart';
 export 'package:intl/intl.dart';
 export 'package:meta/meta.dart';
 export 'package:flutter_svg/flutter_svg.dart';
+export 'package:carousel_slider/carousel_slider.dart';
 
 part 'data/datasource.dart';
 
