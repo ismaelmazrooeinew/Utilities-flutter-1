@@ -28,6 +28,7 @@ export 'package:meta/meta.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:share/share.dart';
+export 'package:path_provider/path_provider.dart';
 
 part 'data/datasource.dart';
 
