@@ -23,17 +23,18 @@ export 'dart:convert';
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:file_picker/file_picker.dart';
 export 'package:flutter_svg/flutter_svg.dart';
+export 'package:flutter_typeahead/flutter_typeahead.dart';
 export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
+export 'package:group_button/group_button.dart';
+export 'package:group_button/group_button.dart';
 export 'package:intl/intl.dart';
 export 'package:meta/meta.dart';
 export 'package:path_provider/path_provider.dart';
-export 'package:share/share.dart';
-export 'package:url_launcher/url_launcher.dart';
-export 'package:group_button/group_button.dart';
 export 'package:persian_tools/persian_tools.dart';
-export 'package:flutter_typeahead/flutter_typeahead.dart';
-export 'package:group_button/group_button.dart';
+export 'package:share/share.dart';
+export 'package:smooth_page_indicator/smooth_page_indicator.dart';
+export 'package:url_launcher/url_launcher.dart';
 
 part 'data/datasource.dart';
 
