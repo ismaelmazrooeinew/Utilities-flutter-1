@@ -70,6 +70,8 @@ part 'utils/string.dart';
 
 part 'utils/utils.dart';
 
+part 'widgets/appbar.dart';
+
 part 'widgets/auto_size_text.dart';
 
 part 'widgets/button.dart';
