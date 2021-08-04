@@ -49,6 +49,7 @@ push(Widget page, {bool dialog = false, Transition transition = Transition.cuper
       page,
       fullscreenDialog: dialog,
       popGesture: true,
+      opaque: dialog ? false : true,
       transition: transition,
     );
 
