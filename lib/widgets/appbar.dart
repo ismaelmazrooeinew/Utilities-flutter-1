@@ -1,6 +1,6 @@
 part of '../utilities.dart';
 
-AppBar appbarTransparent({Widget? title}) => AppBar(
+AppBar appbarNoColor({Widget? title}) => AppBar(
       shadowColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       foregroundColor: Colors.transparent,
