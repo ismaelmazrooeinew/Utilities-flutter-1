@@ -8,8 +8,8 @@ Future<void> request(String url, EHttpMethod httpMethod, action(http.Response? r
   http.Response? response;
   if (httpMethod == EHttpMethod.get) response = await http.get(Uri.parse(url), headers: headers);
   if (httpMethod == EHttpMethod.post) response = await http.post(Uri.parse(url), body: body != null ? body.toJson() : null, headers: headers);
-  if (httpMethod == EHttpMethod.put) response = await http.put(Uri.parse(url), body: body.toJson(), headers: headers);
-  if (httpMethod == EHttpMethod.patch) response = await http.patch(Uri.parse(url), body: body.toJson(), headers: headers);
+  if (httpMethod == EHttpMethod.put) response = await http.put(Uri.parse(url), body: body != null ? body.toJson() : null, headers: headers);
+  if (httpMethod == EHttpMethod.patch) response = await http.patch(Uri.parse(url), body: body != null ? body.toJson() : null, headers: headers);
   if (httpMethod == EHttpMethod.delete) response = await http.delete(Uri.parse(url), headers: headers);
 
   if (body != null)
