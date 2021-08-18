@@ -1,7 +1,7 @@
 part of '../utilities.dart';
 
-Widget imageAsset({
-  required String asset,
+Widget imageAsset(
+  String asset, {
   Color? color,
   double? width,
   double? height,
