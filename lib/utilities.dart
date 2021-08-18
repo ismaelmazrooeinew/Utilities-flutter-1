@@ -92,5 +92,3 @@ part 'widgets/menu/picker_view.dart';
 part 'widgets/table.dart';
 
 part 'widgets/text.dart';
-
-part 'widgets/textfield_tag.dart';
