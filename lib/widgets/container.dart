@@ -11,6 +11,7 @@ Widget scaffold({
   Color? color,
   ImageProvider? backgroundImage,
   bool resizeToAvoidBottomInset = false,
+  FloatingActionButtonLocation floatingActionButtonLocation = FloatingActionButtonLocation.endFloat,
   BoxConstraints? constraints,
 }) =>
     GestureDetector(
@@ -22,7 +23,7 @@ Widget scaffold({
             drawer: drawer,
             resizeToAvoidBottomInset: resizeToAvoidBottomInset,
             floatingActionButton: floatingActionButton,
-            floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+            floatingActionButtonLocation: floatingActionButtonLocation,
             bottomNavigationBar: bottomNavigationBar,
             body: Container(
               constraints: constraints,
