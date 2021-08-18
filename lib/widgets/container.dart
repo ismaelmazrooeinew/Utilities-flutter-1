@@ -111,8 +111,8 @@ class TabBarViewModel {
 Widget defaultTabBar({
   required List<TabBarViewModel> tabs,
   required Widget tabBar,
-  required double width,
-  required double height,
+  double? width,
+  double? height = 500,
   int initialIndex = 0,
 }) =>
     DefaultTabController(
@@ -122,7 +122,8 @@ Widget defaultTabBar({
         children: [
           tabBar,
           Container(
-            height: 600,
+            width: width ?? screenWidth,
+            height: height,
             child: TabBarView(children: tabs.map((TabBarViewModel view) => view.view).toList()),
           )
         ],
