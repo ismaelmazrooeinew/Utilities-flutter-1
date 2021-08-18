@@ -100,3 +100,31 @@ Widget row({
         children: children,
       ),
     );
+
+class TabBarViewModel {
+  final Tab tab;
+  final Widget view;
+
+  TabBarViewModel({required this.tab, required this.view});
+}
+
+Widget defaultTabBar({
+  required List<TabBarViewModel> tabs,
+  required Widget tabBar,
+  required double width,
+  required double height,
+  int initialIndex = 0,
+}) =>
+    DefaultTabController(
+      initialIndex: initialIndex,
+      length: tabs.length,
+      child: Column(
+        children: [
+          tabBar,
+          Container(
+            height: 600,
+            child: TabBarView(children: tabs.map((TabBarViewModel view) => view.view).toList()),
+          )
+        ],
+      ),
+    );
