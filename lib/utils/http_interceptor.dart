@@ -70,6 +70,6 @@ extension HTTP on http.Response {
   log() => print("${this.request!.method} - ${this.request!.url} - ${this.statusCode} - RESPONSE: ${this.body}");
 
   completeLog({String? params}) => print(
-        "${this.request!.method} - ${this.request!.url} - ${this.statusCode} - PARAMS: $params - RESPONSE: ${this.body}",
+        "${this.request!.method} - ${this.request!.url} - ${this.statusCode} HEADERS: ${this.headers} - PARAMS: $params - RESPONSE: ${this.body}",
       );
 }

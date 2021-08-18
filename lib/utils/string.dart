@@ -16,6 +16,8 @@ extension StringExtension on String {
     return double.tryParse(this) != null;
   }
 
+  int toInt() => int.parse(this);
+
   String separateNumbers3By3() => this.replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},');
 
   String append0() {

@@ -12,6 +12,4 @@ double? getDouble(String key) => GetStorage().read(key);
 
 dynamic getData(String key) => GetStorage().read(key);
 
-Future clearData() async {
-  GetStorage().erase();
-}
+void clearData() => GetStorage().erase();

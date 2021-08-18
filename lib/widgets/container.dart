@@ -54,3 +54,49 @@ Widget radius({required Widget child, required double radius}) => ClipRRect(
       borderRadius: BorderRadius.circular(radius),
       child: child,
     );
+
+Widget column({
+  EdgeInsets padding = EdgeInsets.zero,
+  EdgeInsets margin = EdgeInsets.zero,
+  List<Widget> children = const <Widget>[],
+  MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+  MainAxisSize mainAxisSize = MainAxisSize.max,
+  CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
+  VerticalDirection verticalDirection = VerticalDirection.down,
+  BoxDecoration? decoration,
+}) =>
+    Container(
+      decoration: decoration,
+      padding: padding,
+      margin: margin,
+      child: Column(
+        mainAxisAlignment: mainAxisAlignment,
+        mainAxisSize: mainAxisSize,
+        crossAxisAlignment: crossAxisAlignment,
+        verticalDirection: verticalDirection,
+        children: children,
+      ),
+    );
+
+Widget row({
+  EdgeInsets padding = EdgeInsets.zero,
+  EdgeInsets margin = EdgeInsets.zero,
+  List<Widget> children = const <Widget>[],
+  MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+  MainAxisSize mainAxisSize = MainAxisSize.max,
+  CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
+  VerticalDirection verticalDirection = VerticalDirection.down,
+  BoxDecoration? decoration,
+}) =>
+    Container(
+      decoration: decoration,
+      padding: padding,
+      margin: margin,
+      child: Row(
+        mainAxisAlignment: mainAxisAlignment,
+        mainAxisSize: mainAxisSize,
+        crossAxisAlignment: crossAxisAlignment,
+        verticalDirection: verticalDirection,
+        children: children,
+      ),
+    );
