@@ -125,7 +125,10 @@ Widget defaultTabBar({
           Container(
             width: width ?? screenWidth,
             height: height,
-            child: TabBarView(children: tabs.map((TabBarViewModel view) => view.view).toList()),
+            child: TabBarView(
+              physics: NeverScrollableScrollPhysics(),
+              children: tabs.map((TabBarViewModel view) => view.view).toList(),
+            ),
           )
         ],
       ),
