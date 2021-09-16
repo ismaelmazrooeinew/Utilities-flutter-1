@@ -15,24 +15,24 @@ dependencies:
 
   http: ^0.13.1
   internet_connection_checker: ^0.0.1+1
-  url_launcher: ^6.0.3
-  get: ^4.1.4
+  url_launcher: ^6.0.10
+  get: ^4.3.8
   package_info: ^2.0.0
   carousel_slider: ^4.0.0
   pull_to_refresh: ^2.0.0
   share: ^2.0.1
   image_gallery_saver: ^1.6.9
   flutter_rating_bar: ^4.0.0
-  file_picker: ^3.0.1
+  file_picker: ^4.0.3
   intl: ^0.17.0
-  webview_flutter: ^2.0.4
+  webview_flutter: ^2.0.13
   get_storage: ^2.0.2
   flutter_svg: ^0.22.0
-  flutter_html: ^2.1.0
+  flutter_html: ^2.1.2
   persian_tools: ^1.0.1
-  flutter_typeahead: ^3.2.0
-  group_button: ^3.0.0+1
-  smooth_page_indicator: ^0.3.0-nullsafety.0
+  flutter_typeahead: ^3.2.1
+  group_button: ^3.1.0
+  smooth_page_indicator: ^1.0.0+2
 
 dependency_overrides:
   path_provider: 2.0.2

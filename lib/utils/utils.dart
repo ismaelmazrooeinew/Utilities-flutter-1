@@ -10,8 +10,4 @@ extension IterableExtentions on Iterable {
   }
 }
 
-extension BooleanExtentions on bool {
-  bool toggle() => this ? false : true;
-}
-
 Future delay(int milliseconds, action) async => Future.delayed(Duration(milliseconds: milliseconds), () async => action());

@@ -1,6 +1,6 @@
 part of '../utilities.dart';
 
-Future<void> showFilePicker({
+void showFilePicker({
   required Function(List<File> file) action,
   FileType fileType = FileType.image,
   bool allowMultiple = false,
