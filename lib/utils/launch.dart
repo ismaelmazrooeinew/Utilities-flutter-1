@@ -4,7 +4,7 @@ Future<void> launchURL(
   String url, {
   bool universal = true,
 }) async =>
-    await canLaunch(url) ? await launch(url, universalLinksOnly: universal) : throw 'Could not launch $url';
+    await launch(url, universalLinksOnly: universal);
 
 void launchWhatsApp(String number) async => await launchURL("https://api.whatsapp.com/send?phone=$number");
 
