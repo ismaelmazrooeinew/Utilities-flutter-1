@@ -18,3 +18,32 @@ void showFilePicker({
     }
   }
 }
+
+/// this function is for pick files on the device. (support all os)
+/// please write this function in try-catch and handle the error
+/// default value [fileType] is any file
+/// default value [dialogTitle] is empty string
+/// default value [withData] is false
+/// default value [allowMultiple] is false
+Future<List<PlatformFile>> filePicker({
+  FileType fileType = FileType.any,
+  String dialogTitle = "",
+  bool withData = false,
+  bool allowMultiple = false,
+}) async {
+  try {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: fileType,
+        dialogTitle: dialogTitle,
+        withData: withData,
+        allowMultiple: allowMultiple);
+
+    if (result != null) {
+      return result.files;
+    } else {
+      throw Exception('File not pick');
+    }
+  } catch (exception) {
+    throw Exception(exception);
+  }
+}
