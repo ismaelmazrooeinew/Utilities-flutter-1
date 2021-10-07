@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+part of '../utilities.dart';
 
 class DioRequest {
   // init dio class
@@ -29,7 +29,7 @@ class DioRequest {
   }
 
   /// value [url] , [timeOut] not be null.
-  Future<Response> get({
+  Future<dynamic> get({
     required String url,
     required Duration timeOut,
     Function(int count, int total)? onReceiveProgress,
@@ -48,7 +48,7 @@ class DioRequest {
   }
 
   /// value [url], [body] , [timeOut] not be null.
-  Future<Response> post({
+  Future<dynamic> post({
     required String url,
     required dynamic body,
     required Duration timeOut,
@@ -71,7 +71,7 @@ class DioRequest {
   }
 
   /// value [url], [body] , [timeOut] not be null.
-  Future<Response> put({
+  Future<dynamic> put({
     required String url,
     required dynamic body,
     required Duration timeOut,
@@ -94,7 +94,7 @@ class DioRequest {
   }
 
   /// value [url], [body] , [timeOut] not be null.
-  Future<Response> delete({
+  Future<dynamic> delete({
     required String url,
     required dynamic body,
     required Duration timeOut,

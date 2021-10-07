@@ -37,6 +37,10 @@ export 'package:share/share.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 
+import 'package:permission_handler/permission_handler.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:dio/dio.dart';
+
 part 'data/datasource.dart';
 
 part 'data/models/irans_city.dart';
@@ -54,6 +58,10 @@ part 'utils/color.dart';
 part 'utils/download.dart';
 
 part 'utils/file.dart';
+
+part 'utils/dio_request.dart';
+
+part 'utils/permission.dart';
 
 part 'utils/get.dart';
 
