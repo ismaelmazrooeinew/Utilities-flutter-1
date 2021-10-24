@@ -15,7 +15,7 @@ Future<void> request(
   EHttpMethod httpMethod,
   action(Response response),
   error(Response response), {
-  body,
+  dynamic body,
 }) async {
   Map<String, String> headers = {
     "Content-Type": "application/json",
@@ -24,9 +24,9 @@ Future<void> request(
 
   Response response = Response();
   if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: headers);
-  if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, body, headers: headers);
-  if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, body, headers: headers);
-  if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, body, headers: headers);
+  if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, body.toJson(), headers: headers);
+  if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, body.toJson(), headers: headers);
+  if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, body.toJson(), headers: headers);
   if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: headers);
 
   if (body != null) {
