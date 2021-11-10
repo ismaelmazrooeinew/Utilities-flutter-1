@@ -22,7 +22,6 @@ export 'dart:convert';
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:file_picker/file_picker.dart';
 export 'package:flutter_svg/flutter_svg.dart';
-export 'package:flutter_typeahead/flutter_typeahead.dart';
 export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
 export 'package:group_button/group_button.dart';

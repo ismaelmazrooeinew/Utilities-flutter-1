@@ -27,7 +27,6 @@ dependencies:
   flutter_svg: ^0.22.0
   flutter_html: ^2.1.2
   persian_tools: ^1.0.1
-  flutter_typeahead: ^3.2.1
   group_button: ^3.1.0
   smooth_page_indicator: ^1.0.0+2
 
