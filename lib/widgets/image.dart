@@ -34,3 +34,64 @@ Widget imageAsset(
         radius: borderRadius,
       ),
     );
+
+Widget imageNetwork(
+  String url, {
+  Color? color,
+  double? width,
+  double? height,
+  BoxFit fit = BoxFit.contain,
+  Clip clipBehavior = Clip.hardEdge,
+  double borderRadius = 1,
+  EdgeInsets margin = EdgeInsets.zero,
+}) =>
+    Padding(
+      padding: margin,
+      child: radius(
+        child: url.substring(url.length - 3).toLowerCase() == "svg"
+            ? SvgPicture.network(
+                url,
+                color: color,
+                width: width,
+                height: height,
+                fit: fit,
+                clipBehavior: clipBehavior,
+              )
+            : Image.network(
+                url,
+                color: color,
+                width: width,
+                height: height,
+                cacheWidth: width?.toInt(),
+                cacheHeight: height?.toInt(),
+                fit: fit,
+              ),
+        radius: borderRadius,
+      ),
+    );
+
+Widget imageFile(
+  File file, {
+  Color? color,
+  double? width,
+  double? height,
+  BoxFit fit = BoxFit.contain,
+  Clip clipBehavior = Clip.hardEdge,
+  double borderRadius = 1,
+  EdgeInsets margin = EdgeInsets.zero,
+}) =>
+    Padding(
+      padding: margin,
+      child: radius(
+        child: Image.file(
+          file,
+          color: color,
+          width: width,
+          height: height,
+          cacheWidth: width?.toInt(),
+          cacheHeight: height?.toInt(),
+          fit: fit,
+        ),
+        radius: borderRadius,
+      ),
+    );
