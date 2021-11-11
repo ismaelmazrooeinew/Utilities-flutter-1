@@ -34,10 +34,6 @@ export 'package:share/share.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 
-part 'data/datasource.dart';
-
-part 'data/models/irans_city.dart';
-
 part 'extras/constants.dart';
 
 part 'extras/error.dart';
