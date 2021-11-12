@@ -19,8 +19,8 @@ bool isPhone = context!.isPhone;
 BuildContext? context = Get.context;
 double screenHeight = Get.height;
 double screenWidth = Get.width;
-ThemeData theme = Theme.of(context!);
-TextTheme textTheme = Theme.of(context!).textTheme;
+ThemeData theme = context!.theme;
+TextTheme textTheme = context!.textTheme;
 Locale? currentLocale = Get.locale;
 
 void updateLocale(Locale locale) => Get.updateLocale(locale);
