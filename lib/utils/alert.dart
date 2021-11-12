@@ -11,7 +11,7 @@ showTextFieldDialog({
   TextEditingController _controller = TextEditingController();
   dialog(
       AnimatedContainer(
-          padding: MediaQuery.of(context!).viewInsets,
+          padding: MediaQuery.of(context).viewInsets,
           duration: Duration(milliseconds: 300),
           child: AlertDialog(
               title: Text(title),
