@@ -65,8 +65,12 @@ Widget column({
   CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
   VerticalDirection verticalDirection = VerticalDirection.down,
   BoxDecoration? decoration,
+  double? width,
+  double? height,
 }) =>
     Container(
+      width: width,
+      height: height,
       decoration: decoration,
       padding: padding,
       margin: margin,
@@ -88,8 +92,12 @@ Widget row({
   CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
   VerticalDirection verticalDirection = VerticalDirection.down,
   BoxDecoration? decoration,
+  double? width,
+  double? height,
 }) =>
     Container(
+      width: width,
+      height: height,
       decoration: decoration,
       padding: padding,
       margin: margin,
