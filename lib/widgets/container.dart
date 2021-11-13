@@ -11,6 +11,7 @@ Widget scaffold({
   Color? color,
   ImageProvider? backgroundImage,
   bool resizeToAvoidBottomInset = false,
+  bool extendBodyBehindAppBar = false,
   FloatingActionButtonLocation floatingActionButtonLocation = FloatingActionButtonLocation.endFloat,
   BoxConstraints? constraints,
 }) =>
@@ -21,6 +22,7 @@ Widget scaffold({
             backgroundColor: color,
             appBar: appBar,
             drawer: drawer,
+            extendBodyBehindAppBar: extendBodyBehindAppBar,
             resizeToAvoidBottomInset: resizeToAvoidBottomInset,
             floatingActionButton: floatingActionButton,
             floatingActionButtonLocation: floatingActionButtonLocation,
