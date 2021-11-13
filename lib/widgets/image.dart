@@ -49,6 +49,7 @@ Widget imageNetwork(
   double borderRadius = 1,
   EdgeInsets margin = EdgeInsets.zero,
   VoidCallback? onTap,
+  String? placeholder,
 }) =>
     GestureDetector(
       onTap: onTap,
@@ -63,6 +64,16 @@ Widget imageNetwork(
                   height: height,
                   fit: fit,
                   clipBehavior: clipBehavior,
+                  placeholderBuilder: (_) => placeholder == null
+                      ? SizedBox()
+                      : imageAsset(
+                          placeholder,
+                          color: color,
+                          width: width,
+                          height: height,
+                          fit: fit,
+                          clipBehavior: clipBehavior,
+                        ),
                 )
               : Image.network(
                   url,
@@ -72,6 +83,16 @@ Widget imageNetwork(
                   cacheWidth: width?.toInt(),
                   cacheHeight: height?.toInt(),
                   fit: fit,
+                  loadingBuilder: (_, __, ___) => placeholder == null
+                      ? SizedBox()
+                      : imageAsset(
+                          placeholder,
+                          color: color,
+                          width: width,
+                          height: height,
+                          fit: fit,
+                          clipBehavior: clipBehavior,
+                        ),
                 ),
           radius: borderRadius,
         ),
