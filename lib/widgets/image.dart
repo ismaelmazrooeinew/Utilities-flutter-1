@@ -9,29 +9,33 @@ Widget imageAsset(
   Clip clipBehavior = Clip.hardEdge,
   double borderRadius = 1,
   EdgeInsets margin = EdgeInsets.zero,
+  VoidCallback? onTap,
 }) =>
-    Padding(
-      padding: margin,
-      child: radius(
-        child: asset.substring(asset.length - 3).toLowerCase() == "svg"
-            ? SvgPicture.asset(
-                asset,
-                color: color,
-                width: width,
-                height: height,
-                fit: fit,
-                clipBehavior: clipBehavior,
-              )
-            : Image.asset(
-                asset,
-                color: color,
-                width: width,
-                height: height,
-                cacheWidth: width?.toInt(),
-                cacheHeight: height?.toInt(),
-                fit: fit,
-              ),
-        radius: borderRadius,
+    GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: margin,
+        child: radius(
+          child: asset.substring(asset.length - 3).toLowerCase() == "svg"
+              ? SvgPicture.asset(
+                  asset,
+                  color: color,
+                  width: width,
+                  height: height,
+                  fit: fit,
+                  clipBehavior: clipBehavior,
+                )
+              : Image.asset(
+                  asset,
+                  color: color,
+                  width: width,
+                  height: height,
+                  cacheWidth: width?.toInt(),
+                  cacheHeight: height?.toInt(),
+                  fit: fit,
+                ),
+          radius: borderRadius,
+        ),
       ),
     );
 
@@ -44,29 +48,33 @@ Widget imageNetwork(
   Clip clipBehavior = Clip.hardEdge,
   double borderRadius = 1,
   EdgeInsets margin = EdgeInsets.zero,
+  VoidCallback? onTap,
 }) =>
-    Padding(
-      padding: margin,
-      child: radius(
-        child: url.substring(url.length - 3).toLowerCase() == "svg"
-            ? SvgPicture.network(
-                url,
-                color: color,
-                width: width,
-                height: height,
-                fit: fit,
-                clipBehavior: clipBehavior,
-              )
-            : Image.network(
-                url,
-                color: color,
-                width: width,
-                height: height,
-                cacheWidth: width?.toInt(),
-                cacheHeight: height?.toInt(),
-                fit: fit,
-              ),
-        radius: borderRadius,
+    GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: margin,
+        child: radius(
+          child: url.substring(url.length - 3).toLowerCase() == "svg"
+              ? SvgPicture.network(
+                  url,
+                  color: color,
+                  width: width,
+                  height: height,
+                  fit: fit,
+                  clipBehavior: clipBehavior,
+                )
+              : Image.network(
+                  url,
+                  color: color,
+                  width: width,
+                  height: height,
+                  cacheWidth: width?.toInt(),
+                  cacheHeight: height?.toInt(),
+                  fit: fit,
+                ),
+          radius: borderRadius,
+        ),
       ),
     );
 
@@ -79,19 +87,23 @@ Widget imageFile(
   Clip clipBehavior = Clip.hardEdge,
   double borderRadius = 1,
   EdgeInsets margin = EdgeInsets.zero,
+  VoidCallback? onTap,
 }) =>
-    Padding(
-      padding: margin,
-      child: radius(
-        child: Image.file(
-          file,
-          color: color,
-          width: width,
-          height: height,
-          cacheWidth: width?.toInt(),
-          cacheHeight: height?.toInt(),
-          fit: fit,
+    GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: margin,
+        child: radius(
+          child: Image.file(
+            file,
+            color: color,
+            width: width,
+            height: height,
+            cacheWidth: width?.toInt(),
+            cacheHeight: height?.toInt(),
+            fit: fit,
+          ),
+          radius: borderRadius,
         ),
-        radius: borderRadius,
       ),
     );
