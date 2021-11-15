@@ -10,6 +10,7 @@ Widget scaffold({
   EdgeInsets? padding,
   Color? color,
   ImageProvider? backgroundImage,
+  BoxFit backgroundImageFit = BoxFit.cover,
   bool resizeToAvoidBottomInset = false,
   bool extendBodyBehindAppBar = false,
   FloatingActionButtonLocation floatingActionButtonLocation = FloatingActionButtonLocation.endFloat,
@@ -31,7 +32,7 @@ Widget scaffold({
               constraints: constraints,
               decoration: backgroundImage != null
                   ? BoxDecoration(
-                      image: DecorationImage(image: backgroundImage, fit: BoxFit.cover),
+                      image: DecorationImage(image: backgroundImage, fit: backgroundImageFit),
                     )
                   : null,
               padding: padding,
