@@ -11,33 +11,27 @@ Widget scaffold({
   Color? color,
   ImageProvider? backgroundImage,
   BoxFit backgroundImageFit = BoxFit.cover,
+  BoxDecoration? decoration,
   bool resizeToAvoidBottomInset = false,
   bool extendBodyBehindAppBar = false,
   FloatingActionButtonLocation floatingActionButtonLocation = FloatingActionButtonLocation.endFloat,
   BoxConstraints? constraints,
 }) =>
     GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
-        child: Scaffold(
-            key: key,
-            backgroundColor: color,
-            appBar: appBar,
-            drawer: drawer,
-            extendBodyBehindAppBar: extendBodyBehindAppBar,
-            resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-            floatingActionButton: floatingActionButton,
-            floatingActionButtonLocation: floatingActionButtonLocation,
-            bottomNavigationBar: bottomNavigationBar,
-            body: Container(
-              constraints: constraints,
-              decoration: backgroundImage != null
-                  ? BoxDecoration(
-                      image: DecorationImage(image: backgroundImage, fit: backgroundImageFit),
-                    )
-                  : null,
-              padding: padding,
-              child: body,
-            )));
+      onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
+      child: Scaffold(
+        key: key,
+        backgroundColor: color,
+        appBar: appBar,
+        drawer: drawer,
+        extendBodyBehindAppBar: extendBodyBehindAppBar,
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+        floatingActionButton: floatingActionButton,
+        floatingActionButtonLocation: floatingActionButtonLocation,
+        bottomNavigationBar: bottomNavigationBar,
+        body: Container(constraints: constraints, decoration: decoration, padding: padding, child: body),
+      ),
+    );
 
 Widget pullRefresh({
   required RefreshController controller,
