@@ -143,10 +143,14 @@ Widget iconTextHorizontal({
   EdgeInsets margin = EdgeInsets.zero,
   VoidCallback? onTap,
   double spaceBetween = 6,
+  MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+  MainAxisSize mainAxisSize = MainAxisSize.min,
 }) =>
     GestureDetector(
       onTap: onTap,
       child: row(
+        mainAxisAlignment: mainAxisAlignment,
+        mainAxisSize: mainAxisSize,
         margin: margin,
         children: [leading, SizedBox(width: spaceBetween), trailing],
       ),
@@ -158,11 +162,14 @@ Widget iconTextVertical({
   EdgeInsets margin = EdgeInsets.zero,
   VoidCallback? onTap,
   double spaceBetween = 6,
+  MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+  MainAxisSize mainAxisSize = MainAxisSize.min,
 }) =>
     GestureDetector(
       onTap: onTap,
       child: column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: mainAxisAlignment,
+        mainAxisSize: mainAxisSize,
         margin: margin,
         children: [leading, SizedBox(width: spaceBetween), trailing],
       ),
