@@ -136,3 +136,33 @@ Widget defaultTabBar({
         ],
       ),
     );
+
+Widget iconTextHorizontal({
+  required Widget leading,
+  required Widget trailing,
+  EdgeInsets margin = EdgeInsets.zero,
+  VoidCallback? onTap,
+  double spaceBetween = 6,
+}) =>
+    GestureDetector(
+      onTap: onTap,
+      child: row(
+        margin: margin,
+        children: [leading, SizedBox(width: spaceBetween), trailing],
+      ),
+    );
+
+Widget iconTextVertical({
+  required Widget leading,
+  required Widget trailing,
+  EdgeInsets margin = EdgeInsets.zero,
+  VoidCallback? onTap,
+  double spaceBetween = 6,
+}) =>
+    GestureDetector(
+      onTap: onTap,
+      child: column(
+        margin: margin,
+        children: [leading, SizedBox(width: spaceBetween), trailing],
+      ),
+    );
