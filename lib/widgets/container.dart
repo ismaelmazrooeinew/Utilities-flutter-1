@@ -9,8 +9,6 @@ Widget scaffold({
   Widget? bottomNavigationBar,
   EdgeInsets? padding,
   Color? color,
-  ImageProvider? backgroundImage,
-  BoxFit backgroundImageFit = BoxFit.cover,
   BoxDecoration? decoration,
   bool resizeToAvoidBottomInset = false,
   bool extendBodyBehindAppBar = false,

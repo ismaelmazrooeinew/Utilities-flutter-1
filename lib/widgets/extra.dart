@@ -20,3 +20,18 @@ Widget dashedDivider({double? height}) => Row(
           ),
       ],
     );
+
+Widget iconText({
+  required Widget leading,
+  required Widget trailing,
+  EdgeInsets margin = EdgeInsets.zero,
+  VoidCallback? onTap,
+  double spaceBetween = 6,
+}) =>
+    GestureDetector(
+      onTap: onTap,
+      child: row(
+        margin: margin,
+        children: [leading, SizedBox(width: spaceBetween), trailing],
+      ),
+    );
