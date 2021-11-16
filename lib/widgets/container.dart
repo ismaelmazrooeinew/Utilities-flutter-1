@@ -162,6 +162,7 @@ Widget iconTextVertical({
     GestureDetector(
       onTap: onTap,
       child: column(
+        mainAxisSize: MainAxisSize.min,
         margin: margin,
         children: [leading, SizedBox(width: spaceBetween), trailing],
       ),
