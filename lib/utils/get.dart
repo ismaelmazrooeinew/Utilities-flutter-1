@@ -50,7 +50,7 @@ void push(Widget page, {bool dialog = false, Transition transition = Transition.
     pop();
   }
   Get.to(
-    () => page,
+    page,
     fullscreenDialog: dialog,
     popGesture: true,
     opaque: dialog ? false : true,
