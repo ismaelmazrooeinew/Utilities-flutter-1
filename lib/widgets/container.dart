@@ -14,6 +14,7 @@ Widget scaffold({
   bool extendBodyBehindAppBar = false,
   FloatingActionButtonLocation floatingActionButtonLocation = FloatingActionButtonLocation.endFloat,
   BoxConstraints? constraints,
+  Alignment? alignment,
 }) =>
     GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
@@ -27,7 +28,13 @@ Widget scaffold({
         floatingActionButton: floatingActionButton,
         floatingActionButtonLocation: floatingActionButtonLocation,
         bottomNavigationBar: bottomNavigationBar,
-        body: Container(constraints: constraints, decoration: decoration, padding: padding, child: body),
+        body: Container(
+          constraints: constraints,
+          decoration: decoration,
+          padding: padding,
+          alignment: alignment,
+          child: body,
+        ),
       ),
     );
 
