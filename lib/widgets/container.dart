@@ -28,12 +28,14 @@ Widget scaffold({
         floatingActionButton: floatingActionButton,
         floatingActionButtonLocation: floatingActionButtonLocation,
         bottomNavigationBar: bottomNavigationBar,
-        body: Container(
-          constraints: constraints,
-          decoration: decoration,
-          padding: padding,
-          alignment: alignment,
-          child: body,
+        body: Align(
+          alignment: alignment ?? Alignment.center,
+          child: Container(
+            constraints: constraints,
+            decoration: decoration,
+            padding: padding,
+            child: body,
+          ),
         ),
       ),
     );
