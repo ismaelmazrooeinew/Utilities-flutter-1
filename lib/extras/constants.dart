@@ -1,5 +1,12 @@
 part of '../utilities.dart';
 
+extension PageStateExtension on PageState {
+  bool isLoading() => this == PageState.loading;
+  bool isLoaded() => this == PageState.loaded;
+  bool isInitial() => this == PageState.initial;
+  bool isError() => this == PageState.error;
+}
+
 class Array {
   static List<String> weekDays = ["شنبه", "یکشنبه", "دوشنبه", "شه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه"];
   static List<String> classGender = ["هردو", "آقا", "خانم"];
