@@ -71,6 +71,7 @@ Widget column({
   BoxDecoration? decoration,
   double? width,
   double? height,
+  bool isScrollable = false,
 }) =>
     Container(
       width: width,
@@ -78,13 +79,23 @@ Widget column({
       decoration: decoration,
       padding: padding,
       margin: margin,
-      child: Column(
-        mainAxisAlignment: mainAxisAlignment,
-        mainAxisSize: mainAxisSize,
-        crossAxisAlignment: crossAxisAlignment,
-        verticalDirection: verticalDirection,
-        children: children,
-      ),
+      child: isScrollable
+          ? SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: mainAxisAlignment,
+                mainAxisSize: mainAxisSize,
+                crossAxisAlignment: crossAxisAlignment,
+                verticalDirection: verticalDirection,
+                children: children,
+              ),
+            )
+          : Column(
+              mainAxisAlignment: mainAxisAlignment,
+              mainAxisSize: mainAxisSize,
+              crossAxisAlignment: crossAxisAlignment,
+              verticalDirection: verticalDirection,
+              children: children,
+            ),
     );
 
 Widget row({
@@ -98,6 +109,7 @@ Widget row({
   BoxDecoration? decoration,
   double? width,
   double? height,
+  bool isScrollable = false,
 }) =>
     Container(
       width: width,
@@ -105,13 +117,23 @@ Widget row({
       decoration: decoration,
       padding: padding,
       margin: margin,
-      child: Row(
-        mainAxisAlignment: mainAxisAlignment,
-        mainAxisSize: mainAxisSize,
-        crossAxisAlignment: crossAxisAlignment,
-        verticalDirection: verticalDirection,
-        children: children,
-      ),
+      child: isScrollable
+          ? SingleChildScrollView(
+              child: Row(
+                mainAxisAlignment: mainAxisAlignment,
+                mainAxisSize: mainAxisSize,
+                crossAxisAlignment: crossAxisAlignment,
+                verticalDirection: verticalDirection,
+                children: children,
+              ),
+            )
+          : Row(
+              mainAxisAlignment: mainAxisAlignment,
+              mainAxisSize: mainAxisSize,
+              crossAxisAlignment: crossAxisAlignment,
+              verticalDirection: verticalDirection,
+              children: children,
+            ),
     );
 
 class TabBarViewModel {
