@@ -29,7 +29,7 @@ Widget scaffold({
         floatingActionButtonLocation: floatingActionButtonLocation,
         bottomNavigationBar: bottomNavigationBar,
         body: Align(
-          alignment: alignment ?? Alignment.topCenter,
+          alignment: alignment ?? Alignment.topLeft,
           child: Container(
             constraints: constraints,
             decoration: decoration,
