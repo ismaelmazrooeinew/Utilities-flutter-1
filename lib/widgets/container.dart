@@ -4,7 +4,7 @@ Widget scaffold({
   required Widget body,
   Key? key,
   PreferredSizeWidget? appBar,
-  Drawer? drawer,
+  Widget? drawer,
   Widget? floatingActionButton,
   Widget? bottomNavigationBar,
   EdgeInsets? padding,
