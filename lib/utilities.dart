@@ -75,5 +75,3 @@ part 'widgets/menu/bottom_sheet.dart';
 part 'widgets/menu/drop_down_form_field.dart';
 
 part 'widgets/menu/picker_view.dart';
-
-part 'widgets/text.dart';
