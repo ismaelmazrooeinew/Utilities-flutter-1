@@ -175,7 +175,7 @@ Widget iconTextHorizontal({
   VoidCallback? onTap,
   double spaceBetween = 6,
   MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
-  CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
+  CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
   MainAxisSize mainAxisSize = MainAxisSize.min,
 }) =>
     GestureDetector(
@@ -196,7 +196,7 @@ Widget iconTextVertical({
   VoidCallback? onTap,
   double spaceBetween = 6,
   MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
-  CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
+  CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
   MainAxisSize mainAxisSize = MainAxisSize.min,
 }) =>
     GestureDetector(
