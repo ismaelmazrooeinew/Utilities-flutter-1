@@ -202,6 +202,6 @@ Widget iconTextVertical({
         mainAxisAlignment: mainAxisAlignment,
         mainAxisSize: mainAxisSize,
         margin: margin,
-        children: [leading, SizedBox(width: spaceBetween), trailing],
+        children: [leading, SizedBox(height: spaceBetween), trailing],
       ),
     );
