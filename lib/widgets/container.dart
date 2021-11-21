@@ -74,32 +74,32 @@ Widget column({
   bool isScrollable = false,
   VoidCallback? onTap,
 }) =>
-    GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: width,
-        height: height,
-        decoration: decoration,
-        padding: padding,
-        margin: margin,
-        child: isScrollable
-            ? SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: mainAxisAlignment,
-                  mainAxisSize: mainAxisSize,
-                  crossAxisAlignment: crossAxisAlignment,
-                  verticalDirection: verticalDirection,
-                  children: children,
-                ),
-              )
-            : Column(
+    Container(
+      width: width,
+      height: height,
+      decoration: decoration,
+      padding: padding,
+      margin: margin,
+      child: isScrollable
+          ? SingleChildScrollView(
+              child: Column(
                 mainAxisAlignment: mainAxisAlignment,
                 mainAxisSize: mainAxisSize,
                 crossAxisAlignment: crossAxisAlignment,
                 verticalDirection: verticalDirection,
                 children: children,
               ),
-      ),
+            )
+          : GestureDetector(
+              onTap: onTap,
+              child: Column(
+                mainAxisAlignment: mainAxisAlignment,
+                mainAxisSize: mainAxisSize,
+                crossAxisAlignment: crossAxisAlignment,
+                verticalDirection: verticalDirection,
+                children: children,
+              ),
+            ),
     );
 
 Widget row({
@@ -116,32 +116,32 @@ Widget row({
   bool isScrollable = false,
   VoidCallback? onTap,
 }) =>
-    GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: width,
-        height: height,
-        decoration: decoration,
-        padding: padding,
-        margin: margin,
-        child: isScrollable
-            ? SingleChildScrollView(
-                child: Row(
-                  mainAxisAlignment: mainAxisAlignment,
-                  mainAxisSize: mainAxisSize,
-                  crossAxisAlignment: crossAxisAlignment,
-                  verticalDirection: verticalDirection,
-                  children: children,
-                ),
-              )
-            : Row(
+    Container(
+      width: width,
+      height: height,
+      decoration: decoration,
+      padding: padding,
+      margin: margin,
+      child: isScrollable
+          ? SingleChildScrollView(
+              child: Row(
                 mainAxisAlignment: mainAxisAlignment,
                 mainAxisSize: mainAxisSize,
                 crossAxisAlignment: crossAxisAlignment,
                 verticalDirection: verticalDirection,
                 children: children,
               ),
-      ),
+            )
+          : GestureDetector(
+              onTap: onTap,
+              child: Row(
+                mainAxisAlignment: mainAxisAlignment,
+                mainAxisSize: mainAxisSize,
+                crossAxisAlignment: crossAxisAlignment,
+                verticalDirection: verticalDirection,
+                children: children,
+              ),
+            ),
     );
 
 class TabBarViewModel {
