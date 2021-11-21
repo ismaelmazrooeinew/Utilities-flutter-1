@@ -27,7 +27,6 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
 export 'package:group_button/group_button.dart';
-export 'package:group_button/group_button.dart';
 export 'package:intl/intl.dart';
 export 'package:meta/meta.dart';
 export 'package:path_provider/path_provider.dart';
