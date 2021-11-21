@@ -56,26 +56,7 @@ Widget imageNetwork(
       child: Padding(
         padding: margin,
         child: radius(
-          child: url.substring(url.length - 3).toLowerCase() == "svg"
-              ? SvgPicture.network(
-                  url,
-                  color: color,
-                  width: width,
-                  height: height,
-                  fit: fit,
-                  clipBehavior: clipBehavior,
-                  placeholderBuilder: (_) => placeholder == null
-                      ? SizedBox()
-                      : imageAsset(
-                          placeholder,
-                          color: color,
-                          width: width,
-                          height: height,
-                          fit: fit,
-                          clipBehavior: clipBehavior,
-                        ),
-                )
-              : Image.network(
+          child: Image.network(
                   url,
                   color: color,
                   width: width,
