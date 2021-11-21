@@ -115,4 +115,6 @@ extension StringExtension on String {
     month = month.replaceAll("12", "December");
     return month;
   }
+
+  String formatDate(DateTime dateTime, String dateFormat) => DateFormat(dateFormat).format(dateTime);
 }

@@ -18,3 +18,54 @@ void showFilePicker({
     }
   }
 }
+
+Future<File?> cropImage({
+  required File file,
+  required Function(File? file) action,
+  CropAspectRatio? cropAspectRatio,
+  CropStyle cropStyle = CropStyle.rectangle,
+  AndroidUiSettings? androidUiSettings,
+  IOSUiSettings? iOSUiSettings,
+  int? maxWidth,
+  int? maxHeight,
+  int compressQuality = 90,
+  List<CropAspectRatioPreset> presets = const [
+    CropAspectRatioPreset.original,
+    CropAspectRatioPreset.square,
+    CropAspectRatioPreset.ratio3x2,
+    CropAspectRatioPreset.ratio4x3,
+    CropAspectRatioPreset.ratio16x9
+  ],
+}) async {
+  final File? result = await ImageCropper.cropImage(
+    sourcePath: file.path,
+    maxWidth: maxWidth,
+    maxHeight: maxHeight,
+    aspectRatio: cropAspectRatio,
+    compressFormat: ImageCompressFormat.png,
+    cropStyle: cropStyle,
+    compressQuality: compressQuality,
+    aspectRatioPresets: presets,
+    androidUiSettings: androidUiSettings ??
+        AndroidUiSettings(
+          toolbarTitle: 'Crop Your Image',
+          showCropGrid: true,
+          hideBottomControls: false,
+          lockAspectRatio: true,
+          initAspectRatio: CropAspectRatioPreset.square,
+          toolbarWidgetColor: Colors.white,
+        ),
+    iosUiSettings: iOSUiSettings ??
+        IOSUiSettings(
+          resetAspectRatioEnabled: false,
+          minimumAspectRatio: 1.0,
+          aspectRatioPickerButtonHidden: true,
+          title: 'Crop Your Image',
+          aspectRatioLockDimensionSwapEnabled: true,
+          aspectRatioLockEnabled: true,
+          hidesNavigationBar: true,
+        ),
+  );
+  action(result);
+  return result;
+}
