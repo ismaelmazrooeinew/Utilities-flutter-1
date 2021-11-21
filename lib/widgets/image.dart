@@ -57,24 +57,34 @@ Widget imageNetwork(
         padding: margin,
         child: radius(
           child: Image.network(
-                  url,
-                  color: color,
-                  width: width,
-                  height: height,
-                  cacheWidth: width?.toInt(),
-                  cacheHeight: height?.toInt(),
-                  fit: fit,
-                  loadingBuilder: (_, __, ___) => placeholder == null
-                      ? SizedBox()
-                      : imageAsset(
-                          placeholder,
-                          color: color,
-                          width: width,
-                          height: height,
-                          fit: fit,
-                          clipBehavior: clipBehavior,
-                        ),
-                ),
+            url,
+            color: color,
+            width: width,
+            height: height,
+            cacheWidth: width?.toInt(),
+            cacheHeight: height?.toInt(),
+            fit: fit,
+            errorBuilder: (_, __, ___) => placeholder == null
+                ? SizedBox()
+                : imageAsset(
+                    placeholder,
+                    color: color,
+                    width: width,
+                    height: height,
+                    fit: fit,
+                    clipBehavior: clipBehavior,
+                  ),
+            loadingBuilder: (_, __, ___) => placeholder == null
+                ? SizedBox()
+                : imageAsset(
+                    placeholder,
+                    color: color,
+                    width: width,
+                    height: height,
+                    fit: fit,
+                    clipBehavior: clipBehavior,
+                  ),
+          ),
           radius: borderRadius,
         ),
       ),
