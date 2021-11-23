@@ -74,16 +74,19 @@ Widget imageNetwork(
                     fit: fit,
                     clipBehavior: clipBehavior,
                   ),
-            loadingBuilder: (_, __, ___) => placeholder == null
-                ? SizedBox()
-                : imageAsset(
-                    placeholder,
-                    color: color,
-                    width: width,
-                    height: height,
-                    fit: fit,
-                    clipBehavior: clipBehavior,
-                  ),
+            loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? event) {
+              if (event == null) return child;
+              return placeholder == null
+                  ? SizedBox()
+                  : imageAsset(
+                      placeholder,
+                      color: color,
+                      width: width,
+                      height: height,
+                      fit: fit,
+                      clipBehavior: clipBehavior,
+                    );
+            },
           ),
           radius: borderRadius,
         ),
