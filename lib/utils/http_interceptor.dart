@@ -19,7 +19,7 @@ Future<void> request(
   Map<String, String>? headers,
 }) async {
   Map<String, String> header = {
-    "Content-Type": "application/json",
+    "Content-Type": "application/json; charset=UTF-8",
     "Authorization": getString(Constant.token) ?? "",
   };
 
@@ -27,7 +27,7 @@ Future<void> request(
 
   Response response = Response();
   if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
-  if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, body == null ? {} : body.toJson(), headers: header);
+  if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, body == null ? null : body.toJson(), headers: header);
   if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, body == null ? null : body.toJson(), headers: header);
   if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, body == null ? null : body.toJson(), headers: header);
   if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
@@ -93,7 +93,7 @@ extension HTTP on Response {
   bool isServerError() => (this.statusCode ?? 0) >= 500 && (this.statusCode ?? 0) <= 599 ? true : false;
 
   void log() {
-    print("${this.request!.method} - ${this.request!.url} - ${this.statusCode} REQUEST HEADERS: ${this.request?.headers ?? ""}");
+    print("${this.request!.method} - ${this.request!.url} - ${this.statusCode}");
     print("RESPONSE: ${this.body}");
   }
 
