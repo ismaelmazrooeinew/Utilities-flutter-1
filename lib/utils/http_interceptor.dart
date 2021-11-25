@@ -27,21 +27,19 @@ Future<void> request(
 
   Response response = Response();
   if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
-  if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, body.toJson(), headers: header);
-  if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, body.toJson(), headers: header);
-  if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, body.toJson(), headers: header);
+  if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, body == null ? null : body.toJson(), headers: header);
+  if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, body == null ? null : body.toJson(), headers: header);
+  if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, body == null ? null : body.toJson(), headers: header);
   if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
 
-  if (body != null) {
+  if (body != null)
     response.completeLog(params: body.toJson());
-  } else {
+  else
     response.log();
-  }
-  if (response.isSuccessful()) {
+  if (response.isSuccessful())
     action(response);
-  } else {
+  else
     error(response);
-  }
 }
 
 Future<void> get({
@@ -94,9 +92,13 @@ extension HTTP on Response {
 
   bool isServerError() => (this.statusCode ?? 0) >= 500 && (this.statusCode ?? 0) <= 599 ? true : false;
 
-  void log() => print("${this.request!.method} - ${this.request!.url} - ${this.statusCode} - RESPONSE: ${this.body}");
+  void log() {
+    Get.printInfo(info: "${this.request!.method} - ${this.request!.url} - ${this.statusCode} - RESPONSE: ${this.body}");
+    Get.printInfo(info: "RESPONSE: ${this.body}");
+  }
 
-  void completeLog({String? params}) => print(
-        "${this.request!.method} - ${this.request!.url} - ${this.statusCode} HEADERS: ${this.headers} - PARAMS: $params - RESPONSE: ${this.body}",
-      );
+  void completeLog({String? params}) {
+    Get.printInfo(info: "${this.request!.method} - ${this.request!.url} - ${this.statusCode} HEADERS: ${this.headers}");
+    Get.printInfo(info: "PARAMS: $params - RESPONSE: ${this.body}");
+  }
 }
