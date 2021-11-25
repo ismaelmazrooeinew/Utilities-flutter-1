@@ -93,7 +93,7 @@ extension HTTP on Response {
   bool isServerError() => (this.statusCode ?? 0) >= 500 && (this.statusCode ?? 0) <= 599 ? true : false;
 
   void log() {
-    print("${this.request!.method} - ${this.request!.url} - ${this.statusCode} - RESPONSE: ${this.body}");
+    print("${this.request!.method} - ${this.request!.url} - ${this.statusCode} HEADERS: ${this.headers}");
     print("RESPONSE: ${this.body}");
   }
 
