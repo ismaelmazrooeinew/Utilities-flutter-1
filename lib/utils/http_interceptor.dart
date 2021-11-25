@@ -27,7 +27,10 @@ Future<void> request(
 
   Response response = Response();
   if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
-  if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, body == null ? null : body.toJson(), headers: header);
+  if (httpMethod == EHttpMethod.post) {
+    print("HEEEEEEEE");
+    response = await getConnect.post(url, body == null ? null : body.toJson(), headers: header);
+  }
   if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, body == null ? null : body.toJson(), headers: header);
   if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, body == null ? null : body.toJson(), headers: header);
   if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
