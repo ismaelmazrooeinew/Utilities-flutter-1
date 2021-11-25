@@ -34,7 +34,7 @@ export 'package:persian_tools/persian_tools.dart';
 export 'package:share/share.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
-export 'package:image_cropper/image_cropper.dart';
+// export 'package:image_cropper/image_cropper.dart';
 
 part 'extras/constants.dart';
 

@@ -29,4 +29,3 @@ dependencies:
   persian_tools: ^1.0.1
   group_button: ^3.1.0
   smooth_page_indicator: ^1.0.0+2
-  image_cropper: ^1.4.1
