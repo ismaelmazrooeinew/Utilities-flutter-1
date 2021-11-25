@@ -93,12 +93,12 @@ extension HTTP on Response {
   bool isServerError() => (this.statusCode ?? 0) >= 500 && (this.statusCode ?? 0) <= 599 ? true : false;
 
   void log() {
-    Get.printInfo(info: "${this.request!.method} - ${this.request!.url} - ${this.statusCode} - RESPONSE: ${this.body}");
-    Get.printInfo(info: "RESPONSE: ${this.body}");
+    print("${this.request!.method} - ${this.request!.url} - ${this.statusCode} - RESPONSE: ${this.body}");
+    print("RESPONSE: ${this.body}");
   }
 
   void completeLog({String? params}) {
-    Get.printInfo(info: "${this.request!.method} - ${this.request!.url} - ${this.statusCode} HEADERS: ${this.headers}");
-    Get.printInfo(info: "PARAMS: $params - RESPONSE: ${this.body}");
+    print("${this.request!.method} - ${this.request!.url} - ${this.statusCode} HEADERS: ${this.headers}");
+    print("PARAMS: $params - RESPONSE: ${this.body}");
   }
 }
