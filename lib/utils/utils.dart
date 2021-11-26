@@ -10,4 +10,9 @@ extension IterableExtentions on Iterable {
   }
 }
 
+extension BoolParsing on String {
+  bool isTrue() => this.toLowerCase() == 'true';
+  bool isFalse() => this.toLowerCase() == 'false';
+}
+
 Future delay(int milliseconds, action) async => Future.delayed(Duration(milliseconds: milliseconds), () async => action());
