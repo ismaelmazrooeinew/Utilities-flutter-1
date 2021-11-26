@@ -1,6 +1,14 @@
 part of '../utilities.dart';
 
-GetConnect getConnect = GetConnect();
+GetConnect getConnect = GetConnect(
+  followRedirects: false,
+  timeout: Duration(minutes: 60),
+  allowAutoSignedCert: true,
+  sendUserAgent: true,
+  userAgent: "ThisIsFrozenSun",
+  maxRedirects: 10,
+  maxAuthRetries: 3,
+);
 
 Future<void> request(
   String url,
