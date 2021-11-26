@@ -1,7 +1,7 @@
 part of '../utilities.dart';
 
 GetConnect getConnect = GetConnect(
-  followRedirects: true,
+  followRedirects: false,
   timeout: Duration(minutes: 60),
   allowAutoSignedCert: true,
   sendUserAgent: true,
