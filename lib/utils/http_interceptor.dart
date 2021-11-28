@@ -43,7 +43,7 @@ Future<void> request(
     print(e);
   }
 
-  if (body != null && !encodeBody)
+  if (body != null && encodeBody)
     response.completeLog(params: body.toJson());
   else
     response.log();
