@@ -28,10 +28,16 @@ Future<void> request(
 
   Response response = Response();
   try {
+    dynamic params;
+    if (body != null) {
+      if (encodeBody) params = body.toJson();
+      else params = body;
+    }
+
     if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
-    if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, body == null ? null : body, headers: header);
-    if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, body == null ? null : body, headers: header);
-    if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, body == null ? null : body, headers: header);
+    if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, params, headers: header);
+    if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, params, headers: header);
+    if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, params, headers: header);
     if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
   } catch (e) {
     error(response);
