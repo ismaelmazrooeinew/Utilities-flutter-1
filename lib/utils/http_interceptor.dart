@@ -68,7 +68,7 @@ Future<void> post({
   dynamic body,
   bool encodeBody = true,
 }) async =>
-    await request(url, EHttpMethod.post, action, error, body: body, headers: headers);
+    await request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
 Future<void> put({
   required String url,
@@ -78,7 +78,7 @@ Future<void> put({
   dynamic body,
   bool encodeBody = true,
 }) async =>
-    await request(url, EHttpMethod.put, action, error, body: body, headers: headers);
+    await request(url, EHttpMethod.put, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
 Future<void> patch({
   required String url,
@@ -88,7 +88,7 @@ Future<void> patch({
   dynamic body,
   bool encodeBody = true,
 }) async =>
-    await request(url, EHttpMethod.patch, action, error, body: body, headers: headers);
+    await request(url, EHttpMethod.patch, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
 Future<void> delete({
   required String url,
