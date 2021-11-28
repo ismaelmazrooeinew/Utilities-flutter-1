@@ -19,10 +19,7 @@ Future<void> request(
   bool encodeBody = true,
   Map<String, String>? headers,
 }) async {
-  Map<String, String> header = {
-    // "Content-Type": "pplication/json; charset=UTF-8",
-    "Authorization": getString(Constant.token) ?? "",
-  };
+  Map<String, String> header = {"Authorization": getString(Constant.token) ?? ""};
 
   if (headers != null) header.addAll(headers);
 
@@ -30,8 +27,10 @@ Future<void> request(
   try {
     dynamic params;
     if (body != null) {
-      if (encodeBody) params = body.toJson();
-      else params = body;
+      if (encodeBody)
+        params = body.toJson();
+      else
+        params = body;
     }
 
     if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
@@ -66,7 +65,8 @@ Future<void> post({
   required action(Response response),
   required error(Response response),
   Map<String, String>? headers,
-  body,
+  dynamic body,
+  bool encodeBody = true,
 }) async =>
     await request(url, EHttpMethod.post, action, error, body: body, headers: headers);
 
@@ -75,7 +75,8 @@ Future<void> put({
   required action(Response response),
   required error(Response response),
   Map<String, String>? headers,
-  body,
+  dynamic body,
+  bool encodeBody = true,
 }) async =>
     await request(url, EHttpMethod.put, action, error, body: body, headers: headers);
 
@@ -84,7 +85,8 @@ Future<void> patch({
   required action(Response response),
   required error(Response response),
   Map<String, String>? headers,
-  body,
+  dynamic body,
+  bool encodeBody = true,
 }) async =>
     await request(url, EHttpMethod.patch, action, error, body: body, headers: headers);
 
