@@ -16,6 +16,7 @@ Future<void> request(
   action(Response response),
   error(Response response), {
   dynamic body,
+  bool encodeBody = true,
   Map<String, String>? headers,
 }) async {
   Map<String, String> header = {
@@ -26,11 +27,15 @@ Future<void> request(
   if (headers != null) header.addAll(headers);
 
   Response response = Response();
-  if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
-  if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, body == null ? null : body.toJson(), headers: header, );
-  if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, body == null ? null : body.toJson(), headers: header);
-  if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, body == null ? null : body.toJson(), headers: header);
-  if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
+  try {
+    if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
+    if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, body == null ? null : body, headers: header);
+    if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, body == null ? null : body, headers: header);
+    if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, body == null ? null : body, headers: header);
+    if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
+  } catch (e) {
+    error(response);
+  }
 
   if (body != null)
     response.completeLog(params: body.toJson());
