@@ -40,6 +40,7 @@ Future<void> request(
     if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
   } catch (e) {
     error(response);
+    print(e);
   }
 
   if (body != null && !encodeBody)
