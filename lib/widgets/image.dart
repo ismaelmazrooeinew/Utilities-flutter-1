@@ -30,8 +30,6 @@ Widget imageAsset(
                   color: color,
                   width: width,
                   height: height,
-                  cacheWidth: width?.toInt(),
-                  cacheHeight: height?.toInt(),
                   fit: fit,
                 ),
           radius: borderRadius,
@@ -61,8 +59,6 @@ Widget imageNetwork(
             color: color,
             width: width,
             height: height,
-            cacheWidth: width?.toInt(),
-            cacheHeight: height?.toInt(),
             fit: fit,
             errorBuilder: (_, __, ___) => placeholder == null
                 ? SizedBox()
@@ -114,8 +110,6 @@ Widget imageFile(
             color: color,
             width: width,
             height: height,
-            cacheWidth: width?.toInt(),
-            cacheHeight: height?.toInt(),
             fit: fit,
           ),
           radius: borderRadius,
