@@ -7,10 +7,10 @@ class Error {
   bool isConnectionError;
 
   Error({
-    this.title = "خطا",
-    this.message = "لطفا بعدا امتحان کنید",
-    this.code = 400,
-    this.isConnectionError = false,
+    final this.title = "خطا",
+    final this.message = "لطفا بعدا امتحان کنید",
+    final this.code = 400,
+    final this.isConnectionError = false,
   }) {
     if (isConnectionError) {
       title = "خطا";

@@ -6,7 +6,7 @@ class DropDownField extends FormField<dynamic> {
   final bool required;
   final String errorText;
   final dynamic value;
-  final List? dataSource;
+  final List<dynamic>? dataSource;
   final String? textField;
   final String? valueField;
   final Function? onChanged;
@@ -14,24 +14,26 @@ class DropDownField extends FormField<dynamic> {
   final EdgeInsets contentPadding;
 
   DropDownField({
-    FormFieldSetter<dynamic>? onSaved,
-    FormFieldValidator<dynamic>? validator,
-    this.titleText = 'Title',
-    this.hintText = 'Select one option',
-    this.required = false,
-    this.errorText = 'Please select one option',
-    this.value,
-    this.dataSource,
-    this.textField,
-    this.valueField,
-    this.onChanged,
-    this.filled = true,
-    this.contentPadding = const EdgeInsets.fromLTRB(12, 12, 8, 0),
+    final Key? key,
+    final FormFieldSetter<dynamic>? onSaved,
+    final FormFieldValidator<dynamic>? validator,
+    final this.titleText = 'Title',
+    final this.hintText = 'Select one option',
+    final this.required = false,
+    final this.errorText = 'Please select one option',
+    final this.value,
+    final this.dataSource,
+    final this.textField,
+    final this.valueField,
+    final this.onChanged,
+    final this.filled = true,
+    final this.contentPadding = const EdgeInsets.fromLTRB(12, 12, 8, 0),
   }) : super(
+          key: key,
           onSaved: onSaved,
           validator: validator,
           initialValue: value == '' ? null : value,
-          builder: (FormFieldState<dynamic> state) => Container(
+          builder: (final FormFieldState<dynamic> state) => SizedBox(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -46,12 +48,12 @@ class DropDownField extends FormField<dynamic> {
                       isExpanded: true,
                       hint: Text(hintText, style: TextStyle(color: Colors.grey.shade500)),
                       value: value == '' ? null : value,
-                      onChanged: (dynamic newValue) {
+                      onChanged: (final dynamic newValue) {
                         state.didChange(newValue);
                         onChanged!(newValue);
                       },
                       items: dataSource!
-                          .map((item) => DropdownMenuItem<dynamic>(
+                          .map((final dynamic item) => DropdownMenuItem<dynamic>(
                                 value: item[valueField],
                                 child: Text(item[textField], overflow: TextOverflow.ellipsis),
                               ))

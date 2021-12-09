@@ -7,6 +7,7 @@ import 'dart:ui' as ui show WindowPadding;
 import 'package:app_settings/app_settings.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,8 +30,8 @@ export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
 export 'package:group_button/group_button.dart';
 export 'package:intl/intl.dart';
-export 'package:meta/meta.dart';
-export 'package:path_provider/path_provider.dart';
+// export 'package:meta/meta.dart';
+// export 'package:path_provider/path_provider.dart';
 export 'package:persian_tools/persian_tools.dart';
 export 'package:share_plus/share_plus.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -92,8 +93,6 @@ part 'utils/string.dart';
 part 'utils/utils.dart';
 
 part 'widgets/container.dart';
-
-part 'widgets/extra.dart';
 
 part 'widgets/image.dart';
 

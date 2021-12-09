@@ -2,7 +2,7 @@ part of '../utilities.dart';
 
 GetConnect getConnect = GetConnect(
   followRedirects: false,
-  timeout: Duration(minutes: 60),
+  timeout: const Duration(minutes: 60),
   allowAutoSignedCert: true,
   sendUserAgent: true,
   userAgent: "ThisIsFrozenSun",
@@ -10,20 +10,20 @@ GetConnect getConnect = GetConnect(
   maxAuthRetries: 3,
 );
 
-Future<void> request(
-  String url,
-  EHttpMethod httpMethod,
-  action(Response response),
-  error(Response response), {
-  dynamic body,
-  bool encodeBody = true,
-  Map<String, String>? headers,
+Future<void> request<T>(
+  final String url,
+  final EHttpMethod httpMethod,
+  final Function(Response<T> response) action,
+  final Function(Response<T> response) error, {
+  final dynamic body,
+  final bool encodeBody = true,
+  final Map<String, String>? headers,
 }) async {
-  Map<String, String> header = {"Authorization": getString(Constant.token) ?? ""};
+  final Map<String, String> header = <String, String>{"Authorization": getString(Constant.token) ?? ""};
 
   if (headers != null) header.addAll(headers);
 
-  Response response = Response();
+  Response<T> response = Response<T>();
   try {
     dynamic params;
     if (body != null) {
@@ -53,66 +53,66 @@ Future<void> request(
     error(response);
 }
 
-Future<void> get({
-  required String url,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
+Future<void> get<T>({
+  required final String url,
+  required final Function(Response<T> response) action,
+  required final Function(Response<T> response) error,
+  final Map<String, String>? headers,
 }) async =>
-    await request(url, EHttpMethod.get, action, error, headers: headers);
+    request(url, EHttpMethod.get, action, error, headers: headers);
 
-Future<void> post({
-  required String url,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
-  dynamic body,
-  bool encodeBody = true,
+Future<void> post<T>({
+  required final String url,
+  required final Function(Response<T> response) action,
+  required final Function(Response<T> response) error,
+  final Map<String, String>? headers,
+  final dynamic body,
+  final bool encodeBody = true,
 }) async =>
-    await request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers);
+    request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
-Future<void> put({
-  required String url,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
-  dynamic body,
-  bool encodeBody = true,
+Future<void> put<T>({
+  required final String url,
+  required final Function(Response<T> response) action,
+  required final Function(Response<T> response) error,
+  final Map<String, String>? headers,
+  final dynamic body,
+  final bool encodeBody = true,
 }) async =>
-    await request(url, EHttpMethod.put, action, error, body: body, encodeBody: encodeBody, headers: headers);
+    request(url, EHttpMethod.put, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
-Future<void> patch({
-  required String url,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
-  dynamic body,
-  bool encodeBody = true,
+Future<void> patch<T>({
+  required final String url,
+  required final Function(Response<T> response) action,
+  required final Function(Response<T> response) error,
+  final Map<String, String>? headers,
+  final dynamic body,
+  final bool encodeBody = true,
 }) async =>
-    await request(url, EHttpMethod.patch, action, error, body: body, encodeBody: encodeBody, headers: headers);
+    request(url, EHttpMethod.patch, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
-Future<void> delete({
-  required String url,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
+Future<void> delete<T>({
+  required final String url,
+  required final Function(Response<T> response) action,
+  required final Function(Response<T> response) error,
+  final Map<String, String>? headers,
 }) async =>
-    await request(url, EHttpMethod.delete, action, error, headers: headers);
+    request(url, EHttpMethod.delete, action, error, headers: headers);
 
 enum EHttpMethod { get, post, put, patch, delete }
 
-extension HTTP on Response {
-  bool isSuccessful() => (this.statusCode ?? 0) >= 200 && (this.statusCode ?? 0) <= 299 ? true : false;
+extension HTTP<T> on Response<T> {
+  bool isSuccessful() => (statusCode ?? 0) >= 200 && (statusCode ?? 0) <= 299 ? true : false;
 
-  bool isServerError() => (this.statusCode ?? 0) >= 500 && (this.statusCode ?? 0) <= 599 ? true : false;
+  bool isServerError() => (statusCode ?? 0) >= 500 && (statusCode ?? 0) <= 599 ? true : false;
 
   void log() {
-    print("${this.request!.method} - ${this.request!.url} - ${this.statusCode}");
-    print("RESPONSE: ${this.body}");
+    print("${this.request!.method} - ${this.request!.url} - $statusCode");
+    print("RESPONSE: $body");
   }
 
-  void completeLog({String? params}) {
-    print("${this.request!.method} - ${this.request!.url} - ${this.statusCode} HEADERS: ${this.headers}");
-    print("PARAMS: $params - RESPONSE: ${this.body}");
+  void completeLog({final String? params}) {
+    print("${this.request!.method} - ${this.request!.url} - $statusCode HEADERS: $headers");
+    print("PARAMS: $params - RESPONSE: $body");
   }
 }

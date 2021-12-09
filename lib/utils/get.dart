@@ -22,30 +22,36 @@ double screenWidth = Get.width;
 ThemeData theme = Get.context!.theme;
 TextTheme textTheme = Get.context!.textTheme;
 Locale? currentLocale = Get.locale;
+bool isDebugMode = kDebugMode;
 
-void updateLocale(Locale locale) => Get.updateLocale(locale);
+void updateLocale(final Locale locale) => Get.updateLocale(locale);
 
 Future<String> appName() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.appName;
 }
 
 Future<String> appPackageName() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.packageName;
 }
 
 Future<String> appVersion() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.version;
 }
 
 Future<String> appBuildNumber() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.buildNumber;
 }
 
-void push(Widget page, {bool dialog = false, Transition transition = Transition.cupertino, bool backFirst = false}) {
+void push(
+  final Widget page, {
+  final bool dialog = false,
+  final Transition transition = Transition.cupertino,
+  final bool backFirst = false,
+}) {
   if (backFirst) back();
   Get.to(
     page,
@@ -56,12 +62,17 @@ void push(Widget page, {bool dialog = false, Transition transition = Transition.
   );
 }
 
-void dialog(Widget page, {bool dialog = false, onDismiss}) => Get.dialog(page, useSafeArea: true).then(
-      (value) => onDismiss != null ? onDismiss() : null,
+void dialog(
+  final Widget page, {
+  final bool dialog = false,
+  final VoidCallback? onDismiss,
+}) =>
+    Get.dialog(page, useSafeArea: true).then(
+      (final _) => onDismiss != null ? onDismiss() : null,
     );
 
 void back() => Get.back();
 
-void offAll(Widget page) => Get.offAll(page);
+void offAll(final Widget page) => Get.offAll(page);
 
-void off(Widget page) => Get.off(page);
+void off(final Widget page) => Get.off(page);

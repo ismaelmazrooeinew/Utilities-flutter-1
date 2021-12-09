@@ -1,15 +1,15 @@
 part of '../utilities.dart';
 
-void setData(String key, dynamic value) => GetStorage().write(key, value);
+void setData(final String key, final dynamic value) => GetStorage().write(key, value);
 
-int? getInt(String key) => GetStorage().read(key);
+int? getInt(final String key) => GetStorage().read(key);
 
-String? getString(String key) => GetStorage().read(key);
+String? getString(final String key) => GetStorage().read(key);
 
-bool? getBool(String key) => GetStorage().read(key);
+bool? getBool(final String key) => GetStorage().read(key);
 
-double? getDouble(String key) => GetStorage().read(key);
+double? getDouble(final String key) => GetStorage().read(key);
 
-dynamic getData(String key) => GetStorage().read(key);
+dynamic getData(final String key) => GetStorage().read(key);
 
 void clearData() => GetStorage().erase();

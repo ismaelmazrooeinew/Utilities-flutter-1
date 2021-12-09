@@ -1,15 +1,15 @@
 part of '../utilities.dart';
 
 Widget imageAsset(
-  String asset, {
-  Color? color,
-  double? width,
-  double? height,
-  BoxFit fit = BoxFit.contain,
-  Clip clipBehavior = Clip.hardEdge,
-  double borderRadius = 1,
-  EdgeInsets margin = EdgeInsets.zero,
-  VoidCallback? onTap,
+  final String asset, {
+  final Color? color,
+  final double? width,
+  final double? height,
+  final BoxFit fit = BoxFit.contain,
+  final Clip clipBehavior = Clip.hardEdge,
+  final double borderRadius = 1,
+  final EdgeInsets margin = EdgeInsets.zero,
+  final VoidCallback? onTap,
 }) =>
     GestureDetector(
       onTap: onTap,
@@ -38,16 +38,16 @@ Widget imageAsset(
     );
 
 Widget imageNetwork(
-  String url, {
-  Color? color,
-  double? width,
-  double? height,
-  BoxFit fit = BoxFit.contain,
-  Clip clipBehavior = Clip.hardEdge,
-  double borderRadius = 1,
-  EdgeInsets margin = EdgeInsets.zero,
-  VoidCallback? onTap,
-  String? placeholder,
+  final String url, {
+  final Color? color,
+  final double? width,
+  final double? height,
+  final BoxFit fit = BoxFit.contain,
+  final Clip clipBehavior = Clip.hardEdge,
+  final double borderRadius = 1,
+  final EdgeInsets margin = EdgeInsets.zero,
+  final VoidCallback? onTap,
+  final String? placeholder,
 }) =>
     GestureDetector(
       onTap: onTap,
@@ -60,8 +60,8 @@ Widget imageNetwork(
             width: width,
             height: height,
             fit: fit,
-            errorBuilder: (_, __, ___) => placeholder == null
-                ? SizedBox()
+            errorBuilder: (final _, final __, final ___) => placeholder == null
+                ? const SizedBox()
                 : imageAsset(
                     placeholder,
                     color: color,
@@ -70,10 +70,10 @@ Widget imageNetwork(
                     fit: fit,
                     clipBehavior: clipBehavior,
                   ),
-            loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? event) {
+            loadingBuilder: (final BuildContext context, final Widget child, final ImageChunkEvent? event) {
               if (event == null) return child;
               return placeholder == null
-                  ? SizedBox()
+                  ? const SizedBox()
                   : imageAsset(
                       placeholder,
                       color: color,
@@ -90,15 +90,15 @@ Widget imageNetwork(
     );
 
 Widget imageFile(
-  File file, {
-  Color? color,
-  double? width,
-  double? height,
-  BoxFit fit = BoxFit.contain,
-  Clip clipBehavior = Clip.hardEdge,
-  double borderRadius = 1,
-  EdgeInsets margin = EdgeInsets.zero,
-  VoidCallback? onTap,
+  final File file, {
+  final Color? color,
+  final double? width,
+  final double? height,
+  final BoxFit fit = BoxFit.contain,
+  final Clip clipBehavior = Clip.hardEdge,
+  final double borderRadius = 1,
+  final EdgeInsets margin = EdgeInsets.zero,
+  final VoidCallback? onTap,
 }) =>
     GestureDetector(
       onTap: onTap,
