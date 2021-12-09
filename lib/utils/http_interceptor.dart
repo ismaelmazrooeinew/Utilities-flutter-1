@@ -55,51 +55,52 @@ Future<void> request<T>(
     error(response);
 }
 
-Future<void> get<T>({
-  required final String url,
-  required final Function(Response<T> response) action,
-  required final Function(Response<T> response) error,
-  final Map<String, String>? headers,
+Future<void> get({
+  required String url,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
 }) async =>
-    request(url, EHttpMethod.get, action, error, headers: headers);
+    await request(url, EHttpMethod.get, action, error, headers: headers);
 
-Future<void> post<T>({
-  required final String url,
-  required final Function(Response<T> response) action,
-  required final Function(Response<T> response) error,
-  final Map<String, String>? headers,
-  final dynamic body,
-  final bool encodeBody = true,
+Future<void> post({
+  required String url,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+  dynamic body,
+  bool encodeBody = true,
 }) async =>
-    request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers);
+    await request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
-Future<void> put<T>({
-  required final String url,
-  required final Function(Response<T> response) action,
-  required final Function(Response<T> response) error,
-  final Map<String, String>? headers,
-  final dynamic body,
-  final bool encodeBody = true,
+Future<void> put({
+  required String url,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+  dynamic body,
+  bool encodeBody = true,
 }) async =>
-    request(url, EHttpMethod.put, action, error, body: body, encodeBody: encodeBody, headers: headers);
+    await request(url, EHttpMethod.put, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
-Future<void> patch<T>({
-  required final String url,
-  required final Function(Response<T> response) action,
-  required final Function(Response<T> response) error,
-  final Map<String, String>? headers,
-  final dynamic body,
-  final bool encodeBody = true,
+Future<void> patch({
+  required String url,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+  dynamic body,
+  bool encodeBody = true,
 }) async =>
-    request(url, EHttpMethod.patch, action, error, body: body, encodeBody: encodeBody, headers: headers);
+    await request(url, EHttpMethod.patch, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
-Future<void> delete<T>({
-  required final String url,
-  required final Function(Response<T> response) action,
-  required final Function(Response<T> response) error,
-  final Map<String, String>? headers,
+Future<void> delete({
+  required String url,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
 }) async =>
-    request(url, EHttpMethod.delete, action, error, headers: headers);
+    await request(url, EHttpMethod.delete, action, error, headers: headers);
+
 
 enum EHttpMethod { get, post, put, patch, delete }
 
