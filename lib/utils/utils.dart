@@ -1,4 +1,4 @@
-part of '../utilities.dart';
+import 'dart:ui';
 
 // extension IterableExtentions on Iterable {
 //   Iterable<E> mapIndexed<E, T>(E Function(int index, T item) f) sync* {

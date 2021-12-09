@@ -1,4 +1,4 @@
-part of '../utilities.dart';
+import 'package:app_settings/app_settings.dart';
 
 /// see: https://pub.dev/packages/app_settings
 

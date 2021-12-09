@@ -1,15 +1,15 @@
-part of '../utilities.dart';
+import 'package:flutter/material.dart';
 
 extension WidgetsExtension on Widget {
   Widget withTooltip(
-    String message, {
-    Decoration? decoration,
-    double? height,
-    bool? preferBelow,
-    EdgeInsetsGeometry? padding,
-    TextStyle? textStyle,
-    Duration? waitDuration,
-    EdgeInsetsGeometry? margin,
+    final String message, {
+    final Decoration? decoration,
+    final double? height,
+    final bool? preferBelow,
+    final EdgeInsetsGeometry? padding,
+    final TextStyle? textStyle,
+    final Duration? waitDuration,
+    final EdgeInsetsGeometry? margin,
   }) =>
       Tooltip(
         message: message,

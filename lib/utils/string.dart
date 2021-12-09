@@ -1,4 +1,4 @@
-part of '../utilities.dart';
+import 'package:intl/intl.dart';
 
 int getDay(final String date) => int.parse(date.substring(8, 10).append0());
 
@@ -10,7 +10,7 @@ int getHour(final String time) => int.parse(time.substring(0, 2).append0());
 
 int getMinute(final String time) => int.parse(time.substring(3, 5).append0());
 
-extension StringExtension on String {
+extension StringExtensions on String {
   bool isNumeric() => double.tryParse(this) != null;
 
   int toInt() => int.parse(this);

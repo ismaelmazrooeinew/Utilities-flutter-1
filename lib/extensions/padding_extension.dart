@@ -1,4 +1,6 @@
-part of '../utilities.dart';
+import 'dart:ui' as ui show WindowPadding;
+
+import 'package:flutter/material.dart';
 
 extension PaddingExtensions on Widget {
   Padding paddingAll(double value, {Key? key}) => Padding(

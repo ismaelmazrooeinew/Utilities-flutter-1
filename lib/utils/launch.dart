@@ -1,4 +1,4 @@
-part of '../utilities.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Future<void> launchURL(
   final String url, {

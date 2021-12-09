@@ -1,4 +1,4 @@
-part of '../utilities.dart';
+import 'package:get/get.dart';
 
 extension PageStateExtension on PageState {
   bool isInitial() => this == PageState.initial;
@@ -28,7 +28,7 @@ extension RxPageStateExtension on Rx<PageState> {
   PageState error() => this(PageState.error);
 }
 
-class Constant {
+class UtilitiesConstants {
   static String token = "token";
 }
 

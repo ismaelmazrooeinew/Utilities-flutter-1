@@ -1,7 +1,10 @@
-part of '../utilities.dart';
+
+
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 extension ShimmerEffect on Widget {
-  Widget applyShimmer({bool enable = true, Color? baseColor, Color? highlightColor}) {
+  Widget applyShimmer({final bool enable = true, final Color? baseColor, final Color? highlightColor}) {
     if (enable) {
       return Shimmer.fromColors(
         baseColor: baseColor == null ? Colors.grey.shade300 : baseColor,
@@ -70,13 +73,13 @@ class Shimmer extends StatefulWidget {
   final bool enabled;
 
   const Shimmer({
-    Key? key,
-    required this.child,
-    required this.gradient,
-    this.direction = ShimmerDirection.ltr,
-    this.period = const Duration(milliseconds: 1500),
-    this.loop = 0,
-    this.enabled = true,
+    required final this.child,
+    required final this.gradient,
+    final Key? key,
+    final this.direction = ShimmerDirection.ltr,
+    final this.period = const Duration(milliseconds: 1500),
+    final this.loop = 0,
+    final this.enabled = true,
   }) : super(key: key);
 
   ///
@@ -85,19 +88,18 @@ class Shimmer extends StatefulWidget {
   /// `highlightColor`.
   ///
   Shimmer.fromColors({
-    Key? key,
-    required this.child,
-    required Color baseColor,
-    required Color highlightColor,
-    this.period = const Duration(milliseconds: 1500),
-    this.direction = ShimmerDirection.ltr,
-    this.loop = 0,
-    this.enabled = true,
+    required final this.child,
+    required final Color baseColor,
+    required final Color highlightColor,
+    final Key? key,
+    final this.period = const Duration(milliseconds: 1500),
+    final this.direction = ShimmerDirection.ltr,
+    final this.loop = 0,
+    final this.enabled = true,
   })  : gradient = LinearGradient(
           begin: Alignment.topLeft,
-          end: Alignment.centerRight,
           colors: <Color>[baseColor, baseColor, highlightColor, baseColor, baseColor],
-          stops: const <double>[0.0, 0.35, 0.5, 0.65, 1.0],
+          stops: const <double>[0, 0.35, 0.5, 0.65, 1],
         ),
         super(key: key);
 
@@ -105,7 +107,7 @@ class Shimmer extends StatefulWidget {
   _ShimmerState createState() => _ShimmerState();
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  void debugFillProperties(final DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<Gradient>('gradient', gradient, defaultValue: null));
     properties.add(EnumProperty<ShimmerDirection>('direction', direction));
@@ -123,7 +125,7 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this, duration: widget.period)
-      ..addStatusListener((AnimationStatus status) {
+      ..addStatusListener((final AnimationStatus status) {
         if (status != AnimationStatus.completed) {
           return;
         }
@@ -131,7 +133,7 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
         if (widget.loop <= 0) {
           _controller.repeat();
         } else if (_count < widget.loop) {
-          _controller.forward(from: 0.0);
+          _controller.forward(from: 0);
         }
       });
     if (widget.enabled) {
@@ -140,7 +142,7 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
   }
 
   @override
-  void didUpdateWidget(Shimmer oldWidget) {
+  void didUpdateWidget(final Shimmer oldWidget) {
     if (widget.enabled) {
       _controller.forward();
     } else {
@@ -150,18 +152,16 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
+  Widget build(final BuildContext context) => AnimatedBuilder(
       animation: _controller,
       child: widget.child,
-      builder: (BuildContext context, Widget? child) => _Shimmer(
-        child: child,
+      builder: (final BuildContext context, final Widget? child) => _Shimmer(
         direction: widget.direction,
         gradient: widget.gradient,
         percent: _controller.value,
+        child: child,
       ),
     );
-  }
 
   @override
   void dispose() {
@@ -177,19 +177,17 @@ class _Shimmer extends SingleChildRenderObjectWidget {
   final Gradient gradient;
 
   const _Shimmer({
-    Widget? child,
-    required this.percent,
-    required this.direction,
-    required this.gradient,
+    required final this.percent,
+    required final this.direction,
+    required final this.gradient,
+    final Widget? child,
   }) : super(child: child);
 
   @override
-  _ShimmerFilter createRenderObject(BuildContext context) {
-    return _ShimmerFilter(percent, direction, gradient);
-  }
+  _ShimmerFilter createRenderObject(final BuildContext context) => _ShimmerFilter(percent, direction, gradient);
 
   @override
-  void updateRenderObject(BuildContext context, _ShimmerFilter shimmer) {
+  void updateRenderObject(final BuildContext context, final _ShimmerFilter shimmer) {
     shimmer.percent = percent;
     shimmer.gradient = gradient;
     shimmer.direction = direction;
@@ -209,7 +207,7 @@ class _ShimmerFilter extends RenderProxyBox {
   @override
   bool get alwaysNeedsCompositing => child != null;
 
-  set percent(double newValue) {
+  set percent(final double newValue) {
     if (newValue == _percent) {
       return;
     }
@@ -217,7 +215,7 @@ class _ShimmerFilter extends RenderProxyBox {
     markNeedsPaint();
   }
 
-  set gradient(Gradient newValue) {
+  set gradient(final Gradient newValue) {
     if (newValue == _gradient) {
       return;
     }
@@ -225,7 +223,7 @@ class _ShimmerFilter extends RenderProxyBox {
     markNeedsPaint();
   }
 
-  set direction(ShimmerDirection newDirection) {
+  set direction(final ShimmerDirection newDirection) {
     if (newDirection == _direction) {
       return;
     }
@@ -234,9 +232,9 @@ class _ShimmerFilter extends RenderProxyBox {
   }
 
   @override
-  void paint(PaintingContext context, Offset offset) {
+  void paint(final PaintingContext context, final Offset offset) {
     if (child != null) {
-      assert(needsCompositing);
+      assert(needsCompositing, "");
 
       final double width = child!.size.width;
       final double height = child!.size.height;
@@ -270,7 +268,5 @@ class _ShimmerFilter extends RenderProxyBox {
     }
   }
 
-  double _offset(double start, double end, double percent) {
-    return start + (end - start) * percent;
-  }
+  double _offset(final double start, final double end, final double percent) => start + (end - start) * percent;
 }

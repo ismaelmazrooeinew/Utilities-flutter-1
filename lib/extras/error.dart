@@ -1,4 +1,3 @@
-part of '../utilities.dart';
 
 class Error {
   String title;

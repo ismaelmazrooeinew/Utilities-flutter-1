@@ -1,4 +1,6 @@
-part of '../utilities.dart';
+import 'package:flutter/material.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:utilities/utils/get.dart';
 
 Widget scaffold({
   required final Widget body,

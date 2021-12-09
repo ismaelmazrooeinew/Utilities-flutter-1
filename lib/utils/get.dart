@@ -1,4 +1,7 @@
-part of '../utilities.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:package_info/package_info.dart';
 
 /// needs to be implemented https://pub.dev/packages/get
 /// needs to be implemented https://pub.dev/packages/get_storage

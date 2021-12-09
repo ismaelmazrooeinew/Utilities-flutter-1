@@ -1,4 +1,6 @@
-part of '../utilities.dart';
+import 'package:get/get.dart';
+import 'package:utilities/extras/constants.dart';
+import 'package:utilities/utils/local_storage.dart';
 
 GetConnect getConnect = GetConnect(
   followRedirects: false,
@@ -19,7 +21,7 @@ Future<void> request<T>(
   final bool encodeBody = true,
   final Map<String, String>? headers,
 }) async {
-  final Map<String, String> header = <String, String>{"Authorization": getString(Constant.token) ?? ""};
+  final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
 
   if (headers != null) header.addAll(headers);
 

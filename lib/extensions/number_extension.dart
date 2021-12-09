@@ -1,4 +1,6 @@
-part of '../utilities.dart';
+
+
+import 'dart:async';
 
 extension NumExtension on num {
   ///   print('+ wait for 2 seconds');
