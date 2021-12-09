@@ -2,14 +2,13 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
-
 import 'dart:ui' as ui show WindowPadding;
 
+import 'package:app_settings/app_settings.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-// import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -38,15 +37,37 @@ export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 
+part 'extensions/align_extension.dart';
+
+part 'extensions/center_extension.dart';
+
+part 'extensions/container_extension.dart';
+
+part 'extensions/date_extension.dart';
+
+part 'extensions/gesture_detector_extension.dart';
+
+part 'extensions/number_extension.dart';
+
+part 'extensions/padding_extension.dart';
+
+part 'extensions/shimmer_extension.dart';
+
+part 'extensions/size_box_extension.dart';
+
+part 'extensions/text_extension.dart';
+
+part 'extensions/text_style_extension.dart';
+
+part 'extensions/tooltip_extension.dart';
+
 part 'extras/constants.dart';
 
 part 'extras/error.dart';
 
-part 'utils/alert.dart';
-
 part 'utils/availability.dart';
 
-part 'utils/color.dart';
+part 'utils/device_settings.dart';
 
 part 'utils/download.dart';
 
@@ -81,16 +102,3 @@ part 'widgets/menu/bottom_sheet.dart';
 part 'widgets/menu/drop_down_form_field.dart';
 
 part 'widgets/menu/picker_view.dart';
-
-part 'extensions/align_extension.dart';
-part 'extensions/center_extension.dart';
-part 'extensions/container_extension.dart';
-part 'extensions/date_extension.dart';
-part 'extensions/gesture_detector_extension.dart';
-part 'extensions/number_extension.dart';
-part 'extensions/padding_extension.dart';
-part 'extensions/shimmer_extension.dart';
-part 'extensions/size_box_extension.dart';
-part 'extensions/text_extension.dart';
-part 'extensions/text_style_extension.dart';
-part 'extensions/tooltip_extension.dart';

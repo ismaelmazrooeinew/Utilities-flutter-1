@@ -45,10 +45,8 @@ Future<String> appBuildNumber() async {
   return packageInfo.buildNumber;
 }
 
-void push(Widget page, {bool dialog = false, Transition transition = Transition.cupertino, bool popFirst = false}) {
-  if (popFirst) {
-    pop();
-  }
+void push(Widget page, {bool dialog = false, Transition transition = Transition.cupertino, bool backFirst = false}) {
+  if (backFirst) back();
   Get.to(
     page,
     fullscreenDialog: dialog,
@@ -58,14 +56,12 @@ void push(Widget page, {bool dialog = false, Transition transition = Transition.
   );
 }
 
-void dialog(
-  Widget page, {
-  bool dialog = false,
-  onDismiss,
-}) =>
-    Get.dialog(page, useSafeArea: true).then((value) => onDismiss != null ? onDismiss() : null);
+void dialog(Widget page, {bool dialog = false, onDismiss}) => Get.dialog(page, useSafeArea: true).then(
+      (value) => onDismiss != null ? onDismiss() : null,
+    );
 
-void pop() => Get.back();
+void back() => Get.back();
 
-void pushAndRemoveUntil(Widget page) => Get.offAll(page);
+void offAll(Widget page) => Get.offAll(page);
 
+void off(Widget page) => Get.off(page);

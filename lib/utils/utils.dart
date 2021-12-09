@@ -10,7 +10,7 @@ extension IterableExtentions on Iterable {
   }
 }
 
-extension BoolParsing on String {
+extension BoolExtensios on String {
   bool isTrue() => this.toLowerCase() == 'true';
   bool isFalse() => this.toLowerCase() == 'false';
 }
