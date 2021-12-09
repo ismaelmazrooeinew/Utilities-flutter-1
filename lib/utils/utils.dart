@@ -15,4 +15,4 @@ extension BoolParsing on String {
   bool isFalse() => this.toLowerCase() == 'false';
 }
 
-Future delay(int milliseconds, action) async => Future.delayed(Duration(milliseconds: milliseconds), () async => action());
+void delay(int milliseconds, action) async => Future.delayed(Duration(milliseconds: milliseconds), () async => action());
