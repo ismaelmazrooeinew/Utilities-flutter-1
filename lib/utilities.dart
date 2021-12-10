@@ -20,7 +20,6 @@ export 'extensions/container_extension.dart';
 export 'extensions/date_extension.dart';
 export 'extensions/gesture_detector_extension.dart';
 export 'extensions/number_extension.dart';
-export 'extensions/padding_extension.dart';
 export 'extensions/shimmer_extension.dart';
 export 'extensions/size_box_extension.dart';
 export 'extensions/text_extension.dart';
