@@ -14,14 +14,7 @@ export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 
-export 'extensions/align_extension.dart';
-export 'extensions/center_extension.dart';
-export 'extensions/container_extension.dart';
-export 'extensions/date_extension.dart';
-export 'extensions/gesture_detector_extension.dart';
-export 'extensions/number_extension.dart';
 export 'extensions/shimmer_extension.dart';
-export 'extensions/size_box_extension.dart';
 export 'extensions/text_extension.dart';
 export 'extensions/text_style_extension.dart';
 export 'extensions/tooltip_extension.dart';
