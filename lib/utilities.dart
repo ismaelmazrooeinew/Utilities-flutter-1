@@ -14,6 +14,7 @@ export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 
+export 'package:utilities/view_models/IdTitle.dart';
 export 'extensions/shimmer_extension.dart';
 export 'extensions/text_extension.dart';
 export 'extensions/text_style_extension.dart';
