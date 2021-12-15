@@ -36,3 +36,4 @@ export 'widgets/container.dart';
 export 'widgets/image.dart';
 export 'widgets/menu/bottom_sheet.dart';
 export 'widgets/menu/drop_down_form_field.dart';
+export 'extensions/align_extension.dart';
