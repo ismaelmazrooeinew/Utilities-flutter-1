@@ -15,16 +15,16 @@ class SimpleViewModel {
   });
 
   factory SimpleViewModel.fromMap(final Map<String, dynamic> json) => SimpleViewModel(
-        id: json["Id"],
-        title: json["Title"],
-        description: json["description"],
-        type: json["type"],
-        createdAt: json["createdAt"],
+        id: json["Id"] ?? -1,
+        title: json["Title"] ?? "-1",
+        description: json["description"] ?? "-1",
+        type: json["type"] ?? -1,
+        createdAt: json["createdAt"] ?? "-1",
         media: json["Media"] == null ? null : List<MediaViewModel>.from(json["Media"].map((final dynamic x) => MediaViewModel.fromMap(x))),
-        subTitle: json["SubTitle"],
+        subTitle: json["SubTitle"] ?? "-1",
         contactInformation: json["ContactInformation"] == null ? null : List<ContactInformationViewModel>.from(json["ContactInformation"].map((final dynamic x) => ContactInformationViewModel.fromMap(x))),
-        useCase: json["UseCase"],
-        link: json["Link"],
+        useCase: json["UseCase"] ?? -1,
+        link: json["Link"] ?? -1,
       );
 
   factory SimpleViewModel.fromJson(final String str) => SimpleViewModel.fromMap(json.decode(str));
@@ -50,10 +50,10 @@ class MediaViewModel {
   });
 
   factory MediaViewModel.fromMap(final Map<String, dynamic> json) => MediaViewModel(
-        id: json["Id"],
-        type: json["Type"],
-        useCase: json["useCase"],
-        link: json["Link"],
+        id: json["Id"] ?? -1,
+        type: json["Type"] ?? -1,
+        useCase: json["useCase"] ?? -1,
+        link: json["Link"] ?? "-1",
       );
 
   factory MediaViewModel.fromJson(final String str) => MediaViewModel.fromMap(json.decode(str));
@@ -62,15 +62,6 @@ class MediaViewModel {
   final int type;
   final int useCase;
   final String link;
-
-  String toJson() => json.encode(toMap());
-
-  Map<String, dynamic> toMap() => <String, dynamic>{
-        "Id": id,
-        "Type": type,
-        "useCase": useCase,
-        "Link": link,
-      };
 }
 
 class ContactInformationViewModel {
@@ -84,10 +75,10 @@ class ContactInformationViewModel {
   factory ContactInformationViewModel.fromJson(final String str) => ContactInformationViewModel.fromMap(json.decode(str));
 
   factory ContactInformationViewModel.fromMap(final Map<String, dynamic> json) => ContactInformationViewModel(
-        id: json["Id"],
-        value: json["Value"],
+        id: json["Id"] ?? -1,
+        value: json["Value"] ?? "-1",
         contactInfoItem: json["ContactInfoItem"] == null ? null : SimpleViewModel.fromMap(json["ContactInfoItem"]),
-        visibility: json["Visibility"],
+        visibility: json["Visibility"] ?? -1,
       );
 
   final int id;
