@@ -24,7 +24,7 @@ class SimpleViewModel {
         subTitle: json["SubTitle"] ?? "-1",
         contactInformation: json["ContactInformation"] == null ? null : List<ContactInformationViewModel>.from(json["ContactInformation"].map((final dynamic x) => ContactInformationViewModel.fromMap(x))),
         useCase: json["UseCase"] ?? -1,
-        link: json["Link"] ?? -1,
+        link: json["Link"] ?? "-1",
       );
 
   factory SimpleViewModel.fromJson(final String str) => SimpleViewModel.fromMap(json.decode(str));
