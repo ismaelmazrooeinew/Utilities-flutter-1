@@ -2,15 +2,15 @@ import 'package:utilities/utilities.dart';
 
 class SimpleViewModel {
   SimpleViewModel({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.type,
-    required this.createdAt,
-    required this.media,
-    required this.subTitle,
-    required this.contactInformation,
-    required this.useCase,
+    this.id,
+    this.title,
+    this.description,
+    this.type,
+    this.createdAt,
+    this.media,
+    this.subTitle,
+    this.contactInformation,
+    this.useCase,
   });
 
   factory SimpleViewModel.fromMap(final Map<String, dynamic> json) => SimpleViewModel(
@@ -40,10 +40,10 @@ class SimpleViewModel {
 
 class MediaViewModel {
   MediaViewModel({
-    required this.id,
-    required this.type,
-    required this.useCase,
-    required this.link,
+    this.id,
+    this.type,
+    this.useCase,
+    this.link,
   });
 
   factory MediaViewModel.fromMap(final Map<String, dynamic> json) => MediaViewModel(
@@ -72,10 +72,10 @@ class MediaViewModel {
 
 class ContactInformationViewModel {
   ContactInformationViewModel({
-    required this.id,
-    required this.value,
-    required this.contactInfoItem,
-    required this.visibility,
+    this.id,
+    this.value,
+    this.contactInfoItem,
+    this.visibility,
   });
 
   factory ContactInformationViewModel.fromJson(final String str) => ContactInformationViewModel.fromMap(json.decode(str));
