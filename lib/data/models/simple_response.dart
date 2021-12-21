@@ -1,7 +1,7 @@
 import 'package:utilities/utilities.dart';
 
-class SimpleResponse {
-  SimpleResponse({
+class SimpleViewModel {
+  SimpleViewModel({
     required this.id,
     required this.title,
     required this.description,
@@ -13,19 +13,19 @@ class SimpleResponse {
     required this.useCase,
   });
 
-  factory SimpleResponse.fromMap(final Map<String, dynamic> json) => SimpleResponse(
+  factory SimpleViewModel.fromMap(final Map<String, dynamic> json) => SimpleViewModel(
         id: json["Id"],
         title: json["Title"],
         description: json["description"],
         type: json["type"],
         createdAt: json["createdAt"],
-        media: json["Media"] == null ? null : List<MediaResponse>.from(json["Media"].map((final dynamic x) => MediaResponse.fromMap(x))),
+        media: json["Media"] == null ? null : List<MediaViewModel>.from(json["Media"].map((final dynamic x) => MediaViewModel.fromMap(x))),
         subTitle: json["SubTitle"],
-        contactInformation: json["ContactInformation"] == null ? null : List<ContactInformationResponse>.from(json["ContactInformation"].map((final dynamic x) => ContactInformationResponse.fromMap(x))),
+        contactInformation: json["ContactInformation"] == null ? null : List<ContactInformationViewModel>.from(json["ContactInformation"].map((final dynamic x) => ContactInformationViewModel.fromMap(x))),
         useCase: json["UseCase"],
       );
 
-  factory SimpleResponse.fromJson(final String str) => SimpleResponse.fromMap(json.decode(str));
+  factory SimpleViewModel.fromJson(final String str) => SimpleViewModel.fromMap(json.decode(str));
 
   final int? id;
   final String? title;
@@ -33,27 +33,27 @@ class SimpleResponse {
   final String? description;
   final int? type;
   final String? createdAt;
-  final List<MediaResponse>? media;
-  final List<ContactInformationResponse>? contactInformation;
+  final List<MediaViewModel>? media;
+  final List<ContactInformationViewModel>? contactInformation;
   final int? useCase;
 }
 
-class MediaResponse {
-  MediaResponse({
+class MediaViewModel {
+  MediaViewModel({
     required this.id,
     required this.type,
     required this.useCase,
     required this.link,
   });
 
-  factory MediaResponse.fromMap(final Map<String, dynamic> json) => MediaResponse(
+  factory MediaViewModel.fromMap(final Map<String, dynamic> json) => MediaViewModel(
         id: json["Id"],
         type: json["Type"],
         useCase: json["useCase"],
         link: json["Link"],
       );
 
-  factory MediaResponse.fromJson(final String str) => MediaResponse.fromMap(json.decode(str));
+  factory MediaViewModel.fromJson(final String str) => MediaViewModel.fromMap(json.decode(str));
 
   final int? id;
   final int? type;
@@ -70,25 +70,25 @@ class MediaResponse {
       };
 }
 
-class ContactInformationResponse {
-  ContactInformationResponse({
+class ContactInformationViewModel {
+  ContactInformationViewModel({
     required this.id,
     required this.value,
     required this.contactInfoItem,
     required this.visibility,
   });
 
-  factory ContactInformationResponse.fromJson(final String str) => ContactInformationResponse.fromMap(json.decode(str));
+  factory ContactInformationViewModel.fromJson(final String str) => ContactInformationViewModel.fromMap(json.decode(str));
 
-  factory ContactInformationResponse.fromMap(final Map<String, dynamic> json) => ContactInformationResponse(
+  factory ContactInformationViewModel.fromMap(final Map<String, dynamic> json) => ContactInformationViewModel(
         id: json["Id"],
         value: json["Value"],
-        contactInfoItem: json["ContactInfoItem"] == null ? null : SimpleResponse.fromMap(json["ContactInfoItem"]),
+        contactInfoItem: json["ContactInfoItem"] == null ? null : SimpleViewModel.fromMap(json["ContactInfoItem"]),
         visibility: json["Visibility"],
       );
 
   final int? id;
   final String? value;
-  final SimpleResponse? contactInfoItem;
+  final SimpleViewModel? contactInfoItem;
   final int? visibility;
 }
