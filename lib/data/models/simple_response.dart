@@ -2,15 +2,16 @@ import 'package:utilities/utilities.dart';
 
 class SimpleViewModel {
   SimpleViewModel({
-    this.id,
-    this.title,
-    this.description,
-    this.type,
-    this.createdAt,
-    this.media,
-    this.subTitle,
+    this.id = -1,
+    this.title = "-1",
+    this.description = "-1",
+    this.type = -1,
+    this.createdAt = "-1",
+    this.subTitle = "-1",
+    this.useCase = -1,
+    this.link = "-1",
     this.contactInformation,
-    this.useCase,
+    this.media,
   });
 
   factory SimpleViewModel.fromMap(final Map<String, dynamic> json) => SimpleViewModel(
@@ -23,27 +24,29 @@ class SimpleViewModel {
         subTitle: json["SubTitle"],
         contactInformation: json["ContactInformation"] == null ? null : List<ContactInformationViewModel>.from(json["ContactInformation"].map((final dynamic x) => ContactInformationViewModel.fromMap(x))),
         useCase: json["UseCase"],
+        link: json["Link"],
       );
 
   factory SimpleViewModel.fromJson(final String str) => SimpleViewModel.fromMap(json.decode(str));
 
-  final int? id;
-  final String? title;
-  final String? subTitle;
-  final String? description;
-  final int? type;
-  final String? createdAt;
+  final int id;
+  final String title;
+  final String subTitle;
+  final String link;
+  final String createdAt;
+  final String description;
+  final int type;
+  final int useCase;
   final List<MediaViewModel>? media;
   final List<ContactInformationViewModel>? contactInformation;
-  final int? useCase;
 }
 
 class MediaViewModel {
   MediaViewModel({
-    this.id,
-    this.type,
-    this.useCase,
-    this.link,
+    this.id = -1,
+    this.type = -1,
+    this.useCase = -1,
+    this.link = "-1",
   });
 
   factory MediaViewModel.fromMap(final Map<String, dynamic> json) => MediaViewModel(
@@ -72,10 +75,10 @@ class MediaViewModel {
 
 class ContactInformationViewModel {
   ContactInformationViewModel({
-    this.id,
-    this.value,
+    this.id = -1,
+    this.value = "-1",
     this.contactInfoItem,
-    this.visibility,
+    this.visibility = -1,
   });
 
   factory ContactInformationViewModel.fromJson(final String str) => ContactInformationViewModel.fromMap(json.decode(str));
@@ -87,8 +90,8 @@ class ContactInformationViewModel {
         visibility: json["Visibility"],
       );
 
-  final int? id;
-  final String? value;
+  final int id;
+  final String value;
   final SimpleViewModel? contactInfoItem;
-  final int? visibility;
+  final int visibility;
 }
