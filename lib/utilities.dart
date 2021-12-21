@@ -14,7 +14,8 @@ export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 
-export 'package:utilities/extras/simple_view_model.dart';
+export 'data/models/simple_response.dart';
+export 'extensions/align_extension.dart';
 export 'extensions/shimmer_extension.dart';
 export 'extensions/text_extension.dart';
 export 'extensions/text_style_extension.dart';
@@ -36,4 +37,3 @@ export 'widgets/container.dart';
 export 'widgets/image.dart';
 export 'widgets/menu/bottom_sheet.dart';
 export 'widgets/menu/drop_down_form_field.dart';
-export 'extensions/align_extension.dart';
