@@ -58,10 +58,10 @@ class MediaViewModel {
 
   factory MediaViewModel.fromJson(final String str) => MediaViewModel.fromMap(json.decode(str));
 
-  final int? id;
-  final int? type;
-  final int? useCase;
-  final String? link;
+  final int id;
+  final int type;
+  final int useCase;
+  final String link;
 
   String toJson() => json.encode(toMap());
 
