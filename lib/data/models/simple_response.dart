@@ -17,9 +17,9 @@ class SimpleViewModel {
   factory SimpleViewModel.fromMap(final Map<String, dynamic> json) => SimpleViewModel(
         id: json["Id"] ?? -1,
         title: json["Title"] ?? "-1",
-        description: json["description"] ?? "-1",
-        type: json["type"] ?? -1,
-        createdAt: json["createdAt"] ?? "-1",
+        description: json["Description"] ?? "-1",
+        type: json["Type"] ?? -1,
+        createdAt: json["CreatedAt"] ?? "-1",
         media: json["Media"] == null ? null : List<MediaViewModel>.from(json["Media"].map((final dynamic x) => MediaViewModel.fromMap(x))),
         subTitle: json["SubTitle"] ?? "-1",
         contactInformation: json["ContactInformation"] == null ? null : List<ContactInformationViewModel>.from(json["ContactInformation"].map((final dynamic x) => ContactInformationViewModel.fromMap(x))),
@@ -52,7 +52,7 @@ class MediaViewModel {
   factory MediaViewModel.fromMap(final Map<String, dynamic> json) => MediaViewModel(
         id: json["Id"] ?? -1,
         type: json["Type"] ?? -1,
-        useCase: json["useCase"] ?? -1,
+        useCase: json["UseCase"] ?? -1,
         link: json["Link"] ?? "-1",
       );
 
