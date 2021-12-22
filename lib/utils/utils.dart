@@ -10,6 +10,15 @@ extension IterableExtentions on Iterable {
   }
 }
 
+extension NullableIterableExtentions on Iterable? {
+  bool isNullOrEmpty() {
+    if (this == null)
+      return true;
+    else if (this!.length == 0) return true;
+    return true;
+  }
+}
+
 extension BoolExtensios on String {
   bool isTrue() => toLowerCase() == 'true';
 
