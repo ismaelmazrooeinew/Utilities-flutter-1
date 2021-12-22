@@ -7,6 +7,7 @@ class SimpleViewModel {
     this.description = "-1",
     this.type = -1,
     this.createdAt = "-1",
+    this.image = "-1",
     this.subTitle = "-1",
     this.useCase = -1,
     this.link = "-1",
@@ -19,6 +20,7 @@ class SimpleViewModel {
         title: json["Title"] ?? "-1",
         description: json["Description"] ?? "-1",
         type: json["Type"] ?? -1,
+        image: json["Image"] ?? "-1",
         createdAt: json["CreatedAt"] ?? "-1",
         media: json["Media"] == null ? null : List<MediaViewModel>.from(json["Media"].map((final dynamic x) => MediaViewModel.fromMap(x))),
         subTitle: json["SubTitle"] ?? "-1",
@@ -35,6 +37,7 @@ class SimpleViewModel {
   final String link;
   final String createdAt;
   final String description;
+  final String image;
   final int type;
   final int useCase;
   final List<MediaViewModel>? media;
