@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:utilities/extras/constants.dart';
 import 'package:utilities/utils/local_storage.dart';
 
@@ -45,10 +46,7 @@ Future<void> request<T>(
     print(e);
   }
 
-  if (body != null && encodeBody)
-    response.completeLog(params: body.toJson());
-  else
-    response.log();
+  response.log(params: body == null ? "" : body.toJson());
   if (response.isSuccessful())
     action(response);
   else
@@ -101,7 +99,6 @@ Future<void> delete({
 }) async =>
     await request(url, EHttpMethod.delete, action, error, headers: headers);
 
-
 enum EHttpMethod { get, post, put, patch, delete }
 
 extension HTTP<T> on Response<T> {
@@ -109,13 +106,10 @@ extension HTTP<T> on Response<T> {
 
   bool isServerError() => (statusCode ?? 0) >= 500 && (statusCode ?? 0) <= 599 ? true : false;
 
-  void log() {
-    print("${this.request!.method} - ${this.request!.url} - $statusCode");
-    print("RESPONSE: $body");
-  }
-
-  void completeLog({final String? params}) {
-    print("${this.request!.method} - ${this.request!.url} - $statusCode HEADERS: $headers");
-    print("PARAMS: $params - RESPONSE: $body");
+  void log({final String params = ""}) {
+    Logger logger = Logger();
+    logger.d("METHOD: ${this.request!.method} - URL: ${this.request!.url}  - URL: $statusCode");
+    logger.d("PARAMS: $params");
+    logger.d("RESPONSE: $body");
   }
 }
