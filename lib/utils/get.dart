@@ -120,7 +120,7 @@ Future<void> offAll(
       transition: transition,
     );
 
-Future<void> offAllAsynnc(
+Future<void> offAllAsync(
   final Widget page, {
   final bool dialog = false,
   final Transition transition = Transition.cupertino,
