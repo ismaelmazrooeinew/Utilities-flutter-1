@@ -107,11 +107,11 @@ Future<void> dialogAsync(
   );
 }
 
-Future<void> offAll(
+void offAll(
   final Widget page, {
   final bool dialog = false,
   final Transition transition = Transition.cupertino,
-}) async =>
+}) =>
     Get.offAll(
       page,
       fullscreenDialog: dialog,
