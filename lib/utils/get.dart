@@ -54,6 +54,7 @@ void push(
   final bool dialog = false,
   final Transition transition = Transition.cupertino,
   final bool backFirst = false,
+  final bool preventDuplicates = true,
 }) {
   if (backFirst) back();
   Get.to(
@@ -62,6 +63,26 @@ void push(
     popGesture: true,
     opaque: dialog ? false : true,
     transition: transition,
+    preventDuplicates: preventDuplicates,
+  );
+}
+
+Future<void> pushAsync(
+  final Widget page, {
+  final bool dialog = false,
+  final Transition transition = Transition.cupertino,
+  final bool backFirst = false,
+  final bool preventDuplicates = true,
+}) async {
+  if (backFirst) back();
+  final Widget _page = await Future.microtask(() => page);
+  Get.to(
+    _page,
+    fullscreenDialog: dialog,
+    popGesture: true,
+    opaque: dialog ? false : true,
+    transition: transition,
+    preventDuplicates: preventDuplicates,
   );
 }
 
@@ -74,8 +95,46 @@ void dialog(
       (final _) => onDismiss != null ? onDismiss() : null,
     );
 
-void back() => Get.back();
+Future<void> dialogAsync(
+  final Widget page, {
+  final bool dialog = false,
+  final VoidCallback? onDismiss,
+}) async {
+  final Widget _page = await Future.microtask(() => page);
 
-void offAll(final Widget page) => Get.offAll(page);
+  Get.dialog(_page, useSafeArea: true).then(
+    (final _) => onDismiss != null ? onDismiss() : null,
+  );
+}
+
+Future<void> offAll(
+  final Widget page, {
+  final bool dialog = false,
+  final Transition transition = Transition.cupertino,
+}) async =>
+    Get.offAll(
+      page,
+      fullscreenDialog: dialog,
+      popGesture: true,
+      opaque: dialog ? false : true,
+      transition: transition,
+    );
+
+Future<void> offAllAsynnc(
+  final Widget page, {
+  final bool dialog = false,
+  final Transition transition = Transition.cupertino,
+}) async {
+  final Widget _page = await Future.microtask(() => page);
+  Get.offAll(
+    _page,
+    fullscreenDialog: dialog,
+    popGesture: true,
+    opaque: dialog ? false : true,
+    transition: transition,
+  );
+}
 
 void off(final Widget page) => Get.off(page);
+
+void back() => Get.back();
