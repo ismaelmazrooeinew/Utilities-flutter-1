@@ -20,22 +20,26 @@ Widget imageAsset(
       child: Padding(
         padding: margin,
         child: radius(
-          child: asset.substring(asset.length - 3).toLowerCase() == "svg"
-              ? SvgPicture.asset(
-                  asset,
-                  color: color,
-                  width: width,
-                  height: height,
-                  fit: fit,
-                  clipBehavior: clipBehavior,
-                )
-              : Image.asset(
-                  asset,
-                  color: color,
-                  width: width,
-                  height: height,
-                  fit: fit,
-                ),
+          child: SizedBox(
+            width: width,
+            height: height,
+            child: asset.substring(asset.length - 3).toLowerCase() == "svg"
+                ? SvgPicture.asset(
+                    asset,
+                    color: color,
+                    width: width,
+                    height: height,
+                    fit: fit,
+                    clipBehavior: clipBehavior,
+                  )
+                : Image.asset(
+                    asset,
+                    color: color,
+                    width: width,
+                    height: height,
+                    fit: fit,
+                  ),
+          ),
           radius: borderRadius,
         ),
       ),
@@ -58,25 +62,16 @@ Widget imageNetwork(
       child: Padding(
         padding: margin,
         child: radius(
-          child: Image.network(
-            url,
-            color: color,
+          child: SizedBox(
             width: width,
             height: height,
-            fit: fit,
-            errorBuilder: (final _, final __, final ___) => placeholder == null
-                ? const SizedBox()
-                : imageAsset(
-                    placeholder,
-                    color: color,
-                    width: width,
-                    height: height,
-                    fit: fit,
-                    clipBehavior: clipBehavior,
-                  ),
-            loadingBuilder: (final BuildContext context, final Widget child, final ImageChunkEvent? event) {
-              if (event == null) return child;
-              return placeholder == null
+            child: Image.network(
+              url,
+              color: color,
+              width: width,
+              height: height,
+              fit: fit,
+              errorBuilder: (final _, final __, final ___) => placeholder == null
                   ? const SizedBox()
                   : imageAsset(
                       placeholder,
@@ -85,8 +80,21 @@ Widget imageNetwork(
                       height: height,
                       fit: fit,
                       clipBehavior: clipBehavior,
-                    );
-            },
+                    ),
+              loadingBuilder: (final BuildContext context, final Widget child, final ImageChunkEvent? event) {
+                if (event == null) return child;
+                return placeholder == null
+                    ? const SizedBox()
+                    : imageAsset(
+                        placeholder,
+                        color: color,
+                        width: width,
+                        height: height,
+                        fit: fit,
+                        clipBehavior: clipBehavior,
+                      );
+              },
+            ),
           ),
           radius: borderRadius,
         ),
@@ -109,12 +117,16 @@ Widget imageFile(
       child: Padding(
         padding: margin,
         child: radius(
-          child: Image.file(
-            file,
-            color: color,
+          child: SizedBox(
             width: width,
             height: height,
-            fit: fit,
+            child: Image.file(
+              file,
+              color: color,
+              width: width,
+              height: height,
+              fit: fit,
+            ),
           ),
           radius: borderRadius,
         ),
