@@ -59,31 +59,20 @@ Widget imageNetwork(
 }) =>
     GestureDetector(
       onTap: onTap,
-      child: Padding(
-        padding: margin,
-        child: radius(
-          child: SizedBox(
-            width: width,
-            height: height,
-            child: Image.network(
-              url,
-              color: color,
-              width: width,
-              height: height,
-              fit: fit,
-              errorBuilder: (final _, final __, final ___) => placeholder == null
-                  ? const SizedBox()
-                  : imageAsset(
-                      placeholder,
-                      color: color,
-                      width: width,
-                      height: height,
-                      fit: fit,
-                      clipBehavior: clipBehavior,
-                    ),
-              loadingBuilder: (final BuildContext context, final Widget child, final ImageChunkEvent? event) {
-                if (event == null) return child;
-                return placeholder == null
+      child: Container(
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(borderRadius)),
+        margin: margin,
+        width: width,
+        height: height,
+        child: (url.length >= 10 && url.substring(url.length - 3) == "svg")
+            ? SvgPicture.network(
+                url,
+                color: color,
+                width: width,
+                height: height,
+                fit: fit,
+                placeholderBuilder: (final _) => placeholder == null
                     ? const SizedBox()
                     : imageAsset(
                         placeholder,
@@ -92,12 +81,38 @@ Widget imageNetwork(
                         height: height,
                         fit: fit,
                         clipBehavior: clipBehavior,
-                      );
-              },
-            ),
-          ),
-          radius: borderRadius,
-        ),
+                      ),
+              )
+            : Image.network(
+                url,
+                color: color,
+                width: width,
+                height: height,
+                fit: fit,
+                errorBuilder: (final _, final __, final ___) => placeholder == null
+                    ? const SizedBox()
+                    : imageAsset(
+                        placeholder,
+                        color: color,
+                        width: width,
+                        height: height,
+                        fit: fit,
+                        clipBehavior: clipBehavior,
+                      ),
+                loadingBuilder: (final BuildContext context, final Widget child, final ImageChunkEvent? event) {
+                  if (event == null) return child;
+                  return placeholder == null
+                      ? const SizedBox()
+                      : imageAsset(
+                          placeholder,
+                          color: color,
+                          width: width,
+                          height: height,
+                          fit: fit,
+                          clipBehavior: clipBehavior,
+                        );
+                },
+              ),
       ),
     );
 
