@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:utilities/widgets/container.dart';
 
 Widget imageAsset(
   final String asset, {
@@ -17,31 +16,22 @@ Widget imageAsset(
 }) =>
     GestureDetector(
       onTap: onTap,
-      child: Padding(
-        padding: margin,
-        child: radius(
-          child: SizedBox(
-            width: width,
-            height: height,
-            child: asset.substring(asset.length - 3).toLowerCase() == "svg"
-                ? SvgPicture.asset(
-                    asset,
-                    color: color,
-                    width: width,
-                    height: height,
-                    fit: fit,
-                    clipBehavior: clipBehavior,
-                  )
-                : Image.asset(
-                    asset,
-                    color: color,
-                    width: width,
-                    height: height,
-                    fit: fit,
-                  ),
-          ),
-          radius: borderRadius,
-        ),
+      child: Container(
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(borderRadius)),
+        margin: margin,
+        width: width,
+        height: height,
+        child: asset.substring(asset.length - 3).toLowerCase() == "svg"
+            ? SvgPicture.asset(
+                asset,
+                color: color,
+                width: width,
+                height: height,
+                fit: fit,
+                clipBehavior: clipBehavior,
+              )
+            : Image.asset(asset, color: color, width: width, height: height, fit: fit),
       ),
     );
 
@@ -129,21 +119,12 @@ Widget imageFile(
 }) =>
     GestureDetector(
       onTap: onTap,
-      child: Padding(
-        padding: margin,
-        child: radius(
-          child: SizedBox(
-            width: width,
-            height: height,
-            child: Image.file(
-              file,
-              color: color,
-              width: width,
-              height: height,
-              fit: fit,
-            ),
-          ),
-          radius: borderRadius,
-        ),
+      child: Container(
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(borderRadius)),
+        margin: margin,
+        width: width,
+        height: height,
+        child: Image.file(file, color: color, width: width, height: height, fit: fit),
       ),
     );
