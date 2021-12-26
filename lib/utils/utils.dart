@@ -15,7 +15,7 @@ extension NullableIterableExtentions on Iterable? {
     if (this == null)
       return true;
     else if (this!.length == 0) return true;
-    return true;
+    return false;
   }
 }
 
