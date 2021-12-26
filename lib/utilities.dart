@@ -13,6 +13,7 @@ export 'package:share_plus/share_plus.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:webview_flutter/webview_flutter.dart';
+export 'package:logger/logger.dart';
 
 export 'extensions/align_extension.dart';
 export 'extensions/shimmer_extension.dart';
