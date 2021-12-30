@@ -56,7 +56,16 @@ Widget imageNetwork(
         width: width,
         height: height,
         child: url.length <= 10
-            ? SizedBox()
+            ? placeholder == null
+                ? const SizedBox()
+                : imageAsset(
+                    placeholder,
+                    color: color,
+                    width: width,
+                    height: height,
+                    fit: fit,
+                    clipBehavior: clipBehavior,
+                  )
             : url.substring(url.length - 3) == "svg"
                 ? SvgPicture.network(
                     url,
