@@ -1,5 +1,9 @@
 import 'dart:ui';
 
+import 'package:logger/logger.dart';
+
+Logger logger = Logger();
+
 extension IterableExtentions on Iterable {
   Iterable<E> mapIndexed<E, T>(E Function(int index, T item) f) sync* {
     int index = 0;
