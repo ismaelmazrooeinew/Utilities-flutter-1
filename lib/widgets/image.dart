@@ -55,54 +55,56 @@ Widget imageNetwork(
         margin: margin,
         width: width,
         height: height,
-        child: (url.length >= 10 && url.substring(url.length - 3) == "svg")
-            ? SvgPicture.network(
-                url,
-                color: color,
-                width: width,
-                height: height,
-                fit: fit,
-                placeholderBuilder: (final _) => placeholder == null
-                    ? const SizedBox()
-                    : imageAsset(
-                        placeholder,
-                        color: color,
-                        width: width,
-                        height: height,
-                        fit: fit,
-                        clipBehavior: clipBehavior,
-                      ),
-              )
-            : Image.network(
-                url,
-                color: color,
-                width: width,
-                height: height,
-                fit: fit,
-                errorBuilder: (final _, final __, final ___) => placeholder == null
-                    ? const SizedBox()
-                    : imageAsset(
-                        placeholder,
-                        color: color,
-                        width: width,
-                        height: height,
-                        fit: fit,
-                        clipBehavior: clipBehavior,
-                      ),
-                loadingBuilder: (final BuildContext context, final Widget child, final ImageChunkEvent? event) {
-                  if (event == null) return child;
-                  return placeholder == null
-                      ? const SizedBox()
-                      : imageAsset(
-                          placeholder,
-                          color: color,
-                          width: width,
-                          height: height,
-                          fit: fit,
-                          clipBehavior: clipBehavior,
-                        );
-                },
-              ),
+        child: url.length <= 10
+            ? SizedBox()
+            : url.substring(url.length - 3) == "svg"
+                ? SvgPicture.network(
+                    url,
+                    color: color,
+                    width: width,
+                    height: height,
+                    fit: fit,
+                    placeholderBuilder: (final _) => placeholder == null
+                        ? const SizedBox()
+                        : imageAsset(
+                            placeholder,
+                            color: color,
+                            width: width,
+                            height: height,
+                            fit: fit,
+                            clipBehavior: clipBehavior,
+                          ),
+                  )
+                : Image.network(
+                    url,
+                    color: color,
+                    width: width,
+                    height: height,
+                    fit: fit,
+                    errorBuilder: (final _, final __, final ___) => placeholder == null
+                        ? const SizedBox()
+                        : imageAsset(
+                            placeholder,
+                            color: color,
+                            width: width,
+                            height: height,
+                            fit: fit,
+                            clipBehavior: clipBehavior,
+                          ),
+                    loadingBuilder: (final BuildContext context, final Widget child, final ImageChunkEvent? event) {
+                      if (event == null) return child;
+                      return placeholder == null
+                          ? const SizedBox()
+                          : imageAsset(
+                              placeholder,
+                              color: color,
+                              width: width,
+                              height: height,
+                              fit: fit,
+                              clipBehavior: clipBehavior,
+                            );
+                    },
+                  ),
       ),
     );
 
