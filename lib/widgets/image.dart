@@ -60,7 +60,6 @@ Widget imageNetwork(
                 ? const SizedBox()
                 : imageAsset(
                     placeholder,
-                    color: color,
                     width: width,
                     height: height,
                     fit: fit,
@@ -77,7 +76,6 @@ Widget imageNetwork(
                         ? const SizedBox()
                         : imageAsset(
                             placeholder,
-                            color: color,
                             width: width,
                             height: height,
                             fit: fit,
