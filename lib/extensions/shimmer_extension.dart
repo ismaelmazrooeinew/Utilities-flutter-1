@@ -1,20 +1,17 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 extension ShimmerEffect on Widget {
   Widget applyShimmer({final bool enable = true, final Color? baseColor, final Color? highlightColor}) {
-    if (enable) {
+    if (enable)
       return Shimmer.fromColors(
         baseColor: baseColor == null ? Colors.grey.shade300 : baseColor,
         highlightColor: highlightColor == null ? Colors.grey.shade100 : highlightColor,
         enabled: enable,
         child: this,
       );
-    } else {
+    else
       return this;
-    }
   }
 }
 
@@ -153,15 +150,15 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(final BuildContext context) => AnimatedBuilder(
-      animation: _controller,
-      child: widget.child,
-      builder: (final BuildContext context, final Widget? child) => _Shimmer(
-        direction: widget.direction,
-        gradient: widget.gradient,
-        percent: _controller.value,
-        child: child,
-      ),
-    );
+        animation: _controller,
+        child: widget.child,
+        builder: (final BuildContext context, final Widget? child) => _Shimmer(
+          direction: widget.direction,
+          gradient: widget.gradient,
+          percent: _controller.value,
+          child: child,
+        ),
+      );
 
   @override
   void dispose() {

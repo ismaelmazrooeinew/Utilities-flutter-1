@@ -72,15 +72,15 @@ Widget imageNetwork(
                     width: width,
                     height: height,
                     fit: fit,
-                    placeholderBuilder: (final _) => placeholder == null
-                        ? const SizedBox()
-                        : imageAsset(
-                            placeholder,
-                            width: width,
-                            height: height,
-                            fit: fit,
-                            clipBehavior: clipBehavior,
-                          ),
+                    placeholderBuilder: placeholder == null
+                        ? null
+                        : (final _) => imageAsset(
+                              placeholder,
+                              width: width,
+                              height: height,
+                              fit: fit,
+                              clipBehavior: clipBehavior,
+                            ),
                   )
                 : Image.network(
                     url,
@@ -88,21 +88,21 @@ Widget imageNetwork(
                     width: width,
                     height: height,
                     fit: fit,
-                    errorBuilder: (final _, final __, final ___) => placeholder == null
-                        ? const SizedBox()
-                        : imageAsset(
-                            placeholder,
-                            color: color,
-                            width: width,
-                            height: height,
-                            fit: fit,
-                            clipBehavior: clipBehavior,
-                          ),
-                    loadingBuilder: (final BuildContext context, final Widget child, final ImageChunkEvent? event) {
-                      if (event == null) return child;
-                      return placeholder == null
-                          ? const SizedBox()
-                          : imageAsset(
+                    errorBuilder: placeholder == null
+                        ? null
+                        : (final _, final __, final ___) => imageAsset(
+                              placeholder,
+                              color: color,
+                              width: width,
+                              height: height,
+                              fit: fit,
+                              clipBehavior: clipBehavior,
+                            ),
+                    loadingBuilder: placeholder == null
+                        ? null
+                        : (final BuildContext context, final Widget child, final ImageChunkEvent? event) {
+                            if (event == null) return child;
+                            return imageAsset(
                               placeholder,
                               color: color,
                               width: width,
@@ -110,7 +110,7 @@ Widget imageNetwork(
                               fit: fit,
                               clipBehavior: clipBehavior,
                             );
-                    },
+                          },
                   ),
       ),
     );

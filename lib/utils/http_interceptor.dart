@@ -1,14 +1,11 @@
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
-import 'package:utilities/extras/constants.dart';
-import 'package:utilities/utils/local_storage.dart';
+import 'package:utilities/utilities.dart';
 
 GetConnect getConnect = GetConnect(
   followRedirects: false,
   timeout: const Duration(minutes: 60),
   allowAutoSignedCert: true,
   sendUserAgent: true,
-  userAgent: "ThisIsFrozenSun",
+  userAgent: "SinaMN75",
   maxRedirects: 10,
   maxAuthRetries: 3,
 );

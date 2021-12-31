@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:file_picker/file_picker.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:utilities/utilities.dart';
 
 void showFilePicker({
@@ -32,6 +30,13 @@ Future<File?> cropImage({
   ImageCompressFormat imageCompressFormat = ImageCompressFormat.png,
   AndroidUiSettings? androidUiSettings,
   IOSUiSettings? iOSUiSettings,
+  List<CropAspectRatioPreset> aspectRatioPresets = const <CropAspectRatioPreset>[
+    CropAspectRatioPreset.original,
+    CropAspectRatioPreset.square,
+    CropAspectRatioPreset.ratio3x2,
+    CropAspectRatioPreset.ratio4x3,
+    CropAspectRatioPreset.ratio16x9,
+  ],
 }) async {
   final File? result = await ImageCropper.cropImage(
     sourcePath: file.path,
@@ -41,6 +46,7 @@ Future<File?> cropImage({
     compressFormat: imageCompressFormat,
     cropStyle: CropStyle.rectangle,
     compressQuality: 90,
+    aspectRatioPresets: aspectRatioPresets,
     androidUiSettings: androidUiSettings ??
         AndroidUiSettings(
           toolbarTitle: 'Crop Your Image',

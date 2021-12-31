@@ -32,12 +32,7 @@ Widget scaffold({
         bottomNavigationBar: bottomNavigationBar,
         body: Align(
           alignment: alignment ?? Alignment.topLeft,
-          child: Container(
-            constraints: constraints,
-            decoration: decoration,
-            padding: padding,
-            child: body,
-          ),
+          child: Container(constraints: constraints, decoration: decoration, padding: padding, child: body),
         ),
       ),
     );

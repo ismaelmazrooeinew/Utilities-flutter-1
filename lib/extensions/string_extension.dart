@@ -1,7 +1,5 @@
 import 'package:intl/intl.dart';
 
-String formatDate(final DateTime dateTime, final String dateFormat) => DateFormat(dateFormat).format(dateTime);
-
 extension StringExtensions on String {
   bool isNumeric() => double.tryParse(this) != null;
 
