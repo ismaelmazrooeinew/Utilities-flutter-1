@@ -26,7 +26,7 @@ extension StringExtensions on String {
 
   int getMinute() => int.parse(substring(3, 5).append0());
 
-  String timeAgo({final bool numericDates = false}) {
+  String toTimeAgo({final bool numericDates = false}) {
     final Duration difference = DateTime.now().difference(DateFormat("yyyy-MM-ddThh:mm:sss").parse(this));
 
     if (difference.inDays > 8)
