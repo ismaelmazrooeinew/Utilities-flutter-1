@@ -1,41 +1,6 @@
 import 'package:intl/intl.dart';
 
-int getDay(final String date) => int.parse(date.substring(8, 10).append0());
-
-int getMonth(final String date) => int.parse(date.substring(5, 7).append0());
-
-int getYear(final String date) => int.parse(date.substring(0, 4).append0());
-
-int getHour(final String time) => int.parse(time.substring(0, 2).append0());
-
-int getMinute(final String time) => int.parse(time.substring(3, 5).append0());
-
 String formatDate(final DateTime dateTime, final String dateFormat) => DateFormat(dateFormat).format(dateTime);
-
-String timeAgo(final String dateString, {final bool numericDates = false}) {
-  final Duration difference = DateTime.now().difference(DateFormat("yyyy-MM-ddThh:mm:sss").parse(dateString));
-
-  if (difference.inDays > 8)
-    return dateString.substring(0, 10);
-  else if ((difference.inDays / 7).floor() >= 1)
-    return numericDates ? '1 week ago' : 'Last week';
-  else if (difference.inDays >= 2)
-    return '${difference.inDays} days ago';
-  else if (difference.inDays >= 1)
-    return numericDates ? '1 day ago' : 'Yesterday';
-  else if (difference.inHours >= 2)
-    return '${difference.inHours} hours ago';
-  else if (difference.inHours >= 1)
-    return numericDates ? '1 hour ago' : 'An hour ago';
-  else if (difference.inMinutes >= 2)
-    return '${difference.inMinutes} minutes ago';
-  else if (difference.inMinutes >= 1)
-    return numericDates ? '1 minute ago' : 'A minute ago';
-  else if (difference.inSeconds >= 3)
-    return '${difference.inSeconds} seconds ago';
-  else
-    return 'Just now';
-}
 
 extension StringExtensions on String {
   bool isNumeric() => double.tryParse(this) != null;
@@ -49,6 +14,41 @@ extension StringExtensions on String {
       return "0$this";
     else
       return this;
+  }
+
+  int getDay() => int.parse(substring(8, 10).append0());
+
+  int getMonth() => int.parse(substring(5, 7).append0());
+
+  int getYear() => int.parse(substring(0, 4).append0());
+
+  int getHour() => int.parse(substring(0, 2).append0());
+
+  int getMinute() => int.parse(substring(3, 5).append0());
+
+  String timeAgo({final bool numericDates = false}) {
+    final Duration difference = DateTime.now().difference(DateFormat("yyyy-MM-ddThh:mm:sss").parse(this));
+
+    if (difference.inDays > 8)
+      return this.substring(0, 10);
+    else if ((difference.inDays / 7).floor() >= 1)
+      return numericDates ? '1 week ago' : 'Last week';
+    else if (difference.inDays >= 2)
+      return '${difference.inDays} days ago';
+    else if (difference.inDays >= 1)
+      return numericDates ? '1 day ago' : 'Yesterday';
+    else if (difference.inHours >= 2)
+      return '${difference.inHours} hours ago';
+    else if (difference.inHours >= 1)
+      return numericDates ? '1 hour ago' : 'An hour ago';
+    else if (difference.inMinutes >= 2)
+      return '${difference.inMinutes} minutes ago';
+    else if (difference.inMinutes >= 1)
+      return numericDates ? '1 minute ago' : 'A minute ago';
+    else if (difference.inSeconds >= 3)
+      return '${difference.inSeconds} seconds ago';
+    else
+      return 'Just now';
   }
 
   String persianNumber() {
