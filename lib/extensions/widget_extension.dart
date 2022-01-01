@@ -22,4 +22,6 @@ extension WidgetsExtension on Widget {
         margin: margin,
         child: this,
       );
+
+  Widget fit() => FittedBox(key: key, child: this, fit: BoxFit.scaleDown);
 }
