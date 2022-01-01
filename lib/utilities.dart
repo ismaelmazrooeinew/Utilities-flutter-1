@@ -31,6 +31,7 @@ export 'utils/constants.dart';
 export 'utils/device_settings.dart';
 export 'utils/get.dart';
 export 'utils/http_interceptor.dart';
+export 'utils/file.dart';
 export 'utils/launch.dart';
 export 'utils/local_storage.dart';
 export 'utils/share.dart';
