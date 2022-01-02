@@ -25,28 +25,31 @@ extension StringExtensions on String {
   int getMinute() => int.parse(substring(3, 5).append0());
 
   String toTimeAgo({final bool numericDates = false}) {
-    final Duration difference = DateTime.now().difference(DateFormat("yyyy-MM-ddThh:mm:sss").parse(this));
-
-    if (difference.inDays > 8)
-      return this.substring(0, 10);
-    else if ((difference.inDays / 7).floor() >= 1)
-      return numericDates ? '1 week ago' : 'Last week';
-    else if (difference.inDays >= 2)
-      return '${difference.inDays} days ago';
-    else if (difference.inDays >= 1)
-      return numericDates ? '1 day ago' : 'Yesterday';
-    else if (difference.inHours >= 2)
-      return '${difference.inHours} hours ago';
-    else if (difference.inHours >= 1)
-      return numericDates ? '1 hour ago' : 'An hour ago';
-    else if (difference.inMinutes >= 2)
-      return '${difference.inMinutes} minutes ago';
-    else if (difference.inMinutes >= 1)
-      return numericDates ? '1 minute ago' : 'A minute ago';
-    else if (difference.inSeconds >= 3)
-      return '${difference.inSeconds} seconds ago';
-    else
-      return 'Just now';
+    try {
+      final Duration difference = DateTime.now().difference(DateFormat("yyyy-MM-ddThh:mm:sss").parse(this));
+      if (difference.inDays > 8)
+        return this.substring(0, 10);
+      else if ((difference.inDays / 7).floor() >= 1)
+        return numericDates ? '1 week ago' : 'Last week';
+      else if (difference.inDays >= 2)
+        return '${difference.inDays} days ago';
+      else if (difference.inDays >= 1)
+        return numericDates ? '1 day ago' : 'Yesterday';
+      else if (difference.inHours >= 2)
+        return '${difference.inHours} hours ago';
+      else if (difference.inHours >= 1)
+        return numericDates ? '1 hour ago' : 'An hour ago';
+      else if (difference.inMinutes >= 2)
+        return '${difference.inMinutes} minutes ago';
+      else if (difference.inMinutes >= 1)
+        return numericDates ? '1 minute ago' : 'A minute ago';
+      else if (difference.inSeconds >= 3)
+        return '${difference.inSeconds} seconds ago';
+      else
+        return 'Just now';
+    } catch (e) {
+      return this;
+    }
   }
 
   String persianNumber() {

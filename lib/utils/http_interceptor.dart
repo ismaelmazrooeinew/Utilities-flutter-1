@@ -105,7 +105,7 @@ extension HTTP<T> on Response<T> {
 
   void log({final String params = ""}) {
     Logger logger = Logger();
-    logger.d(
+    logger.i(
       "METHOD: ${this.request!.method} - URL: ${this.request!.url} - URL: $statusCode \nPARAMS: $params \nRESPONSE: $body",
     );
   }
