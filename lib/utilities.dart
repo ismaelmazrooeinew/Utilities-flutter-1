@@ -39,3 +39,4 @@ export 'utils/utils.dart';
 export 'widgets/bottom_sheet.dart';
 export 'widgets/container.dart';
 export 'widgets/image.dart';
+export 'widgets/others.dart';
