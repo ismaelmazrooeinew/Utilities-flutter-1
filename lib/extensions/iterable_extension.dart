@@ -24,7 +24,7 @@ extension GenericIterableExtentions<T> on Iterable {
 
 extension IterableExtentions<T> on Iterable<T> {
   Iterable<T> takeIfPossible(final int range) {
-    if (range < length)
+    if (range > length)
       return take(length);
     else
       return take(range);
