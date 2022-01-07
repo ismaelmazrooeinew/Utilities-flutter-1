@@ -37,3 +37,53 @@ flutter:
   uses-material-design: true
   assets:
     - lib/assets/data/
+
+  fonts:
+    - family: Ionicons
+      fonts:
+        - asset: lib/fonts/Ionicons.ttf
+    - family: AntDesign
+      fonts:
+        - asset: lib/fonts/AntDesign.ttf
+    - family: FontAwesome
+      fonts:
+        - asset: lib/fonts/FontAwesome.ttf
+    - family: MaterialIcons
+      fonts:
+        - asset: lib/fonts/MaterialIcons.ttf
+    - family: Entypo
+      fonts:
+        - asset: lib/fonts/Entypo.ttf
+    - family: EvilIcons
+      fonts:
+        - asset: lib/fonts/EvilIcons.ttf
+    - family: Feather
+      fonts:
+        - asset: lib/fonts/Feather.ttf
+    - family: Foundation
+      fonts:
+        - asset: lib/fonts/Foundation.ttf
+    - family: MaterialCommunityIcons
+      fonts:
+        - asset: lib/fonts/MaterialCommunityIcons.ttf
+    - family: Octicons
+      fonts:
+        - asset: lib/fonts/Octicons.ttf
+    - family: SimpleLineIcons
+      fonts:
+        - asset: lib/fonts/SimpleLineIcons.ttf
+    - family: Zocial
+      fonts:
+        - asset: lib/fonts/Zocial.ttf
+    - family: FontAwesome5
+      fonts:
+        - asset: lib/fonts/FontAwesome5_Regular.ttf
+    - family: FontAwesome5_Brands
+      fonts:
+        - asset: lib/fonts/FontAwesome5_Brands.ttf
+    - family: FontAwesome5_Solid
+      fonts:
+        - asset: lib/fonts/FontAwesome5_Solid.ttf
+    - family: WeatherIcons
+      fonts:
+        - asset: lib/fonts/weathericons.ttf

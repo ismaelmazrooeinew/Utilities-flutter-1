@@ -40,3 +40,4 @@ export 'widgets/bottom_sheet.dart';
 export 'widgets/container.dart';
 export 'widgets/image.dart';
 export 'widgets/others.dart';
+export 'widgets/flutter_icons/flutter_icons.dart';
