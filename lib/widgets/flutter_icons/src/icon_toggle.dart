@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 Widget _defaultTransitionBuilder(Widget child, Animation<double> animation) => ScaleTransition(
@@ -134,9 +133,9 @@ class _IconPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // final Paint paint = Paint()
-      // ..color = Color.lerp(inactiveColor, activeColor, _value)!.withOpacity(math.min(_value, 0.15))
-      // ..style = PaintingStyle.fill
-      // ..strokeWidth = 2.0;
+    // ..color = Color.lerp(inactiveColor, activeColor, _value)!.withOpacity(math.min(_value, 0.15))
+    // ..style = PaintingStyle.fill
+    // ..strokeWidth = 2.0;
     // canvas.drawCircle(Offset(size.width / 2, size.height / 2), 20 * _value, paint);
   }
 

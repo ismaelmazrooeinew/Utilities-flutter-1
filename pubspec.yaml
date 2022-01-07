@@ -41,49 +41,49 @@ flutter:
   fonts:
     - family: Ionicons
       fonts:
-        - asset: lib/fonts/Ionicons.ttf
+        - asset: lib/assets/fonts/Ionicons.ttf
     - family: AntDesign
       fonts:
-        - asset: lib/fonts/AntDesign.ttf
+        - asset: lib/assets/fonts/AntDesign.ttf
     - family: FontAwesome
       fonts:
-        - asset: lib/fonts/FontAwesome.ttf
+        - asset: lib/assets/fonts/FontAwesome.ttf
     - family: MaterialIcons
       fonts:
-        - asset: lib/fonts/MaterialIcons.ttf
+        - asset: lib/assets/fonts/MaterialIcons.ttf
     - family: Entypo
       fonts:
-        - asset: lib/fonts/Entypo.ttf
+        - asset: lib/assets/fonts/Entypo.ttf
     - family: EvilIcons
       fonts:
-        - asset: lib/fonts/EvilIcons.ttf
+        - asset: lib/assets/fonts/EvilIcons.ttf
     - family: Feather
       fonts:
-        - asset: lib/fonts/Feather.ttf
+        - asset: lib/assets/fonts/Feather.ttf
     - family: Foundation
       fonts:
-        - asset: lib/fonts/Foundation.ttf
+        - asset: lib/assets/fonts/Foundation.ttf
     - family: MaterialCommunityIcons
       fonts:
-        - asset: lib/fonts/MaterialCommunityIcons.ttf
+        - asset: lib/assets/fonts/MaterialCommunityIcons.ttf
     - family: Octicons
       fonts:
-        - asset: lib/fonts/Octicons.ttf
+        - asset: lib/assets/fonts/Octicons.ttf
     - family: SimpleLineIcons
       fonts:
-        - asset: lib/fonts/SimpleLineIcons.ttf
+        - asset: lib/assets/fonts/SimpleLineIcons.ttf
     - family: Zocial
       fonts:
-        - asset: lib/fonts/Zocial.ttf
+        - asset: lib/assets/fonts/Zocial.ttf
     - family: FontAwesome5
       fonts:
-        - asset: lib/fonts/FontAwesome5_Regular.ttf
+        - asset: lib/assets/fonts/FontAwesome5_Regular.ttf
     - family: FontAwesome5_Brands
       fonts:
-        - asset: lib/fonts/FontAwesome5_Brands.ttf
+        - asset: lib/assets/fonts/FontAwesome5_Brands.ttf
     - family: FontAwesome5_Solid
       fonts:
-        - asset: lib/fonts/FontAwesome5_Solid.ttf
+        - asset: lib/assets/fonts/FontAwesome5_Solid.ttf
     - family: WeatherIcons
       fonts:
-        - asset: lib/fonts/weathericons.ttf
+        - asset: lib/assets/fonts/weathericons.ttf
