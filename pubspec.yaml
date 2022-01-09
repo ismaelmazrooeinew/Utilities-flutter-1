@@ -37,6 +37,7 @@ flutter:
   uses-material-design: true
   assets:
     - lib/assets/data/
+    - lib/assets/fonts/
 
   fonts:
     - family: Ionicons

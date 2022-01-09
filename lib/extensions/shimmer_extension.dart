@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:utilities/utilities.dart';
 
 extension ShimmerEffect on Widget {
   Widget applyShimmer({final bool enable = true, final Color? baseColor, final Color? highlightColor}) {
     if (enable)
       return Shimmer.fromColors(
-        baseColor: baseColor == null ? Colors.grey.shade300 : baseColor,
-        highlightColor: highlightColor == null ? Colors.grey.shade100 : highlightColor,
+        baseColor: baseColor == null ? context.theme.cardColor : baseColor,
+        highlightColor: highlightColor == null ? context.theme.primaryColor : highlightColor,
         enabled: enable,
         child: this,
       );
