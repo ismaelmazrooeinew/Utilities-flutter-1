@@ -31,60 +31,10 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   logger: ^1.1.0
   image_cropper: ^1.4.1
+  flutter_font_icons: ^2.2.4
 #  app_settings: ^4.1.1
 
 flutter:
   uses-material-design: true
   assets:
     - lib/assets/data/
-    - lib/assets/fonts/
-
-  fonts:
-    - family: Ionicons
-      fonts:
-        - asset: lib/assets/fonts/Ionicons.ttf
-    - family: AntDesign
-      fonts:
-        - asset: lib/assets/fonts/AntDesign.ttf
-    - family: FontAwesome
-      fonts:
-        - asset: lib/assets/fonts/FontAwesome.ttf
-    - family: MaterialIcons
-      fonts:
-        - asset: lib/assets/fonts/MaterialIcons.ttf
-    - family: Entypo
-      fonts:
-        - asset: lib/assets/fonts/Entypo.ttf
-    - family: EvilIcons
-      fonts:
-        - asset: lib/assets/fonts/EvilIcons.ttf
-    - family: Feather
-      fonts:
-        - asset: lib/assets/fonts/Feather.ttf
-    - family: Foundation
-      fonts:
-        - asset: lib/assets/fonts/Foundation.ttf
-    - family: MaterialCommunityIcons
-      fonts:
-        - asset: lib/assets/fonts/MaterialCommunityIcons.ttf
-    - family: Octicons
-      fonts:
-        - asset: lib/assets/fonts/Octicons.ttf
-    - family: SimpleLineIcons
-      fonts:
-        - asset: lib/assets/fonts/SimpleLineIcons.ttf
-    - family: Zocial
-      fonts:
-        - asset: lib/assets/fonts/Zocial.ttf
-    - family: FontAwesome5
-      fonts:
-        - asset: lib/assets/fonts/FontAwesome5_Regular.ttf
-    - family: FontAwesome5_Brands
-      fonts:
-        - asset: lib/assets/fonts/FontAwesome5_Brands.ttf
-    - family: FontAwesome5_Solid
-      fonts:
-        - asset: lib/assets/fonts/FontAwesome5_Solid.ttf
-    - family: WeatherIcons
-      fonts:
-        - asset: lib/assets/fonts/weathericons.ttf

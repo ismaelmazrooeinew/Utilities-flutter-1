@@ -15,6 +15,7 @@ export 'package:share_plus/share_plus.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:webview_flutter/webview_flutter.dart';
+export 'package:flutter_font_icons/flutter_font_icons.dart';
 
 export 'extensions/align_extension.dart';
 export 'extensions/date_extension.dart';
@@ -40,4 +41,3 @@ export 'widgets/bottom_sheet.dart';
 export 'widgets/container.dart';
 export 'widgets/image.dart';
 export 'widgets/others.dart';
-export 'widgets/flutter_icons/flutter_icons.dart';
