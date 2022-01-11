@@ -3,6 +3,58 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+Widget image(
+  final String source, {
+  final Color? color,
+  final double? width,
+  final double? height,
+  final BoxFit fit = BoxFit.contain,
+  final Clip clipBehavior = Clip.hardEdge,
+  final double borderRadius = 1,
+  final EdgeInsets margin = EdgeInsets.zero,
+  final String? placeholder,
+  final VoidCallback? onTap,
+}) {
+  if (source.length <= 10) {
+    if (placeholder == null)
+      return SizedBox(width: width, height: height);
+    else
+      return imageAsset(
+        placeholder,
+        width: width,
+        height: height,
+        fit: fit,
+        clipBehavior: clipBehavior,
+      );
+  } else {
+    if (source.contains("http://") || source.contains("https://"))
+      return imageNetwork(
+        source,
+        width: width,
+        height: height,
+        fit: fit,
+        clipBehavior: clipBehavior,
+        margin: margin,
+        borderRadius: borderRadius,
+        color: color,
+        onTap: onTap,
+        placeholder: placeholder,
+      );
+    else
+      return imageAsset(
+        source,
+        width: width,
+        height: height,
+        fit: fit,
+        clipBehavior: clipBehavior,
+        margin: margin,
+        borderRadius: borderRadius,
+        color: color,
+        onTap: onTap,
+      );
+  }
+}
+
 Widget imageAsset(
   final String asset, {
   final Color? color,
