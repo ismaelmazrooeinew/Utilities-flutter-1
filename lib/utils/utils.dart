@@ -1,13 +1,10 @@
-part of '../utilities.dart';
+import 'dart:ui';
 
-extension IterableExtentions on Iterable {
-  Iterable<E> mapIndexed<E, T>(E Function(int index, T item) f) sync* {
-    var index = 0;
-    for (final item in this) {
-      yield f(index, item);
-      index = index + 1;
-    }
-  }
-}
+import 'package:logger/logger.dart';
 
-Future delay(int milliseconds, action) async => Future.delayed(Duration(milliseconds: milliseconds), () async => action());
+Logger logger = Logger();
+
+void delay(final int milliseconds, final VoidCallback action) async => Future<dynamic>.delayed(
+      Duration(milliseconds: milliseconds),
+      () async => action(),
+    );

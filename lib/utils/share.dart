@@ -1,3 +1,3 @@
-part of '../utilities.dart';
+import 'package:share_plus/share_plus.dart';
 
-void shareText(String text, {String? subject}) => Share.share(text, subject: subject);
+void shareText(final String text, {final String? subject}) => Share.share(text, subject: subject);

@@ -1,34 +1,59 @@
-part of '../utilities.dart';
+import 'package:intl/intl.dart';
 
-int getDay(String date) => int.parse(date.substring(8, 10).append0());
-
-int getMonth(String date) => int.parse(date.substring(5, 7).append0());
-
-int getYear(String date) => int.parse(date.substring(0, 4).append0());
-
-int getHour(String time) => int.parse(time.substring(0, 2).append0());
-
-int getMinute(String time) => int.parse(time.substring(3, 5).append0());
-
-extension StringExtension on String {
-  bool isNumeric() {
-    if (this == null) return false;
-    return double.tryParse(this) != null;
-  }
+extension StringExtensions on String {
+  bool isNumeric() => double.tryParse(this) != null;
 
   int toInt() => int.parse(this);
 
-  String separateNumbers3By3() => this.replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},');
+  String separateNumbers3By3() => replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (final Match m) => '${m[1]},');
 
   String append0() {
-    if (this.length == 1)
+    if (length == 1)
       return "0$this";
     else
       return this;
   }
 
+  int getDay() => int.parse(substring(8, 10).append0());
+
+  int getMonth() => int.parse(substring(5, 7).append0());
+
+  int getYear() => int.parse(substring(0, 4).append0());
+
+  int getHour() => int.parse(substring(0, 2).append0());
+
+  int getMinute() => int.parse(substring(3, 5).append0());
+
+  String toTimeAgo({final bool numericDates = false}) {
+    try {
+      final Duration difference = DateTime.now().difference(DateFormat("yyyy-MM-ddThh:mm:sss").parse(this));
+      if (difference.inDays > 8)
+        return this.substring(0, 10);
+      else if ((difference.inDays / 7).floor() >= 1)
+        return numericDates ? '1 week ago' : 'Last week';
+      else if (difference.inDays >= 2)
+        return '${difference.inDays} days ago';
+      else if (difference.inDays >= 1)
+        return numericDates ? '1 day ago' : 'Yesterday';
+      else if (difference.inHours >= 2)
+        return '${difference.inHours} hours ago';
+      else if (difference.inHours >= 1)
+        return numericDates ? '1 hour ago' : 'An hour ago';
+      else if (difference.inMinutes >= 2)
+        return '${difference.inMinutes} minutes ago';
+      else if (difference.inMinutes >= 1)
+        return numericDates ? '1 minute ago' : 'A minute ago';
+      else if (difference.inSeconds >= 3)
+        return '${difference.inSeconds} seconds ago';
+      else
+        return 'Just now';
+    } catch (e) {
+      return this;
+    }
+  }
+
   String persianNumber() {
-    var number = this;
+    String number = this;
     number = number.replaceAll("1", "۱");
     number = number.replaceAll("2", "۲");
     number = number.replaceAll("3", "۳");
@@ -43,7 +68,7 @@ extension StringExtension on String {
   }
 
   String englishNumber() {
-    var number = this;
+    String number = this;
     number = number.replaceAll("۱", "1");
     number = number.replaceAll("۲", "2");
     number = number.replaceAll("۳", "3");
@@ -58,7 +83,7 @@ extension StringExtension on String {
   }
 
   String persianDayDay() {
-    var day = this;
+    String day = this;
     day = day.replaceAll("Sunday", "یک شنبه");
     day = day.replaceAll("Monday", "دو شنبه");
     day = day.replaceAll("Tuesday", "سه شنبه");
@@ -70,7 +95,7 @@ extension StringExtension on String {
   }
 
   String englishDay() {
-    var day = this;
+    String day = this;
     day = day.replaceAll("یک شنبه", "Sunday");
     day = day.replaceAll("دو‌شنبه", "Monday");
     day = day.replaceAll("سه‌شنبه", "Tuesday");
@@ -83,7 +108,7 @@ extension StringExtension on String {
   }
 
   String persianMonth() {
-    var month = this;
+    String month = this;
     month = month.replaceAll("01", "فروردین");
     month = month.replaceAll("02", "اردیبهشت");
     month = month.replaceAll("03", "خرداد");
@@ -100,7 +125,7 @@ extension StringExtension on String {
   }
 
   String englishMonth() {
-    var month = this;
+    String month = this;
     month = month.replaceAll("01", "January");
     month = month.replaceAll("02", "February");
     month = month.replaceAll("03", "March");

@@ -1,49 +1,75 @@
-part of '../utilities.dart';
+import 'dart:io';
+
+import 'package:utilities/utilities.dart';
 
 void showFilePicker({
-  required Function(List<File> file) action,
-  FileType fileType = FileType.image,
-  bool allowMultiple = false,
+  required final Function(List<File> file) action,
+  final FileType fileType = FileType.image,
+  final bool allowMultiple = false,
 }) async {
-  FilePickerResult? result = await FilePicker.platform.pickFiles(type: fileType, allowMultiple: allowMultiple);
+  final FilePickerResult? result = await FilePicker.platform.pickFiles(type: fileType, allowMultiple: allowMultiple);
   if (result != null) {
     if (allowMultiple) {
-      List<File> files = <File>[];
-      result.files.forEach((i) {
+      final List<File> files = <File>[];
+      result.files.forEach((final PlatformFile i) {
         if (i.path != null) files.add(File(i.path!));
       });
     } else {
-      File file = File(result.files.single.path!);
-      action([file]);
+      final File file = File(result.files.single.path!);
+      action(<File>[file]);
     }
   }
 }
 
-/// this function is for pick files on the device. (support all os)
-/// please write this function in try-catch and handle the error
-/// default value [fileType] is any file
-/// default value [dialogTitle] is empty string
-/// default value [withData] is false
-/// default value [allowMultiple] is false
-Future<List<PlatformFile>> filePicker({
-  FileType fileType = FileType.any,
-  String dialogTitle = "",
-  bool withData = false,
-  bool allowMultiple = false,
+Future<File?> cropImage({
+  required File file,
+  Function(File file)? action,
+  int? maxWidth,
+  int? maxHeight,
+  CropAspectRatio cropAspectRatio = const CropAspectRatio(ratioX: 3.0, ratioY: 1.2),
+  ImageCompressFormat imageCompressFormat = ImageCompressFormat.png,
+  AndroidUiSettings? androidUiSettings,
+  IOSUiSettings? iOSUiSettings,
+  List<CropAspectRatioPreset> aspectRatioPresets = const <CropAspectRatioPreset>[
+    CropAspectRatioPreset.original,
+    CropAspectRatioPreset.square,
+    CropAspectRatioPreset.ratio3x2,
+    CropAspectRatioPreset.ratio4x3,
+    CropAspectRatioPreset.ratio16x9,
+  ],
 }) async {
-  try {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: fileType,
-        dialogTitle: dialogTitle,
-        withData: withData,
-        allowMultiple: allowMultiple);
-
-    if (result != null) {
-      return result.files;
-    } else {
-      throw Exception('File not pick');
-    }
-  } catch (exception) {
-    throw Exception(exception);
-  }
+  final File? result = await ImageCropper.cropImage(
+    sourcePath: file.path,
+    maxWidth: maxWidth,
+    maxHeight: maxHeight,
+    aspectRatio: cropAspectRatio,
+    compressFormat: imageCompressFormat,
+    cropStyle: CropStyle.rectangle,
+    compressQuality: 90,
+    aspectRatioPresets: aspectRatioPresets,
+    androidUiSettings: androidUiSettings ??
+        AndroidUiSettings(
+          toolbarTitle: 'Crop Your Image',
+          showCropGrid: true,
+          hideBottomControls: false,
+          lockAspectRatio: true,
+          initAspectRatio: CropAspectRatioPreset.square,
+          activeControlsWidgetColor: context.theme.primaryColor,
+          statusBarColor: context.theme.primaryColor,
+          toolbarColor: context.theme.primaryColor,
+          toolbarWidgetColor: context.theme.cardColor,
+        ),
+    iosUiSettings: iOSUiSettings ??
+        IOSUiSettings(
+          resetAspectRatioEnabled: false,
+          minimumAspectRatio: 1.0,
+          aspectRatioPickerButtonHidden: true,
+          title: 'Crop Your Image',
+          aspectRatioLockDimensionSwapEnabled: true,
+          aspectRatioLockEnabled: true,
+          hidesNavigationBar: true,
+        ),
+  );
+  if (action != null) action(result!);
+  return result;
 }

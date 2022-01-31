@@ -1,4 +1,7 @@
-part of '../utilities.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:package_info/package_info.dart';
 
 /// needs to be implemented https://pub.dev/packages/get
 /// needs to be implemented https://pub.dev/packages/get_storage
@@ -12,40 +15,104 @@ bool isFuchsia = GetPlatform.isFuchsia;
 bool isMobile = GetPlatform.isMobile;
 bool isWeb = GetPlatform.isWeb;
 bool isDesktop = GetPlatform.isDesktop;
-bool isLandScape = context!.isLandscape;
-bool isPortrait = context!.isPortrait;
-bool isTablet = context!.isTablet;
-bool isPhone = context!.isPhone;
-BuildContext? context = Get.context;
+bool isLandScape = Get.context!.isLandscape;
+bool isPortrait = Get.context!.isPortrait;
+bool isTablet = Get.context!.isTablet;
+bool isPhone = Get.context!.isPhone;
+BuildContext context = Get.context!;
 double screenHeight = Get.height;
 double screenWidth = Get.width;
-ThemeData theme = Get.theme;
-TextTheme textTheme = Get.theme.textTheme;
+ThemeData theme = Get.context!.theme;
+TextTheme textTheme = Get.context!.textTheme;
 Locale? currentLocale = Get.locale;
+bool isDebugMode = kDebugMode;
 
-void updateLocale(Locale locale) => Get.updateLocale(locale);
+void updateLocale(final Locale locale) => Get.updateLocale(locale);
 
 Future<String> appName() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.appName;
 }
 
 Future<String> appPackageName() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.packageName;
 }
 
 Future<String> appVersion() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.version;
 }
 
 Future<String> appBuildNumber() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.buildNumber;
 }
 
-push(Widget page, {bool dialog = false, Transition transition = Transition.cupertino}) => Get.to(
+void push(
+  final Widget page, {
+  final bool dialog = false,
+  final Transition transition = Transition.cupertino,
+  final bool backFirst = false,
+  final bool preventDuplicates = true,
+}) {
+  if (backFirst) back();
+  Get.to(
+    page,
+    fullscreenDialog: dialog,
+    popGesture: true,
+    opaque: dialog ? false : true,
+    transition: transition,
+    preventDuplicates: preventDuplicates,
+  );
+}
+
+Future<void> pushAsync(
+  final Widget page, {
+  final bool dialog = false,
+  final Transition transition = Transition.cupertino,
+  final bool backFirst = false,
+  final bool preventDuplicates = true,
+}) async {
+  if (backFirst) back();
+  final Widget _page = await Future.microtask(() => page);
+  Get.to(
+    _page,
+    fullscreenDialog: dialog,
+    popGesture: true,
+    opaque: dialog ? false : true,
+    transition: transition,
+    preventDuplicates: preventDuplicates,
+  );
+}
+
+void dialog(
+  final Widget page, {
+  final bool dialog = false,
+  final VoidCallback? onDismiss,
+}) =>
+    Get.dialog(page, useSafeArea: true).then(
+      (final _) => onDismiss != null ? onDismiss() : null,
+    );
+
+Future<void> dialogAsync(
+  final Widget page, {
+  final bool dialog = false,
+  final VoidCallback? onDismiss,
+}) async {
+  final Widget _page = await Future.microtask(() => page);
+
+  Get.dialog(_page, useSafeArea: true).then(
+    (final _) => onDismiss != null ? onDismiss() : null,
+  );
+}
+
+void offAll(
+  final Widget page, {
+  final bool dialog = false,
+  final Transition transition = Transition.cupertino,
+}) =>
+    Get.offAll(
       page,
       fullscreenDialog: dialog,
       popGesture: true,
@@ -53,13 +120,21 @@ push(Widget page, {bool dialog = false, Transition transition = Transition.cuper
       transition: transition,
     );
 
-dialog(
-  Widget page, {
-  bool dialog = false,
-  onDismiss,
-}) =>
-    Get.dialog(page, useSafeArea: true).then((value) => onDismiss != null ? onDismiss() : null);
+Future<void> offAllAsync(
+  final Widget page, {
+  final bool dialog = false,
+  final Transition transition = Transition.cupertino,
+}) async {
+  final Widget _page = await Future.microtask(() => page);
+  Get.offAll(
+    _page,
+    fullscreenDialog: dialog,
+    popGesture: true,
+    opaque: dialog ? false : true,
+    transition: transition,
+  );
+}
 
-pop() => Get.back();
+void off(final Widget page) => Get.off(page);
 
-pushAndRemoveUntil(Widget page) => Get.offAll(page);
+void back() => Get.back();

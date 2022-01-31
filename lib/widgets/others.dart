@@ -1,4 +1,5 @@
-part of '../utilities.dart';
+import 'package:flutter/material.dart';
+import 'package:utilities/utilities.dart';
 
 Widget divider({double? width, double height = 0.6, Color color = Colors.grey, EdgeInsets? padding}) => Container(
       margin: padding,

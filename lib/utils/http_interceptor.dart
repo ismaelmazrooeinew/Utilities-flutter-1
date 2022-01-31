@@ -1,21 +1,49 @@
-part of '../utilities.dart';
+import 'package:utilities/utilities.dart';
 
-Future<void> request(String url, EHttpMethod httpMethod, action(http.Response? response), error(http.Response? response), {body}) async {
-  final String? token = getString(Constant.token);
+GetConnect getConnect = GetConnect(
+  followRedirects: false,
+  timeout: const Duration(minutes: 60),
+  allowAutoSignedCert: true,
+  sendUserAgent: true,
+  userAgent: "SinaMN75",
+  maxRedirects: 10,
+  maxAuthRetries: 3,
+);
 
-  Map<String, String> headers = {"Content-Type": "application/json", "Authorization": token ?? ""};
+Future<void> request<T>(
+  final String url,
+  final EHttpMethod httpMethod,
+  final Function(Response<T> response) action,
+  final Function(Response<T> response) error, {
+  final dynamic body,
+  final bool encodeBody = true,
+  final Map<String, String>? headers,
+}) async {
+  final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
 
-  http.Response? response;
-  if (httpMethod == EHttpMethod.get) response = await http.get(Uri.parse(url), headers: headers);
-  if (httpMethod == EHttpMethod.post) response = await http.post(Uri.parse(url), body: body != null ? body.toJson() : null, headers: headers);
-  if (httpMethod == EHttpMethod.put) response = await http.put(Uri.parse(url), body: body != null ? body.toJson() : null, headers: headers);
-  if (httpMethod == EHttpMethod.patch) response = await http.patch(Uri.parse(url), body: body != null ? body.toJson() : null, headers: headers);
-  if (httpMethod == EHttpMethod.delete) response = await http.delete(Uri.parse(url), headers: headers);
+  if (headers != null) header.addAll(headers);
 
-  if (body != null)
-    response!.completeLog(params: body.toJson());
-  else
-    response!.log();
+  Response<T> response = Response<T>();
+  try {
+    dynamic params;
+    if (body != null) {
+      if (encodeBody)
+        params = body.toJson();
+      else
+        params = body;
+    }
+
+    if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
+    if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, params, headers: header);
+    if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, params, headers: header);
+    if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, params, headers: header);
+    if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
+  } catch (e) {
+    error(response);
+    print(e);
+  }
+
+  response.log(params: body == null ? "" : body.toJson());
   if (response.isSuccessful())
     action(response);
   else
@@ -24,52 +52,61 @@ Future<void> request(String url, EHttpMethod httpMethod, action(http.Response? r
 
 Future<void> get({
   required String url,
-  required action(http.Response? response),
-  required error(http.Response? response),
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
 }) async =>
-    await request(url, EHttpMethod.get, action, error);
+    await request(url, EHttpMethod.get, action, error, headers: headers);
 
 Future<void> post({
   required String url,
-  required action(http.Response? response),
-  required error(http.Response? response),
-  body,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+  dynamic body,
+  bool encodeBody = true,
 }) async =>
-    await request(url, EHttpMethod.post, action, error, body: body);
+    await request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
 Future<void> put({
   required String url,
-  required action(http.Response? response),
-  required error(http.Response? response),
-  body,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+  dynamic body,
+  bool encodeBody = true,
 }) async =>
-    await request(url, EHttpMethod.put, action, error, body: body);
+    await request(url, EHttpMethod.put, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
 Future<void> patch({
   required String url,
-  required action(http.Response? response),
-  required error(http.Response? response),
-  body,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+  dynamic body,
+  bool encodeBody = true,
 }) async =>
-    await request(url, EHttpMethod.patch, action, error, body: body);
+    await request(url, EHttpMethod.patch, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
 Future<void> delete({
   required String url,
-  required action(http.Response? response),
-  required error(http.Response? response),
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
 }) async =>
-    await request(url, EHttpMethod.delete, action, error);
+    await request(url, EHttpMethod.delete, action, error, headers: headers);
 
 enum EHttpMethod { get, post, put, patch, delete }
 
-extension HTTP on http.Response {
-  bool isSuccessful() => this.statusCode >= 200 && this.statusCode <= 299 ? true : false;
+extension HTTP<T> on Response<T> {
+  bool isSuccessful() => (statusCode ?? 0) >= 200 && (statusCode ?? 0) <= 299 ? true : false;
 
-  bool isServerError() => this.statusCode >= 500 && this.statusCode <= 599 ? true : false;
+  bool isServerError() => (statusCode ?? 0) >= 500 && (statusCode ?? 0) <= 599 ? true : false;
 
-  log() => print("${this.request!.method} - ${this.request!.url} - ${this.statusCode} - RESPONSE: ${this.body}");
-
-  completeLog({String? params}) => print(
-        "${this.request!.method} - ${this.request!.url} - ${this.statusCode} HEADERS: ${this.headers} - PARAMS: $params - RESPONSE: ${this.body}",
-      );
+  void log({final String params = ""}) {
+    Logger logger = Logger();
+    logger.i(
+      "METHOD: ${this.request!.method} - URL: ${this.request!.url} - URL: $statusCode \nPARAMS: $params \nRESPONSE: $body",
+    );
+  }
 }
