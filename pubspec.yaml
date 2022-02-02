@@ -32,6 +32,9 @@ dependencies:
   logger: ^1.1.0
   image_cropper: ^1.4.1
   flutter_font_icons: ^2.2.4
+  video_player: ^2.2.16
+  just_audio: ^0.9.18
+  syncfusion_flutter_pdfviewer: ^19.4.48-beta
 #  app_settings: ^4.1.1
 
 flutter:
