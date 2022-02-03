@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -134,13 +135,13 @@ Widget imageNetwork(
                               clipBehavior: clipBehavior,
                             ),
                   )
-                : Image.network(
-                    url,
+                : CachedNetworkImage(
+                    imageUrl: url,
                     color: color,
                     width: width,
                     height: height,
                     fit: fit,
-                    errorBuilder: placeholder == null
+                    errorWidget: placeholder == null
                         ? null
                         : (final _, final __, final ___) => imageAsset(
                               placeholder,
@@ -150,19 +151,16 @@ Widget imageNetwork(
                               fit: fit,
                               clipBehavior: clipBehavior,
                             ),
-                    loadingBuilder: placeholder == null
+                    placeholder: placeholder == null
                         ? null
-                        : (final BuildContext context, final Widget child, final ImageChunkEvent? event) {
-                            if (event == null) return child;
-                            return imageAsset(
+                        : (final _, final __) => imageAsset(
                               placeholder,
                               color: color,
                               width: width,
                               height: height,
                               fit: fit,
                               clipBehavior: clipBehavior,
-                            );
-                          },
+                            ),
                   ),
       ),
     );
