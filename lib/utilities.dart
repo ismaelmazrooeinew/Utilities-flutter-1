@@ -29,7 +29,6 @@ export 'extensions/text_extension.dart';
 export 'extensions/widget_extension.dart';
 export 'utils/availability.dart';
 export 'utils/constants.dart';
-export 'utils/device_settings.dart';
 export 'utils/get.dart';
 export 'utils/http_interceptor.dart';
 export 'utils/file.dart';
