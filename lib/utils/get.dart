@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:package_info/package_info.dart';
+import 'package:utilities/utilities.dart';
 
 /// needs to be implemented https://pub.dev/packages/get
 /// needs to be implemented https://pub.dev/packages/get_storage
@@ -49,53 +49,30 @@ Future<String> appBuildNumber() async {
   return packageInfo.buildNumber;
 }
 
-void push(
+Future<void> push(
   final Widget page, {
   final bool dialog = false,
   final Transition transition = Transition.cupertino,
   final bool backFirst = false,
   final bool preventDuplicates = true,
-}) {
-  if (backFirst) back();
-  Get.to(
-    page,
-    fullscreenDialog: dialog,
-    popGesture: true,
-    opaque: dialog ? false : true,
-    transition: transition,
-    preventDuplicates: preventDuplicates,
-  );
-}
-
-Future<void> pushAsync(
-  final Widget page, {
-  final bool dialog = false,
-  final Transition transition = Transition.cupertino,
-  final bool backFirst = false,
-  final bool preventDuplicates = true,
+  final int milliSecondDelay = 1,
 }) async {
   if (backFirst) back();
   final Widget _page = await Future.microtask(() => page);
-  Get.to(
-    _page,
-    fullscreenDialog: dialog,
-    popGesture: true,
-    opaque: dialog ? false : true,
-    transition: transition,
-    preventDuplicates: preventDuplicates,
+  delay(
+    milliSecondDelay,
+    () => Get.to(
+      _page,
+      fullscreenDialog: dialog,
+      popGesture: true,
+      opaque: dialog ? false : true,
+      transition: transition,
+      preventDuplicates: preventDuplicates,
+    ),
   );
 }
 
-void dialog(
-  final Widget page, {
-  final bool dialog = false,
-  final VoidCallback? onDismiss,
-}) =>
-    Get.dialog(page, useSafeArea: true).then(
-      (final _) => onDismiss != null ? onDismiss() : null,
-    );
-
-Future<void> dialogAsync(
+Future<void> dialog(
   final Widget page, {
   final bool dialog = false,
   final VoidCallback? onDismiss,
@@ -107,31 +84,22 @@ Future<void> dialogAsync(
   );
 }
 
-void offAll(
+Future<void> offAll(
   final Widget page, {
   final bool dialog = false,
   final Transition transition = Transition.cupertino,
-}) =>
-    Get.offAll(
-      page,
+  final int milliSecondDelay = 1,
+}) async {
+  final Widget _page = await Future.microtask(() => page);
+  delay(
+    milliSecondDelay,
+    () => Get.offAll(
+      _page,
       fullscreenDialog: dialog,
       popGesture: true,
       opaque: dialog ? false : true,
       transition: transition,
-    );
-
-Future<void> offAllAsync(
-  final Widget page, {
-  final bool dialog = false,
-  final Transition transition = Transition.cupertino,
-}) async {
-  final Widget _page = await Future.microtask(() => page);
-  Get.offAll(
-    _page,
-    fullscreenDialog: dialog,
-    popGesture: true,
-    opaque: dialog ? false : true,
-    transition: transition,
+    ),
   );
 }
 
