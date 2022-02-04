@@ -30,13 +30,6 @@ import 'package:just_audio/just_audio.dart';
 //       type: MediaType.video),
 // ];
 
-class MediaViewModel {
-  MediaViewModel({required this.link, this.type = MediaType.image});
-
-  final MediaType type;
-  final String link;
-}
-
 class StoreWidget extends StatelessWidget {
   final List<MediaViewModel> data;
   final Widget footer;

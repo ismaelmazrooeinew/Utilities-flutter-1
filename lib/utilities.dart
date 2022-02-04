@@ -46,3 +46,6 @@ export 'data/models/contact_information_response.dart';
 export 'data/models/id_title_response.dart';
 export 'data/models/location_response.dart';
 export 'data/models/media_response.dart';
+export 'package:utilities/view_models/media_view_model.dart';
+export 'package:utilities/view_models/speciality_view_model.dart';
+export 'package:utilities/view_models/contact_information_view_model.dart';
