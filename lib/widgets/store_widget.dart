@@ -1,12 +1,9 @@
-import 'dart:async';
 import 'dart:io';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:utilities/utilities.dart';
 import 'package:video_player/video_player.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:just_audio/just_audio.dart';
-
 
 /// fake data for test
 // final List<MediaViewModel> data = [
@@ -32,9 +29,6 @@ import 'package:just_audio/just_audio.dart';
 //       link: 'https://abolfazlnezami.ir/file/video.mp4',
 //       type: MediaType.video),
 // ];
-
-
-enum MediaType { image, svg, video, pdf, voice, link }
 
 class MediaViewModel {
   MediaViewModel({required this.link, this.type = MediaType.image});
@@ -73,7 +67,7 @@ class StoreWidget extends StatelessWidget {
                 Widget result = Container();
                 switch (item.type) {
                   case MediaType.svg:
-                  // TODO: Handle this case.
+                    result = _showImage(context, item.link);
                     break;
                   case MediaType.video:
                     result = VideoPlayerScreen(url: item.link);
@@ -109,25 +103,19 @@ class StoreWidget extends StatelessWidget {
   }
 
   Widget _showImage(BuildContext context, String url) => Center(
-    child: Image.network(
-      url,
-      fit: BoxFit.cover,
-      height: MediaQuery.of(context).size.height,
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-        return const Center(child: CircularProgressIndicator());
-      },
-    ),
-  );
+        child: image(
+          url,
+          fit: BoxFit.cover,
+          height: MediaQuery.of(context).size.height,
+        ),
+      );
 
   Widget _showPdf(BuildContext context, String url) => SizedBox(
-    height: MediaQuery.of(context).size.height,
-    child: SfPdfViewer.network(
-      url,
-    ),
-  );
+        height: MediaQuery.of(context).size.height,
+        child: SfPdfViewer.network(url),
+      );
 
-  Widget _showWeb(BuildContext context, String url){
+  Widget _showWeb(BuildContext context, String url) {
     if (Platform.isAndroid) WebView.platform = AndroidWebView();
     return WebView(
       initialUrl: url,
@@ -176,9 +164,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
               child: VideoPlayer(_controller),
             );
           } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),
@@ -188,6 +174,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
 class ShowVoice extends StatefulWidget {
   final String url;
+
   const ShowVoice({Key? key, required this.url}) : super(key: key);
 
   @override
@@ -196,15 +183,18 @@ class ShowVoice extends StatefulWidget {
 
 class _ShowVoiceState extends State<ShowVoice> {
   final player = AudioPlayer();
+
   @override
   void initState() {
     play(widget.url);
     super.initState();
   }
-  void play(String url)async{
+
+  void play(String url) async {
     await player.setUrl(url);
     await player.play();
   }
+
   @override
   void dispose() {
     player.pause();
