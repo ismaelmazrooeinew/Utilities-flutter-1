@@ -1,6 +1,10 @@
 import 'package:intl/intl.dart';
 
 extension StringExtensions on String {
+  bool isTrue() => toLowerCase() == 'true';
+
+  bool isFalse() => toLowerCase() == 'false';
+
   bool isNumeric() => double.tryParse(this) != null;
 
   int toInt() => int.parse(this);

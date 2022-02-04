@@ -1,5 +1,3 @@
-extension BoolExtensios on String {
-  bool isTrue() => toLowerCase() == 'true';
-
-  bool isFalse() => toLowerCase() == 'false';
+extension BoolExtensios on bool {
+  bool toggle() => !this;
 }

@@ -40,3 +40,8 @@ export 'widgets/bottom_sheet.dart';
 export 'widgets/container.dart';
 export 'widgets/image.dart';
 export 'widgets/others.dart';
+export 'data/models/content_response.dart';
+export 'data/models/contact_information_response.dart';
+export 'data/models/id_title_response.dart';
+export 'data/models/location_response.dart';
+export 'data/models/media_response.dart';
