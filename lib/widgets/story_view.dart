@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 import 'package:video_player/video_player.dart';
@@ -30,12 +29,12 @@ import 'package:just_audio/just_audio.dart';
 //       type: MediaType.video),
 // ];
 
-class StoreWidget extends StatelessWidget {
+class StoryView extends StatelessWidget {
   final List<MediaViewModel> data;
   final Widget footer;
   final Widget header;
 
-  const StoreWidget({
+  const StoryView({
     Key? key,
     required this.data,
     required this.footer,
@@ -99,22 +98,21 @@ class StoreWidget extends StatelessWidget {
         child: image(
           url,
           fit: BoxFit.cover,
-          height: MediaQuery.of(context).size.height,
+          height: screenHeight,
         ),
       );
 
   Widget _showPdf(BuildContext context, String url) => SizedBox(
-        height: MediaQuery.of(context).size.height,
+        height: screenHeight,
         child: SfPdfViewer.network(url),
       );
 
-  Widget _showWeb(BuildContext context, String url) {
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
-    return WebView(
-      initialUrl: url,
-      javascriptMode: JavascriptMode.unrestricted,
-    );
-  }
+  Widget _showWeb(BuildContext context, String url) => WebViewX(
+        initialContent: url,
+        initialSourceType: SourceType.url,
+        height: screenHeight,
+        width: screenWidth,
+      );
 }
 
 class VideoPlayerScreen extends StatefulWidget {
@@ -145,24 +143,21 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: FutureBuilder(
-        future: _initializeVideoPlayerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(_controller),
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Container(
+        height: screenHeight,
+        child: FutureBuilder(
+          future: _initializeVideoPlayerFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done)
+              return AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(_controller),
+              );
+            else
+              return const Center(child: CircularProgressIndicator());
+          },
+        ),
+      );
 }
 
 class ShowVoice extends StatefulWidget {

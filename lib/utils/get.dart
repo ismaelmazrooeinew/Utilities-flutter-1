@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:utilities/utilities.dart';
 
 /// needs to be implemented https://pub.dev/packages/get
@@ -30,7 +30,7 @@ bool isDebugMode = kDebugMode;
 void updateLocale(final Locale locale) => Get.updateLocale(locale);
 
 Future<String> appName() async {
-  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform()..appName;
   return packageInfo.appName;
 }
 
