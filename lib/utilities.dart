@@ -14,7 +14,6 @@ export 'package:persian_tools/persian_tools.dart';
 export 'package:share_plus/share_plus.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
-export 'package:flutter_font_icons/flutter_font_icons.dart';
 export 'package:webviewx/webviewx.dart';
 
 export 'extensions/align_extension.dart';
