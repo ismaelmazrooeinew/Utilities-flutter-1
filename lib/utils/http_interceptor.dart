@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:utilities/utilities.dart';
 
 GetConnect getConnect = GetConnect(
@@ -43,7 +44,7 @@ Future<void> request<T>(
     print(e);
   }
 
-  response.log(params: (body == null || !encodeBody) ? "" : body.toJson());
+  if (kDebugMode) response.log(params: (body == null || !encodeBody) ? "" : body.toJson());
   if (response.isSuccessful())
     action(response);
   else
@@ -104,7 +105,6 @@ extension HTTP<T> on Response<T> {
   bool isServerError() => (statusCode ?? 0) >= 500 && (statusCode ?? 0) <= 599 ? true : false;
 
   void log({final String params = ""}) {
-    Logger logger = Logger();
     logger.i(
       "${this.request!.method} - ${this.request!.url} - $statusCode \nPARAMS: ${JsonEncoder.withIndent("    ").convert(params)} \nRESPONSE: ${JsonEncoder.withIndent("    ").convert(body)}",
     );
