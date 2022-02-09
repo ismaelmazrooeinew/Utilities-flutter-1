@@ -32,6 +32,7 @@ import 'package:just_audio/just_audio.dart';
 class StoryView extends StatelessWidget {
   final List<MediaViewModel> data;
   final Widget footer;
+  final PreferredSizeWidget? appbar;
   final Widget header;
 
   const StoryView({
@@ -39,60 +40,55 @@ class StoryView extends StatelessWidget {
     required this.data,
     required this.footer,
     required this.header,
+    this.appbar,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Builder(
-          builder: (context) {
-            final double height = MediaQuery.of(context).size.height;
-            return CarouselSlider(
-              options: CarouselOptions(
-                height: height,
-                viewportFraction: 1.0,
-                enlargeCenterPage: false,
-                // autoPlay: false,
-              ),
-              items: data.map((item) {
-                Widget result = Container();
-                switch (item.type) {
-                  case MediaType.svg:
-                    result = _showImage(context, item.link);
-                    break;
-                  case MediaType.video:
-                    result = VideoPlayerScreen(url: item.link);
-                    break;
-                  case MediaType.pdf:
-                    result = _showPdf(context, item.link);
-                    break;
-                  case MediaType.voice:
-                    result = ShowVoice(url: item.link);
-                    break;
-                  case MediaType.link:
-                    result = _showWeb(context, item.link);
-                    break;
-                  case MediaType.image:
-                    result = _showImage(context, item.link);
-                    break;
-                  default:
-                    result = Container();
-                }
-                return Stack(
-                  children: [
-                    result,
-                    Positioned(top: 0, left: 0, right: 0, child: header),
-                    Positioned(bottom: 0, left: 0, right: 0, child: footer),
-                  ],
-                );
-              }).toList(),
-            );
-          },
+  Widget build(BuildContext context) => SafeArea(
+        child: scaffold(
+          appBar: appbar,
+          body: CarouselSlider(
+            options: CarouselOptions(
+              height: screenHeight,
+              viewportFraction: 1.0,
+              enlargeCenterPage: false,
+              // autoPlay: false,
+            ),
+            items: data.map((item) {
+              Widget result = Container();
+              switch (item.type) {
+                case MediaType.svg:
+                  result = _showImage(context, item.link);
+                  break;
+                case MediaType.video:
+                  result = VideoPlayerScreen(url: item.link);
+                  break;
+                case MediaType.pdf:
+                  result = _showPdf(context, item.link);
+                  break;
+                case MediaType.voice:
+                  result = ShowVoice(url: item.link);
+                  break;
+                case MediaType.link:
+                  result = _showWeb(context, item.link);
+                  break;
+                case MediaType.image:
+                  result = _showImage(context, item.link);
+                  break;
+                default:
+                  result = Container();
+              }
+              return Stack(
+                children: [
+                  result,
+                  Positioned(top: 0, left: 0, right: 0, child: header),
+                  Positioned(bottom: 0, left: 0, right: 0, child: footer),
+                ],
+              );
+            }).toList(),
+          ),
         ),
-      ),
-    );
-  }
+      );
 
   Widget _showImage(BuildContext context, String url) => Center(
         child: image(
