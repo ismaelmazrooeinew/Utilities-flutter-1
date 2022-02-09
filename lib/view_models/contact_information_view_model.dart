@@ -8,6 +8,7 @@ class ContactInformationViewModel {
     this.socialValue = "",
     this.socialIconUrl = "",
     this.visibility = VisibilityType.public,
+    this.link,
   });
 
   final int id;
@@ -16,6 +17,7 @@ class ContactInformationViewModel {
   final String socialValue;
   final String socialIconUrl;
   final VisibilityType visibility;
+  final VisibilityType? link;
 }
 
 class ContactInfoItemViewModel {
