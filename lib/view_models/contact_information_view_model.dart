@@ -17,7 +17,7 @@ class ContactInformationViewModel {
   final String socialValue;
   final String socialIconUrl;
   final VisibilityType visibility;
-  final VisibilityType? link;
+  final String? link;
 }
 
 class ContactInfoItemViewModel {
