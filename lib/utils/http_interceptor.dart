@@ -106,7 +106,7 @@ extension HTTP<T> on Response<T> {
 
   void log({final String params = ""}) {
     logger.i(
-      "${this.request!.method} - ${this.request!.url} - $statusCode \nPARAMS: ${JsonEncoder.withIndent("    ").convert(params)} \nRESPONSE: ${JsonEncoder.withIndent("    ").convert(body)}",
+      "${this.request!.method} - ${this.request!.url} - $statusCode \nPARAMS: ${JsonEncoder.withIndent(" ").convert(params)} \nRESPONSE: ${JsonEncoder.withIndent(" ").convert(body)}",
     );
   }
 }
