@@ -8,6 +8,8 @@ extension PageStateExtension on PageState {
   bool isLoaded() => this == PageState.loaded;
 
   bool isError() => this == PageState.error;
+
+  bool isPaging() => this == PageState.paging;
 }
 
 extension RxPageStateExtension on Rx<PageState> {
@@ -19,6 +21,8 @@ extension RxPageStateExtension on Rx<PageState> {
 
   bool isError() => value == PageState.error;
 
+  bool isPaging() => value == PageState.paging;
+
   PageState initial() => this(PageState.initial);
 
   PageState loading() => this(PageState.loading);
@@ -26,13 +30,15 @@ extension RxPageStateExtension on Rx<PageState> {
   PageState loaded() => this(PageState.loaded);
 
   PageState error() => this(PageState.error);
+
+  PageState paging() => this(PageState.paging);
 }
 
 class UtilitiesConstants {
   static String token = "token";
 }
 
-enum PageState { initial, loading, loaded, error, empty }
+enum PageState { initial, loading, loaded, error, empty , paging }
 
 enum MediaType { image, svg, video, pdf, voice, link }
 
