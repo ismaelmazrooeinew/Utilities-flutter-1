@@ -44,7 +44,7 @@ Future<void> request<T>(
     print(e);
   }
 
-  if (kDebugMode) response.log(params: (body == null || !encodeBody) ? "" : body.toJson());
+  if (kDebugMode) delay(100, () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()));
   if (response.isSuccessful())
     action(response);
   else
