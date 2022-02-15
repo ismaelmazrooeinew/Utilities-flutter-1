@@ -34,6 +34,8 @@ dependencies:
   video_player: ^2.2.16
   just_audio: ^0.9.18
   syncfusion_flutter_pdfviewer: ^19.4.48-beta
+  path_provider: ^2.0.9
+  flutter_downloader: ^1.7.2
 
 flutter:
   uses-material-design: true

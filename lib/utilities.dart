@@ -15,6 +15,8 @@ export 'package:share_plus/share_plus.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:webviewx/webviewx.dart';
+export 'package:flutter_downloader/flutter_downloader.dart';
+export 'package:path_provider/path_provider.dart';
 
 export 'extensions/align_extension.dart';
 export 'extensions/date_extension.dart';
@@ -31,6 +33,7 @@ export 'utils/constants.dart';
 export 'utils/get.dart';
 export 'utils/http_interceptor.dart';
 export 'utils/file.dart';
+export 'utils/file_downloader.dart';
 export 'utils/launch.dart';
 export 'utils/local_storage.dart';
 export 'utils/share.dart';

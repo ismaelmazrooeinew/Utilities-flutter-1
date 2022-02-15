@@ -29,32 +29,55 @@ import 'package:just_audio/just_audio.dart';
 //       type: MediaType.video),
 // ];
 
-class StoryView extends StatelessWidget {
+class StoryView extends StatefulWidget {
   final List<MediaViewModel> data;
-  final Widget footer;
+  final Widget? footer;
   final PreferredSizeWidget? appbar;
-  final Widget header;
+  final Widget? header;
 
   const StoryView({
     Key? key,
     required this.data,
-    required this.footer,
-    required this.header,
+    this.footer,
+    this.header,
     this.appbar,
   }) : super(key: key);
 
   @override
+  State<StoryView> createState() => _StoryViewState();
+}
+
+class _StoryViewState extends State<StoryView> {
+  CarouselController buttonCarouselController = CarouselController();
+
+  void initializeFlutterDownloader() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await FlutterDownloader.initialize(debug: false);
+    FlutterDownloader.registerCallback(downloadCallback);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initializeFlutterDownloader();
+  }
+
+  static void downloadCallback(
+      String id, DownloadTaskStatus status, int progress) {}
+
+  @override
   Widget build(BuildContext context) => SafeArea(
         child: scaffold(
-          appBar: appbar,
+          appBar: widget.appbar,
           body: CarouselSlider(
+            carouselController: buttonCarouselController,
             options: CarouselOptions(
               height: screenHeight,
               viewportFraction: 1.0,
               enlargeCenterPage: false,
               // autoPlay: false,
             ),
-            items: data.map((item) {
+            items: widget.data.map((item) {
               Widget result = Container();
               switch (item.type) {
                 case MediaType.svg:
@@ -81,14 +104,106 @@ class StoryView extends StatelessWidget {
               return Stack(
                 children: [
                   result,
-                  Positioned(top: 0, left: 0, right: 0, child: header),
-                  Positioned(bottom: 0, left: 0, right: 0, child: footer),
+                  Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      child: widget.header ?? Container()),
+                  item.type != MediaType.link
+                      ? Positioned(
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          child: widget.footer == null
+                              ? _footer(item.link, context)
+                              : widget.footer!)
+                      : Container(),
+                  isWeb
+                      ? Positioned(
+                          top: screenHeight / 2,
+                          right: 10,
+                          child: InkWell(
+                            onTap: () {
+                              print("click");
+                              buttonCarouselController.nextPage(
+                                duration: Duration(milliseconds: 300), curve: Curves.linear);
+                            },
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(100)),
+                              child: Icon(Icons.arrow_right, color: Colors.blueAccent),
+                            ),
+                          ),
+                        )
+                      : Container(),
+                  isWeb
+                      ? Positioned(
+                    top: screenHeight / 2,
+                    left: 10,
+                    child: InkWell(
+                      onTap: () {
+                        print("click");
+                        buttonCarouselController.previousPage(
+                            duration: Duration(milliseconds: 300), curve: Curves.linear);
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(100)),
+                        child: Icon(Icons.arrow_left, color: Colors.blueAccent),
+                      ),
+                    ),
+                  )
+                      : Container(),
                 ],
               );
             }).toList(),
           ),
         ),
       );
+
+  Widget _footer(String url, BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      width: double.infinity,
+      height: 50,
+      child: Row(
+        children: [
+          Spacer(),
+          InkWell(
+            onTap: () => shareText(url),
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(100)),
+              child: Icon(Icons.share, color: Colors.blueAccent),
+            ),
+          ),
+          SizedBox(width: 5),
+          InkWell(
+            onTap: () => isWeb
+                ? launchURL(url)
+                : FileDownloader().requestDownload(url: url, context: context),
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(100)),
+              child: Icon(Icons.downloading_outlined, color: Colors.blueAccent),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _showImage(BuildContext context, String url) => Center(
         child: image(
