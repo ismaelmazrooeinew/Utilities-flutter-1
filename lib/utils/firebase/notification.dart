@@ -24,7 +24,6 @@ Future<void> firebaseMessagingBackgroundHandler(final RemoteMessage message) asy
 }
 
 Future<void> initFirebaseNotification() async {
-  await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(alert: true, badge: true, sound: true);
 }
