@@ -33,6 +33,7 @@ export 'utils/constants.dart';
 export 'utils/get.dart';
 export 'utils/http_interceptor.dart';
 export 'utils/file.dart';
+export 'utils/form_builder.dart';
 export 'utils/file_downloader.dart';
 export 'utils/launch.dart';
 export 'utils/local_storage.dart';
