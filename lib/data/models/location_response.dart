@@ -1,7 +1,7 @@
 import 'package:utilities/utilities.dart';
 
-class UtilitiesLocationResponse {
-  UtilitiesLocationResponse({
+class LocationResponse {
+  LocationResponse({
     required this.id,
     required this.parentId,
     required this.parent,
@@ -11,12 +11,12 @@ class UtilitiesLocationResponse {
     required this.longitude,
   });
 
-  factory UtilitiesLocationResponse.fromJson(final String str) => UtilitiesLocationResponse.fromMap(json.decode(str));
+  factory LocationResponse.fromJson(final String str) => LocationResponse.fromMap(json.decode(str));
 
-  factory UtilitiesLocationResponse.fromMap(final Map<String, dynamic> json) => UtilitiesLocationResponse(
+  factory LocationResponse.fromMap(final Map<String, dynamic> json) => LocationResponse(
         id: json["i"],
         parentId: json["pi"],
-        parent: json["p"] == null ? null : UtilitiesLocationResponse.fromMap(json["p"]),
+        parent: json["p"] == null ? null : LocationResponse.fromMap(json["p"]),
         title: json["n"],
         type: json["t"],
         latitude: json["lat"],
@@ -29,7 +29,7 @@ class UtilitiesLocationResponse {
   final double? latitude;
   final double? longitude;
   final String? title;
-  final UtilitiesLocationResponse? parent;
+  final LocationResponse? parent;
 
   String toJson() => json.encode(toMap());
 
