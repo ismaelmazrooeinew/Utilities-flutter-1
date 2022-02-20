@@ -45,4 +45,4 @@ dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/data/
+    - lib/assets/data/
