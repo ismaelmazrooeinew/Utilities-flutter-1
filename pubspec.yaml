@@ -45,4 +45,4 @@ dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/data/global_locations.json
+    - assets/data/
