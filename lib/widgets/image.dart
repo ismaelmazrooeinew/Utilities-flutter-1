@@ -24,6 +24,10 @@ Widget image(
         placeholder,
         width: width,
         height: height,
+        borderRadius: borderRadius,
+        color: color,
+        margin: margin,
+        onTap: onTap,
         fit: fit,
         clipBehavior: clipBehavior,
       );
@@ -47,6 +51,7 @@ Widget image(
         width: width,
         height: height,
         fit: fit,
+
         clipBehavior: clipBehavior,
         margin: margin,
         borderRadius: borderRadius,
