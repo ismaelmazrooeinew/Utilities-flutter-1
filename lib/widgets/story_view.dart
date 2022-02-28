@@ -51,8 +51,6 @@ class _StoryViewState extends State<StoryView> {
   CarouselController buttonCarouselController = CarouselController();
 
   void initializeFlutterDownloader() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    await FlutterDownloader.initialize(debug: false);
     FlutterDownloader.registerCallback(downloadCallback);
   }
 
