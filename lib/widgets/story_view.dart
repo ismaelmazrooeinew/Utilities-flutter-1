@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:utilities/utilities.dart';
 import 'package:video_player/video_player.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:just_audio/just_audio.dart';
 
 /// fake data for test
 // final List<MediaViewModel> data = [
@@ -62,161 +62,125 @@ class _StoryViewState extends State<StoryView> {
     initializeFlutterDownloader();
   }
 
-  static void downloadCallback(
-      String id, DownloadTaskStatus status, int progress) {}
+  static void downloadCallback(String id, DownloadTaskStatus status, int progress) {}
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-        child: scaffold(
-          appBar: widget.appbar,
-          body: CarouselSlider(
-            carouselController: buttonCarouselController,
-            options: CarouselOptions(
-              height: screenHeight,
-              viewportFraction: 1.0,
-              enlargeCenterPage: false,
-              // autoPlay: false,
-            ),
-            items: widget.data.map((item) {
-              Widget result = Container();
-              switch (item.type) {
-                case MediaType.svg:
-                  result = _showImage(context, item.link);
-                  break;
-                case MediaType.video:
-                  result = VideoPlayerScreen(url: item.link);
-                  break;
-                case MediaType.pdf:
-                  result = _showPdf(context, item.link);
-                  break;
-                case MediaType.voice:
-                  result = ShowVoice(url: item.link);
-                  break;
-                case MediaType.link:
-                  result = _showWeb(context, item.link);
-                  break;
-                case MediaType.image:
-                  result = _showImage(context, item.link);
-                  break;
-                default:
-                  result = Container();
-              }
-              return Stack(
-                children: [
-                  result,
-                  Positioned(
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      child: widget.header ?? Container()),
-                  item.type != MediaType.link
-                      ? Positioned(
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: widget.footer == null
-                              ? _footer(item.link, context)
-                              : widget.footer!)
-                      : Container(),
-                  isWeb
-                      ? Positioned(
-                          top: screenHeight / 2,
-                          right: 10,
-                          child: InkWell(
-                            onTap: () {
-                              print("click");
-                              buttonCarouselController.nextPage(
-                                duration: Duration(milliseconds: 300), curve: Curves.linear);
-                            },
-                            child: Container(
-                              height: 40,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(100)),
-                              child: Icon(Icons.arrow_right, color: Colors.blueAccent),
-                            ),
+  Widget build(BuildContext context) => scaffold(
+        appBar: widget.appbar,
+        body: CarouselSlider(
+          carouselController: buttonCarouselController,
+          options: CarouselOptions(height: screenHeight, viewportFraction: 1.0, enlargeCenterPage: false),
+          items: widget.data.map((item) {
+            Widget result = Container();
+            switch (item.type) {
+              case MediaType.svg:
+                result = _showImage(context, item.link);
+                break;
+              case MediaType.video:
+                result = VideoPlayerScreen(url: item.link);
+                break;
+              case MediaType.pdf:
+                result = _showPdf(context, item.link);
+                break;
+              case MediaType.voice:
+                result = ShowVoice(url: item.link);
+                break;
+              case MediaType.link:
+                result = _showWeb(context, item.link);
+                break;
+              case MediaType.image:
+                result = _showImage(context, item.link);
+                break;
+              default:
+                result = Container();
+            }
+            return Stack(
+              children: [
+                result,
+                Positioned(top: 0, left: 0, right: 0, child: widget.header ?? Container()),
+                item.type != MediaType.link
+                    ? Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: widget.footer == null ? _footer(item.link, context) : widget.footer!,
+                      )
+                    : Container(),
+                isWeb
+                    ? Positioned(
+                        top: screenHeight / 2,
+                        right: 10,
+                        child: InkWell(
+                          onTap: () {
+                            print("click");
+                            buttonCarouselController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.linear);
+                          },
+                          child: Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
+                            child: Icon(Icons.arrow_right, color: Colors.blueAccent),
                           ),
-                        )
-                      : Container(),
-                  isWeb
-                      ? Positioned(
-                    top: screenHeight / 2,
-                    left: 10,
-                    child: InkWell(
-                      onTap: () {
-                        print("click");
-                        buttonCarouselController.previousPage(
-                            duration: Duration(milliseconds: 300), curve: Curves.linear);
-                      },
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(100)),
-                        child: Icon(Icons.arrow_left, color: Colors.blueAccent),
-                      ),
-                    ),
-                  )
-                      : Container(),
-                ],
-              );
-            }).toList(),
-          ),
+                        ),
+                      )
+                    : Container(),
+                isWeb
+                    ? Positioned(
+                        top: screenHeight / 2,
+                        left: 10,
+                        child: InkWell(
+                          onTap: () {
+                            print("click");
+                            buttonCarouselController.previousPage(duration: Duration(milliseconds: 300), curve: Curves.linear);
+                          },
+                          child: Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
+                            child: Icon(Icons.arrow_left, color: Colors.blueAccent),
+                          ),
+                        ),
+                      )
+                    : Container(),
+              ],
+            );
+          }).toList(),
         ),
       );
 
-  Widget _footer(String url, BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      width: double.infinity,
-      height: 50,
-      child: Row(
-        children: [
-          Spacer(),
-          InkWell(
-            onTap: () => shareText(url),
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(100)),
-              child: Icon(Icons.share, color: Colors.blueAccent),
+  Widget _footer(String url, BuildContext context) => Container(
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        width: double.infinity,
+        height: 50,
+        child: Row(
+          children: [
+            Spacer(),
+            InkWell(
+              onTap: () => shareText(url),
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
+                child: Icon(Icons.share, color: Colors.blueAccent),
+              ),
             ),
-          ),
-          SizedBox(width: 5),
-          InkWell(
-            onTap: () => isWeb
-                ? launchURL(url)
-                : FileDownloader().requestDownload(url: url, context: context),
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(100)),
-              child: Icon(Icons.downloading_outlined, color: Colors.blueAccent),
+            SizedBox(width: 5),
+            InkWell(
+              onTap: () => isWeb ? launchURL(url) : FileDownloader().requestDownload(url: url, context: context),
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
+                child: Icon(Icons.downloading_outlined, color: Colors.blueAccent),
+              ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _showImage(BuildContext context, String url) => Center(
-        child: image(
-          url,
-          fit: BoxFit.cover,
-          height: screenHeight,
+          ],
         ),
       );
 
-  Widget _showPdf(BuildContext context, String url) => SizedBox(
-        height: screenHeight,
-        child: SfPdfViewer.network(url),
-      );
+  Widget _showImage(BuildContext context, String url) => Center(child: image(url, height: screenHeight, width: screenWidth));
+
+  Widget _showPdf(BuildContext context, String url) => SizedBox(height: screenHeight, child: SfPdfViewer.network(url));
 
   Widget _showWeb(BuildContext context, String url) => WebViewX(
         initialContent: url,
@@ -260,10 +224,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           future: _initializeVideoPlayerFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done)
-              return AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: VideoPlayer(_controller),
-              );
+              return AspectRatio(aspectRatio: _controller.value.aspectRatio, child: VideoPlayer(_controller));
             else
               return const Center(child: CircularProgressIndicator());
           },
@@ -301,7 +262,5 @@ class _ShowVoiceState extends State<ShowVoice> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  Widget build(BuildContext context) => Container();
 }
