@@ -41,7 +41,6 @@ export 'extensions/widget_extension.dart';
 export 'utils/availability.dart';
 export 'utils/constants.dart';
 export 'utils/file.dart';
-export 'utils/form_builder.dart';
 export 'utils/file_downloader.dart';
 export 'utils/firebase/notification.dart';
 export 'utils/get.dart';
