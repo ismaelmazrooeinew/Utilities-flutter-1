@@ -164,7 +164,7 @@ class _StoryViewState extends State<StoryView> {
             ),
             SizedBox(width: 5),
             InkWell(
-              onTap: () => isWeb ? launchURL(url) : FileDownloader().requestDownload(url: url, context: context),
+              // onTap: () => isWeb ? launchURL(url) : FileDownloader().requestDownload(url: url, context: context),
               child: Container(
                 height: 40,
                 width: 40,
