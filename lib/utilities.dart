@@ -22,6 +22,7 @@ export 'package:share_plus/share_plus.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:webviewx/webviewx.dart';
+export 'package:video_player/video_player.dart';
 
 export 'data/models/contact_information_response.dart';
 export 'data/models/content_response.dart';
