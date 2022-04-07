@@ -62,3 +62,4 @@ export 'widgets/others.dart';
 export 'widgets/otp_field.dart';
 export 'widgets/percent_indicator.dart';
 export 'widgets/story_view.dart';
+export 'widgets/radar_chart.dart';
