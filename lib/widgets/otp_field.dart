@@ -97,6 +97,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
     return Container(
       width: widget.width,
       child: Row(
+        textDirection: TextDirection.ltr,
         mainAxisAlignment: widget.textFieldAlignment,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: _textFields,
