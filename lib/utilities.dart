@@ -3,7 +3,7 @@ export 'dart:convert';
 
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:file_picker/file_picker.dart';
-export 'package:firebase_auth/firebase_auth.dart';
+// export 'package:firebase_auth/firebase_auth.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
 export 'package:flutter_downloader/flutter_downloader.dart';

@@ -39,7 +39,7 @@ dependencies:
   flutter_local_notifications: ^9.3.2
   firebase_messaging: ^11.2.12
   firebase_core: ^1.14.0
-  firebase_auth: ^3.3.13
+#  firebase_auth: ^3.3.13
   google_sign_in: ^5.2.4
 
 flutter:
