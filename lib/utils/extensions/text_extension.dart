@@ -1,4 +1,371 @@
 import 'package:flutter/material.dart';
+import 'package:utilities/utilities.dart';
+
+extension TextExtension on Text {
+  Text headline1({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.headline1!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text headline2({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.headline2!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text headline3({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.headline3!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text headline4({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.headline4!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text headline5({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.headline5!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text headline6({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.headline6!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text subtitle1({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.subtitle1!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text subtitle2({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.subtitle2!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text bodyText1({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.bodyText1!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text bodyText2({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.bodyText2!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text caption({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.caption!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text overline({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.overline!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+
+  Text button({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+    final String? fontFamily,
+    final double? letterSpacing,
+    final double? height,
+    final double? wordSpacing,
+    final TextOverflow? overflow,
+    final TextBaseline? textBaseline,
+    final List<Shadow>? shadows,
+  }) =>
+      Text(
+        data ?? "",
+        style: context.textTheme.button!.copyWith(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          height: height,
+          wordSpacing: wordSpacing,
+          overflow: overflow,
+          textBaseline: textBaseline,
+          shadows: shadows,
+        ),
+      );
+}
 
 extension StyledText<T extends Text> on T {
   Text copyWith({
