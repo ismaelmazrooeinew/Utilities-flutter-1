@@ -1,3 +1,4 @@
+import 'package:utilities/data/models/response/media_response.dart';
 import 'package:utilities/utilities.dart';
 
 class ContentResponse {

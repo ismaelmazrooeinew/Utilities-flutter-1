@@ -87,7 +87,7 @@ class CDialog extends StatelessWidget {
 
   /// The widget below this widget in the tree.
   ///
-  /// {@macro flutter.widgets.child}
+  /// {@macro flutter.components.child}
   final Widget? child;
 
   // TODO(johnsonmh): Update default dialog border radius to 4.0 to match material spec.
@@ -136,7 +136,7 @@ class CDialog extends StatelessWidget {
 /// rarely desired. Consider using a scrolling widget for [content], such as
 /// [SingleChildScrollView], to avoid overflow. (However, be aware that since
 /// [AlertDialog] tries to size itself using the intrinsic dimensions of its
-/// children, widgets such as [ListView], [GridView], and [CustomScrollView],
+/// children, components such as [ListView], [GridView], and [CustomScrollView],
 /// which use lazy viewports, will not work. If this is a problem, consider
 /// using [Dialog] directly.)
 ///
@@ -268,9 +268,9 @@ class CAlertDialog extends StatelessWidget {
   /// The (optional) set of actions that are displayed at the bottom of the
   /// dialog.
   ///
-  /// Typically this is a list of [FlatButton] widgets.
+  /// Typically this is a list of [FlatButton] components.
   ///
-  /// These widgets will be wrapped in a [ButtonBar], which introduces 8 pixels
+  /// These components will be wrapped in a [ButtonBar], which introduces 8 pixels
   /// of padding on each side.
   ///
   /// If the [title] is not null but the [content] _is_ null, then an extra 20
@@ -453,8 +453,8 @@ class SimpleDialogOption extends StatelessWidget {
 /// A simple dialog offers the user a choice between several options. A simple
 /// dialog has an optional title that is displayed above the choices.
 ///
-/// Choices are normally represented using [SimpleDialogOption] widgets. If
-/// other widgets are used, see [contentPadding] for notes regarding the
+/// Choices are normally represented using [SimpleDialogOption] components. If
+/// other components are used, see [contentPadding] for notes regarding the
 /// conventions for obtaining the spacing expected by Material Design.
 ///
 /// For dialogs that inform the user about a situation, consider using an
@@ -710,7 +710,7 @@ Future<T?> showCDialog<T>({
   bool barrierDismissible = true,
   @Deprecated('Instead of using the "child" argument, return the child from a closure '
       'provided to the "builder" argument. This will ensure that the BuildContext '
-      'is appropriate for widgets built in the dialog.')
+      'is appropriate for components built in the dialog.')
       Widget? child,
   WidgetBuilder? builder,
 }) {
