@@ -30,7 +30,7 @@ bool isDebugMode = kDebugMode;
 void updateLocale(final Locale locale) => Get.updateLocale(locale);
 
 Future<String> appName() async {
-  final PackageInfo packageInfo = await PackageInfo.fromPlatform()..appName;
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.appName;
 }
 

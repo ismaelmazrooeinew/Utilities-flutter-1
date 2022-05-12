@@ -1,7 +1,6 @@
 export 'dart:async';
 export 'dart:convert';
 
-export 'package:carousel_slider/carousel_slider.dart';
 export 'package:file_picker/file_picker.dart';
 export 'package:flutter_downloader/flutter_downloader.dart';
 export 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -19,9 +18,16 @@ export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:video_player/video_player.dart';
 export 'package:webviewx/webviewx.dart';
+export 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+export 'package:just_audio/just_audio.dart';
 
 export 'components/components.dart';
 export 'data/data.dart';
 export 'data/models/models.dart';
 export 'utils/utils.dart';
 export 'view_models/view_models.dart';
+
+
+void initUtilities() {
+
+}

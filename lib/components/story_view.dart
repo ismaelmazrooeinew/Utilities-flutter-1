@@ -1,8 +1,6 @@
+
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:utilities/utilities.dart';
-import 'package:video_player/video_player.dart';
 
 /// fake data for test
 // final List<MediaViewModel> data = [

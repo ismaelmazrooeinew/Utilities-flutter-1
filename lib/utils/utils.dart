@@ -12,7 +12,6 @@ export 'extensions/shimmer_extension.dart';
 export 'extensions/string_extension.dart';
 export 'extensions/text_extension.dart';
 export 'extensions/widget_extension.dart';
-export 'availability.dart';
 export 'constants.dart';
 export 'file.dart';
 export 'file_downloader.dart';

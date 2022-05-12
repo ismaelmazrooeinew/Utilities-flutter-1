@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:utilities/utils/get.dart';
 
 Widget scaffold({
@@ -35,20 +34,6 @@ Widget scaffold({
           child: Container(constraints: constraints, decoration: decoration, padding: padding, child: body),
         ),
       ),
-    );
-
-Widget pullRefresh({
-  required final RefreshController controller,
-  final Function? onLoading,
-  final Function? onRefresh,
-  final Widget? child,
-}) =>
-    SmartRefresher(
-      controller: controller,
-      onLoading: onLoading as void Function()?,
-      onRefresh: onRefresh as void Function()?,
-      enablePullUp: true,
-      child: child,
     );
 
 Widget radius({required final Widget child, required final double radius}) => ClipRRect(
