@@ -47,7 +47,7 @@ class _PersianMonthPickerState extends State<PersianMonthPicker> with TickerProv
     if (widget.initDate != null) {
       var splitInitDate = widget.initDate.split('#');
       var splitStartDate = splitInitDate[0].split('/');
-      initDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ?? Jalali.now();
+      initDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
 
       selectedMonth = initDate.month;
     } else {
@@ -140,7 +140,7 @@ class _PersianMonthPickerState extends State<PersianMonthPicker> with TickerProv
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                FlatButton(
+                TextButton(
                   child: Text(
                     'تایید',
                     style: TextStyle(fontSize: 16, color: Global.color),
@@ -149,7 +149,7 @@ class _PersianMonthPickerState extends State<PersianMonthPicker> with TickerProv
                     widget.onSelectMonth!(initDate);
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'انصراف',
                     style: TextStyle(fontSize: 16, color: Global.color),
@@ -158,7 +158,7 @@ class _PersianMonthPickerState extends State<PersianMonthPicker> with TickerProv
                     Navigator.pop(context);
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'اکنون',
                     style: TextStyle(fontSize: 16, color: Global.color),

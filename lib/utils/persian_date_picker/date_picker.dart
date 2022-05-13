@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:utilities/utils/shamsi_date/shamsi_date.dart';
-import 'package:utilities/utils/shamsi_date/src/jalali/jalali_date.dart';
 
 import 'utils/consts.dart';
 import 'widget/render_table.dart';
@@ -51,10 +49,10 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
         if (widget.endSelectedDate != null) {
           var splitStartDate = widget.startSelectedDate.split('/');
           var splitEndDate = widget.endSelectedDate.split('/');
-          startSelectedDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ?? Jalali.now();
-          endSelectedDate = Jalali(int.parse(splitEndDate[0]), int.parse(splitEndDate[1]), int.parse(splitEndDate[2])) ?? Jalali.now();
+          startSelectedDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
+          endSelectedDate = Jalali(int.parse(splitEndDate[0]), int.parse(splitEndDate[1]), int.parse(splitEndDate[2]));
 
-          initDate = startSelectedDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ?? Jalali.now();
+          initDate = startSelectedDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
         }
       });
     }
@@ -73,10 +71,10 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
     if (widget.endSelectedDate != null) {
       var splitStartDate = widget.startSelectedDate.split('/');
       var splitEndDate = widget.endSelectedDate.split('/');
-      startSelectedDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ?? Jalali.now();
-      endSelectedDate = Jalali(int.parse(splitEndDate[0]), int.parse(splitEndDate[1]), int.parse(splitEndDate[2])) ?? Jalali.now();
+      startSelectedDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
+      endSelectedDate = Jalali(int.parse(splitEndDate[0]), int.parse(splitEndDate[1]), int.parse(splitEndDate[2]));
 
-      initDate = startSelectedDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ?? Jalali.now();
+      initDate = startSelectedDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
     }
 
     controller = AnimationController(duration: Duration(milliseconds: 300), vsync: this);
@@ -229,7 +227,7 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
                             transform: Matrix4.translationValues(animation.value * (isSlideForward ? 100 : -100), 0, 0),
                             child: Opacity(
                               opacity: 1 - animation.value,
-                              child: FlatButton(
+                              child: TextButton(
                                 onPressed: () {
                                   widget.onChangePicker!('year');
                                 },
@@ -274,7 +272,7 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                FlatButton(
+                TextButton(
                   child: Text(
                     'تایید',
                     style: TextStyle(fontSize: 16, color: Global.color),
@@ -287,7 +285,7 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
                     }
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'انصراف',
                     style: TextStyle(fontSize: 16, color: Global.color),
@@ -296,7 +294,7 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
                     Navigator.pop(context);
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'اکنون',
                     style: TextStyle(fontSize: 16, color: Global.color),

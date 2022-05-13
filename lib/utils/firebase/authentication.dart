@@ -1,4 +1,3 @@
-import 'package:utilities/utilities.dart';
 
 /// Setup Firebase Auth in project first.
 /// Add SHA-1 ad SHA-256 in google PlayStore

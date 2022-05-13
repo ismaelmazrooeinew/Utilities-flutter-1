@@ -94,7 +94,7 @@ class PersianDateUtils {
 
   static Jalali stringToJalali(String date) {
     List split = date.split('/');
-    return Jalali(int.parse(split[0]), int.parse(split[1]), int.parse(split[2])) ?? Jalali.now();
+    return Jalali(int.parse(split[0]), int.parse(split[1]), int.parse(split[2]));
   }
 
   static String jalaliToString(Date date) {

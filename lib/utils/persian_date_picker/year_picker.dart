@@ -83,7 +83,7 @@ class _PersianYearPickerState extends State<PersianYearPicker> with TickerProvid
     if (widget.initDate != null) {
       var splitInitDate = widget.initDate.split('#');
       var splitStartDate = splitInitDate[0].split('/');
-      initDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ?? Jalali.now();
+      initDate = Jalali(int.parse(splitStartDate[0]), int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
 
       selectedYear = initDate.year;
     } else {
@@ -185,7 +185,7 @@ class _PersianYearPickerState extends State<PersianYearPicker> with TickerProvid
                       transform: Matrix4.translationValues(animation.value * (isSlideForward ? 100 : -100), 0, 0),
                       child: Opacity(
                         opacity: 1 - animation.value,
-                        child: FlatButton(
+                        child: TextButton(
                           onPressed: () {
                             widget.onChangePicker!('month');
                           },
@@ -219,7 +219,7 @@ class _PersianYearPickerState extends State<PersianYearPicker> with TickerProvid
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                FlatButton(
+                TextButton(
                   child: Text(
                     'تایید',
                     style: TextStyle(fontSize: 16, color: Global.color),
@@ -228,7 +228,7 @@ class _PersianYearPickerState extends State<PersianYearPicker> with TickerProvid
                     widget.onSelectYear!(initDate);
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'انصراف',
                     style: TextStyle(fontSize: 16, color: Global.color),
@@ -237,7 +237,7 @@ class _PersianYearPickerState extends State<PersianYearPicker> with TickerProvid
                     Navigator.pop(context);
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'اکنون',
                     style: TextStyle(fontSize: 16, color: Global.color),

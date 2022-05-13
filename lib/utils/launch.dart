@@ -1,10 +1,9 @@
 import 'package:url_launcher/url_launcher.dart';
 
-Future<void> launchURL(
-  final String url, {
-  final bool universal = true,
-}) async =>
-    launch(url, universalLinksOnly: universal);
+Future<void> launchURL(final String url, {LaunchMode mode = LaunchMode.platformDefault}) async => launchUrl(
+      Uri.parse(url),
+      mode: mode,
+    );
 
 void launchWhatsApp(final String number) async => await launchURL("https://api.whatsapp.com/send?phone=$number");
 
@@ -34,5 +33,5 @@ void email(final String email, final String subject) {
     }),
   );
 
-  launch(emailLaunchUri.toString());
+  launchURL(emailLaunchUri.toString());
 }

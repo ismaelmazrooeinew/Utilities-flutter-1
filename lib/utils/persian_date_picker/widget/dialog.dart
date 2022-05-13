@@ -7,7 +7,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 // Examples can assume:
 // enum Department { treasury, state }
@@ -212,8 +211,7 @@ class CAlertDialog extends StatelessWidget {
     this.elevation,
     this.semanticLabel,
     this.shape,
-  })  : assert(contentPadding != null),
-        super(key: key);
+  })  : super(key: key);
 
   final double? maxWidth;
   final double? maxHeight;
@@ -268,7 +266,7 @@ class CAlertDialog extends StatelessWidget {
   /// The (optional) set of actions that are displayed at the bottom of the
   /// dialog.
   ///
-  /// Typically this is a list of [FlatButton] components.
+  /// Typically this is a list of [TextButton] components.
   ///
   /// These components will be wrapped in a [ButtonBar], which introduces 8 pixels
   /// of padding on each side.
@@ -328,7 +326,7 @@ class CAlertDialog extends StatelessWidget {
           break;
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
-          label = semanticLabel ?? MaterialLocalizations.of(context)?.alertDialogLabel;
+          label = semanticLabel ?? MaterialLocalizations.of(context).alertDialogLabel;
           break;
 
         case TargetPlatform.linux:
@@ -412,7 +410,7 @@ class CAlertDialog extends StatelessWidget {
 ///
 ///  * [SimpleDialog], for a dialog in which to use this widget.
 ///  * [showDialog], which actually displays the dialog and returns its result.
-///  * [FlatButton], which are commonly used as actions in other kinds of
+///  * [TextButton], which are commonly used as actions in other kinds of
 ///    dialogs, such as [AlertDialog]s.
 ///  * <https://material.io/design/components/dialogs.html#simple-dialog>
 class SimpleDialogOption extends StatelessWidget {
@@ -531,9 +529,7 @@ class SimpleDialog extends StatelessWidget {
     this.elevation,
     this.semanticLabel,
     this.shape,
-  })  : assert(titlePadding != null),
-        assert(contentPadding != null),
-        super(key: key);
+  })  : super(key: key);
 
   /// The (optional) title of the dialog is displayed in a large font at the top
   /// of the dialog.
@@ -616,7 +612,7 @@ class SimpleDialog extends StatelessWidget {
           break;
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
-          label = semanticLabel ?? MaterialLocalizations.of(context)?.dialogLabel;
+          label = semanticLabel ?? MaterialLocalizations.of(context).dialogLabel;
           break;
         case TargetPlatform.linux:
         case TargetPlatform.windows:
@@ -723,9 +719,7 @@ Future<T?> showCDialog<T>({
     pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
       final Widget pageChild = child ?? Builder(builder: builder!);
       return SafeArea(
-        child: Builder(builder: (BuildContext context) {
-          return theme != null ? Theme(data: theme, child: pageChild) : pageChild;
-        }),
+        child: Builder(builder: (BuildContext context) => Theme(data: theme, child: pageChild)),
       );
     },
     barrierDismissible: barrierDismissible,

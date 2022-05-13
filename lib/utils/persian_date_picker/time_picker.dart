@@ -144,7 +144,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
                     Container(
                       child: Column(
                         children: <Widget>[
-                          FlatButton(
+                          TextButton(
                             child: Icon(
                               Icons.expand_less,
                               size: 50,
@@ -167,7 +167,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                          FlatButton(
+                          TextButton(
                             child: Icon(
                               Icons.expand_more,
                               size: 50,
@@ -190,7 +190,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
                     Container(
                       child: Column(
                         children: <Widget>[
-                          FlatButton(
+                          TextButton(
                             child: Icon(
                               Icons.expand_less,
                               size: 50,
@@ -213,7 +213,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                          FlatButton(
+                          TextButton(
                             child: Icon(
                               Icons.expand_more,
                               size: 50,
@@ -236,7 +236,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                FlatButton(
+                TextButton(
                   child: Text(
                     'تایید',
                     style: TextStyle(fontSize: 16, color: isDisable ? Global.color.withOpacity(0.5) : Global.color),
@@ -245,7 +245,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
                     if (!isDisable) widget.onSelectDate!('$initHour:$initMinute');
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'انصراف',
                     style: TextStyle(fontSize: 16, color: Global.color),
@@ -254,7 +254,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
                     Navigator.pop(context);
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'اکنون',
                     style: TextStyle(fontSize: 16, color: Global.color),

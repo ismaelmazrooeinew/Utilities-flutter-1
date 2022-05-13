@@ -1,4 +1,3 @@
-import 'package:utilities/data/models/params/verify_mobile_number_for_login_params.dart';
 import 'package:utilities/utilities.dart';
 
 class UserRemoteDataSource {
