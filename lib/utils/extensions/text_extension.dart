@@ -16,6 +16,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.headline1!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -44,6 +56,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.headline2!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -72,6 +96,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.headline3!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -100,6 +136,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.headline4!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -128,6 +176,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.headline5!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -156,6 +216,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.headline6!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -184,6 +256,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.subtitle1!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -212,6 +296,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.subtitle2!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -240,6 +336,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.bodyText1!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -268,6 +376,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.bodyText2!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -296,6 +416,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.caption!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -324,6 +456,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.overline!.copyWith(
           color: color,
           fontWeight: fontWeight,
@@ -352,6 +496,18 @@ extension TextExtension on Text {
   }) =>
       Text(
         data ?? "",
+        textAlign: textAlign,
+        textDirection: textDirection,
+        maxLines: maxLines,
+        key: key,
+        locale: locale,
+        overflow: overflow,
+        semanticsLabel: semanticsLabel,
+        softWrap: softWrap,
+        strutStyle: strutStyle,
+        textHeightBehavior: textHeightBehavior,
+        textScaleFactor: textScaleFactor,
+        textWidthBasis: textWidthBasis,
         style: context.textTheme.button!.copyWith(
           color: color,
           fontWeight: fontWeight,
