@@ -14,7 +14,6 @@ export 'package:logger/logger.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:persian_tools/persian_tools.dart';
 export 'package:share_plus/share_plus.dart';
-export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:video_player/video_player.dart';
 export 'package:webviewx/webviewx.dart';
