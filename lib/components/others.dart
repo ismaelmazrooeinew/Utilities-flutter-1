@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
@@ -21,3 +22,7 @@ Widget dashedDivider({double? height}) => Row(
           ),
       ],
     );
+
+Widget centerProgress() => const Center(child: CircularProgressIndicator());
+
+Widget centerProgressCupertino() => const Center(child: CupertinoActivityIndicator());
