@@ -67,4 +67,16 @@ class IdTitleDataSource {
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
+
+  Future<void> readByUseCase({
+    required final String url,
+    required final String useCase,
+    required final Function(GenericResponse<List<IdTitleReadDto>>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      get(
+        url: "$baseUrl/${type.title}/$useCase",
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+      );
 }

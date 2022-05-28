@@ -25,7 +25,7 @@ export 'package:webviewx/webviewx.dart';
 
 export 'components/components.dart';
 export 'data/data.dart';
-export 'data/dto/models.dart';
+export 'data/dto/dto.dart';
 export 'utils/utils.dart';
 export 'view_models/view_models.dart';
 

@@ -2,8 +2,8 @@ import 'package:utilities/utilities.dart';
 
 class GetMobileVerificationCodeForLoginDto {
   GetMobileVerificationCodeForLoginDto({
-    required this.mobile,
-    required this.sendSms,
+     this.mobile,
+     this.sendSms,
   });
 
   final String? mobile;
@@ -26,8 +26,8 @@ class GetMobileVerificationCodeForLoginDto {
 
 class VerifyMobileForLoginDto {
   VerifyMobileForLoginDto({
-    required this.mobile,
-    required this.verificationCode,
+     this.mobile,
+     this.verificationCode,
   });
 
   final String? mobile;
@@ -50,19 +50,19 @@ class VerifyMobileForLoginDto {
 
 class UserReadDto {
   UserReadDto({
-    required this.token,
-    required this.id,
-    required this.fullName,
-    required this.phoneNumber,
-    required this.userName,
-    required this.bio,
-    required this.appUserName,
-    required this.appPhoneNumber,
-    required this.birthDate,
-    required this.media,
-    required this.colors,
-    required this.specialties,
-    required this.favorites,
+     this.token,
+     this.id,
+     this.fullName,
+     this.phoneNumber,
+     this.userName,
+     this.bio,
+     this.appUserName,
+     this.appPhoneNumber,
+     this.birthDate,
+     this.media,
+     this.colors,
+     this.specialties,
+     this.favorites,
   });
 
   final String? token;
@@ -118,24 +118,24 @@ class UserReadDto {
 
 class UpdateProfileParams {
   UpdateProfileParams({
-    required this.colors,
-    required this.specialties,
-    required this.favorites,
-    required this.fullName,
-    required this.bio,
-    required this.birthDate,
-    required this.userName,
-    required this.headline,
-    required this.education,
-    required this.degree,
-    required this.webSite,
-    required this.instagram,
-    required this.telegram,
-    required this.phoneNumber,
-    required this.link,
-    required this.publicBio,
-    required this.colorId,
-    required this.contactInformation,
+     this.colors,
+     this.specialties,
+     this.favorites,
+     this.fullName,
+     this.bio,
+     this.birthDate,
+     this.userName,
+     this.headline,
+     this.education,
+     this.degree,
+     this.webSite,
+     this.instagram,
+     this.telegram,
+     this.phoneNumber,
+     this.link,
+     this.publicBio,
+     this.colorId,
+     this.contactInformation,
   });
 
   final String? fullName;

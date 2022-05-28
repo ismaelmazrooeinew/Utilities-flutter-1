@@ -2,13 +2,13 @@ import 'package:utilities/utilities.dart';
 
 class FormReadDto {
   FormReadDto({
-    required this.id,
-    required this.label,
-    required this.title,
-    required this.isRequired,
-    required this.optionList,
-    required this.type,
-    required this.categoryId,
+     this.id,
+     this.label,
+     this.title,
+     this.isRequired,
+     this.optionList,
+     this.type,
+     this.categoryId,
   });
 
   final String? id;

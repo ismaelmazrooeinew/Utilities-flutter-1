@@ -2,11 +2,11 @@ import 'package:utilities/utilities.dart';
 
 class ContactInformationReadDto {
   ContactInformationReadDto({
-    required this.id,
-    required this.value,
-    required this.contactInfoItem,
-    required this.visibility,
-    required this.link,
+     this.id,
+     this.value,
+     this.contactInfoItem,
+     this.visibility,
+     this.link,
   });
 
   factory ContactInformationReadDto.fromJson(final String str) => ContactInformationReadDto.fromMap(json.decode(str));
@@ -28,9 +28,9 @@ class ContactInformationReadDto {
 
 class ContactInformationCreateUpdateDto {
   ContactInformationCreateUpdateDto({
-    required this.value,
-    required this.contactInfoItemId,
-    required this.visibility,
+     this.value,
+     this.contactInfoItemId,
+     this.visibility,
   });
 
   final String? value;

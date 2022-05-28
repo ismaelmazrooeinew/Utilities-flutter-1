@@ -2,14 +2,14 @@ import 'package:utilities/utilities.dart';
 
 class ContentReadDto {
   ContentReadDto({
-    required this.id,
-    required this.title,
-    required this.subTitle,
-    required this.description,
-    required this.link,
-    required this.media,
-    required this.contactInformation,
-    required this.useCase,
+     this.id,
+     this.title,
+     this.subTitle,
+     this.description,
+     this.link,
+     this.media,
+     this.contactInformation,
+     this.useCase,
   });
 
   factory ContentReadDto.fromJson(final String str) => ContentReadDto.fromMap(json.decode(str));

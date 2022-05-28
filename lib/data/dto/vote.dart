@@ -2,8 +2,8 @@ import 'package:utilities/utilities.dart';
 
 class VoteField {
   VoteField({
-    required this.title,
-    required this.point,
+     this.title,
+     this.point,
   });
 
   final String? title;

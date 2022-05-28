@@ -2,15 +2,15 @@ import 'package:utilities/utilities.dart';
 
 class IdTitleReadDto {
   IdTitleReadDto({
-    required this.id,
-    required this.secondaryId,
-    required this.title,
-    required this.subtitle,
-    required this.color,
-    required this.link,
-    required this.useCase,
-    required this.parent,
-    required this.parentId,
+     this.id,
+     this.secondaryId,
+     this.title,
+     this.subtitle,
+     this.color,
+     this.link,
+     this.useCase,
+     this.parent,
+     this.parentId,
   });
 
   final int? secondaryId;
@@ -54,13 +54,13 @@ class IdTitleReadDto {
 
 class IdTitleCreateUpdateDto {
   IdTitleCreateUpdateDto({
-    required this.id,
-    required this.secondaryId,
-    required this.title,
-    required this.subtitle,
-    required this.color,
-    required this.link,
-    required this.useCase,
+     this.id,
+     this.secondaryId,
+     this.title,
+     this.subtitle,
+     this.color,
+     this.link,
+     this.useCase,
   });
 
   final int? secondaryId;

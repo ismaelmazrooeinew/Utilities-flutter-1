@@ -2,12 +2,12 @@ import 'package:utilities/utilities.dart';
 
 class AppSettingsDto {
   AppSettingsDto({
-    required this.colors,
-    required this.favorites,
-    required this.specialties,
-    required this.categories,
-    required this.formFieldType,
-    required this.categoryUseCase,
+     this.colors,
+     this.favorites,
+     this.specialties,
+     this.categories,
+     this.formFieldType,
+     this.categoryUseCase,
   });
 
   final List<IdTitleReadDto>? colors;

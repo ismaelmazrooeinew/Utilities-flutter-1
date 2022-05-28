@@ -2,13 +2,13 @@ import 'package:utilities/utilities.dart';
 
 class LocationReadDto {
   LocationReadDto({
-    required this.id,
-    required this.parentId,
-    required this.parent,
-    required this.title,
-    required this.type,
-    required this.latitude,
-    required this.longitude,
+     this.id,
+     this.parentId,
+     this.parent,
+     this.title,
+     this.type,
+     this.latitude,
+     this.longitude,
   });
 
   factory LocationReadDto.fromJson(final String str) => LocationReadDto.fromMap(json.decode(str));
