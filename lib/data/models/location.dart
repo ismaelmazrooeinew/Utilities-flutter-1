@@ -1,7 +1,7 @@
 import 'package:utilities/utilities.dart';
 
-class LocationResponse {
-  LocationResponse({
+class LocationReadDto {
+  LocationReadDto({
     required this.id,
     required this.parentId,
     required this.parent,
@@ -11,12 +11,12 @@ class LocationResponse {
     required this.longitude,
   });
 
-  factory LocationResponse.fromJson(final String str) => LocationResponse.fromMap(json.decode(str));
+  factory LocationReadDto.fromJson(final String str) => LocationReadDto.fromMap(json.decode(str));
 
-  factory LocationResponse.fromMap(final Map<String, dynamic> json) => LocationResponse(
+  factory LocationReadDto.fromMap(final Map<String, dynamic> json) => LocationReadDto(
         id: json["i"],
         parentId: json["pi"],
-        parent: json["p"] == null ? null : LocationResponse.fromMap(json["p"]),
+        parent: json["p"] == null ? null : LocationReadDto.fromMap(json["p"]),
         title: json["n"],
         type: json["t"],
         latitude: json["lat"],
@@ -29,7 +29,7 @@ class LocationResponse {
   final double? latitude;
   final double? longitude;
   final String? title;
-  final LocationResponse? parent;
+  final LocationReadDto? parent;
 
   String toJson() => json.encode(toMap());
 

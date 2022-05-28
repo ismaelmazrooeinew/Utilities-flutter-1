@@ -5,15 +5,15 @@ class UserRemoteDataSource {
 
   UserRemoteDataSource({required this.baseUrl});
 
-  Future<void> requestVerificationCodeForLogin<T>({
+  Future<void> getMobileVerificationCodeForLogin<T>({
     required final String url,
     required final String mobile,
     required final Function(GenericResponse<T>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
-        url: "$baseUrl/user/RequestVerificationCodeForLogin",
-        body: RequestVerificationCodeForLoginParams(mobile: mobile),
+        url: "$baseUrl/user/GetMobileVerificationCodeForLogin",
+        body: GetMobileVerificationCodeForLoginDto(mobile: mobile, sendSms: true),
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
@@ -26,8 +26,18 @@ class UserRemoteDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
-        url: "$baseUrl/user/RequestVerificationCodeForLogin",
-        body: VerifyMobileNumberForLoginParams(mobile: mobile, verificationCode: verificationCode),
+        url: "$baseUrl/user/VerifyMobileForLogin",
+        body: VerifyMobileForLoginDto(mobile: mobile, verificationCode: verificationCode),
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+      );
+
+  Future<void> getProfile({
+    required final Function(GenericResponse<UserReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      get(
+        url: "$baseUrl/user/GetProfile",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
