@@ -116,8 +116,8 @@ class ProductReadDto {
       };
 }
 
-class ProductCreateDto {
-  ProductCreateDto({
+class ProductCreateUpdateDto {
+  ProductCreateUpdateDto({
     required this.id,
     required this.title,
     required this.subtitle,
@@ -157,11 +157,11 @@ class ProductCreateDto {
   final List<String>? specialties;
   final List<String>? tags;
 
-  factory ProductCreateDto.fromJson(String str) => ProductCreateDto.fromMap(json.decode(str));
+  factory ProductCreateUpdateDto.fromJson(String str) => ProductCreateUpdateDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ProductCreateDto.fromMap(Map<String, dynamic> json) => ProductCreateDto(
+  factory ProductCreateUpdateDto.fromMap(Map<String, dynamic> json) => ProductCreateUpdateDto(
         id: json["id"] == null ? null : json["id"],
         title: json["title"] == null ? null : json["title"],
         subtitle: json["subtitle"] == null ? null : json["subtitle"],
