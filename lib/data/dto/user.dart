@@ -155,7 +155,7 @@ class UpdateProfileParams {
   final List<String>? colors;
   final List<String>? specialties;
   final List<String>? favorites;
-  final List<ContactInformationParams>? contactInformation;
+  final List<ContactInformationCreateUpdateDto>? contactInformation;
 
   factory UpdateProfileParams.fromJson(String str) => UpdateProfileParams.fromMap(json.decode(str));
 
@@ -179,7 +179,7 @@ class UpdateProfileParams {
     link: json["link"] == null ? null : json["link"],
     publicBio: json["publicBio"] == null ? null : json["publicBio"],
     colorId: json["colorId"] == null ? null : json["colorId"],
-    contactInformation: json["contactInformation"] == null ? null : List<ContactInformationParams>.from(json["contactInformation"].map((x) => ContactInformationParams.fromMap(x))),
+    contactInformation: json["contactInformation"] == null ? null : List<ContactInformationCreateUpdateDto>.from(json["contactInformation"].map((x) => ContactInformationCreateUpdateDto.fromMap(x))),
   );
 
   Map<String, dynamic> toMap() => {

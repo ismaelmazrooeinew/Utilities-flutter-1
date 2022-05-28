@@ -49,7 +49,7 @@ class UserRemoteDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
-        url: "$baseUrl/user/RequestVerificationCodeForLogin",
+        url: "$baseUrl/user/UpdateProfile",
         body: params,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),

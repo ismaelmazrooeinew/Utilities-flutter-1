@@ -26,8 +26,8 @@ class ContactInformationReadDto {
   final IdTitleReadDto? contactInfoItem;
 }
 
-class ContactInformationParams {
-  ContactInformationParams({
+class ContactInformationCreateUpdateDto {
+  ContactInformationCreateUpdateDto({
     required this.value,
     required this.contactInfoItemId,
     required this.visibility,
@@ -37,11 +37,11 @@ class ContactInformationParams {
   final int? contactInfoItemId;
   final int? visibility;
 
-  factory ContactInformationParams.fromJson(String str) => ContactInformationParams.fromMap(json.decode(str));
+  factory ContactInformationCreateUpdateDto.fromJson(String str) => ContactInformationCreateUpdateDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ContactInformationParams.fromMap(Map<String, dynamic> json) => ContactInformationParams(
+  factory ContactInformationCreateUpdateDto.fromMap(Map<String, dynamic> json) => ContactInformationCreateUpdateDto(
     value: json["value"] == null ? null : json["value"],
     contactInfoItemId: json["contactInfoItemId"] == null ? null : json["contactInfoItemId"],
     visibility: json["visibility"] == null ? null : json["visibility"],
