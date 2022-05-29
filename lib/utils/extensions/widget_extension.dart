@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utilities/utilities.dart';
 
 extension WidgetsExtension on Widget {
   Widget withTooltip(
@@ -26,4 +27,16 @@ extension WidgetsExtension on Widget {
   Widget fit() => FittedBox(key: key, child: this, fit: BoxFit.scaleDown);
 
   Widget expanded({final int flex = 1}) => Expanded(flex: flex, child: this);
+
+  Widget obx({
+    final Rx<PageState>? state,
+    final Widget loading = const Center(child: CircularProgressIndicator()),
+  }) =>
+      Obx(
+        () => state == null
+            ? this
+            : state.isLoaded()
+                ? this
+                : loading,
+      );
 }
