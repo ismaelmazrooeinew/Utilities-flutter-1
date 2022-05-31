@@ -27,6 +27,6 @@ class SnackbarHelper {
       ),
       backgroundColor: bgColor,
     );
-    Scaffold.of(context).showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

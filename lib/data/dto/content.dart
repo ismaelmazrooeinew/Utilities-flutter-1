@@ -1,27 +1,27 @@
 import 'package:utilities/utilities.dart';
 
-class ContentResponse {
-  ContentResponse({
-    required this.id,
-    required this.title,
-    required this.subTitle,
-    required this.description,
-    required this.link,
-    required this.media,
-    required this.contactInformation,
-    required this.useCase,
+class ContentReadDto {
+  ContentReadDto({
+     this.id,
+     this.title,
+     this.subTitle,
+     this.description,
+     this.link,
+     this.media,
+     this.contactInformation,
+     this.useCase,
   });
 
-  factory ContentResponse.fromJson(final String str) => ContentResponse.fromMap(json.decode(str));
+  factory ContentReadDto.fromJson(final String str) => ContentReadDto.fromMap(json.decode(str));
 
-  factory ContentResponse.fromMap(final Map<String, dynamic> json) => ContentResponse(
+  factory ContentReadDto.fromMap(final Map<String, dynamic> json) => ContentReadDto(
         id: json["Id"],
         title: json["Title"],
         subTitle: json["SubTitle"],
         description: json["Description"],
         link: json["Link"],
-        media: json["Media"] == null ? null : List<MediaResponse>.from(json["Media"].map((final dynamic x) => MediaResponse.fromMap(x))),
-        contactInformation: json["ContactInformation"] == null ? null : List<ContactInformationResponse>.from(json["ContactInformation"].map((final dynamic x) => ContactInformationResponse.fromMap(x))),
+        media: json["Media"] == null ? null : List<MediaReadDto>.from(json["Media"].map((final dynamic x) => MediaReadDto.fromMap(x))),
+        contactInformation: json["ContactInformation"] == null ? null : List<ContactInformationReadDto>.from(json["ContactInformation"].map((final dynamic x) => ContactInformationReadDto.fromMap(x))),
         useCase: json["UseCase"],
       );
 
@@ -44,6 +44,6 @@ class ContentResponse {
   final String? subTitle;
   final String? description;
   final String? link;
-  final List<MediaResponse>? media;
-  final List<ContactInformationResponse>? contactInformation;
+  final List<MediaReadDto>? media;
+  final List<ContactInformationReadDto>? contactInformation;
 }

@@ -85,8 +85,6 @@ class RatingBar extends StatefulWidget {
   final ValueChanged<double> onRatingUpdate;
 
   /// Defines color for glow.
-  ///
-  /// Default is [ThemeData.accentColor].
   final Color? glowColor;
 
   /// Sets maximum rating
@@ -321,7 +319,7 @@ class _RatingBarState extends State<RatingBar> {
             builder: (context, glow, child) {
               if (glow && widget.glow) {
                 final glowColor =
-                    widget.glowColor ?? Theme.of(context).accentColor;
+                    widget.glowColor ?? Theme.of(context).colorScheme.secondary;
                 return DecoratedBox(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
