@@ -8,7 +8,10 @@ Widget plusMinus({
   final int defaultValue = 0,
   final Widget? addWidget,
   final Widget? minusWidget,
-  final double spaceBetween = 10
+  final double spaceBetween = 10,
+  final TextStyle? textStyle,
+  final MainAxisAlignment mainAxisAlignment = MainAxisAlignment.center,
+  final MainAxisSize mainAxisSize = MainAxisSize.min,
 }) {
   final RxInt currentAmount = defaultValue.obs;
 
@@ -39,11 +42,11 @@ Widget plusMinus({
 
   return Obx(
     () => Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: mainAxisAlignment,
+      mainAxisSize: mainAxisSize,
       children: <Widget>[
         GestureDetector(onTap: increaseAmount, child: addWidget ?? Icon(Icons.add_circle, size: 30)),
-        Text(amountString()).headline3(color: context.theme.dividerColor).marginSymmetric(horizontal: spaceBetween),
+        Text(amountString(),style: textStyle).marginSymmetric(horizontal: spaceBetween),
         GestureDetector(onTap: decreaseAmount, child: minusWidget ?? Icon(Icons.remove_circle, size: 30)),
       ],
     ),
