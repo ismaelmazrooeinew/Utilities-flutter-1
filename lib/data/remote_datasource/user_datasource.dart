@@ -44,7 +44,7 @@ class UserRemoteDataSource {
 
   Future<void> updateProfile({
     required final String url,
-    required final UpdateProfileParams params,
+    required final ProfileCreateUpdateDto params,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
