@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:utilities/utilities.dart';
+
 export 'dart:async';
 export 'dart:convert';
 
@@ -10,23 +13,23 @@ export 'package:get_storage/get_storage.dart';
 export 'package:group_button/group_button.dart';
 export 'package:image_cropper/image_cropper.dart';
 export 'package:intl/intl.dart';
+export 'package:just_audio/just_audio.dart';
 export 'package:logger/logger.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:persian_tools/persian_tools.dart';
 export 'package:share_plus/share_plus.dart';
+export 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:video_player/video_player.dart';
 export 'package:webviewx/webviewx.dart';
-export 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-export 'package:just_audio/just_audio.dart';
 
 export 'components/components.dart';
 export 'data/data.dart';
-export 'data/models/models.dart';
+export 'data/dto/dto.dart';
 export 'utils/utils.dart';
 export 'view_models/view_models.dart';
 
-
-void initUtilities() {
-
+void initUtilities() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
 }
