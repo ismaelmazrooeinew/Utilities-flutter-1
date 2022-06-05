@@ -7,7 +7,7 @@ class DottedLine extends StatelessWidget {
     this.color = Colors.grey,
     this.dashWidth = 5,
     this.dashRadius = 0,
-    this.space = 0,
+    this.space = 2.5,
   }) : super(key: key);
   final double dashHeight;
   final Color color;
