@@ -39,4 +39,9 @@ extension WidgetsExtension on Widget {
                 ? this
                 : loading,
       );
+
+  Widget onTap(final GestureTapCallback onPressed) => GestureDetector(
+        onTap: onPressed,
+        child: this,
+      );
 }
