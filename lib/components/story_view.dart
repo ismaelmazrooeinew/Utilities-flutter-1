@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
+import 'package:utilities/view_models/view_models.dart';
 
 /// fake data for test
 // final List<MediaViewModel> data = [

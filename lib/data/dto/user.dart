@@ -116,8 +116,8 @@ class UserReadDto {
       };
 }
 
-class UpdateProfileParams {
-  UpdateProfileParams({
+class ProfileCreateUpdateDto {
+  ProfileCreateUpdateDto({
      this.colors,
      this.specialties,
      this.favorites,
@@ -157,11 +157,11 @@ class UpdateProfileParams {
   final List<String>? favorites;
   final List<ContactInformationCreateUpdateDto>? contactInformation;
 
-  factory UpdateProfileParams.fromJson(String str) => UpdateProfileParams.fromMap(json.decode(str));
+  factory ProfileCreateUpdateDto.fromJson(String str) => ProfileCreateUpdateDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory UpdateProfileParams.fromMap(Map<String, dynamic> json) => UpdateProfileParams(
+  factory ProfileCreateUpdateDto.fromMap(Map<String, dynamic> json) => ProfileCreateUpdateDto(
     colors: json["colors"] == null ? null : List<String>.from(json["colors"].map((x) => x)),
     specialties: json["specialties"] == null ? null : List<String>.from(json["specialties"].map((x) => x)),
     favorites: json["favorites"] == null ? null : List<String>.from(json["favorites"].map((x) => x)),

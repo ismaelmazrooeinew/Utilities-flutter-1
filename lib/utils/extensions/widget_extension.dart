@@ -26,4 +26,9 @@ extension WidgetsExtension on Widget {
   Widget fit() => FittedBox(key: key, child: this, fit: BoxFit.scaleDown);
 
   Widget expanded({final int flex = 1}) => Expanded(flex: flex, child: this);
+
+  Widget onTap(final GestureTapCallback? onPressed) => GestureDetector(
+        onTap: onPressed,
+        child: this,
+      );
 }
