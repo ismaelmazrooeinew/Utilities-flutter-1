@@ -28,19 +28,7 @@ extension WidgetsExtension on Widget {
 
   Widget expanded({final int flex = 1}) => Expanded(flex: flex, child: this);
 
-  Widget obx({
-    final Rx<PageState>? state,
-    final Widget loading = const Center(child: CircularProgressIndicator()),
-  }) =>
-      Obx(
-        () => state == null
-            ? this
-            : state.isLoaded()
-                ? this
-                : loading,
-      );
-
-  Widget onTap(final GestureTapCallback onPressed) => GestureDetector(
+  Widget onTap(final GestureTapCallback? onPressed) => GestureDetector(
         onTap: onPressed,
         child: this,
       );
