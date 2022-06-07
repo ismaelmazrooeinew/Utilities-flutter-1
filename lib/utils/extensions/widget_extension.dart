@@ -27,7 +27,7 @@ extension WidgetsExtension on Widget {
 
   Widget expanded({final int flex = 1}) => Expanded(flex: flex, child: this);
 
-  Widget onTap(final GestureTapCallback onPressed) => GestureDetector(
+  Widget onTap(final GestureTapCallback? onPressed) => GestureDetector(
         onTap: onPressed,
         child: this,
       );
