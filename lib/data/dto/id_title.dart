@@ -11,6 +11,7 @@ class IdTitleReadDto {
      this.useCase,
      this.parent,
      this.parentId,
+     this.media,
   });
 
   final int? secondaryId;
@@ -22,6 +23,7 @@ class IdTitleReadDto {
   final String? link;
   final String? parent;
   final String? parentId;
+  final List<MediaReadDto>? media;
 
   factory IdTitleReadDto.fromJson(String str) => IdTitleReadDto.fromMap(json.decode(str));
 
@@ -37,7 +39,9 @@ class IdTitleReadDto {
         useCase: json["useCase"] == null ? null : json["useCase"],
         parent: json["parent"] == null ? null : json["parent"],
         parentId: json["parentId"] == null ? null : json["parentId"],
-      );
+        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+
+  );
 
   Map<String, dynamic> toMap() => {
         "id": id == null ? null : id,
@@ -49,7 +53,9 @@ class IdTitleReadDto {
         "useCase": useCase == null ? null : useCase,
         "parent": parent == null ? null : parent,
         "parentId": parentId == null ? null : parentId,
-      };
+        "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
+
+  };
 }
 
 class IdTitleCreateUpdateDto {
