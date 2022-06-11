@@ -26,7 +26,6 @@ class ProductDataSource {
   ProductDataSource({required this.baseUrl, required this.type});
 
   Future<void> create({
-    required final String url,
     required final ProductCreateUpdateDto dto,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
@@ -39,7 +38,6 @@ class ProductDataSource {
       );
 
   Future<void> update({
-    required final String url,
     required final ProductCreateUpdateDto dto,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
@@ -52,7 +50,6 @@ class ProductDataSource {
       );
 
   Future<void> read({
-    required final String url,
     required final Function(GenericResponse<List<ProductReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
@@ -63,7 +60,6 @@ class ProductDataSource {
       );
 
   Future<void> readById({
-    required final String url,
     required final String id,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
