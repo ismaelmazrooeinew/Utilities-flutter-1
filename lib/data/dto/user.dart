@@ -203,3 +203,91 @@ class ProfileCreateUpdateDto {
     "contactInformation": contactInformation == null ? null : List<dynamic>.from(contactInformation!.map((x) => x.toMap())),
   };
 }
+
+class CreateUser {
+  CreateUser({
+    this.fullName,
+    this.bio,
+    this.headline,
+    this.website,
+    this.password,
+    this.appUserName,
+    this.appPhoneNumber,
+    this.appEmail,
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.suspend,
+    this.wallet,
+    this.colors,
+    this.specialties,
+    this.favorites,
+    this.locations,
+    this.birthDate,
+  });
+
+  final String? fullName;
+  final String? bio;
+  final String? headline;
+  final String? website;
+  final String? password;
+  final String? appUserName;
+  final String? appPhoneNumber;
+  final String? appEmail;
+  final String? id;
+  final String? firstName;
+  final String? lastName;
+  final bool? suspend;
+  final int? wallet;
+  final List<String>? colors;
+  final List<String>? specialties;
+  final List<String>? favorites;
+  final List<int>? locations;
+  final String? birthDate;
+
+  factory CreateUser.fromJson(String str) => CreateUser.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory CreateUser.fromMap(Map<String, dynamic> json) => CreateUser(
+    fullName: json["fullName"] == null ? null : json["fullName"],
+    bio: json["bio"] == null ? null : json["bio"],
+    headline: json["headline"] == null ? null : json["headline"],
+    website: json["website"] == null ? null : json["website"],
+    password: json["password"] == null ? null : json["password"],
+    appUserName: json["appUserName"] == null ? null : json["appUserName"],
+    appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
+    appEmail: json["appEmail"] == null ? null : json["appEmail"],
+    id: json["id"] == null ? null : json["id"],
+    firstName: json["firstName"] == null ? null : json["firstName"],
+    lastName: json["lastName"] == null ? null : json["lastName"],
+    suspend: json["suspend"] == null ? null : json["suspend"],
+    wallet: json["wallet"] == null ? null : json["wallet"],
+    colors: json["colors"] == null ? null : List<String>.from(json["colors"].map((x) => x)),
+    specialties: json["specialties"] == null ? null : List<String>.from(json["specialties"].map((x) => x)),
+    favorites: json["favorites"] == null ? null : List<String>.from(json["favorites"].map((x) => x)),
+    locations: json["locations"] == null ? null : List<int>.from(json["locations"].map((x) => x)),
+    birthDate: json["birthDate"] == null ? null :json["birthDate"],
+  );
+
+  Map<String, dynamic> toMap() => {
+    "fullName": fullName == null ? null : fullName,
+    "bio": bio == null ? null : bio,
+    "headline": headline == null ? null : headline,
+    "website": website == null ? null : website,
+    "password": password == null ? null : password,
+    "appUserName": appUserName == null ? null : appUserName,
+    "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
+    "appEmail": appEmail == null ? null : appEmail,
+    "id": id == null ? null : id,
+    "firstName": firstName == null ? null : firstName,
+    "lastName": lastName == null ? null : lastName,
+    "suspend": suspend == null ? null : suspend,
+    "wallet": wallet == null ? null : wallet,
+    "colors": colors == null ? null : List<dynamic>.from(colors!.map((x) => x)),
+    "specialties": specialties == null ? null : List<dynamic>.from(specialties!.map((x) => x)),
+    "favorites": favorites == null ? null : List<dynamic>.from(favorites!.map((x) => x)),
+    "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
+    "birthDate": birthDate == null ? null : birthDate,
+  };
+}
