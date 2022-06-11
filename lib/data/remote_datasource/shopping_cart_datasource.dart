@@ -1,76 +1,66 @@
+import 'package:utilities/data/dto/shopping_cart.dart';
 import 'package:utilities/utilities.dart';
 
-enum IdTitleDataSourceType {
-  brand("Brand"),
-  category("Category"),
-  reference("Reference");
 
-  final String title;
 
-  const IdTitleDataSourceType(this.title);
-
-  @override
-  String toString() => name;
-}
-
-class IdTitleDataSource {
+class ShoppingCartDataSource {
   final String baseUrl;
-  final IdTitleDataSourceType type;
 
-  IdTitleDataSource({required this.baseUrl, required this.type});
+  ShoppingCartDataSource({required this.baseUrl});
 
-  Future<void> create({
-    required final IdTitleCreateUpdateDto dto,
-    required final Function(GenericResponse<IdTitleReadDto>) onResponse,
+  Future<void> createShoppingCart({
+    required final ShoppingCartReadDto dto,
+    required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
-        url: "$baseUrl/${type.title}",
+        url: "$baseUrl/ShoppingCart",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> update({
-    required final IdTitleCreateUpdateDto dto,
-    required final Function(GenericResponse<IdTitleReadDto>) onResponse,
+  Future<void> updateShoppingCart({
+    required final ShoppingCartReadDto dto,
+    required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      put(
-        url: "$baseUrl/${type.title}",
+      post(
+        url: "$baseUrl/ShoppingCart",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> read({
-    required final Function(GenericResponse<List<IdTitleReadDto>>) onResponse,
+  Future<void> readShoppingCart({
+    required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       get(
-        url: "$baseUrl/${type.title}",
+        url: "$baseUrl/ShoppingCart",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readById({
+  Future<void> readShoppingCartById({
     required final String id,
-    required final Function(GenericResponse<IdTitleReadDto>) onResponse,
+    required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       get(
-        url: "$baseUrl/${type.title}/$id",
+        url: "$baseUrl/ShoppingCart/$id",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readByUseCase({
-    required final String useCase,
-    required final Function(GenericResponse<List<IdTitleReadDto>>) onResponse,
+  Future<void> deleteShoppingCart({
+    required final String id,
+    required final String itemId,
+    required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
-        url: "$baseUrl/${type.title}/$useCase",
+      delete(
+        url: "$baseUrl/ShoppingCart/$id/$itemId",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
