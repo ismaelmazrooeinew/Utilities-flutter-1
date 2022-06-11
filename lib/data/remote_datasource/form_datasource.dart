@@ -5,8 +5,8 @@ class FormDataSource {
 
   FormDataSource({required this.baseUrl});
 
-  Future<void> create({
-    required final ProductCreateUpdateDto dto,
+  Future<void> createForm({
+    required final IdTitleCreateUpdateDto dto,
     required final Function(GenericResponse<dynamic>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
