@@ -89,7 +89,7 @@ class UserRemoteDataSource {
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      put(
         url: "$baseUrl/user/UpdateProfile",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
