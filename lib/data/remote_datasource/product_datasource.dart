@@ -83,7 +83,7 @@ class ProductDataSource {
 
   Future<void> filterProduct({
     required final ProductCreateUpdateDto filter,
-    required final Function(GenericResponse<ProductReadDto>) onResponse,
+    required final Function(GenericResponse<List<ProductReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
@@ -95,7 +95,7 @@ class ProductDataSource {
 
   Future<void> getProductMine({
     required final ProductCreateUpdateDto filter,
-    required final Function(GenericResponse<ProductReadDto>) onResponse,
+    required final Function(GenericResponse<List<ProductReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       get(

@@ -19,7 +19,7 @@ class NotificationDataSource {
       );
 
   Future<void> readNotification({
-    required final Function(GenericResponse<NotificationReadDto>) onResponse,
+    required final Function(GenericResponse<List<NotificationReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       get(

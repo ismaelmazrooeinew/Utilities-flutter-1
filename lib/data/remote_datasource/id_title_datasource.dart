@@ -74,4 +74,15 @@ class IdTitleDataSource {
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
+
+  Future<void> deleteIdTitle({
+    required final String id,
+    required final Function(GenericResponse<String>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      delete(
+        url: "$baseUrl/${type.title}/$id",
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+      );
 }

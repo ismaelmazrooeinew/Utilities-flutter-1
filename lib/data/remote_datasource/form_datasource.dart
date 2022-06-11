@@ -29,13 +29,36 @@ class FormDataSource {
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
+  Future<void> updateFormField({
+    required final IdTitleCreateUpdateDto dto,
+    required final Function(GenericResponse<List<FormReadDto>>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      post(
+        url: "$baseUrl/Form/UpdateFormField",
+        body: dto,
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+      );
+
   Future<void> readByCategoryId({
     required final String categoryId,
     required final Function(GenericResponse<List<ProductReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
-        url: "$baseUrl/$categoryId",
+      get(
+        url: "$baseUrl/Form/$categoryId",
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+      );
+
+  Future<void> deleteFormField({
+    required final String id,
+    required final Function(GenericResponse<String>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      get(
+        url: "$baseUrl/DeleteFormField/$id",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );

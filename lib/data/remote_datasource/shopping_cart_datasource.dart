@@ -33,7 +33,7 @@ class ShoppingCartDataSource {
       );
 
   Future<void> readShoppingCart({
-    required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
+    required final Function(GenericResponse<List<ShoppingCartReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       get(
@@ -56,7 +56,7 @@ class ShoppingCartDataSource {
   Future<void> deleteShoppingCart({
     required final String id,
     required final String itemId,
-    required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
+    required final Function(GenericResponse<String>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       delete(
