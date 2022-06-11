@@ -2,8 +2,8 @@ import 'dart:ffi';
 
 import 'package:utilities/utilities.dart';
 
-class UserCreateDto {
-  UserCreateDto({
+class UserCreateUpdateDto {
+  UserCreateUpdateDto({
     this.fullName,
     this.bio,
     this.headline,
@@ -43,11 +43,11 @@ class UserCreateDto {
   final List<int>? locations;
   final String? birthDate;
 
-  factory UserCreateDto.fromJson(String str) => UserCreateDto.fromMap(json.decode(str));
+  factory UserCreateUpdateDto.fromJson(String str) => UserCreateUpdateDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory UserCreateDto.fromMap(Map<String, dynamic> json) => UserCreateDto(
+  factory UserCreateUpdateDto.fromMap(Map<String, dynamic> json) => UserCreateUpdateDto(
     fullName: json["fullName"] == null ? null : json["fullName"],
     bio: json["bio"] == null ? null : json["bio"],
     headline: json["headline"] == null ? null : json["headline"],

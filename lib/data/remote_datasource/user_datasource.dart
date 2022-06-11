@@ -6,7 +6,7 @@ class UserRemoteDataSource {
   UserRemoteDataSource({required this.baseUrl});
 
   Future<void> createUser({
-    required final UserCreateDto dto,
+    required final UserCreateUpdateDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
@@ -85,7 +85,7 @@ class UserRemoteDataSource {
       );
 
   Future<void> updateProfile({
-    required final UserCreateDto dto,
+    required final UserCreateUpdateDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
