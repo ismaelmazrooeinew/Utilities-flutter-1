@@ -2,48 +2,56 @@ import 'package:utilities/utilities.dart';
 
 class ContentReadDto {
   ContentReadDto({
-     this.id,
-     this.title,
-     this.subTitle,
-     this.description,
-     this.link,
-     this.media,
-     this.contactInformation,
-     this.useCase,
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+    this.title,
+    this.subTitle,
+    this.description,
+    this.useCase,
+    this.contactInformation,
+    this.media,
   });
 
-  factory ContentReadDto.fromJson(final String str) => ContentReadDto.fromMap(json.decode(str));
-
-  factory ContentReadDto.fromMap(final Map<String, dynamic> json) => ContentReadDto(
-        id: json["Id"],
-        title: json["Title"],
-        subTitle: json["SubTitle"],
-        description: json["Description"],
-        link: json["Link"],
-        media: json["Media"] == null ? null : List<MediaReadDto>.from(json["Media"].map((final dynamic x) => MediaReadDto.fromMap(x))),
-        contactInformation: json["ContactInformation"] == null ? null : List<ContactInformationReadDto>.from(json["ContactInformation"].map((final dynamic x) => ContactInformationReadDto.fromMap(x))),
-        useCase: json["UseCase"],
-      );
-
-  String toJson() => json.encode(toMap());
-
-  Map<String, dynamic> toMap() => <String, dynamic>{
-        "Id": id,
-        "Title": title,
-        "SubTitle": subTitle,
-        "Description": description,
-        "Link": link,
-        "Media": media == null ? null : List<dynamic>.from(media!.map((final dynamic x) => x.toMap())),
-        "ContactInformation": contactInformation == null ? null : List<dynamic>.from(contactInformation!.map((final dynamic x) => x.toMap())),
-        "UseCase": useCase,
-      };
-
-  final int? id;
-  final int? useCase;
+  final String? id;
+  final String? createdAt;
+  final String? updatedAt;
+  final String? deletedAt;
   final String? title;
   final String? subTitle;
   final String? description;
-  final String? link;
-  final List<MediaReadDto>? media;
+  final int? useCase;
   final List<ContactInformationReadDto>? contactInformation;
+  final List<MediaReadDto>? media;
+
+  factory ContentReadDto.fromJson(String str) => ContentReadDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ContentReadDto.fromMap(Map<String, dynamic> json) => ContentReadDto(
+        id: json["id"] == null ? null : json["id"],
+        createdAt: json["createdAt"] == null ? null : json["createdAt"],
+        updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
+        deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
+        title: json["title"] == null ? null : json["title"],
+        subTitle: json["subTitle"] == null ? null : json["subTitle"],
+        description: json["description"] == null ? null : json["description"],
+        useCase: json["useCase"] == null ? null : json["useCase"],
+        contactInformation: json["contactInformation"] == null ? null : List<ContactInformationReadDto>.from(json["contactInformation"].map((x) => ContactInformationReadDto.fromMap(x))),
+        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id == null ? null : id,
+        "createdAt": createdAt == null ? null : createdAt,
+        "updatedAt": updatedAt == null ? null : updatedAt,
+        "deletedAt": deletedAt == null ? null : deletedAt,
+        "title": title == null ? null : title,
+        "subTitle": subTitle == null ? null : subTitle,
+        "description": description == null ? null : description,
+        "useCase": useCase == null ? null : useCase,
+        "contactInformation": contactInformation == null ? null : List<dynamic>.from(contactInformation!.map((x) => x.toMap())),
+        "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
+      };
 }
