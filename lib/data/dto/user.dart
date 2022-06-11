@@ -2,8 +2,8 @@ import 'dart:ffi';
 
 import 'package:utilities/utilities.dart';
 
-class CreateUser {
-  CreateUser({
+class UserCreateDto {
+  UserCreateDto({
     this.fullName,
     this.bio,
     this.headline,
@@ -43,11 +43,11 @@ class CreateUser {
   final List<int>? locations;
   final String? birthDate;
 
-  factory CreateUser.fromJson(String str) => CreateUser.fromMap(json.decode(str));
+  factory UserCreateDto.fromJson(String str) => UserCreateDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory CreateUser.fromMap(Map<String, dynamic> json) => CreateUser(
+  factory UserCreateDto.fromMap(Map<String, dynamic> json) => UserCreateDto(
     fullName: json["fullName"] == null ? null : json["fullName"],
     bio: json["bio"] == null ? null : json["bio"],
     headline: json["headline"] == null ? null : json["headline"],
@@ -214,52 +214,58 @@ class GetMobileVerificationCodeForLoginDto {
       };
 }
 
-class VerifyMobileForLoginDto {
-  VerifyMobileForLoginDto({
-     this.mobile,
-     this.verificationCode,
+class LoginWithEmail {
+  LoginWithEmail({
+    this.email,
+    this.password,
+    this.returnUrl,
+    this.keep,
   });
 
-  final String? mobile;
-  final String? verificationCode;
+  final String? email;
+  final String? password;
+  final String? returnUrl;
+  final bool? keep;
 
-  factory VerifyMobileForLoginDto.fromJson(String str) => VerifyMobileForLoginDto.fromMap(json.decode(str));
+  factory LoginWithEmail.fromJson(String str) => LoginWithEmail.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory VerifyMobileForLoginDto.fromMap(Map<String, dynamic> json) => VerifyMobileForLoginDto(
-        mobile: json["mobile"] == null ? null : json["mobile"],
-        verificationCode: json["verificationCode"] == null ? null : json["verificationCode"],
-      );
+  factory LoginWithEmail.fromMap(Map<String, dynamic> json) => LoginWithEmail(
+    email: json["email"] == null ? null : json["email"],
+    password: json["password"] == null ? null : json["password"],
+    returnUrl: json["returnUrl"] == null ? null : json["returnUrl"],
+    keep: json["keep"] == null ? null : json["keep"],
+  );
 
   Map<String, dynamic> toMap() => {
-        "mobile": mobile == null ? null : mobile,
-        "verificationCode": verificationCode == null ? null : verificationCode,
-      };
+    "email": email == null ? null : email,
+    "password": password == null ? null : password,
+    "returnUrl": returnUrl == null ? null : returnUrl,
+    "keep": keep == null ? null : keep,
+  };
 }
-
-
 
 class ProfileCreateUpdateDto {
   ProfileCreateUpdateDto({
-     this.colors,
-     this.specialties,
-     this.favorites,
-     this.fullName,
-     this.bio,
-     this.birthDate,
-     this.userName,
-     this.headline,
-     this.education,
-     this.degree,
-     this.webSite,
-     this.instagram,
-     this.telegram,
-     this.phoneNumber,
-     this.link,
-     this.publicBio,
-     this.colorId,
-     this.contactInformation,
+    this.colors,
+    this.specialties,
+    this.favorites,
+    this.fullName,
+    this.bio,
+    this.birthDate,
+    this.userName,
+    this.headline,
+    this.education,
+    this.degree,
+    this.webSite,
+    this.instagram,
+    this.telegram,
+    this.phoneNumber,
+    this.link,
+    this.publicBio,
+    this.colorId,
+    this.contactInformation,
   });
 
   final String? fullName;
@@ -327,5 +333,31 @@ class ProfileCreateUpdateDto {
     "contactInformation": contactInformation == null ? null : List<dynamic>.from(contactInformation!.map((x) => x.toMap())),
   };
 }
+
+class VerifyMobileForLoginDto {
+  VerifyMobileForLoginDto({
+     this.mobile,
+     this.verificationCode,
+  });
+
+  final String? mobile;
+  final String? verificationCode;
+
+  factory VerifyMobileForLoginDto.fromJson(String str) => VerifyMobileForLoginDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory VerifyMobileForLoginDto.fromMap(Map<String, dynamic> json) => VerifyMobileForLoginDto(
+        mobile: json["mobile"] == null ? null : json["mobile"],
+        verificationCode: json["verificationCode"] == null ? null : json["verificationCode"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "mobile": mobile == null ? null : mobile,
+        "verificationCode": verificationCode == null ? null : verificationCode,
+      };
+}
+
+
 
 
