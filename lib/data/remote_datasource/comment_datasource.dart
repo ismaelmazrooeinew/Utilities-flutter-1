@@ -1,62 +1,53 @@
+import 'package:utilities/data/dto/comment.dart';
 import 'package:utilities/utilities.dart';
 
-class ContentDataSource {
+class CommentDataSource {
   final String baseUrl;
 
-  ContentDataSource({required this.baseUrl});
+  CommentDataSource({required this.baseUrl});
 
-  Future<void> createContent({
-    required final ContentCreateUpdateDto dto,
-    required final Function(GenericResponse<ContentReadDto>) onResponse,
+  Future<void> createComment({
+    required final CommentCreateUpdateDto dto,
+    required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
-        url: "$baseUrl/Content",
+        url: "$baseUrl/Comment",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> updateContent({
-    required final ContentCreateUpdateDto dto,
-    required final Function(GenericResponse<ContentReadDto>) onResponse,
+  Future<void> updateComment({
+    required final CommentCreateUpdateDto dto,
+    required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
-        url: "$baseUrl/Content",
+        url: "$baseUrl/Comment",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readContent({
-    required final Function(GenericResponse<List<ContentReadDto>>) onResponse,
+  Future<void> readComment({
+    required final Function(GenericResponse<List<CommentReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       get(
-        url: "$baseUrl/Content",
+        url: "$baseUrl/Comment",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readContentById({
-    required final String id,
-    required final Function(GenericResponse<ContentReadDto>) onResponse,
-    required final Function(GenericResponse response) onError,
-  }) async =>
-      get(
-        url: "$baseUrl/Content/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
-      );
 
-  Future<void> deleteContent({
+  Future<void> deleteComment({
     required final String id,
     required final Function(GenericResponse<String>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       delete(
-        url: "$baseUrl/Content/$id",
+        url: "$baseUrl/Comment/$id",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
