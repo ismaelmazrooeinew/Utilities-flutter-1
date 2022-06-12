@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:utilities/data/dto/follow_bookmark.dart';
 import 'package:utilities/utilities.dart';
 
@@ -29,25 +30,25 @@ class FollowDataSource {
 
   Future<void> removeFollowing({
     required final FormReadDto dto,
-    required final Function(GenericResponse<String>) onResponse,
+    required final VoidCallback onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
         url: "$baseUrl/FollowBookmark/RemoveFollowing/RemoveFollowing",
         body:dto ,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
   Future<void> toggleBookmark({
     required final ToggleBookmark dto,
-    required final Function(GenericResponse<String>) onResponse,
+    required final VoidCallback onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
         url: "$baseUrl/FollowBookmark/ToggleBookmark/ToggleBookmark",
         body:dto ,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 

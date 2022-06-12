@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 class FormDataSource {
@@ -54,12 +55,12 @@ class FormDataSource {
 
   Future<void> deleteFormField({
     required final String id,
-    required final Function(GenericResponse<String>) onResponse,
+    required final VoidCallback onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       get(
         url: "$baseUrl/DeleteFormField/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 class UserRemoteDataSource {
@@ -18,18 +19,18 @@ class UserRemoteDataSource {
       );
   Future<void> deleteUser({
     required final String id,
-    required final Function(GenericResponse<String>) onResponse,
+    required final VoidCallback onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       delete(
         url: "$baseUrl/user/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
   Future<void> getMobileVerificationCodeForLogin({
-    required final GetMobileVerificationCodeForLoginDto dto,
-    required final Function(GenericResponse<String>) onResponse,
+    required final GetMobileVerificationCodeForLoginReadDto dto,
+    required final Function(GenericResponse<GetMobileVerificationCodeForLoginCreateDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
@@ -41,7 +42,7 @@ class UserRemoteDataSource {
 
   Future<void> loginWithEmail({
     required final LoginWithEmail dto,
-    required final Function(GenericResponse<String>) onResponse,
+    required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       post(
@@ -53,7 +54,7 @@ class UserRemoteDataSource {
 
   Future<void> verifyMobileForLogin({
     required final VerifyMobileForLoginDto dto,
-    required final Function(GenericResponse<String>) onResponse,
+    required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       post(

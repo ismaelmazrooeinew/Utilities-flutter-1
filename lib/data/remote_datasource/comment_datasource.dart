@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:utilities/data/dto/comment.dart';
 import 'package:utilities/utilities.dart';
 
@@ -43,12 +44,12 @@ class CommentDataSource {
 
   Future<void> deleteComment({
     required final String id,
-    required final Function(GenericResponse<String>) onResponse,
+    required final VoidCallback onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       delete(
         url: "$baseUrl/Comment/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 }

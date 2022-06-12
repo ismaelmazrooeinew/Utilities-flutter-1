@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 class ContentDataSource {
@@ -52,12 +53,12 @@ class ContentDataSource {
 
   Future<void> deleteContent({
     required final String id,
-    required final Function(GenericResponse<String>) onResponse,
+    required final VoidCallback onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       delete(
         url: "$baseUrl/Content/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 }

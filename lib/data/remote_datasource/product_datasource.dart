@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 enum ProductDataSourceType {
@@ -72,12 +73,12 @@ class ProductDataSource {
 
   Future<void> deleteProduct({
     required final String id,
-    required final Function(GenericResponse<String>) onResponse,
+    required final VoidCallback onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       delete(
         url: "$baseUrl/${type.title}/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 

@@ -190,8 +190,8 @@ class UserReadDto {
   };
 }
 
-class GetMobileVerificationCodeForLoginDto {
-  GetMobileVerificationCodeForLoginDto({
+class GetMobileVerificationCodeForLoginReadDto {
+  GetMobileVerificationCodeForLoginReadDto({
      this.mobile,
      this.sendSms,
   });
@@ -199,11 +199,11 @@ class GetMobileVerificationCodeForLoginDto {
   final String? mobile;
   final bool? sendSms;
 
-  factory GetMobileVerificationCodeForLoginDto.fromJson(String str) => GetMobileVerificationCodeForLoginDto.fromMap(json.decode(str));
+  factory GetMobileVerificationCodeForLoginReadDto.fromJson(String str) => GetMobileVerificationCodeForLoginReadDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory GetMobileVerificationCodeForLoginDto.fromMap(Map<String, dynamic> json) => GetMobileVerificationCodeForLoginDto(
+  factory GetMobileVerificationCodeForLoginReadDto.fromMap(Map<String, dynamic> json) => GetMobileVerificationCodeForLoginReadDto(
         mobile: json["mobile"] == null ? null : json["mobile"],
         sendSms: json["sendSMS"] == null ? null : json["sendSMS"],
       );
@@ -212,6 +212,34 @@ class GetMobileVerificationCodeForLoginDto {
         "mobile": mobile == null ? null : mobile,
         "sendSMS": sendSms == null ? null : sendSms,
       };
+}
+
+class GetMobileVerificationCodeForLoginCreateDto {
+  GetMobileVerificationCodeForLoginCreateDto({
+    this.result,
+    this.status,
+    this.message,
+  });
+
+  final String? result;
+  final int? status;
+  final String? message;
+
+  factory GetMobileVerificationCodeForLoginCreateDto.fromJson(String str) => GetMobileVerificationCodeForLoginCreateDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory GetMobileVerificationCodeForLoginCreateDto.fromMap(Map<String, dynamic> json) => GetMobileVerificationCodeForLoginCreateDto(
+    result: json["result"] == null ? null : json["result"],
+    status: json["status"] == null ? null : json["status"],
+    message: json["message"] == null ? null : json["message"],
+  );
+
+  Map<String, dynamic> toMap() => {
+    "result": result == null ? null : result,
+    "status": status == null ? null : status,
+    "message": message == null ? null : message,
+  };
 }
 
 class LoginWithEmail {
