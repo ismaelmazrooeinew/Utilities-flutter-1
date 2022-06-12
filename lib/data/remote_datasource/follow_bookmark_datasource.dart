@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:utilities/data/dto/follow_bookmark.dart';
 import 'package:utilities/utilities.dart';
 
@@ -12,7 +11,7 @@ class FollowDataSource {
     required final Function(GenericResponse<List<FolowersReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPost(
         url: "$baseUrl/FollowBookmark/ReadFollowers/ReadFollowers",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
@@ -22,33 +21,45 @@ class FollowDataSource {
     required final Function(GenericResponse<List<FolowersReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPost(
         url: "$baseUrl/FollowBookmark/ReadFollowings/ReadFollowings",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
   Future<void> removeFollowing({
-    required final FormReadDto dto,
-    required final VoidCallback onResponse,
+    required final FolowersReadDto dto,
+    required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPost(
         url: "$baseUrl/FollowBookmark/RemoveFollowing/RemoveFollowing",
         body:dto ,
-        action: (Response response) => onResponse(),
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
   Future<void> toggleBookmark({
     required final ToggleBookmark dto,
-    required final VoidCallback onResponse,
+    required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPost(
         url: "$baseUrl/FollowBookmark/ToggleBookmark/ToggleBookmark",
         body:dto ,
-        action: (Response response) => onResponse(),
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+      );
+
+  Future<void> toggleFollow({
+    required final FolowersReadDto dto,
+    required final Function(GenericResponse) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpPost(
+        url: "$baseUrl/FollowBookmark/ToggleFollow/ToggleFolllow",
+        body:dto ,
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 

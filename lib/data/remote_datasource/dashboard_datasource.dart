@@ -11,7 +11,7 @@ class DashboardDataSource {
     required final Function(GenericResponse<Map<String, int>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPost(
         url: "$baseUrl/Dashboard",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),

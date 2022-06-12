@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 enum ProductDataSourceType {
@@ -26,80 +25,80 @@ class ProductDataSource {
 
   ProductDataSource({required this.baseUrl, required this.type});
 
-  Future<void> createProduct({
+  Future<void> create({
     required final ProductCreateUpdateDto dto,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+       httpPost(
         url: "$baseUrl/${type.title}",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> updateProduct({
+  Future<void> update({
     required final ProductCreateUpdateDto dto,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      put(
+      httpPut(
         url: "$baseUrl/${type.title}",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readProduct({
+  Future<void> read({
     required final Function(GenericResponse<List<ProductReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+       httpGet(
         url: "$baseUrl/${type.title}",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readProductById({
+  Future<void> readById({
     required final String id,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+       httpGet(
         url: "$baseUrl/${type.title}/$id",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> deleteProduct({
+  Future<void> delete({
     required final String id,
-    required final VoidCallback onResponse,
+    required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      delete(
+      httpDelete(
         url: "$baseUrl/${type.title}/$id",
-        action: (Response response) => onResponse(),
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> filterProduct({
+  Future<void> filter({
     required final ProductCreateUpdateDto filter,
     required final Function(GenericResponse<List<ProductReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+       httpPost(
         url: "$baseUrl/${type.title}/Filter",
         body: filter,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> getProductMine({
+  Future<void>  readMine({
     required final ProductCreateUpdateDto filter,
     required final Function(GenericResponse<List<ProductReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+       httpGet(
         url: "$baseUrl/${type.title}/Mine",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),

@@ -51,7 +51,7 @@ Future<void> request<T>(
     error(response);
 }
 
-Future<void> get({
+Future<void> httpGet({
   required String url,
   required action(Response response),
   required error(Response response),
@@ -59,7 +59,7 @@ Future<void> get({
 }) async =>
     await request(url, EHttpMethod.get, action, error, headers: headers);
 
-Future<void> post({
+Future<void> httpPost({
   required String url,
   required action(Response response),
   required error(Response response),
@@ -69,7 +69,7 @@ Future<void> post({
 }) async =>
     await request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
-Future<void> put({
+Future<void> httpPut({
   required String url,
   required action(Response response),
   required error(Response response),
@@ -89,7 +89,7 @@ Future<void> patch({
 }) async =>
     await request(url, EHttpMethod.patch, action, error, body: body, encodeBody: encodeBody, headers: headers);
 
-Future<void> delete({
+Future<void> httpDelete({
   required String url,
   required action(Response response),
   required error(Response response),

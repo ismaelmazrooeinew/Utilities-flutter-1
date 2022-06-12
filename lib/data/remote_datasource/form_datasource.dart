@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 class FormDataSource {
@@ -6,24 +5,46 @@ class FormDataSource {
 
   FormDataSource({required this.baseUrl});
 
-  Future<void> createForm({
+  Future<void> create({
     required final IdTitleCreateUpdateDto dto,
-    required final Function(GenericResponse<dynamic>) onResponse,
+    required final Function(GenericResponse<FormFieldDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+       httpPost(
         url: "$baseUrl/Form",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> createFormField({
-    required final IdTitleCreateUpdateDto dto,
-    required final Function(GenericResponse<List<FormReadDto>>) onResponse,
+  Future<void> readByCategoryId({
+    required final String categoryId,
+    required final Function(GenericResponse<List<FormFieldDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+       httpGet(
+        url: "$baseUrl/Form/$categoryId",
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+      );
+
+  Future<void> delete({
+    required final String id,
+    required final Function(GenericResponse) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpDelete(
+        url: "$baseUrl/DeleteFormField/$id",
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+      );
+
+  Future<void> createFormField({
+    required final IdTitleCreateUpdateDto dto,
+    required final Function(GenericResponse<List<FormFieldDto>>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpPost(
         url: "$baseUrl/Form/CreateFormField",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
@@ -32,35 +53,24 @@ class FormDataSource {
 
   Future<void> updateFormField({
     required final IdTitleCreateUpdateDto dto,
-    required final Function(GenericResponse<List<FormReadDto>>) onResponse,
+    required final Function(GenericResponse<List<FormFieldDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPut(
         url: "$baseUrl/Form/UpdateFormField",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readByCategoryId({
-    required final String categoryId,
-    required final Function(GenericResponse<List<ProductReadDto>>) onResponse,
-    required final Function(GenericResponse response) onError,
-  }) async =>
-      get(
-        url: "$baseUrl/Form/$categoryId",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
-      );
-
   Future<void> deleteFormField({
     required final String id,
-    required final VoidCallback onResponse,
+    required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+       httpDelete(
         url: "$baseUrl/DeleteFormField/$id",
-        action: (Response response) => onResponse(),
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 }

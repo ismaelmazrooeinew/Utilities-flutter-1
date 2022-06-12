@@ -66,7 +66,7 @@ class ProductCreateUpdateDto {
   final List<IdTitleReadDto>? tags;
   final List<VoteField>? voteFields;
   final List<IdTitleReadDto>? specialities;
-  final List<FormReadDto>? forms;
+  final List<FormFieldDto>? forms;
   final String? details;
   final String? author;
   final String? phoneNumber;
@@ -110,7 +110,7 @@ class ProductCreateUpdateDto {
         tags: json["tags"] == null ? null : List<IdTitleReadDto>.from(json["tags"].map((x) => IdTitleReadDto.fromMap(x))),
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
         specialities: json["specialities"] == null ? null : List<IdTitleReadDto>.from(json["specialities"].map((x) => IdTitleReadDto.fromMap(x))),
-        forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
+        forms: json["forms"] == null ? null : List<FormFieldDto>.from(json["forms"].map((x) => FormFieldDto.fromMap(x))),
         details: json["details"] == null ? null : json["details"],
         author: json["author"] == null ? null : json["author"],
         phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
@@ -243,7 +243,7 @@ class ProductReadDto {
   final List<IdTitleReadDto>? tags;
   final List<VoteField>? voteFields;
   final List<IdTitleReadDto>? specialities;
-  final List<FormReadDto>? forms;
+  final List<FormFieldDto>? forms;
 
   factory ProductReadDto.fromJson(String str) => ProductReadDto.fromMap(json.decode(str));
 
@@ -285,7 +285,7 @@ class ProductReadDto {
         tags: json["tags"] == null ? null : List<IdTitleReadDto>.from(json["tags"].map((x) => IdTitleReadDto.fromMap(x))),
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
         specialities: json["specialities"] == null ? null : List<IdTitleReadDto>.from(json["specialities"].map((x) => IdTitleReadDto.fromMap(x))),
-        forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
+        forms: json["forms"] == null ? null : List<FormFieldDto>.from(json["forms"].map((x) => FormFieldDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {

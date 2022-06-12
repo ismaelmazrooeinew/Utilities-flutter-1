@@ -6,12 +6,12 @@ class ChatDataSource {
 
   ChatDataSource({required this.baseUrl});
 
-  Future<void> createChat({
+  Future<void> create({
     required final ChatCreateDto dto,
     required final Function(GenericResponse<ChatReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPost(
         url: "$baseUrl/Chat",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
@@ -19,22 +19,22 @@ class ChatDataSource {
       );
 
 
-  Future<void> readChat({
+  Future<void> read({
     required final Function(GenericResponse<List<ChatReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+      httpGet(
         url: "$baseUrl/Chat",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readChatByUserId({
+  Future<void> readByUserId({
     required final String userId,
     required final Function(GenericResponse<List<ChatReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+      httpGet(
         url: "$baseUrl/Chat/$userId",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),

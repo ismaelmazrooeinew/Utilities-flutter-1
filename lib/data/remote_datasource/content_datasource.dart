@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 class ContentDataSource {
@@ -6,59 +5,59 @@ class ContentDataSource {
 
   ContentDataSource({required this.baseUrl});
 
-  Future<void> createContent({
+  Future<void> create({
     required final ContentCreateUpdateDto dto,
     required final Function(GenericResponse<ContentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPost(
         url: "$baseUrl/Content",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> updateContent({
+  Future<void> update({
     required final ContentCreateUpdateDto dto,
     required final Function(GenericResponse<ContentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPut(
         url: "$baseUrl/Content",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readContent({
+  Future<void> read({
     required final Function(GenericResponse<List<ContentReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+      httpGet(
         url: "$baseUrl/Content",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readContentById({
+  Future<void> readById({
     required final String id,
     required final Function(GenericResponse<ContentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+      httpGet(
         url: "$baseUrl/Content/$id",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> deleteContent({
+  Future<void> delete({
     required final String id,
-    required final VoidCallback onResponse,
+    required final Function(GenericResponse<ContentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      delete(
+      httpDelete(
         url: "$baseUrl/Content/$id",
-        action: (Response response) => onResponse(),
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 }

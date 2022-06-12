@@ -19,6 +19,7 @@ class FolowersReadDto {
     "followers": followers == null ? null : List<dynamic>.from(followers!.map((x) => x.toMap())),
   };
 }
+
 class Follower {
   Follower({
     this.token,

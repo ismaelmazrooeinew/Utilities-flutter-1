@@ -1,7 +1,7 @@
 import 'package:utilities/utilities.dart';
 
-class FormReadDto {
-  FormReadDto({
+class FormFieldDto {
+  FormFieldDto({
      this.id,
      this.label,
      this.title,
@@ -19,11 +19,11 @@ class FormReadDto {
   final bool? isRequired;
   final int? type;
 
-  factory FormReadDto.fromJson(String str) => FormReadDto.fromMap(json.decode(str));
+  factory FormFieldDto.fromJson(String str) => FormFieldDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory FormReadDto.fromMap(Map<String, dynamic> json) => FormReadDto(
+  factory FormFieldDto.fromMap(Map<String, dynamic> json) => FormFieldDto(
         id: json["id"] == null ? null : json["id"],
         label: json["label"] == null ? null : json["label"],
         title: json["title"] == null ? null : json["title"],

@@ -1,68 +1,65 @@
-import 'package:flutter/material.dart';
 import 'package:utilities/data/dto/shopping_cart.dart';
 import 'package:utilities/utilities.dart';
-
-
 
 class ShoppingCartDataSource {
   final String baseUrl;
 
   ShoppingCartDataSource({required this.baseUrl});
 
-  Future<void> createShoppingCart({
+  Future<void> create({
     required final ShoppingCartReadDto dto,
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+       httpPost(
         url: "$baseUrl/ShoppingCart",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> updateShoppingCart({
+  Future<void> update({
     required final ShoppingCartReadDto dto,
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPut(
         url: "$baseUrl/ShoppingCart",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readShoppingCart({
+  Future<void> read({
     required final Function(GenericResponse<List<ShoppingCartReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+       httpGet(
         url: "$baseUrl/ShoppingCart",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> readShoppingCartById({
+  Future<void> readById({
     required final String id,
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+       httpGet(
         url: "$baseUrl/ShoppingCart/$id",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> deleteShoppingCart({
+  Future<void> delete({
     required final String id,
     required final String itemId,
-    required final VoidCallback onResponse,
+    required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      delete(
+      httpDelete(
         url: "$baseUrl/ShoppingCart/$id/$itemId",
-        action: (Response response) => onResponse(),
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 }

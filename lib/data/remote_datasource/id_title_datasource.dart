@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 enum IdTitleDataSourceType {
   brand("Brand"),
   category("Category"),
-  reference("Reference");
+  reference("Reference"),
+  speciality("Speciality");
 
   final String title;
 
@@ -25,7 +25,7 @@ class IdTitleDataSource {
     required final Function(GenericResponse<IdTitleReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      post(
+      httpPost(
         url: "$baseUrl/${type.title}",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
@@ -37,7 +37,7 @@ class IdTitleDataSource {
     required final Function(GenericResponse<IdTitleReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      put(
+      httpPut(
         url: "$baseUrl/${type.title}",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
@@ -48,7 +48,7 @@ class IdTitleDataSource {
     required final Function(GenericResponse<List<IdTitleReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+       httpGet(
         url: "$baseUrl/${type.title}",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
@@ -59,7 +59,7 @@ class IdTitleDataSource {
     required final Function(GenericResponse<IdTitleReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+       httpGet(
         url: "$baseUrl/${type.title}/$id",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
@@ -70,20 +70,20 @@ class IdTitleDataSource {
     required final Function(GenericResponse<List<IdTitleReadDto>>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      get(
+       httpGet(
         url: "$baseUrl/${type.title}/$useCase",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
-  Future<void> deleteIdTitle({
+  Future<void> delete({
     required final String id,
-    required final VoidCallback onResponse,
+    required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      delete(
+      httpDelete(
         url: "$baseUrl/${type.title}/$id",
-        action: (Response response) => onResponse(),
+        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 }
