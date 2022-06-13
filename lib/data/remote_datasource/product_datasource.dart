@@ -56,7 +56,7 @@ class ProductDataSource {
   }) async =>
        httpGet(
         url: "$baseUrl/Product/${type.title}",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<List<ProductReadDto>>.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
