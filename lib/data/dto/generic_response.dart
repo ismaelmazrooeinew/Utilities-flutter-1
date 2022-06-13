@@ -13,12 +13,12 @@ class GenericResponse<T> {
   factory GenericResponse.fromJson(final String str) => GenericResponse.fromMap(json.decode(str));
 
   factory GenericResponse.fromMap(final Map<String, dynamic> json) => GenericResponse(
-        status: json["status"] ?? 200,
-        message: json["message"] ?? "",
-        result: json["result"] == null ? null : json["result"],
-        pageSize: json["pageSize"] == null ? null : json["pageSize"],
-        pageCount: json["pageCount"] == null ? null : json["pageCount"],
-        totalCount: json["totalCount"] == null ? null : json["totalCount"],
+        status: json["status"],
+        message: json["message"],
+        result: json["result"],
+        pageSize: json["pageSize"],
+        pageCount: json["pageCount"],
+        totalCount: json["totalCount"],
       );
 
   final int status;
@@ -41,13 +41,13 @@ class GenericListResponse<T> {
 
   factory GenericListResponse.fromJson(final String str) => GenericListResponse.fromMap(json.decode(str));
 
-  factory GenericListResponse.fromMap(final Map<String, dynamic> json) => GenericListResponse(
-        status: json["status"] ?? 200,
-        message: json["message"] ?? "",
-        result: json["result"] == null ? null : json["result"],
-        pageSize: json["pageSize"] == null ? null : json["pageSize"],
-        pageCount: json["pageCount"] == null ? null : json["pageCount"],
-        totalCount: json["totalCount"] == null ? null : json["totalCount"],
+  factory GenericListResponse.fromMap(final dynamic json) => GenericListResponse(
+        status: json["status"],
+        message: json["message"],
+        result: json["result"],
+        pageSize: json["pageSize"],
+        pageCount: json["pageCount"],
+        totalCount: json["totalCount"],
       );
 
   final int status;
