@@ -1,15 +1,16 @@
 import 'package:utilities/utilities.dart';
 
 enum ProductDataSourceType {
-  products("Products"),
-  tutorials("Tutorials"),
-  projects("Projects"),
-  companies("Companies"),
-  tenders("Tenders"),
-  magazine("Magazine"),
-  ads("Ads"),
-  dailyPrice("DailyPrice"),
-  job("Job");
+
+  product("product"),
+  tutorial("tutorial"),
+  project("project"),
+  company("company"),
+  tender("tender"),
+  magazine("magazine"),
+  ad("ad"),
+  dailyPrice("dailyPrice"),
+  service("service");
 
   final String title;
 
@@ -31,7 +32,7 @@ class ProductDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
        httpPost(
-        url: "$baseUrl/${type.title}",
+        url: "$baseUrl/Product/${type.title}",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
@@ -43,7 +44,7 @@ class ProductDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPut(
-        url: "$baseUrl/${type.title}",
+        url: "$baseUrl/Product/${type.title}",
         body: dto,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
@@ -54,7 +55,7 @@ class ProductDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
        httpGet(
-        url: "$baseUrl/${type.title}",
+        url: "$baseUrl/Product/${type.title}",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
@@ -65,7 +66,7 @@ class ProductDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
        httpGet(
-        url: "$baseUrl/${type.title}/$id",
+        url: "$baseUrl/Product/${type.title}/$id",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
@@ -76,7 +77,7 @@ class ProductDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpDelete(
-        url: "$baseUrl/${type.title}/$id",
+        url: "$baseUrl/Product/${type.title}/$id",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
@@ -87,7 +88,7 @@ class ProductDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
        httpPost(
-        url: "$baseUrl/${type.title}/Filter",
+        url: "$baseUrl/Product/${type.title}/Filter",
         body: filter,
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
@@ -99,7 +100,7 @@ class ProductDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
        httpGet(
-        url: "$baseUrl/${type.title}/Mine",
+        url: "$baseUrl/Product/${type.title}/Mine",
         action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
