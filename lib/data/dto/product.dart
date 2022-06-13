@@ -227,7 +227,7 @@ class ProductReadDto {
   final double? latitude;
   final double? longitude;
   final int? visitsCount;
-  final int? price;
+  final double? price;
   final String? startDate;
   final String? endDate;
   final String? createdAt;
