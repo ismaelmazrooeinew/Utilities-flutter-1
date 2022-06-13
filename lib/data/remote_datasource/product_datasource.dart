@@ -51,12 +51,12 @@ class ProductDataSource {
       );
 
   Future<void> read({
-    required final Function(GenericResponse<ProductReadDto>) onResponse,
+    required final Function(GenericListResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
        httpGet(
         url: "$baseUrl/Product/${type.title}",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericListResponse<ProductReadDto>.fromMap(jsonDecode(response.body))),
         error: (Response response) => onError(GenericResponse.fromMap(response.body)),
       );
 
