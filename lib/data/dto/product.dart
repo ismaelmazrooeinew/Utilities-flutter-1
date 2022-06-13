@@ -224,8 +224,8 @@ class ProductReadDto {
   final bool? isForSale;
   final bool? enabled;
   final bool? isBookmarked;
-  final int? latitude;
-  final int? longitude;
+  final double? latitude;
+  final double? longitude;
   final int? visitsCount;
   final int? price;
   final String? startDate;
