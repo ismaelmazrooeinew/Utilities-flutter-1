@@ -23,7 +23,7 @@ class GenericResponse<T> {
 
   final int status;
   final String message;
-  final T? result;
+  final List<T>? result;
   final int? pageSize;
   final int? pageCount;
   final int? totalCount;
