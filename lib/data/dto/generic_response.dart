@@ -15,7 +15,7 @@ class GenericResponse<T> {
   factory GenericResponse.fromMap(final Map<String, dynamic> json) => GenericResponse(
         status: json["status"] ?? 200,
         message: json["message"] ?? "",
-        result: json["result"] ?? null,
+        result: json["result"] == null ? null : json["result"],
         pageSize: json["pageSize"] == null ? null : json["pageSize"],
         pageCount: json["pageCount"] == null ? null : json["pageCount"],
         totalCount: json["totalCount"] == null ? null : json["totalCount"],
