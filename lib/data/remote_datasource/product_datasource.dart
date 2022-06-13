@@ -51,7 +51,7 @@ class ProductDataSource {
       );
 
   Future<void> read({
-    required final Function(GenericResponse<dynamic>) onResponse,
+    required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
        httpGet(
