@@ -13,9 +13,9 @@ class GenericResponse<T> {
   factory GenericResponse.fromJson(final String str) => GenericResponse.fromMap(json.decode(str));
 
   factory GenericResponse.fromMap(final Map<String, dynamic> json) => GenericResponse(
-        status: json["Status"] ?? 200,
-        message: json["Message"] ?? "",
-        result: json["Result"] ?? null,
+        status: json["status"] ?? 200,
+        message: json["message"] ?? "",
+        result: json["result"] ?? null,
         pageSize: json["pageSize"] == null ? null : json["pageSize"],
         pageCount: json["pageCount"] == null ? null : json["pageCount"],
         totalCount: json["totalCount"] == null ? null : json["totalCount"],
