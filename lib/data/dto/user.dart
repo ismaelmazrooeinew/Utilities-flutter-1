@@ -125,13 +125,13 @@ class UserReadDto {
   final String? appPhoneNumber;
   final String? appEmail;
   final String? birthDate;
-  final Bool? isAdmin;
+  final bool? isAdmin;
   final String? firstName;
   final String? lastName;
   final String? headline;
   final String? website;
-  final Bool? suspend;
-  final Int? wallet;
+  final bool? suspend;
+  final double? wallet;
   final List<MediaReadDto>? media;
   final List<IdTitleReadDto>? colors;
   final List<IdTitleReadDto>? specialties;
