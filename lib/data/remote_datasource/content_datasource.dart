@@ -13,8 +13,8 @@ class ContentDataSource {
       httpPost(
         url: "$baseUrl/Content",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.body,ContentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<ContentReadDto>.fromJson(response.body,ContentReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -25,18 +25,18 @@ class ContentDataSource {
       httpPut(
         url: "$baseUrl/Content",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.body,ContentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<ContentReadDto>.fromJson(response.body,ContentReadDto.fromMap)),
       );
 
   Future<void> read({
-    required final Function(GenericResponse<List<ContentReadDto>>) onResponse,
+    required final Function(GenericResponse<ContentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
         url: "$baseUrl/Content",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.body,ContentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<ContentReadDto>.fromJson(response.body,ContentReadDto.fromMap)),
       );
 
   Future<void> readById({
@@ -46,8 +46,8 @@ class ContentDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Content/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.body,ContentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<ContentReadDto>.fromJson(response.body,ContentReadDto.fromMap)),
       );
 
   Future<void> delete({
@@ -57,7 +57,7 @@ class ContentDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Content/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.body,ContentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<ContentReadDto>.fromJson(response.body,ContentReadDto.fromMap)),
       );
 }

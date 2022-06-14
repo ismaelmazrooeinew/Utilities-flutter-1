@@ -14,30 +14,30 @@ class ChatDataSource {
       httpPost(
         url: "$baseUrl/Chat",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
       );
 
 
   Future<void> read({
-    required final Function(GenericResponse<List<ChatReadDto>>) onResponse,
+    required final Function(GenericResponse<ChatReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
         url: "$baseUrl/Chat",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
       );
 
   Future<void> readByUserId({
     required final String userId,
-    required final Function(GenericResponse<List<ChatReadDto>>) onResponse,
+    required final Function(GenericResponse<ChatReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
         url: "$baseUrl/Chat/$userId",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
       );
 
 }

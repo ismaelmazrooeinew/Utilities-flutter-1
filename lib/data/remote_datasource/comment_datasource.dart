@@ -14,8 +14,8 @@ class CommentDataSource {
       httpPost(
         url: "$baseUrl/Comment",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -26,18 +26,18 @@ class CommentDataSource {
       httpPut(
         url: "$baseUrl/Comment",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
       );
 
   Future<void> read({
-    required final Function(GenericResponse<List<CommentReadDto>>) onResponse,
+    required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
         url: "$baseUrl/Comment",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
       );
 
 
@@ -48,7 +48,7 @@ class CommentDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Comment/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
       );
 }

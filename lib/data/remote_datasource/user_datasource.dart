@@ -13,8 +13,8 @@ class UserDataSource {
       httpPost(
         url: "$baseUrl/user",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -25,19 +25,19 @@ class UserDataSource {
       httpPut(
         url: "$baseUrl/user",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> read({
     required final UserCreateUpdateDto dto,
-    required final Function(GenericResponse<List<UserReadDto>>) onResponse,
+    required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
         url: "$baseUrl/user",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> readById({
@@ -48,8 +48,8 @@ class UserDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/user/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> delete({
@@ -59,8 +59,8 @@ class UserDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/user/$id",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> activeMobile({
@@ -71,20 +71,20 @@ class UserDataSource {
       httpPost(
         url: "$baseUrl/user/ActiveMobile",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> getMobileVerificationCodeForLogin({
     required final GetMobileVerificationCodeForLoginDto dto,
-    required final Function(GenericResponse<String>) onResponse,
+    required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
         url: "$baseUrl/user/GetMobileVerificationCodeForLogin",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> loginWithEmail({
@@ -95,8 +95,8 @@ class UserDataSource {
       httpPost(
         url: "$baseUrl/user/LoginWithEmail",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> verifyMobileForLogin({
@@ -107,8 +107,8 @@ class UserDataSource {
       httpPost(
         url: "$baseUrl/user/VerifyMobileForLogin",
         body:dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> getProfile({
@@ -117,8 +117,8 @@ class UserDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/user/GetProfile",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> getProfileByUserName({
@@ -128,8 +128,8 @@ class UserDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/user/GetProfileByUsername/$userName",
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> updateProfile({
@@ -140,7 +140,7 @@ class UserDataSource {
       httpPut(
         url: "$baseUrl/user/UpdateProfile",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse.fromMap(response.body)),
-        error: (Response response) => onError(GenericResponse.fromMap(response.body)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 }
