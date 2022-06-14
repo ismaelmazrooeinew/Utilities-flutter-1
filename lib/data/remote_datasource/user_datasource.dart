@@ -30,7 +30,6 @@ class UserDataSource {
       );
 
   Future<void> read({
-    required final UserCreateUpdateDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
@@ -42,7 +41,6 @@ class UserDataSource {
 
   Future<void> readById({
     required final String id,
-    required final UserCreateUpdateDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
