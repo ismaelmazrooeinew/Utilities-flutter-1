@@ -20,6 +20,7 @@ export 'http_interceptor.dart';
 export 'launch.dart';
 export 'local_storage.dart';
 export 'share.dart';
+export 'graph_ql.dart';
 
 Logger logger = Logger(
   printer: PrettyPrinter(
