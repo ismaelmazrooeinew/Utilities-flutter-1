@@ -12,7 +12,7 @@ Future<void> query({
   required String url,
   required String query,
   required Function(Map<String, dynamic>? result) action,
-  required Function(Map<String, dynamic>?) onError,
+  required Function(Map<String, dynamic>?) error,
   FetchPolicy fetchPolicy = FetchPolicy.networkOnly,
 }) async {
   QueryResult res = await _getGraphQlClient(
@@ -20,7 +20,7 @@ Future<void> query({
     accessToken: getString(UtilitiesConstants.token),
   ).query(QueryOptions(document: gql(query), fetchPolicy: fetchPolicy));
   if (res.hasException)
-    onError(res.data);
+    error(res.data);
   else
     action(res.data);
 }
@@ -29,7 +29,7 @@ Future<void> mutation({
   required String url,
   required String query,
   required Function(Map<String, dynamic>? result) action,
-  required Function(Map<String, dynamic>?) onError,
+  required Function(Map<String, dynamic>?) error,
   FetchPolicy fetchPolicy = FetchPolicy.networkOnly,
 }) async {
   QueryResult res = await _getGraphQlClient(
@@ -37,7 +37,7 @@ Future<void> mutation({
     accessToken: getString(UtilitiesConstants.token),
   ).mutate(MutationOptions(document: gql(query), fetchPolicy: fetchPolicy));
   if (res.hasException)
-    onError(res.data);
+    error(res.data);
   else
     action(res.data);
 }
