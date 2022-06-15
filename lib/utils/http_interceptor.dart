@@ -106,37 +106,37 @@ Future<void> httpDelete({
 }) async =>
     await request(url, EHttpMethod.delete, action, error, headers: headers);
 
-// Future<void> query({
-//   required String url,
-//   required String query,
-//   required action(Response response),
-//   required error(Response response),
-//   Map<String, String>? headers,
-// }) async =>
-//     await request(
-//       url,
-//       EHttpMethod.query,
-//       action,
-//       error,
-//       headers: headers,
-//       queryOrMutation: query,
-//     );
-//
-// Future<void> mutation({
-//   required String url,
-//   required String mutation,
-//   required action(Response response),
-//   required error(Response response),
-//   Map<String, String>? headers,
-// }) async =>
-//     await request(
-//       url,
-//       EHttpMethod.mutation,
-//       action,
-//       error,
-//       headers: headers,
-//       queryOrMutation: mutation,
-//     );
+Future<void> query({
+  required String url,
+  required String query,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+}) async =>
+    await request(
+      url,
+      EHttpMethod.query,
+      action,
+      error,
+      headers: headers,
+      queryOrMutation: query,
+    );
+
+Future<void> mutation({
+  required String url,
+  required String mutation,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+}) async =>
+    await request(
+      url,
+      EHttpMethod.mutation,
+      action,
+      error,
+      headers: headers,
+      queryOrMutation: mutation,
+    );
 
 enum EHttpMethod { get, post, put, patch, delete, query, mutation }
 
