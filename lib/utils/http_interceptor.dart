@@ -106,16 +106,12 @@ Future<void> query({
   required action(Response response),
   required error(Response response),
   Map<String, String>? headers,
-  dynamic body,
-  bool encodeBody = true,
 }) async =>
     await request(
       url,
       EHttpMethod.query,
       action,
       error,
-      body: body,
-      encodeBody: encodeBody,
       headers: headers,
       queryOrMutation: query,
     );
@@ -126,16 +122,12 @@ Future<void> mutation({
   required action(Response response),
   required error(Response response),
   Map<String, String>? headers,
-  dynamic body,
-  bool encodeBody = true,
 }) async =>
     await request(
       url,
       EHttpMethod.mutation,
       action,
       error,
-      body: body,
-      encodeBody: encodeBody,
       headers: headers,
       queryOrMutation: mutation,
     );
