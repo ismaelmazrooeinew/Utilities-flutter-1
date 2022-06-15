@@ -49,10 +49,15 @@ Future<void> request(
 
   if (kDebugMode) delay(100, () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()));
 
-  if (response.isSuccessful())
+  if (httpMethod == EHttpMethod.query || httpMethod == EHttpMethod.mutation) {
     action(response);
-  else
-    error(response);
+  } else {
+    if (response.isSuccessful()) {
+      action(response);
+    } else {
+      error(response);
+    }
+  }
 }
 
 Future<void> httpGet({
