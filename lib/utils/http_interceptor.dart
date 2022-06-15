@@ -11,11 +11,11 @@ GetConnect getConnect = GetConnect(
   maxAuthRetries: 3,
 );
 
-Future<void> request<T>(
+Future<void> request(
   final String url,
   final EHttpMethod httpMethod,
-  final Function(Response<T> response) action,
-  final Function(Response<T> response) error, {
+  final Function(Response<dynamic> response) action,
+  final Function(Response<dynamic> response) error, {
   final String? queryOrMutation,
   final dynamic body,
   final bool encodeBody = true,
@@ -25,15 +25,14 @@ Future<void> request<T>(
 
   if (headers != null) header.addAll(headers);
 
-  Response<T> response = Response<T>();
+  Response<dynamic> response = Response<dynamic>();
   try {
     dynamic params;
     if (body != null) {
-      if (encodeBody) {
-        queryOrMutation == null ? params = body.toJson() : params = body.toMap();
-      } else {
+      if (encodeBody)
+        params = body.toJson();
+      else
         params = body;
-      }
     }
 
     if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
@@ -41,8 +40,8 @@ Future<void> request<T>(
     if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, params, headers: header);
     if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, params, headers: header);
     if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
-    if (httpMethod == EHttpMethod.query) response = await getConnect.query(queryOrMutation!, url: url, headers: headers, variables: body);
-    if (httpMethod == EHttpMethod.mutation) response = await getConnect.mutation(queryOrMutation!, url: url, headers: header, variables: body);
+    if (httpMethod == EHttpMethod.query) response = await getConnect.query(queryOrMutation!, url: url, headers: headers);
+    if (httpMethod == EHttpMethod.mutation) response = await getConnect.mutation(queryOrMutation!, url: url, headers: header);
   } catch (e) {
     error(response);
     print(e);
@@ -150,13 +149,13 @@ extension HTTP<T> on Response<T> {
 
   void log({final String params = ""}) {
     logger.i(
-      "${this.request!.method} - ${this.request!.url} - $statusCode \nPARAMS: $params \nRESPONSE: $body",
+      "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: $params \nRESPONSE: $body",
     );
   }
 
   void prettyLog({final String params = ""}) {
     logger.i(
-      "${this.request!.method} - ${this.request!.url} - $statusCode \nPARAMS: ${JsonEncoder.withIndent(" ").convert(params)} \nRESPONSE: ${JsonEncoder.withIndent(" ").convert(body)}",
+      "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: ${JsonEncoder.withIndent(" ").convert(params)} \nRESPONSE: ${JsonEncoder.withIndent(" ").convert(body)}",
     );
   }
 }
