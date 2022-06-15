@@ -25,8 +25,7 @@ Future<void> request(
 
   if (headers != null) header.addAll(headers);
 
-  Response<dynamic>? response;
-  GraphQLResponse<dynamic>? graphQLResponse;
+  Response<dynamic> response = Response<dynamic>();
   try {
     dynamic params;
     if (body != null) {
@@ -41,31 +40,19 @@ Future<void> request(
     if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, params, headers: header);
     if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, params, headers: header);
     if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
-    if (httpMethod == EHttpMethod.query) graphQLResponse = await getConnect.query(queryOrMutation!, url: url, headers: headers);
-    if (httpMethod == EHttpMethod.mutation) graphQLResponse = await getConnect.mutation(queryOrMutation!, url: url, headers: header);
+    if (httpMethod == EHttpMethod.query) response = await getConnect.query(queryOrMutation!, url: url, headers: headers);
+    if (httpMethod == EHttpMethod.mutation) response = await getConnect.mutation(queryOrMutation!, url: url, headers: header);
   } catch (e) {
-    if (response != null) error(response);
-    if (graphQLResponse != null) error(graphQLResponse);
-    print(e);
+    error(response);
+    logger.e("RESPONSE ERROR: $e");
   }
 
-  if (response != null) {
-    if (kDebugMode) delay(100, () => response!.log(params: (body == null || !encodeBody) ? "" : body.toJson()));
+  if (kDebugMode) delay(100, () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()));
 
-    if (response.isSuccessful())
-      action(response);
-    else
-      error(response);
-  }
-
-  if (graphQLResponse != null) {
-    if (kDebugMode) delay(100, () => graphQLResponse!.log(params: (body == null || !encodeBody) ? "" : body.toJson()));
-
-    if (graphQLResponse.isSuccessful())
-      action(graphQLResponse);
-    else
-      error(graphQLResponse);
-  }
+  if (response.isSuccessful())
+    action(response);
+  else
+    error(response);
 }
 
 Future<void> httpGet({
@@ -148,7 +135,7 @@ Future<void> mutation({
 
 enum EHttpMethod { get, post, put, patch, delete, query, mutation }
 
-extension HTTP<T> on Response<T> {
+extension HTTP on Response {
   bool isSuccessful() => (statusCode ?? 0) >= 200 && (statusCode ?? 0) <= 299 ? true : false;
 
   bool isServerError() => (statusCode ?? 0) >= 500 && (statusCode ?? 0) <= 599 ? true : false;
