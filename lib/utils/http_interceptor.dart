@@ -16,6 +16,7 @@ Future<void> request<T>(
   final EHttpMethod httpMethod,
   final Function(Response<T> response) action,
   final Function(Response<T> response) error, {
+  final String? queryOrMutation,
   final dynamic body,
   final bool encodeBody = true,
   final Map<String, String>? headers,
@@ -28,10 +29,11 @@ Future<void> request<T>(
   try {
     dynamic params;
     if (body != null) {
-      if (encodeBody)
-        params = body.toJson();
-      else
+      if (encodeBody) {
+        queryOrMutation == null ? params = body.toJson() : params = body.toMap();
+      } else {
         params = body;
+      }
     }
 
     if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
@@ -39,6 +41,8 @@ Future<void> request<T>(
     if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, params, headers: header);
     if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, params, headers: header);
     if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
+    if (httpMethod == EHttpMethod.query) response = await getConnect.query(queryOrMutation!, url: url, headers: headers, variables: body);
+    if (httpMethod == EHttpMethod.mutation) response = await getConnect.mutation(queryOrMutation!, url: url, headers: header, variables: body);
   } catch (e) {
     error(response);
     print(e);
@@ -97,7 +101,47 @@ Future<void> httpDelete({
 }) async =>
     await request(url, EHttpMethod.delete, action, error, headers: headers);
 
-enum EHttpMethod { get, post, put, patch, delete }
+Future<void> query({
+  required String url,
+  required String query,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+  dynamic body,
+  bool encodeBody = true,
+}) async =>
+    await request(
+      url,
+      EHttpMethod.query,
+      action,
+      error,
+      body: body,
+      encodeBody: encodeBody,
+      headers: headers,
+      queryOrMutation: query,
+    );
+
+Future<void> mutation({
+  required String url,
+  required String mutation,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+  dynamic body,
+  bool encodeBody = true,
+}) async =>
+    await request(
+      url,
+      EHttpMethod.mutation,
+      action,
+      error,
+      body: body,
+      encodeBody: encodeBody,
+      headers: headers,
+      queryOrMutation: mutation,
+    );
+
+enum EHttpMethod { get, post, put, patch, delete, query, mutation }
 
 extension HTTP<T> on Response<T> {
   bool isSuccessful() => (statusCode ?? 0) >= 200 && (statusCode ?? 0) <= 299 ? true : false;
