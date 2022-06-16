@@ -33,7 +33,6 @@ dependencies:
   flutter_downloader: ^1.7.4
   flutter_local_notifications: ^9.5.2
   collection: ^1.16.0
-  graphql_flutter: ^5.1.0
   flutter_easyloading: ^3.0.5
 #  firebase_messaging: ^11.2.12
 #  firebase_core: ^1.14.0
