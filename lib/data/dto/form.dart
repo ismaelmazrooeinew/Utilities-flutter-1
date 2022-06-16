@@ -69,7 +69,7 @@ class FormCreateUpdateDto {
   final String? tenderId;
   final String? serviceId;
   final String? magazineId;
-  final List<Form>? form;
+  final List<FormDto>? form;
 
   factory FormCreateUpdateDto.fromJson(String str) => FormCreateUpdateDto.fromMap(json.decode(str));
 
@@ -86,7 +86,7 @@ class FormCreateUpdateDto {
         tenderId: json["tenderId"] == null ? null : json["tenderId"],
         serviceId: json["serviceId"] == null ? null : json["serviceId"],
         magazineId: json["magazineId"] == null ? null : json["magazineId"],
-        form: json["form"] == null ? null : List<Form>.from(json["form"].map((x) => Form.fromMap(x))),
+        form: json["form"] == null ? null : List<FormDto>.from(json["form"].map((x) => FormDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -104,8 +104,8 @@ class FormCreateUpdateDto {
       };
 }
 
-class Form {
-  Form({
+class FormDto {
+  FormDto({
     required this.id,
     required this.title,
     required this.formField,
@@ -115,11 +115,11 @@ class Form {
   final String? title;
   final FormFieldDto? formField;
 
-  factory Form.fromJson(String str) => Form.fromMap(json.decode(str));
+  factory FormDto.fromJson(String str) => FormDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Form.fromMap(Map<String, dynamic> json) => Form(
+  factory FormDto.fromMap(Map<String, dynamic> json) => FormDto(
         id: json["id"] == null ? null : json["id"],
         title: json["title"] == null ? null : json["title"],
         formField: json["formField"] == null ? null : FormFieldDto.fromMap(json["formField"]),
