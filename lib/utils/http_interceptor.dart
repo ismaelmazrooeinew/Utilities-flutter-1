@@ -11,11 +11,12 @@ GetConnect getConnect = GetConnect(
   maxAuthRetries: 3,
 );
 
-Future<void> request<T>(
+Future<void> request(
   final String url,
   final EHttpMethod httpMethod,
-  final Function(Response<T> response) action,
-  final Function(Response<T> response) error, {
+  final Function(Response<dynamic> response) action,
+  final Function(Response<dynamic> response) error, {
+  final String? queryOrMutation,
   final dynamic body,
   final bool encodeBody = true,
   final Map<String, String>? headers,
@@ -24,7 +25,7 @@ Future<void> request<T>(
 
   if (headers != null) header.addAll(headers);
 
-  Response<T> response = Response<T>();
+  Response<dynamic> response = Response<dynamic>();
   try {
     dynamic params;
     if (body != null) {
@@ -39,16 +40,24 @@ Future<void> request<T>(
     if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, params, headers: header);
     if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, params, headers: header);
     if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
+    if (httpMethod == EHttpMethod.query) response = await getConnect.query(queryOrMutation!, url: url, headers: headers);
+    if (httpMethod == EHttpMethod.mutation) response = await getConnect.mutation(queryOrMutation!, url: url, headers: header);
   } catch (e) {
     error(response);
-    print(e);
+    logger.e("RESPONSE ERROR: $e");
   }
 
   if (kDebugMode) delay(100, () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()));
-  if (response.isSuccessful())
+
+  if (httpMethod == EHttpMethod.query || httpMethod == EHttpMethod.mutation) {
     action(response);
-  else
-    error(response);
+  } else {
+    if (response.isSuccessful()) {
+      action(response);
+    } else {
+      error(response);
+    }
+  }
 }
 
 Future<void> httpGet({
@@ -97,22 +106,54 @@ Future<void> httpDelete({
 }) async =>
     await request(url, EHttpMethod.delete, action, error, headers: headers);
 
-enum EHttpMethod { get, post, put, patch, delete }
+Future<void> query({
+  required String url,
+  required String query,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+}) async =>
+    await request(
+      url,
+      EHttpMethod.query,
+      action,
+      error,
+      headers: headers,
+      queryOrMutation: query,
+    );
 
-extension HTTP<T> on Response<T> {
+Future<void> mutation({
+  required String url,
+  required String mutation,
+  required action(Response response),
+  required error(Response response),
+  Map<String, String>? headers,
+}) async =>
+    await request(
+      url,
+      EHttpMethod.mutation,
+      action,
+      error,
+      headers: headers,
+      queryOrMutation: mutation,
+    );
+
+enum EHttpMethod { get, post, put, patch, delete, query, mutation }
+
+extension HTTP on Response {
   bool isSuccessful() => (statusCode ?? 0) >= 200 && (statusCode ?? 0) <= 299 ? true : false;
 
   bool isServerError() => (statusCode ?? 0) >= 500 && (statusCode ?? 0) <= 599 ? true : false;
 
   void log({final String params = ""}) {
     logger.i(
-      "${this.request!.method} - ${this.request!.url} - $statusCode \nPARAMS: $params \nRESPONSE: $body",
+      "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: $params \nRESPONSE: $body",
     );
   }
 
   void prettyLog({final String params = ""}) {
     logger.i(
-      "${this.request!.method} - ${this.request!.url} - $statusCode \nPARAMS: ${JsonEncoder.withIndent(" ").convert(params)} \nRESPONSE: ${JsonEncoder.withIndent(" ").convert(body)}",
+      "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: ${JsonEncoder.withIndent(" ").convert(params)} \nRESPONSE: ${JsonEncoder.withIndent(" ").convert(body)}",
     );
   }
 }
