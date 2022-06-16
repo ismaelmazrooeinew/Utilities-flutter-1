@@ -22,6 +22,7 @@ export 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:video_player/video_player.dart';
 export 'package:webviewx/webviewx.dart';
+export 'package:collection/collection.dart';
 
 export 'components/components.dart';
 export 'data/data.dart';
