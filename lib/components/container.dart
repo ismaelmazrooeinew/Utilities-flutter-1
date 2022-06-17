@@ -63,6 +63,7 @@ Widget column({
       margin: margin,
       child: isScrollable
           ? SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 mainAxisAlignment: mainAxisAlignment,
                 mainAxisSize: mainAxisSize,
