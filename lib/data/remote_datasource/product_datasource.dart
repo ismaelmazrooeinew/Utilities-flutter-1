@@ -83,7 +83,7 @@ class ProductDataSource {
       );
 
   Future<void> filter({
-    required final ProductCreateUpdateDto filter,
+    required final ProductFilterDto filter,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
