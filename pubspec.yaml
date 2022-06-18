@@ -34,6 +34,7 @@ dependencies:
   flutter_local_notifications: ^9.5.2
   collection: ^1.16.0
   flutter_easyloading: ^3.0.5
+  custom_pop_up_menu: ^1.2.4
 #  firebase_messaging: ^11.2.12
 #  firebase_core: ^1.14.0
 #  firebase_auth: ^3.3.13
