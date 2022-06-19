@@ -1,5 +1,57 @@
 import 'package:utilities/utilities.dart';
 
+class CategoryCreateUpdateDto {
+  CategoryCreateUpdateDto({
+    this.id,
+    this.parentId,
+    this.title,
+    this.titleTr1,
+    this.subtitle,
+    this.link,
+    this.color,
+    this.useCase,
+    this.type,
+  });
+
+  final String? id;
+  final String? parentId;
+  final String? title;
+  final String? titleTr1;
+  final String? subtitle;
+  final String? link;
+  final String? color;
+  final String? useCase;
+  final String? type;
+
+  factory CategoryCreateUpdateDto.fromJson(String str) => CategoryCreateUpdateDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory CategoryCreateUpdateDto.fromMap(Map<String, dynamic> json) => CategoryCreateUpdateDto(
+        id: json["id"] == null ? null : json["id"],
+        parentId: json["parentId"] == null ? null : json["parentId"],
+        title: json["title"] == null ? null : json["title"],
+        titleTr1: json["titleTr1"] == null ? null : json["titleTr1"],
+        subtitle: json["subtitle"] == null ? null : json["subtitle"],
+        link: json["link"] == null ? null : json["link"],
+        color: json["color"] == null ? null : json["color"],
+        useCase: json["useCase"] == null ? null : json["useCase"],
+        type: json["type"] == null ? null : json["type"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id == null ? null : id,
+        "parentId": parentId == null ? null : parentId,
+        "title": title == null ? null : title,
+        "titleTr1": titleTr1 == null ? null : titleTr1,
+        "subtitle": subtitle == null ? null : subtitle,
+        "link": link == null ? null : link,
+        "color": color == null ? null : color,
+        "useCase": useCase == null ? null : useCase,
+        "type": type == null ? null : type,
+      };
+}
+
 class CategoryReadDto {
   CategoryReadDto({
     this.id,
