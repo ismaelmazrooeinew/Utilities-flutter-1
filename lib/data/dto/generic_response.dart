@@ -32,7 +32,7 @@ class GenericResponse<T> {
     }
     else{
       return GenericResponse<T>(
-        result: fromMap(json["result"]),
+        result: json["result"]!=null? fromMap(json["result"]):'',
         pageSize: json["pageSize"],
         pageCount: json["pageCount"],
         totalCount: json["totalCount"],
