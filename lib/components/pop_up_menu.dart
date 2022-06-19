@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 Widget popupMenu({
   required final Widget child,
   required final double width,
-  required List<Widget> children({required final CustomPopupMenuController controller}),
+  required List<Widget> children,
   final PressType pressType = PressType.singleClick,
   final double verticalMargin = 0,
   final Color arrowColor = Colors.white,
@@ -19,7 +19,7 @@ Widget popupMenu({
     menuBuilder: () => listOfMenuItems(
       controller: _customPopupMenuController,
       width: width,
-      children: children(controller: _customPopupMenuController),
+      children: children,
     ),
     controller: _customPopupMenuController,
     child: child,
@@ -45,10 +45,7 @@ Widget popupMenuItem({
         selected: true,
         leading: icon,
         title: title,
-        onTap: () {
-          controller.hideMenu();
-          onTap();
-        });
+        onTap:onTap);
 
 Widget listOfMenuItems({
   required final CustomPopupMenuController controller,
