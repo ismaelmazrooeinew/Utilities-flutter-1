@@ -1,16 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:utilities/utilities.dart';
 
-GetConnect getConnect = GetConnect(
-  followRedirects: false,
-  timeout: const Duration(minutes: 60),
-  allowAutoSignedCert: true,
-  sendUserAgent: true,
-  userAgent: "SinaMN75",
-  maxRedirects: 10,
-  maxAuthRetries: 3,
-);
-
 Future<void> request(
   final String url,
   final EHttpMethod httpMethod,
@@ -20,6 +10,14 @@ Future<void> request(
   final dynamic body,
   final bool encodeBody = true,
   final Map<String, String>? headers,
+  final String userAgent = 'SinaMN75',
+  final bool followRedirects = true,
+  final Duration timeout = const Duration(minutes: 60),
+  final int maxRedirects = 5,
+  final bool allowAutoSignedCert = false,
+  final bool sendUserAgent = false,
+  final int maxAuthRetries = 1,
+  final bool withCredentials = false,
 }) async {
   final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
 
@@ -35,13 +33,24 @@ Future<void> request(
         params = body;
     }
 
-    if (httpMethod == EHttpMethod.get) response = await getConnect.get(url, headers: header);
-    if (httpMethod == EHttpMethod.post) response = await getConnect.post(url, params, headers: header);
-    if (httpMethod == EHttpMethod.put) response = await getConnect.put(url, params, headers: header);
-    if (httpMethod == EHttpMethod.patch) response = await getConnect.patch(url, params, headers: header);
-    if (httpMethod == EHttpMethod.delete) response = await getConnect.delete(url, headers: header);
-    if (httpMethod == EHttpMethod.query) response = await getConnect.query(queryOrMutation!, url: url, headers: headers);
-    if (httpMethod == EHttpMethod.mutation) response = await getConnect.mutation(queryOrMutation!, url: url, headers: header);
+    var connect = GetConnect(
+      userAgent: userAgent,
+      followRedirects: followRedirects,
+      timeout: timeout,
+      maxRedirects: maxRedirects,
+      allowAutoSignedCert: allowAutoSignedCert,
+      sendUserAgent: sendUserAgent,
+      maxAuthRetries: maxAuthRetries,
+      withCredentials: withCredentials,
+    );
+
+    if (httpMethod == EHttpMethod.get) response = await connect.get(url, headers: header);
+    if (httpMethod == EHttpMethod.post) response = await connect.post(url, params, headers: header);
+    if (httpMethod == EHttpMethod.put) response = await connect.put(url, params, headers: header);
+    if (httpMethod == EHttpMethod.patch) response = await connect.patch(url, params, headers: header);
+    if (httpMethod == EHttpMethod.delete) response = await connect.delete(url, headers: header);
+    if (httpMethod == EHttpMethod.query) response = await connect.query(queryOrMutation!, url: url, headers: headers);
+    if (httpMethod == EHttpMethod.mutation) response = await connect.mutation(queryOrMutation!, url: url, headers: header);
   } catch (e) {
     error(response);
     logger.e("RESPONSE ERROR: $e");
@@ -49,14 +58,10 @@ Future<void> request(
 
   if (kDebugMode) delay(100, () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()));
 
-  if (httpMethod == EHttpMethod.query || httpMethod == EHttpMethod.mutation) {
+  if (response.isSuccessful()) {
     action(response);
   } else {
-    if (response.isSuccessful()) {
-      action(response);
-    } else {
-      error(response);
-    }
+    error(response);
   }
 }
 
