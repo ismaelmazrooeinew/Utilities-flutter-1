@@ -19,58 +19,56 @@ Future<void> request(
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async {
-  final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
+  var connect = GetConnect(
+    userAgent: userAgent,
+    followRedirects: followRedirects,
+    timeout: timeout,
+    maxRedirects: maxRedirects,
+    allowAutoSignedCert: allowAutoSignedCert,
+    sendUserAgent: sendUserAgent,
+    maxAuthRetries: maxAuthRetries,
+    withCredentials: withCredentials,
+  );
 
+  final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
   if (headers != null) header.addAll(headers);
 
   Response<dynamic> response = Response<dynamic>();
-  try {
-    dynamic params;
-    if (body != null) {
-      if (encodeBody)
-        params = body.toJson();
-      else
-        params = body;
-    }
 
-    var connect = GetConnect(
-      userAgent: userAgent,
-      followRedirects: followRedirects,
-      timeout: timeout,
-      maxRedirects: maxRedirects,
-      allowAutoSignedCert: allowAutoSignedCert,
-      sendUserAgent: sendUserAgent,
-      maxAuthRetries: maxAuthRetries,
-      withCredentials: withCredentials,
-    );
-
-    if (httpMethod == EHttpMethod.get) response = await connect.get(url, headers: header);
-    if (httpMethod == EHttpMethod.post) response = await connect.post(url, params, headers: header);
-    if (httpMethod == EHttpMethod.put) response = await connect.put(url, params, headers: header);
-    if (httpMethod == EHttpMethod.patch) response = await connect.patch(url, params, headers: header);
-    if (httpMethod == EHttpMethod.delete) response = await connect.delete(url, headers: header);
+  if (httpMethod == EHttpMethod.mutation || httpMethod == EHttpMethod.query) {
     if (httpMethod == EHttpMethod.query) response = await connect.query(queryOrMutation!, url: url, headers: headers);
     if (httpMethod == EHttpMethod.mutation) response = await connect.mutation(queryOrMutation!, url: url, headers: header);
-  } catch (e) {
-    error(response);
-    logger.e("RESPONSE ERROR: $e");
-    print(response.bodyString ?? "LLLL");
-    print(response.headers ?? "LLLL");
-    print(response.statusCode ?? "LLLL");
-    print(response.statusText ?? "LLLL");
-  }
+    action(response);
+  } else {
+    try {
+      dynamic params;
+      if (body != null) {
+        if (encodeBody)
+          params = body.toJson();
+        else
+          params = body;
+      }
 
-  if (kDebugMode && (httpMethod == EHttpMethod.query || httpMethod == EHttpMethod.mutation))
-    delay(
-      100,
-      () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()),
-    );
-  //
-  // if (response.isSuccessful()) {
-  action(response);
-  // } else {
-  // error(response);
-  // }
+      if (httpMethod == EHttpMethod.get) response = await connect.get(url, headers: header);
+      if (httpMethod == EHttpMethod.post) response = await connect.post(url, params, headers: header);
+      if (httpMethod == EHttpMethod.put) response = await connect.put(url, params, headers: header);
+      if (httpMethod == EHttpMethod.patch) response = await connect.patch(url, params, headers: header);
+      if (httpMethod == EHttpMethod.delete) response = await connect.delete(url, headers: header);
+    } catch (e) {
+      error(response);
+    }
+
+    if (kDebugMode && (httpMethod == EHttpMethod.query || httpMethod == EHttpMethod.mutation))
+      delay(
+        100,
+        () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()),
+      );
+
+    if (response.isSuccessful())
+      action(response);
+    else
+      error(response);
+  }
 }
 
 Future<void> httpGet({
