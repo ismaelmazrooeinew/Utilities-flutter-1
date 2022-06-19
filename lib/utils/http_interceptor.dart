@@ -70,8 +70,30 @@ Future<void> httpGet({
   required action(Response response),
   required error(Response response),
   Map<String, String>? headers,
+  final String userAgent = 'SinaMN75',
+  final bool followRedirects = true,
+  final Duration timeout = const Duration(minutes: 60),
+  final int maxRedirects = 5,
+  final bool allowAutoSignedCert = false,
+  final bool sendUserAgent = false,
+  final int maxAuthRetries = 1,
+  final bool withCredentials = false,
 }) async =>
-    await request(url, EHttpMethod.get, action, error, headers: headers);
+    await request(
+      url,
+      EHttpMethod.get,
+      action,
+      error,
+      headers: headers,
+      userAgent: userAgent,
+      followRedirects: followRedirects,
+      timeout: timeout,
+      maxRedirects: maxRedirects,
+      allowAutoSignedCert: allowAutoSignedCert,
+      sendUserAgent: sendUserAgent,
+      maxAuthRetries: maxAuthRetries,
+      withCredentials: withCredentials,
+    );
 
 Future<void> httpPost({
   required String url,
@@ -80,8 +102,32 @@ Future<void> httpPost({
   Map<String, String>? headers,
   dynamic body,
   bool encodeBody = true,
+  final String userAgent = 'SinaMN75',
+  final bool followRedirects = true,
+  final Duration timeout = const Duration(minutes: 60),
+  final int maxRedirects = 5,
+  final bool allowAutoSignedCert = false,
+  final bool sendUserAgent = false,
+  final int maxAuthRetries = 1,
+  final bool withCredentials = false,
 }) async =>
-    await request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers);
+    await request(
+      url,
+      EHttpMethod.post,
+      action,
+      error,
+      body: body,
+      encodeBody: encodeBody,
+      headers: headers,
+      userAgent: userAgent,
+      followRedirects: followRedirects,
+      timeout: timeout,
+      maxRedirects: maxRedirects,
+      allowAutoSignedCert: allowAutoSignedCert,
+      sendUserAgent: sendUserAgent,
+      maxAuthRetries: maxAuthRetries,
+      withCredentials: withCredentials,
+    );
 
 Future<void> httpPut({
   required String url,
@@ -90,8 +136,32 @@ Future<void> httpPut({
   Map<String, String>? headers,
   dynamic body,
   bool encodeBody = true,
+  final String userAgent = 'SinaMN75',
+  final bool followRedirects = true,
+  final Duration timeout = const Duration(minutes: 60),
+  final int maxRedirects = 5,
+  final bool allowAutoSignedCert = false,
+  final bool sendUserAgent = false,
+  final int maxAuthRetries = 1,
+  final bool withCredentials = false,
 }) async =>
-    await request(url, EHttpMethod.put, action, error, body: body, encodeBody: encodeBody, headers: headers);
+    await request(
+      url,
+      EHttpMethod.put,
+      action,
+      error,
+      body: body,
+      encodeBody: encodeBody,
+      headers: headers,
+      userAgent: userAgent,
+      followRedirects: followRedirects,
+      timeout: timeout,
+      maxRedirects: maxRedirects,
+      allowAutoSignedCert: allowAutoSignedCert,
+      sendUserAgent: sendUserAgent,
+      maxAuthRetries: maxAuthRetries,
+      withCredentials: withCredentials,
+    );
 
 Future<void> patch({
   required String url,
@@ -100,16 +170,62 @@ Future<void> patch({
   Map<String, String>? headers,
   dynamic body,
   bool encodeBody = true,
+  final String userAgent = 'SinaMN75',
+  final bool followRedirects = true,
+  final Duration timeout = const Duration(minutes: 60),
+  final int maxRedirects = 5,
+  final bool allowAutoSignedCert = false,
+  final bool sendUserAgent = false,
+  final int maxAuthRetries = 1,
+  final bool withCredentials = false,
 }) async =>
-    await request(url, EHttpMethod.patch, action, error, body: body, encodeBody: encodeBody, headers: headers);
+    await request(
+      url,
+      EHttpMethod.patch,
+      action,
+      error,
+      body: body,
+      encodeBody: encodeBody,
+      headers: headers,
+      userAgent: userAgent,
+      followRedirects: followRedirects,
+      timeout: timeout,
+      maxRedirects: maxRedirects,
+      allowAutoSignedCert: allowAutoSignedCert,
+      sendUserAgent: sendUserAgent,
+      maxAuthRetries: maxAuthRetries,
+      withCredentials: withCredentials,
+    );
 
 Future<void> httpDelete({
   required String url,
   required action(Response response),
   required error(Response response),
   Map<String, String>? headers,
+  final String userAgent = 'SinaMN75',
+  final bool followRedirects = true,
+  final Duration timeout = const Duration(minutes: 60),
+  final int maxRedirects = 5,
+  final bool allowAutoSignedCert = false,
+  final bool sendUserAgent = false,
+  final int maxAuthRetries = 1,
+  final bool withCredentials = false,
 }) async =>
-    await request(url, EHttpMethod.delete, action, error, headers: headers);
+    await request(
+      url,
+      EHttpMethod.delete,
+      action,
+      error,
+      headers: headers,
+      userAgent: userAgent,
+      followRedirects: followRedirects,
+      timeout: timeout,
+      maxRedirects: maxRedirects,
+      allowAutoSignedCert: allowAutoSignedCert,
+      sendUserAgent: sendUserAgent,
+      maxAuthRetries: maxAuthRetries,
+      withCredentials: withCredentials,
+    );
 
 Future<void> query({
   required String url,
@@ -117,6 +233,14 @@ Future<void> query({
   required action(Response response),
   required error(Response response),
   Map<String, String>? headers,
+  final String userAgent = 'SinaMN75',
+  final bool followRedirects = true,
+  final Duration timeout = const Duration(minutes: 60),
+  final int maxRedirects = 5,
+  final bool allowAutoSignedCert = false,
+  final bool sendUserAgent = false,
+  final int maxAuthRetries = 1,
+  final bool withCredentials = false,
 }) async =>
     await request(
       url,
@@ -125,6 +249,14 @@ Future<void> query({
       error,
       headers: headers,
       queryOrMutation: query,
+      userAgent: userAgent,
+      followRedirects: followRedirects,
+      timeout: timeout,
+      maxRedirects: maxRedirects,
+      allowAutoSignedCert: allowAutoSignedCert,
+      sendUserAgent: sendUserAgent,
+      maxAuthRetries: maxAuthRetries,
+      withCredentials: withCredentials,
     );
 
 Future<void> mutation({
@@ -133,6 +265,14 @@ Future<void> mutation({
   required action(Response response),
   required error(Response response),
   Map<String, String>? headers,
+  final String userAgent = 'SinaMN75',
+  final bool followRedirects = true,
+  final Duration timeout = const Duration(minutes: 60),
+  final int maxRedirects = 5,
+  final bool allowAutoSignedCert = false,
+  final bool sendUserAgent = false,
+  final int maxAuthRetries = 1,
+  final bool withCredentials = false,
 }) async =>
     await request(
       url,
@@ -141,6 +281,14 @@ Future<void> mutation({
       error,
       headers: headers,
       queryOrMutation: mutation,
+      userAgent: userAgent,
+      followRedirects: followRedirects,
+      timeout: timeout,
+      maxRedirects: maxRedirects,
+      allowAutoSignedCert: allowAutoSignedCert,
+      sendUserAgent: sendUserAgent,
+      maxAuthRetries: maxAuthRetries,
+      withCredentials: withCredentials,
     );
 
 enum EHttpMethod { get, post, put, patch, delete, query, mutation }
