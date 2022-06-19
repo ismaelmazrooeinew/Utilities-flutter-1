@@ -100,13 +100,13 @@ class UserDataSource {
   Future<void> verifyMobileForLogin({
     required final VerifyMobileForLoginDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
-    required final Function(GenericResponse response) onError,
+    required final Function(GenericResponse<UserReadDto> response) onError,
   }) async =>
       httpPost(
         url: "$baseUrl/user/VerifyMobileForLogin",
         body:dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> getProfile({
