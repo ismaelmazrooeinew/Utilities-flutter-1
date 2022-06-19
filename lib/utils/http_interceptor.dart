@@ -20,14 +20,7 @@ Future<void> request(
   final bool withCredentials = false,
 }) async {
   var connect = GetConnect(
-    userAgent: userAgent,
-    followRedirects: followRedirects,
-    timeout: timeout,
-    maxRedirects: maxRedirects,
-    allowAutoSignedCert: allowAutoSignedCert,
-    sendUserAgent: sendUserAgent,
-    maxAuthRetries: maxAuthRetries,
-    withCredentials: withCredentials,
+
   );
 
   final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
@@ -36,8 +29,8 @@ Future<void> request(
   Response<dynamic> response = Response<dynamic>();
 
   if (httpMethod == EHttpMethod.mutation || httpMethod == EHttpMethod.query) {
-    if (httpMethod == EHttpMethod.query) response = await connect.query(queryOrMutation!, url: url, headers: headers);
-    if (httpMethod == EHttpMethod.mutation) response = await connect.mutation(queryOrMutation!, url: url, headers: header);
+    if (httpMethod == EHttpMethod.query) response = await connect.query(queryOrMutation!, url: url);
+    if (httpMethod == EHttpMethod.mutation) response = await connect.mutation(queryOrMutation!, url: url);
     action(response);
   } else {
     try {
