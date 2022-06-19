@@ -54,15 +54,23 @@ Future<void> request(
   } catch (e) {
     error(response);
     logger.e("RESPONSE ERROR: $e");
+    print(response.bodyString ?? "LLLL");
+    print(response.headers ?? "LLLL");
+    print(response.statusCode ?? "LLLL");
+    print(response.statusText ?? "LLLL");
   }
 
-  if (kDebugMode) delay(100, () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()));
-
-  if (response.isSuccessful()) {
-    action(response);
-  } else {
-    error(response);
-  }
+  if (kDebugMode && (httpMethod == EHttpMethod.query || httpMethod == EHttpMethod.mutation))
+    delay(
+      100,
+      () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()),
+    );
+  //
+  // if (response.isSuccessful()) {
+  action(response);
+  // } else {
+  // error(response);
+  // }
 }
 
 Future<void> httpGet({
@@ -227,7 +235,7 @@ Future<void> httpDelete({
       withCredentials: withCredentials,
     );
 
-Future<void> query({
+Future<void> httpQuery({
   required String url,
   required String query,
   required action(Response response),
@@ -259,7 +267,7 @@ Future<void> query({
       withCredentials: withCredentials,
     );
 
-Future<void> mutation({
+Future<void> httpMutation({
   required String url,
   required String mutation,
   required action(Response response),
