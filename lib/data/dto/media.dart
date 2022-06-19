@@ -6,6 +6,7 @@ class MediaReadDto {
     this.type = -1,
     this.useCase = -1,
     this.link = "-1",
+    this.title = "-1"
   });
 
   String toJson() => json.encode(toMap());
@@ -15,6 +16,7 @@ class MediaReadDto {
         "type": type == null ? null : type,
         "useCase": useCase == null ? null : useCase,
         "link": link == null ? null : link,
+        "title": title == null ? null : title,
       };
 
   factory MediaReadDto.fromMap(final Map<String, dynamic> json) => MediaReadDto(
@@ -22,6 +24,7 @@ class MediaReadDto {
         type: json["Type"] ?? -1,
         useCase: json["UseCase"] ?? -1,
         link: json["Link"] ?? "-1",
+        title: json["Title"] ?? "-1",
       );
 
   factory MediaReadDto.fromJson(final String str) => MediaReadDto.fromMap(json.decode(str));
@@ -30,6 +33,7 @@ class MediaReadDto {
   final int? type;
   final int? useCase;
   final String link;
+  final String? title;
 }
 
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
