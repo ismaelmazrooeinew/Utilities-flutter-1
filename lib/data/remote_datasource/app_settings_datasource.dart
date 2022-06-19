@@ -12,8 +12,8 @@ class AppSettingsDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/AppSettings",
-        action: (Response response) => onResponse(GenericResponse<AppSettingsDto>.fromJson(response.body,AppSettingsDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<AppSettingsDto>.fromJson(response.body,AppSettingsDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<AppSettingsDto>.fromJson(response.body, AppSettingsDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<AppSettingsDto>.fromJson(response.body, AppSettingsDto.fromMap)),
       );
 
   Future<void> readLocation({
@@ -23,7 +23,7 @@ class AppSettingsDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/AppSettings/ReadLocation",
-        action: (Response response) => onResponse(GenericResponse<LocationReadDto>.fromJson(response.body,LocationReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<LocationReadDto>.fromJson(response.body,LocationReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<LocationReadDto>.fromJson(response.body, LocationReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 }

@@ -29,7 +29,7 @@ class IdTitleDataSource {
         url: "$baseUrl/${type.title}",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -41,17 +41,17 @@ class IdTitleDataSource {
         url: "$baseUrl/${type.title}",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> read({
     required final Function(GenericResponse<IdTitleReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpGet(
+      httpGet(
         url: "$baseUrl/${type.title}",
         action: (Response response) => onResponse(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> readById({
@@ -59,10 +59,10 @@ class IdTitleDataSource {
     required final Function(GenericResponse<IdTitleReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpGet(
+      httpGet(
         url: "$baseUrl/${type.title}/$id",
         action: (Response response) => onResponse(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> readByUseCase({
@@ -70,10 +70,10 @@ class IdTitleDataSource {
     required final Function(GenericResponse<IdTitleReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpGet(
+      httpGet(
         url: "$baseUrl/${type.title}/$useCase",
         action: (Response response) => onResponse(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> delete({
@@ -84,6 +84,6 @@ class IdTitleDataSource {
       httpDelete(
         url: "$baseUrl/${type.title}/$id",
         action: (Response response) => onResponse(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<IdTitleReadDto>.fromJson(response.body, IdTitleReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 }

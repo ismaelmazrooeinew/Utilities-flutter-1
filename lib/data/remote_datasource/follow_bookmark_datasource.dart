@@ -6,7 +6,6 @@ class FollowDataSource {
 
   FollowDataSource({required this.baseUrl});
 
-
   Future<void> readFollowers({
     required final Function(GenericResponse<FolowersReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
@@ -14,7 +13,7 @@ class FollowDataSource {
       httpPost(
         url: "$baseUrl/FollowBookmark/ReadFollowers/ReadFollowers",
         action: (Response response) => onResponse(GenericResponse<FolowersReadDto>.fromJson(response.body, FolowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<FolowersReadDto>.fromJson(response.body, FolowersReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> readFollowings({
@@ -24,7 +23,7 @@ class FollowDataSource {
       httpPost(
         url: "$baseUrl/FollowBookmark/ReadFollowings/ReadFollowings",
         action: (Response response) => onResponse(GenericResponse<FolowersReadDto>.fromJson(response.body, FolowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<FolowersReadDto>.fromJson(response.body, FolowersReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> removeFollowing({
@@ -34,9 +33,9 @@ class FollowDataSource {
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/RemoveFollowing/RemoveFollowing",
-        body:dto ,
+        body: dto,
         action: (Response response) => onResponse(GenericResponse<FolowersReadDto>.fromJson(response.body, FolowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<FolowersReadDto>.fromJson(response.body, FolowersReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> toggleBookmark({
@@ -46,9 +45,9 @@ class FollowDataSource {
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/ToggleBookmark/ToggleBookmark",
-        body:dto ,
+        body: dto,
         action: (Response response) => onResponse(GenericResponse<FolowersReadDto>.fromJson(response.body, FolowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<FolowersReadDto>.fromJson(response.body, FolowersReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> toggleFollow({
@@ -58,9 +57,8 @@ class FollowDataSource {
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/ToggleFollow/ToggleFolllow",
-        body:dto ,
+        body: dto,
         action: (Response response) => onResponse(GenericResponse<FolowersReadDto>.fromJson(response.body, FolowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<FolowersReadDto>.fromJson(response.body, FolowersReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
-
 }

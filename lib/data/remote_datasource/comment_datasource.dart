@@ -14,8 +14,8 @@ class CommentDataSource {
       httpPost(
         url: "$baseUrl/Comment",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -26,8 +26,8 @@ class CommentDataSource {
       httpPut(
         url: "$baseUrl/Comment",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> read({
@@ -36,10 +36,9 @@ class CommentDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Comment",
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
-
 
   Future<void> delete({
     required final String id,
@@ -48,7 +47,7 @@ class CommentDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Comment/$id",
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<CommentReadDto>.fromJson(response.body,CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 }

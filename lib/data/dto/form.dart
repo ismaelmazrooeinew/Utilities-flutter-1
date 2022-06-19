@@ -1,7 +1,7 @@
 import 'package:utilities/utilities.dart';
 
-class FormFieldDto {
-  FormFieldDto({
+class FormReadDto {
+  FormReadDto({
     this.id,
     this.label,
     this.title,
@@ -19,11 +19,11 @@ class FormFieldDto {
   final bool? isRequired;
   final int? type;
 
-  factory FormFieldDto.fromJson(String str) => FormFieldDto.fromMap(json.decode(str));
+  factory FormReadDto.fromJson(String str) => FormReadDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory FormFieldDto.fromMap(Map<String, dynamic> json) => FormFieldDto(
+  factory FormReadDto.fromMap(Map<String, dynamic> json) => FormReadDto(
         id: json["id"] == null ? null : json["id"],
         label: json["label"] == null ? null : json["label"],
         title: json["title"] == null ? null : json["title"],
@@ -108,12 +108,12 @@ class FormDto {
   FormDto({
     required this.id,
     required this.title,
-    required this.formField,
+    required this.formRead,
   });
 
   final String? id;
   final String? title;
-  final FormFieldDto? formField;
+  final FormReadDto? formRead;
 
   factory FormDto.fromJson(String str) => FormDto.fromMap(json.decode(str));
 
@@ -122,12 +122,12 @@ class FormDto {
   factory FormDto.fromMap(Map<String, dynamic> json) => FormDto(
         id: json["id"] == null ? null : json["id"],
         title: json["title"] == null ? null : json["title"],
-        formField: json["formField"] == null ? null : FormFieldDto.fromMap(json["formField"]),
+        formRead: json["formRead"] == null ? null : FormReadDto.fromMap(json["formRead"]),
       );
 
   Map<String, dynamic> toMap() => {
         "id": id == null ? null : id,
         "title": title == null ? null : title,
-        "formField": formField == null ? null : formField!.toMap(),
+        "formRead": formRead == null ? null : formRead!.toMap(),
       };
 }

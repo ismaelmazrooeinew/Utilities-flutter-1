@@ -11,11 +11,11 @@ class ShoppingCartDataSource {
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpPost(
+      httpPost(
         url: "$baseUrl/ShoppingCart",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.body, ShoppingCartReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ShoppingCartReadDto>.fromJson(response.body, ShoppingCartReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -27,17 +27,17 @@ class ShoppingCartDataSource {
         url: "$baseUrl/ShoppingCart",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.body, ShoppingCartReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ShoppingCartReadDto>.fromJson(response.body, ShoppingCartReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> read({
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpGet(
+      httpGet(
         url: "$baseUrl/ShoppingCart",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.body, ShoppingCartReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ShoppingCartReadDto>.fromJson(response.body, ShoppingCartReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> readById({
@@ -45,10 +45,10 @@ class ShoppingCartDataSource {
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpGet(
+      httpGet(
         url: "$baseUrl/ShoppingCart/$id",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.body, ShoppingCartReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ShoppingCartReadDto>.fromJson(response.body, ShoppingCartReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> delete({
@@ -60,6 +60,6 @@ class ShoppingCartDataSource {
       httpDelete(
         url: "$baseUrl/ShoppingCart/$id/$itemId",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.body, ShoppingCartReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ShoppingCartReadDto>.fromJson(response.body, ShoppingCartReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 }
