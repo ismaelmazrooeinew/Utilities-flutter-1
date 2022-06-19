@@ -1,42 +1,43 @@
-import 'package:utilities/data/dto/comment.dart';
+import 'package:utilities/data/dto/category.dart';
 import 'package:utilities/utilities.dart';
 
-class CommentDataSource {
+
+class CategoryDataSource {
   final String baseUrl;
 
-  CommentDataSource({required this.baseUrl});
+  CategoryDataSource({required this.baseUrl});
 
   Future<void> create({
-    required final CommentCreateUpdateDto dto,
-    required final Function(GenericResponse<CommentReadDto>) onResponse,
+    required final CategoryCreateUpdateDto dto,
+    required final Function(GenericResponse<CategoryReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/Comment",
+        url: "$baseUrl/Category",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> update({
-    required final CommentCreateUpdateDto dto,
-    required final Function(GenericResponse<CommentReadDto>) onResponse,
+    required final CategoryCreateUpdateDto dto,
+    required final Function(GenericResponse<CategoryReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPut(
-        url: "$baseUrl/Comment",
+        url: "$baseUrl/Category",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> read({
-    required final Function(GenericResponse<CommentReadDto>) onResponse,
+    required final Function(GenericResponse<CategoryReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
-        url: "$baseUrl/Comment",
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
+        url: "$baseUrl/Category",
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
@@ -46,8 +47,8 @@ class CommentDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpDelete(
-        url: "$baseUrl/Comment/$id",
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
+        url: "$baseUrl/Category/$id",
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 }

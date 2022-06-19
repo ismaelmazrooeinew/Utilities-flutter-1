@@ -1,41 +1,20 @@
 import 'package:utilities/utilities.dart';
 
-enum ProductDataSourceType {
-
-  product("product"),
-  tutorial("tutorial"),
-  project("project"),
-  company("company"),
-  tender("tender"),
-  magazine("magazine"),
-  ad("ad"),
-  dailyPrice("dailyPrice"),
-  service("service");
-
-  final String title;
-
-  const ProductDataSourceType(this.title);
-
-  @override
-  String toString() => name;
-}
-
 class ProductDataSource {
   final String baseUrl;
-  final ProductDataSourceType type;
 
-  ProductDataSource({required this.baseUrl, required this.type});
+  ProductDataSource({required this.baseUrl});
 
   Future<void> create({
     required final ProductCreateUpdateDto dto,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpPost(
-        url: "$baseUrl/Product/${type.title}",
+      httpPost(
+        url: "$baseUrl/Product",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -44,20 +23,20 @@ class ProductDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPut(
-        url: "$baseUrl/Product/${type.title}",
+        url: "$baseUrl/Product",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> read({
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpGet(
-        url: "$baseUrl/Product/${type.title}",
+      httpGet(
+        url: "$baseUrl/Product",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> readById({
@@ -65,10 +44,10 @@ class ProductDataSource {
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpGet(
-        url: "$baseUrl/Product/${type.title}/$id",
+      httpGet(
+        url: "$baseUrl/Product/$id",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> delete({
@@ -77,9 +56,9 @@ class ProductDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpDelete(
-        url: "$baseUrl/Product/${type.title}/$id",
+        url: "$baseUrl/Product/$id",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> filter({
@@ -87,21 +66,21 @@ class ProductDataSource {
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpPost(
-        url: "$baseUrl/Product/${type.title}/Filter",
+      httpPost(
+        url: "$baseUrl/Product/Filter",
         body: filter,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
-  Future<void>  readMine({
+  Future<void> readMine({
     required final ProductCreateUpdateDto filter,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-       httpGet(
-        url: "$baseUrl/Product/${type.title}/Mine",
+      httpGet(
+        url: "$baseUrl/Product/Mine",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 }

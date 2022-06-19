@@ -14,10 +14,9 @@ class ChatDataSource {
       httpPost(
         url: "$baseUrl/Chat",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body, ChatReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
-
 
   Future<void> read({
     required final Function(GenericResponse<ChatReadDto>) onResponse,
@@ -25,8 +24,8 @@ class ChatDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Chat",
-        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body, ChatReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> readByUserId({
@@ -36,8 +35,7 @@ class ChatDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Chat/$userId",
-        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<ChatReadDto>.fromJson(response.body,ChatReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body, ChatReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
-
 }

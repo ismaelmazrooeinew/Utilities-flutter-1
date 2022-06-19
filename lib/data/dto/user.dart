@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:utilities/utilities.dart';
 
 class UserCreateUpdateDto {
@@ -101,18 +99,23 @@ class UserReadDto {
     this.appUserName,
     this.appPhoneNumber,
     this.appEmail,
-    this.birthDate,
-    this.isAdmin,
+    this.type,
     this.firstName,
     this.lastName,
     this.headline,
     this.website,
-    this.suspend,
+    this.region,
+    this.activity,
     this.wallet,
+    this.showContactInfo,
+    this.isAdmin,
+    this.suspend,
+    this.birthDate,
+    this.gender,
     this.media,
-    this.colors,
-    this.specialties,
-    this.favorites,
+    this.locations,
+    this.categories,
+    this.products,
   });
 
   final String? token;
@@ -124,69 +127,84 @@ class UserReadDto {
   final String? appUserName;
   final String? appPhoneNumber;
   final String? appEmail;
-  final String? birthDate;
-  final bool? isAdmin;
+  final String? type;
   final String? firstName;
   final String? lastName;
   final String? headline;
   final String? website;
-  final bool? suspend;
+  final String? region;
+  final String? activity;
   final double? wallet;
+  final bool? showContactInfo;
+  final bool? isAdmin;
+  final bool? suspend;
+  final String? birthDate;
+  final Gender? gender;
   final List<MediaReadDto>? media;
-  final List<IdTitleReadDto>? colors;
-  final List<IdTitleReadDto>? specialties;
-  final List<IdTitleReadDto>? favorites;
+  final List<LocationReadDto>? locations;
+  final List<CategoryReadDto>? categories;
+  final List<ProductReadDto>? products;
 
   factory UserReadDto.fromJson(String str) => UserReadDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory UserReadDto.fromMap(Map<String, dynamic> json) => UserReadDto(
-        token: json["token"] == null ? null : json["token"],
-        id: json["id"] == null ? null : json["id"],
-        fullName: json["fullName"] == null ? null : json["fullName"],
-        phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
-        userName: json["userName"] == null ? null : json["userName"],
-        bio: json["bio"] == null ? null : json["bio"],
-        appUserName: json["appUserName"] == null ? null : json["appUserName"],
-        appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
-        birthDate: json["birthDate"] == null ? null : json["birthDate"],
-        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
-        colors: json["colors"] == null ? null : List<IdTitleReadDto>.from(json["colors"].map((x) => IdTitleReadDto.fromMap(x))),
-        specialties: json["specialties"] == null ? null : List<IdTitleReadDto>.from(json["specialties"].map((x) => IdTitleReadDto.fromMap(x))),
-        favorites: json["favorites"] == null ? null : List<IdTitleReadDto>.from(json["favorites"].map((x) => IdTitleReadDto.fromMap(x))),
-        appEmail: json["appEmail"] == null ? null : json["appEmail"],
-        isAdmin: json["isAdmin"] == null ? null : json["isAdmin"],
-        firstName: json["firstName"] == null ? null : json["firstName"],
-        lastName: json["lastName"] == null ? null : json["lastName"],
-        headline: json["headline"] == null ? null : json["headline"],
-        website: json["website"] == null ? null : json["website"],
-        suspend: json["suspend"] == null ? null : json["suspend"],
-        wallet: json["wallet"] == null ? null : json["wallet"],
+    token: json["token"] == null ? null : json["token"],
+    id: json["id"] == null ? null : json["id"],
+    fullName: json["fullName"] == null ? null : json["fullName"],
+    phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
+    userName: json["userName"] == null ? null : json["userName"],
+    bio: json["bio"] == null ? null : json["bio"],
+    appUserName: json["appUserName"] == null ? null : json["appUserName"],
+    appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
+    appEmail: json["appEmail"] == null ? null : json["appEmail"],
+    type: json["type"] == null ? null : json["type"],
+    firstName: json["firstName"] == null ? null : json["firstName"],
+    lastName: json["lastName"] == null ? null : json["lastName"],
+    headline: json["headline"] == null ? null : json["headline"],
+    website: json["website"] == null ? null : json["website"],
+    region: json["region"] == null ? null : json["region"],
+    activity: json["activity"] == null ? null : json["activity"],
+    wallet: json["wallet"] == null ? null : json["wallet"],
+    showContactInfo: json["showContactInfo"] == null ? null : json["showContactInfo"],
+    isAdmin: json["isAdmin"] == null ? null : json["isAdmin"],
+    suspend: json["suspend"] == null ? null : json["suspend"],
+    birthDate: json["birthDate"] == null ? null : json["birthDate"],
+    gender: json["gender.dart"] == null ? null : Gender.fromMap(json["gender.dart"]),
+    media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+    locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
+    categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
+    products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "token": token == null ? null : token,
-        "id": id == null ? null : id,
-        "fullName": fullName == null ? null : fullName,
-        "phoneNumber": phoneNumber == null ? null : phoneNumber,
-        "userName": userName == null ? null : userName,
-        "bio": bio == null ? null : bio,
-        "appUserName": appUserName == null ? null : appUserName,
-        "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
-        "birthDate": birthDate == null ? null : birthDate,
-        "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
-        "colors": colors == null ? null : List<dynamic>.from(colors!.map((x) => x.toMap())),
-        "specialties": specialties == null ? null : List<dynamic>.from(specialties!.map((x) => x.toMap())),
-        "favorites": favorites == null ? null : List<dynamic>.from(favorites!.map((x) => x.toMap())),
-        "appEmail": appEmail == null ? null : appEmail,
-        "isAdmin": isAdmin == null ? null : isAdmin,
-        "firstName": firstName == null ? null : firstName,
-        "lastName": lastName == null ? null : lastName,
-        "headline": headline == null ? null : headline,
-        "website": website == null ? null : website,
-        "suspend": suspend == null ? null : suspend,
-        "wallet": wallet == null ? null : wallet,
+    "token": token == null ? null : token,
+    "id": id == null ? null : id,
+    "fullName": fullName == null ? null : fullName,
+    "phoneNumber": phoneNumber == null ? null : phoneNumber,
+    "userName": userName == null ? null : userName,
+    "bio": bio == null ? null : bio,
+    "appUserName": appUserName == null ? null : appUserName,
+    "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
+    "appEmail": appEmail == null ? null : appEmail,
+    "type": type == null ? null : type,
+    "firstName": firstName == null ? null : firstName,
+    "lastName": lastName == null ? null : lastName,
+    "headline": headline == null ? null : headline,
+    "website": website == null ? null : website,
+    "region": region == null ? null : region,
+    "activity": activity == null ? null : activity,
+    "wallet": wallet == null ? null : wallet,
+    "showContactInfo": showContactInfo == null ? null : showContactInfo,
+    "isAdmin": isAdmin == null ? null : isAdmin,
+    "suspend": suspend == null ? null : suspend,
+    "birthDate": birthDate == null ? null : birthDate,
+    "gender.dart": gender == null ? null : gender!.toMap(),
+    "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
+    "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
+    "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
+    "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
       };
 }
 
@@ -293,3 +311,4 @@ class ActiveMobileDto {
     "mobile": mobile == null ? null : mobile,
   };
 }
+

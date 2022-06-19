@@ -104,7 +104,7 @@ class UserDataSource {
   }) async =>
       httpPost(
         url: "$baseUrl/user/VerifyMobileForLogin",
-        body:dto,
+        body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
