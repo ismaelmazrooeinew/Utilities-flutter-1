@@ -395,7 +395,7 @@ class ProductFilterDto {
   final String? startDate;
   final String? endDate;
   final List<LocationReadDto>? locations;
-  final List<IdTitleReadDto>? categories;
+  final List<CategoryReadDto>? categories;
   final int? filterOrder;
   final int? pageSize;
   final int? pageNumber;
@@ -434,7 +434,7 @@ class ProductFilterDto {
         startDate: json["startDate"] == null ? null : json["startDate"],
         endDate: json["endDate"] == null ? null : json["endDate"],
         locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
-        categories: json["categories"] == null ? null : List<IdTitleReadDto>.from(json["categories"].map((x) => IdTitleReadDto.fromMap(x))),
+        categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         filterOrder: json["filterOrder"] == null ? null : json["filterOrder"],
         pageSize: json["pageSize"] == null ? null : json["pageSize"],
         pageNumber: json["pageNumber"] == null ? null : json["pageNumber"],

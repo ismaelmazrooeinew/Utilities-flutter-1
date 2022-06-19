@@ -1,17 +1,17 @@
 import 'package:utilities/utilities.dart';
 
-class FolowersReadDto {
-  FolowersReadDto({
+class FollowersReadDto {
+  FollowersReadDto({
     this.followers,
   });
 
   final List<Follower>? followers;
 
-  factory FolowersReadDto.fromJson(String str) => FolowersReadDto.fromMap(json.decode(str));
+  factory FollowersReadDto.fromJson(String str) => FollowersReadDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory FolowersReadDto.fromMap(Map<String, dynamic> json) => FolowersReadDto(
+  factory FollowersReadDto.fromMap(Map<String, dynamic> json) => FollowersReadDto(
     followers: json["followers"] == null ? null : List<Follower>.from(json["followers"].map((x) => Follower.fromMap(x))),
   );
 
@@ -42,9 +42,6 @@ class Follower {
     this.suspend,
     this.birthDate,
     this.media,
-    this.colors,
-    this.specialties,
-    this.favorites,
     this.identityType,
     this.licenceType,
     this.isBusinessAccount,
@@ -71,9 +68,6 @@ class Follower {
   final bool? suspend;
   final String? birthDate;
   final List<MediaReadDto>? media;
-  final List<IdTitleReadDto>? colors;
-  final List<IdTitleReadDto>? specialties;
-  final List<IdTitleReadDto>? favorites;
   final int? identityType;
   final int? licenceType;
   final bool? isBusinessAccount;
@@ -104,9 +98,6 @@ class Follower {
     suspend: json["suspend"] == null ? null : json["suspend"],
     birthDate: json["birthDate"] == null ? null :json["birthDate"],
     media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
-    colors: json["colors"] == null ? null : List<IdTitleReadDto>.from(json["colors"].map((x) => IdTitleReadDto.fromMap(x))),
-    specialties: json["specialties"] == null ? null : List<IdTitleReadDto>.from(json["specialties"].map((x) => IdTitleReadDto.fromMap(x))),
-    favorites: json["favorites"] == null ? null : List<IdTitleReadDto>.from(json["favorites"].map((x) => IdTitleReadDto.fromMap(x))),
     identityType: json["identityType"] == null ? null : json["identityType"],
     licenceType: json["licenceType"] == null ? null : json["licenceType"],
     isBusinessAccount: json["isBusinessAccount"] == null ? null : json["isBusinessAccount"],
@@ -134,9 +125,6 @@ class Follower {
     "suspend": suspend == null ? null : suspend,
     "birthDate": birthDate == null ? null : birthDate,
     "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
-    "colors": colors == null ? null : List<dynamic>.from(colors!.map((x) => x.toMap())),
-    "specialties": specialties == null ? null : List<dynamic>.from(specialties!.map((x) => x.toMap())),
-    "favorites": favorites == null ? null : List<dynamic>.from(favorites!.map((x) => x.toMap())),
     "identityType": identityType == null ? null : identityType,
     "licenceType": licenceType == null ? null : licenceType,
     "isBusinessAccount": isBusinessAccount == null ? null : isBusinessAccount,

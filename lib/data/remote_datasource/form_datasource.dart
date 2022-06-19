@@ -6,7 +6,7 @@ class FormDataSource {
   FormDataSource({required this.baseUrl});
 
   Future<void> create({
-    required final IdTitleCreateUpdateDto dto,
+    required final FormCreateUpdateDto dto,
     required final Function(GenericResponse<FormReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
@@ -34,13 +34,13 @@ class FormDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpDelete(
-        url: "$baseUrl/DeleteFormField/$id",
+        url: "$baseUrl/Form/$id",
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, FormReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> createFormField({
-    required final IdTitleCreateUpdateDto dto,
+    required final FormFieldCreateUpdateDto dto,
     required final Function(GenericResponse<FormReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
@@ -52,7 +52,7 @@ class FormDataSource {
       );
 
   Future<void> updateFormField({
-    required final IdTitleCreateUpdateDto dto,
+    required final FormFieldCreateUpdateDto dto,
     required final Function(GenericResponse<FormReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
