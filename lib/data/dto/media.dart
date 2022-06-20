@@ -93,7 +93,7 @@ extension MediaResponseExtension on List<MediaReadDto> {
       )
       .toList();
 
-  String getImage() => getImages().getFirstIfExist() ?? "--";
+  String getImage({final String useCase=''}) => getImages(useCase: useCase).getFirstIfExist() ?? "--";
 
   String getVideo() => getVideos().getFirstIfExist() ?? "--";
 
