@@ -37,9 +37,9 @@ class MediaReadDto {
 }
 
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
-  List<String> getImages() =>
+  List<String> getImages({final String useCase=''}) =>
       this
-          ?.where((final MediaReadDto e) => e.type == 0)
+          ?.where((final MediaReadDto e) => e.type == 0 && e.useCase==useCase)
           .map(
             (final MediaReadDto e) => e.link,
           )
@@ -72,8 +72,8 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 }
 
 extension MediaResponseExtension on List<MediaReadDto> {
-  List<String> getImages() => this
-      .where((final MediaReadDto e) => e.type == 0)
+  List<String> getImages({final String useCase=''}) => this
+      .where((final MediaReadDto e) => e.type == 0 && e.useCase==useCase)
       .map(
         (final MediaReadDto e) => e.link,
       )
