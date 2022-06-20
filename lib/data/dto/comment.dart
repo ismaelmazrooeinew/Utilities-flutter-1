@@ -16,7 +16,7 @@ class CommentReadDto {
   final String? createdAt;
   final String? updatedAt;
   final String? deletedAt;
-  final int? score;
+  final double? score;
   final String? comment;
   final String? parentId;
   final String? userId;
@@ -67,7 +67,7 @@ class CommentCreateUpdateDto {
   });
 
   final String? parentId;
-  final int? score;
+  final double? score;
   final  String? comment;
   final  String? userId;
   final  String? productId;
