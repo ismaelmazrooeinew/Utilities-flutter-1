@@ -62,7 +62,7 @@ class Follower {
   final String? lastName;
   final String? headline;
   final String? website;
-  final int? wallet;
+  final double? wallet;
   final bool? showContactInfo;
   final bool? isAdmin;
   final bool? suspend;

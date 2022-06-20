@@ -34,7 +34,7 @@ class UserCreateUpdateDto {
   final String? firstName;
   final String? lastName;
   final bool? suspend;
-  final int? wallet;
+  final double? wallet;
   final List<String>? colors;
   final List<String>? specialties;
   final List<String>? favorites;

@@ -18,7 +18,7 @@ class NotificationReadDto {
   final String? link;
   final String? createdAt;
   final bool? visited;
-  final int? useCase;
+  final String? useCase;
   final List<MediaReadDto>? media;
 
   factory NotificationReadDto.fromJson(String str) => NotificationReadDto.fromMap(json.decode(str));

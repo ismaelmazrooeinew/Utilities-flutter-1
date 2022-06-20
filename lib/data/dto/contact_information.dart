@@ -23,7 +23,7 @@ class ContactInformationReadDto {
   final String? subtitle;
   final String? color;
   final String? link;
-  final int? useCase;
+  final String? useCase;
   final String? parent;
   final String? parentId;
   final List<MediaReadDto>? media;
