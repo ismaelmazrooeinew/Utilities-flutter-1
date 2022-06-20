@@ -68,8 +68,8 @@ class Follower {
   final bool? suspend;
   final String? birthDate;
   final List<MediaReadDto>? media;
-  final double? identityType;
-  final double? licenceType;
+  final int? identityType;
+  final int? licenceType;
   final bool? isBusinessAccount;
   final String? mobileConfirmationCode;
 

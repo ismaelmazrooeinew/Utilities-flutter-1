@@ -17,7 +17,7 @@ class ContactInformationReadDto {
   });
 
   final String? id;
-  final double? secondaryId;
+  final int? secondaryId;
   final String? title;
   final String? titleTr1;
   final String? subtitle;

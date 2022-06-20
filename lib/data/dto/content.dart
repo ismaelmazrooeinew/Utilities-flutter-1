@@ -72,7 +72,7 @@ class ContentCreateUpdateDto {
   final String? subTitle;
   final String? description;
   final String? useCase;
-  final double? approvalStatus;
+  final int? approvalStatus;
   final List<ContactInformationReadDto>? contactInformations;
 
   factory ContentCreateUpdateDto.fromJson(String str) => ContentCreateUpdateDto.fromMap(json.decode(str));

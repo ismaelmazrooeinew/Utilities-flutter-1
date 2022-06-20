@@ -17,7 +17,7 @@ class FormReadDto {
   final String? optionList;
   final String? categoryId;
   final bool? isRequired;
-  final double? type;
+  final int? type;
 
   factory FormReadDto.fromJson(String str) => FormReadDto.fromMap(json.decode(str));
 
@@ -88,7 +88,7 @@ class FormFieldCreateUpdateDto {
   final String? title;
   final bool? isRequired;
   final String? optionList;
-  final double? type;
+  final int? type;
   final String? categoryId;
 
   factory FormFieldCreateUpdateDto.fromJson(String str) => FormFieldCreateUpdateDto.fromMap(json.decode(str));
