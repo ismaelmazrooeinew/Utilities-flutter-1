@@ -12,14 +12,14 @@ class LocationReadDto {
     this.type,
   });
 
-  final int? id;
+  final double? id;
   final String? title;
-  final int? parentId;
+  final double? parentId;
   final String? parent;
   final double? latitude;
   final double? longitude;
   final List<MediaReadDto>? media;
-  final int? type;
+  final double? type;
 
   factory LocationReadDto.fromJson(String str) => LocationReadDto.fromMap(json.decode(str));
 

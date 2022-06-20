@@ -45,8 +45,8 @@ class GenericResponse<T> {
   final String message;
   final T? result;
   final List<T>? resultList;
-  final int? pageSize;
-  final int? pageCount;
-  final int? totalCount;
+  final double? pageSize;
+  final double? pageCount;
+  final double? totalCount;
 }
 

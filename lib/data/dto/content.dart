@@ -21,7 +21,7 @@ class ContentReadDto {
   final String? title;
   final String? subTitle;
   final String? description;
-  final int? useCase;
+  final String? useCase;
   final List<ContactInformationReadDto>? contactInformation;
   final List<MediaReadDto>? media;
 
@@ -71,8 +71,8 @@ class ContentCreateUpdateDto {
   final String? title;
   final String? subTitle;
   final String? description;
-  final int? useCase;
-  final int? approvalStatus;
+  final String? useCase;
+  final double? approvalStatus;
   final List<ContactInformationReadDto>? contactInformations;
 
   factory ContentCreateUpdateDto.fromJson(String str) => ContentCreateUpdateDto.fromMap(json.decode(str));

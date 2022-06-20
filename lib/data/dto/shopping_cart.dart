@@ -64,7 +64,7 @@ class ShoppingCartItem {
   final String? createdAt;
   final String? updatedAt;
   final String? deletedAt;
-  final int? quantity;
+  final double? quantity;
   final String? shoppingCartId;
   final String? productId;
   final String? projectId;

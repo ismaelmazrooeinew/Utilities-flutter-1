@@ -7,7 +7,7 @@ class VoteField {
   });
 
   final String? title;
-  final int? point;
+  final double? point;
 
   factory VoteField.fromJson(String str) => VoteField.fromMap(json.decode(str));
 

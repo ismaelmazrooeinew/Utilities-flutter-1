@@ -17,13 +17,13 @@ class ContactInformationReadDto {
   });
 
   final String? id;
-  final int? secondaryId;
+  final double? secondaryId;
   final String? title;
   final String? titleTr1;
   final String? subtitle;
   final String? color;
   final String? link;
-  final int? useCase;
+  final String? useCase;
   final String? parent;
   final String? parentId;
   final List<MediaReadDto>? media;

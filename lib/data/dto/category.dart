@@ -70,7 +70,7 @@ class CategoryReadDto {
   });
 
   final String? id;
-  final int? secondaryId;
+  final double? secondaryId;
   final String? title;
   final String? titleTr1;
   final String? subtitle;

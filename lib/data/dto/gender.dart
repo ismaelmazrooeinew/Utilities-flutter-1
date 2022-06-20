@@ -7,7 +7,7 @@ class Gender {
     this.titleTr1,
   });
 
-  final int? id;
+  final double? id;
   final String? title;
   final String? titleTr1;
 
