@@ -64,8 +64,8 @@ class ProductCreateUpdateDto {
   final double? latitude;
   final double? longitude;
   final int? visitsCount;
-  final int? minOrder;
-  final int? maxOrder;
+  final double? minOrder;
+  final double? maxOrder;
   final double? price;
   final String? startDate;
   final String? endDate;
@@ -228,8 +228,8 @@ class ProductReadDto {
   final double? latitude;
   final double? longitude;
   final int? visitsCount;
-  final int? minOrder;
-  final int? maxOrder;
+  final double? minOrder;
+  final double? maxOrder;
   final double? price;
   final String? startDate;
   final String? endDate;
@@ -388,8 +388,8 @@ class ProductFilterDto {
   final double? width;
   final double? height;
   final double? weight;
-  final int? minOrder;
-  final int? maxOrder;
+  final double? minOrder;
+  final double? maxOrder;
   final String? unit;
   final int? status;
   final String? startDate;
