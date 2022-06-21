@@ -24,7 +24,7 @@ class ContactInformationReadDto {
   final String? color;
   final String? link;
   final String? useCase;
-  final String? parent;
+  final ContactInformationReadDto? parent;
   final String? parentId;
   final List<MediaReadDto>? media;
 

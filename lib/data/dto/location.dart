@@ -15,7 +15,7 @@ class LocationReadDto {
   final int? id;
   final String? title;
   final int? parentId;
-  final String? parent;
+  final LocationReadDto? parent;
   final double? latitude;
   final double? longitude;
   final List<MediaReadDto>? media;

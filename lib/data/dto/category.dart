@@ -78,8 +78,8 @@ class CategoryReadDto {
   final String? link;
   final String? useCase;
   final String? type;
-  final String? parent;
-  final List<String>? children;
+  final CategoryReadDto? parent;
+  final List<CategoryReadDto>? children;
   final String? parentId;
   final List<MediaReadDto>? media;
 
@@ -98,7 +98,7 @@ class CategoryReadDto {
         useCase: json["useCase"] == null ? null : json["useCase"],
         type: json["type"] == null ? null : json["type"],
         parent: json["parent"] == null ? null : json["parent"],
-        children: json["children"] == null ? null : List<String>.from(json["children"].map((x) => x)),
+        children: json["children"] == null ? null : List<CategoryReadDto>.from(json["children"].map((x) => x)),
         parentId: json["parentId"] == null ? null : json["parentId"],
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
