@@ -2,11 +2,11 @@ import 'package:utilities/utilities.dart';
 
 class MediaReadDto {
   MediaReadDto({
-    this.id="-1",
-    this.type=-1,
-    this.useCase="-1",
-    this.link="-1",
-    this.title="-1",
+    this.id = "-1",
+    this.type = -1,
+    this.useCase = "-1",
+    this.link = "-1",
+    this.title = "-1",
   });
 
   final String id;
@@ -20,27 +20,26 @@ class MediaReadDto {
   String toJson() => json.encode(toMap());
 
   factory MediaReadDto.fromMap(Map<String, dynamic> json) => MediaReadDto(
-    id: json["id"] ??"-1",
-    type: json["type"] ??-1,
-    useCase: json["useCase"] ??"-1",
-    link: json["link"] ??"-1",
-    title: json["title"] ??"-1",
-  );
+        id: json["id"] ?? "-1",
+        type: json["type"] ?? -1,
+        useCase: json["useCase"] ?? "-1",
+        link: json["link"] ?? "-1",
+        title: json["title"] ?? "-1",
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id ,
-    "type": type ,
-    "useCase": useCase,
-    "link": link ,
-    "title": title ,
-  };
+        "id": id,
+        "type": type,
+        "useCase": useCase,
+        "link": link,
+        "title": title,
+      };
 }
 
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
   List<String> getImages({final String? useCase}) =>
       this
-          ?.where((final MediaReadDto e) => e.type == 0 )
-          .where((final MediaReadDto e) => useCase != null && e.useCase==useCase)
+          ?.where((final MediaReadDto e) => e.type == 0 && useCase != null ? (e.useCase == useCase) : true)
           .map(
             (final MediaReadDto e) => e.link,
           )
@@ -74,8 +73,7 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
 extension MediaResponseExtension on List<MediaReadDto> {
   List<String> getImages({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.type == 0)
-      .where((final MediaReadDto e) => useCase != null && e.useCase==useCase)
+      .where((final MediaReadDto e) => e.type == 0 && useCase != null ? (e.useCase == useCase) : true)
       .map(
         (final MediaReadDto e) => e.link,
       )
