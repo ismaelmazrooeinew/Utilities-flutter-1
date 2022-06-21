@@ -37,9 +37,10 @@ class MediaReadDto {
 }
 
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
-  List<String> getImages() =>
+  List<String> getImages({final String? useCase}) =>
       this
           ?.where((final MediaReadDto e) => e.type == 0 )
+          .where((final MediaReadDto e) => useCase != null && e.useCase==useCase)
           .map(
             (final MediaReadDto e) => e.link,
           )
@@ -64,7 +65,7 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           .toList() ??
       <String>[];
 
-  String getImage() => getImages().getFirstIfExist() ?? "--";
+  String getImage({final String? useCase}) => getImages(useCase: useCase).getFirstIfExist() ?? "--";
 
   String getVideo() => getVideos().getFirstIfExist() ?? "--";
 
@@ -72,8 +73,9 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 }
 
 extension MediaResponseExtension on List<MediaReadDto> {
-  List<String> getImages() => this
-      .where((final MediaReadDto e) => e.type == 0 )
+  List<String> getImages({final String? useCase}) => this
+      .where((final MediaReadDto e) => e.type == 0)
+      .where((final MediaReadDto e) => useCase != null && e.useCase==useCase)
       .map(
         (final MediaReadDto e) => e.link,
       )
@@ -93,7 +95,7 @@ extension MediaResponseExtension on List<MediaReadDto> {
       )
       .toList();
 
-  String getImage() => getImages().getFirstIfExist() ?? "--";
+  String getImage({final String? useCase}) => getImages(useCase: useCase).getFirstIfExist() ?? "--";
 
   String getVideo() => getVideos().getFirstIfExist() ?? "--";
 
