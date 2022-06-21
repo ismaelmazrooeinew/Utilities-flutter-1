@@ -1,4 +1,3 @@
-import 'package:utilities/data/dto/follow_bookmark.dart';
 import 'package:utilities/utilities.dart';
 
 class FollowDataSource {
@@ -28,37 +27,37 @@ class FollowDataSource {
 
   Future<void> removeFollowing({
     required final FollowersReadDto dto,
-    required final Function(GenericResponse) onResponse,
+    required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/RemoveFollowing/RemoveFollowing",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<FollowersReadDto>.fromJson(response.body, FollowersReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> toggleBookmark({
     required final ToggleBookmark dto,
-    required final Function(GenericResponse) onResponse,
+    required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/ToggleBookmark/ToggleBookmark",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<FollowersReadDto>.fromJson(response.body, FollowersReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> toggleFollow({
     required final FollowersReadDto dto,
-    required final Function(GenericResponse) onResponse,
+    required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/ToggleFollow/ToggleFolllow",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<FollowersReadDto>.fromJson(response.body, FollowersReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 }
