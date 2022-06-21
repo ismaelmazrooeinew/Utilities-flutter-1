@@ -4,9 +4,9 @@ class MediaReadDto {
   MediaReadDto({
     this.id='-1',
     this.type=-1,
-    this.useCase='',
-    this.link='',
-    this.title='',
+    this.useCase=' ',
+    this.link=' ',
+    this.title=' ',
   });
 
   final String id;
