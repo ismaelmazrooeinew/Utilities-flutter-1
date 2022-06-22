@@ -14,19 +14,19 @@ class UserDataSource {
         url: "$baseUrl/user",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> update({
     required final UserCreateUpdateDto dto,
-    required final Function(GenericResponse<UserReadDto>) onResponse,
+    required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPut(
         url: "$baseUrl/user",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> read({
@@ -36,7 +36,7 @@ class UserDataSource {
       httpGet(
         url: "$baseUrl/user",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> readById({
@@ -47,7 +47,7 @@ class UserDataSource {
       httpGet(
         url: "$baseUrl/user/$id",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
   Future<void> delete({
