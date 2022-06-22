@@ -1,5 +1,3 @@
-import 'package:utilities/data/dto/category.dart';
-import 'package:utilities/data/dto/comment.dart';
 import 'package:utilities/utilities.dart';
 
 class ProductCreateUpdateDto {
@@ -41,6 +39,7 @@ class ProductCreateUpdateDto {
     this.voteFields,
     this.forms,
     this.comments,
+    this.teams,
   });
 
   final String? id;
@@ -80,6 +79,7 @@ class ProductCreateUpdateDto {
   final List<VoteField>? voteFields;
   final List<FormReadDto>? forms;
   final List<CommentReadDto>? comments;
+  final List<String>? teams;
 
   factory ProductCreateUpdateDto.fromJson(String str) => ProductCreateUpdateDto.fromMap(json.decode(str));
 
@@ -123,6 +123,7 @@ class ProductCreateUpdateDto {
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
+        teams: json["teams"] == null ? null : List<String>.from(json["teams"].map((x) => x)),
       );
 
   Map<String, dynamic> toMap() => {
@@ -163,6 +164,7 @@ class ProductCreateUpdateDto {
         "voteFields": voteFields == null ? null : List<dynamic>.from(voteFields!.map((x) => x.toMap())),
         "forms": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toMap())),
+        "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x)),
       };
 }
 
@@ -205,6 +207,7 @@ class ProductReadDto {
     this.voteFields,
     this.forms,
     this.comments,
+    this.teams,
   });
 
   final String? id;
@@ -244,6 +247,7 @@ class ProductReadDto {
   final List<VoteField>? voteFields;
   final List<FormReadDto>? forms;
   final List<CommentReadDto>? comments;
+  final List<UserReadDto>? teams;
 
   factory ProductReadDto.fromJson(String str) => ProductReadDto.fromMap(json.decode(str));
 
@@ -287,6 +291,7 @@ class ProductReadDto {
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
+        teams: json["teams"] == null ? null : List<UserReadDto>.from(json["teams"].map((x) => UserReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -327,6 +332,7 @@ class ProductReadDto {
         "voteFields": voteFields == null ? null : List<dynamic>.from(voteFields!.map((x) => x.toMap())),
         "forms": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toMap())),
+        "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x.toMap())),
       };
 }
 
@@ -365,6 +371,7 @@ class ProductFilterDto {
     this.pageSize,
     this.pageNumber,
     this.useCase,
+    this.teams,
   });
 
   final String? title;
@@ -400,6 +407,7 @@ class ProductFilterDto {
   final int? pageSize;
   final int? pageNumber;
   final String? useCase;
+  final List<UserReadDto>? teams;
 
   factory ProductFilterDto.fromJson(String str) => ProductFilterDto.fromMap(json.decode(str));
 
@@ -434,6 +442,7 @@ class ProductFilterDto {
         startDate: json["startDate"] == null ? null : json["startDate"],
         endDate: json["endDate"] == null ? null : json["endDate"],
         locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
+        teams: json["teams"] == null ? null : List<UserReadDto>.from(json["teams"].map((x) => UserReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         filterOrder: json["filterOrder"] == null ? null : json["filterOrder"],
         pageSize: json["pageSize"] == null ? null : json["pageSize"],
@@ -470,6 +479,7 @@ class ProductFilterDto {
         "startDate": startDate == null ? null : startDate,
         "endDate": endDate == null ? null : endDate,
         "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
+        "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
         "filterOrder": filterOrder == null ? null : filterOrder,
         "pageSize": pageSize == null ? null : pageSize,
