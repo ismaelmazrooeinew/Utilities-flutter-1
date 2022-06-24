@@ -70,7 +70,11 @@ class ProductDataSource {
         url: "$baseUrl/Product/Filter",
         body: filter,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) {
+          print(response.body);
+          print(response.statusCode);
+          print(response.statusText);
+        },
       );
 
   Future<void> readMine({
