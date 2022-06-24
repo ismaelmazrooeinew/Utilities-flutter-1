@@ -94,7 +94,7 @@ class CategoryReadDto {
         link: json["link"] == null ? null : json["link"],
         useCase: json["useCase"] == null ? null : json["useCase"],
         type: json["type"] == null ? null : json["type"],
-        parent: json["parentId"] == null ? null : CategoryReadDto.fromMap(json["parentId"]),
+        parent: json["parent"] == null ? null : CategoryReadDto.fromMap(json["parent"]),
         children: json["children"] == null ? null : List<CategoryReadDto>.from(json["children"].map((x) => x)),
         parentId: json["parentId"] == null ? null : json["parentId"],
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
