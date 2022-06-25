@@ -110,7 +110,7 @@ class CategoryReadDto {
         "useCase": useCase == null ? null : useCase,
         "type": type == null ? null : type,
         "parent": parent == null ? null : parent!.toMap(),
-        "children": children == null ? null : List<dynamic>.from(children!.map((x) => x)),
+        "children": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
         "parentId": parentId == null ? null : parentId,
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
       };
