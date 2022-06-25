@@ -60,7 +60,7 @@ class FollowBookmarkDataSource {
       );
 
   Future<void> toggleFollow({
-    required final FollowersReadDto dto,
+    required final ToggleFollow dto,
     required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>

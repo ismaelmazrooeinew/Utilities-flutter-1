@@ -155,31 +155,11 @@ class Follower {
 class ToggleBookmark {
   ToggleBookmark({
     this.productId,
-    this.projectId,
-    this.tutorialId,
-    this.eventId,
-    this.adId,
-    this.companyId,
-    this.tenderId,
-    this.serviceId,
-    this.magazineId,
-    this.tagId,
-    this.specialityId,
-    this.colorId,
+    this.categoryId,
   });
 
   final String? productId;
-  final String? projectId;
-  final String? tutorialId;
-  final String? eventId;
-  final String? adId;
-  final String? companyId;
-  final String? tenderId;
-  final String? serviceId;
-  final String? magazineId;
-  final String? tagId;
-  final String? specialityId;
-  final String? colorId;
+  final String? categoryId;
 
   factory ToggleBookmark.fromJson(String str) => ToggleBookmark.fromMap(json.decode(str));
 
@@ -187,31 +167,32 @@ class ToggleBookmark {
 
   factory ToggleBookmark.fromMap(Map<String, dynamic> json) => ToggleBookmark(
     productId: json["productId"] == null ? null : json["productId"],
-    projectId: json["projectId"] == null ? null : json["projectId"],
-    tutorialId: json["tutorialId"] == null ? null : json["tutorialId"],
-    eventId: json["eventId"] == null ? null : json["eventId"],
-    adId: json["adId"] == null ? null : json["adId"],
-    companyId: json["companyId"] == null ? null : json["companyId"],
-    tenderId: json["tenderId"] == null ? null : json["tenderId"],
-    serviceId: json["serviceId"] == null ? null : json["serviceId"],
-    magazineId: json["magazineId"] == null ? null : json["magazineId"],
-    tagId: json["tagId"] == null ? null : json["tagId"],
-    specialityId: json["specialityId"] == null ? null : json["specialityId"],
-    colorId: json["colorId"] == null ? null : json["colorId"],
+    categoryId: json["categoryId"] == null ? null : json["categoryId"],
   );
 
   Map<String, dynamic> toMap() => {
     "productId": productId == null ? null : productId,
-    "projectId": projectId == null ? null : projectId,
-    "tutorialId": tutorialId == null ? null : tutorialId,
-    "eventId": eventId == null ? null : eventId,
-    "adId": adId == null ? null : adId,
-    "companyId": companyId == null ? null : companyId,
-    "tenderId": tenderId == null ? null : tenderId,
-    "serviceId": serviceId == null ? null : serviceId,
-    "magazineId": magazineId == null ? null : magazineId,
-    "tagId": tagId == null ? null : tagId,
-    "specialityId": specialityId == null ? null : specialityId,
-    "colorId": colorId == null ? null : colorId,
+    "categoryId": categoryId == null ? null : categoryId,
   };
 }
+
+class ToggleFollow {
+  ToggleFollow({
+    this.userId,
+  });
+
+  final String? userId;
+
+  factory ToggleFollow.fromJson(String str) => ToggleFollow.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ToggleFollow.fromMap(Map<String, dynamic> json) => ToggleFollow(
+    userId: json["userId"] == null ? null : json["userId"],
+  );
+
+  Map<String, dynamic> toMap() => {
+    "userId": userId == null ? null : userId,
+  };
+}
+
