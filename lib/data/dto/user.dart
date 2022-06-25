@@ -3,6 +3,7 @@ import 'package:utilities/utilities.dart';
 class UserCreateUpdateDto {
   UserCreateUpdateDto({
     this.fullName,
+    this.userName,
     this.bio,
     this.headline,
     this.website,
@@ -23,6 +24,7 @@ class UserCreateUpdateDto {
   });
 
   final String? fullName;
+  final String? userName;
   final String? bio;
   final String? headline;
   final String? website;
@@ -49,6 +51,7 @@ class UserCreateUpdateDto {
         fullName: json["fullName"] == null ? null : json["fullName"],
         bio: json["bio"] == null ? null : json["bio"],
         headline: json["headline"] == null ? null : json["headline"],
+        userName: json["userName"] == null ? null : json["userName"],
         website: json["website"] == null ? null : json["website"],
         password: json["password"] == null ? null : json["password"],
         appUserName: json["appUserName"] == null ? null : json["appUserName"],
@@ -74,6 +77,7 @@ class UserCreateUpdateDto {
         "password": password == null ? null : password,
         "appUserName": appUserName == null ? null : appUserName,
         "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
+        "userName": userName == null ? null : userName,
         "appEmail": appEmail == null ? null : appEmail,
         "id": id == null ? null : id,
         "firstName": firstName == null ? null : firstName,
@@ -150,61 +154,61 @@ class UserReadDto {
   String toJson() => json.encode(toMap());
 
   factory UserReadDto.fromMap(Map<String, dynamic> json) => UserReadDto(
-    token: json["token"] == null ? null : json["token"],
-    id: json["id"] == null ? null : json["id"],
-    fullName: json["fullName"] == null ? null : json["fullName"],
-    phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
-    userName: json["userName"] == null ? null : json["userName"],
-    bio: json["bio"] == null ? null : json["bio"],
-    appUserName: json["appUserName"] == null ? null : json["appUserName"],
-    appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
-    appEmail: json["appEmail"] == null ? null : json["appEmail"],
-    type: json["type"] == null ? null : json["type"],
-    firstName: json["firstName"] == null ? null : json["firstName"],
-    lastName: json["lastName"] == null ? null : json["lastName"],
-    headline: json["headline"] == null ? null : json["headline"],
-    website: json["website"] == null ? null : json["website"],
-    region: json["region"] == null ? null : json["region"],
-    activity: json["activity"] == null ? null : json["activity"],
-    wallet: json["wallet"] == null ? null : json["wallet"],
-    showContactInfo: json["showContactInfo"] == null ? null : json["showContactInfo"],
-    isAdmin: json["isAdmin"] == null ? null : json["isAdmin"],
-    suspend: json["suspend"] == null ? null : json["suspend"],
-    birthDate: json["birthDate"] == null ? null : json["birthDate"],
-    gender: json["gender.dart"] == null ? null : Gender.fromMap(json["gender.dart"]),
-    media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
-    locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
-    categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
-    products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
+        token: json["token"] == null ? null : json["token"],
+        id: json["id"] == null ? null : json["id"],
+        fullName: json["fullName"] == null ? null : json["fullName"],
+        phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
+        userName: json["userName"] == null ? null : json["userName"],
+        bio: json["bio"] == null ? null : json["bio"],
+        appUserName: json["appUserName"] == null ? null : json["appUserName"],
+        appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
+        appEmail: json["appEmail"] == null ? null : json["appEmail"],
+        type: json["type"] == null ? null : json["type"],
+        firstName: json["firstName"] == null ? null : json["firstName"],
+        lastName: json["lastName"] == null ? null : json["lastName"],
+        headline: json["headline"] == null ? null : json["headline"],
+        website: json["website"] == null ? null : json["website"],
+        region: json["region"] == null ? null : json["region"],
+        activity: json["activity"] == null ? null : json["activity"],
+        wallet: json["wallet"] == null ? null : json["wallet"],
+        showContactInfo: json["showContactInfo"] == null ? null : json["showContactInfo"],
+        isAdmin: json["isAdmin"] == null ? null : json["isAdmin"],
+        suspend: json["suspend"] == null ? null : json["suspend"],
+        birthDate: json["birthDate"] == null ? null : json["birthDate"],
+        gender: json["gender.dart"] == null ? null : Gender.fromMap(json["gender.dart"]),
+        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+        locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
+        categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
+        products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-    "token": token == null ? null : token,
-    "id": id == null ? null : id,
-    "fullName": fullName == null ? null : fullName,
-    "phoneNumber": phoneNumber == null ? null : phoneNumber,
-    "userName": userName == null ? null : userName,
-    "bio": bio == null ? null : bio,
-    "appUserName": appUserName == null ? null : appUserName,
-    "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
-    "appEmail": appEmail == null ? null : appEmail,
-    "type": type == null ? null : type,
-    "firstName": firstName == null ? null : firstName,
-    "lastName": lastName == null ? null : lastName,
-    "headline": headline == null ? null : headline,
-    "website": website == null ? null : website,
-    "region": region == null ? null : region,
-    "activity": activity == null ? null : activity,
-    "wallet": wallet == null ? null : wallet,
-    "showContactInfo": showContactInfo == null ? null : showContactInfo,
-    "isAdmin": isAdmin == null ? null : isAdmin,
-    "suspend": suspend == null ? null : suspend,
-    "birthDate": birthDate == null ? null : birthDate,
-    "gender.dart": gender == null ? null : gender!.toMap(),
-    "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
-    "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
-    "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
-    "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
+        "token": token == null ? null : token,
+        "id": id == null ? null : id,
+        "fullName": fullName == null ? null : fullName,
+        "phoneNumber": phoneNumber == null ? null : phoneNumber,
+        "userName": userName == null ? null : userName,
+        "bio": bio == null ? null : bio,
+        "appUserName": appUserName == null ? null : appUserName,
+        "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
+        "appEmail": appEmail == null ? null : appEmail,
+        "type": type == null ? null : type,
+        "firstName": firstName == null ? null : firstName,
+        "lastName": lastName == null ? null : lastName,
+        "headline": headline == null ? null : headline,
+        "website": website == null ? null : website,
+        "region": region == null ? null : region,
+        "activity": activity == null ? null : activity,
+        "wallet": wallet == null ? null : wallet,
+        "showContactInfo": showContactInfo == null ? null : showContactInfo,
+        "isAdmin": isAdmin == null ? null : isAdmin,
+        "suspend": suspend == null ? null : suspend,
+        "birthDate": birthDate == null ? null : birthDate,
+        "gender.dart": gender == null ? null : gender!.toMap(),
+        "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
+        "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
+        "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
+        "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
       };
 }
 
@@ -302,13 +306,12 @@ class ActiveMobileDto {
   String toJson() => json.encode(toMap());
 
   factory ActiveMobileDto.fromMap(Map<String, dynamic> json) => ActiveMobileDto(
-    code: json["code"] == null ? null : json["code"],
-    mobile: json["mobile"] == null ? null : json["mobile"],
-  );
+        code: json["code"] == null ? null : json["code"],
+        mobile: json["mobile"] == null ? null : json["mobile"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "code": code == null ? null : code,
-    "mobile": mobile == null ? null : mobile,
-  };
+        "code": code == null ? null : code,
+        "mobile": mobile == null ? null : mobile,
+      };
 }
-
