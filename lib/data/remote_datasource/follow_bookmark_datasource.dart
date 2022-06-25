@@ -1,18 +1,28 @@
 import 'package:utilities/utilities.dart';
 
-class FollowDataSource {
+class FollowBookmarkDataSource {
   final String baseUrl;
 
-  FollowDataSource({required this.baseUrl});
+  FollowBookmarkDataSource({required this.baseUrl});
+
+  Future<void> readBookmarks({
+    required final Function(GenericResponse<ProductReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpPost(
+        url: "$baseUrl/FollowBookmark/ReadBookmarks",
+        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ProductReadDto.fromMap)),
+      );
 
   Future<void> readFollowers({
     required final Function(GenericResponse<FollowersReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/FollowBookmark/ReadFollowers/ReadFollowers",
+        url: "$baseUrl/FollowBookmark/ReadFollowers",
         action: (Response response) => onResponse(GenericResponse<FollowersReadDto>.fromJson(response.body, FollowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
       );
 
   Future<void> readFollowings({
@@ -20,9 +30,9 @@ class FollowDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/FollowBookmark/ReadFollowings/ReadFollowings",
+        url: "$baseUrl/FollowBookmark/ReadFollowings",
         action: (Response response) => onResponse(GenericResponse<FollowersReadDto>.fromJson(response.body, FollowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
       );
 
   Future<void> removeFollowing({
@@ -31,10 +41,10 @@ class FollowDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/FollowBookmark/RemoveFollowing/RemoveFollowing",
+        url: "$baseUrl/FollowBookmark/RemoveFollowing",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
       );
 
   Future<void> toggleBookmark({
@@ -43,10 +53,10 @@ class FollowDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/FollowBookmark/ToggleBookmark/ToggleBookmark",
+        url: "$baseUrl/FollowBookmark/ToggleBookmark",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ProductReadDto.fromMap)),
       );
 
   Future<void> toggleFollow({
@@ -55,9 +65,9 @@ class FollowDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/FollowBookmark/ToggleFollow/ToggleFolllow",
+        url: "$baseUrl/FollowBookmark/ToggleFollow",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
       );
 }

@@ -14,7 +14,7 @@ class ContentDataSource {
         url: "$baseUrl/Content",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.body, ContentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ContentReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -26,7 +26,7 @@ class ContentDataSource {
         url: "$baseUrl/Content",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.body, ContentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ContentReadDto.fromMap)),
       );
 
   Future<void> read({
@@ -36,7 +36,7 @@ class ContentDataSource {
       httpGet(
         url: "$baseUrl/Content",
         action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.body, ContentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ContentReadDto.fromMap)),
       );
 
   Future<void> readById({
@@ -47,7 +47,7 @@ class ContentDataSource {
       httpGet(
         url: "$baseUrl/Content/$id",
         action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.body, ContentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ContentReadDto.fromMap)),
       );
 
   Future<void> delete({
@@ -58,6 +58,6 @@ class ContentDataSource {
       httpDelete(
         url: "$baseUrl/Content/$id",
         action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.body, ContentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ContentReadDto.fromMap)),
       );
 }

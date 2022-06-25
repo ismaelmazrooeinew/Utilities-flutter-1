@@ -24,6 +24,6 @@ class AppSettingsDataSource {
       httpGet(
         url: "$baseUrl/AppSettings/ReadLocation",
         action: (Response response) => onResponse(GenericResponse<LocationReadDto>.fromJson(response.body, LocationReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, AppSettingsDto.fromMap)),
       );
 }

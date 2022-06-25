@@ -15,7 +15,7 @@ class CategoryDataSource {
         url: "$baseUrl/Category",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CategoryReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -27,7 +27,7 @@ class CategoryDataSource {
         url: "$baseUrl/Category",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CategoryReadDto.fromMap)),
       );
 
   Future<void> read({
@@ -37,7 +37,7 @@ class CategoryDataSource {
       httpGet(
         url: "$baseUrl/Category",
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CategoryReadDto.fromMap)),
       );
 
   Future<void> delete({
@@ -48,6 +48,6 @@ class CategoryDataSource {
       httpDelete(
         url: "$baseUrl/Category/$id",
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CategoryReadDto.fromMap)),
       );
 }

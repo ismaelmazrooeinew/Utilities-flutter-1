@@ -1,4 +1,3 @@
-import 'package:utilities/data/dto/comment.dart';
 import 'package:utilities/utilities.dart';
 
 class CommentDataSource {
@@ -15,7 +14,7 @@ class CommentDataSource {
         url: "$baseUrl/Comment",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -27,7 +26,7 @@ class CommentDataSource {
         url: "$baseUrl/Comment",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
       );
 
   Future<void> read({
@@ -37,7 +36,7 @@ class CommentDataSource {
       httpGet(
         url: "$baseUrl/Comment",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
       );
 
   Future<void> delete({
@@ -48,6 +47,6 @@ class CommentDataSource {
       httpDelete(
         url: "$baseUrl/Comment/$id",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
       );
 }

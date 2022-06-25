@@ -1,4 +1,3 @@
-import 'package:utilities/data/dto/chat.dart';
 import 'package:utilities/utilities.dart';
 
 class ChatDataSource {
@@ -15,7 +14,7 @@ class ChatDataSource {
         url: "$baseUrl/Chat",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body, ChatReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ChatReadDto.fromMap)),
       );
 
   Future<void> read({
@@ -25,7 +24,7 @@ class ChatDataSource {
       httpGet(
         url: "$baseUrl/Chat",
         action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body, ChatReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ChatReadDto.fromMap)),
       );
 
   Future<void> readByUserId({
@@ -36,6 +35,6 @@ class ChatDataSource {
       httpGet(
         url: "$baseUrl/Chat/$userId",
         action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body, ChatReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ChatReadDto.fromMap)),
       );
 }

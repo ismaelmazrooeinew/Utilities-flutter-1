@@ -14,7 +14,7 @@ class ProductDataSource {
         url: "$baseUrl/Product",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ProductReadDto.fromMap)),
       );
 
   Future<void> update({
@@ -26,7 +26,7 @@ class ProductDataSource {
         url: "$baseUrl/Product",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ProductReadDto.fromMap)),
       );
 
   Future<void> read({
@@ -36,7 +36,7 @@ class ProductDataSource {
       httpGet(
         url: "$baseUrl/Product",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ProductReadDto.fromMap)),
       );
 
   Future<void> readById({
@@ -47,7 +47,7 @@ class ProductDataSource {
       httpGet(
         url: "$baseUrl/Product/$id",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ProductReadDto.fromMap)),
       );
 
   Future<void> delete({
@@ -58,7 +58,7 @@ class ProductDataSource {
       httpDelete(
         url: "$baseUrl/Product/$id",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ProductReadDto.fromMap)),
       );
 
   Future<void> filter({
@@ -85,6 +85,6 @@ class ProductDataSource {
       httpGet(
         url: "$baseUrl/Product/Mine",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ProductReadDto.fromMap)),
       );
 }

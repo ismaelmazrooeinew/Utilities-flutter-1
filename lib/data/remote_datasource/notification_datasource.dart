@@ -1,4 +1,3 @@
-import 'package:utilities/data/dto/notification.dart';
 import 'package:utilities/utilities.dart';
 
 class NotificationDataSource {
@@ -15,7 +14,7 @@ class NotificationDataSource {
         url: "$baseUrl/Notification",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<NotificationReadDto>.fromJson(response.body, NotificationReadDto.fromMap)),
-       error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+       error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, NotificationReadDto.fromMap)),
       );
 
   Future<void> read({
@@ -25,7 +24,7 @@ class NotificationDataSource {
        httpGet(
         url: "$baseUrl/Notification",
         action: (Response response) => onResponse(GenericResponse<NotificationReadDto>.fromJson(response.body, NotificationReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, NotificationReadDto.fromMap)),
       );
 
 }

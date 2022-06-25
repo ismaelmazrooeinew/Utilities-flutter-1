@@ -14,7 +14,7 @@ class FormDataSource {
         url: "$baseUrl/Form",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FormReadDto.fromMap)),
       );
 
   Future<void> readByCategoryId({
@@ -25,7 +25,7 @@ class FormDataSource {
       httpGet(
         url: "$baseUrl/Form/$categoryId",
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FormReadDto.fromMap)),
       );
 
   Future<void> delete({
@@ -36,7 +36,7 @@ class FormDataSource {
       httpDelete(
         url: "$baseUrl/Form/$id",
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FormReadDto.fromMap)),
       );
 
   Future<void> createFormField({
@@ -48,7 +48,7 @@ class FormDataSource {
         url: "$baseUrl/Form/CreateFormField",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FormReadDto.fromMap)),
       );
 
   Future<void> updateFormField({
@@ -60,7 +60,7 @@ class FormDataSource {
         url: "$baseUrl/Form/UpdateFormField",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FormReadDto.fromMap)),
       );
 
   Future<void> deleteFormField({
@@ -71,6 +71,6 @@ class FormDataSource {
       httpDelete(
         url: "$baseUrl/DeleteFormField/$id",
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FormReadDto.fromMap)),
       );
 }
