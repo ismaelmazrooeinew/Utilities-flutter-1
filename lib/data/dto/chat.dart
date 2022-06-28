@@ -9,6 +9,8 @@ class ChatReadDto {
     this.dateTime,
     this.profileImage,
     this.send,
+    this.phoneNumber,
+    this.unReadMessages,
   });
 
   final String? id;
@@ -17,6 +19,8 @@ class ChatReadDto {
   final String? fullName;
   final String? dateTime;
   final String? profileImage;
+  final String? phoneNumber;
+  final int? unReadMessages;
   final bool? send;
 
   factory ChatReadDto.fromJson(String str) => ChatReadDto.fromMap(json.decode(str));
@@ -28,6 +32,8 @@ class ChatReadDto {
     userId: json["userId"] == null ? null : json["userId"],
     messageText: json["messageText"] == null ? null : json["messageText"],
     fullName: json["fullName"] == null ? null : json["fullName"],
+    phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
+    unReadMessages: json["unReadMessages"] == null ? null : json["unReadMessages"],
     dateTime: json["dateTime"] == null ? null : json["dateTime"],
     profileImage: json["profileImage"] == null ? null : json["profileImage"],
     send: json["send"] == null ? null : json["send"],
@@ -38,6 +44,8 @@ class ChatReadDto {
     "userId": userId == null ? null : userId,
     "messageText": messageText == null ? null : messageText,
     "fullName": fullName == null ? null : fullName,
+    "phoneNumber": phoneNumber == null ? null : phoneNumber,
+    "unReadMessages": unReadMessages == null ? null : unReadMessages,
     "dateTime": dateTime == null ? null : dateTime,
     "profileImage": profileImage == null ? null : profileImage,
     "send": send == null ? null : send,
