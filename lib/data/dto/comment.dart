@@ -13,7 +13,7 @@ class CommentReadDto {
     this.parentId,
   });
 
-  final String?id;
+  final String? id;
   final String? createdAt;
   final String? updatedAt;
   final double? score;
@@ -28,93 +28,58 @@ class CommentReadDto {
   String toJson() => json.encode(toMap());
 
   factory CommentReadDto.fromMap(Map<String, dynamic> json) => CommentReadDto(
-    id: json["id"] == null ? null : json["id"],
-    createdAt: json["createdAt"] == null ? null : json["createdAt"],
-    updatedAt: json["updatedAt"] == null ? null :json["updatedAt"],
-    score: json["score"] == null ? null : json["score"],
-    comment: json["comment"] == null ? null : json["comment"],
-    userId: json["userId"] == null ? null : json["userId"],
-    user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
-    children: json["children"] == null ? null : List<CommentReadDto>.from(json["children"].map((x) => CommentReadDto.fromMap(x))),
-    parentId: json["parentId"] == null ? null : json["parentId"],
-  );
+        id: json["id"] == null ? null : json["id"],
+        createdAt: json["createdAt"] == null ? null : json["createdAt"],
+        updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
+        score: json["score"] == null ? null : json["score"],
+        comment: json["comment"] == null ? null : json["comment"],
+        userId: json["userId"] == null ? null : json["userId"],
+        user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
+        children: json["children"] == null ? null : List<CommentReadDto>.from(json["children"].map((x) => CommentReadDto.fromMap(x))),
+        parentId: json["parentId"] == null ? null : json["parentId"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id == null ? null : id,
-    "createdAt": createdAt == null ? null : createdAt,
-    "updatedAt": updatedAt == null ? null : updatedAt,
-    "score": score == null ? null : score,
-    "comment": comment == null ? null : comment,
-    "userId": userId == null ? null : userId,
-    "user": user == null ? null : user!.toMap(),
-    "children": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
-    "parentId": parentId == null ? null : parentId,
-  };
+        "id": id == null ? null : id,
+        "createdAt": createdAt == null ? null : createdAt,
+        "updatedAt": updatedAt == null ? null : updatedAt,
+        "score": score == null ? null : score,
+        "comment": comment == null ? null : comment,
+        "userId": userId == null ? null : userId,
+        "user": user == null ? null : user!.toMap(),
+        "children": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
+        "parentId": parentId == null ? null : parentId,
+      };
 }
+
 class CommentCreateUpdateDto {
   CommentCreateUpdateDto({
     this.parentId,
     this.score,
     this.comment,
     this.productId,
-    this.dailyPriceId,
-    this.projectId,
-    this.tutorialId,
-    this.eventId,
-    this.adId,
-    this.companyId,
-    this.tenderId,
-    this.serviceId,
-    this.magazineId,
   });
 
   final String? parentId;
   final double? score;
-  final  String? comment;
-  final  String? productId;
-  final  String? dailyPriceId;
-  final  String? projectId;
-  final  String? tutorialId;
-  final  String? eventId;
-  final  String? adId;
-  final  String? companyId;
-  final  String? tenderId;
-  final  String? serviceId;
-  final  String? magazineId;
+  final String? comment;
+  final String? productId;
 
-  factory CommentCreateUpdateDto.fromJson( String? str) => CommentCreateUpdateDto.fromMap(json.decode(str!));
+  factory CommentCreateUpdateDto.fromJson(String? str) => CommentCreateUpdateDto.fromMap(json.decode(str!));
 
-   String? toJson() => json.encode(toMap());
+  String? toJson() => json.encode(toMap());
 
   factory CommentCreateUpdateDto.fromMap(Map<String, dynamic> json) => CommentCreateUpdateDto(
-    parentId: json["parentId"] == null ? null : json["parentId"],
-    score: json["score"] == null ? null : json["score"],
-    comment: json["comment"] == null ? null : json["comment"],
-    productId: json["productId"] == null ? null : json["productId"],
-    dailyPriceId: json["dailyPriceId"] == null ? null : json["dailyPriceId"],
-    projectId: json["projectId"] == null ? null : json["projectId"],
-    tutorialId: json["tutorialId"] == null ? null : json["tutorialId"],
-    eventId: json["eventId"] == null ? null : json["eventId"],
-    adId: json["adId"] == null ? null : json["adId"],
-    companyId: json["companyId"] == null ? null : json["companyId"],
-    tenderId: json["tenderId"] == null ? null : json["tenderId"],
-    serviceId: json["serviceId"] == null ? null : json["serviceId"],
-    magazineId: json["magazineId"] == null ? null : json["magazineId"],
-  );
+        parentId: json["parentId"] == null ? null : json["parentId"],
+        score: json["score"] == null ? null : json["score"],
+        comment: json["comment"] == null ? null : json["comment"],
+        productId: json["productId"] == null ? null : json["productId"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "parentId": parentId == null ? null : parentId,
-    "score": score == null ? null : score,
-    "comment": comment == null ? null : comment,
-    "productId": productId == null ? null : productId,
-    "dailyPriceId": dailyPriceId == null ? null : dailyPriceId,
-    "projectId": projectId == null ? null : projectId,
-    "tutorialId": tutorialId == null ? null : tutorialId,
-    "eventId": eventId == null ? null : eventId,
-    "adId": adId == null ? null : adId,
-    "companyId": companyId == null ? null : companyId,
-    "tenderId": tenderId == null ? null : tenderId,
-    "serviceId": serviceId == null ? null : serviceId,
-    "magazineId": magazineId == null ? null : magazineId,
-  };
+        "parentId": parentId == null ? null : parentId,
+        "score": score == null ? null : score,
+        "comment": comment == null ? null : comment,
+        "productId": productId == null ? null : productId,
+      };
 }
