@@ -194,6 +194,7 @@ class ProductReadDto {
     this.minOrder,
     this.maxOrder,
     this.price,
+    this.score,
     this.startDate,
     this.endDate,
     this.createdAt,
@@ -234,6 +235,7 @@ class ProductReadDto {
   final double? minOrder;
   final double? maxOrder;
   final double? price;
+  final double? score;
   final String? startDate;
   final String? endDate;
   final String? createdAt;
@@ -278,6 +280,7 @@ class ProductReadDto {
         minOrder: json["minOrder"] == null ? null : json["minOrder"],
         maxOrder: json["maxOrder"] == null ? null : json["maxOrder"],
         price: json["price"] == null ? null : json["price"],
+        score: json["score"] == null ? null : json["score"],
         startDate: json["startDate"] == null ? null : json["startDate"],
         endDate: json["endDate"] == null ? null : json["endDate"],
         createdAt: json["createdAt"] == null ? null : json["createdAt"],
@@ -319,6 +322,7 @@ class ProductReadDto {
         "minOrder": minOrder == null ? null : minOrder,
         "maxOrder": maxOrder == null ? null : maxOrder,
         "price": price == null ? null : price,
+        "score": score == null ? null : score,
         "startDate": startDate == null ? null : startDate,
         "endDate": endDate == null ? null : endDate,
         "createdAt": createdAt == null ? null : createdAt,
