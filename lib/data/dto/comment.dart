@@ -5,21 +5,23 @@ class CommentReadDto {
     this.id,
     this.createdAt,
     this.updatedAt,
-    this.deletedAt,
     this.score,
     this.comment,
-    this.parentId,
     this.userId,
+    this.user,
+    this.children,
+    this.parentId,
   });
 
-  final String? id;
+  final String?id;
   final String? createdAt;
   final String? updatedAt;
-  final String? deletedAt;
   final double? score;
   final String? comment;
-  final String? parentId;
   final String? userId;
+  final UserReadDto? user;
+  final List<CommentReadDto>? children;
+  final String? parentId;
 
   factory CommentReadDto.fromJson(String str) => CommentReadDto.fromMap(json.decode(str));
 
@@ -27,33 +29,33 @@ class CommentReadDto {
 
   factory CommentReadDto.fromMap(Map<String, dynamic> json) => CommentReadDto(
     id: json["id"] == null ? null : json["id"],
-    createdAt: json["createdAt"] == null ? null :  json["createdAt"],
-    updatedAt: json["updatedAt"] == null ? null :  json["updatedAt"],
-    deletedAt: json["deletedAt"] == null ? null :  json["deletedAt"],
+    createdAt: json["createdAt"] == null ? null : json["createdAt"],
+    updatedAt: json["updatedAt"] == null ? null :json["updatedAt"],
     score: json["score"] == null ? null : json["score"],
     comment: json["comment"] == null ? null : json["comment"],
-    parentId: json["parentId"] == null ? null : json["parentId"],
     userId: json["userId"] == null ? null : json["userId"],
+    user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
+    children: json["children"] == null ? null : List<CommentReadDto>.from(json["children"].map((x) => CommentReadDto.fromMap(x))),
+    parentId: json["parentId"] == null ? null : json["parentId"],
   );
 
   Map<String, dynamic> toMap() => {
     "id": id == null ? null : id,
     "createdAt": createdAt == null ? null : createdAt,
     "updatedAt": updatedAt == null ? null : updatedAt,
-    "deletedAt": deletedAt == null ? null : deletedAt,
     "score": score == null ? null : score,
     "comment": comment == null ? null : comment,
-    "parentId": parentId == null ? null : parentId,
     "userId": userId == null ? null : userId,
+    "user": user == null ? null : user!.toMap(),
+    "children": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
+    "parentId": parentId == null ? null : parentId,
   };
 }
-
 class CommentCreateUpdateDto {
   CommentCreateUpdateDto({
     this.parentId,
     this.score,
     this.comment,
-    this.userId,
     this.productId,
     this.dailyPriceId,
     this.projectId,
@@ -69,7 +71,6 @@ class CommentCreateUpdateDto {
   final String? parentId;
   final double? score;
   final  String? comment;
-  final  String? userId;
   final  String? productId;
   final  String? dailyPriceId;
   final  String? projectId;
@@ -89,7 +90,6 @@ class CommentCreateUpdateDto {
     parentId: json["parentId"] == null ? null : json["parentId"],
     score: json["score"] == null ? null : json["score"],
     comment: json["comment"] == null ? null : json["comment"],
-    userId: json["userId"] == null ? null : json["userId"],
     productId: json["productId"] == null ? null : json["productId"],
     dailyPriceId: json["dailyPriceId"] == null ? null : json["dailyPriceId"],
     projectId: json["projectId"] == null ? null : json["projectId"],
@@ -106,7 +106,6 @@ class CommentCreateUpdateDto {
     "parentId": parentId == null ? null : parentId,
     "score": score == null ? null : score,
     "comment": comment == null ? null : comment,
-    "userId": userId == null ? null : userId,
     "productId": productId == null ? null : productId,
     "dailyPriceId": dailyPriceId == null ? null : dailyPriceId,
     "projectId": projectId == null ? null : projectId,

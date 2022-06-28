@@ -38,39 +38,6 @@ class MediaReadDto {
 
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
-  // List<String> getImages({final String? useCase}) =>
-  //     this
-  //         ?.where((final MediaReadDto e) => e.type == 0 && (useCase != null ? (e.useCase == useCase) : true))
-  //         .map(
-  //           (final MediaReadDto e) => e.link,
-  //     )
-  //         .toList() ??
-  //         <String>[];
-  //
-  // List<String> getVideos({final String? useCase}) =>
-  //     this
-  //         ?.where((final MediaReadDto e) => e.type == 2 && (useCase != null ? (e.useCase == useCase) : true))
-  //         .map(
-  //           (final MediaReadDto e) => e.link,
-  //     )
-  //         .toList() ??
-  //         <String>[];
-  //
-  // List<String> getDocs({final String? useCase}) =>
-  //     this
-  //         ?.where((final MediaReadDto e) => e.type == 3 && (useCase != null ? (e.useCase == useCase) : true))
-  //         .map(
-  //           (final MediaReadDto e) => e.link,
-  //     )
-  //         .toList() ??
-  //         <String>[];
-  //
-  // String getImage({final String? useCase}) => getImages(useCase: useCase).getFirstIfExist() ?? "--";
-  //
-  // String getVideo({final String? useCase}) => getVideos(useCase: useCase).getFirstIfExist() ?? "--";
-  //
-  // String getDoc({final String? useCase}) => getDocs(useCase: useCase).getFirstIfExist() ?? "--";
-
   List<String> getImages({final String? useCase}) =>
       this
           ?.where((final MediaReadDto e) => e.link.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
@@ -124,6 +91,13 @@ extension MediaResponseExtension on List<MediaReadDto> {
       )
       .toList();
 
+  List<String> getAudios({final String? useCase}) => this
+      .where((final MediaReadDto e) => e.type == 1 && (useCase != null ? (e.useCase == useCase) : true))
+      .map(
+        (final MediaReadDto e) => e.link,
+  )
+      .toList();
+
   List<String> getVideos({final String? useCase}) => this
       .where((final MediaReadDto e) => e.type == 2 && (useCase != null ? (e.useCase == useCase) : true))
       .map(
@@ -143,4 +117,6 @@ extension MediaResponseExtension on List<MediaReadDto> {
   String getVideo({final String? useCase}) => getVideos(useCase: useCase).getFirstIfExist() ?? "--";
 
   String getDoc({final String? useCase}) => getDocs(useCase: useCase).getFirstIfExist() ?? "--";
+
+  String getAudio({final String? useCase}) => getAudios(useCase: useCase).getFirstIfExist() ?? "--";
 }
