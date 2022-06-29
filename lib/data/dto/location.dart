@@ -26,24 +26,24 @@ class LocationReadDto {
   String toJson() => json.encode(toMap());
 
   factory LocationReadDto.fromMap(Map<String, dynamic> json) => LocationReadDto(
-    id: json["id"] == null ? null : json["id"],
-    title: json["title"] == null ? null : json["title"],
-    parentId: json["parentId"] == null ? null : json["parentId"],
-    parent: json["parent"] == null ? null : json["parent"],
-    latitude: json["latitude"] == null ? null : json["latitude"],
-    longitude: json["longitude"] == null ? null : json["longitude"],
-    media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
-    type: json["type"] == null ? null : json["type"],
+    id: json["i"] == null ? null : json["i"],
+    title: json["n"] == null ? null : json["n"],
+    parentId: json["pi"] == null ? null : json["pi"],
+    parent: json["p"] == null ? null : json["p"],
+    latitude: json["lat"] == null ? null : json["lat"],
+    longitude: json["lon"] == null ? null : json["lon"],
+    media: json["m"] == null ? null : List<MediaReadDto>.from(json["m"].map((x) => MediaReadDto.fromMap(x))),
+    type: json["t"] == null ? null : json["t"],
   );
 
   Map<String, dynamic> toMap() => {
-    "id": id == null ? null : id,
-    "title": title == null ? null : title,
-    "parentId": parentId == null ? null : parentId,
-    "parent": parent == null ? null : parent,
-    "latitude": latitude == null ? null : latitude,
-    "longitude": longitude == null ? null : longitude,
-    "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
-    "type": type == null ? null : type,
+    "i": id == null ? null : id,
+    "n": title == null ? null : title,
+    "pi": parentId == null ? null : parentId,
+    "p": parent == null ? null : parent,
+    "lat": latitude == null ? null : latitude,
+    "lon": longitude == null ? null : longitude,
+    "m": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
+    "t": type == null ? null : type,
   };
 }
