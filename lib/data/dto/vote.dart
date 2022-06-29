@@ -30,7 +30,7 @@ class Vote {
     this.voteFieldId,
   });
 
-  final int? score;
+  final double? score;
   final String? voteFieldId;
 
   factory Vote.fromJson(String str) => Vote.fromMap(json.decode(str));
@@ -76,10 +76,12 @@ class VoteField {
   VoteField({
     this.id,
     this.title,
+    this.score,
   });
 
   final String? id;
   final String? title;
+  final double? score;
 
   factory VoteField.fromJson(String str) => VoteField.fromMap(json.decode(str));
 
@@ -88,10 +90,12 @@ class VoteField {
   factory VoteField.fromMap(Map<String, dynamic> json) => VoteField(
     id: json["id"] == null ? null : json["id"],
     title: json["title"] == null ? null : json["title"],
+    score: json["score"] == null ? null : json["score"],
   );
 
   Map<String, dynamic> toMap() => {
     "id": id == null ? null : id,
     "title": title == null ? null : title,
+    "score": score == null ? null : score,
   };
 }
