@@ -209,6 +209,7 @@ class ProductReadDto {
     this.forms,
     this.comments,
     this.teams,
+    this.myVotes,
   });
 
   final String? id;
@@ -247,6 +248,7 @@ class ProductReadDto {
   final List<MediaReadDto>? media;
   final List<CategoryReadDto>? categories;
   final List<VoteField>? voteFields;
+  final List<VoteField>? myVotes;
   final List<FormReadDto>? forms;
   final List<CommentReadDto>? comments;
   final List<UserReadDto>? teams;
@@ -292,6 +294,7 @@ class ProductReadDto {
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
+        myVotes: json["myVotes"] == null ? null : List<VoteField>.from(json["myVotes"].map((x) => VoteField.fromMap(x))),
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
         teams: json["teams"] == null ? null : List<UserReadDto>.from(json["teams"].map((x) => UserReadDto.fromMap(x))),
@@ -334,6 +337,7 @@ class ProductReadDto {
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
         "voteFields": voteFields == null ? null : List<dynamic>.from(voteFields!.map((x) => x.toMap())),
+        "myVotes": myVotes == null ? null : List<dynamic>.from(myVotes!.map((x) => x.toMap())),
         "forms": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toMap())),
         "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x.toMap())),
