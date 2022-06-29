@@ -10,6 +10,7 @@ class CommentReadDto {
     this.comment,
     this.parentId,
     this.userId,
+    this.children,
   });
 
   final String? id;
@@ -20,6 +21,7 @@ class CommentReadDto {
   final String? comment;
   final String? parentId;
   final String? userId;
+  final List<CommentReadDto>? children;
 
   factory CommentReadDto.fromJson(String str) => CommentReadDto.fromMap(json.decode(str));
 
@@ -34,6 +36,7 @@ class CommentReadDto {
     comment: json["comment"] == null ? null : json["comment"],
     parentId: json["parentId"] == null ? null : json["parentId"],
     userId: json["userId"] == null ? null : json["userId"],
+    children: json["children"] == null ? null : List<CommentReadDto>.from(json["children"].map((x) => CommentReadDto.fromMap(x))),
   );
 
   Map<String, dynamic> toMap() => {
@@ -45,6 +48,7 @@ class CommentReadDto {
     "comment": comment == null ? null : comment,
     "parentId": parentId == null ? null : parentId,
     "userId": userId == null ? null : userId,
+    "children": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
   };
 }
 
