@@ -119,6 +119,16 @@ class UserDataSource {
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 
+  Future<void> getGrowthRate({
+    required final Function(GenericResponse<GrowthRateReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpGet(
+        url: "$baseUrl/user/GrowthRate",
+        action: (Response response) => onResponse(GenericResponse<GrowthRateReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+      );
+
   Future<void> getProfileByUserName({
     required final String userName,
     required final Function(GenericResponse<UserReadDto>) onResponse,

@@ -2,8 +2,13 @@ import 'package:utilities/utilities.dart';
 
 class UserCreateUpdateDto {
   UserCreateUpdateDto({
-    this.fullName,
+    this.id,
+    this.phoneNumber,
     this.userName,
+    this.email,
+    this.firstName,
+    this.lastName,
+    this.fullName,
     this.bio,
     this.headline,
     this.website,
@@ -11,20 +16,26 @@ class UserCreateUpdateDto {
     this.appUserName,
     this.appPhoneNumber,
     this.appEmail,
-    this.id,
-    this.firstName,
-    this.lastName,
+    this.type,
+    this.region,
+    this.activity,
+    this.color,
     this.suspend,
     this.wallet,
-    this.colors,
-    this.specialties,
-    this.favorites,
-    this.locations,
+    this.showContactInfo,
     this.birthDate,
+    this.genderId,
+    this.categories,
+    this.locations,
   });
 
-  final String? fullName;
+  final String? id;
+  final String? phoneNumber;
   final String? userName;
+  final String? email;
+  final String? firstName;
+  final String? lastName;
+  final String? fullName;
   final String? bio;
   final String? headline;
   final String? website;
@@ -32,65 +43,79 @@ class UserCreateUpdateDto {
   final String? appUserName;
   final String? appPhoneNumber;
   final String? appEmail;
-  final String? id;
-  final String? firstName;
-  final String? lastName;
+  final String? type;
+  final String? region;
+  final String? activity;
+  final String? color;
   final bool? suspend;
   final double? wallet;
-  final List<String>? colors;
-  final List<String>? specialties;
-  final List<String>? favorites;
-  final List<int>? locations;
+  final bool? showContactInfo;
   final String? birthDate;
+  final int? genderId;
+  final List<CategoryReadDto>? categories;
+  final List<LocationReadDto>? locations;
 
   factory UserCreateUpdateDto.fromJson(String str) => UserCreateUpdateDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory UserCreateUpdateDto.fromMap(Map<String, dynamic> json) => UserCreateUpdateDto(
-        fullName: json["fullName"] == null ? null : json["fullName"],
-        bio: json["bio"] == null ? null : json["bio"],
-        headline: json["headline"] == null ? null : json["headline"],
-        userName: json["userName"] == null ? null : json["userName"],
-        website: json["website"] == null ? null : json["website"],
-        password: json["password"] == null ? null : json["password"],
-        appUserName: json["appUserName"] == null ? null : json["appUserName"],
-        appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
-        appEmail: json["appEmail"] == null ? null : json["appEmail"],
-        id: json["id"] == null ? null : json["id"],
-        firstName: json["firstName"] == null ? null : json["firstName"],
-        lastName: json["lastName"] == null ? null : json["lastName"],
-        suspend: json["suspend"] == null ? null : json["suspend"],
-        wallet: json["wallet"] == null ? null : json["wallet"],
-        colors: json["colors"] == null ? null : List<String>.from(json["colors"].map((x) => x)),
-        specialties: json["specialties"] == null ? null : List<String>.from(json["specialties"].map((x) => x)),
-        favorites: json["favorites"] == null ? null : List<String>.from(json["favorites"].map((x) => x)),
-        locations: json["locations"] == null ? null : List<int>.from(json["locations"].map((x) => x)),
-        birthDate: json["birthDate"] == null ? null : json["birthDate"],
-      );
+    id: json["id"] == null ? null : json["id"],
+    phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
+    userName: json["userName"] == null ? null : json["userName"],
+    email: json["email"] == null ? null : json["email"],
+    firstName: json["firstName"] == null ? null : json["firstName"],
+    lastName: json["lastName"] == null ? null : json["lastName"],
+    fullName: json["fullName"] == null ? null : json["fullName"],
+    bio: json["bio"] == null ? null : json["bio"],
+    headline: json["headline"] == null ? null : json["headline"],
+    website: json["website"] == null ? null : json["website"],
+    password: json["password"] == null ? null : json["password"],
+    appUserName: json["appUserName"] == null ? null : json["appUserName"],
+    appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
+    appEmail: json["appEmail"] == null ? null : json["appEmail"],
+    type: json["type"] == null ? null : json["type"],
+    region: json["region"] == null ? null : json["region"],
+    activity: json["activity"] == null ? null : json["activity"],
+    color: json["color"] == null ? null : json["color"],
+    suspend: json["suspend"] == null ? null : json["suspend"],
+    wallet: json["wallet"] == null ? null : json["wallet"],
+    showContactInfo: json["showContactInfo"] == null ? null : json["showContactInfo"],
+    birthDate: json["birthDate"] == null ? null : json["birthDate"],
+    genderId: json["genderId"] == null ? null : json["genderId"],
+    locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
+    categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
+  );
 
   Map<String, dynamic> toMap() => {
-        "fullName": fullName == null ? null : fullName,
-        "bio": bio == null ? null : bio,
-        "headline": headline == null ? null : headline,
-        "website": website == null ? null : website,
-        "password": password == null ? null : password,
-        "appUserName": appUserName == null ? null : appUserName,
-        "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
-        "userName": userName == null ? null : userName,
-        "appEmail": appEmail == null ? null : appEmail,
-        "id": id == null ? null : id,
-        "firstName": firstName == null ? null : firstName,
-        "lastName": lastName == null ? null : lastName,
-        "suspend": suspend == null ? null : suspend,
-        "wallet": wallet == null ? null : wallet,
-        "colors": colors == null ? null : List<dynamic>.from(colors!.map((x) => x)),
-        "specialties": specialties == null ? null : List<dynamic>.from(specialties!.map((x) => x)),
-        "favorites": favorites == null ? null : List<dynamic>.from(favorites!.map((x) => x)),
-        "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
-        "birthDate": birthDate == null ? null : birthDate,
-      };
+    "id": id == null ? null : id,
+    "phoneNumber": phoneNumber == null ? null : phoneNumber,
+    "userName": userName == null ? null : userName,
+    "email": email == null ? null : email,
+    "firstName": firstName == null ? null : firstName,
+    "lastName": lastName == null ? null : lastName,
+    "fullName": fullName == null ? null : fullName,
+    "bio": bio == null ? null : bio,
+    "headline": headline == null ? null : headline,
+    "website": website == null ? null : website,
+    "password": password == null ? null : password,
+    "appUserName": appUserName == null ? null : appUserName,
+    "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
+    "appEmail": appEmail == null ? null : appEmail,
+    "type": type == null ? null : type,
+    "region": region == null ? null : region,
+    "activity": activity == null ? null : activity,
+    "color": color == null ? null : color,
+    "suspend": suspend == null ? null : suspend,
+    "wallet": wallet == null ? null : wallet,
+    "showContactInfo": showContactInfo == null ? null : showContactInfo,
+    "birthDate": birthDate == null ? null : birthDate,
+    "genderId": genderId == null ? null : genderId,
+    "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
+    "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
+  };
 }
+
 
 class UserReadDto {
   UserReadDto({
@@ -120,6 +145,9 @@ class UserReadDto {
     this.locations,
     this.categories,
     this.products,
+    this.countFollowers,
+    this.countProducts,
+    this.color,
   });
 
   final String? token;
@@ -148,6 +176,9 @@ class UserReadDto {
   final List<LocationReadDto>? locations;
   final List<CategoryReadDto>? categories;
   final List<ProductReadDto>? products;
+  final int? countFollowers;
+  final int? countProducts;
+  final String? color;
 
   factory UserReadDto.fromJson(String str) => UserReadDto.fromMap(json.decode(str));
 
@@ -180,6 +211,9 @@ class UserReadDto {
         locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
+        countFollowers: json["countFollowers"] == null ? null : json["countFollowers"],
+        countProducts: json["countProducts"] == null ? null : json["countProducts"],
+        color: json["color"] == null ? null : json["color"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -209,6 +243,9 @@ class UserReadDto {
         "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
         "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
+        "countFollowers": countFollowers == null ? null : countFollowers,
+        "countProducts": countProducts == null ? null : countProducts,
+        "color": color == null ? null : color,
       };
 }
 
@@ -313,5 +350,89 @@ class ActiveMobileDto {
   Map<String, dynamic> toMap() => {
         "code": code == null ? null : code,
         "mobile": mobile == null ? null : mobile,
+      };
+}
+
+class GrowthRateReadDto {
+  GrowthRateReadDto({
+    this.id,
+    this.interActive1,
+    this.interActive2,
+    this.interActive3,
+    this.interActive4,
+    this.interActive5,
+    this.interActive6,
+    this.interActive7,
+    this.feedback1,
+    this.feedback2,
+    this.feedback3,
+    this.feedback4,
+    this.feedback5,
+    this.feedback6,
+    this.feedback7,
+    this.totalInterActive,
+    this.totalFeedback,
+  });
+
+  final String? id;
+  final int? interActive1;
+  final int? interActive2;
+  final int? interActive3;
+  final int? interActive4;
+  final int? interActive5;
+  final int? interActive6;
+  final int? interActive7;
+  final int? feedback1;
+  final int? feedback2;
+  final int? feedback3;
+  final int? feedback4;
+  final int? feedback5;
+  final int? feedback6;
+  final int? feedback7;
+  final int? totalInterActive;
+  final int? totalFeedback;
+
+  factory GrowthRateReadDto.fromJson(String str) => GrowthRateReadDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory GrowthRateReadDto.fromMap(Map<String, dynamic> json) => GrowthRateReadDto(
+        id: json["id"] == null ? null : json["id"],
+        interActive1: json["interActive1"] == null ? null : json["interActive1"],
+        interActive2: json["interActive2"] == null ? null : json["interActive2"],
+        interActive3: json["interActive3"] == null ? null : json["interActive3"],
+        interActive4: json["interActive4"] == null ? null : json["interActive4"],
+        interActive5: json["interActive5"] == null ? null : json["interActive5"],
+        interActive6: json["interActive6"] == null ? null : json["interActive6"],
+        interActive7: json["interActive7"] == null ? null : json["interActive7"],
+        feedback1: json["feedback1"] == null ? null : json["feedback1"],
+        feedback2: json["feedback2"] == null ? null : json["feedback2"],
+        feedback3: json["feedback3"] == null ? null : json["feedback3"],
+        feedback4: json["feedback4"] == null ? null : json["feedback4"],
+        feedback5: json["feedback5"] == null ? null : json["feedback5"],
+        feedback6: json["feedback6"] == null ? null : json["feedback6"],
+        feedback7: json["feedback7"] == null ? null : json["feedback7"],
+        totalInterActive: json["totalInterActive"] == null ? null : json["totalInterActive"],
+        totalFeedback: json["totalFeedback"] == null ? null : json["totalFeedback"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id == null ? null : id,
+        "interActive1": interActive1 == null ? null : interActive1,
+        "interActive2": interActive2 == null ? null : interActive2,
+        "interActive3": interActive3 == null ? null : interActive3,
+        "interActive4": interActive4 == null ? null : interActive4,
+        "interActive5": interActive5 == null ? null : interActive5,
+        "interActive6": interActive6 == null ? null : interActive6,
+        "interActive7": interActive7 == null ? null : interActive7,
+        "feedback1": feedback1 == null ? null : feedback1,
+        "feedback2": feedback2 == null ? null : feedback2,
+        "feedback3": feedback3 == null ? null : feedback3,
+        "feedback4": feedback4 == null ? null : feedback4,
+        "feedback5": feedback5 == null ? null : feedback5,
+        "feedback6": feedback6 == null ? null : feedback6,
+        "feedback7": feedback7 == null ? null : feedback7,
+        "totalInterActive": totalInterActive == null ? null : totalInterActive,
+        "totalFeedback": totalFeedback == null ? null : totalFeedback,
       };
 }
