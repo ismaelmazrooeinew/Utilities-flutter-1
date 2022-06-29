@@ -125,7 +125,7 @@ class UserDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/user/GrowthRate",
-        action: (Response response) => onResponse(GenericResponse<GrowthRateReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<GrowthRateReadDto>.fromJson(response.body, GrowthRateReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
 

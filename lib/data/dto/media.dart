@@ -7,13 +7,27 @@ class MediaReadDto {
     this.useCase = "-1",
     this.link = "-1",
     this.title = "-1",
+    this.file,
+    this.productId,
+    this.userId,
+    this.categoryId,
+    this.contentId,
+    this.notificationId,
+    this.visibility,
   });
 
   final String id;
   final int type;
   final String useCase;
   final String link;
+  final String? file;
   final String title;
+  final String? notificationId;
+  final String? categoryId;
+  final String? contentId;
+  final String? productId;
+  final int? visibility;
+  final String? userId;
 
   factory MediaReadDto.fromJson(String str) => MediaReadDto.fromMap(json.decode(str));
 
@@ -25,6 +39,13 @@ class MediaReadDto {
         useCase: json["useCase"] ?? "-1",
         link: json["link"] ?? "-1",
         title: json["title"] ?? "-1",
+        file: json["file"] == null ? null : json["file"],
+        notificationId: json["notificationId"] == null ? null : json["notificationId"],
+        categoryId: json["categoryId"] == null ? null : json["categoryId"],
+        contentId: json["contentId"] == null ? null : json["contentId"],
+        productId: json["productId"] == null ? null : json["productId"],
+        visibility: json["visibility"] == null ? null : json["visibility"],
+        userId: json["userId"] == null ? null : json["userId"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -33,11 +54,17 @@ class MediaReadDto {
         "useCase": useCase,
         "link": link,
         "title": title,
+        "file": file == null ? null : file,
+        "notificationId": notificationId == null ? null : notificationId,
+        "categoryId": categoryId == null ? null : categoryId,
+        "contentId": contentId == null ? null : contentId,
+        "productId": productId == null ? null : productId,
+        "visibility": visibility == null ? null : visibility,
+        "userId": userId == null ? null : userId,
       };
 }
 
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
-
   List<String> getImages({final String? useCase}) =>
       this
           ?.where((final MediaReadDto e) => e.link.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
@@ -52,9 +79,9 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           ?.where((final MediaReadDto e) => e.link.isAudioFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.link,
-      )
+          )
           .toList() ??
-          <String>[];
+      <String>[];
 
   List<String> getVideos({final String? useCase}) =>
       this
@@ -95,7 +122,7 @@ extension MediaResponseExtension on List<MediaReadDto> {
       .where((final MediaReadDto e) => e.type == 1 && (useCase != null ? (e.useCase == useCase) : true))
       .map(
         (final MediaReadDto e) => e.link,
-  )
+      )
       .toList();
 
   List<String> getVideos({final String? useCase}) => this
