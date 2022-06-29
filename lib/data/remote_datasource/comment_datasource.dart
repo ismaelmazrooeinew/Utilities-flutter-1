@@ -29,12 +29,23 @@ class CommentDataSource {
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
       );
 
-  Future<void> read({
+  Future<void> readById({
+    required final String id,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
-        url: "$baseUrl/Comment",
+        url: "$baseUrl/Comment/$id",
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
+      );
+  Future<void> readByProductId({
+    required final String id,
+    required final Function(GenericResponse<CommentReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpGet(
+        url: "$baseUrl/Comment/ReadByProductId/$id",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
       );
