@@ -7,13 +7,13 @@ class VoteDataSource  {
 
   Future<void> createVote({
     required final VoteCreateUpdateDto dto,
-    required final Function(GenericResponse<Vote>) onResponse,
+    required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
         url: "$baseUrl/Vote",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<Vote>.fromJson(response.body, Vote.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, Vote.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, Vote.fromMap)),
       );
 
