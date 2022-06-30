@@ -142,7 +142,7 @@ class UserDataSource {
 
   Future<void> updateProfile({
     required final UserCreateUpdateDto dto,
-    required final Function(GenericResponse) onResponse,
+    required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPut(
