@@ -49,13 +49,11 @@ Future<void> request(
     if (httpMethod == EHttpMethod.put) response = await connect.put(url, params, headers: header);
     if (httpMethod == EHttpMethod.patch) response = await connect.patch(url, params, headers: header);
     if (httpMethod == EHttpMethod.delete) response = await connect.delete(url, headers: header);
-    if (httpMethod == EHttpMethod.query) response = await connect.query(queryOrMutation!, url: url, headers: headers);
-    if (httpMethod == EHttpMethod.mutation) response = await connect.mutation(queryOrMutation!, url: url, headers: header);
   } catch (e) {
     error(response);
   }
 
-  if (kDebugMode && (httpMethod == EHttpMethod.query || httpMethod == EHttpMethod.mutation))
+  if (kDebugMode)
     delay(
       100,
       () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()),
@@ -229,71 +227,7 @@ Future<void> httpDelete({
       withCredentials: withCredentials,
     );
 
-Future<void> httpQuery({
-  required String url,
-  required String query,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
-  final String userAgent = 'SinaMN75',
-  final bool followRedirects = true,
-  final Duration timeout = const Duration(minutes: 60),
-  final int maxRedirects = 5,
-  final bool allowAutoSignedCert = false,
-  final bool sendUserAgent = false,
-  final int maxAuthRetries = 1,
-  final bool withCredentials = false,
-}) async =>
-    await request(
-      url,
-      EHttpMethod.query,
-      action,
-      error,
-      headers: headers,
-      queryOrMutation: query,
-      userAgent: userAgent,
-      followRedirects: followRedirects,
-      timeout: timeout,
-      maxRedirects: maxRedirects,
-      allowAutoSignedCert: allowAutoSignedCert,
-      sendUserAgent: sendUserAgent,
-      maxAuthRetries: maxAuthRetries,
-      withCredentials: withCredentials,
-    );
-
-Future<void> httpMutation({
-  required String url,
-  required String mutation,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
-  final String userAgent = 'SinaMN75',
-  final bool followRedirects = true,
-  final Duration timeout = const Duration(minutes: 60),
-  final int maxRedirects = 5,
-  final bool allowAutoSignedCert = false,
-  final bool sendUserAgent = false,
-  final int maxAuthRetries = 1,
-  final bool withCredentials = false,
-}) async =>
-    await request(
-      url,
-      EHttpMethod.mutation,
-      action,
-      error,
-      headers: headers,
-      queryOrMutation: mutation,
-      userAgent: userAgent,
-      followRedirects: followRedirects,
-      timeout: timeout,
-      maxRedirects: maxRedirects,
-      allowAutoSignedCert: allowAutoSignedCert,
-      sendUserAgent: sendUserAgent,
-      maxAuthRetries: maxAuthRetries,
-      withCredentials: withCredentials,
-    );
-
-enum EHttpMethod { get, post, put, patch, delete, query, mutation }
+enum EHttpMethod { get, post, put, patch, delete }
 
 extension HTTP on Response {
   bool isSuccessful() => (statusCode ?? 0) >= 200 && (statusCode ?? 0) <= 299 ? true : false;
