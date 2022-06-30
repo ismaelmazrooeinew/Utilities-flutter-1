@@ -1,3 +1,4 @@
+import 'package:utilities/data/dto/report.dart';
 import 'package:utilities/utilities.dart';
 
 class ProductCreateUpdateDto {
@@ -210,6 +211,7 @@ class ProductReadDto {
     this.comments,
     this.teams,
     this.myVotes,
+    this.reports,
   });
 
   final String? id;
@@ -252,6 +254,7 @@ class ProductReadDto {
   final List<FormReadDto>? forms;
   final List<CommentReadDto>? comments;
   final List<UserReadDto>? teams;
+  final List<Report>? reports;
 
   factory ProductReadDto.fromJson(String str) => ProductReadDto.fromMap(json.decode(str));
 
@@ -298,6 +301,7 @@ class ProductReadDto {
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
         teams: json["teams"] == null ? null : List<UserReadDto>.from(json["teams"].map((x) => UserReadDto.fromMap(x))),
+        reports: json["reports"] == null ? null : List<Report>.from(json["reports"].map((x) => Report.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -341,6 +345,7 @@ class ProductReadDto {
         "forms": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toMap())),
         "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x.toMap())),
+        "reports": reports == null ? null : List<dynamic>.from(reports!.map((x) => x.toMap())),
       };
 }
 

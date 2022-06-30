@@ -32,9 +32,40 @@ class ReportCreateUpdateDto {
   };
 }
 
-
 class ReportReadDto {
   ReportReadDto({
+    this.id,
+    this.title,
+    this.description,
+    this.product,
+  });
+
+  final String? id;
+  final String? title;
+  final String? description;
+  final ProductReadDto? product;
+
+  factory ReportReadDto.fromJson(String str) => ReportReadDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ReportReadDto.fromMap(Map<String, dynamic> json) => ReportReadDto(
+    id: json["id"] == null ? null : json["id"],
+    title: json["title"] == null ? null : json["title"],
+    description: json["description"] == null ? null : json["description"],
+    product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
+  );
+
+  Map<String, dynamic> toMap() => {
+    "id": id == null ? null : id,
+    "title": title == null ? null : title,
+    "description": description == null ? null : description,
+    "product": product == null ? null : product!.toMap(),
+  };
+}
+
+class Report {
+  Report({
     this.title,
     this.description,
     this.creatorUserId,
@@ -52,11 +83,11 @@ class ReportReadDto {
   final String? createdAt;
   final String? updatedAt;
 
-  factory ReportReadDto.fromJson(String str) => ReportReadDto.fromMap(json.decode(str));
+  factory Report.fromJson(String str) => Report.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ReportReadDto.fromMap(Map<String, dynamic> json) => ReportReadDto(
+  factory Report.fromMap(Map<String, dynamic> json) => Report(
     title: json["title"] == null ? null : json["title"],
     description: json["description"] == null ? null : json["description"],
     creatorUserId: json["creatorUserId"] == null ? null : json["creatorUserId"],
@@ -76,6 +107,7 @@ class ReportReadDto {
     "updatedAt": updatedAt == null ? null : updatedAt,
   };
 }
+
 
 class ReportFilterDto {
   ReportFilterDto({
