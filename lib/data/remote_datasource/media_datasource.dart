@@ -11,11 +11,11 @@ class MediaDataSource {
   Future<void> create({
     final List<File>? files,
     final List<File>? links,
-    required final int useCase,
+    required final String useCase,
     required final VoidCallback action,
-    final int? categoryId,
-    final int? contentId,
-    final int? productId,
+    final String? categoryId,
+    final String? contentId,
+    final String? productId,
     final String? userId,
     final String? notificationId,
   }) async {
