@@ -10,7 +10,7 @@ class MediaDataSource {
 
   Future<void> create({
     final List<File>? files,
-    final List<File>? links,
+    final List<String>? links,
     required final String useCase,
     required final VoidCallback action,
     final String? categoryId,
@@ -24,7 +24,7 @@ class MediaDataSource {
         '$baseUrl/Media',
         FormData(
           <String, dynamic>{
-            'Files': MultipartFile(file, filename: file.path),
+            'Files': <MultipartFile>[MultipartFile(file, filename: file.path)],
             'UseCase': useCase,
             'CategoryId': categoryId,
             'ContentId': contentId,
@@ -33,17 +33,20 @@ class MediaDataSource {
             'NotificationId': notificationId,
           },
         ),
-        headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
+        headers: <String, String>{
+          "Authorization": getString(UtilitiesConstants.token) ?? "",
+        },
+        contentType: "multipart/form-data",
       );
       logger.i(i.statusCode);
-      logger.i(file.length());
+      logger.i(i.bodyString);
     });
-    links?.forEach((final File file) async {
+    links?.forEach((final String link) async {
       final Response<dynamic> i = await GetConnect().post(
         '$baseUrl/Media',
         FormData(
           <String, dynamic>{
-            'Links': MultipartFile(file, filename: file.path),
+            'Links': <String>[link],
             'UseCase': useCase,
             'CategoryId': categoryId,
             'ContentId': contentId,
@@ -55,7 +58,7 @@ class MediaDataSource {
         headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
       );
       logger.i(i.statusCode);
-      logger.i(file.length());
+      logger.i(i.bodyString);
     });
     action();
   }
