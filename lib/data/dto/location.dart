@@ -8,7 +8,6 @@ class LocationReadDto {
     this.parent,
     this.latitude,
     this.longitude,
-    this.media,
     this.type,
   });
 
@@ -18,7 +17,6 @@ class LocationReadDto {
   final LocationReadDto? parent;
   final double? latitude;
   final double? longitude;
-  final List<MediaReadDto>? media;
   final int? type;
 
   factory LocationReadDto.fromJson(String str) => LocationReadDto.fromMap(json.decode(str));
@@ -32,7 +30,6 @@ class LocationReadDto {
     parent: json["p"] == null ? null :  LocationReadDto.fromMap(json["p"]),
     latitude: json["lat"] == null ? null : json["lat"],
     longitude: json["lon"] == null ? null : json["lon"],
-    media: json["m"] == null ? null : List<MediaReadDto>.from(json["m"].map((x) => MediaReadDto.fromMap(x))),
     type: json["t"] == null ? null : json["t"],
   );
 
@@ -43,7 +40,6 @@ class LocationReadDto {
     "p": parent == null ? null :parent!.toMap(),
     "lat": latitude == null ? null : latitude,
     "lon": longitude == null ? null : longitude,
-    "m": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
     "t": type == null ? null : type,
   };
 }
