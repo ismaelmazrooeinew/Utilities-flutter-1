@@ -57,8 +57,8 @@ class ProductDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Product/$id",
-        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ProductReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.body, ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.body, ProductReadDto.fromMap)),
       );
 
   Future<void> filter({
