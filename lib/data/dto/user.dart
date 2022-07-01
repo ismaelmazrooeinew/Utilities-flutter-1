@@ -52,8 +52,8 @@ class UserCreateUpdateDto {
   final bool? showContactInfo;
   final String? birthDate;
   final int? genderId;
-  final List<CategoryReadDto>? categories;
-  final List<LocationReadDto>? locations;
+  final List<String>? categories;
+  final List<int>? locations;
 
   factory UserCreateUpdateDto.fromJson(String str) => UserCreateUpdateDto.fromMap(json.decode(str));
 
@@ -83,8 +83,8 @@ class UserCreateUpdateDto {
         showContactInfo: json["showContactInfo"] == null ? null : json["showContactInfo"],
         birthDate: json["birthDate"] == null ? null : json["birthDate"],
         genderId: json["genderId"] == null ? null : json["genderId"],
-        locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
-        categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
+        categories: json["categories"] == null ? null : List<String>.from(json["categories"].map((x) => x)),
+        locations: json["locations"] == null ? null : List<int>.from(json["locations"].map((x) => x)),
       );
 
   Map<String, dynamic> toMap() => {
