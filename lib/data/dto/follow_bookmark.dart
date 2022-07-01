@@ -2,21 +2,21 @@ import 'package:utilities/utilities.dart';
 
 class BookmarkReadDto {
   BookmarkReadDto({
-    this.products,
+    this.product,
   });
 
-  final List<ProductReadDto>? products;
+  final List<ProductReadDto>? product;
 
   factory BookmarkReadDto.fromJson(String str) => BookmarkReadDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory BookmarkReadDto.fromMap(Map<String, dynamic> json) => BookmarkReadDto(
-    products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) =>ProductReadDto.fromMap(x))),
+    product: json["product"] == null ? null : List<ProductReadDto>.from(json["product"].map((x) =>ProductReadDto.fromMap(x))),
   );
 
   Map<String, dynamic> toMap() => {
-    "products": products == null ? null : List<dynamic>.from(products!.map((x) => x)),
+    "product": product == null ? null : List<dynamic>.from(product!.map((x) => x)),
   };
 }
 
