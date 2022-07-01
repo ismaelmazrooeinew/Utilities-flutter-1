@@ -23,14 +23,14 @@ class LocationReadDto {
 
   String toJson() => json.encode(toMap());
 
-  factory LocationReadDto.fromMap(Map<String, dynamic> json) => LocationReadDto(
+  factory LocationReadDto.fromMap(dynamic json) => LocationReadDto(
     id: json["i"] == null ? null : json["i"],
     title: json["n"] == null ? null : json["n"],
     parentId: json["pi"] == null ? null : json["pi"],
     parent: json["p"] == null ? null :  LocationReadDto.fromMap(json["p"]),
     latitude: json["lat"] == null ? null : json["lat"],
     longitude: json["lon"] == null ? null : json["lon"],
-    type: json["t"] == null ? null : json["t"],
+    // type: json["t"] == null ? null : json["t"],
   );
 
   Map<String, dynamic> toMap() => {
