@@ -17,7 +17,7 @@ class LocationReadDto {
   final LocationReadDto? parent;
   final double? latitude;
   final double? longitude;
-  final String? type;
+  final int? type;
 
   factory LocationReadDto.fromJson(String str) => LocationReadDto.fromMap(json.decode(str));
 
