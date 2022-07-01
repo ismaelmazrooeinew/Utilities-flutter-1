@@ -147,6 +147,7 @@ class UserReadDto {
     this.countFollowers,
     this.countProducts,
     this.color,
+    this.bookmarkFolders,
   });
 
   final String? token;
@@ -178,6 +179,7 @@ class UserReadDto {
   final int? countFollowers;
   final int? countProducts;
   final String? color;
+  final List<BookmarkFolder>? bookmarkFolders;
 
   factory UserReadDto.fromJson(String str) => UserReadDto.fromMap(json.decode(str));
 
@@ -213,6 +215,7 @@ class UserReadDto {
         countFollowers: json["countFollowers"] == null ? null : json["countFollowers"],
         countProducts: json["countProducts"] == null ? null : json["countProducts"],
         color: json["color"] == null ? null : json["color"],
+        bookmarkFolders: json["bookmarkFolders"] == null ? null : List<BookmarkFolder>.from(json["bookmarkFolders"].map((x) => BookmarkFolder.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -245,6 +248,7 @@ class UserReadDto {
         "countFollowers": countFollowers == null ? null : countFollowers,
         "countProducts": countProducts == null ? null : countProducts,
         "color": color == null ? null : color,
+        "bookmarkFolders": bookmarkFolders == null ? null : List<dynamic>.from(bookmarkFolders!.map((x) => x.toMap())),
       };
 }
 
@@ -433,5 +437,29 @@ class GrowthRateReadDto {
         "feedback7": feedback7 == null ? null : feedback7,
         "totalInterActive": totalInterActive == null ? null : totalInterActive,
         "totalFeedback": totalFeedback == null ? null : totalFeedback,
+      };
+}
+
+class BookmarkFolder {
+  BookmarkFolder({
+    this.id,
+    this.title,
+  });
+
+  final String? id;
+  final String? title;
+
+  factory BookmarkFolder.fromJson(String str) => BookmarkFolder.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory BookmarkFolder.fromMap(Map<String, dynamic> json) => BookmarkFolder(
+        id: json["id"] == null ? null : json["id"],
+        title: json["title"] == null ? null : json["title"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id == null ? null : id,
+        "title": title == null ? null : title,
       };
 }

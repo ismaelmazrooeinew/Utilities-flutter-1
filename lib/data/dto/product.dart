@@ -1,4 +1,5 @@
 import 'package:utilities/data/dto/report.dart';
+import 'package:utilities/data/dto/server_location.dart';
 import 'package:utilities/utilities.dart';
 
 class ProductCreateUpdateDto {
@@ -74,7 +75,7 @@ class ProductCreateUpdateDto {
   final String? deletedAt;
   final UserReadDto? user;
   final int? status;
-  final List<LocationReadDto>? locations;
+  final List<ServerLocationReadDto>? locations;
   final List<MediaReadDto>? media;
   final List<CategoryReadDto>? categories;
   final List<VoteField>? voteFields;
@@ -118,7 +119,7 @@ class ProductCreateUpdateDto {
         deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         status: json["status"] == null ? null : json["status"],
-        locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
+        locations: json["locations"] == null ? null : List<ServerLocationReadDto>.from(json["locations"].map((x) => ServerLocationReadDto.fromMap(x))),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
@@ -246,7 +247,7 @@ class ProductReadDto {
   final String? deletedAt;
   final UserReadDto? user;
   final int? status;
-  final List<LocationReadDto>? locations;
+  final List<ServerLocationReadDto>? locations;
   final List<MediaReadDto>? media;
   final List<CategoryReadDto>? categories;
   final List<VoteField>? voteFields;
@@ -293,7 +294,7 @@ class ProductReadDto {
         deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         status: json["status"] == null ? null : json["status"],
-        locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
+        locations: json["locations"] == null ? null : List<ServerLocationReadDto>.from(json["locations"].map((x) => ServerLocationReadDto.fromMap(x))),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
@@ -414,7 +415,7 @@ class ProductFilterDto {
   final int? status;
   final String? startDate;
   final String? endDate;
-  final List<LocationReadDto>? locations;
+  final List<ServerLocationReadDto>? locations;
   final List<CategoryReadDto>? categories;
   final int? filterOrder;
   final int? pageSize;
@@ -454,7 +455,7 @@ class ProductFilterDto {
         status: json["status"] == null ? null : json["status"],
         startDate: json["startDate"] == null ? null : json["startDate"],
         endDate: json["endDate"] == null ? null : json["endDate"],
-        locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
+        locations: json["locations"] == null ? null : List<ServerLocationReadDto>.from(json["locations"].map((x) => ServerLocationReadDto.fromMap(x))),
         teams: json["teams"] == null ? null : List<UserReadDto>.from(json["teams"].map((x) => UserReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x).id)),
         filterOrder: json["filterOrder"] == null ? null : json["filterOrder"],
