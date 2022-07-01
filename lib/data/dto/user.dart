@@ -60,62 +60,61 @@ class UserCreateUpdateDto {
   String toJson() => json.encode(toMap());
 
   factory UserCreateUpdateDto.fromMap(Map<String, dynamic> json) => UserCreateUpdateDto(
-    id: json["id"] == null ? null : json["id"],
-    phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
-    userName: json["userName"] == null ? null : json["userName"],
-    email: json["email"] == null ? null : json["email"],
-    firstName: json["firstName"] == null ? null : json["firstName"],
-    lastName: json["lastName"] == null ? null : json["lastName"],
-    fullName: json["fullName"] == null ? null : json["fullName"],
-    bio: json["bio"] == null ? null : json["bio"],
-    headline: json["headline"] == null ? null : json["headline"],
-    website: json["website"] == null ? null : json["website"],
-    password: json["password"] == null ? null : json["password"],
-    appUserName: json["appUserName"] == null ? null : json["appUserName"],
-    appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
-    appEmail: json["appEmail"] == null ? null : json["appEmail"],
-    type: json["type"] == null ? null : json["type"],
-    region: json["region"] == null ? null : json["region"],
-    activity: json["activity"] == null ? null : json["activity"],
-    color: json["color"] == null ? null : json["color"],
-    suspend: json["suspend"] == null ? null : json["suspend"],
-    wallet: json["wallet"] == null ? null : json["wallet"],
-    showContactInfo: json["showContactInfo"] == null ? null : json["showContactInfo"],
-    birthDate: json["birthDate"] == null ? null : json["birthDate"],
-    genderId: json["genderId"] == null ? null : json["genderId"],
-    locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
-    categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
-  );
+        id: json["id"] == null ? null : json["id"],
+        phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
+        userName: json["userName"] == null ? null : json["userName"],
+        email: json["email"] == null ? null : json["email"],
+        firstName: json["firstName"] == null ? null : json["firstName"],
+        lastName: json["lastName"] == null ? null : json["lastName"],
+        fullName: json["fullName"] == null ? null : json["fullName"],
+        bio: json["bio"] == null ? null : json["bio"],
+        headline: json["headline"] == null ? null : json["headline"],
+        website: json["website"] == null ? null : json["website"],
+        password: json["password"] == null ? null : json["password"],
+        appUserName: json["appUserName"] == null ? null : json["appUserName"],
+        appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
+        appEmail: json["appEmail"] == null ? null : json["appEmail"],
+        type: json["type"] == null ? null : json["type"],
+        region: json["region"] == null ? null : json["region"],
+        activity: json["activity"] == null ? null : json["activity"],
+        color: json["color"] == null ? null : json["color"],
+        suspend: json["suspend"] == null ? null : json["suspend"],
+        wallet: json["wallet"] == null ? null : json["wallet"],
+        showContactInfo: json["showContactInfo"] == null ? null : json["showContactInfo"],
+        birthDate: json["birthDate"] == null ? null : json["birthDate"],
+        genderId: json["genderId"] == null ? null : json["genderId"],
+        locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
+        categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id == null ? null : id,
-    "phoneNumber": phoneNumber == null ? null : phoneNumber,
-    "userName": userName == null ? null : userName,
-    "email": email == null ? null : email,
-    "firstName": firstName == null ? null : firstName,
-    "lastName": lastName == null ? null : lastName,
-    "fullName": fullName == null ? null : fullName,
-    "bio": bio == null ? null : bio,
-    "headline": headline == null ? null : headline,
-    "website": website == null ? null : website,
-    "password": password == null ? null : password,
-    "appUserName": appUserName == null ? null : appUserName,
-    "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
-    "appEmail": appEmail == null ? null : appEmail,
-    "type": type == null ? null : type,
-    "region": region == null ? null : region,
-    "activity": activity == null ? null : activity,
-    "color": color == null ? null : color,
-    "suspend": suspend == null ? null : suspend,
-    "wallet": wallet == null ? null : wallet,
-    "showContactInfo": showContactInfo == null ? null : showContactInfo,
-    "birthDate": birthDate == null ? null : birthDate,
-    "genderId": genderId == null ? null : genderId,
-    "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
-    "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
-  };
+        "id": id == null ? null : id,
+        "phoneNumber": phoneNumber == null ? null : phoneNumber,
+        "userName": userName == null ? null : userName,
+        "email": email == null ? null : email,
+        "firstName": firstName == null ? null : firstName,
+        "lastName": lastName == null ? null : lastName,
+        "fullName": fullName == null ? null : fullName,
+        "bio": bio == null ? null : bio,
+        "headline": headline == null ? null : headline,
+        "website": website == null ? null : website,
+        "password": password == null ? null : password,
+        "appUserName": appUserName == null ? null : appUserName,
+        "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
+        "appEmail": appEmail == null ? null : appEmail,
+        "type": type == null ? null : type,
+        "region": region == null ? null : region,
+        "activity": activity == null ? null : activity,
+        "color": color == null ? null : color,
+        "suspend": suspend == null ? null : suspend,
+        "wallet": wallet == null ? null : wallet,
+        "showContactInfo": showContactInfo == null ? null : showContactInfo,
+        "birthDate": birthDate == null ? null : birthDate,
+        "genderId": genderId == null ? null : genderId,
+        "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
+        "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
+      };
 }
-
 
 class UserReadDto {
   UserReadDto({
@@ -375,22 +374,22 @@ class GrowthRateReadDto {
   });
 
   final String? id;
-  final int? interActive1;
-  final int? interActive2;
-  final int? interActive3;
-  final int? interActive4;
-  final int? interActive5;
-  final int? interActive6;
-  final int? interActive7;
-  final int? feedback1;
-  final int? feedback2;
-  final int? feedback3;
-  final int? feedback4;
-  final int? feedback5;
-  final int? feedback6;
-  final int? feedback7;
-  final int? totalInterActive;
-  final int? totalFeedback;
+  final double? interActive1;
+  final double? interActive2;
+  final double? interActive3;
+  final double? interActive4;
+  final double? interActive5;
+  final double? interActive6;
+  final double? interActive7;
+  final double? feedback1;
+  final double? feedback2;
+  final double? feedback3;
+  final double? feedback4;
+  final double? feedback5;
+  final double? feedback6;
+  final double? feedback7;
+  final double? totalInterActive;
+  final double? totalFeedback;
 
   factory GrowthRateReadDto.fromJson(String str) => GrowthRateReadDto.fromMap(json.decode(str));
 
