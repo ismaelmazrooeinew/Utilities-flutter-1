@@ -2,44 +2,44 @@ import 'package:utilities/utilities.dart';
 
 class LocationReadDto {
   LocationReadDto({
-    this.i,
-    this.n,
-    this.t,
-    this.pi,
-    this.p,
-    this.lat,
-    this.lon,
+    this.id,
+    this.title,
+    this.parentId,
+    this.parent,
+    this.latitude,
+    this.longitude,
+    this.type,
   });
 
-  final int? i;
-  final String? n;
-  final int? t;
-  final int? pi;
-  final LocationReadDto? p;
-  final double? lat;
-  final double? lon;
+  final int? id;
+  final String? title;
+  final int? parentId;
+  final LocationReadDto? parent;
+  final double? latitude;
+  final double? longitude;
+  final String? type;
 
   factory LocationReadDto.fromJson(String str) => LocationReadDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory LocationReadDto.fromMap(Map<String, dynamic> json) => LocationReadDto(
-    i: json["i"] == null ? null : json["i"],
-    n: json["n"] == null ? null : json["n"],
-    t: json["t"] == null ? null : json["t"],
-    pi: json["pi"] == null ? null : json["pi"],
-    p: json["p"] == null ? null : LocationReadDto.fromMap(json["p"]),
-    lat: json["lat"] == null ? null : json["lat"].toDouble(),
-    lon: json["lon"] == null ? null : json["lon"].toDouble(),
+    id: json["i"] == null ? null : json["i"],
+    title: json["n"] == null ? null : json["n"],
+    parentId: json["pi"] == null ? null : json["pi"],
+    parent: json["p"] == null ? null :  LocationReadDto.fromMap(json["p"]),
+    latitude: json["lat"] == null ? null : json["lat"],
+    longitude: json["lon"] == null ? null : json["lon"],
+    type: json["t"] == null ? null : json["t"],
   );
 
   Map<String, dynamic> toMap() => {
-    "i": i == null ? null : i,
-    "n": n == null ? null : n,
-    "t": t == null ? null : t,
-    "pi": pi == null ? null : pi,
-    "p": p == null ? null : p!.toMap(),
-    "lat": lat == null ? null : lat,
-    "lon": lon == null ? null : lon,
+    "i": id == null ? null : id,
+    "n": title == null ? null : title,
+    "pi": parentId == null ? null : parentId,
+    "p": parent == null ? null :parent!.toMap(),
+    "lat": latitude == null ? null : latitude,
+    "lon": longitude == null ? null : longitude,
+    "t": type == null ? null : type,
   };
 }
