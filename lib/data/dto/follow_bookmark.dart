@@ -5,18 +5,18 @@ class BookmarkReadDto {
     this.product,
   });
 
-  final List<ProductReadDto>? product;
+  final ProductReadDto? product;
 
   factory BookmarkReadDto.fromJson(String str) => BookmarkReadDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory BookmarkReadDto.fromMap(Map<String, dynamic> json) => BookmarkReadDto(
-    product: json["product"] == null ? null : List<ProductReadDto>.from(json["product"].map((x) =>ProductReadDto.fromMap(x))),
+    product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
   );
 
   Map<String, dynamic> toMap() => {
-    "product": product == null ? null : List<dynamic>.from(product!.map((x) => x)),
+    "product": product == null ? null : product!.toMap(),
   };
 }
 
