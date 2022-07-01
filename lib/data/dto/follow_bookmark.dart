@@ -160,10 +160,12 @@ class ToggleBookmark {
   ToggleBookmark({
     this.productId,
     this.categoryId,
+    this.folderName,
   });
 
   final String? productId;
   final String? categoryId;
+  final String? folderName;
 
   factory ToggleBookmark.fromJson(String str) => ToggleBookmark.fromMap(json.decode(str));
 
@@ -172,11 +174,13 @@ class ToggleBookmark {
   factory ToggleBookmark.fromMap(Map<String, dynamic> json) => ToggleBookmark(
     productId: json["productId"] == null ? null : json["productId"],
     categoryId: json["categoryId"] == null ? null : json["categoryId"],
+    folderName: json["folderName"] == null ? null : json["folderName"],
   );
 
   Map<String, dynamic> toMap() => {
     "productId": productId == null ? null : productId,
     "categoryId": categoryId == null ? null : categoryId,
+    "folderName": folderName == null ? null : folderName,
   };
 }
 
