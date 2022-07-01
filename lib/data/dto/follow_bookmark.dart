@@ -3,9 +3,11 @@ import 'package:utilities/utilities.dart';
 class BookmarkReadDto {
   BookmarkReadDto({
     this.product,
+    this.folderName,
   });
 
   final ProductReadDto? product;
+  final String? folderName;
 
   factory BookmarkReadDto.fromJson(String str) => BookmarkReadDto.fromMap(json.decode(str));
 
@@ -13,10 +15,12 @@ class BookmarkReadDto {
 
   factory BookmarkReadDto.fromMap(Map<String, dynamic> json) => BookmarkReadDto(
     product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
+    folderName: json["folderName"] == null ? null : json["folderName"],
   );
 
   Map<String, dynamic> toMap() => {
     "product": product == null ? null : product!.toMap(),
+    "folderName": folderName == null ? null : folderName,
   };
 }
 
