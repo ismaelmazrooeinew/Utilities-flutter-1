@@ -94,7 +94,7 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
   List<String> getDocs({final String? useCase}) =>
       this
-          ?.where((final MediaReadDto e) => e.link.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true))
+          ?.where((final MediaReadDto e) => e.link.isPDFFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.link,
           )
