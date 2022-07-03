@@ -36,7 +36,7 @@ class FollowBookmarkDataSource {
       );
 
   Future<void> removeFollowing({
-    required final FollowingsReadDto dto,
+    required final ToggleFollow dto,
     required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
