@@ -56,7 +56,7 @@ class CommentDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpDelete(
-        url: "$baseUrl/Comment/$id",
+        url: "$baseUrl/Comment?id=$id",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
       );
