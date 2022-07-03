@@ -207,7 +207,7 @@ class UserReadDto {
         isAdmin: json["isAdmin"] == null ? null : json["isAdmin"],
         suspend: json["suspend"] == null ? null : json["suspend"],
         birthDate: json["birthDate"] == null ? null : json["birthDate"],
-        gender: json["gender.dart"] == null ? null : Gender.fromMap(json["gender.dart"]),
+        gender: json["gender"] == null ? null : Gender.fromMap(json["gender"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
