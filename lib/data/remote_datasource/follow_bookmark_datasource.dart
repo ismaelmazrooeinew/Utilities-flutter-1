@@ -26,13 +26,13 @@ class FollowBookmarkDataSource {
       );
 
   Future<void> readFollowings({
-    required final Function(GenericResponse<FollowersReadDto>) onResponse,
+    required final Function(GenericResponse<FollowingsReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/ReadFollowings",
-        action: (Response response) => onResponse(GenericResponse<FollowersReadDto>.fromJson(response.body, FollowersReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FollowersReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<FollowingsReadDto>.fromJson(response.body, FollowingsReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FollowingsReadDto.fromMap)),
       );
 
   Future<void> removeFollowing({

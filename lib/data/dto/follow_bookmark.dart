@@ -44,6 +44,26 @@ class FollowersReadDto {
   };
 }
 
+class FollowingsReadDto {
+  FollowingsReadDto({
+    this.followings,
+  });
+
+  final List<Follower>? followings;
+
+  factory FollowingsReadDto.fromJson(String str) => FollowingsReadDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory FollowingsReadDto.fromMap(Map<String, dynamic> json) => FollowingsReadDto(
+    followings: json["followings"] == null ? null : List<Follower>.from(json["followings"].map((x) => Follower.fromMap(x))),
+  );
+
+  Map<String, dynamic> toMap() => {
+    "followings": followings == null ? null : List<dynamic>.from(followings!.map((x) => x.toMap())),
+  };
+}
+
 class Follower {
   Follower({
     this.token,
