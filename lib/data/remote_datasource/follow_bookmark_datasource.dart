@@ -65,7 +65,7 @@ class FollowBookmarkDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/FollowBookmark/ToggleFollow",
+        url: "$baseUrl/FollowBookmark/ToggleFolllow",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, FollowingsReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, FollowingsReadDto.fromMap)),
