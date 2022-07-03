@@ -386,6 +386,7 @@ class ProductFilterDto {
     this.pageNumber,
     this.useCase,
     this.teams,
+    this.minimal,
   });
 
   final String? title;
@@ -404,6 +405,7 @@ class ProductFilterDto {
   final bool? enabled;
   final bool? isForSale;
   final bool? isBookmarked;
+  final bool? minimal;
   final int? visitsCount;
   final double? length;
   final double? width;
@@ -444,6 +446,7 @@ class ProductFilterDto {
         enabled: json["enabled"] == null ? null : json["enabled"],
         isForSale: json["isForSale"] == null ? null : json["isForSale"],
         isBookmarked: json["isBookmarked"] == null ? null : json["isBookmarked"],
+        minimal: json["minimal"] == null ? null : json["minimal"],
         visitsCount: json["visitsCount"] == null ? null : json["visitsCount"],
         length: json["length"] == null ? null : json["length"],
         width: json["width"] == null ? null : json["width"],
@@ -481,6 +484,7 @@ class ProductFilterDto {
         "enabled": enabled == null ? null : enabled,
         "isForSale": isForSale == null ? null : isForSale,
         "isBookmarked": isBookmarked == null ? null : isBookmarked,
+        "minimal": minimal == null ? null : minimal,
         "visitsCount": visitsCount == null ? null : visitsCount,
         "length": length == null ? null : length,
         "width": width == null ? null : width,
