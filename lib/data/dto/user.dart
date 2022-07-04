@@ -148,6 +148,7 @@ class UserReadDto {
     this.countProducts,
     this.color,
     this.bookmarkFolders,
+    this.growthRate,
   });
 
   final String? token;
@@ -172,6 +173,7 @@ class UserReadDto {
   final bool? suspend;
   final String? birthDate;
   final Gender? gender;
+  final GrowthRateReadDto? growthRate;
   final List<MediaReadDto>? media;
   final List<LocationReadDto>? locations;
   final List<CategoryReadDto>? categories;
@@ -208,6 +210,7 @@ class UserReadDto {
         suspend: json["suspend"] == null ? null : json["suspend"],
         birthDate: json["birthDate"] == null ? null : json["birthDate"],
         gender: json["gender"] == null ? null : Gender.fromMap(json["gender"]),
+        growthRate: json["growthRate"] == null ? null : GrowthRateReadDto.fromMap(json["growthRate"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
