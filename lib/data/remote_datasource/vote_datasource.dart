@@ -23,7 +23,7 @@ class VoteDataSource  {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/VoteField",
+        url: "$baseUrl/ٰVote/VoteField",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<VoteField>.fromJson(response.body, VoteField.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, VoteField.fromMap)),
