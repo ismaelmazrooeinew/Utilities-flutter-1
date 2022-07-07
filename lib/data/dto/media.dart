@@ -92,9 +92,18 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           .toList() ??
       <String>[];
 
-  List<String> getDocs({final String? useCase}) =>
+  List<String> getPdfs({final String? useCase}) =>
       this
           ?.where((final MediaReadDto e) => e.link.isPDFFileName && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.link,
+          )
+          .toList() ??
+      <String>[];
+
+  List<String> getDocs({final String? useCase}) =>
+      this
+          ?.where((final MediaReadDto e) => e.link.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.link,
           )
@@ -107,33 +116,42 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
   String getDoc({final String? useCase}) => getDocs(useCase: useCase).getFirstIfExist() ?? "--";
 
+  String getPdf({final String? useCase}) => getPdfs(useCase: useCase).getFirstIfExist() ?? "--";
+
   String getAudio({final String? useCase}) => getAudios(useCase: useCase).getFirstIfExist() ?? "--";
 }
 
 extension MediaResponseExtension on List<MediaReadDto> {
   List<String> getImages({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.type == 0 && (useCase != null ? (e.useCase == useCase) : true))
+      .where((final MediaReadDto e) => e.link.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
       .map(
         (final MediaReadDto e) => e.link,
       )
       .toList();
 
   List<String> getAudios({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.type == 1 && (useCase != null ? (e.useCase == useCase) : true))
+      .where((final MediaReadDto e) => e.link.isAudioFileName && (useCase != null ? (e.useCase == useCase) : true))
       .map(
         (final MediaReadDto e) => e.link,
       )
       .toList();
 
   List<String> getVideos({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.type == 2 && (useCase != null ? (e.useCase == useCase) : true))
+      .where((final MediaReadDto e) => e.link.isVideoFileName && (useCase != null ? (e.useCase == useCase) : true))
+      .map(
+        (final MediaReadDto e) => e.link,
+      )
+      .toList();
+
+  List<String> getPdfs({final String? useCase}) => this
+      .where((final MediaReadDto e) => e.link.isPDFFileName && (useCase != null ? (e.useCase == useCase) : true))
       .map(
         (final MediaReadDto e) => e.link,
       )
       .toList();
 
   List<String> getDocs({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.type == 3 && (useCase != null ? (e.useCase == useCase) : true))
+      .where((final MediaReadDto e) => e.link.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true))
       .map(
         (final MediaReadDto e) => e.link,
       )
@@ -144,6 +162,8 @@ extension MediaResponseExtension on List<MediaReadDto> {
   String getVideo({final String? useCase}) => getVideos(useCase: useCase).getFirstIfExist() ?? "--";
 
   String getDoc({final String? useCase}) => getDocs(useCase: useCase).getFirstIfExist() ?? "--";
+
+  String getPdf({final String? useCase}) => getPdfs(useCase: useCase).getFirstIfExist() ?? "--";
 
   String getAudio({final String? useCase}) => getAudios(useCase: useCase).getFirstIfExist() ?? "--";
 }
