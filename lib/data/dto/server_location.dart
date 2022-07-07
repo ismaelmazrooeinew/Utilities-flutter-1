@@ -17,7 +17,7 @@ class ServerLocationReadDto {
   final String? p;
   final double? lat;
   final double? lon;
-  final List<String>? ch;
+  final List<dynamic>? ch;
 
   factory ServerLocationReadDto.fromJson(String str) => ServerLocationReadDto.fromMap(json.decode(str));
 
