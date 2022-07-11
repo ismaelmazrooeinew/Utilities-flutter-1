@@ -1,11 +1,38 @@
 import 'package:utilities/utilities.dart';
 
+extension CategoryReadDtoExtension on List<CategoryReadDto>? {
+  List<CategoryReadDto> getByTypeUseCase({required final String type, required final String useCase}) =>
+      this
+          ?.where(
+            (final CategoryReadDto e) => e.type == type && e.useCase == useCase,
+          )
+          .toList() ??
+      <CategoryReadDto>[];
+
+  List<CategoryReadDto> getByType({required final type}) =>
+      this
+          ?.where(
+            (final CategoryReadDto e) => e.type == type,
+          )
+          .toList() ??
+      <CategoryReadDto>[];
+
+  List<CategoryReadDto> getByUseCase({required final useCase}) =>
+      this
+          ?.where(
+            (final CategoryReadDto e) => e.useCase == useCase,
+          )
+          .toList() ??
+      <CategoryReadDto>[];
+}
+
 class CategoryCreateUpdateDto {
   CategoryCreateUpdateDto({
     this.id,
     this.parentId,
     this.title,
     this.titleTr1,
+    this.titleTr2,
     this.subtitle,
     this.link,
     this.color,
@@ -17,6 +44,7 @@ class CategoryCreateUpdateDto {
   final String? parentId;
   final String? title;
   final String? titleTr1;
+  final String? titleTr2;
   final String? subtitle;
   final String? link;
   final String? color;
@@ -32,6 +60,7 @@ class CategoryCreateUpdateDto {
         parentId: json["parentId"] == null ? null : json["parentId"],
         title: json["title"] == null ? null : json["title"],
         titleTr1: json["titleTr1"] == null ? null : json["titleTr1"],
+        titleTr2: json["titleTr2"] == null ? null : json["titleTr2"],
         subtitle: json["subtitle"] == null ? null : json["subtitle"],
         link: json["link"] == null ? null : json["link"],
         color: json["color"] == null ? null : json["color"],
@@ -44,6 +73,7 @@ class CategoryCreateUpdateDto {
         "parentId": parentId == null ? null : parentId,
         "title": title == null ? null : title,
         "titleTr1": titleTr1 == null ? null : titleTr1,
+        "titleTr2": titleTr2 == null ? null : titleTr2,
         "subtitle": subtitle == null ? null : subtitle,
         "link": link == null ? null : link,
         "color": color == null ? null : color,
@@ -57,6 +87,7 @@ class CategoryReadDto {
     this.id,
     this.title,
     this.titleTr1,
+    this.titleTr2,
     this.subtitle,
     this.color,
     this.link,
@@ -71,6 +102,7 @@ class CategoryReadDto {
   final String? id;
   final String? title;
   final String? titleTr1;
+  final String? titleTr2;
   final String? subtitle;
   final String? color;
   final String? link;
@@ -89,6 +121,7 @@ class CategoryReadDto {
         id: json["id"] == null ? null : json["id"],
         title: json["title"] == null ? null : json["title"],
         titleTr1: json["titleTr1"] == null ? null : json["titleTr1"],
+        titleTr2: json["titleTr2"] == null ? null : json["titleTr2"],
         subtitle: json["subtitle"] == null ? null : json["subtitle"],
         color: json["color"] == null ? null : json["color"],
         link: json["link"] == null ? null : json["link"],
@@ -104,6 +137,7 @@ class CategoryReadDto {
         "id": id == null ? null : id,
         "title": title == null ? null : title,
         "titleTr1": titleTr1 == null ? null : titleTr1,
+        "titleTr2": titleTr2 == null ? null : titleTr2,
         "subtitle": subtitle == null ? null : subtitle,
         "color": color == null ? null : color,
         "link": link == null ? null : link,
