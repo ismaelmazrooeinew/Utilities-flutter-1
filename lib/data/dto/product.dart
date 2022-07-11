@@ -387,6 +387,7 @@ class ProductFilterDto {
     this.useCase,
     this.teams,
     this.minimal,
+    this.isFollowing,
   });
 
   final String? title;
@@ -406,6 +407,7 @@ class ProductFilterDto {
   final bool? isForSale;
   final bool? isBookmarked;
   final bool? minimal;
+  final bool? isFollowing;
   final int? visitsCount;
   final double? length;
   final double? width;
@@ -447,6 +449,7 @@ class ProductFilterDto {
         isForSale: json["isForSale"] == null ? null : json["isForSale"],
         isBookmarked: json["isBookmarked"] == null ? null : json["isBookmarked"],
         minimal: json["minimal"] == null ? null : json["minimal"],
+        isFollowing: json["isFollowing"] == null ? null : json["isFollowing"],
         visitsCount: json["visitsCount"] == null ? null : json["visitsCount"],
         length: json["length"] == null ? null : json["length"],
         width: json["width"] == null ? null : json["width"],
@@ -485,6 +488,7 @@ class ProductFilterDto {
         "isForSale": isForSale == null ? null : isForSale,
         "isBookmarked": isBookmarked == null ? null : isBookmarked,
         "minimal": minimal == null ? null : minimal,
+        "isFollowing": isFollowing == null ? null : isFollowing,
         "visitsCount": visitsCount == null ? null : visitsCount,
         "length": length == null ? null : length,
         "width": width == null ? null : width,
