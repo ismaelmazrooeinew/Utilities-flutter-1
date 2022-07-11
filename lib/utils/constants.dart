@@ -40,7 +40,7 @@ class UtilitiesConstants {
 
 enum PageState { initial, loading, loaded, error, empty, paging }
 
-enum MediaType { image, svg, video, pdf, voice, link, all }
+enum MediaType { image, svg, video, pdf, voice, link }
 
 enum VisibilityType { public, private, userOnly, followers }
 
