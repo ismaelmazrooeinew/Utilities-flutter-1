@@ -14,6 +14,7 @@ class GlobalSearchCreateDto {
     this.oldest,
     this.pageSize,
     this.reputation,
+    this.minimal,
   });
 
   final String? title;
@@ -28,6 +29,7 @@ class GlobalSearchCreateDto {
   final bool? category;
   final bool? isBookmark;
   final bool? isMine;
+  final bool? minimal;
 
   factory GlobalSearchCreateDto.fromJson(String str) => GlobalSearchCreateDto.fromMap(json.decode(str));
 
@@ -46,6 +48,7 @@ class GlobalSearchCreateDto {
         category: json["category"] == null ? null : json["category"],
         isBookmark: json["isBookmark"] == null ? null : json["isBookmark"],
         isMine: json["isMine"] == null ? null : json["isMine"],
+        minimal: json["minimal"] == null ? null : json["minimal"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -61,6 +64,7 @@ class GlobalSearchCreateDto {
         "category": category == null ? null : category,
         "isBookmark": isBookmark == null ? null : isBookmark,
         "isMine": isMine == null ? null : isMine,
+        "minimal": minimal == null ? null : minimal,
       };
 }
 
