@@ -12,6 +12,10 @@ class UserCreateUpdateDto {
     this.bio,
     this.headline,
     this.website,
+    this.instagram,
+    this.telegram,
+    this.whatsapp,
+    this.linkedIn,
     this.password,
     this.appUserName,
     this.appPhoneNumber,
@@ -39,6 +43,10 @@ class UserCreateUpdateDto {
   final String? bio;
   final String? headline;
   final String? website;
+  final double? instagram;
+  final double? telegram;
+  final double? whatsapp;
+  final double? linkedIn;
   final String? password;
   final String? appUserName;
   final String? appPhoneNumber;
@@ -70,6 +78,10 @@ class UserCreateUpdateDto {
         bio: json["bio"] == null ? null : json["bio"],
         headline: json["headline"] == null ? null : json["headline"],
         website: json["website"] == null ? null : json["website"],
+        instagram: json["instagram"] == null ? null : json["instagram"],
+        telegram: json["telegram"] == null ? null : json["telegram"],
+        whatsapp: json["whatsapp"] == null ? null : json["whatsapp"],
+        linkedIn: json["linkedIn"] == null ? null : json["linkedIn"],
         password: json["password"] == null ? null : json["password"],
         appUserName: json["appUserName"] == null ? null : json["appUserName"],
         appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
@@ -98,6 +110,10 @@ class UserCreateUpdateDto {
         "bio": bio == null ? null : bio,
         "headline": headline == null ? null : headline,
         "website": website == null ? null : website,
+        "instagram": instagram == null ? null : instagram,
+        "telegram": telegram == null ? null : telegram,
+        "whatsapp": whatsapp == null ? null : whatsapp,
+        "linkedIn": linkedIn == null ? null : linkedIn,
         "password": password == null ? null : password,
         "appUserName": appUserName == null ? null : appUserName,
         "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
@@ -135,6 +151,10 @@ class UserReadDto {
     this.region,
     this.activity,
     this.wallet,
+    this.instagram,
+    this.telegram,
+    this.whatsapp,
+    this.linkedIn,
     this.showContactInfo,
     this.isAdmin,
     this.suspend,
@@ -167,6 +187,10 @@ class UserReadDto {
   final String? region;
   final String? activity;
   final double? wallet;
+  final double? instagram;
+  final double? telegram;
+  final double? whatsapp;
+  final double? linkedIn;
   final bool? showContactInfo;
   final bool? isAdmin;
   final bool? suspend;
@@ -200,6 +224,10 @@ class UserReadDto {
         lastName: json["lastName"] == null ? null : json["lastName"],
         headline: json["headline"] == null ? null : json["headline"],
         website: json["website"] == null ? null : json["website"],
+        instagram: json["instagram"] == null ? null : json["instagram"],
+        telegram: json["telegram"] == null ? null : json["telegram"],
+        whatsapp: json["whatsapp"] == null ? null : json["whatsapp"],
+        linkedIn: json["linkedIn"] == null ? null : json["linkedIn"],
         region: json["region"] == null ? null : json["region"],
         activity: json["activity"] == null ? null : json["activity"],
         wallet: json["wallet"] == null ? null : json["wallet"],
@@ -236,6 +264,10 @@ class UserReadDto {
         "region": region == null ? null : region,
         "activity": activity == null ? null : activity,
         "wallet": wallet == null ? null : wallet,
+        "instagram": instagram == null ? null : instagram,
+        "telegram": telegram == null ? null : telegram,
+        "whatsapp": whatsapp == null ? null : whatsapp,
+        "linkedIn": linkedIn == null ? null : linkedIn,
         "showContactInfo": showContactInfo == null ? null : showContactInfo,
         "isAdmin": isAdmin == null ? null : isAdmin,
         "suspend": suspend == null ? null : suspend,
