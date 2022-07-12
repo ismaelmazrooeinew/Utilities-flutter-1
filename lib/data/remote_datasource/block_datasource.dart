@@ -7,14 +7,13 @@ class BlockDataSource {
   BlockDataSource({required this.baseUrl});
 
   Future<void> create({
-    required final BlockCreateUpdateDto dto,
-    required final Function(GenericResponse<BlockReadDto>) onResponse,
+    required final String userId,
+    required final Function(GenericResponse<dynamic>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/Block",
-        body: dto,
-        action: (Response response) => onResponse(GenericResponse<BlockReadDto>.fromJson(response.body, BlockReadDto.fromMap)),
+        url: "$baseUrl/Block?userId=$userId",
+        action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.body, BlockReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, BlockReadDto.fromMap)),
       );
 

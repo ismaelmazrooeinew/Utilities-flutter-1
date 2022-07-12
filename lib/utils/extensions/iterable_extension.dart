@@ -7,19 +7,11 @@ extension GenericIterableExtentions<T> on Iterable {
     }
   }
 
-  Iterable takeIfPossible(final int range) {
-    if (range < length)
-      return take(length);
-    else
-      return take(range);
-  }
+  Iterable takeIfPossible(final int range) => range < length ? take(length) : take(range);
 
-  T? getFirstIfExist() {
-    if (isNullOrEmpty())
-      return null;
-    else
-      return first;
-  }
+  T? getFirstIfExist() => isNullOrEmpty() ? null : first;
+
+  T? firstOrDefault(T defaultValue) => isNullOrEmpty() ? defaultValue : first;
 }
 
 extension IterableExtentions<T> on Iterable<T> {
