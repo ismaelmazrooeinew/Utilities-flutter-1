@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 class UserDataSource {
@@ -42,12 +43,12 @@ class UserDataSource {
   Future<void> readById({
     required final String id,
     required final Function(GenericResponse<UserReadDto>) onResponse,
-    required final Function(GenericResponse response) onError,
+    required final Function(String statusCode) onError,
   }) async =>
       httpGet(
         url: "$baseUrl/user/$id",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(response.statusCode.toString()),
       );
 
   Future<void> delete({
