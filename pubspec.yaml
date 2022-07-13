@@ -30,11 +30,8 @@ dependencies:
   just_audio: ^0.9.21
   syncfusion_flutter_pdfviewer: ^20.1.55-beta
   path_provider: ^2.0.10
-  flutter_downloader: ^1.7.4
   flutter_local_notifications: ^9.5.2
-  collection: ^1.16.0
   flutter_easyloading: ^3.0.5
-  custom_pop_up_menu: ^1.2.4
 #  firebase_messaging: ^11.2.12
 #  firebase_core: ^1.14.0
 #  firebase_auth: ^3.3.13

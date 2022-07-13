@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
-import 'package:utilities/view_models/view_models.dart';
 
 /// fake data for test
 // final List<MediaViewModel> data = [
@@ -48,18 +46,6 @@ class StoryView extends StatefulWidget {
 
 class _StoryViewState extends State<StoryView> {
   CarouselController buttonCarouselController = CarouselController();
-
-  void initializeFlutterDownloader() async {
-    FlutterDownloader.registerCallback(downloadCallback);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    initializeFlutterDownloader();
-  }
-
-  static void downloadCallback(String id, DownloadTaskStatus status, int progress) {}
 
   @override
   Widget build(BuildContext context) => scaffold(
