@@ -463,3 +463,60 @@ class BookmarkFolder {
         "title": title == null ? null : title,
       };
 }
+
+class UserFilterDto {
+  UserFilterDto({
+    this.userId,
+    this.userName,
+    this.showCategories,
+    this.showFollowings,
+    this.showForms,
+    this.showGender,
+    this.showLocations,
+    this.showMedia,
+    this.showProducts,
+    this.showTransactions,
+  });
+
+  final String? userId;
+  final String? userName;
+  final bool? showGender;
+  final bool? showMedia;
+  final bool? showCategories;
+  final bool? showLocations;
+  final bool? showForms;
+  final bool? showProducts;
+  final bool? showTransactions;
+  final bool? showFollowings;
+
+
+  factory UserFilterDto.fromJson(String str) => UserFilterDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory UserFilterDto.fromMap(Map<String, dynamic> json) => UserFilterDto(
+    userId: json["userId"] == null ? null : json["userId"],
+    userName: json["userName"] == null ? null : json["userName"],
+    showGender: json["showGender"] == null ? null : json["showGender"],
+    showMedia: json["showMedia"] == null ? null : json["showMedia"],
+    showCategories: json["showCategories"] == null ? null : json["showCategories"],
+    showLocations: json["showLocations"] == null ? null : json["showLocations"],
+    showForms: json["showForms"] == null ? null : json["showForms"],
+    showProducts: json["showProducts"] == null ? null : json["showProducts"],
+    showTransactions: json["showTransactions"] == null ? null : json["showTransactions"],
+    showFollowings: json["showFollowings"] == null ? null : json["showFollowings"],
+  );
+
+  Map<String, dynamic> toMap() => {
+    "userId": userId == null ? null : userId,
+    "userName": userName == null ? null : userName,
+    "showGender": showGender == null ? null : showGender,
+    "showMedia": showMedia == null ? null : showMedia,
+    "showCategories": showCategories == null ? null : showCategories,
+    "showLocations": showLocations == null ? null : showLocations,
+    "showForms": showForms == null ? null : showForms,
+    "showProducts": showProducts == null ? null : showProducts,
+    "showTransactions": showTransactions == null ? null : showTransactions,
+    "showFollowings": showFollowings == null ? null : showFollowings,
+  };
+}
