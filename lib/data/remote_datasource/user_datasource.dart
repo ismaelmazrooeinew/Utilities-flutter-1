@@ -151,4 +151,16 @@ class UserDataSource {
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
       );
+
+  Future<void> filter({
+    required final UserFilterDto dto,
+    required final Function(GenericResponse<UserReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpPost(
+        url: "$baseUrl/user/Filter",
+        body: dto,
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, UserReadDto.fromMap)),
+      );
 }
