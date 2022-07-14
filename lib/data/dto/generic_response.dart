@@ -24,7 +24,16 @@ class GenericResponse<T> {
         status: json["status"],
         message: json["message"],
       );
-    else
+    else if (json["result"] is String) {
+      return GenericResponse<T>(
+        result: json["result"],
+        pageSize: json["pageSize"],
+        pageCount: json["pageCount"],
+        totalCount: json["totalCount"],
+        status: json["status"],
+        message: json["message"],
+      );
+    } else
       return GenericResponse<T>(
         result: json["result"] != null ? fromMap(json["result"]) : '',
         pageSize: json["pageSize"],
