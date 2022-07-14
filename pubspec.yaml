@@ -25,7 +25,7 @@ dependencies:
   group_button: ^5.0.1
   logger: ^1.1.0
   image_cropper: ^2.0.2
-  cached_network_image: ^3.2.0
+  cached_network_image: ^3.2.1
   video_player: ^2.4.2
   just_audio: ^0.9.21
   syncfusion_flutter_pdfviewer: ^20.1.55-beta
