@@ -77,7 +77,7 @@ class ProductCreateUpdateDto {
   final int? status;
   final List<ServerLocationReadDto>? locations;
   final List<MediaReadDto>? media;
-  final List<CategoryReadDto>? categories;
+  final List<String>? categories;
   final List<VoteField>? voteFields;
   final List<FormReadDto>? forms;
   final List<CommentReadDto>? comments;
@@ -121,7 +121,7 @@ class ProductCreateUpdateDto {
         status: json["status"] == null ? null : json["status"],
         locations: json["locations"] == null ? null : List<ServerLocationReadDto>.from(json["locations"].map((x) => ServerLocationReadDto.fromMap(x))),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
-        categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
+        categories: json["categories"] == null ? null : List<String>.from(json["categories"].map((x) => x)),
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
@@ -162,7 +162,7 @@ class ProductCreateUpdateDto {
         "status": status == null ? null : status,
         "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
-        "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
+        "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
         "voteFields": voteFields == null ? null : List<dynamic>.from(voteFields!.map((x) => x.toMap())),
         "forms": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toMap())),
