@@ -49,11 +49,7 @@ class ReportDataSource {
         url: "$baseUrl/Report/Filter",
         body: filter,
         action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, fromMap: ReportReadDto.fromMap)),
-        error: (Response response) {
-          print(response.body);
-          print(response.statusCode);
-          print(response.statusText);
-        },
+        error: (Response response) {},
       );
 
 }

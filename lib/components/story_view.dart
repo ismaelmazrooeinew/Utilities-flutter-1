@@ -94,10 +94,7 @@ class _StoryViewState extends State<StoryView> {
                         top: screenHeight / 2,
                         right: 10,
                         child: InkWell(
-                          onTap: () {
-                            print("click");
-                            buttonCarouselController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.linear);
-                          },
+                          onTap: () => buttonCarouselController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.linear),
                           child: Container(
                             height: 40,
                             width: 40,
@@ -112,10 +109,7 @@ class _StoryViewState extends State<StoryView> {
                         top: screenHeight / 2,
                         left: 10,
                         child: InkWell(
-                          onTap: () {
-                            print("click");
-                            buttonCarouselController.previousPage(duration: Duration(milliseconds: 300), curve: Curves.linear);
-                          },
+                          onTap: () => buttonCarouselController.previousPage(duration: Duration(milliseconds: 300), curve: Curves.linear),
                           child: Container(
                             height: 40,
                             width: 40,
