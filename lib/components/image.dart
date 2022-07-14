@@ -51,7 +51,6 @@ Widget image(
         width: width,
         height: height,
         fit: fit,
-
         clipBehavior: clipBehavior,
         margin: margin,
         borderRadius: borderRadius,

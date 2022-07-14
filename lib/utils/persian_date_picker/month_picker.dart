@@ -63,10 +63,7 @@ class _PersianMonthPickerState extends State<PersianMonthPicker> with TickerProv
     List<Widget> monthList = months.map((month) {
       BoxDecoration decoration = BoxDecoration();
       if (initDate.month == month) {
-        decoration = BoxDecoration(
-            color: Global.color,
-            boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), offset: Offset(0.0, 4.0), spreadRadius: -2.0, blurRadius: 1.0)],
-            borderRadius: BorderRadius.all(Radius.circular(50.0)));
+        decoration = BoxDecoration(color: Global.color, boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), offset: Offset(0.0, 4.0), spreadRadius: -2.0, blurRadius: 1.0)], borderRadius: BorderRadius.all(Radius.circular(50.0)));
       }
       var dateUtiles = new PersianDateUtils();
       bool isDisable = dateUtiles.isDisable('$month');

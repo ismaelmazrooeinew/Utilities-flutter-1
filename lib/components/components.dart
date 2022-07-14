@@ -1,3 +1,4 @@
+export 'badges.dart';
 export 'bottom_sheet.dart';
 export 'carousel_slider.dart';
 export 'container.dart';
@@ -11,4 +12,3 @@ export 'radar_chart.dart';
 export 'rating_bar.dart';
 export 'smooth_page_indicator/smooth_page_indicator.dart';
 export 'story_view.dart';
-export 'badges.dart';

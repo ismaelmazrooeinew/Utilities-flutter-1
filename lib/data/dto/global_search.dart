@@ -80,15 +80,14 @@ class GlobalSearchReadDto {
   String toJson() => json.encode(toMap());
 
   factory GlobalSearchReadDto.fromMap(Map<String, dynamic> json) => GlobalSearchReadDto(
-    users: json["users"] == null ? null : List<UserReadDto>.from(json["users"].map((x) => UserReadDto.fromMap(x))),
-    products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
-    categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
-
-  );
+        users: json["users"] == null ? null : List<UserReadDto>.from(json["users"].map((x) => UserReadDto.fromMap(x))),
+        products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
+        categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
+      );
 
   Map<String, dynamic> toMap() => {
-    "users": users == null ? null : List<dynamic>.from(users!.map((x) => x.toMap())),
-    "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
-    "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
-  };
+        "users": users == null ? null : List<dynamic>.from(users!.map((x) => x.toMap())),
+        "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
+        "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
+      };
 }

@@ -1,9 +1,9 @@
 import 'package:utilities/utilities.dart';
 
-class VoteDataSource  {
+class VoteDataSource {
   final String baseUrl;
 
-  VoteDataSource ({required this.baseUrl});
+  VoteDataSource({required this.baseUrl});
 
   Future<void> createVote({
     required final VoteCreateUpdateDto dto,

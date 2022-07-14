@@ -211,7 +211,7 @@ class CAlertDialog extends StatelessWidget {
     this.elevation,
     this.semanticLabel,
     this.shape,
-  })  : super(key: key);
+  }) : super(key: key);
 
   final double? maxWidth;
   final double? maxHeight;
@@ -529,7 +529,7 @@ class SimpleDialog extends StatelessWidget {
     this.elevation,
     this.semanticLabel,
     this.shape,
-  })  : super(key: key);
+  }) : super(key: key);
 
   /// The (optional) title of the dialog is displayed in a large font at the top
   /// of the dialog.
@@ -701,8 +701,7 @@ Widget _buildMaterialDialogTransitions(BuildContext context, Animation<double> a
 ///  * [showGeneralDialog], which allows for customization of the dialog popup.
 ///  * <https://material.io/design/components/dialogs.html>
 Future<T?> showCDialog<T>({
-  required
-      BuildContext context,
+  required BuildContext context,
   bool barrierDismissible = true,
   @Deprecated('Instead of using the "child" argument, return the child from a closure '
       'provided to the "builder" argument. This will ensure that the BuildContext '

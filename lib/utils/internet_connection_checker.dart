@@ -13,10 +13,10 @@ Future<bool> isConnectedToNetwork() async => InternetConnectionChecker().hasConn
 class AddressCheckOptions {
   /// [AddressCheckOptions] Constructor
   AddressCheckOptions(
-      this.address, {
-        this.port = InternetConnectionChecker.DEFAULT_PORT,
-        this.timeout = InternetConnectionChecker.DEFAULT_TIMEOUT,
-      });
+    this.address, {
+    this.port = InternetConnectionChecker.DEFAULT_PORT,
+    this.timeout = InternetConnectionChecker.DEFAULT_TIMEOUT,
+  });
 
   /// An internet address or a Unix domain address.
   /// This object holds an internet address. If this internet address
@@ -42,9 +42,9 @@ class AddressCheckOptions {
 class AddressCheckResult {
   /// [AddressCheckResult] constructor
   AddressCheckResult(
-      this.options,
-      this.isSuccess,
-      );
+    this.options,
+    this.isSuccess,
+  );
 
   /// AddressCheckOptions
   final AddressCheckOptions options;
@@ -62,6 +62,7 @@ class InternetConnectionChecker {
   /// This is a singleton that can be accessed like a regular constructor
   /// i.e. InternetConnectionChecker() always returns the same instance.
   factory InternetConnectionChecker() => _instance;
+
   InternetConnectionChecker._() {
     // immediately perform an initial check so we know the last status?
     // connectionStatus.then((status) => _lastStatus = status);
@@ -119,8 +120,7 @@ class InternetConnectionChecker {
   /// | 8.8.4.4        | Google     | https://developers.google.com/speed/public-dns/ |
   /// | 208.67.222.222 | OpenDNS    | https://use.opendns.com/                        |
   /// | 208.67.220.220 | OpenDNS    | https://use.opendns.com/                        |
-  static final List<AddressCheckOptions> defaultAddresses =
-  List<AddressCheckOptions>.unmodifiable(
+  static final List<AddressCheckOptions> defaultAddresses = List<AddressCheckOptions>.unmodifiable(
     <AddressCheckOptions>[
       AddressCheckOptions(
         InternetAddress(
@@ -175,14 +175,13 @@ class InternetConnectionChecker {
   /// See [AddressCheckOptions] for more info.
   List<AddressCheckOptions> addresses = defaultAddresses;
 
-  static final InternetConnectionChecker _instance =
-  InternetConnectionChecker._();
+  static final InternetConnectionChecker _instance = InternetConnectionChecker._();
 
   /// Ping a single address. See [AddressCheckOptions] for
   /// info on the accepted argument.
   Future<AddressCheckResult> isHostReachable(
-      AddressCheckOptions options,
-      ) async {
+    AddressCheckOptions options,
+  ) async {
     Socket? sock;
     try {
       sock = await Socket.connect(
@@ -215,7 +214,7 @@ class InternetConnectionChecker {
     for (final AddressCheckOptions addressOptions in addresses) {
       // ignore: unawaited_futures
       isHostReachable(addressOptions).then(
-            (AddressCheckResult request) {
+        (AddressCheckResult request) {
           length -= 1;
           if (!result.isCompleted) {
             if (request.isSuccess) {
@@ -237,9 +236,7 @@ class InternetConnectionChecker {
   /// [InternetConnectionStatus.connected].
   /// [InternetConnectionStatus.disconnected] otherwise.
   Future<InternetConnectionStatus> get connectionStatus async {
-    return await hasConnection
-        ? InternetConnectionStatus.connected
-        : InternetConnectionStatus.disconnected;
+    return await hasConnection ? InternetConnectionStatus.connected : InternetConnectionStatus.disconnected;
   }
 
   /// The interval between periodic checks. Periodic checks are
@@ -284,8 +281,7 @@ class InternetConnectionChecker {
   Timer? _timerHandle;
 
   // controller for the exposed 'onStatusChange' Stream
-  final StreamController<InternetConnectionStatus> _statusController =
-  StreamController<InternetConnectionStatus>.broadcast();
+  final StreamController<InternetConnectionStatus> _statusController = StreamController<InternetConnectionStatus>.broadcast();
 
   /// Subscribe to this stream to receive events whenever the
   /// [InternetConnectionStatus] changes. When a listener is attached
@@ -340,8 +336,7 @@ class InternetConnectionChecker {
   ///
   /// When all the listeners are removed from `onStatusChange`, the internal
   /// timer is cancelled and the stream does not emit events.
-  Stream<InternetConnectionStatus> get onStatusChange =>
-      _statusController.stream;
+  Stream<InternetConnectionStatus> get onStatusChange => _statusController.stream;
 
   /// Returns true if there are any listeners attached to [onStatusChange]
   bool get hasListeners => _statusController.hasListener;

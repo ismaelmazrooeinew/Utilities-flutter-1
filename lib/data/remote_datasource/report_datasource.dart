@@ -17,7 +17,7 @@ class ReportDataSource {
         action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, fromMap: ReportReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
-  
+
   Future<void> readById({
     required final String id,
     required final Function(GenericResponse<ReportReadDto>) onResponse,
@@ -51,5 +51,4 @@ class ReportDataSource {
         action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, fromMap: ReportReadDto.fromMap)),
         error: (Response response) {},
       );
-
 }

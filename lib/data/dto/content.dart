@@ -80,22 +80,22 @@ class ContentCreateUpdateDto {
   String toJson() => json.encode(toMap());
 
   factory ContentCreateUpdateDto.fromMap(Map<String, dynamic> json) => ContentCreateUpdateDto(
-    id: json["id"] == null ? null : json["id"],
-    title: json["title"] == null ? null : json["title"],
-    subTitle: json["subTitle"] == null ? null : json["subTitle"],
-    description: json["description"] == null ? null : json["description"],
-    useCase: json["useCase"] == null ? null : json["useCase"],
-    approvalStatus: json["approvalStatus"] == null ? null : json["approvalStatus"],
-    contactInformations: json["contactInformations"] == null ? null : List<ContactInformationReadDto>.from(json["contactInformations"].map((x) => ContactInformationReadDto.fromMap(x))),
-  );
+        id: json["id"] == null ? null : json["id"],
+        title: json["title"] == null ? null : json["title"],
+        subTitle: json["subTitle"] == null ? null : json["subTitle"],
+        description: json["description"] == null ? null : json["description"],
+        useCase: json["useCase"] == null ? null : json["useCase"],
+        approvalStatus: json["approvalStatus"] == null ? null : json["approvalStatus"],
+        contactInformations: json["contactInformations"] == null ? null : List<ContactInformationReadDto>.from(json["contactInformations"].map((x) => ContactInformationReadDto.fromMap(x))),
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id == null ? null : id,
-    "title": title == null ? null : title,
-    "subTitle": subTitle == null ? null : subTitle,
-    "description": description == null ? null : description,
-    "useCase": useCase == null ? null : useCase,
-    "approvalStatus": approvalStatus == null ? null : approvalStatus,
-    "contactInformations": contactInformations == null ? null : List<dynamic>.from(contactInformations!.map((x) => x.toMap())),
-  };
+        "id": id == null ? null : id,
+        "title": title == null ? null : title,
+        "subTitle": subTitle == null ? null : subTitle,
+        "description": description == null ? null : description,
+        "useCase": useCase == null ? null : useCase,
+        "approvalStatus": approvalStatus == null ? null : approvalStatus,
+        "contactInformations": contactInformations == null ? null : List<dynamic>.from(contactInformations!.map((x) => x.toMap())),
+      };
 }

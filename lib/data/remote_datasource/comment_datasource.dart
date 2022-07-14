@@ -40,6 +40,7 @@ class CommentDataSource {
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
+
   Future<void> readByProductId({
     required final String id,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
