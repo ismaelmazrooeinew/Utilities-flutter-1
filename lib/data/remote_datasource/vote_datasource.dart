@@ -13,8 +13,8 @@ class VoteDataSource  {
       httpPost(
         url: "$baseUrl/Vote",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, Vote.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, Vote.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, fromMap: Vote.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> createVoteField({
@@ -25,8 +25,8 @@ class VoteDataSource  {
       httpPost(
         url: "$baseUrl/Vote/VoteField",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<VoteField>.fromJson(response.body, VoteField.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, VoteField.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<VoteField>.fromJson(response.body, fromMap: VoteField.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> read({
@@ -36,7 +36,7 @@ class VoteDataSource  {
   }) async =>
       httpGet(
         url: "$baseUrl/VoteField/$id",
-        action: (Response response) => onResponse(GenericResponse<VoteField>.fromJson(response.body, VoteField.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, VoteField.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<VoteField>.fromJson(response.body, fromMap: VoteField.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 }

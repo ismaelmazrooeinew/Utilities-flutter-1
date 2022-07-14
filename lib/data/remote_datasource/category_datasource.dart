@@ -1,6 +1,5 @@
 import 'package:utilities/utilities.dart';
 
-
 class CategoryDataSource {
   final String baseUrl;
 
@@ -14,8 +13,8 @@ class CategoryDataSource {
       httpPost(
         url: "$baseUrl/Category",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CategoryReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> update({
@@ -26,8 +25,8 @@ class CategoryDataSource {
       httpPut(
         url: "$baseUrl/Category",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CategoryReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> read({
@@ -36,8 +35,8 @@ class CategoryDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Category",
-        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CategoryReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> delete({
@@ -47,7 +46,7 @@ class CategoryDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Category/$id",
-        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CategoryReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 }

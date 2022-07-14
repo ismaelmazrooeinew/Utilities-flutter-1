@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
-import 'package:utilities/view_models/view_models.dart';
 
 /// fake data for test
 // final List<MediaViewModel> data = [
@@ -48,18 +46,6 @@ class StoryView extends StatefulWidget {
 
 class _StoryViewState extends State<StoryView> {
   CarouselController buttonCarouselController = CarouselController();
-
-  void initializeFlutterDownloader() async {
-    FlutterDownloader.registerCallback(downloadCallback);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    initializeFlutterDownloader();
-  }
-
-  static void downloadCallback(String id, DownloadTaskStatus status, int progress) {}
 
   @override
   Widget build(BuildContext context) => scaffold(
@@ -108,10 +94,7 @@ class _StoryViewState extends State<StoryView> {
                         top: screenHeight / 2,
                         right: 10,
                         child: InkWell(
-                          onTap: () {
-                            print("click");
-                            buttonCarouselController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.linear);
-                          },
+                          onTap: () => buttonCarouselController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.linear),
                           child: Container(
                             height: 40,
                             width: 40,
@@ -126,10 +109,7 @@ class _StoryViewState extends State<StoryView> {
                         top: screenHeight / 2,
                         left: 10,
                         child: InkWell(
-                          onTap: () {
-                            print("click");
-                            buttonCarouselController.previousPage(duration: Duration(milliseconds: 300), curve: Curves.linear);
-                          },
+                          onTap: () => buttonCarouselController.previousPage(duration: Duration(milliseconds: 300), curve: Curves.linear),
                           child: Container(
                             height: 40,
                             width: 40,

@@ -5,7 +5,6 @@ export 'dart:async';
 export 'dart:convert';
 
 export 'package:file_picker/file_picker.dart';
-export 'package:flutter_downloader/flutter_downloader.dart';
 export 'package:flutter_local_notifications/flutter_local_notifications.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:get/get.dart';
@@ -23,6 +22,7 @@ export 'package:url_launcher/url_launcher.dart';
 export 'package:video_player/video_player.dart';
 export 'package:webviewx/webviewx.dart';
 export 'package:collection/collection.dart';
+export 'package:hashtagable/hashtagable.dart';
 
 export 'components/components.dart';
 export 'data/data.dart';
