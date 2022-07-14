@@ -14,8 +14,8 @@ class ReportDataSource {
       httpPost(
         url: "$baseUrl/Report",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, ReportReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ReportReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, fromMap: ReportReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
   
   Future<void> readById({
@@ -25,8 +25,8 @@ class ReportDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Report/$id",
-        action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, ReportReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ReportReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, fromMap: ReportReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> delete({
@@ -36,8 +36,8 @@ class ReportDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Report/$id",
-        action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, ReportReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, ReportReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, fromMap: ReportReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> filter({
@@ -48,7 +48,7 @@ class ReportDataSource {
       httpPost(
         url: "$baseUrl/Report/Filter",
         body: filter,
-        action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, ReportReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.body, fromMap: ReportReadDto.fromMap)),
         error: (Response response) {
           print(response.body);
           print(response.statusCode);

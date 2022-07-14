@@ -70,7 +70,7 @@ class MediaDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Media/$id",
-        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, MediaReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, MediaReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, fromMap: MediaReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 }

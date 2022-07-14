@@ -13,8 +13,8 @@ class CommentDataSource {
       httpPost(
         url: "$baseUrl/Comment",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, fromMap: CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> update({
@@ -26,8 +26,8 @@ class CommentDataSource {
       httpPut(
         url: "$baseUrl/Comment?id=$id",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, fromMap: CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> readById({
@@ -37,8 +37,8 @@ class CommentDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Comment/$id",
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, fromMap: CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
   Future<void> readByProductId({
     required final String id,
@@ -47,8 +47,8 @@ class CommentDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Comment/ReadByProductId/$id",
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, CommentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, fromMap: CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> delete({
@@ -59,6 +59,6 @@ class CommentDataSource {
       httpDelete(
         url: "$baseUrl/Comment?id=$id",
         action: (Response response) => onResponse(response.statusCode.toString()),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 }

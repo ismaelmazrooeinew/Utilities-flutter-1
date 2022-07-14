@@ -1,4 +1,3 @@
-import 'package:utilities/data/dto/block.dart';
 import 'package:utilities/utilities.dart';
 
 class BlockDataSource {
@@ -13,27 +12,27 @@ class BlockDataSource {
   }) async =>
       httpPost(
         url: "$baseUrl/Block?userId=$userId",
-        action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.body, BlockReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, BlockReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.body)),
+        error: (Response response) => onError(GenericResponse()),
       );
 
-
   Future<void> read({
-    required final Function(GenericResponse<BlockReadDto>) onResponse,
+    required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
         url: "$baseUrl/Block",
-        action: (Response response) => onResponse(GenericResponse<BlockReadDto>.fromJson(response.body, BlockReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, BlockReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, fromMap: UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
+
   Future<void> readMine({
-    required final Function(GenericResponse<BlockReadDto>) onResponse,
+    required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
         url: "$baseUrl/Block/ReadMine",
-        action: (Response response) => onResponse(GenericResponse<BlockReadDto>.fromJson(response.body, BlockReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, BlockReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, fromMap: UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 }

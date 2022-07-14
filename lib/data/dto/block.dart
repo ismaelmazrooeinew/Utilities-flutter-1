@@ -1,24 +1,5 @@
 import 'package:utilities/utilities.dart';
 
-class BlockReadDto {
-  BlockReadDto({
-    this.blocks,
-  });
-
-  final List<UserReadDto>? blocks;
-
-  factory BlockReadDto.fromJson(String str) => BlockReadDto.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory BlockReadDto.fromMap(Map<String, dynamic> json) => BlockReadDto(
-    blocks: json["blocks"] == null ? null : List<UserReadDto>.from(json["blocks"].map((x) => UserReadDto.fromMap(x))),
-  );
-
-  Map<String, dynamic> toMap() => {
-    "blocks": blocks == null ? null : List<dynamic>.from(blocks!.map((x) => x.toMap())),
-  };
-}
 
 class BlockCreateUpdateDto {
   BlockCreateUpdateDto({

@@ -13,8 +13,8 @@ class NotificationDataSource {
       httpPost(
         url: "$baseUrl/Notification",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<NotificationReadDto>.fromJson(response.body, NotificationReadDto.fromMap)),
-       error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, NotificationReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<NotificationReadDto>.fromJson(response.body, fromMap: NotificationReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> read({
@@ -22,9 +22,9 @@ class NotificationDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
        httpGet(
-        url: "$baseUrl/Notification",
-        action: (Response response) => onResponse(GenericResponse<NotificationReadDto>.fromJson(response.body, NotificationReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<String>.fromJson(response.body, NotificationReadDto.fromMap)),
+         url: "$baseUrl/Notification",
+        action: (Response response) => onResponse(GenericResponse<NotificationReadDto>.fromJson(response.body, fromMap: NotificationReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
 }
