@@ -419,7 +419,7 @@ class ProductFilterDto {
   final int? status;
   final String? startDate;
   final String? endDate;
-  final List<ServerLocationReadDto>? locations;
+  final List<int>? locations;
   final List<String>? categories;
   final int? filterOrder;
   final int? pageSize;
@@ -461,7 +461,7 @@ class ProductFilterDto {
         status: json["status"] == null ? null : json["status"],
         startDate: json["startDate"] == null ? null : json["startDate"],
         endDate: json["endDate"] == null ? null : json["endDate"],
-        locations: json["locations"] == null ? null : List<ServerLocationReadDto>.from(json["locations"].map((x) => ServerLocationReadDto.fromMap(x))),
+        locations: json["locations"] == null ? null : json["locations"],
         teams: json["teams"] == null ? null : List<UserReadDto>.from(json["teams"].map((x) => UserReadDto.fromMap(x))),
         filterOrder: json["filterOrder"] == null ? null : json["filterOrder"],
         pageSize: json["pageSize"] == null ? null : json["pageSize"],
@@ -501,7 +501,7 @@ class ProductFilterDto {
         "startDate": startDate == null ? null : startDate,
         "endDate": endDate == null ? null : endDate,
         "categories": categories == null ? null : categories,
-        "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
+        "locations": locations == null ? null : locations,
         "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x.toMap())),
         "filterOrder": filterOrder == null ? null : filterOrder,
         "pageSize": pageSize == null ? null : pageSize,
