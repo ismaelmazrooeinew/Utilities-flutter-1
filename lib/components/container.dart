@@ -54,6 +54,7 @@ Widget column({
   final double? height,
   final bool isScrollable = false,
   final VoidCallback? onTap,
+  final ScrollController? scrollController,
 }) =>
     Container(
       width: width,
@@ -64,6 +65,7 @@ Widget column({
       child: isScrollable
           ? SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
+              controller: scrollController,
               child: Column(
                 mainAxisAlignment: mainAxisAlignment,
                 mainAxisSize: mainAxisSize,
