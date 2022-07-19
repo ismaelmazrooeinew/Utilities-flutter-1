@@ -14,14 +14,14 @@ class BookmarkReadDto {
   String toJson() => json.encode(toMap());
 
   factory BookmarkReadDto.fromMap(Map<String, dynamic> json) => BookmarkReadDto(
-    product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
-    folderName: json["folderName"] == null ? null : json["folderName"],
-  );
+        product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
+        folderName: json["folderName"] == null ? null : json["folderName"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "product": product == null ? null : product!.toMap(),
-    "folderName": folderName == null ? null : folderName,
-  };
+        "product": product == null ? null : product!.toMap(),
+        "folderName": folderName == null ? null : folderName,
+      };
 }
 
 class ToggleBookmark {
@@ -40,16 +40,16 @@ class ToggleBookmark {
   String toJson() => json.encode(toMap());
 
   factory ToggleBookmark.fromMap(Map<String, dynamic> json) => ToggleBookmark(
-    productId: json["productId"] == null ? null : json["productId"],
-    categoryId: json["categoryId"] == null ? null : json["categoryId"],
-    folderName: json["folderName"] == null ? null : json["folderName"],
-  );
+        productId: json["productId"] == null ? null : json["productId"],
+        categoryId: json["categoryId"] == null ? null : json["categoryId"],
+        folderName: json["folderName"] == null ? null : json["folderName"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "productId": productId == null ? null : productId,
-    "categoryId": categoryId == null ? null : categoryId,
-    "folderName": folderName == null ? null : folderName,
-  };
+        "productId": productId == null ? null : productId,
+        "categoryId": categoryId == null ? null : categoryId,
+        "folderName": folderName == null ? null : folderName,
+      };
 }
 
 class ToggleFollow {
@@ -64,11 +64,10 @@ class ToggleFollow {
   String toJson() => json.encode(toMap());
 
   factory ToggleFollow.fromMap(Map<String, dynamic> json) => ToggleFollow(
-    userId: json["userId"] == null ? null : json["userId"],
-  );
+        userId: json["userId"] == null ? null : json["userId"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "userId": userId == null ? null : userId,
-  };
+        "userId": userId == null ? null : userId,
+      };
 }
-

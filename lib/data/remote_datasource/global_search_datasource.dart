@@ -1,8 +1,7 @@
 import 'package:utilities/data/dto/global_search.dart';
 import 'package:utilities/utilities.dart';
 
-class GlobalSearchDataSource{
-
+class GlobalSearchDataSource {
   final String baseUrl;
 
   GlobalSearchDataSource({required this.baseUrl});
@@ -18,6 +17,4 @@ class GlobalSearchDataSource{
         action: (Response response) => onResponse(GenericResponse<GlobalSearchReadDto>.fromJson(response.body, fromMap: GlobalSearchReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.body)),
       );
-
-
 }

@@ -1,6 +1,5 @@
 import 'package:utilities/utilities.dart';
 
-
 class BlockCreateUpdateDto {
   BlockCreateUpdateDto({
     this.userId,
@@ -13,10 +12,10 @@ class BlockCreateUpdateDto {
   String toJson() => json.encode(toMap());
 
   factory BlockCreateUpdateDto.fromMap(Map<String, dynamic> json) => BlockCreateUpdateDto(
-    userId: json["userId"] == null ? null : json["userId"],
-  );
+        userId: json["userId"] == null ? null : json["userId"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "userId": userId == null ? null : userId,
-  };
+        "userId": userId == null ? null : userId,
+      };
 }

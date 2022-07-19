@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:utilities/utilities.dart';
 
+export 'constants.dart';
 export 'extensions/align_extension.dart';
 export 'extensions/date_extension.dart';
 export 'extensions/extension.dart';
@@ -12,7 +13,6 @@ export 'extensions/shimmer_extension.dart';
 export 'extensions/string_extension.dart';
 export 'extensions/text_extension.dart';
 export 'extensions/widget_extension.dart';
-export 'constants.dart';
 export 'file.dart';
 export 'file_downloader.dart';
 export 'get.dart';

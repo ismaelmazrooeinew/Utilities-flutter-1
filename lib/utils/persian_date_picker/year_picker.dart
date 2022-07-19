@@ -106,10 +106,7 @@ class _PersianYearPickerState extends State<PersianYearPicker> with TickerProvid
       bool isDisable = dateUtiles.isDisable('$year');
       BoxDecoration decoration = BoxDecoration();
       if (initDate.year == year) {
-        decoration = BoxDecoration(
-            color: Global.color,
-            boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), offset: Offset(0.0, 4.0), spreadRadius: -2.0, blurRadius: 1.0)],
-            borderRadius: BorderRadius.all(Radius.circular(50.0)));
+        decoration = BoxDecoration(color: Global.color, boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), offset: Offset(0.0, 4.0), spreadRadius: -2.0, blurRadius: 1.0)], borderRadius: BorderRadius.all(Radius.circular(50.0)));
       }
       return GestureDetector(
         onTap: () {
