@@ -9,7 +9,9 @@ void launchWhatsApp(final String number) async => await launchURL("https://api.w
 
 void launchTelegram(final String id) async => await launchURL("https://t.me/$id");
 
-void launchInstagram(final String username) async => await launchURL("https://instagram.com/$username");
+void launchInstagram(final String username) async => await launchURL(
+      "https://instagram.com/$username",
+    );
 
 void call(final String phone) async => await launchURL("tel:$phone");
 
