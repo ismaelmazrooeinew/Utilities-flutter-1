@@ -5,11 +5,20 @@ Future<void> launchURL(final String url, {LaunchMode mode = LaunchMode.platformD
       mode: mode,
     );
 
-void launchWhatsApp(final String number) async => await launchURL("https://api.whatsapp.com/send?phone=$number");
+void launchWhatsApp(final String number, final LaunchMode? mode) async => await launchURL(
+      "https://api.whatsapp.com/send?phone=$number",
+      mode: mode ?? LaunchMode.platformDefault,
+    );
 
-void launchTelegram(final String id) async => await launchURL("https://t.me/$id");
+void launchTelegram(final String id, final LaunchMode? mode) async => await launchURL(
+      "https://t.me/$id",
+      mode: mode ?? LaunchMode.platformDefault,
+    );
 
-void launchInstagram(final String username) async => await launchURL("https://instagram.com/$username");
+void launchInstagram(final String username, final LaunchMode? mode) async => await launchURL(
+      "https://instagram.com/$username",
+      mode: mode ?? LaunchMode.platformDefault,
+    );
 
 void call(final String phone) async => await launchURL("tel:$phone");
 
