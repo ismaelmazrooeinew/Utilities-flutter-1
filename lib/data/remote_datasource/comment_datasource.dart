@@ -17,6 +17,17 @@ class CommentDataSource {
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
+  Future<void> toggleLike({
+    required final String commentId,
+    required final Function(GenericResponse<CommentReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpPost(
+        url: "$baseUrl/Comment/ToggleLikeComment/$commentId",
+        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.body, fromMap: CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+      );
+
   Future<void> update({
     required final String id,
     required final CommentCreateUpdateDto dto,
