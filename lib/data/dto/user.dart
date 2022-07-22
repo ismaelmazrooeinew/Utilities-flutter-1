@@ -151,6 +151,7 @@ class UserReadDto {
     this.region,
     this.activity,
     this.wallet,
+    this.point,
     this.instagram,
     this.telegram,
     this.whatsapp,
@@ -188,6 +189,7 @@ class UserReadDto {
   final String? region;
   final String? activity;
   final double? wallet;
+  final int? point;
   final String? instagram;
   final String? telegram;
   final String? whatsapp;
@@ -233,6 +235,7 @@ class UserReadDto {
         region: json["region"] == null ? null : json["region"],
         activity: json["activity"] == null ? null : json["activity"],
         wallet: json["wallet"] == null ? null : json["wallet"],
+        point: json["point"] == null ? null : json["point"],
         showContactInfo: json["showContactInfo"] == null ? null : json["showContactInfo"],
         isAdmin: json["isAdmin"] == null ? null : json["isAdmin"],
         suspend: json["suspend"] == null ? null : json["suspend"],
@@ -267,6 +270,7 @@ class UserReadDto {
         "region": region == null ? null : region,
         "activity": activity == null ? null : activity,
         "wallet": wallet == null ? null : wallet,
+        "point": wallet == null ? null : point,
         "instagram": instagram == null ? null : instagram,
         "telegram": telegram == null ? null : telegram,
         "whatsapp": whatsapp == null ? null : whatsapp,
