@@ -189,7 +189,7 @@ class UserReadDto {
   final String? region;
   final String? activity;
   final double? wallet;
-  final int? point;
+  final double? point;
   final String? instagram;
   final String? telegram;
   final String? whatsapp;
