@@ -42,7 +42,7 @@ extension StringExtensions on String {
                 ? '1 week ago'
                 : 'Last week';
       else if (difference.inDays >= 2)
-        return persian? ' روز پیش${difference.inDays}' : '${difference.inDays} days ago';
+        return persian? '${difference.inDays.toString().persianNumber()} روز پیش' : '${difference.inDays} days ago';
       else if (difference.inDays >= 1)
         return persian
             ? numericDates
@@ -52,7 +52,7 @@ extension StringExtensions on String {
                 ? '1 day ago'
                 : 'Yesterday';
       else if (difference.inHours >= 2)
-        return persian ? ' ساعت پیش${difference.inHours}' : '${difference.inHours} hours ago';
+        return persian ? '${difference.inHours.toString().persianNumber()} ساعت پیش' : '${difference.inHours} hours ago';
       else if (difference.inHours >= 1)
         return persian
             ? numericDates
@@ -62,7 +62,7 @@ extension StringExtensions on String {
                 ? '1 hour ago'
                 : 'An hour ago';
       else if (difference.inMinutes >= 2)
-        return persian ? ' دقیقه پیش${difference.inMinutes.toString().persianNumber()}' : '${difference.inMinutes} minutes ago';
+        return persian ? '${difference.inMinutes.toString().persianNumber()} دقیقه پیش' : '${difference.inMinutes} minutes ago';
       else if (difference.inMinutes >= 1)
         return persian
             ? numericDates
@@ -72,7 +72,7 @@ extension StringExtensions on String {
                 ? '1 minute ago'
                 : 'A minute ago';
       else if (difference.inSeconds >= 3)
-        return persian ? ' ثانیه پیش${difference.inSeconds.toString().persianNumber()}' : '${difference.inSeconds} seconds ago';
+        return persian ? '${difference.inSeconds.toString().persianNumber()} ثانیه پیش' : '${difference.inSeconds} seconds ago';
       else
         return persian ? 'همین الان' : 'Just now';
     } catch (e) {
