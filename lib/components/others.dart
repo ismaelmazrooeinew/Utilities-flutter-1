@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
@@ -26,3 +27,8 @@ Widget dashedDivider({double? height}) => Row(
 Widget centerProgress() => const Center(child: CircularProgressIndicator());
 
 Widget centerProgressCupertino() => const Center(child: CupertinoActivityIndicator());
+
+Widget directionality({required final bool isRTL, required final Widget child}) => Directionality(
+      textDirection: isRTL ? ui.TextDirection.rtl : ui.TextDirection.ltr,
+      child: child,
+    );
