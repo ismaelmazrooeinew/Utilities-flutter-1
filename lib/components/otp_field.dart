@@ -5,6 +5,7 @@ import 'package:utilities/utilities.dart';
 Widget otpTextField({
   final int length = 4,
   final bool autoFocus = false,
+  final TextEditingController? controller,
   final MainAxisAlignment mainAxisAlignment = MainAxisAlignment.spaceBetween,
   final String? hintCharacter,
   final void Function(String)? onCompleted,
@@ -21,6 +22,7 @@ Widget otpTextField({
   final Color? activeColor,
 }) =>
     PinCodeTextField(
+      controller: controller,
       appContext: context,
       length: length,
       autoFocus: autoFocus,
