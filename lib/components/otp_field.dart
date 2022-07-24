@@ -9,7 +9,7 @@ Widget otpTextField({
   final MainAxisAlignment mainAxisAlignment = MainAxisAlignment.spaceBetween,
   final String? hintCharacter,
   final void Function(String)? onCompleted,
-  final double borderRadius = 1,
+  final double borderRadius = 8,
   final PinCodeFieldShape shape = PinCodeFieldShape.box,
   final EdgeInsetsGeometry? fieldOuterPadding,
   final double fieldHeight = 64,
@@ -24,6 +24,7 @@ Widget otpTextField({
       autoFocus: autoFocus,
       mainAxisAlignment: mainAxisAlignment,
       hintCharacter: hintCharacter,
+      animationType: AnimationType.fade,
       pinTheme: PinTheme(
         shape: shape,
         fieldOuterPadding: fieldOuterPadding,
