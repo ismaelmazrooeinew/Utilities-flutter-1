@@ -28,7 +28,7 @@ Widget centerProgress() => const Center(child: CircularProgressIndicator());
 
 Widget centerProgressCupertino() => const Center(child: CupertinoActivityIndicator());
 
-Widget directionality({required final bool isRTL, required final Widget child}) => Directionality(
-      textDirection: isRTL ? ui.TextDirection.rtl : ui.TextDirection.ltr,
+Widget directionality({required final bool rtl, required final Widget child}) => Directionality(
+      textDirection: rtl ? ui.TextDirection.rtl : ui.TextDirection.ltr,
       child: child,
     );
