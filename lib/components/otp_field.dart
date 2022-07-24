@@ -41,4 +41,4 @@ Widget otpTextField({
       keyboardType: TextInputType.number,
       onCompleted: onCompleted,
       onChanged: (final _) {},
-    );
+    ).ltr();
