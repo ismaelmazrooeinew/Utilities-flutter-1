@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 extension WidgetsExtension on Widget {
@@ -31,4 +32,7 @@ extension WidgetsExtension on Widget {
         onTap: onPressed,
         child: this,
       );
+
+  Widget ltr() => Directionality(textDirection: ui.TextDirection.ltr, child: this);
+  Widget rtl() => Directionality(textDirection: ui.TextDirection.rtl, child: this);
 }
