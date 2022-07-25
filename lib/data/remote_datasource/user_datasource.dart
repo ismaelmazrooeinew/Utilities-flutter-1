@@ -69,8 +69,8 @@ class UserDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/user/DeleteFromTeam/$teamId",
-        action: (Response response) => onResponse,
-        error: (Response response) => onError,
+        action: (Response response) => onResponse(),
+        error: (Response response) => onError(),
       );
 
   Future<void> activeMobile({
