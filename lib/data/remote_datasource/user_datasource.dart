@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:utilities/utilities.dart';
 
 class UserDataSource {
@@ -59,6 +60,17 @@ class UserDataSource {
         url: "$baseUrl/user/$id",
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+      );
+
+  Future<void> deleteFromTeam({
+    required final String teamId,
+    required final VoidCallback onResponse,
+    required final VoidCallback onError,
+  }) async =>
+      httpDelete(
+        url: "$baseUrl/user/DeleteFromTeam/$teamId",
+        action: (Response response) => onResponse,
+        error: (Response response) => onError,
       );
 
   Future<void> activeMobile({
