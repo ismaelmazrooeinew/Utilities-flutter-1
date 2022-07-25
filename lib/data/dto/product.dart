@@ -1,5 +1,6 @@
 import 'package:utilities/data/dto/report.dart';
 import 'package:utilities/data/dto/server_location.dart';
+import 'package:utilities/data/dto/team.dart';
 import 'package:utilities/utilities.dart';
 
 class ProductCreateUpdateDto {
@@ -254,7 +255,7 @@ class ProductReadDto {
   final List<VoteField>? myVotes;
   final List<FormReadDto>? forms;
   final List<CommentReadDto>? comments;
-  final List<UserReadDto>? teams;
+  final List<TeamReadDto>? teams;
   final List<Report>? reports;
 
   factory ProductReadDto.fromJson(String str) => ProductReadDto.fromMap(json.decode(str));
@@ -301,7 +302,7 @@ class ProductReadDto {
         myVotes: json["myVotes"] == null ? null : List<VoteField>.from(json["myVotes"].map((x) => VoteField.fromMap(x))),
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
-        teams: json["teams"] == null ? null : List<UserReadDto>.from(json["teams"].map((x) => UserReadDto.fromMap(x))),
+        teams: json["teams"] == null ? null : List<TeamReadDto>.from(json["teams"].map((x) => TeamReadDto.fromMap(x))),
         reports: json["reports"] == null ? null : List<Report>.from(json["reports"].map((x) => Report.fromMap(x))),
       );
 
