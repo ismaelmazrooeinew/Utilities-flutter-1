@@ -170,6 +170,7 @@ class UserReadDto {
     this.color,
     this.bookmarkFolders,
     this.growthRate,
+    this.isFollowing,
   });
 
   final String? token;
@@ -196,6 +197,7 @@ class UserReadDto {
   final String? linkedIn;
   final bool? showContactInfo;
   final bool? isAdmin;
+  final bool? isFollowing;
   final bool? suspend;
   final String? birthDate;
   final Gender? gender;
@@ -249,6 +251,7 @@ class UserReadDto {
         countFollowers: json["countFollowers"] == null ? null : json["countFollowers"],
         countProducts: json["countProducts"] == null ? null : json["countProducts"],
         color: json["color"] == null ? null : json["color"],
+        isFollowing: json["isFollowing"] == null ? null : json["isFollowing"],
         bookmarkFolders: json["bookmarkFolders"] == null ? null : List<BookmarkFolder>.from(json["bookmarkFolders"].map((x) => BookmarkFolder.fromMap(x))),
       );
 
@@ -287,6 +290,7 @@ class UserReadDto {
         "countFollowers": countFollowers == null ? null : countFollowers,
         "countProducts": countProducts == null ? null : countProducts,
         "color": color == null ? null : color,
+        "isFollowing": isFollowing == null ? null : isFollowing,
         "bookmarkFolders": bookmarkFolders == null ? null : List<dynamic>.from(bookmarkFolders!.map((x) => x.toMap())),
       };
 }
