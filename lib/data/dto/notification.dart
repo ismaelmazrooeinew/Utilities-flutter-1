@@ -7,6 +7,7 @@ class NotificationReadDto {
     this.message,
     this.createdAt,
     this.visited,
+    this.link,
     this.useCase,
     this.creatorUser,
     this.media,
@@ -17,6 +18,7 @@ class NotificationReadDto {
   final String? message;
   final String? createdAt;
   final bool? visited;
+  final String? link;
   final String? useCase;
   final UserReadDto? creatorUser;
   final List<MediaReadDto>? media;
@@ -31,6 +33,7 @@ class NotificationReadDto {
         message: json["message"] == null ? null : json["message"],
         createdAt: json["createdAt"] == null ? null : json["createdAt"],
         visited: json["visited"] == null ? null : json["visited"],
+        link: json["link"] == null ? null : json["link"],
         useCase: json["useCase"] == null ? null : json["useCase"],
         creatorUser: json["creatorUser"] == null ? null : UserReadDto.fromMap(json["creatorUser"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
@@ -42,6 +45,7 @@ class NotificationReadDto {
         "message": message == null ? null : message,
         "createdAt": createdAt == null ? null : createdAt,
         "visited": visited == null ? null : visited,
+        "link": link == null ? null : link,
         "useCase": useCase == null ? null : useCase,
         "creatorUser": creatorUser == null ? null : creatorUser!.toMap(),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
