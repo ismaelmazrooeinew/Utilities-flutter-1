@@ -1,5 +1,6 @@
 import 'package:utilities/utilities.dart';
 
+@JObj()
 class AppSettingsDto {
   AppSettingsDto({
     this.formFieldType,

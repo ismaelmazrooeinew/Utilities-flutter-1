@@ -35,6 +35,12 @@ dependencies:
   hashtagable: ^2.1.0
   pin_code_fields: ^7.4.0
   intl_phone_number_input: ^0.7.0+2
+  simple_json: ^2.2.0
+  simple_json_mapper: ^2.2.0
+
+dev_dependencies:
+  simple_json: ^2.2.0
+  build_runner: ^2.2.0
 
 flutter:
   uses-material-design: true
