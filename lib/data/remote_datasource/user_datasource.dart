@@ -85,13 +85,13 @@ class UserDataSource {
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
-  Future<void> getMobileVerificationCodeForLogin({
+  Future<void> getVerificationCodeForLogin({
     required final GetMobileVerificationCodeForLoginDto dto,
     required final Function(GenericResponse<String>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/user/GetMobileVerificationCodeForLogin",
+        url: "$baseUrl/user/GetVerificationCodeForLogin",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.body, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
@@ -109,13 +109,13 @@ class UserDataSource {
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
-  Future<void> verifyMobileForLogin({
+  Future<void> verifyCodeForLogin({
     required final VerifyMobileForLoginDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        url: "$baseUrl/user/VerifyMobileForLogin",
+        url: "$baseUrl/user/VerifyCodeForLogin",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
