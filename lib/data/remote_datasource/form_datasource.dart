@@ -1,3 +1,4 @@
+import 'package:utilities/data/dto/form_filed.dart';
 import 'package:utilities/utilities.dart';
 
 class FormDataSource {
@@ -19,12 +20,12 @@ class FormDataSource {
 
   Future<void> readByCategoryId({
     required final String categoryId,
-    required final Function(GenericResponse<FormReadDto>) onResponse,
+    required final Function(GenericResponse<FormFieldReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
         url: "$baseUrl/Form/$categoryId",
-        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, fromMap: FormReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<FormFieldReadDto>.fromJson(response.body, fromMap: FormFieldReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
