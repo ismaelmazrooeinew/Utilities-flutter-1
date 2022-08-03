@@ -42,7 +42,7 @@ extension StringExtensions on String {
                 ? '1 week ago'
                 : 'Last week';
       else if (difference.inDays >= 2)
-        return persian? '${difference.inDays.toString().persianNumber()} روز پیش' : '${difference.inDays} days ago';
+        return persian ? '${difference.inDays.toString().persianNumber()} روز پیش' : '${difference.inDays} days ago';
       else if (difference.inDays >= 1)
         return persian
             ? numericDates
