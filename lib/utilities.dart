@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
-export 'package:simple_json_mapper/simple_json_mapper.dart';
 
 export 'dart:async';
 export 'dart:convert';
