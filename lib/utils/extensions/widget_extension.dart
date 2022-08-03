@@ -1,4 +1,5 @@
 import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 
 extension WidgetsExtension on Widget {
@@ -34,5 +35,12 @@ extension WidgetsExtension on Widget {
       );
 
   Widget ltr() => Directionality(textDirection: ui.TextDirection.ltr, child: this);
+
   Widget rtl() => Directionality(textDirection: ui.TextDirection.rtl, child: this);
+
+  Widget scale(final double scale) => Transform.scale(scale: scale, child: this);
+
+  Widget translate(final Offset offset) => Transform.translate(offset: offset, child: this);
+
+  Widget rotate(final double scale) => Transform.rotate(angle: scale, child: this);
 }
