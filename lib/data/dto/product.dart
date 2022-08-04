@@ -3,6 +3,44 @@ import 'package:utilities/data/dto/server_location.dart';
 import 'package:utilities/data/dto/team.dart';
 import 'package:utilities/utilities.dart';
 
+extension ProductReadDtoExtension on ProductReadDto {
+  ProductReadDto sample() => ProductReadDto(
+        id: "id",
+        userId: "userId",
+        title: "title",
+        subtitle: "subtitle",
+        description: "description",
+        details: "details",
+        address: "address",
+        author: "author",
+        phoneNumber: "phoneNumber",
+        link: "link",
+        website: "website",
+        email: "email",
+        type: "type",
+        unit: "unit",
+        useCase: "useCase",
+        isForSale: true,
+        enabled: true,
+        isBookmarked: true,
+        latitude: 35,
+        longitude: 55,
+        visitsCount: 100,
+        minOrder: 10,
+        maxOrder: 1000,
+        price: 10000,
+        score: 10,
+        startDate: DateTime.now().toString(),
+        endDate: DateTime.now().toString(),
+        createdAt: DateTime.now().toString(),
+        updatedAt: DateTime.now().toString(),
+        deletedAt: null,
+        user: UserReadDto(),
+        status: 1,
+        media: <MediaReadDto>[MediaReadDto(link: Sample.loremPicsum)],
+      );
+}
+
 class ProductCreateUpdateDto {
   ProductCreateUpdateDto({
     this.id,
