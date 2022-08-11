@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utilities/utilities.dart';
 import 'package:utilities/utils/get.dart';
 
 Widget scaffold({
@@ -29,10 +30,12 @@ Widget scaffold({
         floatingActionButton: floatingActionButton,
         floatingActionButtonLocation: floatingActionButtonLocation,
         bottomNavigationBar: bottomNavigationBar,
-        body: Align(
-          alignment: alignment ?? Alignment.topLeft,
-          child: Container(constraints: constraints, decoration: decoration, padding: padding, child: body),
-        ),
+        body: Container(
+          constraints: constraints ?? BoxConstraints(maxWidth: 600),
+          decoration: decoration,
+          padding: padding,
+          child: body,
+        ).alignAtTopLeft(),
       ),
     );
 

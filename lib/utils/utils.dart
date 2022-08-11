@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 export 'constants.dart';
@@ -37,3 +36,7 @@ void delay(final int milliseconds, final VoidCallback action) async => Future<dy
       Duration(milliseconds: milliseconds),
       () async => action(),
     );
+
+void validateForm({required final GlobalKey<FormState> key, required final VoidCallback action}) {
+  if (key.currentState!.validate()) action();
+}

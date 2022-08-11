@@ -9,9 +9,9 @@ void showFilePicker({
   final List<String>? allowedExtensions,
 }) async {
   final FilePickerResult? result = await FilePicker.platform.pickFiles(
-  type: fileType,
-   allowMultiple: allowMultiple,
-   allowedExtensions: allowedExtensions,
+    type: fileType,
+    allowMultiple: allowMultiple,
+    allowedExtensions: allowedExtensions,
   );
   if (result != null) {
     if (allowMultiple) {
