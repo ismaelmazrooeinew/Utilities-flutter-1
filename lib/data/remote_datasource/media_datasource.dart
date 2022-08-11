@@ -8,7 +8,7 @@ class MediaDataSource {
 
   MediaDataSource({required this.baseUrl});
 
-  Future<void> create({
+  void create({
     final List<File>? files,
     final List<String>? links,
     required final String useCase,
@@ -18,7 +18,7 @@ class MediaDataSource {
     final String? productId,
     final String? userId,
     final String? notificationId,
-  }) async {
+  }) {
     files?.forEach((final File file) async {
       final Response<dynamic> i = await GetConnect()
           .post(
