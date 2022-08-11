@@ -19,29 +19,31 @@ class MediaDataSource {
     final String? userId,
     final String? notificationId,
   }) async {
-    final Response<dynamic> i = await GetConnect().post(
-      '$baseUrl/Media',
-      FormData(
-        <String, dynamic>{
-          'Files': files?.map((final File file) => MultipartFile(file, filename: file.path)),
-          'UseCase': useCase,
-          'CategoryId': categoryId,
-          'ContentId': contentId,
-          'ProductId': productId,
-          'UserId': userId,
-          'NotificationId': notificationId,
+    files?.forEach((final File file) async {
+      final Response<dynamic> i = await GetConnect().post(
+        '$baseUrl/Media',
+        FormData(
+          <String, dynamic>{
+            'Files': <MultipartFile>[MultipartFile(file, filename: file.path)],
+            'UseCase': useCase,
+            'CategoryId': categoryId,
+            'ContentId': contentId,
+            'ProductId': productId,
+            'UserId': userId,
+            'NotificationId': notificationId,
+          },
+        ),
+        headers: <String, String>{
+          "Authorization": getString(UtilitiesConstants.token) ?? "",
         },
-      ),
-      headers: <String, String>{
-        "Authorization": getString(UtilitiesConstants.token) ?? "",
-      },
-      contentType: "multipart/form-data",
-    );
-    logger.w(files?.length);
-    logger.w(useCase);
-    logger.w(productId);
-    logger.w(i.statusCode);
-    logger.w(i.bodyString);
+        contentType: "multipart/form-data",
+      );
+      logger.w(files.length);
+      logger.w(productId);
+      logger.w(useCase);
+      logger.w(i.statusCode);
+      logger.w(i.bodyString);
+    });
     links?.forEach((final String link) async {
       final Response<dynamic> i = await GetConnect().post(
         '$baseUrl/Media',
