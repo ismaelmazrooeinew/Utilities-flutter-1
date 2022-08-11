@@ -37,8 +37,11 @@ class MediaDataSource {
       },
       contentType: "multipart/form-data",
     );
-    logger.i(i.statusCode);
-    logger.i(i.bodyString);
+    logger.w(files?.length);
+    logger.w(useCase);
+    logger.w(productId);
+    logger.w(i.statusCode);
+    logger.w(i.bodyString);
     links?.forEach((final String link) async {
       final Response<dynamic> i = await GetConnect().post(
         '$baseUrl/Media',
