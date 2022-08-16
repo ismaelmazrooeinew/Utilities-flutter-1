@@ -18,8 +18,8 @@ class TransactionReadDto {
   final String? descriptions;
   final int? statusId;
   final String? paymentId;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
+  final String? createdAt;
+  final String? updatedAt;
 
 
   factory TransactionReadDto.fromJson(String str) => TransactionReadDto.fromMap(json.decode(str));
