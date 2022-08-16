@@ -114,7 +114,7 @@ class ProductCreateUpdateDto {
   final String? deletedAt;
   final UserReadDto? user;
   final int? status;
-  final List<ServerLocationReadDto>? locations;
+  final List<int>? locations;
   final List<MediaReadDto>? media;
   final List<String>? categories;
   final List<VoteField>? voteFields;
@@ -158,7 +158,7 @@ class ProductCreateUpdateDto {
         deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         status: json["status"] == null ? null : json["status"],
-        locations: json["locations"] == null ? null : List<ServerLocationReadDto>.from(json["locations"].map((x) => ServerLocationReadDto.fromMap(x))),
+        locations: json["locations"] == null ? null : List<int>.from(json["locations"].map((x) => x)),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<String>.from(json["categories"].map((x) => x)),
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
@@ -199,7 +199,7 @@ class ProductCreateUpdateDto {
         "deletedAt": deletedAt == null ? null : deletedAt,
         "user": user == null ? null : user!.toMap(),
         "status": status == null ? null : status,
-        "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
+        "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
         "voteFields": voteFields == null ? null : List<dynamic>.from(voteFields!.map((x) => x.toMap())),
