@@ -14,7 +14,7 @@ class TransactionDataSource {
       httpGet(
         url: "$baseUrl/Transaction",
         headers: <String, String>{
-          "Authorization": "${getString(UtilitiesConstants.token)}" ?? "",
+          "Authorization": "${getString(UtilitiesConstants.token)}",
         },
         action: (Response response) => onResponse(GenericResponse<TransactionReadDto>.fromJson(response.body, fromMap: TransactionReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
