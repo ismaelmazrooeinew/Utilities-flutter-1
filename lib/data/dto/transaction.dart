@@ -11,7 +11,7 @@ class TransactionReadDto {
     this.message,
   });
 
-  final List<Result>? result;
+  final List<ResultTransaction>? result;
   final int? status;
   final String? message;
 
@@ -20,7 +20,7 @@ class TransactionReadDto {
   String toJson() => json.encode(toMap());
 
   factory TransactionReadDto.fromMap(Map<String, dynamic> json) => TransactionReadDto(
-    result: List<Result>.from(json["result"].map((x) => Result.fromMap(x))),
+    result: List<ResultTransaction>.from(json["result"].map((x) => ResultTransaction.fromMap(x))),
     status: json["status"],
     message: json["message"],
   );
@@ -32,8 +32,8 @@ class TransactionReadDto {
   };
 }
 
-class Result {
-  Result({
+class ResultTransaction {
+  ResultTransaction({
     this.id,
     this.userId,
     this.amount,
@@ -53,11 +53,11 @@ class Result {
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
-  factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
+  factory ResultTransaction.fromJson(String str) => ResultTransaction.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Result.fromMap(Map<String, dynamic> json) => Result(
+  factory ResultTransaction.fromMap(Map<String, dynamic> json) => ResultTransaction(
     id: json["id"],
     userId: json["userId"],
     amount: json["amount"],
