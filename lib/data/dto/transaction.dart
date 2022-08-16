@@ -1,8 +1,5 @@
-// To parse this JSON data, do
-//
-//     final transactionReadDto = transactionReadDtoFromMap(jsonString);
 
-import 'dart:convert';
+import 'package:utilities/utilities.dart';
 
 class TransactionReadDto {
   TransactionReadDto({
