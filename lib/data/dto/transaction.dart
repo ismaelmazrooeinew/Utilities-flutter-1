@@ -1,5 +1,8 @@
+// To parse this JSON data, do
+//
+//     final transactionReadDto = transactionReadDtoFromMap(jsonString);
 
-import 'package:utilities/utilities.dart';
+import 'dart:convert';
 
 class TransactionReadDto {
   TransactionReadDto({
@@ -11,6 +14,17 @@ class TransactionReadDto {
   final List<ResultTransaction>? result;
   final int? status;
   final String? message;
+
+  TransactionReadDto copyWith({
+    List<ResultTransaction>? result,
+    int? status,
+    String? message,
+  }) =>
+      TransactionReadDto(
+        result: result ?? this.result,
+        status: status ?? this.status,
+        message: message ?? this.message,
+      );
 
   factory TransactionReadDto.fromJson(String str) => TransactionReadDto.fromMap(json.decode(str));
 
@@ -49,6 +63,27 @@ class ResultTransaction {
   final String? paymentId;
   final DateTime? createdAt;
   final DateTime? updatedAt;
+
+  ResultTransaction copyWith({
+    String? id,
+    String? userId,
+    int? amount,
+    String? descriptions,
+    int? statusId,
+    String? paymentId,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      ResultTransaction(
+        id: id ?? this.id,
+        userId: userId ?? this.userId,
+        amount: amount ?? this.amount,
+        descriptions: descriptions ?? this.descriptions,
+        statusId: statusId ?? this.statusId,
+        paymentId: paymentId ?? this.paymentId,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+      );
 
   factory ResultTransaction.fromJson(String str) => ResultTransaction.fromMap(json.decode(str));
 
