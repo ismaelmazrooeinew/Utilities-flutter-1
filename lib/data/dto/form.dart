@@ -33,12 +33,12 @@ class FormCreateUpdateDto {
   FormCreateUpdateDto({
     this.userId,
     this.productId,
-    this.form,
+    this.forms,
   });
 
   final String? userId;
   final String? productId;
-  final List<FormReadDto>? form;
+  final List<FormReadDto>? forms;
 
   factory FormCreateUpdateDto.fromJson(String str) => FormCreateUpdateDto.fromMap(json.decode(str));
 
@@ -47,13 +47,13 @@ class FormCreateUpdateDto {
   factory FormCreateUpdateDto.fromMap(Map<String, dynamic> json) => FormCreateUpdateDto(
         userId: json["userId"] == null ? null : json["userId"],
         productId: json["productId"] == null ? null : json["productId"],
-        form: json["form"] == null ? null : List<FormReadDto>.from(json["form"].map((x) => FormReadDto.fromMap(x))),
+        forms: json["form"] == null ? null : List<FormReadDto>.from(json["form"].map((x) => FormReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
         "userId": userId == null ? null : userId,
         "productId": productId == null ? null : productId,
-        "form": form == null ? null : List<dynamic>.from(form!.map((x) => x.toMap())),
+        "form": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
       };
 }
 

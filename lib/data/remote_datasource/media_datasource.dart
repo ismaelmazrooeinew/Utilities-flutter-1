@@ -38,12 +38,6 @@ class MediaDataSource {
           "Authorization": getString(UtilitiesConstants.token) ?? "",
         },
         contentType: "multipart/form-data",
-      )
-          .then(
-        (final _) {
-          action();
-          return Response();
-        },
       );
       logger.w(files.length);
       logger.w(productId);
@@ -66,15 +60,11 @@ class MediaDataSource {
           },
         ),
         headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
-      ).then(
-        (final _) {
-          action();
-          return Response();
-        },
       );
       logger.i(i.statusCode);
       logger.i(i.bodyString);
     });
+    action();
   }
 
   Future<void> delete({
