@@ -245,7 +245,7 @@ class UserReadDto {
         gender: json["gender"] == null ? null : Gender.fromMap(json["gender"]),
         growthRate: json["growthRate"] == null ? null : GrowthRateReadDto.fromMap(json["growthRate"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
-        locations: json["locations"] == null ? null : List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
+        locations: json["location"] == null ? null : List<LocationReadDto>.from(json["location"].map((x) => LocationReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
         countFollowers: json["countFollowers"] == null ? null : json["countFollowers"],
