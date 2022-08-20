@@ -16,7 +16,7 @@ dependencies:
 
   url_launcher: ^6.0.15
   get: ^4.6.3
-#  package_info_plus: ^1.4.3+1
+  package_info_plus: ^1.4.3+1
   share_plus: ^4.0.10
   file_picker: ^5.0.1
   intl: ^0.17.0
@@ -26,13 +26,13 @@ dependencies:
   persian_tools: ^1.0.1
   group_button: ^5.0.1
   logger: ^1.1.0
-  image_cropper: ^2.0.3
+  image_cropper: ^3.0.0
   cached_network_image: ^3.2.1
   video_player: ^2.4.2
   just_audio: ^0.9.27
   syncfusion_flutter_pdfviewer: ^20.1.55-beta
   path_provider: ^2.0.11
-  flutter_local_notifications: ^9.7.0
+  flutter_local_notifications: ^9.8.0+1
   flutter_easyloading: ^3.0.5
   hashtagable: ^2.1.0
   pin_code_fields: ^7.4.0
