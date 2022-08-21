@@ -37,7 +37,6 @@ dependencies:
   hashtagable: ^2.1.0
   pin_code_fields: ^7.4.0
   intl_phone_number_input: ^0.7.0+2
-  fluttertoast: ^8.0.8
 
 flutter:
   uses-material-design: true
