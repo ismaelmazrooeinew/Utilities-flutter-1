@@ -171,6 +171,9 @@ class UserReadDto {
     this.bookmarkFolders,
     this.growthRate,
     this.isFollowing,
+    this.soundcloud,
+    this.dribble,
+    this.pinterest,
   });
 
   final String? token;
@@ -193,6 +196,9 @@ class UserReadDto {
   final double? point;
   final String? instagram;
   final String? telegram;
+  final String? dribble;
+  final String? soundcloud;
+  final String? pinterest;
   final String? whatsapp;
   final String? linkedIn;
   final bool? showContactInfo;
@@ -234,6 +240,9 @@ class UserReadDto {
         telegram: json["telegram"] == null ? null : json["telegram"],
         whatsapp: json["whatsapp"] == null ? null : json["whatsapp"],
         linkedIn: json["linkedIn"] == null ? null : json["linkedIn"],
+        soundcloud: json["soundCloud"] == null ? null : json["soundCloud"],
+        dribble: json["dribble"] == null ? null : json["dribble"],
+        pinterest: json["pinterest"] == null ? null : json["pinterest"],
         region: json["region"] == null ? null : json["region"],
         activity: json["activity"] == null ? null : json["activity"],
         wallet: json["wallet"] == null ? null : json["wallet"],
@@ -278,6 +287,9 @@ class UserReadDto {
         "telegram": telegram == null ? null : telegram,
         "whatsapp": whatsapp == null ? null : whatsapp,
         "linkedIn": linkedIn == null ? null : linkedIn,
+        "pinterest": pinterest == null ? null : pinterest,
+        "dribble": dribble == null ? null : dribble,
+        "soundCloud": soundcloud == null ? null : soundcloud,
         "showContactInfo": showContactInfo == null ? null : showContactInfo,
         "isAdmin": isAdmin == null ? null : isAdmin,
         "suspend": suspend == null ? null : suspend,
