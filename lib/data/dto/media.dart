@@ -6,6 +6,7 @@ class MediaReadDto {
     this.type = -1,
     this.useCase = "-1",
     this.link = "-1",
+    this.url = "-1",
     this.title = "-1",
     this.file,
     this.productId,
@@ -20,6 +21,7 @@ class MediaReadDto {
   final int type;
   final String useCase;
   final String link;
+  final String url;
   final String? file;
   final String title;
   final String? notificationId;
@@ -38,6 +40,7 @@ class MediaReadDto {
         type: json["type"] ?? -1,
         useCase: json["useCase"] ?? "-1",
         link: json["link"] ?? "-1",
+        url: json["url"] ?? "-1",
         title: json["title"] ?? "-1",
         file: json["file"] == null ? null : json["file"],
         notificationId: json["notificationId"] == null ? null : json["notificationId"],
@@ -53,6 +56,7 @@ class MediaReadDto {
         "type": type,
         "useCase": useCase,
         "link": link,
+        "url": url,
         "title": title,
         "file": file == null ? null : file,
         "notificationId": notificationId == null ? null : notificationId,
@@ -70,6 +74,15 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           ?.where((final MediaReadDto e) => e.link.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.link,
+          )
+          .toList() ??
+      <String>[];
+
+  List<String> getImageUrl({final String? useCase}) =>
+      this
+          ?.where((final MediaReadDto e) => e.url.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.url,
           )
           .toList() ??
       <String>[];
