@@ -93,15 +93,15 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
   String getImageUrl() => this!.first.url ?? '';
 
-  String getAvatar() =>
-      this
-          ?.where((final MediaReadDto e) => e.url.isImageFileName && ((e.useCase == 'avatar')))
-          .map(
-            (final MediaReadDto e) => e.url,
-          )
-          .toList()
-          .first ??
-      ''; //
+  String getAvatar() {
+    List<String> list = this!
+        .where((final MediaReadDto e) => e.url.isImageFileName && ((e.useCase == 'avatar')))
+        .map(
+          (final MediaReadDto e) => e.url,
+        )
+        .toList();
+    return list.length > 0 ? list.first : "--";
+  } //
 
   List<String> getAudios({final String? useCase}) =>
       this
