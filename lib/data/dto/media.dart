@@ -100,7 +100,7 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           (final MediaReadDto e) => e.url,
         )
         .toList();
-    return list.length > 0 ? list.first : "--";
+    return list.isNotEmpty ? list.first : "--";
   } //
 
   List<String> getAudios({final String? useCase}) =>
