@@ -80,7 +80,7 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
   String getAvatar() =>
       this
-          ?.where((final MediaReadDto e) => e.url.isImageFileName && ((e.useCase == 'profileImage')))
+          ?.where((final MediaReadDto e) => e.url.isImageFileName && ((e.useCase == 'avatar')))
           .map(
             (final MediaReadDto e) => e.url,
           )
