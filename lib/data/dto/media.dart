@@ -15,6 +15,7 @@ class MediaReadDto {
     this.contentId,
     this.notificationId,
     this.visibility,
+    this.size,
   });
 
   final String id;
@@ -30,6 +31,7 @@ class MediaReadDto {
   final String? productId;
   final int? visibility;
   final String? userId;
+  final String? size;
 
   factory MediaReadDto.fromJson(String str) => MediaReadDto.fromMap(json.decode(str));
 
@@ -49,6 +51,7 @@ class MediaReadDto {
         productId: json["productId"] == null ? null : json["productId"],
         visibility: json["visibility"] == null ? null : json["visibility"],
         userId: json["userId"] == null ? null : json["userId"],
+        size: json["size"] == null ? null : json["size"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -65,6 +68,7 @@ class MediaReadDto {
         "productId": productId == null ? null : productId,
         "visibility": visibility == null ? null : visibility,
         "userId": userId == null ? null : userId,
+        "size": size == null ? null : size,
       };
 }
 

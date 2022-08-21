@@ -18,6 +18,7 @@ class MediaDataSource {
     final String? productId,
     final String? userId,
     final String? notificationId,
+    final String? size,
   }) async {
     files?.forEach((final File file) async {
       final Response<dynamic> i = await GetConnect()
@@ -32,6 +33,7 @@ class MediaDataSource {
             'ProductId': productId,
             'UserId': userId,
             'NotificationId': notificationId,
+            'Size': size,
           },
         ),
         headers: <String, String>{
