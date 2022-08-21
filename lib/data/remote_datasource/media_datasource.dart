@@ -60,6 +60,7 @@ class MediaDataSource {
             'ProductId': productId,
             'UserId': userId,
             'NotificationId': notificationId,
+            'Size': size,
           },
         ),
         headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
