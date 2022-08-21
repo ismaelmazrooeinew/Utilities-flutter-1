@@ -333,7 +333,7 @@ class ProductReadDto {
         deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         status: json["status"] == null ? null : json["status"],
-        locations: json["locations"] == null ? null : List<ServerLocationReadDto>.from(json["locations"].map((x) => ServerLocationReadDto.fromMap(x))),
+        locations: json["location"] == null ? null : List<ServerLocationReadDto>.from(json["location"].map((x) => ServerLocationReadDto.fromMap(x))),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
