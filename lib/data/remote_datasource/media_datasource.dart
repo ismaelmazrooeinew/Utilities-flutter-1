@@ -38,6 +38,7 @@ class MediaDataSource {
           "Authorization": getString(UtilitiesConstants.token) ?? "",
         },
         contentType: "multipart/form-data",
+
       );
       logger.w(files.length);
       logger.w(productId);
