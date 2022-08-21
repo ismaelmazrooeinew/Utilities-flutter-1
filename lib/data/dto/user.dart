@@ -31,6 +31,9 @@ class UserCreateUpdateDto {
     this.genderId,
     this.categories,
     this.locations,
+    this.pinterest,
+    this.soundcloud,
+    this.dribble,
   });
 
   final String? id;
@@ -47,6 +50,9 @@ class UserCreateUpdateDto {
   final String? telegram;
   final String? whatsapp;
   final String? linkedIn;
+  final String? soundcloud;
+  final String? pinterest;
+  final String? dribble;
   final String? password;
   final String? appUserName;
   final String? appPhoneNumber;
@@ -82,6 +88,9 @@ class UserCreateUpdateDto {
         telegram: json["telegram"] == null ? null : json["telegram"],
         whatsapp: json["whatsapp"] == null ? null : json["whatsapp"],
         linkedIn: json["linkedIn"] == null ? null : json["linkedIn"],
+        soundcloud: json["soundCloud"] == null ? null : json["soundCloud"],
+        dribble: json["dribble"] == null ? null : json["dribble"],
+        pinterest: json["pinterest"] == null ? null : json["pinterest"],
         password: json["password"] == null ? null : json["password"],
         appUserName: json["appUserName"] == null ? null : json["appUserName"],
         appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
@@ -114,6 +123,9 @@ class UserCreateUpdateDto {
         "telegram": telegram == null ? null : telegram,
         "whatsapp": whatsapp == null ? null : whatsapp,
         "linkedIn": linkedIn == null ? null : linkedIn,
+        "soundCloud": soundcloud == null ? null : soundcloud,
+        "pinterest": pinterest == null ? null : pinterest,
+        "dribble": dribble == null ? null : dribble,
         "password": password == null ? null : password,
         "appUserName": appUserName == null ? null : appUserName,
         "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
