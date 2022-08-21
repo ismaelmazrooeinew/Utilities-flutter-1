@@ -82,14 +82,26 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           .toList() ??
       <String>[];
 
-  String getAvatar() =>
+  List<String> getImagesUrl({final String? useCase}) =>
       this
-          ?.where((final MediaReadDto e) => e.url.isImageFileName && ((e.useCase == 'avatar')))
+          ?.where((final MediaReadDto e) => e.link.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.url,
           )
-          .toList().first ??
-      '';//
+          .toList() ??
+      <String>[];
+
+  String getImageUrl() => this!.first.url ?? '';
+
+  String getAvatar() {
+    List<String> list = this!
+        .where((final MediaReadDto e) => e.url.isImageFileName && ((e.useCase == 'avatar')))
+        .map(
+          (final MediaReadDto e) => e.url,
+        )
+        .toList();
+    return list.isNotEmpty ? list.first : "--";
+  } //
 
   List<String> getAudios({final String? useCase}) =>
       this
