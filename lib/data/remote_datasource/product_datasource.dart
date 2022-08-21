@@ -74,7 +74,6 @@ class ProductDataSource {
       );
 
   Future<void> readMine({
-    required final ProductCreateUpdateDto filter,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
