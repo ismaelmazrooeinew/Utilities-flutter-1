@@ -555,5 +555,8 @@ class ProductFilterDto {
         "pageSize": pageSize == null ? null : pageSize,
         "pageNumber": pageNumber == null ? null : pageNumber,
         "useCase": useCase == null ? null : useCase,
+        "showCreator": showCreator == null ? null : showCreator,
+        "showTeams": showTeams == null ? null : showTeams,
+        "showCategories": showCategories == null ? null : showCategories,
       };
 }
