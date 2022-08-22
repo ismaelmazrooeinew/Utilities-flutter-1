@@ -52,8 +52,8 @@ class IranLocationReadDto {
     this.slug,
   });
 
-  final num? id;
-  final num? provinceId;
+  final int? id;
+  final int? provinceId;
   final String? name;
   final String? slug;
 
