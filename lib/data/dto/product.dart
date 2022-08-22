@@ -74,6 +74,7 @@ class ProductCreateUpdateDto {
     this.deletedAt,
     this.user,
     this.status,
+    this.showCreator,
     this.locations,
     this.media,
     this.categories,
@@ -101,6 +102,7 @@ class ProductCreateUpdateDto {
   final bool? isForSale;
   final bool? enabled;
   final bool? isBookmarked;
+  final bool? showCreator;
   final double? latitude;
   final double? longitude;
   final int? visitsCount;
@@ -147,6 +149,7 @@ class ProductCreateUpdateDto {
         isBookmarked: json["isBookmarked"] == null ? null : json["isBookmarked"],
         latitude: json["latitude"] == null ? null : json["latitude"],
         longitude: json["longitude"] == null ? null : json["longitude"],
+        showCreator: json["showCreator"] == null ? null : json["showCreator"],
         visitsCount: json["visitsCount"] == null ? null : json["visitsCount"],
         minOrder: json["minOrder"] == null ? null : json["minOrder"],
         maxOrder: json["maxOrder"] == null ? null : json["maxOrder"],
@@ -183,6 +186,7 @@ class ProductCreateUpdateDto {
         "type": type == null ? null : type,
         "unit": unit == null ? null : unit,
         "useCase": useCase == null ? null : useCase,
+        "showCreator": showCreator == null ? null : showCreator,
         "isForSale": isForSale == null ? null : isForSale,
         "enabled": enabled == null ? null : enabled,
         "isBookmarked": isBookmarked == null ? null : isBookmarked,
