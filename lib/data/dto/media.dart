@@ -75,23 +75,23 @@ class MediaReadDto {
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
   List<String> getImages({final String? useCase}) =>
       this
-          ?.where((final MediaReadDto e) => e.link.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
-          .map(
-            (final MediaReadDto e) => e.link,
-          )
-          .toList() ??
-      <String>[];
-
-  List<String> getImagesUrl({final String? useCase}) =>
-      this
-          ?.where((final MediaReadDto e) => e.link.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
+          ?.where((final MediaReadDto e) => e.url.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.url,
           )
           .toList() ??
       <String>[];
 
-  String getImageUrl() => this!.first.url ?? '';
+  List<String> getImagesUrl({final String? useCase}) =>
+      this
+          ?.where((final MediaReadDto e) => e.url.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.url,
+          )
+          .toList() ??
+      <String>[];
+
+  String getImageUrl() => this!.first.url ;
 
   String getAvatar() {
     List<String> list = this!
