@@ -35,7 +35,7 @@ Widget scaffold({
           decoration: decoration,
           padding: padding,
           child: body,
-        ).alignAtTopLeft(),
+        ).alignAtTopCenter(),
       ),
     );
 
