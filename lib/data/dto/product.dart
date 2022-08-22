@@ -74,7 +74,6 @@ class ProductCreateUpdateDto {
     this.deletedAt,
     this.user,
     this.status,
-    this.showCreator,
     this.locations,
     this.media,
     this.categories,
@@ -102,7 +101,6 @@ class ProductCreateUpdateDto {
   final bool? isForSale;
   final bool? enabled;
   final bool? isBookmarked;
-  final bool? showCreator;
   final double? latitude;
   final double? longitude;
   final int? visitsCount;
@@ -149,7 +147,6 @@ class ProductCreateUpdateDto {
         isBookmarked: json["isBookmarked"] == null ? null : json["isBookmarked"],
         latitude: json["latitude"] == null ? null : json["latitude"],
         longitude: json["longitude"] == null ? null : json["longitude"],
-        showCreator: json["showCreator"] == null ? null : json["showCreator"],
         visitsCount: json["visitsCount"] == null ? null : json["visitsCount"],
         minOrder: json["minOrder"] == null ? null : json["minOrder"],
         maxOrder: json["maxOrder"] == null ? null : json["maxOrder"],
@@ -186,7 +183,6 @@ class ProductCreateUpdateDto {
         "type": type == null ? null : type,
         "unit": unit == null ? null : unit,
         "useCase": useCase == null ? null : useCase,
-        "showCreator": showCreator == null ? null : showCreator,
         "isForSale": isForSale == null ? null : isForSale,
         "enabled": enabled == null ? null : enabled,
         "isBookmarked": isBookmarked == null ? null : isBookmarked,
@@ -431,6 +427,9 @@ class ProductFilterDto {
     this.teams,
     this.minimal,
     this.isFollowing,
+    this.showCreator,
+    this.showCategories,
+    this.showTeams,
   });
 
   final String? title;
@@ -451,6 +450,9 @@ class ProductFilterDto {
   final bool? isBookmarked;
   final bool? minimal;
   final bool? isFollowing;
+  final bool? showCreator;
+  final bool? showTeams;
+  final bool? showCategories;
   final int? visitsCount;
   final double? length;
   final double? width;
@@ -511,6 +513,9 @@ class ProductFilterDto {
         categories: json["categories"] == null ? null : json["categories"],
         pageNumber: json["pageNumber"] == null ? null : json["pageNumber"],
         useCase: json["useCase"] == null ? null : json["useCase"],
+        showCreator: json["showCreator"] == null ? null : json["showCreator"],
+        showTeams: json["showTeams"] == null ? null : json["showTeams"],
+        showCategories: json["showCategories"] == null ? null : json["showCategories"],
       );
 
   Map<String, dynamic> toMap() => {
