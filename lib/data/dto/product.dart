@@ -427,6 +427,9 @@ class ProductFilterDto {
     this.teams,
     this.minimal,
     this.isFollowing,
+    this.showCreator,
+    this.showCategories,
+    this.showTeams,
   });
 
   final String? title;
@@ -447,6 +450,9 @@ class ProductFilterDto {
   final bool? isBookmarked;
   final bool? minimal;
   final bool? isFollowing;
+  final bool? showCreator;
+  final bool? showTeams;
+  final bool? showCategories;
   final int? visitsCount;
   final double? length;
   final double? width;
@@ -507,6 +513,9 @@ class ProductFilterDto {
         categories: json["categories"] == null ? null : json["categories"],
         pageNumber: json["pageNumber"] == null ? null : json["pageNumber"],
         useCase: json["useCase"] == null ? null : json["useCase"],
+        showCreator: json["showCreator"] == null ? null : json["showCreator"],
+        showTeams: json["showTeams"] == null ? null : json["showTeams"],
+        showCategories: json["showCategories"] == null ? null : json["showCategories"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -546,5 +555,8 @@ class ProductFilterDto {
         "pageSize": pageSize == null ? null : pageSize,
         "pageNumber": pageNumber == null ? null : pageNumber,
         "useCase": useCase == null ? null : useCase,
+        "showCreator": showCreator == null ? null : showCreator,
+        "showTeams": showTeams == null ? null : showTeams,
+        "showCategories": showCategories == null ? null : showCategories,
       };
 }
