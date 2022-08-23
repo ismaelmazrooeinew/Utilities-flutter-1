@@ -105,36 +105,36 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
   List<String> getAudios({final String? useCase}) =>
       this
-          ?.where((final MediaReadDto e) => e.link.isAudioFileName && (useCase != null ? (e.useCase == useCase) : true))
+          ?.where((final MediaReadDto e) => e.url.isAudioFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
-            (final MediaReadDto e) => e.link,
+            (final MediaReadDto e) => e.url,
           )
           .toList() ??
       <String>[];
 
   List<String> getVideos({final String? useCase}) =>
       this
-          ?.where((final MediaReadDto e) => e.link.isVideoFileName && (useCase != null ? (e.useCase == useCase) : true))
+          ?.where((final MediaReadDto e) => e.url.isVideoFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
-            (final MediaReadDto e) => e.link,
+            (final MediaReadDto e) => e.url,
           )
           .toList() ??
       <String>[];
 
   List<String> getPdfs({final String? useCase}) =>
       this
-          ?.where((final MediaReadDto e) => e.link.isPDFFileName && (useCase != null ? (e.useCase == useCase) : true))
+          ?.where((final MediaReadDto e) => e.url.isPDFFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
-            (final MediaReadDto e) => e.link,
+            (final MediaReadDto e) => e.url,
           )
           .toList() ??
       <String>[];
 
   List<String> getDocs({final String? useCase}) =>
       this
-          ?.where((final MediaReadDto e) => e.link.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true))
+          ?.where((final MediaReadDto e) => e.url.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
-            (final MediaReadDto e) => e.link,
+            (final MediaReadDto e) => e.url,
           )
           .toList() ??
       <String>[];
@@ -152,37 +152,37 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
 extension MediaResponseExtension on List<MediaReadDto> {
   List<String> getImages({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.link.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
+      .where((final MediaReadDto e) => e.url.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
       .map(
-        (final MediaReadDto e) => e.link,
+        (final MediaReadDto e) => e.url,
       )
       .toList();
 
   List<String> getAudios({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.link.isAudioFileName && (useCase != null ? (e.useCase == useCase) : true))
+      .where((final MediaReadDto e) => e.url.isAudioFileName && (useCase != null ? (e.useCase == useCase) : true))
       .map(
-        (final MediaReadDto e) => e.link,
+        (final MediaReadDto e) => e.url,
       )
       .toList();
 
   List<String> getVideos({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.link.isVideoFileName && (useCase != null ? (e.useCase == useCase) : true))
+      .where((final MediaReadDto e) => e.url.isVideoFileName && (useCase != null ? (e.useCase == useCase) : true))
       .map(
-        (final MediaReadDto e) => e.link,
+        (final MediaReadDto e) => e.url,
       )
       .toList();
 
   List<String> getPdfs({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.link.isPDFFileName && (useCase != null ? (e.useCase == useCase) : true))
+      .where((final MediaReadDto e) => e.url.isPDFFileName && (useCase != null ? (e.useCase == useCase) : true))
       .map(
-        (final MediaReadDto e) => e.link,
+        (final MediaReadDto e) => e.url,
       )
       .toList();
 
   List<String> getDocs({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.link.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true))
+      .where((final MediaReadDto e) => e.url.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true))
       .map(
-        (final MediaReadDto e) => e.link,
+        (final MediaReadDto e) => e.url,
       )
       .toList();
 

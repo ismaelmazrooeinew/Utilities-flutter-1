@@ -434,6 +434,7 @@ class ProductFilterDto {
     this.showCreator,
     this.showCategories,
     this.showTeams,
+    this.userId,
   });
 
   final String? title;
@@ -447,6 +448,7 @@ class ProductFilterDto {
   final String? phoneNumber;
   final String? email;
   final String? type;
+  final String? userId;
   final double? startPriceRange;
   final double? endPriceRange;
   final bool? enabled;
@@ -492,6 +494,7 @@ class ProductFilterDto {
         phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
         email: json["email"] == null ? null : json["email"],
         type: json["type"] == null ? null : json["type"],
+        userId: json["userId"] == null ? null : json["userId"],
         startPriceRange: json["startPriceRange"] == null ? null : json["startPriceRange"],
         endPriceRange: json["endPriceRange"] == null ? null : json["endPriceRange"],
         enabled: json["enabled"] == null ? null : json["enabled"],
@@ -534,6 +537,7 @@ class ProductFilterDto {
         "phoneNumber": phoneNumber == null ? null : phoneNumber,
         "email": email == null ? null : email,
         "type": type == null ? null : type,
+        "userId": userId == null ? null : userId,
         "startPriceRange": startPriceRange == null ? null : startPriceRange,
         "endPriceRange": endPriceRange == null ? null : endPriceRange,
         "enabled": enabled == null ? null : enabled,

@@ -34,6 +34,7 @@ class UserCreateUpdateDto {
     this.pinterest,
     this.soundcloud,
     this.dribble,
+    this.state,
   });
 
   final String? id;
@@ -61,6 +62,7 @@ class UserCreateUpdateDto {
   final String? region;
   final String? activity;
   final String? color;
+  final String? state;
   final bool? suspend;
   final double? wallet;
   final bool? showContactInfo;
@@ -96,6 +98,7 @@ class UserCreateUpdateDto {
         appPhoneNumber: json["appPhoneNumber"] == null ? null : json["appPhoneNumber"],
         appEmail: json["appEmail"] == null ? null : json["appEmail"],
         type: json["type"] == null ? null : json["type"],
+        state: json["state"] == null ? null : json["state"],
         region: json["region"] == null ? null : json["region"],
         activity: json["activity"] == null ? null : json["activity"],
         color: json["color"] == null ? null : json["color"],
@@ -131,6 +134,7 @@ class UserCreateUpdateDto {
         "appPhoneNumber": appPhoneNumber == null ? null : appPhoneNumber,
         "appEmail": appEmail == null ? null : appEmail,
         "type": type == null ? null : type,
+        "state": state == null ? null : state,
         "region": region == null ? null : region,
         "activity": activity == null ? null : activity,
         "color": color == null ? null : color,
@@ -186,6 +190,7 @@ class UserReadDto {
     this.soundcloud,
     this.dribble,
     this.pinterest,
+    this.state,
   });
 
   final String? token;
@@ -201,6 +206,7 @@ class UserReadDto {
   final String? firstName;
   final String? lastName;
   final String? headline;
+  final String? state;
   final String? website;
   final String? region;
   final String? activity;
@@ -245,6 +251,7 @@ class UserReadDto {
         appEmail: json["appEmail"] == null ? null : json["appEmail"],
         type: json["type"] == null ? null : json["type"],
         firstName: json["firstName"] == null ? null : json["firstName"],
+        state: json["state"] == null ? null : json["state"],
         lastName: json["lastName"] == null ? null : json["lastName"],
         headline: json["headline"] == null ? null : json["headline"],
         website: json["website"] == null ? null : json["website"],
@@ -290,6 +297,7 @@ class UserReadDto {
         "firstName": firstName == null ? null : firstName,
         "lastName": lastName == null ? null : lastName,
         "headline": headline == null ? null : headline,
+        "state": state == null ? null : state,
         "website": website == null ? null : website,
         "region": region == null ? null : region,
         "activity": activity == null ? null : activity,
