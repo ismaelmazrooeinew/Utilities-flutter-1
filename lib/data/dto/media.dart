@@ -91,7 +91,7 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           .toList() ??
       <String>[];
 
-  String getImageUrl() => this!.first.url ;
+  String getImageUrl() => this!.length > 0 ? this!.first.url : "--";
 
   String getAvatar() {
     List<String> list = this!
