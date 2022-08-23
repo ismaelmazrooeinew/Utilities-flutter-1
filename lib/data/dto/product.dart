@@ -81,6 +81,7 @@ class ProductCreateUpdateDto {
     this.forms,
     this.comments,
     this.teams,
+    this.state,
   });
 
   final String? id;
@@ -98,6 +99,7 @@ class ProductCreateUpdateDto {
   final String? type;
   final String? unit;
   final String? useCase;
+  final String? state;
   final bool? isForSale;
   final bool? enabled;
   final bool? isBookmarked;
@@ -135,6 +137,7 @@ class ProductCreateUpdateDto {
         details: json["details"] == null ? null : json["details"],
         address: json["address"] == null ? null : json["address"],
         author: json["author"] == null ? null : json["author"],
+        state: json["state"] == null ? null : json["state"],
         phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
         link: json["link"] == null ? null : json["link"],
         website: json["website"] == null ? null : json["website"],
@@ -176,6 +179,7 @@ class ProductCreateUpdateDto {
         "details": details == null ? null : details,
         "address": address == null ? null : address,
         "author": author == null ? null : author,
+        "state": state == null ? null : state,
         "phoneNumber": phoneNumber == null ? null : phoneNumber,
         "link": link == null ? null : link,
         "website": website == null ? null : website,
