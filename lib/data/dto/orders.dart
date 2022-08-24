@@ -31,8 +31,8 @@ class OrdersReadDto {
   final String? updatedAt;
   final int? status;
   final int? discountPercent;
-  final int? sendPrice;
-  final double? sendType;
+  final double? sendPrice;
+  final int ? sendType;
   final int? payType;
   final String? payNumber;
   final String? receivedDate;
