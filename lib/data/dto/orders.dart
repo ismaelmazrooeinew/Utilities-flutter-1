@@ -32,7 +32,7 @@ class OrdersReadDto {
   final int? status;
   final int? discountPercent;
   final int? sendPrice;
-  final int? sendType;
+  final double? sendType;
   final int? payType;
   final String? payNumber;
   final String? receivedDate;
@@ -89,7 +89,7 @@ class OrderDetail {
 
   final String? orderId;
   final String? productId;
-  final int? price;
+  final double? price;
   final int? count;
   final String? id;
   final String? createdAt;
