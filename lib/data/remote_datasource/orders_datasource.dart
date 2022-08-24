@@ -12,6 +12,18 @@ class OrdersDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
+        url: "$baseUrl/Order",
+        body: dto,
+        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: OrdersReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+      );
+
+  Future<void> read({
+    required final ContentCreateUpdateDto dto,
+    required final Function(GenericResponse<OrdersReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpPost(
         url: "$baseUrl/Order/Filter",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: OrdersReadDto.fromMap)),

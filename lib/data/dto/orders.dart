@@ -119,3 +119,70 @@ class OrderDetail {
         "updatedAt": updatedAt == null ? null : updatedAt,
       };
 }
+
+
+class OrderCreateUpdateDto {
+  OrderCreateUpdateDto({
+    this.id,
+    this.description,
+    this.status,
+    this.receivedDate,
+    this.totalPrice,
+    this.discountPercent,
+    this.discountCode,
+    this.discountPrice,
+    this.sendPrice,
+    this.payType,
+    this.sendType,
+    this.orderDetails,
+  });
+
+  final String? id;
+  final String? description;
+  final int? status;
+  final String? receivedDate;
+  final int? totalPrice;
+  final int? discountPercent;
+  final String? discountCode;
+  final int? discountPrice;
+  final int? sendPrice;
+  final int? payType;
+  final int? sendType;
+  final List<OrderDetail>? orderDetails;
+
+  factory OrderCreateUpdateDto.fromJson(String str) => OrderCreateUpdateDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory OrderCreateUpdateDto.fromMap(Map<String, dynamic> json) => OrderCreateUpdateDto(
+    id: json["id"] == null ? null : json["id"],
+    description: json["description"] == null ? null : json["description"],
+    status: json["status"] == null ? null : json["status"],
+    receivedDate: json["receivedDate"] == null ? null : json["receivedDate"],
+    totalPrice: json["totalPrice"] == null ? null : json["totalPrice"],
+    discountPercent: json["discountPercent"] == null ? null : json["discountPercent"],
+    discountCode: json["discountCode"] == null ? null : json["discountCode"],
+    discountPrice: json["discountPrice"] == null ? null : json["discountPrice"],
+    sendPrice: json["sendPrice"] == null ? null : json["sendPrice"],
+    payType: json["payType"] == null ? null : json["payType"],
+    sendType: json["sendType"] == null ? null : json["sendType"],
+    orderDetails: List<OrderDetail>.from(json["orderDetails"].map((x) => OrderDetail.fromMap(x))),
+  );
+
+  Map<String, dynamic> toMap() => {
+    "id": id == null ? null : id,
+    "description": description == null ? null : description,
+    "status": status == null ? null : status,
+    "receivedDate": receivedDate == null ? null : receivedDate,
+    "totalPrice": totalPrice == null ? null : totalPrice,
+    "discountPercent": discountPercent == null ? null : discountPercent,
+    "discountCode": discountCode == null ? null : discountCode,
+    "discountPrice": discountPrice == null ? null : discountPrice,
+    "sendPrice": sendPrice == null ? null : sendPrice,
+    "payType": payType == null ? null : payType,
+    "sendType": sendType == null ? null : sendType,
+    "orderDetails": orderDetails == null ? null : List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
+  };
+}
+
+
