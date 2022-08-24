@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:utilities/utilities.dart';
 
 class ProductV2DataSource {
@@ -70,7 +72,11 @@ class ProductV2DataSource {
         url: "$baseUrl/ProductV2/Filter",
         body: filter,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap)),
-        error: (Response response) {},
+        error: (Response response) {
+          logger.e(response.statusCode);
+          logger.e(response.statusText);
+          logger.e(response.status);
+        },
       );
 
   Future<void> readMine({
