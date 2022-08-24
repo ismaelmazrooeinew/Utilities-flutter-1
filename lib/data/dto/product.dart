@@ -81,6 +81,7 @@ class ProductCreateUpdateDto {
     this.forms,
     this.comments,
     this.teams,
+    this.state,
   });
 
   final String? id;
@@ -98,6 +99,7 @@ class ProductCreateUpdateDto {
   final String? type;
   final String? unit;
   final String? useCase;
+  final String? state;
   final bool? isForSale;
   final bool? enabled;
   final bool? isBookmarked;
@@ -135,6 +137,7 @@ class ProductCreateUpdateDto {
         details: json["details"] == null ? null : json["details"],
         address: json["address"] == null ? null : json["address"],
         author: json["author"] == null ? null : json["author"],
+        state: json["state"] == null ? null : json["state"],
         phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
         link: json["link"] == null ? null : json["link"],
         website: json["website"] == null ? null : json["website"],
@@ -176,6 +179,7 @@ class ProductCreateUpdateDto {
         "details": details == null ? null : details,
         "address": address == null ? null : address,
         "author": author == null ? null : author,
+        "state": state == null ? null : state,
         "phoneNumber": phoneNumber == null ? null : phoneNumber,
         "link": link == null ? null : link,
         "website": website == null ? null : website,
@@ -435,6 +439,7 @@ class ProductFilterDto {
     this.showCategories,
     this.showTeams,
     this.userId,
+    this.state,
   });
 
   final String? title;
@@ -476,6 +481,7 @@ class ProductFilterDto {
   final int? pageSize;
   final int? pageNumber;
   final String? useCase;
+  final String? state;
   final List<UserReadDto>? teams;
 
   factory ProductFilterDto.fromJson(String str) => ProductFilterDto.fromMap(json.decode(str));
@@ -488,6 +494,7 @@ class ProductFilterDto {
         description: json["description"] == null ? null : json["description"],
         details: json["details"] == null ? null : json["details"],
         link: json["link"] == null ? null : json["link"],
+        state: json["state"] == null ? null : json["state"],
         website: json["website"] == null ? null : json["website"],
         address: json["address"] == null ? null : json["address"],
         author: json["author"] == null ? null : json["author"],
@@ -536,6 +543,7 @@ class ProductFilterDto {
         "author": author == null ? null : author,
         "phoneNumber": phoneNumber == null ? null : phoneNumber,
         "email": email == null ? null : email,
+        "state": state == null ? null : state,
         "type": type == null ? null : type,
         "userId": userId == null ? null : userId,
         "startPriceRange": startPriceRange == null ? null : startPriceRange,
