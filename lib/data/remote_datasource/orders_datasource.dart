@@ -7,7 +7,7 @@ class OrdersDataSource {
   OrdersDataSource({required this.baseUrl});
 
   Future<void> create({
-    required final ContentCreateUpdateDto dto,
+    required final OrderCreateUpdateDto dto,
     required final Function(GenericResponse<OrdersReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
