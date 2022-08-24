@@ -14,7 +14,7 @@ class OrdersDataSource {
       httpPost(
         url: "$baseUrl/Order/Filter",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: ContentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: OrdersReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
@@ -26,7 +26,7 @@ class OrdersDataSource {
       httpPut(
         url: "$baseUrl/Content",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: ContentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: OrdersReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
@@ -36,7 +36,7 @@ class OrdersDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Content",
-        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: ContentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: OrdersReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
@@ -47,7 +47,7 @@ class OrdersDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Content/$id",
-        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: ContentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: OrdersReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
@@ -58,7 +58,7 @@ class OrdersDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Content/$id",
-        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: ContentReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<OrdersReadDto>.fromJson(response.body, fromMap: OrdersReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 }
