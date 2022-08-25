@@ -16,11 +16,13 @@ Widget otpTextField({
   final double fieldWidth = 60,
   final Color? fillColor,
   final Color? borderColor,
+  final Function? onTap,
 }) =>
     PinCodeTextField(
       controller: controller,
       appContext: context,
       length: length,
+      onTap: onTap,
       autoFocus: autoFocus,
       mainAxisAlignment: mainAxisAlignment,
       hintCharacter: hintCharacter,
