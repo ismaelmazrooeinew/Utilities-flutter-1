@@ -29,7 +29,7 @@ class TransactionReadDto {
   factory TransactionReadDto.fromMap(Map<String, dynamic> json) => TransactionReadDto(
     id: json["id"] == null ? null : json["id"],
     userId: json["userId"] == null ? null : json["userId"],
-    amount: json["amount"] == null ? null : json["amount"],
+    amount: json["amount"] == null ? null : json["amount"].toString(),
     descriptions: json["descriptions"] == null ? null : json["descriptions"],
     statusId: json["statusId"] == null ? null : json["statusId"],
     paymentId: json["paymentId"] == null ? null : json["paymentId"],
