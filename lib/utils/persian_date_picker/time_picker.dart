@@ -70,9 +70,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
           isSlideForward = type == 'prev' ? false : true;
           isDisable = dateUtiles.isDisable('$initHour:$initMinute');
           controller.reverse();
-        } else if (status == AnimationStatus.dismissed) {
-          // controller.forward();
-        }
+        } else if (status == AnimationStatus.dismissed) {}
       });
     });
   }
@@ -103,9 +101,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
           isSlideForward = type == 'prev' ? false : true;
           isDisable = dateUtiles.isDisable('$initHour:$initMinute');
           controller.reverse();
-        } else if (status == AnimationStatus.dismissed) {
-          // controller.forward();
-        }
+        } else if (status == AnimationStatus.dismissed) {}
       });
     });
   }

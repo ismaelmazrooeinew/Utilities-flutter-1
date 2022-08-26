@@ -24,8 +24,6 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
   AnimationController? controller;
   Animation<double>? animation;
 
-  // var initDate;
-  // var initTime;
   var startSelectedInitDate;
   var startSelectedInitTime;
   var endSelectedInitDate;
@@ -185,22 +183,10 @@ class _HandlePickerState extends State<HandlePicker> with TickerProviderStateMix
                     startSelectedInitDate = outPutFormat(date);
                     endSelectedInitDate = outPutFormat(date);
                     isSecondSelect = !isSecondSelect;
-                    // final snackBar = SnackBar(
-                    //   content: Text('تاریخ دوم را انتخاب کنید.'),
-                    //   backgroundColor: Global.color,
-                    // );
-                    // Scaffold.of(context).showSnackBar(snackBar);
-                    // SnackbarHelper.show(context,
-                    //     body: 'تاریخ دوم را انتخاب کنید.',
-                    //     bgColor: Global.color);
                   } else if (isSecondSelect && date >= startSelectedDate) {
                     endSelectedInitDate = outPutFormat(date);
                     isSecondSelect = !isSecondSelect;
                   } else if (isSecondSelect && date < startSelectedDate) {
-                    // SnackbarHelper.show(context,
-                    //     status: 'warning',
-                    //     body: 'تاریخ انتخاب شده از تاریخ شروع کمتر است.',
-                    //     bgColor: Global.color);
                   } else {
                     startSelectedInitDate = outPutFormat(date);
                     endSelectedInitDate = outPutFormat(date);

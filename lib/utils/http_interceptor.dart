@@ -23,7 +23,7 @@ Future<void> request(
 
   if (headers != null) header.addAll(headers);
 
-  Response<dynamic> response = Response<dynamic>();
+  Response<dynamic> response = const Response<dynamic>();
   try {
     dynamic params;
     if (body != null) {
@@ -33,7 +33,7 @@ Future<void> request(
         params = body;
     }
 
-    var connect = GetConnect(
+    final GetConnect connect = GetConnect(
       userAgent: userAgent,
       followRedirects: followRedirects,
       timeout: timeout,
@@ -66,10 +66,10 @@ Future<void> request(
 }
 
 Future<void> httpGet({
-  required String url,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
+  required final String url,
+  required final Function(Response<dynamic> response) action,
+  required final Function(Response<dynamic> response) error,
+  final Map<String, String>? headers,
   final String userAgent = 'SinaMN75',
   final bool followRedirects = true,
   final Duration timeout = const Duration(minutes: 60),
@@ -79,7 +79,7 @@ Future<void> httpGet({
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async =>
-    await request(
+    request(
       url,
       EHttpMethod.get,
       action,
@@ -96,12 +96,12 @@ Future<void> httpGet({
     );
 
 Future<void> httpPost({
-  required String url,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
-  dynamic body,
-  bool encodeBody = true,
+  required final String url,
+  required final Function(Response<dynamic> response) action,
+  required final Function(Response<dynamic> response) error,
+  final Map<String, String>? headers,
+  final dynamic body,
+  final bool encodeBody = true,
   final String userAgent = 'SinaMN75',
   final bool followRedirects = true,
   final Duration timeout = const Duration(minutes: 60),
@@ -111,7 +111,7 @@ Future<void> httpPost({
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async =>
-    await request(
+    request(
       url,
       EHttpMethod.post,
       action,
@@ -130,12 +130,12 @@ Future<void> httpPost({
     );
 
 Future<void> httpPut({
-  required String url,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
-  dynamic body,
-  bool encodeBody = true,
+  required final String url,
+  required final Function(Response<dynamic> response) action,
+  required final Function(Response<dynamic> response) error,
+  final Map<String, String>? headers,
+  final dynamic body,
+  final bool encodeBody = true,
   final String userAgent = 'SinaMN75',
   final bool followRedirects = true,
   final Duration timeout = const Duration(minutes: 60),
@@ -145,7 +145,7 @@ Future<void> httpPut({
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async =>
-    await request(
+    request(
       url,
       EHttpMethod.put,
       action,
@@ -164,12 +164,12 @@ Future<void> httpPut({
     );
 
 Future<void> patch({
-  required String url,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
-  dynamic body,
-  bool encodeBody = true,
+  required final String url,
+  required final Function(Response<dynamic> response) action,
+  required final Function(Response<dynamic> response) error,
+  final Map<String, String>? headers,
+  final dynamic body,
+  final bool encodeBody = true,
   final String userAgent = 'SinaMN75',
   final bool followRedirects = true,
   final Duration timeout = const Duration(minutes: 60),
@@ -179,7 +179,7 @@ Future<void> patch({
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async =>
-    await request(
+    request(
       url,
       EHttpMethod.patch,
       action,
@@ -198,10 +198,10 @@ Future<void> patch({
     );
 
 Future<void> httpDelete({
-  required String url,
-  required action(Response response),
-  required error(Response response),
-  Map<String, String>? headers,
+  required final String url,
+  required final Function(Response<dynamic> response) action,
+  required final Function(Response<dynamic> response) error,
+  final Map<String, String>? headers,
   final String userAgent = 'SinaMN75',
   final bool followRedirects = true,
   final Duration timeout = const Duration(minutes: 60),
@@ -211,7 +211,7 @@ Future<void> httpDelete({
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async =>
-    await request(
+    request(
       url,
       EHttpMethod.delete,
       action,
@@ -229,20 +229,20 @@ Future<void> httpDelete({
 
 enum EHttpMethod { get, post, put, patch, delete }
 
-extension HTTP on Response {
+extension HTTP on Response<dynamic> {
   bool isSuccessful() => (statusCode ?? 0) >= 200 && (statusCode ?? 0) <= 299 ? true : false;
 
   bool isServerError() => (statusCode ?? 0) >= 500 && (statusCode ?? 0) <= 599 ? true : false;
 
   void log({final String params = ""}) {
-    logger.i(
+    debugPrint(
       "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: $params \nRESPONSE: $body",
     );
   }
 
   void prettyLog({final String params = ""}) {
-    logger.i(
-      "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: ${JsonEncoder.withIndent(" ").convert(params)} \nRESPONSE: ${JsonEncoder.withIndent(" ").convert(body)}",
+    debugPrint(
+      "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: ${const JsonEncoder.withIndent(" ").convert(params)} \nRESPONSE: ${const JsonEncoder.withIndent(" ").convert(body)}",
     );
   }
 }

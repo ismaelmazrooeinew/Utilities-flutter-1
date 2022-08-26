@@ -36,7 +36,6 @@ class SwapPainter extends BasicIndicatorPainter {
     }
 
     for (var i = count - 1; i >= 0; i--) {
-      // if current or next
       if (i == current || (i - 1 == current)) {
         if (effect.type == SwapType.yRotation) {
           final piFactor = (dotOffset * math.pi);
@@ -67,7 +66,6 @@ class SwapPainter extends BasicIndicatorPainter {
           }
         }
       } else {
-        // draw still dots
         final xPos = xAnchor + i * distance;
         drawDot(xPos, yPos, dotPaint);
       }

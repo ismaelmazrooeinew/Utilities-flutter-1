@@ -25,12 +25,10 @@ class ExpandingDotsPainter extends BasicIndicatorPainter {
       final xPos = drawingOffset + effect.spacing;
       var width = effect.dotWidth;
       if (i == current) {
-        // ! Both a and b are non nullable
         color = Color.lerp(effect.activeDotColor, effect.dotColor, dotOffset)!;
         width = activeDotWidth - expansion;
       } else if (i - 1 == current || (i == 0 && offset > count - 1)) {
         width = effect.dotWidth + expansion;
-        // ! Both a and b are non nullable
         color = Color.lerp(effect.activeDotColor, effect.dotColor, 1.0 - dotOffset)!;
       }
       final yPos = size.height / 2;

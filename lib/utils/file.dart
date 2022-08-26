@@ -27,15 +27,16 @@ void showFilePicker({
 }
 
 Future<CroppedFile?> cropImage({
-  required File file,
-  Function(CroppedFile file)? action,
-  int? maxWidth,
-  int? maxHeight,
-  CropAspectRatio cropAspectRatio = const CropAspectRatio(ratioX: 3.0, ratioY: 1.2),
-  ImageCompressFormat imageCompressFormat = ImageCompressFormat.png,
-  AndroidUiSettings? androidUiSettings,
-  IOSUiSettings? iOSUiSettings,
-  List<CropAspectRatioPreset> aspectRatioPresets = const <CropAspectRatioPreset>[
+  required final File file,
+  final Function(CroppedFile file)? action,
+  final int? maxWidth,
+  final int? maxHeight,
+  final CropStyle cropStyle = CropStyle.rectangle,
+  final CropAspectRatio cropAspectRatio = const CropAspectRatio(ratioX: 3, ratioY: 1.2),
+  final ImageCompressFormat imageCompressFormat = ImageCompressFormat.png,
+  final AndroidUiSettings? androidUiSettings,
+  final IOSUiSettings? iOSUiSettings,
+  final List<CropAspectRatioPreset> aspectRatioPresets = const <CropAspectRatioPreset>[
     CropAspectRatioPreset.original,
     CropAspectRatioPreset.square,
     CropAspectRatioPreset.ratio3x2,
@@ -49,10 +50,9 @@ Future<CroppedFile?> cropImage({
     maxHeight: maxHeight,
     aspectRatio: cropAspectRatio,
     compressFormat: imageCompressFormat,
-    cropStyle: CropStyle.rectangle,
-    compressQuality: 90,
+    cropStyle: cropStyle,
     aspectRatioPresets: aspectRatioPresets,
-    uiSettings: [
+    uiSettings: <PlatformUiSettings>[
       androidUiSettings ??
           AndroidUiSettings(
             toolbarTitle: 'Crop Your Image',
@@ -68,7 +68,7 @@ Future<CroppedFile?> cropImage({
       iOSUiSettings ??
           IOSUiSettings(
             resetAspectRatioEnabled: false,
-            minimumAspectRatio: 1.0,
+            minimumAspectRatio: 1,
             aspectRatioPickerButtonHidden: true,
             title: 'Crop Your Image',
             aspectRatioLockDimensionSwapEnabled: true,

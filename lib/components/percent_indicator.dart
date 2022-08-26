@@ -21,83 +21,58 @@ extension CircularStrokeCapExtension on CircularStrokeCap {
 
 num radians(num deg) => deg * (math.pi / 180.0);
 
-// ignore: must_be_immutable
 class CircularPercentIndicator extends StatefulWidget {
-  ///Percent value between 0.0 and 1.0
   final double percent;
   final double radius;
 
-  ///Width of the progress bar of the circle
   final double lineWidth;
 
-  ///Width of the unfilled background of the progress bar
   final double backgroundWidth;
 
-  ///First color applied to the complete circle
   final Color fillColor;
 
-  ///Color of the background of the circle , default = transparent
   final Color backgroundColor;
 
   Color get progressColor => _progressColor;
 
   late Color _progressColor;
 
-  ///true if you want the circle to have animation
   final bool animation;
 
-  ///duration of the animation in milliseconds, It only applies if animation attribute is true
   final int animationDuration;
 
-  ///widget at the top of the circle
   final Widget? header;
 
-  ///widget at the bottom of the circle
   final Widget? footer;
 
-  ///widget inside the circle
   final Widget? center;
 
   final LinearGradient? linearGradient;
 
-  ///The kind of finish to place on the end of lines drawn, values supported: butt, round, square
   final CircularStrokeCap circularStrokeCap;
 
-  ///the angle which the circle will start the progress (in degrees, eg: 0.0, 45.0, 90.0)
   final double startAngle;
 
-  /// set true if you want to animate the linear from the last percent value you set
   final bool animateFromLastPercent;
 
-  /// set false if you don't want to preserve the state of the widget
   final bool addAutomaticKeepAlive;
 
-  /// set the arc type
   final ArcType? arcType;
 
-  /// set a circular background color when use the arcType property
   final Color? arcBackgroundColor;
 
-  /// set true when you want to display the progress in reverse mode
   final bool reverse;
 
-  /// Creates a mask filter that takes the progress shape being drawn and blurs it.
   final MaskFilter? maskFilter;
 
-  /// set a circular curve animation type
   final Curve curve;
 
-  /// set true when you want to restart the animation, it restarts only when reaches 1.0 as a value
-  /// defaults to false
   final bool restartAnimation;
 
-  /// Callback called when the animation ends (only if `animation` is true)
   final VoidCallback? onAnimationEnd;
 
-  /// Display a widget indicator at the end of the progress. It only works when `animation` is true
   final Widget? widgetIndicator;
 
-  /// Set to true if you want to rotate linear gradient in accordance to the [startAngle].
   final bool rotateLinearGradient;
 
   CircularPercentIndicator({
@@ -109,7 +84,6 @@ class CircularPercentIndicator extends StatefulWidget {
     this.fillColor = Colors.transparent,
     this.backgroundColor = const Color(0xFFB8C7CB),
     Color? progressColor,
-    //negative values ignored, replaced with lineWidth
     this.backgroundWidth = -1,
     this.linearGradient,
     this.animation = false,
@@ -235,7 +209,7 @@ class _CircularPercentIndicatorState extends State<CircularPercentIndicator> wit
         height: _diameter,
         width: _diameter,
         child: Stack(
-          children: [
+          children: <Widget>[
             CustomPaint(
               painter: _CirclePainter(
                 progress: _percent * 360,
@@ -245,7 +219,6 @@ class _CircularPercentIndicatorState extends State<CircularPercentIndicator> wit
                 circularStrokeCap: widget.circularStrokeCap,
                 radius: widget.radius - widget.lineWidth / 2,
                 lineWidth: widget.lineWidth,
-                //negative values ignored, replaced with lineWidth
                 backgroundWidth: widget.backgroundWidth >= 0.0 ? (widget.backgroundWidth) : widget.lineWidth,
                 arcBackgroundColor: widget.arcBackgroundColor,
                 arcType: widget.arcType,
@@ -471,87 +444,57 @@ class _CirclePainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
 
-///
-
-// ignore: must_be_immutable
 class LinearPercentIndicator extends StatefulWidget {
-  ///Percent value between 0.0 and 1.0
   final double percent;
   final double? width;
 
-  ///Height of the line
   final double lineHeight;
 
-  ///Color of the background of the Line , default = transparent
   final Color fillColor;
 
-  ///First color applied to the complete line
   Color get backgroundColor => _backgroundColor;
   late Color _backgroundColor;
 
-  ///First color applied to the complete line
   final LinearGradient? linearGradientBackgroundColor;
 
   Color get progressColor => _progressColor;
 
   late Color _progressColor;
 
-  ///true if you want the Line to have animation
   final bool animation;
 
-  ///duration of the animation in milliseconds, It only applies if animation attribute is true
   final int animationDuration;
 
-  ///widget at the left of the Line
   final Widget? leading;
 
-  ///widget at the right of the Line
   final Widget? trailing;
 
-  ///widget inside the Line
   final Widget? center;
 
-  /// The border radius of the progress bar (Will replace linearStrokeCap)
   final Radius? barRadius;
 
-  ///alignment of the Row (leading-widget-center-trailing)
   final MainAxisAlignment alignment;
 
-  ///padding to the LinearPercentIndicator
   final EdgeInsets padding;
 
-  /// set true if you want to animate the linear from the last percent value you set
   final bool animateFromLastPercent;
 
-  /// If present, this will make the progress bar colored by this gradient.
-  ///
-  /// This will override [progressColor]. It is an error to provide both.
   final LinearGradient? linearGradient;
 
-  /// set false if you don't want to preserve the state of the widget
   final bool addAutomaticKeepAlive;
 
-  /// set true if you want to animate the linear from the right to left (RTL)
   final bool isRTL;
 
-  /// Creates a mask filter that takes the progress shape being drawn and blurs it.
   final MaskFilter? maskFilter;
 
-  /// Set true if you want to display only part of [linearGradient] based on percent value
-  /// (ie. create 'VU effect'). If no [linearGradient] is specified this option is ignored.
   final bool clipLinearGradient;
 
-  /// set a linear curve animation type
   final Curve curve;
 
-  /// set true when you want to restart the animation, it restarts only when reaches 1.0 as a value
-  /// defaults to false
   final bool restartAnimation;
 
-  /// Callback called when the animation ends (only if `animation` is true)
   final VoidCallback? onAnimationEnd;
 
-  /// Display a widget indicator at the end of the progress. It only works when `animation` is true
   final Widget? widgetIndicator;
 
   LinearPercentIndicator({
@@ -700,7 +643,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator> with Si
       padding: widget.padding,
       child: Stack(
         clipBehavior: Clip.none,
-        children: [
+        children: <Widget>[
           CustomPaint(
             key: _containerKey,
             painter: _LinearPainter(
@@ -710,7 +653,6 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator> with Si
               linearGradient: widget.linearGradient,
               backgroundColor: widget.backgroundColor,
               barRadius: widget.barRadius ?? Radius.zero,
-              // If radius is not defined, set it to zero
               linearGradientBackgroundColor: widget.linearGradientBackgroundColor,
               maskFilter: widget.maskFilter,
               clipLinearGradient: widget.clipLinearGradient,
@@ -793,7 +735,6 @@ class _LinearPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Draw background first
     Path backgroundPath = Path();
     backgroundPath.addRRect(RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, size.width, size.height), barRadius));
     canvas.drawPath(backgroundPath, _paintBackground);
@@ -807,7 +748,6 @@ class _LinearPainter extends CustomPainter {
       _paintBackground.shader = linearGradientBackgroundColor?.createShader(Rect.fromPoints(Offset.zero, shaderEndPoint));
     }
 
-    // Then draw progress line
     final xProgress = size.width * progress;
     Path linePath = Path();
     if (isRTL) {

@@ -26,7 +26,7 @@ class _RenderTableState extends State<RenderTable> {
   int? monthLength;
   int? currentDayOfMonth;
   int? numberOfFirstDayOfMonthInWeek;
-  late List allDaysOfTable; //valid and invalid days
+  late List allDaysOfTable;
 
   @override
   void didUpdateWidget(RenderTable oldWidget) {

@@ -41,7 +41,6 @@ class DiscountDataSource {
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
-
   Future<void> delete({
     required final String id,
     required final Function(GenericResponse<ContentReadDto>) onResponse,

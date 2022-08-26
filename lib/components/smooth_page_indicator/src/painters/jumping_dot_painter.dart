@@ -16,7 +16,6 @@ class JumpingDotPainter extends BasicIndicatorPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // paint still dots
     if (effect.verticalOffset != 0) {
       canvas.translate(0, effect.verticalOffset / 2);
     }
@@ -24,7 +23,6 @@ class JumpingDotPainter extends BasicIndicatorPainter {
     final activeDotPainter = Paint()..color = effect.activeDotColor;
     final dotOffset = offset - offset.toInt();
 
-    // handle dot travel from end to start (for infinite pager support)
     if (offset > count - 1) {
       final startDot = calcPortalTravel(size, effect.dotWidth / 2, dotOffset);
       canvas.drawRRect(startDot, activeDotPainter);

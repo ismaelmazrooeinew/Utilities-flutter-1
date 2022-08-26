@@ -4,9 +4,7 @@ import '../painters/color_transition_painter.dart';
 import '../painters/indicator_painter.dart';
 import 'indicator_effect.dart';
 
-/// Holds [TransitionPainter]
 class ColorTransitionEffect extends BasicIndicatorEffect {
-  // The active dot strokeWidth
   final double activeStrokeWidth;
 
   const ColorTransitionEffect({

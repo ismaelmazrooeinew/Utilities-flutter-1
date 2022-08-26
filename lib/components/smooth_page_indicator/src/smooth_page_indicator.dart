@@ -2,31 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'effects/indicator_effect.dart';
 import 'effects/worm_effect.dart';
-import 'painters/indicator_painter.dart';
 
 typedef OnDotClicked = void Function(int index);
 
 class SmoothPageIndicator extends AnimatedWidget {
-  // Page view controller
   final PageController controller;
 
-  /// Holds effect configuration to be used in the [BasicIndicatorPainter]
   final IndicatorEffect effect;
 
-  /// layout direction vertical || horizontal
-  ///
-  /// This will only rotate the canvas in which the dots
-  /// are drawn,
-  /// It will not affect [effect.dotWidth] and [effect.dotHeight]
   final Axis axisDirection;
 
-  /// The number of pages
   final int count;
 
-  /// If [textDirection] is [TextDirection.rtl], page direction will be flipped
   final TextDirection? textDirection;
 
-  /// on dot clicked callback
   final OnDotClicked? onDotClicked;
 
   SmoothPageIndicator({
@@ -62,25 +51,18 @@ class SmoothPageIndicator extends AnimatedWidget {
 }
 
 class SmoothIndicator extends StatelessWidget {
-  // to listen for page offset updates
   final double offset;
 
-  /// Holds effect configuration to be used in the [BasicIndicatorPainter]
   final IndicatorEffect effect;
 
-  /// layout direction vertical || horizontal
   final Axis axisDirection;
 
-  /// The number of pages
   final int count;
 
-  /// If [textDirection] is [TextDirection.rtl], page direction will be flipped
   final TextDirection? textDirection;
 
-  /// on dot clicked callback
   final OnDotClicked? onDotClicked;
 
-  /// canvas size
   final Size _size;
 
   SmoothIndicator({
@@ -91,15 +73,11 @@ class SmoothIndicator extends StatelessWidget {
     this.effect = const WormEffect(),
     this.textDirection,
     this.onDotClicked,
-  })  :
-        // different effects have different sizes
-        // so we calculate size based on the provided effect
-        _size = effect.calculateSize(count),
+  })  : _size = effect.calculateSize(count),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // if textDirection is not provided use the nearest directionality up the widgets tree;
     final isRTL = (textDirection ?? Directionality.of(context)) == TextDirection.rtl;
 
     return RotatedBox(
@@ -112,7 +90,6 @@ class SmoothIndicator extends StatelessWidget {
         onTapUp: _onTap,
         child: CustomPaint(
           size: _size,
-          // rebuild the painter with the new offset every time it updates
           painter: effect.buildPainter(count, offset),
         ),
       ),
@@ -136,19 +113,14 @@ class SmoothIndicator extends StatelessWidget {
 class AnimatedSmoothIndicator extends ImplicitlyAnimatedWidget {
   final int activeIndex;
 
-  /// Holds effect configuration to be used in the [BasicIndicatorPainter]
   final IndicatorEffect effect;
 
-  /// layout direction vertical || horizontal
   final Axis axisDirection;
 
-  /// The number of children in [PageView]
   final int count;
 
-  /// If [textDirection] is [TextDirection.rtl], page direction will be flipped
   final TextDirection? textDirection;
 
-  /// On dot clicked callback
   final Function(int index)? onDotClicked;
 
   AnimatedSmoothIndicator({

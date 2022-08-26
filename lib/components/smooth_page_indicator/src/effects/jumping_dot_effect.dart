@@ -7,10 +7,8 @@ import 'package:utilities/components/smooth_page_indicator/src/painters/jumping_
 import 'indicator_effect.dart';
 
 class JumpingDotEffect extends BasicIndicatorEffect {
-  // The maximum scale the dot will hit while jumping
   final double jumpScale;
 
-  // The vertical offset of the jumping dot
   final double verticalOffset;
 
   const JumpingDotEffect({

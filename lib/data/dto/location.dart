@@ -62,16 +62,16 @@ class IranLocationReadDto {
   String toJson() => json.encode(toMap());
 
   factory IranLocationReadDto.fromMap(dynamic json) => IranLocationReadDto(
-    id: json["id"],
-    provinceId: json["province_id"],
-    name: json["name"],
-    slug: json["slug"],
-  );
+        id: json["id"],
+        provinceId: json["province_id"],
+        name: json["name"],
+        slug: json["slug"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id,
-    "province_id": provinceId,
-    "name": name,
-    "slug": slug,
-  };
+        "id": id,
+        "province_id": provinceId,
+        "name": name,
+        "slug": slug,
+      };
 }

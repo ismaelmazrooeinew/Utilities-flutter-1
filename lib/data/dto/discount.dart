@@ -13,7 +13,6 @@ class DiscountReadDto {
     this.updatedAt,
     this.deletedAt,
   }) {
-    // TODO: implement Result
     throw UnimplementedError();
   }
 

@@ -41,7 +41,6 @@ class ScrollingDotsPainter extends BasicIndicatorPainter {
       var scale = 1.0;
 
       if (index == current) {
-        // ! Both a and b are non nullable
         color = Color.lerp(effect.activeDotColor, effect.dotColor, dotOffset)!;
         if (offset > count - 1 && count > effect.maxVisibleDots) {
           scale = effect.activeDotScale - (smallDotScale * dotOffset);
@@ -56,7 +55,6 @@ class ScrollingDotsPainter extends BasicIndicatorPainter {
           scale = smallDotScale + (((1 - smallDotScale) + activeScale) * dotOffset);
         }
       } else if (index - 1 == current) {
-        // ! Both a and b are non nullable
         color = Color.lerp(effect.dotColor, effect.activeDotColor, dotOffset)!;
         scale = 1.0 + (activeScale * dotOffset);
       } else if (count - 1 < effect.maxVisibleDots) {

@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:path_drawing/path_drawing.dart';
 
-/// Add a dotted border around any [child] widget. The [strokeWidth] property
-/// defines the width of the dashed border and [color] determines the stroke
-/// paint color. [CircularIntervalList] is populated with the [dashPattern] to
-/// render the appropriate pattern. The [radius] property is taken into account
-/// only if the [borderType] is [BorderType.RRect]. A [customPath] can be passed in
-/// as a parameter if you want to draw a custom shaped border.
 class DottedBorder extends StatelessWidget {
   final Widget child;
   final EdgeInsets padding;
@@ -57,9 +51,6 @@ class DottedBorder extends StatelessWidget {
     );
   }
 
-  /// Compute if [dashPattern] is valid. The following conditions need to be met
-  /// * Cannot be null or empty
-  /// * If [dashPattern] has only 1 element, it cannot be 0
   bool _isValidDashPattern(List<double>? dashPattern) {
     Set<double>? _dashSet = dashPattern?.toSet();
     if (_dashSet == null) return false;
@@ -69,7 +60,6 @@ class DottedBorder extends StatelessWidget {
   }
 }
 
-/// The different supported BorderTypes
 enum BorderType { Circle, RRect, Rect, Oval }
 
 typedef PathBuilder = Path Function(Size);
@@ -116,7 +106,6 @@ class _DashPainter extends CustomPainter {
     canvas.drawPath(_path, paint);
   }
 
-  /// Returns a [Path] based on the the [borderType] parameter
   Path _getPath(Size size) {
     Path path;
     switch (borderType) {
@@ -137,7 +126,6 @@ class _DashPainter extends CustomPainter {
     return dashPath(path, dashArray: CircularIntervalList(dashPattern));
   }
 
-  /// Returns a circular path of [size]
   Path _getCirclePath(Size size) {
     double w = size.width;
     double h = size.height;
@@ -157,7 +145,6 @@ class _DashPainter extends CustomPainter {
       );
   }
 
-  /// Returns a Rounded Rectangular Path with [radius] of [size]
   Path _getRRectPath(Size size, Radius radius) {
     return Path()
       ..addRRect(
@@ -173,7 +160,6 @@ class _DashPainter extends CustomPainter {
       );
   }
 
-  /// Returns a path of [size]
   Path _getRectPath(Size size) {
     return Path()
       ..addRect(
@@ -186,7 +172,6 @@ class _DashPainter extends CustomPainter {
       );
   }
 
-  /// Return an oval path of [size]
   Path _getOvalPath(Size size) {
     return Path()
       ..addOval(

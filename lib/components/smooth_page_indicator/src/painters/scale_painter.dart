@@ -29,11 +29,9 @@ class ScalePainter extends BasicIndicatorPainter {
       var scale = 0.0;
       if (index == current) {
         scale = (effect.scale) - (activeScale * dotOffset);
-        // ! Both a and b are non nullable
         color = Color.lerp(effect.activeDotColor, effect.dotColor, dotOffset)!;
       } else if (index - 1 == current || (index == 0 && offset > count - 1)) {
         scale = 1.0 + (activeScale * dotOffset);
-        // ! Both a and b are non nullable
         color = Color.lerp(effect.dotColor, effect.activeDotColor, dotOffset)!;
       }
       canvas.drawRRect(_calcBounds(size.height, index, scale), activePaint..color = color);

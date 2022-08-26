@@ -1,30 +1,14 @@
-// Copyright 2018 - 2020, Amirreza Madani. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 library date_formatter;
 
 import 'date.dart';
 
-/// super class for Jalali and Gregorian Date formatter
 abstract class DateFormatter {
-  /// stored date
-  ///
-  /// Non-Null
-  final Date date;
-
-  /// make a [DateFormatter] for a [Date] object
-  ///
-  /// argument should not be null
   DateFormatter(this.date) {
     ArgumentError.checkNotNull(date, 'date');
   }
 
-  /// year number string whatever length it has
-  ///
-  /// [date.year] should be greater or equal 0 or exception will be thrown
-  ///
-  /// Non-Null
+  final Date date;
+
   String get y {
     final int year = date.year;
 
@@ -35,11 +19,6 @@ abstract class DateFormatter {
     return year.toString();
   }
 
-  /// year number string ensured to have length of 4
-  ///
-  /// [date.year] should be between 0 and 9999 or exception will be thrown
-  ///
-  /// Non-Null
   String get yyyy {
     final int year = date.year;
 
@@ -57,21 +36,16 @@ abstract class DateFormatter {
       case 4:
         return str;
       case 3:
-        return '0' + str;
+        return '0$str';
       case 2:
-        return '00' + str;
+        return '00$str';
       case 1:
-        return '000' + str;
-      default: // case: 0
+        return '000$str';
+      default:
         return '0000';
     }
   }
 
-  /// year number string ensured to have length of 2
-  ///
-  /// [date.year] should be between 1000 and 9999 or exception is thrown
-  ///
-  /// Non-Null
   String get yy {
     final int year = date.year;
 
@@ -84,46 +58,24 @@ abstract class DateFormatter {
     }
 
     final String str = (year % 100).toString();
-    return str.length == 1 ? '0' + str : str;
+    return str.length == 1 ? '0$str' : str;
   }
 
-  /// month number string whatever length it has
-  ///
-  /// Non-Null
-  String get m {
-    return date.month.toString();
-  }
+  String get m => date.month.toString();
 
-  /// month number string ensured to have length of 2
-  ///
-  /// Non-Null
   String get mm {
     final String str = m;
-    return str.length == 1 ? '0' + str : str;
+    return str.length == 1 ? '0$str' : str;
   }
 
-  /// month name
-  ///
-  /// Non-Null
   String get mN;
 
-  /// day number string whatever length it has
-  ///
-  /// Non-Null
-  String get d {
-    return date.day.toString();
-  }
+  String get d => date.day.toString();
 
-  /// day number string ensured to have length of 2
-  ///
-  /// Non-Null
   String get dd {
     final String str = d;
-    return str.length == 1 ? '0' + str : str;
+    return str.length == 1 ? '0$str' : str;
   }
 
-  /// week day name
-  ///
-  /// Non-Null
   String get wN;
 }

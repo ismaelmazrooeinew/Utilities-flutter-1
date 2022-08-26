@@ -151,14 +151,14 @@ class _FormBuilderState extends State<FormBuilder> {
           controller: controller,
           enableDeselect: true,
           onSelected: (final String value, final int index, final bool isSelected) {
-            if(field.type! == 3){
-              if(isSelected){
+            if (field.type! == 3) {
+              if (isSelected) {
                 selectedItems.clear();
                 selectedItems.add(value);
-              }else{
+              } else {
                 selectedItems.clear();
               }
-            }else{
+            } else {
               if (isSelected)
                 selectedItems.add(value);
               else
@@ -218,8 +218,7 @@ class _FormBuilderState extends State<FormBuilder> {
   }
 
   FormFieldValidator<String> validateNotEmpty() => (final String? value) {
-    if (value!.isEmpty) return widget.requiredText;
-    return null;
-  };
-
+        if (value!.isEmpty) return widget.requiredText;
+        return null;
+      };
 }
