@@ -247,7 +247,6 @@ class ProductReadDto {
     this.deletedAt,
     this.user,
     this.status,
-    // this.locations,
     this.media,
     this.categories,
     this.voteFields,
@@ -292,7 +291,6 @@ class ProductReadDto {
   final UserReadDto? user;
   final int? status;
 
-  // final List<ServerLocationReadDto>? locations;
   final List<MediaReadDto>? media;
   final List<CategoryReadDto>? categories;
   final List<VoteField>? voteFields;
@@ -340,7 +338,6 @@ class ProductReadDto {
         deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         status: json["status"] == null ? null : json["status"],
-        // locations: json["location"] == null ? null : List<ServerLocationReadDto>.from(json["location"].map((x) => ServerLocationReadDto.fromMap(x))),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
@@ -385,7 +382,6 @@ class ProductReadDto {
         "deletedAt": deletedAt == null ? null : deletedAt,
         "user": user == null ? null : user!.toMap(),
         "status": status == null ? null : status,
-        // "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
         "voteFields": voteFields == null ? null : List<dynamic>.from(voteFields!.map((x) => x.toMap())),

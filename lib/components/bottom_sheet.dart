@@ -2,47 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:utilities/utils/get.dart';
 
-/// The cancel actions model that show
-/// under the [BottomSheetAction] (grouped separately on iOS).
 class CancelAction {
-  /// The string that will appear in the title bar of the cancel action. (required)
   final String title;
 
-  /// The callback that is called when the action item is tapped.
-  /// [onPressed] is optional by default will dismiss the Action Sheet.
   final VoidCallback? onPressed;
 
-  /// The TextStyle to use for the title text. (optional)
   final TextStyle? textStyle;
 
   CancelAction({required final this.title, final this.onPressed, final this.textStyle});
 }
 
-/// The Actions model that will use on the ActionSheet.
 class BottomSheetAction {
-  /// The string that will appear in the title bar of the action item. (required)
   final String title;
 
-  /// The callback that is called when the action item is tapped. (required)
   final VoidCallback onPressed;
 
-  /// The TextStyle to use for the title text. (optional)
   final TextStyle? textStyle;
 
   BottomSheetAction({required final this.title, required final this.onPressed, final this.textStyle});
 }
 
-/// A action bottom sheet that adapts to the platform (Android/iOS).
-///
-/// [actions] The Actions list that will appear on the ActionSheet. (required)
-///
-/// [cancelAction] The optional cancel button that show under the
-/// actions (grouped separately on iOS).
-///
-/// [title] The optional title widget that show above the actions.
-///
-/// The optional backgroundColor and [barrierColor] can be passed in to
-/// customize the appearance and behavior of persistent bottom sheets.
 Future<T?> showAdaptiveActionSheet<T>({
   required final BuildContext context,
   required final List<BottomSheetAction> actions,

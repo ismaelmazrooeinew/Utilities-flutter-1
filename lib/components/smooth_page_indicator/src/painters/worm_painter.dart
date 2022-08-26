@@ -14,13 +14,11 @@ class WormPainter extends BasicIndicatorPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // paint still dots
     paintStillDots(canvas, size);
 
     final activeDotPaint = Paint()..color = effect.activeDotColor;
     final dotOffset = (offset - offset.toInt());
 
-    // handle dot travel from end to start (for infinite pager support)
     if (offset > count - 1) {
       final startDot = calcPortalTravel(size, effect.dotWidth / 2, dotOffset);
       canvas.drawRRect(startDot, activeDotPaint);

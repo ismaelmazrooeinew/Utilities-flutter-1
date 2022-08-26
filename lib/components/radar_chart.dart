@@ -140,13 +140,11 @@ class RadarChartPainter extends CustomPainter {
     Offset center = Offset(size.width / 2, size.height / 2);
 
     if (sides < 3) {
-      // Draw a circle
       path.addOval(Rect.fromCircle(
         center: Offset(size.width / 2, size.height / 2),
         radius: radius,
       ));
     } else {
-      // Draw a polygon
       Offset startPoint = Offset(radius * cos(-pi / 2), radius * sin(-pi / 2));
 
       path.moveTo(startPoint.dx + center.dx, startPoint.dy + center.dy);
@@ -169,7 +167,6 @@ class RadarChartPainter extends CustomPainter {
     final radius = math.min(centerX, centerY) * 0.8;
     final scale = radius / ticks.last;
 
-    // Painting the chart outline
     var outlinePaint = Paint()
       ..color = outlineColor
       ..style = PaintingStyle.stroke
@@ -183,8 +180,6 @@ class RadarChartPainter extends CustomPainter {
       ..isAntiAlias = true;
 
     canvas.drawPath(variablePath(size, radius, this.sides), outlinePaint);
-    // Painting the circles and labels for the given ticks (could be auto-generated)
-    // The last tick is ignored, since it overlaps with the feature label
     var tickDistance = radius / (ticks.length);
     var tickLabels = reverseAxis ? ticks.reversed.toList() : ticks;
 
@@ -210,7 +205,6 @@ class RadarChartPainter extends CustomPainter {
         ..paint(canvas, Offset(centerX, centerY - tickRadius - ticksTextStyle.fontSize!));
     });
 
-    // Painting the axis for each given feature
     var angle = (2 * pi) / features.length;
 
     features.asMap().forEach((index, feature) {
@@ -234,7 +228,6 @@ class RadarChartPainter extends CustomPainter {
         ..paint(canvas, Offset(labelXOffset, featureOffset.dy + labelYOffset));
     });
 
-    // Painting each graph
     data.asMap().forEach((index, graph) {
       var graphPaint = Paint()
         ..color = graphColors[index % graphColors.length].withOpacity(0.3)
@@ -246,7 +239,6 @@ class RadarChartPainter extends CustomPainter {
         ..strokeWidth = 2.0
         ..isAntiAlias = true;
 
-      // Start the graph on the initial point
       var scaledPoint = scale * graph[0] * fraction;
       var path = Path();
 

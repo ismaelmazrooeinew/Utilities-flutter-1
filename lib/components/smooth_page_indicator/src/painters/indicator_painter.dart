@@ -2,17 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:utilities/components/smooth_page_indicator/src/effects/indicator_effect.dart';
 
 abstract class BasicIndicatorPainter extends IndicatorPainter {
-  /// The count of pages
   final int count;
 
-  // The provided effect is passed to this super class
-  // to make some calculations and paint still dots
   final BasicIndicatorEffect _effect;
 
-  /// Inactive dot paint or base paint in one-color effects.
   final Paint dotPaint;
 
-  /// The Radius of all dots
   final Radius dotRadius;
 
   BasicIndicatorPainter(
@@ -26,7 +21,6 @@ abstract class BasicIndicatorPainter extends IndicatorPainter {
           ..strokeWidth = _effect.strokeWidth,
         super(offset);
 
-  // The distance between dot lefts
   double get distance => _effect.dotWidth + _effect.spacing;
 
   void paintStillDots(Canvas canvas, Size size) {
@@ -60,14 +54,12 @@ abstract class BasicIndicatorPainter extends IndicatorPainter {
 }
 
 abstract class IndicatorPainter extends CustomPainter {
-  /// The raw offset from the [PageController].page
   final double offset;
 
   const IndicatorPainter(this.offset);
 
   @override
   bool shouldRepaint(IndicatorPainter oldDelegate) {
-    // only repaint if the offset changes
     return oldDelegate.offset != offset;
   }
 }

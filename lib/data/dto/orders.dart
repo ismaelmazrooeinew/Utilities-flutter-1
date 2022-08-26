@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final orderReadDto = orderReadDtoFromMap(jsonString);
-
 import 'dart:convert';
 
 class OrdersReadDto {

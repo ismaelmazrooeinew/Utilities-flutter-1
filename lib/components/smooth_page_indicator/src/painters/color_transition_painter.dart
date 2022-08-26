@@ -25,11 +25,9 @@ class TransitionPainter extends BasicIndicatorPainter {
     for (var i = 0; i < count; i++) {
       var color = effect.dotColor;
       if (i == current) {
-        // ! Both a and b are non nullable
         color = Color.lerp(effect.activeDotColor, effect.dotColor, dotOffset)!;
         dotPaint.strokeWidth = max(effect.activeStrokeWidth * (1 - dotOffset), effect.strokeWidth);
       } else if (i - 1 == current || (i == 0 && offset > count - 1)) {
-        // ! Both a and b are non nullable
         dotPaint.strokeWidth = max(effect.activeStrokeWidth * dotOffset, effect.strokeWidth);
         color = Color.lerp(effect.activeDotColor, effect.dotColor, 1.0 - dotOffset)!;
       } else {

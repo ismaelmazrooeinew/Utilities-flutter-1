@@ -50,11 +50,6 @@ class PersianDateUtils {
   }
 
   static bool isValidDate(String date) {
-    // 1.YYYY/MM/DD
-    // 2.YYYY/MM/D
-    // 3.YYYY/M/DD
-    // 4.YYYY/M/D
-
     String pattern = r'^(\d{4})\/(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])$';
     RegExp regExp = new RegExp(pattern);
     if (regExp.hasMatch(date)) {
@@ -64,10 +59,6 @@ class PersianDateUtils {
   }
 
   static bool isValidTime(String time) {
-    // 1.10:05
-    // 1.1:5
-    // 1.1:50
-    // 1.10:5
     String pattern = r'^([0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]|[0-9])$';
     RegExp regExp = new RegExp(pattern);
     if (regExp.hasMatch(time)) {
@@ -77,9 +68,6 @@ class PersianDateUtils {
   }
 
   static int comparTime(String time1, String time2) {
-    // 1.time1 > time2 return 1
-    // 1.time1 < time2 return -1
-    // 1.time1 = time2 return 0
     List<int> splitTime1 = time1.split(':').map(int.parse).toList();
     List<int> splitTime2 = time2.split(':').map(int.parse).toList();
     if (splitTime1[0] > splitTime2[0]) return 1;

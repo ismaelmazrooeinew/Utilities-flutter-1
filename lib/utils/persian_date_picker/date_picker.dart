@@ -90,7 +90,6 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
       controller.forward(from: 0);
       int year = int.parse(initDate!.formatter.y);
       int month = int.parse(initDate!.formatter.m);
-      //int day = int.parse(initDate.formatter.d);
       var newDate = initDate;
       switch (type) {
         case 'prev':
@@ -115,9 +114,7 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
 
           isSlideForward = type == 'prev' ? false : true;
           controller.reverse();
-        } else if (status == AnimationStatus.dismissed) {
-          // controller.forward();
-        }
+        } else if (status == AnimationStatus.dismissed) {}
       });
     });
   }

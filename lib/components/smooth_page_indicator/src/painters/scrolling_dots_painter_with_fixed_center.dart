@@ -23,10 +23,8 @@ class ScrollingDotsWithFixedCenterPainter extends BasicIndicatorPainter {
     for (var index = 0; index < count; index++) {
       var color = effect.dotColor;
       if (index == current) {
-        // ! Both a and b are non nullable
         color = Color.lerp(effect.activeDotColor, effect.dotColor, dotOffset)!;
       } else if (index - 1 == current) {
-        // ! Both a and b are non nullable
         color = Color.lerp(effect.activeDotColor, effect.dotColor, 1 - dotOffset)!;
       }
 

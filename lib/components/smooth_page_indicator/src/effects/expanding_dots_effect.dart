@@ -5,8 +5,6 @@ import 'package:utilities/components/smooth_page_indicator/src/painters/indicato
 import 'indicator_effect.dart';
 
 class ExpandingDotsEffect extends BasicIndicatorEffect {
-  /// [expansionFactor] is multiplied by [dotWidth] to resolve
-  /// the width of the expanded dot.
   final double expansionFactor;
 
   const ExpandingDotsEffect({
@@ -25,7 +23,6 @@ class ExpandingDotsEffect extends BasicIndicatorEffect {
 
   @override
   Size calculateSize(int count) {
-    // Add the expanded dot width to our size calculation
     return Size(((dotWidth + spacing) * (count - 1)) + (expansionFactor * dotWidth), dotHeight);
   }
 

@@ -1,31 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
-/// fake data for test
-// final List<MediaViewModel> data = [
-//   MediaViewModel(
-//       link: 'https://abolfazlnezami.ir/file/slider.jpg',
-//       type: MediaType.image),
-//   MediaViewModel(
-//       link: 'https://flutter.dev',
-//       type: MediaType.link),
-//   MediaViewModel(
-//       link: 'https://abolfazlnezami.ir/file/slider1.jpg',
-//       type: MediaType.image),
-//   MediaViewModel(
-//       link: 'https://abolfazlnezami.ir/file/sound.mp3',
-//       type: MediaType.voice),
-//   MediaViewModel(
-//       link: 'https://abolfazlnezami.ir/file/resume.pdf',
-//       type: MediaType.pdf),
-//   MediaViewModel(
-//       link: 'https://abolfazlnezami.ir/file/slider2.jpg',
-//       type: MediaType.image),
-//   MediaViewModel(
-//       link: 'https://abolfazlnezami.ir/file/video.mp4',
-//       type: MediaType.video),
-// ];
-
 class StoryView extends StatefulWidget {
   const StoryView({
     required this.data,
@@ -147,7 +122,6 @@ class _StoryViewState extends State<StoryView> {
             ),
             const SizedBox(width: 5),
             InkWell(
-              // onTap: () => isWeb ? launchURL(url) : FileDownloader().requestDownload(url: url, context: context),
               child: Container(
                 height: 40,
                 width: 40,

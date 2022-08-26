@@ -4,9 +4,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:utilities/utilities.dart';
 
-/// needs to be implemented https://pub.dev/packages/get
-/// needs to be implemented https://pub.dev/packages/get_storage
-
 bool isAndroid = GetPlatform.isAndroid;
 bool isIos = GetPlatform.isIOS;
 bool isMacOs = GetPlatform.isMacOS;

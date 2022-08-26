@@ -8,20 +8,12 @@ import 'package:utilities/components/smooth_page_indicator/src/painters/scrollin
 import 'indicator_effect.dart';
 
 class ScrollingDotsEffect extends BasicIndicatorEffect {
-  /// The active dot strokeWidth
-  /// this is ignored if [fixedCenter] is false
   final double activeStrokeWidth;
 
-  /// [activeDotScale] is multiplied by [dotWidth] to resolve
-  /// active dot scaling
   final double activeDotScale;
 
-  /// The max number of dots to display at a time
-  /// if count is <= [maxVisibleDots] [maxVisibleDots] = count
-  /// must be an odd number that's >= 5
   final int maxVisibleDots;
 
-  // if True the old center dot style will be used
   final bool fixedCenter;
 
   const ScrollingDotsEffect({
@@ -53,7 +45,6 @@ class ScrollingDotsEffect extends BasicIndicatorEffect {
 
   @override
   Size calculateSize(int count) {
-    // Add the scaled dot width to our size calculation
     var width = (dotWidth + spacing) * (min(count, maxVisibleDots));
     if (fixedCenter && count <= maxVisibleDots) {
       width = ((count * 2) - 1) * (dotWidth + spacing);
