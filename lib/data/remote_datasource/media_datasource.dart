@@ -21,8 +21,7 @@ class MediaDataSource {
     final String? size,
   }) async {
     files?.forEach((final File file) async {
-      final Response<dynamic> i = await GetConnect()
-          .post(
+      final Response<dynamic> i = await GetConnect().post(
         '$baseUrl/Media',
         FormData(
           <String, dynamic>{
@@ -40,13 +39,7 @@ class MediaDataSource {
           "Authorization": getString(UtilitiesConstants.token) ?? "",
         },
         contentType: "multipart/form-data",
-
       );
-      logger.w(files.length);
-      logger.w(productId);
-      logger.w(useCase);
-      logger.w(i.statusCode);
-      logger.w(i.bodyString);
     });
     links?.forEach((final String link) async {
       final Response<dynamic> i = await GetConnect().post(
@@ -65,8 +58,6 @@ class MediaDataSource {
         ),
         headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
       );
-      logger.i(i.statusCode);
-      logger.i(i.bodyString);
     });
     action();
   }

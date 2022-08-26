@@ -12,11 +12,11 @@ Widget divider({double? width, double height = 0.6, Color color = Colors.grey, E
     );
 
 Widget dashedDivider({double? height}) => Row(
-      children: [
+      children: <Widget>[
         for (int i = 0; i < 40; i++)
           Expanded(
             child: Row(
-              children: [
+              children: <Widget>[
                 Expanded(child: Divider(thickness: 1, height: height)),
                 Expanded(child: Container()),
               ],

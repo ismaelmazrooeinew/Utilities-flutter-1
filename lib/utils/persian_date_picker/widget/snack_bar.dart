@@ -18,7 +18,7 @@ class SnackbarHelper {
     }
     final snackBar = SnackBar(
       content: Row(
-        children: [
+        children: <Widget>[
           Text(
             '$body',
           ),

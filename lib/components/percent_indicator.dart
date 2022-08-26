@@ -235,7 +235,7 @@ class _CircularPercentIndicatorState extends State<CircularPercentIndicator> wit
         height: _diameter,
         width: _diameter,
         child: Stack(
-          children: [
+          children: <Widget>[
             CustomPaint(
               painter: _CirclePainter(
                 progress: _percent * 360,
@@ -700,7 +700,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator> with Si
       padding: widget.padding,
       child: Stack(
         clipBehavior: Clip.none,
-        children: [
+        children: <Widget>[
           CustomPaint(
             key: _containerKey,
             painter: _LinearPainter(

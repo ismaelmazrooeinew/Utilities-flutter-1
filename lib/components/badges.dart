@@ -192,7 +192,7 @@ class BadgeState extends State<Badge> with SingleTickerProviderStateMixin {
         fit: widget.stackFit,
         alignment: widget.alignment,
         clipBehavior: Clip.none,
-        children: [
+        children: <Widget>[
           widget.child!,
           BadgePositioned(
             position: widget.position,

@@ -27,18 +27,18 @@ import 'package:utilities/utilities.dart';
 // ];
 
 class StoryView extends StatefulWidget {
-  final List<MediaViewModel> data;
-  final Widget? footer;
-  final PreferredSizeWidget? appbar;
-  final Widget? header;
-
   const StoryView({
-    Key? key,
     required this.data,
+    final Key? key,
     this.footer,
     this.header,
     this.appbar,
   }) : super(key: key);
+
+  final List<MediaViewModel> data;
+  final Widget? footer;
+  final PreferredSizeWidget? appbar;
+  final Widget? header;
 
   @override
   State<StoryView> createState() => _StoryViewState();
@@ -48,12 +48,12 @@ class _StoryViewState extends State<StoryView> {
   CarouselController buttonCarouselController = CarouselController();
 
   @override
-  Widget build(BuildContext context) => scaffold(
+  Widget build(final BuildContext context) => scaffold(
         appBar: widget.appbar,
         body: CarouselSlider(
           carouselController: buttonCarouselController,
-          options: CarouselOptions(height: screenHeight, viewportFraction: 1.0, enlargeCenterPage: false),
-          items: widget.data.map((item) {
+          options: CarouselOptions(height: screenHeight, viewportFraction: 1),
+          items: widget.data.map((final MediaViewModel item) {
             Widget result = Container();
             switch (item.type) {
               case MediaType.svg:
@@ -74,11 +74,9 @@ class _StoryViewState extends State<StoryView> {
               case MediaType.image:
                 result = _showImage(context, item.link);
                 break;
-              default:
-                result = Container();
             }
             return Stack(
-              children: [
+              children: <Widget>[
                 result,
                 Positioned(top: 0, left: 0, right: 0, child: widget.header ?? Container()),
                 item.type != MediaType.link
@@ -94,12 +92,15 @@ class _StoryViewState extends State<StoryView> {
                         top: screenHeight / 2,
                         right: 10,
                         child: InkWell(
-                          onTap: () => buttonCarouselController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.linear),
+                          onTap: () => buttonCarouselController.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.linear,
+                          ),
                           child: Container(
                             height: 40,
                             width: 40,
                             decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
-                            child: Icon(Icons.arrow_right, color: Colors.blueAccent),
+                            child: const Icon(Icons.arrow_right, color: Colors.blueAccent),
                           ),
                         ),
                       )
@@ -109,12 +110,15 @@ class _StoryViewState extends State<StoryView> {
                         top: screenHeight / 2,
                         left: 10,
                         child: InkWell(
-                          onTap: () => buttonCarouselController.previousPage(duration: Duration(milliseconds: 300), curve: Curves.linear),
+                          onTap: () => buttonCarouselController.previousPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.linear,
+                          ),
                           child: Container(
                             height: 40,
                             width: 40,
                             decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
-                            child: Icon(Icons.arrow_left, color: Colors.blueAccent),
+                            child: const Icon(Icons.arrow_left, color: Colors.blueAccent),
                           ),
                         ),
                       )
@@ -125,52 +129,55 @@ class _StoryViewState extends State<StoryView> {
         ),
       );
 
-  Widget _footer(String url, BuildContext context) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+  Widget _footer(final String url, final BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         width: double.infinity,
         height: 50,
         child: Row(
-          children: [
-            Spacer(),
+          children: <Widget>[
+            const Spacer(),
             InkWell(
               onTap: () => shareText(url),
               child: Container(
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
-                child: Icon(Icons.share, color: Colors.blueAccent),
+                child: const Icon(Icons.share, color: Colors.blueAccent),
               ),
             ),
-            SizedBox(width: 5),
+            const SizedBox(width: 5),
             InkWell(
               // onTap: () => isWeb ? launchURL(url) : FileDownloader().requestDownload(url: url, context: context),
               child: Container(
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
-                child: Icon(Icons.downloading_outlined, color: Colors.blueAccent),
+                child: const Icon(Icons.downloading_outlined, color: Colors.blueAccent),
               ),
             ),
           ],
         ),
       );
 
-  Widget _showImage(BuildContext context, String url) => Center(child: image(url, height: screenHeight, width: screenWidth));
+  Widget _showImage(final BuildContext context, final String url) => Center(
+        child: image(url, height: screenHeight, width: screenWidth),
+      );
 
-  Widget _showPdf(BuildContext context, String url) => SizedBox(height: screenHeight, child: SfPdfViewer.network(url));
+  Widget _showPdf(final BuildContext context, final String url) => SizedBox(
+        height: screenHeight,
+        child: SfPdfViewer.network(url),
+      );
 
-  Widget _showWeb(BuildContext context, String url) => WebViewX(
+  Widget _showWeb(final BuildContext context, final String url) => WebViewX(
         initialContent: url,
-        initialSourceType: SourceType.url,
         height: screenHeight,
         width: screenWidth,
       );
 }
 
 class VideoPlayerScreen extends StatefulWidget {
+  const VideoPlayerScreen({required this.url, final Key? key}) : super(key: key);
   final String url;
-
-  const VideoPlayerScreen({Key? key, required this.url}) : super(key: key);
 
   @override
   _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
@@ -195,11 +202,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => Container(
+  Widget build(final BuildContext context) => SizedBox(
         height: screenHeight,
-        child: FutureBuilder(
+        child: FutureBuilder<dynamic>(
           future: _initializeVideoPlayerFuture,
-          builder: (context, snapshot) {
+          builder: (final BuildContext context, final dynamic snapshot) {
             if (snapshot.connectionState == ConnectionState.done)
               return AspectRatio(aspectRatio: _controller.value.aspectRatio, child: VideoPlayer(_controller));
             else
@@ -210,16 +217,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 }
 
 class ShowVoice extends StatefulWidget {
+  const ShowVoice({required this.url, final Key? key}) : super(key: key);
   final String url;
-
-  const ShowVoice({Key? key, required this.url}) : super(key: key);
 
   @override
   _ShowVoiceState createState() => _ShowVoiceState();
 }
 
 class _ShowVoiceState extends State<ShowVoice> {
-  final player = AudioPlayer();
+  final AudioPlayer player = AudioPlayer();
 
   @override
   void initState() {
@@ -227,7 +233,7 @@ class _ShowVoiceState extends State<ShowVoice> {
     super.initState();
   }
 
-  void play(String url) async {
+  void play(final String url) async {
     await player.setUrl(url);
     await player.play();
   }
@@ -239,5 +245,5 @@ class _ShowVoiceState extends State<ShowVoice> {
   }
 
   @override
-  Widget build(BuildContext context) => Container();
+  Widget build(final BuildContext context) => Container();
 }

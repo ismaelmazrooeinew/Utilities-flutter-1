@@ -411,7 +411,7 @@ class _HalfRatingWidget extends StatelessWidget {
       child: enableMask
           ? Stack(
               fit: StackFit.expand,
-              children: [
+              children: <Widget>[
                 FittedBox(
                   fit: BoxFit.contain,
                   child: _NoRatingWidget(
@@ -614,7 +614,7 @@ class _RatingBarIndicatorState extends State<RatingBarIndicator> {
         height: widget.itemSize,
         child: Stack(
           fit: StackFit.expand,
-          children: [
+          children: <Widget>[
             FittedBox(
               fit: BoxFit.contain,
               child: index + 1 < _ratingNumber

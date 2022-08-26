@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-// import 'package:package_info_plus/package_info_plus.dart';
 import 'package:utilities/utilities.dart';
 
 /// needs to be implemented https://pub.dev/packages/get
@@ -60,7 +59,7 @@ Future<void> push(
   final int milliSecondDelay = 1,
 }) async {
   if (backFirst) back();
-  final Widget _page = await Future.microtask(() => page);
+  final Widget _page = await Future<Widget>.microtask(() => page);
   delay(
     milliSecondDelay,
     () => Get.to(
@@ -79,11 +78,9 @@ Future<void> dialog(
   final bool dialog = false,
   final VoidCallback? onDismiss,
 }) async {
-  final Widget _page = await Future.microtask(() => page);
+  final Widget _page = await Future<Widget>.microtask(() => page);
 
-  Get.dialog(_page, useSafeArea: true).then(
-    (final _) => onDismiss != null ? onDismiss() : null,
-  );
+  await Get.dialog(_page, useSafeArea: true).then((final _) => onDismiss != null ? onDismiss() : null);
 }
 
 Future<void> offAll(
@@ -92,7 +89,7 @@ Future<void> offAll(
   final Transition transition = Transition.cupertino,
   final int milliSecondDelay = 1,
 }) async {
-  final Widget _page = await Future.microtask(() => page);
+  final Widget _page = await Future<Widget>.microtask(() => page);
   delay(
     milliSecondDelay,
     () => Get.offAll(

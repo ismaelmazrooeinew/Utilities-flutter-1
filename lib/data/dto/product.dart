@@ -1,5 +1,4 @@
 import 'package:utilities/data/dto/report.dart';
-import 'package:utilities/data/dto/server_location.dart';
 import 'package:utilities/data/dto/team.dart';
 import 'package:utilities/utilities.dart';
 
@@ -292,6 +291,7 @@ class ProductReadDto {
   final String? deletedAt;
   final UserReadDto? user;
   final int? status;
+
   // final List<ServerLocationReadDto>? locations;
   final List<MediaReadDto>? media;
   final List<CategoryReadDto>? categories;

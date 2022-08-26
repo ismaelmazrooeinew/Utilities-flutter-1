@@ -13,6 +13,6 @@ export 'media.dart';
 export 'notification.dart';
 export 'product.dart';
 export 'shopping_cart.dart';
+export 'transaction.dart';
 export 'user.dart';
 export 'vote.dart';
-export 'transaction.dart';
