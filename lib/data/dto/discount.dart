@@ -11,9 +11,7 @@ class DiscountReadDto {
     this.id,
     this.createdAt,
     this.updatedAt,
-  }) {
-    throw UnimplementedError();
-  }
+  });
 
   final String? title;
   final int? discountPercent;
