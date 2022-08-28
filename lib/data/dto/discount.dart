@@ -11,10 +11,7 @@ class DiscountReadDto {
     this.id,
     this.createdAt,
     this.updatedAt,
-    this.deletedAt,
-  }) {
-    throw UnimplementedError();
-  }
+  });
 
   final String? title;
   final int? discountPercent;
@@ -25,7 +22,6 @@ class DiscountReadDto {
   final String? id;
   final String? createdAt;
   final String? updatedAt;
-  final String? deletedAt;
 
   factory DiscountReadDto.fromJson(String str) => DiscountReadDto.fromMap(json.decode(str));
 
@@ -41,7 +37,6 @@ class DiscountReadDto {
         id: json["id"] == null ? null : json["id"],
         createdAt: json["createdAt"] == null ? null : json["createdAt"],
         updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
-        deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -54,7 +49,6 @@ class DiscountReadDto {
         "id": id == null ? null : id,
         "createdAt": createdAt == null ? null : createdAt,
         "updatedAt": updatedAt == null ? null : updatedAt,
-        "deletedAt": deletedAt == null ? null : deletedAt,
       };
 }
 
