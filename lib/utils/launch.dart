@@ -15,6 +15,12 @@ void call(final String phone) async => await launchURL("tel:$phone");
 
 void sms(final String phone) async => await launchURL("sms:$phone");
 
+void shareWithTelegram(final String param) async => await launchURL("tg://msg?text=$param");
+
+void shareWithWhatsapp(final String param) async => await launchURL("whatsapp://send?text=$param");
+
+void shareWithEmail(final String param) async => await launchURL("mailto:?body=$param");
+
 void email(final String email, final String subject) {
   String? encodeQueryParameters(final Map<String, String> params) => params.entries
       .map(
