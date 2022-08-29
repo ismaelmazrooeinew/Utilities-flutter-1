@@ -166,6 +166,7 @@ class _FormBuilderState extends State<FormBuilder> {
             }
             result = selectedItems.join(",");
             if (selectedItems.isNotEmpty) {
+              forms.removeWhere((final FormReadDto e) => e.id == field.id);
               forms.add(FormReadDto(id: field.id, title: result,formField: field));
             } else {
               forms.removeWhere((final FormReadDto e) => e.id == field.id);
