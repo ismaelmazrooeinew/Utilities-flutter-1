@@ -128,10 +128,10 @@ class _FormBuilderState extends State<FormBuilder> {
             radioValue.value = value!;
             if (radioValue.value) {
               forms.removeWhere((final FormReadDto e) => e.id == field.id);
-              forms.add(FormReadDto(id: field.id, title: "true"));
+              forms.add(FormReadDto(id: field.id, title: "true",formField: field));
             } else {
               forms.removeWhere((final FormReadDto e) => e.id == field.id);
-              forms.add(FormReadDto(id: field.id, title: "false"));
+              forms.add(FormReadDto(id: field.id, title: "false",formField: field));
             }
           },
         ),
@@ -166,7 +166,7 @@ class _FormBuilderState extends State<FormBuilder> {
             }
             result = selectedItems.join(",");
             if (selectedItems.isNotEmpty) {
-              forms.add(FormReadDto(id: field.id, title: result));
+              forms.add(FormReadDto(id: field.id, title: result,formField: field));
             } else {
               forms.removeWhere((final FormReadDto e) => e.id == field.id);
             }
@@ -190,7 +190,7 @@ class _FormBuilderState extends State<FormBuilder> {
           validator: field.isRequired! ? validateNotEmpty() : null,
           onFieldSubmitted: (final String value) {
             if (value != "") {
-              forms.add(FormReadDto(id: field.id, title: value));
+              forms.add(FormReadDto(id: field.id, title: value,formField: field));
               widget.onFormChanged(forms);
             } else {
               forms.removeWhere((final FormReadDto e) => e.id == field.id);
