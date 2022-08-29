@@ -189,8 +189,9 @@ class _FormBuilderState extends State<FormBuilder> {
         trailing: TextFormField(
           keyboardType: field.type == 5 ? TextInputType.number : TextInputType.text,
           validator: field.isRequired! ? validateNotEmpty() : null,
-          onFieldSubmitted: (final String value) {
+          onChanged: (final String value) {
             if (value != "") {
+              forms.removeWhere((final FormReadDto e) => e.id == field.id);
               forms.add(FormReadDto(id: field.id, title: value,formField: field));
               widget.onFormChanged(forms);
             } else {
