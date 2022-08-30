@@ -18,6 +18,17 @@ class UserDataSource {
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
+  Future<void> checkUsername({
+    required final String userName,
+    required final VoidCallback onResponse,
+    required final Function(String statusCode) onError,
+  }) async =>
+      httpPost(
+        url: "$baseUrl/user/CheckUserName/$userName",
+        action: (Response response) => onResponse(),
+        error: (Response response) => onError(response.statusCode.toString()),
+      );
+
   Future<void> update({
     required final UserCreateUpdateDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
