@@ -191,6 +191,7 @@ class UserReadDto {
     this.dribble,
     this.pinterest,
     this.state,
+    this.countFollowing,
   });
 
   final String? token;
@@ -231,6 +232,7 @@ class UserReadDto {
   final List<CategoryReadDto>? categories;
   final List<ProductReadDto>? products;
   final int? countFollowers;
+  final int? countFollowing;
   final int? countProducts;
   final String? color;
   final List<BookmarkFolder>? bookmarkFolders;
@@ -277,6 +279,7 @@ class UserReadDto {
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
         countFollowers: json["countFollowers"] == null ? null : json["countFollowers"],
+        countFollowing: json["countFollowing"] == null ? null : json["countFollowing"],
         countProducts: json["countProducts"] == null ? null : json["countProducts"],
         color: json["color"] == null ? null : json["color"],
         isFollowing: json["isFollowing"] == null ? null : json["isFollowing"],
@@ -320,6 +323,7 @@ class UserReadDto {
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
         "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
         "countFollowers": countFollowers == null ? null : countFollowers,
+        "countFollowing": countFollowing == null ? null : countFollowing,
         "countProducts": countProducts == null ? null : countProducts,
         "color": color == null ? null : color,
         "isFollowing": isFollowing == null ? null : isFollowing,
