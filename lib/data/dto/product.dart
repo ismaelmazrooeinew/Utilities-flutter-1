@@ -2,6 +2,8 @@ import 'package:utilities/data/dto/report.dart';
 import 'package:utilities/data/dto/team.dart';
 import 'package:utilities/utilities.dart';
 
+import '../../utilities.dart';
+
 extension ProductReadDtoExtension on ProductReadDto {
   ProductReadDto sample() => ProductReadDto(
         id: "id",
@@ -255,6 +257,7 @@ class ProductReadDto {
     this.teams,
     this.myVotes,
     this.reports,
+    this.votes,
   });
 
   final String? id;
@@ -295,6 +298,7 @@ class ProductReadDto {
   final List<CategoryReadDto>? categories;
   final List<VoteField>? voteFields;
   final List<VoteField>? myVotes;
+  final List<VoteReadDto>? votes;
   final List<FormReadDto>? forms;
   final List<CommentReadDto>? comments;
   final List<TeamReadDto>? teams;
@@ -340,6 +344,7 @@ class ProductReadDto {
         status: json["status"] == null ? null : json["status"],
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
+        votes: json["votes"] == null ? null : List<VoteReadDto>.from(json["votes"].map((x) => VoteReadDto.fromMap(x))),
         voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
         myVotes: json["myVotes"] == null ? null : List<VoteField>.from(json["myVotes"].map((x) => VoteField.fromMap(x))),
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
@@ -384,6 +389,7 @@ class ProductReadDto {
         "status": status == null ? null : status,
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
+        "votes": votes == null ? null : List<dynamic>.from(votes!.map((x) => x.toMap())),
         "voteFields": voteFields == null ? null : List<dynamic>.from(voteFields!.map((x) => x.toMap())),
         "myVotes": myVotes == null ? null : List<dynamic>.from(myVotes!.map((x) => x.toMap())),
         "forms": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
