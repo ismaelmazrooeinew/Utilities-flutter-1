@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:utilities/utilities.dart';
 
@@ -11,11 +10,7 @@ class LocalDataSource {
   }
 
   Future<List<IranLocationReadDto>> getIranLocations() async {
-
-    String data = await
-    DefaultAssetBundle.of(context).loadString("packages/utilities/lib/assets/data/iran.json");
-    // final String data = await rootBundle.loadString("packages/utilities/lib/assets/data/iran.json");
-
+    final String data = await rootBundle.loadString("packages/utilities/lib/assets/data/iran.json");
     final List<IranLocationReadDto> list = <IranLocationReadDto>[];
     for (final dynamic i in json.decode(data)) list.add(IranLocationReadDto.fromMap(i));
     return list;
