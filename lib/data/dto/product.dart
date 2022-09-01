@@ -439,6 +439,7 @@ class ProductFilterDto {
     this.isFollowing,
     this.showCreator,
     this.showCategories,
+    this.showMedia,
     this.showTeams,
     this.userId,
     this.state,
@@ -466,6 +467,7 @@ class ProductFilterDto {
   final bool? showCreator;
   final bool? showTeams;
   final bool? showCategories;
+  final bool? showMedia;
   final int? visitsCount;
   final double? length;
   final double? width;
@@ -532,6 +534,7 @@ class ProductFilterDto {
         showCreator: json["showCreator"] == null ? null : json["showCreator"],
         showTeams: json["showTeams"] == null ? null : json["showTeams"],
         showCategories: json["showCategories"] == null ? null : json["showCategories"],
+        showMedia: json["showMedia"] == null ? null : json["showMedia"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -576,5 +579,6 @@ class ProductFilterDto {
         "showCreator": showCreator == null ? null : showCreator,
         "showTeams": showTeams == null ? null : showTeams,
         "showCategories": showCategories == null ? null : showCategories,
+        "showMedia": showMedia == null ? null : showMedia,
       };
 }
