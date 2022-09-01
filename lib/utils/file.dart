@@ -20,7 +20,14 @@ void showFilePicker({
         if (i.path != null) files.add(File(i.path!));
       });
     } else {
-      final File file = File(result.files.single.path!);
+
+      var picked = await FilePicker.platform.pickFiles();
+
+
+      final File file = File(result.files.single.name!);
+      // var file = result.files.single;
+
+
       action(<File>[file]);
     }
   }
