@@ -20,13 +20,7 @@ void showFilePicker({
         if (i.path != null) files.add(File(i.path!));
       });
     } else {
-
-
-
-      final File file = File(result.files.single.name);
-      // var file = result.files.single;
-
-
+      final File file = File(result.files.single.path!);
       action(<File>[file]);
     }
   }
