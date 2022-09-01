@@ -21,10 +21,9 @@ void showFilePicker({
       });
     } else {
 
-      var picked = await FilePicker.platform.pickFiles();
 
 
-      final File file = File(result.files.single.name!);
+      final File file = File(result.files.single.name);
       // var file = result.files.single;
 
 
