@@ -99,3 +99,43 @@ class VoteField {
         "score": score == null ? null : score,
       };
 }
+
+class VoteReadDto {
+  VoteReadDto({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+    this.score,
+    this.user,
+  });
+
+  final String? id;
+  final String? createdAt;
+  final String? updatedAt;
+  final String? deletedAt;
+  final double? score;
+  final UserReadDto? user;
+
+  factory VoteReadDto.fromJson(String str) => VoteReadDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory VoteReadDto.fromMap(Map<String, dynamic> json) => VoteReadDto(
+    id: json["id"] == null ? null : json["id"],
+    createdAt: json["createdAt"] == null ? null : json["createdAt"],
+    updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
+    deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
+    score: json["score"] == null ? null : json["score"],
+    user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
+  );
+
+  Map<String, dynamic> toMap() => {
+    "id": id == null ? null : id,
+    "createdAt": createdAt == null ? null : createdAt,
+    "updatedAt": updatedAt == null ? null : updatedAt,
+    "deletedAt": deletedAt == null ? null : deletedAt,
+    "score": score == null ? null : score,
+    "user": user == null ? null : user!.toMap(),
+  };
+}
