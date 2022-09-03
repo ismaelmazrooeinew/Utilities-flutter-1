@@ -79,6 +79,7 @@ class VoteField {
     this.createdAt,
     this.productId,
     this.updatedAt,
+    this.votes,
   });
 
   final String? id;
@@ -86,6 +87,7 @@ class VoteField {
   final String? productId;
   final String? createdAt;
   final String? updatedAt;
+  final List<VoteReadDto>? votes;
 
   factory VoteField.fromJson(String str) => VoteField.fromMap(json.decode(str));
 
@@ -97,6 +99,7 @@ class VoteField {
         createdAt: json["createdAt"] == null ? null : json["createdAt"],
         updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
         productId: json["productId"] == null ? null : json["productId"],
+        votes: json["votes"] == null ? null : VoteField.fromMap(json["votes"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -105,6 +108,7 @@ class VoteField {
         "createdAt": createdAt == null ? null : createdAt,
         "updatedAt": updatedAt == null ? null : updatedAt,
         "productId": productId == null ? null : productId,
+        "votes": votes == null ? null : votes!.toMap(),
       };
 }
 
