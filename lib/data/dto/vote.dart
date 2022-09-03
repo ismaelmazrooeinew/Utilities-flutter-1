@@ -99,7 +99,7 @@ class VoteField {
         createdAt: json["createdAt"] == null ? null : json["createdAt"],
         updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
         productId: json["productId"] == null ? null : json["productId"],
-        votes: json["votes"] == null ? null : VoteField.fromMap(json["votes"]),
+        votes: json["votes"] == null ? null : List<VoteReadDto>.from(json["votes"].map((x) => VoteReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -108,7 +108,7 @@ class VoteField {
         "createdAt": createdAt == null ? null : createdAt,
         "updatedAt": updatedAt == null ? null : updatedAt,
         "productId": productId == null ? null : productId,
-        "votes": votes == null ? null : votes!.toMap(),
+        "votes": votes == null ? null : List<dynamic>.from(votes!.map((x) => x.toMap())),
       };
 }
 
