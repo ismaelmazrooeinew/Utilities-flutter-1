@@ -141,7 +141,7 @@ class VoteReadDto {
     score: json["score"] == null ? null : json["score"],
     userId: json["userId"] == null ? null : json["userId"],
     voteFieldId: json["voteFieldId"] == null ? null : json["voteFieldId"],
-    voteField: json["voteField"] == null ? null : VoteField.fromMap(json["user"]),
+    voteField: json["voteField"] == null ? null : VoteField.fromMap(json["voteField"]),
   );
 
   Map<String, dynamic> toMap() => {
