@@ -472,7 +472,7 @@ class ProductFilterDto {
   final double? endPriceRange;
   final bool? enabled;
   final bool? isForSale;
-  final bool? isBookmarked;
+   bool? isBookmarked;
   final bool? minimal;
   final bool? isFollowing;
   final bool? showCreator;
@@ -505,6 +505,10 @@ class ProductFilterDto {
   final bool? orderByPriceDecending;
   final bool? orderByCreatedDate;
   final bool? orderByCreaedDateDecending;
+
+  void setIsBookmark(bool _isBookmark){
+    this.isBookmarked=_isBookmark;
+  }
 
   factory ProductFilterDto.fromJson(String str) => ProductFilterDto.fromMap(json.decode(str));
 
