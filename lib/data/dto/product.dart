@@ -443,6 +443,13 @@ class ProductFilterDto {
     this.showTeams,
     this.userId,
     this.state,
+    this.orderByVotes,
+    this.orderByAtoZ,
+    this.orderByZtoA,
+    this.orderByPriceAccending,
+    this.orderByPriceDecending,
+    this.orderByCreatedDate,
+    this.orderByCreaedDateDecending,
   });
 
   final String? title;
@@ -487,6 +494,13 @@ class ProductFilterDto {
   final String? useCase;
   final String? state;
   final List<UserReadDto>? teams;
+  final bool? orderByVotes;
+  final bool? orderByAtoZ;
+  final bool? orderByZtoA;
+  final bool? orderByPriceAccending;
+  final bool? orderByPriceDecending;
+  final bool? orderByCreatedDate;
+  final bool? orderByCreaedDateDecending;
 
   factory ProductFilterDto.fromJson(String str) => ProductFilterDto.fromMap(json.decode(str));
 
@@ -535,7 +549,16 @@ class ProductFilterDto {
         showTeams: json["showTeams"] == null ? null : json["showTeams"],
         showCategories: json["showCategories"] == null ? null : json["showCategories"],
         showMedia: json["showMedia"] == null ? null : json["showMedia"],
+    orderByVotes: json["orderByVotes"] == null ? null : json["orderByVotes"],
+    orderByAtoZ: json["orderByAtoZ"] == null ? null : json["orderByAtoZ"],
+    orderByZtoA: json["orderByZtoA"] == null ? null : json["orderByZtoA"],
+    orderByPriceAccending: json["orderByPriceAccending"] == null ? null : json["orderByPriceAccending"],
+    orderByPriceDecending: json["orderByPriceDecending"] == null ? null : json["orderByPriceDecending"],
+    orderByCreatedDate: json["orderByCreatedDate"] == null ? null : json["orderByCreatedDate"],
+    orderByCreaedDateDecending: json["orderByCreaedDateDecending"] == null ? null : json["orderByCreaedDateDecending"],
       );
+
+
 
   Map<String, dynamic> toMap() => {
         "title": title == null ? null : title,
@@ -580,5 +603,14 @@ class ProductFilterDto {
         "showTeams": showTeams == null ? null : showTeams,
         "showCategories": showCategories == null ? null : showCategories,
         "showMedia": showMedia == null ? null : showMedia,
+        "orderByVotes": orderByVotes == null ? null : orderByVotes,
+        "orderByAtoZ": orderByAtoZ == null ? null : orderByAtoZ,
+        "orderByZtoA": orderByZtoA == null ? null : orderByZtoA,
+        "orderByPriceAccending": orderByPriceAccending == null ? null : orderByPriceAccending,
+        "orderByPriceDecending": orderByPriceDecending == null ? null : orderByPriceDecending,
+        "orderByCreatedDate": orderByCreatedDate == null ? null : orderByCreatedDate,
+        "orderByCreatedDate": orderByCreatedDate == null ? null : orderByCreatedDate,
+        "orderByCreaedDateDecending": orderByCreaedDateDecending == null ? null : orderByCreaedDateDecending,
       };
+
 }
