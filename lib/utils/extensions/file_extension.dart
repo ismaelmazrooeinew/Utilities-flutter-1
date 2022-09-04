@@ -1,4 +1,4 @@
-import 'package:universal_io/io.dart';
+import 'dart:io';
 import 'package:utilities/utilities.dart';
 
 extension FileExtension on File {

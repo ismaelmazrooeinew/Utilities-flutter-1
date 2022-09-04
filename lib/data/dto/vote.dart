@@ -76,12 +76,18 @@ class VoteField {
   VoteField({
     this.id,
     this.title,
-    this.score,
+    this.createdAt,
+    this.productId,
+    this.updatedAt,
+    this.votes,
   });
 
   final String? id;
   final String? title;
-  final double? score;
+  final String? productId;
+  final String? createdAt;
+  final String? updatedAt;
+  final List<VoteReadDto>? votes;
 
   factory VoteField.fromJson(String str) => VoteField.fromMap(json.decode(str));
 
@@ -90,13 +96,19 @@ class VoteField {
   factory VoteField.fromMap(Map<String, dynamic> json) => VoteField(
         id: json["id"] == null ? null : json["id"],
         title: json["title"] == null ? null : json["title"],
-        score: json["score"] == null ? null : json["score"],
+        createdAt: json["createdAt"] == null ? null : json["createdAt"],
+        updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
+        productId: json["productId"] == null ? null : json["productId"],
+        votes: json["votes"] == null ? null : List<VoteReadDto>.from(json["votes"].map((x) => VoteReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
         "id": id == null ? null : id,
         "title": title == null ? null : title,
-        "score": score == null ? null : score,
+        "createdAt": createdAt == null ? null : createdAt,
+        "updatedAt": updatedAt == null ? null : updatedAt,
+        "productId": productId == null ? null : productId,
+        "votes": votes == null ? null : List<dynamic>.from(votes!.map((x) => x.toMap())),
       };
 }
 
@@ -105,17 +117,21 @@ class VoteReadDto {
     this.id,
     this.createdAt,
     this.updatedAt,
-    this.deletedAt,
+    this.productId,
     this.score,
-    this.user,
+    this.userId,
+    this.voteFieldId,
+    this.voteField,
   });
 
   final String? id;
   final String? createdAt;
   final String? updatedAt;
-  final String? deletedAt;
+  final String? productId;
+  final String? voteFieldId;
+  final String? userId;
   final double? score;
-  final UserReadDto? user;
+  final VoteField? voteField;
 
   factory VoteReadDto.fromJson(String str) => VoteReadDto.fromMap(json.decode(str));
 
@@ -125,17 +141,21 @@ class VoteReadDto {
     id: json["id"] == null ? null : json["id"],
     createdAt: json["createdAt"] == null ? null : json["createdAt"],
     updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
-    deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
+    productId: json["productId"] == null ? null : json["productId"],
     score: json["score"] == null ? null : json["score"],
-    user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
+    userId: json["userId"] == null ? null : json["userId"],
+    voteFieldId: json["voteFieldId"] == null ? null : json["voteFieldId"],
+    voteField: json["voteField"] == null ? null : VoteField.fromMap(json["voteField"]),
   );
 
   Map<String, dynamic> toMap() => {
     "id": id == null ? null : id,
     "createdAt": createdAt == null ? null : createdAt,
     "updatedAt": updatedAt == null ? null : updatedAt,
-    "deletedAt": deletedAt == null ? null : deletedAt,
+    "productId": productId == null ? null : productId,
     "score": score == null ? null : score,
-    "user": user == null ? null : user!.toMap(),
+    "userId": userId == null ? null : userId,
+    "voteFieldId": voteFieldId == null ? null : voteFieldId,
+    "voteField": voteField == null ? null : voteField!.toMap(),
   };
 }

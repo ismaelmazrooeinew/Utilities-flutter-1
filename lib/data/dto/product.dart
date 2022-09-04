@@ -258,6 +258,7 @@ class ProductReadDto {
     this.myVotes,
     this.reports,
     this.votes,
+    this.voteCount,
   });
 
   final String? id;
@@ -286,6 +287,7 @@ class ProductReadDto {
   final double? maxOrder;
   final double? price;
   final double? score;
+  final double? voteCount;
   final String? startDate;
   final String? endDate;
   final String? createdAt;
@@ -335,6 +337,7 @@ class ProductReadDto {
         maxOrder: json["maxOrder"] == null ? null : json["maxOrder"],
         price: json["price"] == null ? null : json["price"],
         score: json["score"] == null ? null : json["score"],
+        voteCount: json["voteCount"] == null ? null : json["voteCount"],
         startDate: json["startDate"] == null ? null : json["startDate"],
         endDate: json["endDate"] == null ? null : json["endDate"],
         createdAt: json["createdAt"] == null ? null : json["createdAt"],
@@ -387,6 +390,7 @@ class ProductReadDto {
         "deletedAt": deletedAt == null ? null : deletedAt,
         "user": user == null ? null : user!.toMap(),
         "status": status == null ? null : status,
+        "voteCount": voteCount == null ? null : voteCount,
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
         "votes": votes == null ? null : List<dynamic>.from(votes!.map((x) => x.toMap())),
@@ -612,5 +616,4 @@ class ProductFilterDto {
         "orderByCreatedDate": orderByCreatedDate == null ? null : orderByCreatedDate,
         "orderByCreaedDateDecending": orderByCreaedDateDecending == null ? null : orderByCreaedDateDecending,
       };
-
 }

@@ -9,12 +9,14 @@ class LocationReadDto {
     this.latitude,
     this.longitude,
     this.type,
+    this.children,
   });
 
   final num? id;
   final String? title;
   final int? parentId;
   final LocationReadDto? parent;
+  final List<LocationReadDto>? children;
   final num? latitude;
   final num? longitude;
   final int? type;
@@ -31,6 +33,7 @@ class LocationReadDto {
         latitude: json["lat"],
         longitude: json["lon"],
         type: json["t"],
+        children: json["ch"] == null ? null : List<LocationReadDto>.from(json["ch"].map((x) => LocationReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -41,6 +44,7 @@ class LocationReadDto {
         "lat": latitude,
         "lon": longitude,
         "t": type,
+        "ch": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
       };
 }
 
