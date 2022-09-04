@@ -447,6 +447,7 @@ class ProductFilterDto {
     this.showTeams,
     this.userId,
     this.state,
+    this.orderByVotes,
   });
 
   final String? title;
@@ -472,6 +473,7 @@ class ProductFilterDto {
   final bool? showTeams;
   final bool? showCategories;
   final bool? showMedia;
+  final bool? orderByVotes;
   final int? visitsCount;
   final double? length;
   final double? width;
@@ -539,6 +541,7 @@ class ProductFilterDto {
         showTeams: json["showTeams"] == null ? null : json["showTeams"],
         showCategories: json["showCategories"] == null ? null : json["showCategories"],
         showMedia: json["showMedia"] == null ? null : json["showMedia"],
+        orderByVotes: json["orderByVotes"] == null ? null : json["orderByVotes"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -584,5 +587,6 @@ class ProductFilterDto {
         "showTeams": showTeams == null ? null : showTeams,
         "showCategories": showCategories == null ? null : showCategories,
         "showMedia": showMedia == null ? null : showMedia,
+        "orderByVotes": orderByVotes == null ? null : orderByVotes,
       };
 }
