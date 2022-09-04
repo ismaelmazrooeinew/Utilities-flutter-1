@@ -279,7 +279,7 @@ class ProductReadDto {
   final String? useCase;
   final bool? isForSale;
   final bool? enabled;
-  final bool? isBookmarked;
+  bool? isBookmarked;
   final double? latitude;
   final double? longitude;
   final int? visitsCount;
@@ -305,6 +305,10 @@ class ProductReadDto {
   final List<CommentReadDto>? comments;
   final List<TeamReadDto>? teams;
   final List<Report>? reports;
+
+  void setIsBookmark(bool _isBookmark) {
+    this.isBookmarked = _isBookmark; //
+  }
 
   factory ProductReadDto.fromJson(String str) => ProductReadDto.fromMap(json.decode(str));
 
@@ -472,7 +476,7 @@ class ProductFilterDto {
   final double? endPriceRange;
   final bool? enabled;
   final bool? isForSale;
-   bool? isBookmarked;
+  final bool? isBookmarked;
   final bool? minimal;
   final bool? isFollowing;
   final bool? showCreator;
@@ -505,10 +509,6 @@ class ProductFilterDto {
   final bool? orderByPriceDecending;
   final bool? orderByCreatedDate;
   final bool? orderByCreaedDateDecending;
-
-  void setIsBookmark(bool _isBookmark){
-    this.isBookmarked=_isBookmark;//
-  }
 
   factory ProductFilterDto.fromJson(String str) => ProductFilterDto.fromMap(json.decode(str));
 
@@ -557,16 +557,14 @@ class ProductFilterDto {
         showTeams: json["showTeams"] == null ? null : json["showTeams"],
         showCategories: json["showCategories"] == null ? null : json["showCategories"],
         showMedia: json["showMedia"] == null ? null : json["showMedia"],
-    orderByVotes: json["orderByVotes"] == null ? null : json["orderByVotes"],
-    orderByAtoZ: json["orderByAtoZ"] == null ? null : json["orderByAtoZ"],
-    orderByZtoA: json["orderByZtoA"] == null ? null : json["orderByZtoA"],
-    orderByPriceAccending: json["orderByPriceAccending"] == null ? null : json["orderByPriceAccending"],
-    orderByPriceDecending: json["orderByPriceDecending"] == null ? null : json["orderByPriceDecending"],
-    orderByCreatedDate: json["orderByCreatedDate"] == null ? null : json["orderByCreatedDate"],
-    orderByCreaedDateDecending: json["orderByCreaedDateDecending"] == null ? null : json["orderByCreaedDateDecending"],
+        orderByVotes: json["orderByVotes"] == null ? null : json["orderByVotes"],
+        orderByAtoZ: json["orderByAtoZ"] == null ? null : json["orderByAtoZ"],
+        orderByZtoA: json["orderByZtoA"] == null ? null : json["orderByZtoA"],
+        orderByPriceAccending: json["orderByPriceAccending"] == null ? null : json["orderByPriceAccending"],
+        orderByPriceDecending: json["orderByPriceDecending"] == null ? null : json["orderByPriceDecending"],
+        orderByCreatedDate: json["orderByCreatedDate"] == null ? null : json["orderByCreatedDate"],
+        orderByCreaedDateDecending: json["orderByCreaedDateDecending"] == null ? null : json["orderByCreaedDateDecending"],
       );
-
-
 
   Map<String, dynamic> toMap() => {
         "title": title == null ? null : title,
