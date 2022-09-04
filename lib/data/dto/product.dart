@@ -507,7 +507,7 @@ class ProductFilterDto {
   final bool? orderByCreaedDateDecending;
 
   void setIsBookmark(bool _isBookmark){
-    this.isBookmarked=_isBookmark;
+    this.isBookmarked=_isBookmark;//
   }
 
   factory ProductFilterDto.fromJson(String str) => ProductFilterDto.fromMap(json.decode(str));
