@@ -80,12 +80,12 @@ class MediaDataSource {
 
       var request=http.MultipartRequest('POST',Uri.parse('$baseUrl/Media'));
       request.fields['UseCase']=useCase;
-      request.fields['CategoryId']=categoryId!;
-      request.fields['ContentId']=contentId!;
-      request.fields['ProductId']=productId!;
-      request.fields['UserId']=userId!;
-      request.fields['NotificationId']=notificationId!;
-      request.fields['Size']=size!;
+      request.fields['CategoryId']=categoryId??"";
+      request.fields['ContentId']=contentId??"";
+      request.fields['ProductId']=productId??"";
+      request.fields['UserId']=userId??"";
+      request.fields['NotificationId']=notificationId??"";
+      request.fields['Size']=size??"";
       request.headers['Authorization']=getString(UtilitiesConstants.token) ?? "";
 
       List<int> list=file.cast();
