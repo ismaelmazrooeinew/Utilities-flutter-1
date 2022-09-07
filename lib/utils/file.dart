@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:utilities/utilities.dart';
 
 void showFilePicker({
@@ -24,6 +25,32 @@ void showFilePicker({
     }
   }
 }
+
+
+void showFilePickerWeb({
+  required final Function(Uint8List pickedFileBytes) action,
+  final FileType fileType = FileType.image,
+  final bool allowMultiple = false,
+  final List<String>? allowedExtensions,
+}) async {
+
+  final FilePickerResult? result = await FilePicker.platform.pickFiles(
+    type: fileType,
+    allowMultiple: allowMultiple,
+    allowedExtensions: allowedExtensions,
+  );
+  if (result != null) {
+    if (allowMultiple) {
+      Uint8List pickedFileBytes = await result.files[0].bytes!;
+      action(pickedFileBytes);
+
+    } else {
+      final File file = File(result.files.single.path!);
+
+    }
+  }
+}
+
 
 Future<CroppedFile?> cropImage({
   required final File file,
