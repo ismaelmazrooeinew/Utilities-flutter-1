@@ -88,7 +88,7 @@ class MediaDataSource {
       request.fields['Size']=size!;
       request.headers['Authorization']=getString(UtilitiesConstants.token) ?? "";
 
-      List<int> list=fileBytes.cast();
+      List<int> list=file.cast();
       request.files.add(http.MultipartFile.fromBytes('fileeeeeee', list));
 
       var response=await request.send();
