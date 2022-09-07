@@ -87,6 +87,7 @@ class MediaDataSource {
       request.fields['Size'] = size ?? "";
       request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
 
+
       List<int> list = file.cast();
       request.files.add(http.MultipartFile.fromBytes('image', list, filename: "image01.png"));
 
@@ -102,13 +103,13 @@ class MediaDataSource {
         FormData(
           <String, dynamic>{
             'Links': <String>[link],
-            'UseCase': useCase,
-            'CategoryId': categoryId,
-            'ContentId': contentId,
-            'ProductId': productId,
-            'UserId': userId,
-            'NotificationId': notificationId,
-            'Size': size,
+            'UseCase': useCase??"",
+            'CategoryId': categoryId??"",
+            'ContentId': contentId??"",
+            'ProductId': productId??"",
+            'UserId': userId??"",
+            'NotificationId': notificationId??"",
+            'Size': size??"",
           },
         ),
         headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
