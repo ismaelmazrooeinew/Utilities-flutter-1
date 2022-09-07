@@ -63,8 +63,9 @@ class MediaDataSource {
     });
     action();
   }
+
   Future<void> createWeb({
-    required final List<Uint8List>  fileBytes,
+    required final List<Uint8List> fileBytes,
     final List<String>? links,
     required final String useCase,
     required final VoidCallback action,
@@ -75,32 +76,25 @@ class MediaDataSource {
     final String? notificationId,
     final String? size,
   }) async {
-
     fileBytes.forEach((final Uint8List file) async {
+      var request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
+      request.fields['UseCase'] = useCase;
+      request.fields['CategoryId'] = categoryId ?? "";
+      request.fields['ContentId'] = contentId ?? "";
+      request.fields['ProductId'] = productId ?? "";
+      request.fields['UserId'] = userId ?? "";
+      request.fields['NotificationId'] = notificationId ?? "";
+      request.fields['Size'] = size ?? "";
+      request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
 
-      var request=http.MultipartRequest('POST',Uri.parse('$baseUrl/Media'));
-      request.fields['UseCase']=useCase;
-      request.fields['CategoryId']=categoryId??"";
-      request.fields['ContentId']=contentId??"";
-      request.fields['ProductId']=productId??"";
-      request.fields['UserId']=userId??"";
-      request.fields['NotificationId']=notificationId??"";
-      request.fields['Size']=size??"";
-      request.headers['Authorization']=getString(UtilitiesConstants.token) ?? "";
+      List<int> list = file.cast();
+      request.files.add(http.MultipartFile.fromBytes('image', list, filename: "image01.png"));
 
-      List<int> list=file.cast();
-      request.files.add(http.MultipartFile.fromBytes('fileeeeeee', list));
+      var response = await request.send();
 
-      var response=await request.send();
-
-      response.stream.bytesToString().asStream().listen((event) {
-
-        var parsJson=json.decode(event);
-        print(parsJson);
-
-
-      });
-
+      var responseData = await response.stream.toBytes();
+      var res = String.fromCharCodes(responseData);
+      print(res);
     });
     links?.forEach((final String link) async {
       final Response<dynamic> i = await GetConnect().post(
