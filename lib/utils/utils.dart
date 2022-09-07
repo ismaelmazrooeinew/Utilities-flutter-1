@@ -30,16 +30,16 @@ void delay(final int milliseconds, final VoidCallback action) async => Future<dy
 
 void validateForm({required final GlobalKey<FormState> key, required final VoidCallback action}) {
   if (key.currentState!.validate()) action();
+}
 
-  Future<File> getCompressImageFile({required final File file, final int quality = 70}) async {
-    final Directory dir = Directory.systemTemp;
-    final String targetPath = "${dir.absolute.path}/temp.jpg";
-    final File? result = await FlutterImageCompress.compressAndGetFile(
-      file.absolute.path,
-      targetPath,
-      quality: quality,
-    );
+Future<File> getCompressImageFile({required final File file, final int quality = 70}) async {
+  final Directory dir = Directory.systemTemp;
+  final String targetPath = "${dir.absolute.path}/temp.jpg";
+  final File? result = await FlutterImageCompress.compressAndGetFile(
+    file.absolute.path,
+    targetPath,
+    quality: quality,
+  );
 
-    return result ?? File("--");
-  }
+  return result ?? File("--");
 }
