@@ -40,14 +40,8 @@ void showFilePickerWeb({
     allowedExtensions: allowedExtensions,
   );
   if (result != null) {
-    if (allowMultiple) {
       Uint8List pickedFileBytes = await result.files[0].bytes!;
       action(pickedFileBytes);
-
-    } else {
-      final File file = File(result.files.single.path!);
-
-    }
   }
 }
 
