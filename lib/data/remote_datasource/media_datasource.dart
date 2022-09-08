@@ -66,6 +66,58 @@ class MediaDataSource {
 
   Future<void> createWeb({
     required final List<Uint8List> fileBytes,
+    required final String useCase, //media
+    required final VoidCallback action,
+    final List<String>? links,
+    final String? categoryId,
+    final String? contentId,
+    final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
+    final String? userId,
+    final String? notificationId,
+    final String? size,
+  }) async {
+    fileBytes.forEach((final Uint8List files) async {
+      final List<int> _selectedFile = files;
+      final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
+      request.fields['UseCase'] = useCase;
+      request.fields['CategoryId'] = categoryId ?? "";
+      request.fields['ContentId'] = contentId ?? "";
+      request.fields['ProductId'] = productId ?? "";
+      request.fields['UserId'] = userId ?? "";
+      request.fields['NotificationId'] = notificationId ?? "";
+      request.fields['Size'] = size ?? "";
+      request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
+
+      request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: "file111.png"));
+
+      await request.send().then((final http.StreamedResponse response) {
+        if (response.statusCode == 200) {
+          links?.forEach((final String link) async {
+            final Response<dynamic> i = await GetConnect().post(
+              '$baseUrl/Media',
+              FormData(
+                <String, dynamic>{
+                  'Links': <String>[link],
+                  'UseCase': useCase ?? "",
+                  'CategoryId': categoryId ?? "",
+                  'ContentId': contentId ?? "",
+                  'ProductId': productId ?? "",
+                  'UserId': userId ?? "",
+                  'NotificationId': notificationId ?? "",
+                  'Size': size ?? "",
+                },
+              ),
+              headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
+            );
+          });
+          action();
+        }
+      });
+    });
+  }
+
+  Future<void> createWeb2({
+    required final List<Uint8List> fileBytes,
     final List<String>? links,
     required final String useCase,
     required final VoidCallback action,
@@ -87,9 +139,8 @@ class MediaDataSource {
       request.fields['Size'] = size ?? "";
       request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
 
-
       List<int> list = file.cast();
-      request.files.add(http.MultipartFile.fromBytes('image', list, filename: "image01.png"));
+      request.files.add(http.MultipartFile.fromBytes('Files', list, filename: "image01.png"));
 
       var response = await request.send();
 
@@ -103,13 +154,13 @@ class MediaDataSource {
         FormData(
           <String, dynamic>{
             'Links': <String>[link],
-            'UseCase': useCase??"",
-            'CategoryId': categoryId??"",
-            'ContentId': contentId??"",
-            'ProductId': productId??"",
-            'UserId': userId??"",
-            'NotificationId': notificationId??"",
-            'Size': size??"",
+            'UseCase': useCase ?? "",
+            'CategoryId': categoryId ?? "",
+            'ContentId': contentId ?? "",
+            'ProductId': productId ?? "",
+            'UserId': userId ?? "",
+            'NotificationId': notificationId ?? "",
+            'Size': size ?? "",
           },
         ),
         headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
