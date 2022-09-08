@@ -76,12 +76,11 @@ class MediaDataSource {
     final String? notificationId,
     final String? size,
   }) async {
-
     fileBytes.forEach((final Uint8List files) async {
       final List<int> _selectedFile = files;
       final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
       request.fields['UseCase'] = useCase;
-      request.fields['CategoryId'] = categoryId! ;
+      request.fields['CategoryId'] = categoryId!;
       request.fields['ProductId'] = productId!;
       request.fields['UserId'] = userId!;
       request.fields['NotificationId'] = notificationId!;
@@ -93,8 +92,6 @@ class MediaDataSource {
       await request.send().then((final http.StreamedResponse response) {
         if (response.statusCode == 200) {
           print('Upload ok');
-
-
         }
       });
     });
