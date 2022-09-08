@@ -69,14 +69,23 @@ class MediaDataSource {
     required final String useCase, //media
     required final VoidCallback action,
     final List<String>? links,
+    final String? categoryId,
+    final String? contentId,
     final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
+    final String? userId,
+    final String? notificationId,
+    final String? size,
   }) async {
 
     fileBytes.forEach((final Uint8List files) async {
       final List<int> _selectedFile = files;
       final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
       request.fields['UseCase'] = useCase;
+      request.fields['CategoryId'] = categoryId! ;
       request.fields['ProductId'] = productId!;
+      request.fields['UserId'] = userId!;
+      request.fields['NotificationId'] = notificationId!;
+      request.fields['Size'] = size!;
       request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
 
       request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: "file111.png"));
@@ -84,6 +93,8 @@ class MediaDataSource {
       await request.send().then((final http.StreamedResponse response) {
         if (response.statusCode == 200) {
           print('Upload ok');
+
+
         }
       });
     });
@@ -95,7 +106,12 @@ class MediaDataSource {
           <String, dynamic>{
             'Links': <String>[link],
             'UseCase': useCase,
+            'CategoryId': categoryId,
+            'ContentId': contentId,
             'ProductId': productId,
+            'UserId': userId,
+            'NotificationId': notificationId,
+            'Size': size ?? "",
           },
         ),
         headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
