@@ -80,11 +80,23 @@ class MediaDataSource {
       final List<int> _selectedFile = files;
       final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
       request.fields['UseCase'] = useCase;
-      request.fields['CategoryId'] = categoryId!;
-      request.fields['ProductId'] = productId!;
-      request.fields['UserId'] = userId!;
-      request.fields['NotificationId'] = notificationId!;
-      request.fields['Size'] = size!;
+      if (categoryId != null) {
+        request.fields['CategoryId'] = categoryId;
+      }
+
+      if (productId != null) {
+        request.fields['ProductId'] = productId;
+      }
+      if (userId != null) {
+        request.fields['UserId'] = userId;
+      }
+      if (notificationId != null) {
+        request.fields['NotificationId'] = notificationId;
+      }
+      if (size != null) {
+        request.fields['Size'] = size;
+      }
+
       request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
 
       request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: "file111.png"));
