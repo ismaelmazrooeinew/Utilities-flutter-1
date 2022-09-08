@@ -81,12 +81,12 @@ class MediaDataSource {
       final List<int> _selectedFile = files;
       final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
       request.fields['UseCase'] = useCase;
-      request.fields['CategoryId'] = categoryId ?? "";
-      request.fields['ContentId'] = contentId ?? "";
-      request.fields['ProductId'] = productId ?? "";
-      request.fields['UserId'] = userId ?? "";
-      request.fields['NotificationId'] = notificationId ?? "";
-      request.fields['Size'] = size ?? "";
+      request.fields['CategoryId'] = categoryId! ;
+      request.fields['ContentId'] = contentId!;
+      request.fields['ProductId'] = productId!;
+      request.fields['UserId'] = userId!;
+      request.fields['NotificationId'] = notificationId!;
+      request.fields['Size'] = size!;
       request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
 
       request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: "file111.png"));
@@ -106,12 +106,12 @@ class MediaDataSource {
         FormData(
           <String, dynamic>{
             'Links': <String>[link],
-            'UseCase': useCase ?? "",
-            'CategoryId': categoryId ?? "",
-            'ContentId': contentId ?? "",
-            'ProductId': productId ?? "",
-            'UserId': userId ?? "",
-            'NotificationId': notificationId ?? "",
+            'UseCase': useCase,
+            'CategoryId': categoryId,
+            'ContentId': contentId,
+            'ProductId': productId,
+            'UserId': userId,
+            'NotificationId': notificationId,
             'Size': size ?? "",
           },
         ),
