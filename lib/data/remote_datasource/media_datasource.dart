@@ -76,6 +76,7 @@ class MediaDataSource {
     final String? notificationId,
     final String? size,
   }) async {
+
     fileBytes.forEach((final Uint8List files) async {
       final List<int> _selectedFile = files;
       final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
@@ -110,10 +111,12 @@ class MediaDataSource {
               headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
             );
           });
-          action();
+
         }
       });
     });
+
+    action();
   }
 
   Future<void> createWeb2({
