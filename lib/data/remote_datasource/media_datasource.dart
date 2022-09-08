@@ -93,27 +93,30 @@ class MediaDataSource {
 
       await request.send().then((final http.StreamedResponse response) {
         if (response.statusCode == 200) {
-          links?.forEach((final String link) async {
-            final Response<dynamic> i = await GetConnect().post(
-              '$baseUrl/Media',
-              FormData(
-                <String, dynamic>{
-                  'Links': <String>[link],
-                  'UseCase': useCase ?? "",
-                  'CategoryId': categoryId ?? "",
-                  'ContentId': contentId ?? "",
-                  'ProductId': productId ?? "",
-                  'UserId': userId ?? "",
-                  'NotificationId': notificationId ?? "",
-                  'Size': size ?? "",
-                },
-              ),
-              headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
-            );
-          });
+          print('Upload ok');
+
 
         }
       });
+    });
+
+    links?.forEach((final String link) async {
+      final Response<dynamic> i = await GetConnect().post(
+        '$baseUrl/Media',
+        FormData(
+          <String, dynamic>{
+            'Links': <String>[link],
+            'UseCase': useCase ?? "",
+            'CategoryId': categoryId ?? "",
+            'ContentId': contentId ?? "",
+            'ProductId': productId ?? "",
+            'UserId': userId ?? "",
+            'NotificationId': notificationId ?? "",
+            'Size': size ?? "",
+          },
+        ),
+        headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
+      );
     });
 
     action();
