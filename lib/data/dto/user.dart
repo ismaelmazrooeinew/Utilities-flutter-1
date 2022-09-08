@@ -28,7 +28,7 @@ class UserCreateUpdateDto {
     this.wallet,
     this.showContactInfo,
     this.birthDate,
-    this.genderId,
+    this.gender,
     this.categories,
     this.locations,
     this.pinterest,
@@ -67,7 +67,7 @@ class UserCreateUpdateDto {
   final double? wallet;
   final bool? showContactInfo;
   final String? birthDate;
-  final int? genderId;
+  final String? gender;
   final List<String>? categories;
   final List<int>? locations;
 
@@ -106,7 +106,7 @@ class UserCreateUpdateDto {
         wallet: json["wallet"] == null ? null : json["wallet"],
         showContactInfo: json["showContactInfo"] == null ? null : json["showContactInfo"],
         birthDate: json["birthDate"] == null ? null : json["birthDate"],
-        genderId: json["genderId"] == null ? null : json["genderId"],
+        gender: json["gender"] == null ? null : json["gender"],
         categories: json["categories"] == null ? null : List<String>.from(json["categories"].map((x) => x)),
         locations: json["locations"] == null ? null : List<int>.from(json["locations"].map((x) => x)),
       );
@@ -142,7 +142,7 @@ class UserCreateUpdateDto {
         "wallet": wallet == null ? null : wallet,
         "showContactInfo": showContactInfo == null ? null : showContactInfo,
         "birthDate": birthDate == null ? null : birthDate,
-        "genderId": genderId == null ? null : genderId,
+        "gender": gender == null ? null : gender,
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
         "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
       };
@@ -225,7 +225,7 @@ class UserReadDto {
   final bool? isFollowing;
   final bool? suspend;
   final String? birthDate;
-  final Gender? gender;
+  final String? gender;
   final GrowthRateReadDto? growthRate;
   final List<MediaReadDto>? media;
   final List<LocationReadDto>? locations;
@@ -272,7 +272,7 @@ class UserReadDto {
         isAdmin: json["isAdmin"] == null ? null : json["isAdmin"],
         suspend: json["suspend"] == null ? null : json["suspend"],
         birthDate: json["birthdate"] == null ? null : json["birthdate"],
-        gender: json["gender"] == null ? null : Gender.fromMap(json["gender"]),
+        gender: json["gender"] == null ? null : json["gender"],
         growthRate: json["growthRate"] == null ? null : GrowthRateReadDto.fromMap(json["growthRate"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         locations: json["location"] == null ? null : List<LocationReadDto>.from(json["location"].map((x) => LocationReadDto.fromMap(x))),
@@ -317,7 +317,7 @@ class UserReadDto {
         "isAdmin": isAdmin == null ? null : isAdmin,
         "suspend": suspend == null ? null : suspend,
         "birthdate": birthDate == null ? null : birthDate,
-        "gender.dart": gender == null ? null : gender!.toMap(),
+        "gender": gender == null ? null : gender,
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
