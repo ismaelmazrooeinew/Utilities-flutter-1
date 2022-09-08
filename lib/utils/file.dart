@@ -28,7 +28,7 @@ void showFilePicker({
 
 
 void showFilePickerWeb({
-  required final Function(Uint8List pickedFileBytes) action,
+  required final Function(PlatformFile file) action,
   final FileType fileType = FileType.image,
   final bool allowMultiple = false,
   final List<String>? allowedExtensions,
@@ -40,8 +40,8 @@ void showFilePickerWeb({
     allowedExtensions: allowedExtensions,
   );
   if (result != null) {
-      Uint8List pickedFileBytes = await result.files[0].bytes!;
-      action(pickedFileBytes);
+      PlatformFile file = await result.files[0]!;
+      action(file);
   }
 }
 
