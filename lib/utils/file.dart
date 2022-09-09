@@ -40,7 +40,7 @@ void showFilePickerWeb({
     allowedExtensions: allowedExtensions,
   );
   if (result != null) {
-      PlatformFile file = await result.files[0];
+      PlatformFile file = await result.files[0] ;
       action(file);
   }
 }
