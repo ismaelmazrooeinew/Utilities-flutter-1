@@ -458,6 +458,7 @@ class ProductFilterDto {
     this.orderByPriceDecending,
     this.orderByCreatedDate,
     this.orderByCreaedDateDecending,
+    this.showVotes,
   });
 
   final String? title;
@@ -483,6 +484,7 @@ class ProductFilterDto {
   final bool? showTeams;
   final bool? showCategories;
   final bool? showMedia;
+  final bool? showVotes;
   final int? visitsCount;
   final double? length;
   final double? width;
@@ -555,6 +557,7 @@ class ProductFilterDto {
         useCase: json["useCase"] == null ? null : json["useCase"],
         showCreator: json["showCreator"] == null ? null : json["showCreator"],
         showTeams: json["showTeams"] == null ? null : json["showTeams"],
+        showVotes: json["showVotes"] == null ? null : json["showVotes"],
         showCategories: json["showCategories"] == null ? null : json["showCategories"],
         showMedia: json["showMedia"] == null ? null : json["showMedia"],
         orderByVotes: json["orderByVotes"] == null ? null : json["orderByVotes"],
@@ -607,6 +610,7 @@ class ProductFilterDto {
         "useCase": useCase == null ? null : useCase,
         "showCreator": showCreator == null ? null : showCreator,
         "showTeams": showTeams == null ? null : showTeams,
+        "showVotes": showVotes == null ? null : showVotes,
         "showCategories": showCategories == null ? null : showCategories,
         "showMedia": showMedia == null ? null : showMedia,
         "orderByVotes": orderByVotes == null ? null : orderByVotes,
