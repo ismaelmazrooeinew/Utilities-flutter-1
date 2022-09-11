@@ -235,13 +235,13 @@ extension HTTP on Response<dynamic> {
   bool isServerError() => (statusCode ?? 0) >= 500 && (statusCode ?? 0) <= 599 ? true : false;
 
   void log({final String params = ""}) {
-    debugPrint(
+    print(
       "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: $params \nRESPONSE: $body",
     );
   }
 
   void prettyLog({final String params = ""}) {
-    debugPrint(
+    print(
       "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: ${const JsonEncoder.withIndent(" ").convert(params)} \nRESPONSE: ${const JsonEncoder.withIndent(" ").convert(body)}",
     );
   }
