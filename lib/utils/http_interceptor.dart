@@ -235,9 +235,9 @@ extension HTTP on Response<dynamic> {
   bool isServerError() => (statusCode ?? 0) >= 500 && (statusCode ?? 0) <= 599 ? true : false;
 
   void log({final String params = ""}) {
-    debugPrint(
-      "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: $params \nRESPONSE: $body",
-    );
+    // debugPrint(
+    //   "${this.request?.method} - ${this.request?.url} - $statusCode \nPARAMS: $params \nRESPONSE: $body",
+    // );
   }
 
   void prettyLog({final String params = ""}) {
