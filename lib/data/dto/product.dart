@@ -452,6 +452,7 @@ class ProductFilterDto {
     this.userId,
     this.state,
     this.orderByVotes,
+    this.orderByVotesDecending,
     this.orderByAtoZ,
     this.orderByZtoA,
     this.orderByPriceAccending,
@@ -504,6 +505,7 @@ class ProductFilterDto {
   final String? useCase;
   final String? state;
   final List<UserReadDto>? teams;
+  final bool? orderByVotesDecending;
   final bool? orderByVotes;
   final bool? orderByAtoZ;
   final bool? orderByZtoA;
@@ -561,6 +563,7 @@ class ProductFilterDto {
         showCategories: json["showCategories"] == null ? null : json["showCategories"],
         showMedia: json["showMedia"] == null ? null : json["showMedia"],
         orderByVotes: json["orderByVotes"] == null ? null : json["orderByVotes"],
+        orderByVotesDecending: json["orderByVotesDecending"] == null ? null : json["orderByVotesDecending"],
         orderByAtoZ: json["orderByAtoZ"] == null ? null : json["orderByAtoZ"],
         orderByZtoA: json["orderByZtoA"] == null ? null : json["orderByZtoA"],
         orderByPriceAccending: json["orderByPriceAccending"] == null ? null : json["orderByPriceAccending"],
@@ -614,11 +617,11 @@ class ProductFilterDto {
         "showCategories": showCategories == null ? null : showCategories,
         "showMedia": showMedia == null ? null : showMedia,
         "orderByVotes": orderByVotes == null ? null : orderByVotes,
+        "orderByVotesDecending": orderByVotesDecending == null ? null : orderByVotesDecending,
         "orderByAtoZ": orderByAtoZ == null ? null : orderByAtoZ,
         "orderByZtoA": orderByZtoA == null ? null : orderByZtoA,
         "orderByPriceAccending": orderByPriceAccending == null ? null : orderByPriceAccending,
         "orderByPriceDecending": orderByPriceDecending == null ? null : orderByPriceDecending,
-        "orderByCreatedDate": orderByCreatedDate == null ? null : orderByCreatedDate,
         "orderByCreatedDate": orderByCreatedDate == null ? null : orderByCreatedDate,
         "orderByCreaedDateDecending": orderByCreaedDateDecending == null ? null : orderByCreaedDateDecending,
       };
