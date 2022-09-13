@@ -229,6 +229,7 @@ class ProductReadDto {
     this.website,
     this.email,
     this.state,
+    this.stateTr1,
     this.type,
     this.unit,
     this.useCase,
@@ -274,6 +275,7 @@ class ProductReadDto {
   final String? website;
   final String? email;
   final String? state;
+  final String? stateTr1;
   final String? type;
   final String? unit;
   final String? useCase;
@@ -328,6 +330,7 @@ class ProductReadDto {
         website: json["website"] == null ? null : json["website"],
         email: json["email"] == null ? null : json["email"],
         state: json["state"] == null ? null : json["state"],
+        stateTr1: json["stateTr1"] == null ? null : json["stateTr1"],
         type: json["type"] == null ? null : json["type"],
         unit: json["unit"] == null ? null : json["unit"],
         useCase: json["useCase"] == null ? null : json["useCase"],
@@ -374,6 +377,7 @@ class ProductReadDto {
         "website": website == null ? null : website,
         "email": email == null ? null : email,
         "state": state == null ? null : state,
+        "stateTr1": stateTr1 == null ? null : stateTr1,
         "type": type == null ? null : type,
         "unit": unit == null ? null : unit,
         "useCase": useCase == null ? null : useCase,
