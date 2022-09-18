@@ -111,6 +111,7 @@ Widget row({
       margin: margin,
       child: isScrollable
           ? SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
               child: Row(
                 mainAxisAlignment: mainAxisAlignment,
                 mainAxisSize: mainAxisSize,
