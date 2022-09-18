@@ -23,7 +23,6 @@ class NotificationDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpPost(
-        encodeBody: false,
         url: "$baseUrl/Notification/UpdateSeenStatus?seenStatus=$status",
         body: notificationIds,
         action: (Response response) => onResponse(),
