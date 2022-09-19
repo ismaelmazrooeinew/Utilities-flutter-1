@@ -8,7 +8,7 @@ class PaymentDataSource {
 
   Future<void> increaseWalletBalance({
     required final String amount,
-    required final Function(GenericResponse<PaymentReadDto>) onResponse,
+    required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
@@ -16,8 +16,8 @@ class PaymentDataSource {
         headers: <String, String>{
           "Authorization": "${getString(UtilitiesConstants.token)}",
         },
-        action: (Response response) => onResponse(GenericResponse<PaymentReadDto>.fromJson(response.body, fromMap: PaymentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.body, fromMap: PaymentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.body)),
       );
 
    Future<void> buyProduct({
