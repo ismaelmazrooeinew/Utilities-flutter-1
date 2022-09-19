@@ -12,7 +12,7 @@ class PaymentDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
-        url: "$baseUrl/Payment/IncreaseWalletBalance/${amount}",
+        url: "$baseUrl/Payment/IncreaseWalletBalance/$amount",
         action: (Response response) => onResponse(GenericResponse<PaymentReadDto>.fromJson(response.body, fromMap: PaymentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
@@ -23,10 +23,9 @@ class PaymentDataSource {
     required final Function(GenericResponse response) onError,
   }) async =>
       httpGet(
-        url: "$baseUrl/Payment/BuyProduct/{productId}",
+        url: "$baseUrl/Payment/BuyProduct/$productId",
         action: (Response response) => onResponse(GenericResponse<PaymentReadDto>.fromJson(response.body, fromMap: PaymentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
-
 
 }
