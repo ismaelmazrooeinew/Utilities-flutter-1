@@ -13,6 +13,9 @@ class PaymentDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Payment/IncreaseWalletBalance/$amount",
+        headers: <String, String>{
+          "Authorization": "${getString(UtilitiesConstants.token)}",
+        },
         action: (Response response) => onResponse(GenericResponse<PaymentReadDto>.fromJson(response.body, fromMap: PaymentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
@@ -24,6 +27,9 @@ class PaymentDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Payment/BuyProduct/$productId",
+        headers: <String, String>{
+          "Authorization": "${getString(UtilitiesConstants.token)}",
+        },
         action: (Response response) => onResponse(GenericResponse<PaymentReadDto>.fromJson(response.body, fromMap: PaymentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
