@@ -5,7 +5,8 @@ Future<void> request(
   final String url,
   final EHttpMethod httpMethod,
   final Function(Response<dynamic> response) action,
-  final Function(Response<dynamic> response) error, {
+  final Function(Response<dynamic> response) error,
+  final Function(Response<dynamic> response) unAuthorize, {
   final String? queryOrMutation,
   final dynamic body,
   final bool encodeBody = true,
@@ -59,16 +60,20 @@ Future<void> request(
       () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()),
     );
 
-  if (response.isSuccessful())
+  if (response.isSuccessful()) {
     action(response);
-  else
+  } else if (response.statusCode == 401) {
+    unAuthorize(response);
+  } else {
     error(response);
+  }
 }
 
 Future<void> httpGet({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
+  final Function(Response<dynamic> response)? unAuthorize,
   final Map<String, String>? headers,
   final String userAgent = 'SinaMN75',
   final bool followRedirects = true,
@@ -84,6 +89,7 @@ Future<void> httpGet({
       EHttpMethod.get,
       action,
       error,
+      unAuthorize!,
       headers: headers,
       userAgent: userAgent,
       followRedirects: followRedirects,
@@ -99,6 +105,7 @@ Future<void> httpPost({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
+  final Function(Response<dynamic> response)? unAuthorize,
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
@@ -116,6 +123,7 @@ Future<void> httpPost({
       EHttpMethod.post,
       action,
       error,
+      unAuthorize!,
       body: body,
       encodeBody: encodeBody,
       headers: headers,
@@ -133,6 +141,7 @@ Future<void> httpPut({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
+  final Function(Response<dynamic> response)? unAuthorize,
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
@@ -150,6 +159,7 @@ Future<void> httpPut({
       EHttpMethod.put,
       action,
       error,
+      unAuthorize!,
       body: body,
       encodeBody: encodeBody,
       headers: headers,
@@ -167,6 +177,7 @@ Future<void> patch({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
+  final Function(Response<dynamic> response)? unAuthorize,
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
@@ -184,6 +195,7 @@ Future<void> patch({
       EHttpMethod.patch,
       action,
       error,
+      unAuthorize!,
       body: body,
       encodeBody: encodeBody,
       headers: headers,
@@ -201,6 +213,7 @@ Future<void> httpDelete({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
+  final Function(Response<dynamic> response)? unAuthorize,
   final Map<String, String>? headers,
   final String userAgent = 'SinaMN75',
   final bool followRedirects = true,
@@ -216,6 +229,7 @@ Future<void> httpDelete({
       EHttpMethod.delete,
       action,
       error,
+      unAuthorize!,
       headers: headers,
       userAgent: userAgent,
       followRedirects: followRedirects,
