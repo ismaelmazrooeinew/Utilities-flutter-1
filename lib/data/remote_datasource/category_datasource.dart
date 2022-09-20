@@ -28,7 +28,6 @@ class CategoryDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
-        unAuthorize: (Response response) => unAuthorize!(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> read({
@@ -40,7 +39,6 @@ class CategoryDataSource {
         url: "$baseUrl/Category",
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
-        unAuthorize: (Response response) => unAuthorize!(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> delete({
