@@ -21,22 +21,26 @@ class CategoryDataSource {
     required final CategoryCreateUpdateDto dto,
     required final Function(GenericResponse<CategoryReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
+    final Function(GenericResponse response)? unAuthorize,
   }) async =>
       httpPut(
         url: "$baseUrl/Category",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        unAuthorize: (Response response) => unAuthorize!(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> read({
     required final Function(GenericResponse<CategoryReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
+    final Function(GenericResponse response)? unAuthorize,
   }) async =>
       httpGet(
         url: "$baseUrl/Category",
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        unAuthorize: (Response response) => unAuthorize!(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> delete({
