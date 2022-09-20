@@ -75,6 +75,7 @@ class ProductCreateUpdateDto {
     this.deletedAt,
     this.user,
     this.status,
+    this.currency,
     this.locations,
     this.media,
     this.categories,
@@ -119,6 +120,7 @@ class ProductCreateUpdateDto {
   final String? deletedAt;
   final UserReadDto? user;
   final int? status;
+  final int? currency;
   final List<int>? locations;
   final List<MediaReadDto>? media;
   final List<String>? categories;
@@ -165,6 +167,7 @@ class ProductCreateUpdateDto {
         deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         status: json["status"] == null ? null : json["status"],
+    currency: json["currency"] == null ? null : json["currency"],
         locations: json["locations"] == null ? null : List<int>.from(json["locations"].map((x) => x)),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<String>.from(json["categories"].map((x) => x)),
@@ -208,6 +211,7 @@ class ProductCreateUpdateDto {
         "deletedAt": deletedAt == null ? null : deletedAt,
         "user": user == null ? null : user!.toMap(),
         "status": status == null ? null : status,
+        "currency": currency == null ? null : currency,
         "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
@@ -254,6 +258,7 @@ class ProductReadDto {
     this.deletedAt,
     this.user,
     this.status,
+    this.currency,
     this.media,
     this.categories,
     this.voteFields,
@@ -301,6 +306,7 @@ class ProductReadDto {
   final String? deletedAt;
   final UserReadDto? user;
   final int? status;
+  final int? currency;
 
   final List<MediaReadDto>? media;
   final List<CategoryReadDto>? categories;
@@ -356,6 +362,7 @@ class ProductReadDto {
         deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         status: json["status"] == null ? null : json["status"],
+    currency: json["currency"] == null ? null : json["currency"],
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         votes: json["votes"] == null ? null : List<VoteReadDto>.from(json["votes"].map((x) => VoteReadDto.fromMap(x))),
@@ -402,6 +409,7 @@ class ProductReadDto {
         "deletedAt": deletedAt == null ? null : deletedAt,
         "user": user == null ? null : user!.toMap(),
         "status": status == null ? null : status,
+        "currency": currency == null ? null : currency,
         "voteCount": voteCount == null ? null : voteCount,
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
@@ -442,6 +450,7 @@ class ProductFilterDto {
     this.maxOrder,
     this.unit,
     this.status,
+    this.currency,
     this.startDate,
     this.endDate,
     this.locations,
@@ -503,6 +512,7 @@ class ProductFilterDto {
   final double? maxOrder;
   final String? unit;
   final int? status;
+  final int? currency;
   final String? startDate;
   final String? endDate;
   final List<int>? locations;
@@ -556,6 +566,7 @@ class ProductFilterDto {
         maxOrder: json["maxOrder"] == null ? null : json["maxOrder"],
         unit: json["unit"] == null ? null : json["unit"],
         status: json["status"] == null ? null : json["status"],
+    currency: json["currency"] == null ? null : json["currency"],
         startDate: json["startDate"] == null ? null : json["startDate"],
         endDate: json["endDate"] == null ? null : json["endDate"],
         locations: json["locations"] == null ? null : json["locations"],
@@ -610,6 +621,7 @@ class ProductFilterDto {
         "maxOrder": maxOrder == null ? null : maxOrder,
         "unit": unit == null ? null : unit,
         "status": status == null ? null : status,
+        "currency": currency == null ? null : currency,
         "startDate": startDate == null ? null : startDate,
         "endDate": endDate == null ? null : endDate,
         "categories": categories == null ? null : categories,
