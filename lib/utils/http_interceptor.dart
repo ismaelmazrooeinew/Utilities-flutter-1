@@ -62,8 +62,6 @@ Future<void> request(
 
   if (response.isSuccessful()) {
     action(response);
-  } else if (response.statusCode == 401) {
-    unAuthorize(response);
   } else {
     error(response);
   }
