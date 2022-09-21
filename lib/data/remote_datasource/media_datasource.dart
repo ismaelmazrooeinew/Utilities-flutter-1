@@ -94,16 +94,13 @@ class MediaDataSource {
             'Size': size,
           },
         ),
-        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap), i == files.length - 1),
+        // action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap), i == files.length - 1),
+        action: (Response response) => i == files.length - 1 ? action() : null,
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
         headers: <String, String>{
           "Authorization": getString(UtilitiesConstants.token) ?? "",
         },
       );
-
-      if (i == files.length - 1) {
-        action();
-      }
     }
   }
 
