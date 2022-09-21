@@ -215,6 +215,7 @@ class MediaDataSource {
       await request.send().then((final http.StreamedResponse response) {
         if (response.statusCode == 200) {
           print('Upload ok');
+          action();
         }
       });
     });
