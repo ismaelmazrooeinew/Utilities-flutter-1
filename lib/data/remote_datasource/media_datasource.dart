@@ -102,10 +102,12 @@ class MediaDataSource {
         uploadProgress: uploadProgress,
       );
 
-      if (response.isSuccessful() && i == files.length - 1) {
-        action();
-      } else {
-        onError(GenericResponse.fromJson(response.body));
+      if (response.isSuccessful()) {
+        if (i == files.length - 1) {
+          action();
+        } else {
+          onError(GenericResponse.fromJson(response.body));
+        }
       }
 
       // httpPost(
