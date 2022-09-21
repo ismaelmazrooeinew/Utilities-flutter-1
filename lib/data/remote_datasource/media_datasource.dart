@@ -75,13 +75,14 @@ class MediaDataSource {
     final String? userId,
     final String? notificationId,
     final String? size,
+    Duration? timeout,
     Progress? uploadProgress,
     required final Function(GenericResponse, bool isEnd) onResponse,
     required final Function(GenericResponse response) onError,
   }) async {
     for (int i = 0; i < files!.length; i++) {
       File file = files[i];
-      final Response<dynamic> response = await GetConnect().post(
+      final Response<dynamic> response = await GetConnect(timeout: timeout ?? const Duration(seconds: 50)).post(
         '$baseUrl/Media',
         FormData(
           <String, dynamic>{
