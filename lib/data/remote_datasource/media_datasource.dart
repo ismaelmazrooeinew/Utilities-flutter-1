@@ -75,6 +75,74 @@ class MediaDataSource {
     final String? userId,
     final String? notificationId,
     final String? size,
+    Progress? uploadProgress,
+    required final Function(GenericResponse, bool isEnd) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async {
+    for (int i = 0; i < files!.length; i++) {
+      File file = files[i];
+      final Response<dynamic> response = await GetConnect().post(
+        '$baseUrl/Media',
+        FormData(
+          <String, dynamic>{
+            'Files': <MultipartFile>[MultipartFile(file, filename: file.path)],
+            'UseCase': useCase,
+            'CategoryId': categoryId,
+            'ContentId': contentId,
+            'ProductId': productId,
+            'UserId': userId,
+            'NotificationId': notificationId,
+            'Size': size,
+          },
+        ),
+        headers: <String, String>{
+          "Authorization": getString(UtilitiesConstants.token) ?? "",
+        },
+        contentType: "multipart/form-data",
+        uploadProgress: uploadProgress,
+      );
+
+      if (response.isSuccessful() && i == files.length - 1) {
+        action();
+      } else {
+        onError(GenericResponse.fromJson(response.body));
+      }
+
+      // httpPost(
+      //   url: "$baseUrl/Media",
+      //   body: FormData(
+      //     <String, dynamic>{
+      //       'Files': <MultipartFile>[MultipartFile(file, filename: file.path)],
+      //       'UseCase': useCase,
+      //       'CategoryId': categoryId,
+      //       'ContentId': contentId,
+      //       'ProductId': productId,
+      //       'UserId': userId,
+      //       'NotificationId': notificationId,
+      //       'Size': size,
+      //     },
+      //   ),
+      //   // action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap), i == files.length - 1),
+      //   action: (Response response) => i == files.length - 1 ? action() : null,
+      //   error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+      //   headers: <String, String>{
+      //     "Authorization": getString(UtilitiesConstants.token) ?? "",
+      //   },
+      // );
+    }
+  }
+
+  Future<void> createServer2({
+    final List<File>? files,
+    final List<String>? links,
+    required final String useCase,
+    required final VoidCallback action,
+    final String? categoryId,
+    final String? contentId,
+    final String? productId,
+    final String? userId,
+    final String? notificationId,
+    final String? size,
     required final Function(GenericResponse, bool isEnd) onResponse,
     required final Function(GenericResponse response) onError,
   }) async {
