@@ -64,6 +64,49 @@ class MediaDataSource {
     action();
   }
 
+  Future<void> createServer({
+    final List<File>? files,
+    final List<String>? links,
+    required final String useCase,
+    required final VoidCallback action,
+    final String? categoryId,
+    final String? contentId,
+    final String? productId,
+    final String? userId,
+    final String? notificationId,
+    final String? size,
+    required final Function(GenericResponse, bool isEnd) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async {
+    for (int i = 0; i < files!.length; i++) {
+      File file = files[i];
+      httpPost(
+        url: "$baseUrl/Media",
+        body: FormData(
+          <String, dynamic>{
+            'Files': <MultipartFile>[MultipartFile(file, filename: file.path)],
+            'UseCase': useCase,
+            'CategoryId': categoryId,
+            'ContentId': contentId,
+            'ProductId': productId,
+            'UserId': userId,
+            'NotificationId': notificationId,
+            'Size': size,
+          },
+        ),
+        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap), i == files.length - 1),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        headers: <String, String>{
+          "Authorization": getString(UtilitiesConstants.token) ?? "",
+        },
+      );
+
+      if (i == files.length - 1) {
+        action();
+      }
+    }
+  }
+
   Future<void> createWeb({
     required final List<Uint8List> fileBytes,
     required final String useCase, //media
