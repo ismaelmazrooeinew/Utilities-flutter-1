@@ -59,7 +59,7 @@ class IranLocationReadDto {
   final int? id;
   final String? name;
   final String? slug;
-  final String? provinceId;
+  final int? provinceId;
 
   factory IranLocationReadDto.fromJson(String str) => IranLocationReadDto.fromMap(json.decode(str));
 
