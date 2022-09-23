@@ -69,7 +69,7 @@ class IranLocationReadDto {
         id: json["id"],
         name: json["name"],
         slug: json["slug"],
-    provinceId: json["province_id"],
+        provinceId: json["province_id"],
       );
 
   Map<String, dynamic> toMap() => {
