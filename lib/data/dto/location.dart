@@ -53,11 +53,13 @@ class IranLocationReadDto {
     this.id,
     this.name,
     this.slug,
+    this.provinceId,
   });
 
   final int? id;
   final String? name;
   final String? slug;
+  final String? provinceId;
 
   factory IranLocationReadDto.fromJson(String str) => IranLocationReadDto.fromMap(json.decode(str));
 
@@ -67,11 +69,13 @@ class IranLocationReadDto {
         id: json["id"],
         name: json["name"],
         slug: json["slug"],
+    provinceId: json["province_id"],
       );
 
   Map<String, dynamic> toMap() => {
         "id": id,
         "name": name,
         "slug": slug,
+        "province_id": provinceId,
       };
 }
