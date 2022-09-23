@@ -28,6 +28,16 @@ class UserDataSource {
         action: (Response response) => onResponse(),
         error: (Response response) => onError(response.statusCode.toString()),
       );
+  Future<void> checkUsername2({
+    required final String userName,
+    required final VoidCallback onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpPost(
+        url: "$baseUrl/user/CheckUserName/$userName",
+        action: (Response response) => onResponse(),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+      );
 
   Future<void> update({
     required final UserCreateUpdateDto dto,
@@ -60,6 +70,16 @@ class UserDataSource {
         url: "$baseUrl/user/$id",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(response.statusCode.toString()),
+      );
+  Future<void> readById2({
+    required final String id,
+    required final Function(GenericResponse<UserReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpGet(
+        url: "$baseUrl/user/$id",
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, fromMap: UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
 
   Future<void> delete({
