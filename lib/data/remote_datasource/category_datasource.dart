@@ -37,6 +37,8 @@ class CategoryDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Category",
+    
+          allowAutoSignedCert: true,
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body)),
       );
