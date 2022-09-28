@@ -66,75 +66,6 @@ Future<void> request(
   }
 }
 
-
-
-Future<void> request2(
-  final String url,
-  final EHttpMethod httpMethod,
-  final Function(Response<dynamic> response) action,
-  final Function(Response<dynamic> response) error, {
-  final String? queryOrMutation,
-  final dynamic body,
-  final bool encodeBody = true,
-  final Map<String, String>? headers,
-  final String userAgent = 'SinaMN75',
-  final bool followRedirects = true,
-  final Duration timeout = const Duration(minutes: 60),
-  final int maxRedirects = 5,
-  final bool allowAutoSignedCert = false,
-  final bool sendUserAgent = false,
-  final int maxAuthRetries = 1,
-  final bool withCredentials = false,
-}) async {
-  final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
-
-  if (headers != null) header.addAll(headers);
-
-  Response<dynamic> response = const Response<dynamic>();
-  try {
-    dynamic params;
-    if (body != null) {
-      if (encodeBody)
-        params = body.toJson();
-      else
-        params = body;
-    }
-
-    final GetConnect connect = GetConnect(
-      // userAgent: userAgent,
-      // followRedirects: followRedirects,
-      timeout: timeout,
-      // maxRedirects: maxRedirects,
-      // allowAutoSignedCert: allowAutoSignedCert,
-      // sendUserAgent: sendUserAgent,
-      // maxAuthRetries: maxAuthRetries,
-      // withCredentials: withCredentials,
-    );
-
-    if (httpMethod == EHttpMethod.get) response = await GetHttpClient().get(url, headers: header);
-    if (httpMethod == EHttpMethod.post) response = await GetHttpClient().post(url,body:  params, headers: header);
-    if (httpMethod == EHttpMethod.put) response = await GetHttpClient().put(url, body: params, headers: header);
-    if (httpMethod == EHttpMethod.patch) response = await GetHttpClient().patch(url,body:  params, headers: header);
-    if (httpMethod == EHttpMethod.delete) response = await GetHttpClient().delete(url, headers: header);
-  } catch (e) {
-    error(response);
-  }
-
-  if (kDebugMode)
-    delay(
-      100,
-      () => response.log(params: (body == null || !encodeBody) ? "" : body.toJson()),
-    );
-  //unAuthorize
-  if (response.isSuccessful()) {
-    action(response);
-  } else {
-    error(response);
-  }
-}
-
-
-
 Future<void> httpGet({
   required final String url,
   required final Function(Response<dynamic> response) action,
@@ -150,36 +81,6 @@ Future<void> httpGet({
   final bool withCredentials = false,
 }) async =>
     request(
-      url,
-      EHttpMethod.get,
-      action,
-      error,
-      headers: headers,
-      userAgent: userAgent,
-      followRedirects: followRedirects,
-      timeout: timeout,
-      maxRedirects: maxRedirects,
-      allowAutoSignedCert: allowAutoSignedCert,
-      sendUserAgent: sendUserAgent,
-      maxAuthRetries: maxAuthRetries,
-      withCredentials: withCredentials,
-    );
-
-Future<void> httpGet2({
-  required final String url,
-  required final Function(Response<dynamic> response) action,
-  required final Function(Response<dynamic> response) error,
-  final Map<String, String>? headers,
-  final String userAgent = 'SinaMN75',
-  final bool followRedirects = true,
-  final Duration timeout = const Duration(minutes: 60),
-  final int maxRedirects = 5,
-  final bool allowAutoSignedCert = false,
-  final bool sendUserAgent = false,
-  final int maxAuthRetries = 1,
-  final bool withCredentials = false,
-}) async =>
-    request2(
       url,
       EHttpMethod.get,
       action,
