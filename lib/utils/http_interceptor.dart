@@ -111,11 +111,11 @@ Future<void> request2(
       // withCredentials: withCredentials,
     );
 
-    if (httpMethod == EHttpMethod.get) response = await connect.get(url, headers: header);
-    if (httpMethod == EHttpMethod.post) response = await connect.post(url, params, headers: header);
-    if (httpMethod == EHttpMethod.put) response = await connect.put(url, params, headers: header);
-    if (httpMethod == EHttpMethod.patch) response = await connect.patch(url, params, headers: header);
-    if (httpMethod == EHttpMethod.delete) response = await connect.delete(url, headers: header);
+    if (httpMethod == EHttpMethod.get) response = await GetHttpClient().get(url, headers: header);
+    if (httpMethod == EHttpMethod.post) response = await GetHttpClient().post(url,body:  params, headers: header);
+    if (httpMethod == EHttpMethod.put) response = await GetHttpClient().put(url, body: params, headers: header);
+    if (httpMethod == EHttpMethod.patch) response = await GetHttpClient().patch(url,body:  params, headers: header);
+    if (httpMethod == EHttpMethod.delete) response = await GetHttpClient().delete(url, headers: header);
   } catch (e) {
     error(response);
   }
