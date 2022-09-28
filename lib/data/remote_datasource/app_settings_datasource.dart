@@ -20,7 +20,7 @@ class AppSettingsDataSource {
     required final Function(GenericResponse<AppSettingsDto>) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
-      httpGet2(
+      httpGet(
         url: "$baseUrl/AppSettings",
         action: (Response response) => onResponse(GenericResponse<AppSettingsDto>.fromJson(response.body, fromMap: AppSettingsDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body, fromMap: AppSettingsDto.fromMap)),
