@@ -15,6 +15,16 @@ class AppSettingsDataSource {
         action: (Response response) => onResponse(GenericResponse<AppSettingsDto>.fromJson(response.body, fromMap: AppSettingsDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.body, fromMap: AppSettingsDto.fromMap)),
       );
+  Future<void> readAppSettings2({
+    required final String url,
+    required final Function(GenericResponse<AppSettingsDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpGet2(
+        url: "$baseUrl/AppSettings",
+        action: (Response response) => onResponse(GenericResponse<AppSettingsDto>.fromJson(response.body, fromMap: AppSettingsDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.body, fromMap: AppSettingsDto.fromMap)),
+      );
 
   Future<void> readLocation({
     required final String url,
