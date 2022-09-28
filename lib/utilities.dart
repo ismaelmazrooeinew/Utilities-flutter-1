@@ -29,6 +29,8 @@ export 'data/dto/dto.dart';
 export 'utils/utils.dart';
 export 'view_models/view_models.dart';
 
+
+
 void initUtilities() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
