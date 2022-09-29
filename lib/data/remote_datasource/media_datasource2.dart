@@ -236,27 +236,29 @@ class MediaDataSource2 {
       });
     });
 
-    Dio dio = Dio();
-    links?.forEach((final String link) async {
-      final Response<dynamic> i = await dio.post(
-        '$baseUrl/Media',
-        data: {
-          'Links': <String>[link],
-          'UseCase': useCase,
-          'CategoryId': categoryId,
-          'ContentId': contentId,
-          'ProductId': productId,
-          'UserId': userId,
-          'NotificationId': notificationId,
-          'Size': size ?? "",
-        },
-        options: Options(
-          headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
-        ),
-      );
-    });
+    if (links != null) {
+      Dio dio = Dio();
+      links.forEach((final String link) async {
+        final Response<dynamic> i = await dio.post(
+          '$baseUrl/Media',
+          data: {
+            'Links': <String>[link],
+            'UseCase': useCase,
+            'CategoryId': categoryId,
+            'ContentId': contentId,
+            'ProductId': productId,
+            'UserId': userId,
+            'NotificationId': notificationId,
+            'Size': size ?? "",
+          },
+          options: Options(
+            headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
+          ),
+        );
+      });
 
-    action();
+      action();
+    }
   }
 
   Future<void> delete({
