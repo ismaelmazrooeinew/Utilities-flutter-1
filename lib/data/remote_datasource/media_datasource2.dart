@@ -228,7 +228,7 @@ class MediaDataSource2 {
 
       await request.send().then((final http.StreamedResponse response) {
 
-        if (response.statusCode == 1) {
+        if (response.statusCode == 200) {
           if (i == fileBytes.length - 1) {
             action();
           }
@@ -262,6 +262,55 @@ class MediaDataSource2 {
     }
   }
 
+
+  // Future<Response> postMultipartData(String uri, Map<String, String> body, List<MultipartBody> multipartBody, {Map<String, String> headers}) async {
+  //   try {
+  //     if (Foundation.kDebugMode) {
+  //       print('====> API Call: $uri\nToken: $token');
+  //       print('====> API Body: $body with ${multipartBody.length} image ');
+  //     }
+  //     http.MultipartRequest _request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
+  //     _request.headers.addAll(headers ?? _mainHeaders);
+  //     for (MultipartBody multipart in multipartBody) {
+  //       if (multipart.file != null) {
+  //         if (Foundation.kIsWeb) {
+  //           Uint8List _list = await multipart.file.readAsBytes();
+  //           Http.MultipartFile _part = Http.MultipartFile(
+  //             multipart.key,
+  //             multipart.file.readAsBytes().asStream(),
+  //             _list.length,
+  //             filename: basename(multipart.file.path),
+  //             contentType: MediaType('image', 'jpg'),
+  //           );
+  //           _request.files.add(_part);
+  //         } else {
+  //           File _file = File(multipart.file.path);
+  //           _request.files.add(Http.MultipartFile(
+  //             multipart.key,
+  //             _file.readAsBytes().asStream(),
+  //             _file.lengthSync(),
+  //             filename: _file.path.split('/').last,
+  //           ));
+  //         }
+  //       }
+  //     }
+  //     _request.fields.addAll(body);
+  //     Http.Response _response = await Http.Response.fromStream(await _request.send());
+  //     Response response = handleResponse(_response, uri);
+  //     if (Foundation.kDebugMode) {
+  //       print('====> API Response: [${response.statusCode}] $uri\n${response.body}');
+  //     }
+  //     return response;
+  //   } catch (e) {
+  //     return Response(statusCode: 1, statusText: noInternetMessage);
+  //   }
+  // }
+
+
+
+
+
+
   Future<void> delete({
     required final String id,
     required final Function(GenericResponse) onResponse,
@@ -272,4 +321,10 @@ class MediaDataSource2 {
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: MediaReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
+}
+class MultipartBody {
+  String key;
+  File file;
+
+  MultipartBody(this.key, this.file);
 }
