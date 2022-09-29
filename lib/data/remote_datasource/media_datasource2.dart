@@ -32,9 +32,9 @@ class MediaDataSource2 {
     files?.forEach((final File file) async {
       final Response<dynamic> i = await dio.post(
         '$baseUrl/Media',
-        data: {
+        data: FormData.fromMap({
           'Files': await MultipartFile.fromFile(file.path, filename: 'image.jpg'),
-          // 'Files': <MultipartFile>[MultipartFile(file, filename: file.path)],
+          // 'Files': <MultipartFile>[await MultipartFile(file.path, filename: file.path)],
           'UseCase': useCase,
           'CategoryId': categoryId,
           'ContentId': contentId,
@@ -42,7 +42,18 @@ class MediaDataSource2 {
           'UserId': userId,
           'NotificationId': notificationId,
           'Size': size,
-        },
+        }),
+        //  {
+        //   'Files': await MultipartFile.fromFile(file.path, filename: 'image.jpg'),
+        //   // 'Files': <MultipartFile>[await MultipartFile(file.path, filename: file.path)],
+        //   'UseCase': useCase,
+        //   'CategoryId': categoryId,
+        //   'ContentId': contentId,
+        //   'ProductId': productId,
+        //   'UserId': userId,
+        //   'NotificationId': notificationId,
+        //   'Size': size,
+        // },
         options: Options(headers: <String, String>{
           "Authorization": getString(UtilitiesConstants.token) ?? "",
         }),
