@@ -90,6 +90,7 @@ class MediaDataSource2 {
     final String? productId,
     final String? userId,
     final String? notificationId,
+    ProgressCallback? onSendProgress,
     final String? size,
     Duration? timeout,
     required final Function(GenericResponse, bool isEnd) onResponse,
@@ -100,9 +101,10 @@ class MediaDataSource2 {
       File file = files[i];
       final Response<dynamic> response = await dio.post(
         '$baseUrl/Media',
-        data: {
+        onSendProgress: onSendProgress,
+        data: FormData.fromMap({
           'Files': await MultipartFile.fromFile(file.path, filename: 'image.jpg'),
-          // 'Files': <MultipartFile>[MultipartFile(file, filename: file.path)],
+          // 'Files': <MultipartFile>[await MultipartFile(file.path, filename: file.path)],
           'UseCase': useCase,
           'CategoryId': categoryId,
           'ContentId': contentId,
@@ -110,7 +112,7 @@ class MediaDataSource2 {
           'UserId': userId,
           'NotificationId': notificationId,
           'Size': size,
-        },
+        }),
         options: Options(headers: <String, String>{
           "Authorization": getString(UtilitiesConstants.token) ?? "",
         }),
