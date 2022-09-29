@@ -118,7 +118,7 @@ class MediaDataSource2 {
         }),
       );
 
-      if (response.statusCode == 1) {
+      if (response.statusCode == 200) {
         if (i == files.length - 1) {
           action();
         } else {
