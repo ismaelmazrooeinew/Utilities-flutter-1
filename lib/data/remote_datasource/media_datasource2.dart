@@ -200,8 +200,10 @@ class MediaDataSource2 {
     final String? notificationId,
     final String? size,
   }) async {
-    int i = 0;
-    fileBytes.forEach((final Uint8List files) async {
+    // int i = 0;
+
+    for(int i=0;i<fileBytes.length;i++){
+      Uint8List files=fileBytes[i];
       final List<int> _selectedFile = files;
       final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
       request.fields['UseCase'] = useCase;
@@ -233,9 +235,8 @@ class MediaDataSource2 {
             action();
           }
         }
-        i++;
       });
-    });
+    }
 
     if (links != null) {
       Dio dio = Dio();
