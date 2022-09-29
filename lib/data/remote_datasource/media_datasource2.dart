@@ -200,6 +200,7 @@ class MediaDataSource2 {
     final String? notificationId,
     final String? size,
   }) async {
+    int i = 0;
     fileBytes.forEach((final Uint8List files) async {
       final List<int> _selectedFile = files;
       final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
@@ -226,9 +227,11 @@ class MediaDataSource2 {
       request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: "file111.png"));
 
       await request.send().then((final http.StreamedResponse response) {
-        if (response.statusCode == 200) {
-          print('Upload ok');
-          action();
+        i++;
+        if (response.statusCode == 1) {
+          if (i == fileBytes.length - 1) {
+            action();
+          }
         }
       });
     });
