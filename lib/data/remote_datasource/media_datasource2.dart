@@ -227,12 +227,12 @@ class MediaDataSource2 {
       request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: "file111.png"));
 
       await request.send().then((final http.StreamedResponse response) {
-        i++;
         if (response.statusCode == 1) {
           if (i == fileBytes.length - 1) {
             action();
           }
         }
+        i++;
       });
     });
 
