@@ -1,4 +1,9 @@
-import 'package:utilities/utilities.dart';
+import 'package:dio/dio.dart';
+import 'package:utilities/data/dto/generic_response.dart';
+import 'package:utilities/data/dto/product.dart';
+import 'package:utilities/data/dto/user.dart';
+import 'package:utilities/utils/dio_interceptor.dart';
+
 
 class ProductDataSource {
   final String baseUrl;
@@ -13,8 +18,8 @@ class ProductDataSource {
       httpPost(
         url: "$baseUrl/Product",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> update({
@@ -25,8 +30,8 @@ class ProductDataSource {
       httpPut(
         url: "$baseUrl/Product",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> read({
@@ -35,8 +40,8 @@ class ProductDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Product",
-        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> readById({
@@ -46,8 +51,8 @@ class ProductDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Product/$id",
-        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> delete({
@@ -57,8 +62,8 @@ class ProductDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Product/$id",
-        action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.body, fromMap: ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.data)),
       );
 
   Future<void> filter({
@@ -69,7 +74,7 @@ class ProductDataSource {
       httpPost(
         url: "$baseUrl/Product/Filter",
         body: filter,
-        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) {},
       );
 
@@ -79,7 +84,7 @@ class ProductDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Product/Mine",
-        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 }

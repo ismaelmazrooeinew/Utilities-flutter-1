@@ -18,7 +18,6 @@ export 'extensions/widget_extension.dart';
 export 'file.dart';
 export 'file_downloader.dart';
 export 'get.dart';
-export 'http_interceptor.dart';
 export 'dio_interceptor.dart';
 export 'launch.dart';
 export 'local_storage.dart';

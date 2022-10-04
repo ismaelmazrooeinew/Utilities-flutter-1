@@ -1,4 +1,9 @@
-import 'package:utilities/utilities.dart';
+import 'package:dio/dio.dart';
+import 'package:utilities/data/dto/chat.dart';
+import 'package:utilities/data/dto/generic_response.dart';
+import 'package:utilities/data/dto/user.dart';
+import 'package:utilities/utils/dio_interceptor.dart';
+
 
 class ChatDataSource {
   final String baseUrl;
@@ -13,8 +18,8 @@ class ChatDataSource {
       httpPost(
         url: "$baseUrl/Chat",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body, fromMap: ChatReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.data, fromMap: ChatReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> read({
@@ -23,8 +28,8 @@ class ChatDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Chat",
-        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body, fromMap: ChatReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.data, fromMap: ChatReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> readByUserId({
@@ -34,7 +39,7 @@ class ChatDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Chat/$userId",
-        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.body, fromMap: ChatReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.data, fromMap: ChatReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 }

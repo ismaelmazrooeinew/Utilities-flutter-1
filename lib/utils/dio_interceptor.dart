@@ -3,7 +3,7 @@ import 'package:utilities/utils/constants.dart';
 import 'package:utilities/utils/http_interceptor.dart';
 import 'package:utilities/utils/local_storage.dart';
 
-Future<void> request3(
+Future<void> request(
   final String url,
   final EHttpMethod httpMethod,
   final Function(Response<dynamic> response) action,
@@ -55,7 +55,8 @@ Future<void> request3(
   }
 }
 
-Future<void> httpGet3({
+
+Future<void> httpGet({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
@@ -69,7 +70,7 @@ Future<void> httpGet3({
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async =>
-    request3(
+    request(
       url,
       EHttpMethod.get,
       action,
@@ -85,7 +86,7 @@ Future<void> httpGet3({
       withCredentials: withCredentials,
     );
 
-Future<void> httpPost3({
+Future<void> httpPost({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
@@ -101,7 +102,7 @@ Future<void> httpPost3({
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async =>
-    request3(
+    request(
       url,
       EHttpMethod.post,
       action,
@@ -119,7 +120,7 @@ Future<void> httpPost3({
       withCredentials: withCredentials,
     );
 
-Future<void> httpPut3({
+Future<void> httpPut({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
@@ -135,7 +136,7 @@ Future<void> httpPut3({
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async =>
-    request3(
+    request(
       url,
       EHttpMethod.put,
       action,
@@ -153,7 +154,7 @@ Future<void> httpPut3({
       withCredentials: withCredentials,
     );
 
-Future<void> patch3({
+Future<void> patch({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
@@ -169,7 +170,7 @@ Future<void> patch3({
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async =>
-    request3(
+    request(
       url,
       EHttpMethod.patch,
       action,
@@ -187,7 +188,7 @@ Future<void> patch3({
       withCredentials: withCredentials,
     );
 
-Future<void> httpDelete3({
+Future<void> httpDelete({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
@@ -201,7 +202,7 @@ Future<void> httpDelete3({
   final int maxAuthRetries = 1,
   final bool withCredentials = false,
 }) async =>
-    request3(
+    request(
       url,
       EHttpMethod.delete,
       action,

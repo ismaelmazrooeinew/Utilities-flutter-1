@@ -1,4 +1,9 @@
-import 'package:utilities/utilities.dart';
+import 'package:dio/dio.dart';
+import 'package:utilities/data/dto/follow_bookmark.dart';
+import 'package:utilities/data/dto/generic_response.dart';
+import 'package:utilities/data/dto/user.dart';
+import 'package:utilities/utils/dio_interceptor.dart';
+
 
 class FollowBookmarkDataSource {
   final String baseUrl;
@@ -11,8 +16,8 @@ class FollowBookmarkDataSource {
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/ReadBookmarks",
-        action: (Response response) => onResponse(GenericResponse<BookmarkReadDto>.fromJson(response.body, fromMap: BookmarkReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<BookmarkReadDto>.fromJson(response.data, fromMap: BookmarkReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> readFollowers({
@@ -22,7 +27,7 @@ class FollowBookmarkDataSource {
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/ReadFollowers/$userId",
-        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, fromMap: UserReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse()),
       );
 
@@ -33,7 +38,7 @@ class FollowBookmarkDataSource {
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/ReadFollowings/$userId",
-        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.body, fromMap: UserReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse()),
       );
 

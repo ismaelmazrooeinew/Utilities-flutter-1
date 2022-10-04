@@ -1,4 +1,9 @@
-import 'package:utilities/utilities.dart';
+import 'package:dio/dio.dart';
+import 'package:utilities/data/dto/category.dart';
+import 'package:utilities/data/dto/generic_response.dart';
+import 'package:utilities/data/dto/user.dart';
+import 'package:utilities/utils/dio_interceptor.dart';
+
 
 class CategoryDataSource {
   final String baseUrl;
@@ -13,8 +18,8 @@ class CategoryDataSource {
       httpPost(
         url: "$baseUrl/Category",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> update({
@@ -26,8 +31,8 @@ class CategoryDataSource {
       httpPut(
         url: "$baseUrl/Category",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> read({
@@ -37,8 +42,8 @@ class CategoryDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Category",
-        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> delete({
@@ -48,7 +53,7 @@ class CategoryDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Category/$id",
-        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.body, fromMap: CategoryReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 }

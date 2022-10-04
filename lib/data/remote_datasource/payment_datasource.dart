@@ -1,5 +1,12 @@
+import 'package:dio/dio.dart';
+import 'package:utilities/data/dto/generic_response.dart';
 import 'package:utilities/data/dto/payment.dart';
-import 'package:utilities/utilities.dart';
+import 'package:utilities/data/dto/user.dart';
+import 'package:utilities/utils/constants.dart';
+import 'package:utilities/utils/dio_interceptor.dart';
+
+import '../../utils/local_storage.dart';
+
 
 class PaymentDataSource {
   final String baseUrl;
@@ -16,8 +23,8 @@ class PaymentDataSource {
         headers: <String, String>{
           "Authorization": "${getString(UtilitiesConstants.token)}",
         },
-        action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.body, fromMap: PaymentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.data, fromMap: PaymentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.data)),
       );
 
    Future<void> buyProduct({
@@ -30,8 +37,8 @@ class PaymentDataSource {
         headers: <String, String>{
           "Authorization": "${getString(UtilitiesConstants.token)}",
         },
-        action: (Response response) => onResponse(GenericResponse<PaymentReadDto>.fromJson(response.body, fromMap: PaymentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<PaymentReadDto>.fromJson(response.data, fromMap: PaymentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
 }

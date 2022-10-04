@@ -1,5 +1,10 @@
+import 'package:dio/dio.dart';
+import 'package:utilities/data/dto/form.dart';
 import 'package:utilities/data/dto/form_filed.dart';
-import 'package:utilities/utilities.dart';
+import 'package:utilities/data/dto/generic_response.dart';
+import 'package:utilities/data/dto/user.dart';
+import 'package:utilities/utils/dio_interceptor.dart';
+
 
 class FormDataSource {
   final String baseUrl;
@@ -14,8 +19,8 @@ class FormDataSource {
       httpPost(
         url: "$baseUrl/Form",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, fromMap: FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> readByCategoryId({
@@ -25,8 +30,8 @@ class FormDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Form/$categoryId",
-        action: (Response response) => onResponse(GenericResponse<FormFieldReadDto>.fromJson(response.body, fromMap: FormFieldReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<FormFieldReadDto>.fromJson(response.data, fromMap: FormFieldReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> delete({
@@ -36,8 +41,8 @@ class FormDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/Form/$id",
-        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, fromMap: FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> createFormField({
@@ -48,8 +53,8 @@ class FormDataSource {
       httpPost(
         url: "$baseUrl/Form/CreateFormField",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, fromMap: FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> updateFormField({
@@ -60,8 +65,8 @@ class FormDataSource {
       httpPut(
         url: "$baseUrl/Form/UpdateFormField",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, fromMap: FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 
   Future<void> deleteFormField({
@@ -71,7 +76,7 @@ class FormDataSource {
   }) async =>
       httpDelete(
         url: "$baseUrl/DeleteFormField/$id",
-        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.body, fromMap: FormReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.body)),
+        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 }
