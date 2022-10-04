@@ -9,6 +9,8 @@ class MediaReadDto {
     this.url = "-1",
     this.title = "-1",
     this.file,
+    this.fileName,
+    this.fileType,
     this.productId,
     this.userId,
     this.categoryId,
@@ -24,6 +26,8 @@ class MediaReadDto {
   final String link;
   final String url;
   final String? file;
+  final String? fileName;
+  final String? fileType;
   final String title;
   final String? notificationId;
   final String? categoryId;
@@ -45,6 +49,8 @@ class MediaReadDto {
         url: json["url"] ?? "-1",
         title: json["title"] ?? "-1",
         file: json["file"] == null ? null : json["file"],
+        fileName: json["fileName"] == null ? null : json["fileName"],
+        fileType: json["fileName"] == null ? null : json["fileName"].toString().split('.')[1],
         notificationId: json["notificationId"] == null ? null : json["notificationId"],
         categoryId: json["categoryId"] == null ? null : json["categoryId"],
         contentId: json["contentId"] == null ? null : json["contentId"],
@@ -62,6 +68,7 @@ class MediaReadDto {
         "url": url,
         "title": title,
         "file": file == null ? null : file,
+        "fileName": fileName == null ? null : fileName,
         "notificationId": notificationId == null ? null : notificationId,
         "categoryId": categoryId == null ? null : categoryId,
         "contentId": contentId == null ? null : contentId,
