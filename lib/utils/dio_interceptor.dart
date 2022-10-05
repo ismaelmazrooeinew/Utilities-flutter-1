@@ -25,7 +25,7 @@ Future<void> request(
 
   if (headers != null) header.addAll(headers);
   final Dio dio = Dio();
-  Response response = await dio.get(url, options: Options(headers: header));
+  Response response = Response(requestOptions: RequestOptions(path: ''));
   try {
     dynamic params;
     if (body != null) {
