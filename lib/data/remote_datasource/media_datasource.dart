@@ -99,11 +99,12 @@ class MediaDataSource {
     Dio dio = Dio();
     for (int i = 0; i < files!.length; i++) {
       File file = files[i];
+      String fileName=file.path.split('/')[file.path.split('.').length-1];
       final Response<dynamic> response = await dio.post(
         '$baseUrl/Media',
         onSendProgress: onSendProgress,
         data: FormData.fromMap({
-          'Files': await MultipartFile.fromFile(file.path, filename: 'image.jpg'),
+          'Files': await MultipartFile.fromFile(file.path, filename: fileName),
           // 'Files': <MultipartFile>[await MultipartFile(file.path, filename: file.path)],
           'UseCase': useCase,
           'CategoryId': categoryId,
