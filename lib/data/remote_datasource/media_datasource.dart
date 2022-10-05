@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/animation.dart';
 import 'package:utilities/data/dto/generic_response.dart';
 import 'package:utilities/data/dto/media.dart';
@@ -99,7 +100,7 @@ class MediaDataSource {
     Dio dio = Dio();
     for (int i = 0; i < files!.length; i++) {
       File file = files[i];
-      String fileName=file.path.split('/')[file.path.split('/').length-1];
+      String fileName = file.path.split('/')[file.path.split('/').length - 1];
       final Response<dynamic> response = await dio.post(
         '$baseUrl/Media',
         onSendProgress: onSendProgress,
@@ -203,8 +204,8 @@ class MediaDataSource {
   }) async {
     // int i = 0;
 
-    for(int i=0;i<fileBytes.length;i++){
-      Uint8List files=fileBytes[i];
+    for (int i = 0; i < fileBytes.length; i++) {
+      Uint8List files = fileBytes[i];
       final List<int> _selectedFile = files;
       final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
       request.fields['UseCase'] = useCase;
@@ -230,7 +231,6 @@ class MediaDataSource {
       request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: "file111.png"));
 
       await request.send().then((final http.StreamedResponse response) {
-
         if (response.statusCode == 200) {
           if (i == fileBytes.length - 1) {
             action();
@@ -264,6 +264,81 @@ class MediaDataSource {
     }
   }
 
+  Future<void> createWebV2({
+    required final List<PlatformFile> files,
+    required final String useCase, //media
+    required final VoidCallback action,
+    final List<String>? links,
+    final String? categoryId,
+    final String? contentId,
+    final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
+    final String? userId,
+    final String? notificationId,
+    final String? size,
+  }) async {
+    // int i = 0;
+
+    for (int i = 0; i < files.length; i++) {
+      PlatformFile platformFile = files[i];
+      Uint8List? uint8list = platformFile.bytes;
+      final List<int> _selectedFile = uint8list!;
+      String fileName=platformFile.name;
+      final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
+      request.fields['UseCase'] = useCase;
+      if (categoryId != null) {
+        request.fields['CategoryId'] = categoryId;
+      }
+
+      if (productId != null) {
+        request.fields['ProductId'] = productId;
+      }
+      if (userId != null) {
+        request.fields['UserId'] = userId;
+      }
+      if (notificationId != null) {
+        request.fields['NotificationId'] = notificationId;
+      }
+      if (size != null) {
+        request.fields['Size'] = size;
+      }
+
+      request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
+
+      request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: fileName));
+
+      await request.send().then((final http.StreamedResponse response) {
+        if (response.statusCode == 200) {
+          if (i == files.length - 1) {
+            action();
+          }
+        }
+      });
+    }
+
+    if (links != null) {
+      Dio dio = Dio();
+      links.forEach((final String link) async {
+        final Response<dynamic> i = await dio.post(
+          '$baseUrl/Media',
+          data: {
+            'Links': <String>[link],
+            'UseCase': useCase,
+            'CategoryId': categoryId,
+            'ContentId': contentId,
+            'ProductId': productId,
+            'UserId': userId,
+            'NotificationId': notificationId,
+            'Size': size ?? "",
+          },
+          options: Options(
+            headers: <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""},
+          ),
+        );
+      });
+
+      action();
+    }
+  }
 
   // Future<Response> postMultipartData(String uri, Map<String, String> body, List<MultipartBody> multipartBody, {Map<String, String> headers}) async {
   //   try {
@@ -308,11 +383,6 @@ class MediaDataSource {
   //   }
   // }
 
-
-
-
-
-
   Future<void> delete({
     required final String id,
     required final Function(GenericResponse) onResponse,
@@ -324,6 +394,7 @@ class MediaDataSource {
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 }
+
 class MultipartBody {
   String key;
   File file;
