@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:dio/dio.dart';
 import 'package:utilities/utils/constants.dart';
 import 'package:utilities/utils/http_interceptor.dart';
@@ -8,24 +10,16 @@ Future<void> request(
   final EHttpMethod httpMethod,
   final Function(Response<dynamic> response) action,
   final Function(Response<dynamic> response) error, {
-  final String? queryOrMutation,
+  final VoidCallback? failure,
   final dynamic body,
   final bool encodeBody = true,
   final Map<String, String>? headers,
-  final String userAgent = 'SinaMN75',
-  final bool followRedirects = true,
-  final Duration timeout = const Duration(minutes: 60),
-  final int maxRedirects = 5,
-  final bool allowAutoSignedCert = false,
-  final bool sendUserAgent = false,
-  final int maxAuthRetries = 1,
-  final bool withCredentials = false,
 }) async {
   final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
 
   if (headers != null) header.addAll(headers);
   final Dio dio = Dio();
-  Response response = Response(requestOptions: RequestOptions(path: ''));
+  Response response = Response(requestOptions: RequestOptions(path: '', headers: header));
   try {
     dynamic params;
     if (body != null) {
@@ -35,64 +29,21 @@ Future<void> request(
         params = body;
     }
 
-    // if (httpMethod == EHttpMethod.get) {
-    //   Response response = await dio.get(url, options: Options(headers: header));
-    //   if (response.statusCode! > 199 && response.statusCode! < 300) {
-    //     action(response);
-    //   } else {
-    //     error(response);
-    //   }
-    // }
-    //
-    // if (httpMethod == EHttpMethod.post) {
-    //   Response response = await dio.post(url, data: params, options: Options(headers: header));
-    //   if (response.statusCode! > 199 && response.statusCode! < 300) {
-    //     action(response);
-    //   } else {
-    //     error(response);
-    //   }
-    // }
-    // if (httpMethod == EHttpMethod.put) {
-    //   Response response = await dio.put(url, data: params, options: Options(headers: header));
-    //   if (response.statusCode! > 199 && response.statusCode! < 300) {
-    //     action(response);
-    //   } else {
-    //     error(response);
-    //   }
-    // }
-    //
-    // if (httpMethod == EHttpMethod.patch) {
-    //   Response response = await dio.patch(url, data: params, options: Options(headers: header));
-    //   if (response.statusCode! > 199 && response.statusCode! < 300) {
-    //     action(response);
-    //   } else {
-    //     error(response);
-    //   }
-    // }
-    //
-    // if (httpMethod == EHttpMethod.delete) {
-    //   Response response = await dio.delete(url, options: Options(headers: header));
-    //   if (response.statusCode! > 199 && response.statusCode! < 300) {
-    //     action(response);
-    //   } else {
-    //     error(response);
-    //   }
-    // }
-
     if (httpMethod == EHttpMethod.get) response = await dio.get(url, options: Options(headers: header));
     if (httpMethod == EHttpMethod.post) response = await dio.post(url, data: params, options: Options(headers: header));
     if (httpMethod == EHttpMethod.put) response = await dio.put(url, data: params, options: Options(headers: header));
     if (httpMethod == EHttpMethod.patch) response = await dio.patch(url, data: params, options: Options(headers: header));
     if (httpMethod == EHttpMethod.delete) response = await dio.delete(url, options: Options(headers: header));
-    // ignore: avoid_catches_without_on_clauses
-    if (response.statusCode! > 199 && response.statusCode! < 300) {
+    if ((response.statusCode ?? 0) >= 200 && (response.statusCode ?? 0) <= 299) {
       action(response);
     } else {
       error(response);
     }
   } catch (e) {
-    error(response);
+    if (failure != null) failure();
   }
+
+  response.log();
 }
 
 Future<void> httpGet({
@@ -100,14 +51,6 @@ Future<void> httpGet({
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
   final Map<String, String>? headers,
-  final String userAgent = 'SinaMN75',
-  final bool followRedirects = true,
-  final Duration timeout = const Duration(minutes: 60),
-  final int maxRedirects = 5,
-  final bool allowAutoSignedCert = false,
-  final bool sendUserAgent = false,
-  final int maxAuthRetries = 1,
-  final bool withCredentials = false,
 }) async =>
     request(
       url,
@@ -115,14 +58,6 @@ Future<void> httpGet({
       action,
       error,
       headers: headers,
-      userAgent: userAgent,
-      followRedirects: followRedirects,
-      timeout: timeout,
-      maxRedirects: maxRedirects,
-      allowAutoSignedCert: allowAutoSignedCert,
-      sendUserAgent: sendUserAgent,
-      maxAuthRetries: maxAuthRetries,
-      withCredentials: withCredentials,
     );
 
 Future<void> httpPost({
@@ -132,14 +67,6 @@ Future<void> httpPost({
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
-  final String userAgent = 'SinaMN75',
-  final bool followRedirects = true,
-  final Duration timeout = const Duration(minutes: 60),
-  final int maxRedirects = 5,
-  final bool allowAutoSignedCert = false,
-  final bool sendUserAgent = false,
-  final int maxAuthRetries = 1,
-  final bool withCredentials = false,
 }) async =>
     request(
       url,
@@ -149,14 +76,6 @@ Future<void> httpPost({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
-      userAgent: userAgent,
-      followRedirects: followRedirects,
-      timeout: timeout,
-      maxRedirects: maxRedirects,
-      allowAutoSignedCert: allowAutoSignedCert,
-      sendUserAgent: sendUserAgent,
-      maxAuthRetries: maxAuthRetries,
-      withCredentials: withCredentials,
     );
 
 Future<void> httpPut({
@@ -166,14 +85,6 @@ Future<void> httpPut({
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
-  final String userAgent = 'SinaMN75',
-  final bool followRedirects = true,
-  final Duration timeout = const Duration(minutes: 60),
-  final int maxRedirects = 5,
-  final bool allowAutoSignedCert = false,
-  final bool sendUserAgent = false,
-  final int maxAuthRetries = 1,
-  final bool withCredentials = false,
 }) async =>
     request(
       url,
@@ -183,14 +94,6 @@ Future<void> httpPut({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
-      userAgent: userAgent,
-      followRedirects: followRedirects,
-      timeout: timeout,
-      maxRedirects: maxRedirects,
-      allowAutoSignedCert: allowAutoSignedCert,
-      sendUserAgent: sendUserAgent,
-      maxAuthRetries: maxAuthRetries,
-      withCredentials: withCredentials,
     );
 
 Future<void> patch({
@@ -200,14 +103,6 @@ Future<void> patch({
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
-  final String userAgent = 'SinaMN75',
-  final bool followRedirects = true,
-  final Duration timeout = const Duration(minutes: 60),
-  final int maxRedirects = 5,
-  final bool allowAutoSignedCert = false,
-  final bool sendUserAgent = false,
-  final int maxAuthRetries = 1,
-  final bool withCredentials = false,
 }) async =>
     request(
       url,
@@ -217,14 +112,6 @@ Future<void> patch({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
-      userAgent: userAgent,
-      followRedirects: followRedirects,
-      timeout: timeout,
-      maxRedirects: maxRedirects,
-      allowAutoSignedCert: allowAutoSignedCert,
-      sendUserAgent: sendUserAgent,
-      maxAuthRetries: maxAuthRetries,
-      withCredentials: withCredentials,
     );
 
 Future<void> httpDelete({
@@ -232,14 +119,6 @@ Future<void> httpDelete({
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
   final Map<String, String>? headers,
-  final String userAgent = 'SinaMN75',
-  final bool followRedirects = true,
-  final Duration timeout = const Duration(minutes: 60),
-  final int maxRedirects = 5,
-  final bool allowAutoSignedCert = false,
-  final bool sendUserAgent = false,
-  final int maxAuthRetries = 1,
-  final bool withCredentials = false,
 }) async =>
     request(
       url,
@@ -247,12 +126,16 @@ Future<void> httpDelete({
       action,
       error,
       headers: headers,
-      userAgent: userAgent,
-      followRedirects: followRedirects,
-      timeout: timeout,
-      maxRedirects: maxRedirects,
-      allowAutoSignedCert: allowAutoSignedCert,
-      sendUserAgent: sendUserAgent,
-      maxAuthRetries: maxAuthRetries,
-      withCredentials: withCredentials,
     );
+
+extension HTTP on Response<dynamic> {
+  bool isSuccessful() => (statusCode ?? 0) >= 200 && (statusCode ?? 0) <= 299 ? true : false;
+
+  bool isServerError() => (statusCode ?? 0) >= 500 && (statusCode ?? 0) <= 599 ? true : false;
+
+  void log({final String params = ""}) {
+    print(
+      "${this.requestOptions.method} - ${this.requestOptions.uri} - $statusCode \nPARAMS: $params \nRESPONSE: ${this.data}",
+    );
+  }
+}
