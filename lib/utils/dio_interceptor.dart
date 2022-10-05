@@ -25,7 +25,7 @@ Future<void> request(
 
   if (headers != null) header.addAll(headers);
 
-  Response<dynamic>? response;
+  Response<dynamic> response = Response(requestOptions: RequestOptions(path: ''));
   try {
     dynamic params;
     if (body != null) {
@@ -37,24 +37,31 @@ Future<void> request(
 
     final Dio dio = Dio();
 
+    // if (httpMethod == EHttpMethod.get) {
+    //   Response response = await dio.get(url, options: Options(headers: header));
+    //   if (response.statusCode! < 199 && response.statusCode! < 300) {
+    //     action(response);
+    //   } else {
+    //     error(response);
+    //   }
+    // }
+
     if (httpMethod == EHttpMethod.get) response = await dio.get(url, options: Options(headers: header));
     if (httpMethod == EHttpMethod.post) response = await dio.post(url, data: params, options: Options(headers: header));
     if (httpMethod == EHttpMethod.put) response = await dio.put(url, data: params, options: Options(headers: header));
     if (httpMethod == EHttpMethod.patch) response = await dio.patch(url, data: params, options: Options(headers: header));
     if (httpMethod == EHttpMethod.delete) response = await dio.delete(url, options: Options(headers: header));
-  // ignore: avoid_catches_without_on_clauses
-  } catch ( e) {
-    error(response!);
+    // ignore: avoid_catches_without_on_clauses
+  } catch (e) {
+    error(response);
   }
 
-  //unAuthorize
-  if (response!.statusCode == 200) {
+  if (response.statusCode! < 199 && response.statusCode! < 300) {
     action(response);
   } else {
     error(response);
   }
 }
-
 
 Future<void> httpGet({
   required final String url,
@@ -217,4 +224,3 @@ Future<void> httpDelete({
       maxAuthRetries: maxAuthRetries,
       withCredentials: withCredentials,
     );
-
