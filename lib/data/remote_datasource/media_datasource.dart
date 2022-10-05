@@ -99,7 +99,7 @@ class MediaDataSource {
     Dio dio = Dio();
     for (int i = 0; i < files!.length; i++) {
       File file = files[i];
-      String fileName=file.path.split('/')[file.path.split('.').length-1];
+      String fileName=file.path.split('/')[file.path.split('/').length-1];
       final Response<dynamic> response = await dio.post(
         '$baseUrl/Media',
         onSendProgress: onSendProgress,
