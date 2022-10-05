@@ -135,7 +135,7 @@ extension HTTP on Response<dynamic> {
 
   void log({final String params = ""}) {
     print(
-      "${this.requestOptions.method} - ${this.requestOptions.baseUrl} - $statusCode \nPARAMS: $params \nRESPONSE: ${this.data}",
+      "${this.requestOptions.method} - ${this.requestOptions.path} - $statusCode \nPARAMS: $params \nRESPONSE: ${this.data}",
     );
   }
 }
