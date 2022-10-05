@@ -34,7 +34,7 @@ Future<void> request(
     if (httpMethod == EHttpMethod.put) response = await dio.put(url, data: params, options: Options(headers: header));
     if (httpMethod == EHttpMethod.patch) response = await dio.patch(url, data: params, options: Options(headers: header));
     if (httpMethod == EHttpMethod.delete) response = await dio.delete(url, options: Options(headers: header));
-    if ((response.statusCode ?? 0) >= 200 && (response.statusCode ?? 0) <= 299) {
+    if (response.isSuccessful()) {
       action(response);
     } else {
       error(response);
@@ -135,7 +135,7 @@ extension HTTP on Response<dynamic> {
 
   void log({final String params = ""}) {
     print(
-      "${this.requestOptions.method} - ${this.requestOptions.uri} - $statusCode \nPARAMS: $params \nRESPONSE: ${this.data}",
+      "${this.requestOptions.method} - ${this.requestOptions.baseUrl} - $statusCode \nPARAMS: $params \nRESPONSE: ${this.data}",
     );
   }
 }
