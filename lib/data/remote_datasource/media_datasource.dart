@@ -90,6 +90,7 @@ class MediaDataSource {
     final String? contentId,
     final String? productId,
     final String? userId,
+    final String? ChatId,
     final String? notificationId,
     ProgressCallback? onSendProgress,
     final String? size,
@@ -112,6 +113,7 @@ class MediaDataSource {
           'ContentId': contentId,
           'ProductId': productId,
           'UserId': userId,
+          'ChatId': ChatId,
           'NotificationId': notificationId,
           'Size': size,
         }),
@@ -161,6 +163,7 @@ class MediaDataSource {
     final String? contentId,
     final String? productId,
     final String? userId,
+    final String? ChatId,
     final String? notificationId,
     final String? size,
     required final Function(GenericResponse, bool isEnd) onResponse,
@@ -177,6 +180,7 @@ class MediaDataSource {
           'ContentId': contentId,
           'ProductId': productId,
           'UserId': userId,
+          'ChatId': ChatId,
           'NotificationId': notificationId,
           'Size': size,
         },
@@ -199,6 +203,7 @@ class MediaDataSource {
     final String? contentId,
     final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
     final String? userId,
+    final String? ChatId,
     final String? notificationId,
     final String? size,
   }) async {
@@ -216,6 +221,10 @@ class MediaDataSource {
       if (productId != null) {
         request.fields['ProductId'] = productId;
       }
+            if (ChatId != null) {
+        request.fields['ChatId'] = ChatId;
+      }
+
       if (userId != null) {
         request.fields['UserId'] = userId;
       }
@@ -250,6 +259,7 @@ class MediaDataSource {
             'CategoryId': categoryId,
             'ContentId': contentId,
             'ProductId': productId,
+            'ChatId': ChatId,
             'UserId': userId,
             'NotificationId': notificationId,
             'Size': size ?? "",
@@ -273,6 +283,7 @@ class MediaDataSource {
     final String? contentId,
     final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
     final String? userId,
+    final String? ChatId,
     final String? notificationId,
     final String? size,
   }) async {
@@ -295,6 +306,12 @@ class MediaDataSource {
       if (userId != null) {
         request.fields['UserId'] = userId;
       }
+
+            if (ChatId != null) {
+        request.fields['ChatId'] = ChatId;
+      }
+
+
       if (notificationId != null) {
         request.fields['NotificationId'] = notificationId;
       }
@@ -327,6 +344,7 @@ class MediaDataSource {
             'ContentId': contentId,
             'ProductId': productId,
             'UserId': userId,
+            'ChatId': ChatId,
             'NotificationId': notificationId,
             'Size': size ?? "",
           },
