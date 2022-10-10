@@ -18,6 +18,9 @@ class MediaReadDto {
     this.notificationId,
     this.visibility,
     this.size,
+    this.chat,
+    this.chatId,
+    this.createdAt,
   });
 
   final String id;
@@ -36,6 +39,9 @@ class MediaReadDto {
   final int? visibility;
   final String? userId;
   final String? size;
+  final Chat? chat;
+  final String? chatId;
+  final String? createdAt;
 
   factory MediaReadDto.fromJson(String str) => MediaReadDto.fromMap(json.decode(str));
 
@@ -58,6 +64,9 @@ class MediaReadDto {
         visibility: json["visibility"] == null ? null : json["visibility"],
         userId: json["userId"] == null ? null : json["userId"],
         size: json["size"] == null ? null : json["size"],
+        chat: json["chat"] == null ? null : Chat.fromMap(json["chat"]),
+        chatId: json["chatId"] == null ? null : json["chatId"],
+        createdAt: json["createdAt"] == null ? null : json["createdAt"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -74,8 +83,63 @@ class MediaReadDto {
         "contentId": contentId == null ? null : contentId,
         "productId": productId == null ? null : productId,
         "visibility": visibility == null ? null : visibility,
+        "chat": chat == null ? null : chat!.toMap(),
+        "chatId": chatId == null ? null : chatId,
+        "createdAt": createdAt == null ? null : createdAt,
         "userId": userId == null ? null : userId,
         "size": size == null ? null : size,
+      };
+}
+
+class Chat {
+  Chat({
+    this.fromUserId,
+    this.fromUser,
+    this.toUserId,
+    this.toUser,
+    this.messageText,
+    this.readMessage,
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  final String? fromUserId;
+  final UserReadDto? fromUser;
+  final String? toUserId;
+  final UserReadDto? toUser;
+  final String? messageText;
+  final bool? readMessage;
+  final String? id;
+  final String? createdAt;
+  final String? updatedAt;
+
+  factory Chat.fromJson(String str) => Chat.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory Chat.fromMap(Map<String, dynamic> json) => Chat(
+        fromUserId: json["fromUserId"] == null ? null : json["fromUserId"],
+        fromUser: json["fromUser"] == null ? null : UserReadDto.fromMap(json["fromUser"]),
+        toUserId: json["toUserId"] == null ? null : json["toUserId"],
+        toUser: json["toUser"] == null ? null : UserReadDto.fromMap(json["toUser"]),
+        messageText: json["messageText"] == null ? null : json["messageText"],
+        readMessage: json["readMessage"] == null ? null : json["readMessage"],
+        id: json["id"] == null ? null : json["id"],
+        createdAt: json["createdAt"] == null ? null : json["createdAt"],
+        updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "fromUserId": fromUserId == null ? null : fromUserId,
+        "fromUser": fromUser == null ? null : fromUser!.toMap(),
+        "toUserId": toUserId == null ? null : toUserId,
+        "toUser": toUser == null ? null : toUser!.toMap(),
+        "messageText": messageText == null ? null : messageText,
+        "readMessage": readMessage == null ? null : readMessage,
+        "id": id == null ? null : id,
+        "createdAt": createdAt == null ? null : createdAt,
+        "updatedAt": updatedAt == null ? null : updatedAt,
       };
 }
 
