@@ -10,6 +10,7 @@ class ChatReadDto {
     this.profileImage,
     this.send,
     this.media,
+    this.user,
     this.phoneNumber,
     this.unReadMessages,
   });
@@ -23,6 +24,7 @@ class ChatReadDto {
   final String? phoneNumber;
   final int? unReadMessages;
   final bool? send;
+  final UserReadDto? user;
   final List<MediaReadDto>? media;
 
   factory ChatReadDto.fromJson(String str) => ChatReadDto.fromMap(json.decode(str));
@@ -37,6 +39,7 @@ class ChatReadDto {
         phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
         unReadMessages: json["unReadMessages"] == null ? null : json["unReadMessages"],
         dateTime: json["dateTime"] == null ? null : json["dateTime"],
+        user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         profileImage: json["profileImage"] == null ? null : json["profileImage"],
         send: json["send"] == null ? null : json["send"],
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
@@ -50,6 +53,7 @@ class ChatReadDto {
         "phoneNumber": phoneNumber == null ? null : phoneNumber,
         "unReadMessages": unReadMessages == null ? null : unReadMessages,
         "dateTime": dateTime == null ? null : dateTime,
+        "user": user == null ? null : user!.toMap(),
         "profileImage": profileImage == null ? null : profileImage,
         "send": send == null ? null : send,
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
