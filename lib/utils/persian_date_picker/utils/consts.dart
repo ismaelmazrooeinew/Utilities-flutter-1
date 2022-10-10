@@ -17,3 +17,29 @@ enum PickerType {
   year,
   day,
 }
+
+enum Currency {
+  rial("100"),
+  dolor("101"),
+  lira("102"),
+  euro("103"),
+  btc("200");
+
+  const Currency(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
+enum UseCaseMedia {
+  chat("Chat"),
+  profile("profile");
+
+  const UseCaseMedia(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
