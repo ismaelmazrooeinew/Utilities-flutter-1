@@ -179,9 +179,19 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
         .where((final MediaReadDto e) => e.url.isImageFileName && ((e.useCase == 'file')))
         .map(
           (final MediaReadDto e) => e.url,
-    )
+        )
         .toList();
     return list.isNotEmpty ? list.first : "--";
+  }
+
+  List<MediaReadDto> getByUseCase({final String? useCase}) {
+    List<MediaReadDto> list = this!
+        .where((final MediaReadDto e) => (e.useCase == useCase))
+        .map(
+          (final MediaReadDto e) => e,
+        )
+        .toList();
+    return list.isNotEmpty ? list : [];
   }
 
   List<String> getAudios({final String? useCase}) =>
