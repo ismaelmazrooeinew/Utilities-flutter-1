@@ -22,7 +22,7 @@ class ChatReadDto {
   final String? dateTime;
   final String? profileImage;
   final String? phoneNumber;
-  final int? unReadMessages;
+   int? unReadMessages;
   final bool? send;
   final UserReadDto? user;
   final List<MediaReadDto>? media;

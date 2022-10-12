@@ -34,7 +34,9 @@ enum Currency {
 
 enum UseCaseMedia {
   chat("Chat"),
-  profile("profile");
+  profile("profile"),
+  cover("cover"),
+  post("post");
 
   const UseCaseMedia(this.title);
 
@@ -42,4 +44,3 @@ enum UseCaseMedia {
   String toString() => name;
   final String title;
 }
-
