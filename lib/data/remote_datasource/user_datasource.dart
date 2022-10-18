@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/animation.dart';
+import 'package:flutter/material.dart';
 import 'package:utilities/data/dto/generic_response.dart';
 import 'package:utilities/data/dto/user.dart';
 import 'package:utilities/utils/dio_interceptor.dart';
