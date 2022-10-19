@@ -293,6 +293,12 @@ class ProductReadDto {
     this.reports,
     this.votes,
     this.voteCount,
+    this.value1,
+    this.value2,
+    this.value3,
+    this.value4,
+    this.value5,
+    this.value6,
   });
 
   final String? id;
@@ -331,7 +337,12 @@ class ProductReadDto {
   final UserReadDto? user;
   final int? status;
   final int? currency;
-
+  final String? value1;
+  final String? value2;
+  final String? value3;
+  final String? value4;
+  final String? value5;
+  final String? value6;
   final List<MediaReadDto>? media;
   final List<CategoryReadDto>? categories;
   final List<VoteField>? voteFields;
@@ -362,6 +373,12 @@ class ProductReadDto {
         phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
         link: json["link"] == null ? null : json["link"],
         website: json["website"] == null ? null : json["website"],
+        value1: json["value1"] == null ? null : json["value1"],
+        value2: json["value2"] == null ? null : json["value2"],
+        value3: json["value3"] == null ? null : json["value3"],
+        value4: json["value4"] == null ? null : json["value4"],
+        value5: json["value5"] == null ? null : json["value5"],
+        value6: json["value6"] == null ? null : json["value6"],
         email: json["email"] == null ? null : json["email"],
         state: json["state"] == null ? null : json["state"],
         stateTr1: json["stateTr1"] == null ? null : json["stateTr1"],
@@ -432,6 +449,12 @@ class ProductReadDto {
         "updatedAt": updatedAt == null ? null : updatedAt,
         "deletedAt": deletedAt == null ? null : deletedAt,
         "user": user == null ? null : user!.toMap(),
+        "value1": value1 == null ? null : value1,
+        "value2": value2 == null ? null : value2,
+        "value3": value3 == null ? null : value3,
+        "value4": value4 == null ? null : value4,
+        "value5": value5 == null ? null : value5,
+        "value6": value6 == null ? null : value6,
         "status": status == null ? null : status,
         "currency": currency == null ? null : currency,
         "voteCount": voteCount == null ? null : voteCount,
