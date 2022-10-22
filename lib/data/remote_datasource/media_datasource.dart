@@ -224,7 +224,7 @@ class MediaDataSource {
       if (productId != null) {
         request.fields['ProductId'] = productId;
       }
-            if (chatId != null) {
+      if (chatId != null) {
         request.fields['ChatId'] = chatId;
       }
 
@@ -281,6 +281,7 @@ class MediaDataSource {
     required final List<PlatformFile> files,
     required final String useCase, //media
     required final VoidCallback action,
+    final VoidCallback? error,
     final List<String>? links,
     final String? categoryId,
     final String? contentId,
@@ -296,7 +297,7 @@ class MediaDataSource {
       PlatformFile platformFile = files[i];
       Uint8List? uint8list = platformFile.bytes;
       final List<int> _selectedFile = uint8list!;
-      String fileName=platformFile.name;
+      String fileName = platformFile.name;
       final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
       request.fields['UseCase'] = useCase;
       if (categoryId != null) {
@@ -310,10 +311,9 @@ class MediaDataSource {
         request.fields['UserId'] = userId;
       }
 
-            if (chatId != null) {
+      if (chatId != null) {
         request.fields['ChatId'] = chatId;
       }
-
 
       if (notificationId != null) {
         request.fields['NotificationId'] = notificationId;
@@ -330,6 +330,10 @@ class MediaDataSource {
         if (response.statusCode == 200) {
           if (i == files.length - 1) {
             action();
+          }
+        } else {
+          if (i == files.length - 1) {
+            error!();
           }
         }
       });
