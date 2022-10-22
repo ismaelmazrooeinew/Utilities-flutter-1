@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/animation.dart';
+import 'package:flutter/material.dart';
 import 'package:utilities/data/dto/generic_response.dart';
 import 'package:utilities/data/dto/media.dart';
 import 'package:utilities/utils/constants.dart';
