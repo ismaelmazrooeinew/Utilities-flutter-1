@@ -282,7 +282,7 @@ class MediaDataSource {
     required final List<PlatformFile> files,
     required final String useCase, //media
     required final VoidCallback action,
-    final VoidCallback? error,
+    VoidCallback error(http.StreamedResponse response)?,
     final List<String>? links,
     final String? categoryId,
     final String? contentId,
@@ -334,7 +334,7 @@ class MediaDataSource {
           }
         } else {
           if (i == files.length - 1) {
-            error!();
+            error!(response);
           }
         }
       });
