@@ -282,7 +282,7 @@ class MediaDataSource {
     required final List<PlatformFile> files,
     required final String useCase, //media
     required final VoidCallback action,
-    VoidCallback error(int statusCode)?,
+    final Function(int statusCode)? error,
     final List<String>? links,
     final String? categoryId,
     final String? contentId,
