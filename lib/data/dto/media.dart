@@ -184,13 +184,32 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
     return list.isNotEmpty ? list.first : "--";
   }
 
-  List<MediaReadDto> getByUseCase({final String? useCase}) {
+  // List<MediaReadDto> getByUseCase({final String? useCase}) {
+  //   List<MediaReadDto> list = this!
+  //       .where((final MediaReadDto e) => (e.useCase == useCase))
+  //       .map(
+  //         (final MediaReadDto e) => e,
+  //       )
+  //       .toList();
+  //   return list.isNotEmpty ? list : [];
+  // }
+
+  List<MediaReadDto> getByUseCase({final String? useCase, final String? exception}) {
     List<MediaReadDto> list = this!
         .where((final MediaReadDto e) => (e.useCase == useCase))
         .map(
           (final MediaReadDto e) => e,
         )
         .toList();
+    if (exception != null) {
+      list = this!
+          .where((final MediaReadDto e) => (e.useCase != exception))
+          .map(
+            (final MediaReadDto e) => e,
+          )
+          .toList();
+    }
+
     return list.isNotEmpty ? list : [];
   }
 
