@@ -144,6 +144,17 @@ class UserDataSource {
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
+  Future<void> loginWithPassword({
+    required final LoginWithPassword dto,
+    required final Function(GenericResponse<UserReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+  }) async =>
+      httpPost(
+        url: "$baseUrl/user/LoginWithPassword",
+        body: dto,
+        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+      );
 
   Future<void> verifyCodeForLogin({
     required final VerifyMobileForLoginDto dto,

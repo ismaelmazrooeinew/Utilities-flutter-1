@@ -403,6 +403,34 @@ class LoginWithEmail {
       };
 }
 
+class LoginWithPassword {
+  LoginWithPassword({
+    this.email,
+    this.userName,
+    this.password,
+  });
+
+  final String? email;
+  final String? password;
+  final String? userName;
+
+  factory LoginWithPassword.fromJson(String str) => LoginWithPassword.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory LoginWithPassword.fromMap(Map<String, dynamic> json) => LoginWithPassword(
+        email: json["email"] == null ? null : json["email"],
+        userName: json["userName"] == null ? null : json["userName"],
+        password: json["password"] == null ? null : json["password"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "email": email == null ? null : email,
+        "userName": userName == null ? null : userName,
+        "password": password == null ? null : password,
+      };
+}
+
 class VerifyMobileForLoginDto {
   VerifyMobileForLoginDto({
     this.mobile,
