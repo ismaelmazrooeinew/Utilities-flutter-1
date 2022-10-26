@@ -5,7 +5,6 @@ import 'package:utilities/data/dto/generic_response.dart';
 import 'package:utilities/data/dto/user.dart';
 import 'package:utilities/utils/dio_interceptor.dart';
 
-
 class UserDataSource {
   final String baseUrl;
 
@@ -33,6 +32,7 @@ class UserDataSource {
         action: (Response response) => onResponse(),
         error: (Response response) => onError(response.statusCode.toString()),
       );
+
   Future<void> checkUsername2({
     required final String userName,
     required final VoidCallback onResponse,
@@ -76,6 +76,7 @@ class UserDataSource {
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(response.statusCode.toString()),
       );
+
   Future<void> readById2({
     required final String id,
     required final Function(GenericResponse<UserReadDto>) onResponse,
@@ -144,16 +145,19 @@ class UserDataSource {
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
+
   Future<void> loginWithPassword({
     required final LoginWithPassword dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
+    final VoidCallback? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/user/LoginWithPassword",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
       );
 
   Future<void> verifyCodeForLogin({

@@ -50,6 +50,7 @@ Future<void> httpGet({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
+  final VoidCallback? failure,
   final Map<String, String>? headers,
 }) async =>
     request(
@@ -58,12 +59,14 @@ Future<void> httpGet({
       action,
       error,
       headers: headers,
+      failure: failure,
     );
 
 Future<void> httpPost({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
+   final VoidCallback? failure,
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
@@ -76,12 +79,14 @@ Future<void> httpPost({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
+      failure: failure
     );
 
 Future<void> httpPut({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
+  final VoidCallback? failure,
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
@@ -94,6 +99,7 @@ Future<void> httpPut({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
+      failure: failure,
     );
 
 Future<void> patch({
