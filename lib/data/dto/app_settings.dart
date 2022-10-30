@@ -3,13 +3,11 @@ import 'package:utilities/utilities.dart';
 class AppSettingsDto {
   AppSettingsDto({
     this.formFieldType,
-    this.formFieldTypeDto,
     this.genders,
     this.appSettings,
   });
 
-  final List<CategoryReadDto>? formFieldType;
-  final List<FormFieldTypeDto>? formFieldTypeDto;
+  final List<FormFieldTypeDto>? formFieldType;
   final List<Gender>? genders;
   final AppSettings? appSettings;
 
@@ -18,15 +16,13 @@ class AppSettingsDto {
   String toJson() => json.encode(toMap());
 
   factory AppSettingsDto.fromMap(Map<String, dynamic> json) => AppSettingsDto(
-        formFieldType: json["formFieldType"] == null ? null : List<CategoryReadDto>.from(json["formFieldType"].map((x) => CategoryReadDto.fromMap(x))),
-        formFieldTypeDto: json["formFieldType"] == null ? null : List<FormFieldTypeDto>.from(json["formFieldType"].map((x) => FormFieldTypeDto.fromMap(x))),
+        formFieldType: json["formFieldType"] == null ? null : List<FormFieldTypeDto>.from(json["formFieldType"].map((x) => FormFieldTypeDto.fromMap(x))),
         genders: json["genders"] == null ? null : List<Gender>.from(json["genders"].map((x) => Gender.fromMap(x))),
         appSettings: json["appSettings"] == null ? null : AppSettings.fromMap(json["appSettings"]),
       );
 
   Map<String, dynamic> toMap() => {
         "formFieldType": formFieldType == null ? null : List<dynamic>.from(formFieldType!.map((x) => x.toMap())),
-        "formFieldType": formFieldTypeDto == null ? null : List<dynamic>.from(formFieldTypeDto!.map((x) => x.toMap())),
         "appSettings": appSettings == null ? null : appSettings!.toMap(),
         "genders": genders == null ? null : List<dynamic>.from(genders!.map((x) => x.toMap())),
       };
