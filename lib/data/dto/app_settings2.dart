@@ -35,7 +35,7 @@ class FormFieldTypeDto {
 
   factory FormFieldTypeDto.fromMap(Map<String, dynamic> json) => FormFieldTypeDto(
         id: json["id"] == null ? null : json["id"],
-        title: json["androidLatestVersion"] == null ? null : json["androidLatestVersion"],
+        title: json["title"] == null ? null : json["title"],
       );
 
   Map<String, dynamic> toMap() => {
