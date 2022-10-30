@@ -7,7 +7,7 @@ class AppSettingsDto {
     this.appSettings,
   });
 
-  final List<FormFieldTypeDto>? formFieldType;
+  final List<CategoryReadDto>? formFieldType;
   final List<Gender>? genders;
   final AppSettings? appSettings;
 
@@ -16,7 +16,7 @@ class AppSettingsDto {
   String toJson() => json.encode(toMap());
 
   factory AppSettingsDto.fromMap(Map<String, dynamic> json) => AppSettingsDto(
-        formFieldType: json["formFieldType"] == null ? null : List<FormFieldTypeDto>.from(json["formFieldType"].map((x) => FormFieldTypeDto.fromMap(x))),
+        formFieldType: json["formFieldType"] == null ? null : List<CategoryReadDto>.from(json["formFieldType"].map((x) => CategoryReadDto.fromMap(x))),
         genders: json["genders"] == null ? null : List<Gender>.from(json["genders"].map((x) => Gender.fromMap(x))),
         appSettings: json["appSettings"] == null ? null : AppSettings.fromMap(json["appSettings"]),
       );
@@ -73,29 +73,5 @@ class AppSettings {
         "androidDownloadLink2": androidDownloadLink2 == null ? null : androidDownloadLink2,
         "iosDownloadLink1": iosDownloadLink1 == null ? null : iosDownloadLink1,
         "iosDownloadLink2": iosDownloadLink2 == null ? null : iosDownloadLink2,
-      };
-}
-
-class FormFieldTypeDto {
-  FormFieldTypeDto({
-    this.id,
-    this.title,
-  });
-
-  final int? id;
-  final String? title;
-
-  factory FormFieldTypeDto.fromJson(String str) => FormFieldTypeDto.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory FormFieldTypeDto.fromMap(Map<String, dynamic> json) => FormFieldTypeDto(
-        id: json["id"] == null ? null : json["id"],
-        title: json["androidLatestVersion"] == null ? null : json["androidLatestVersion"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "id": id == null ? null : id,
-        "title": title == null ? null : title,
       };
 }
