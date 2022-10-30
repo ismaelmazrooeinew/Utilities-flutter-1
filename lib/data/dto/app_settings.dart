@@ -75,3 +75,27 @@ class AppSettings {
         "iosDownloadLink2": iosDownloadLink2 == null ? null : iosDownloadLink2,
       };
 }
+
+class FormFieldTypeDto {
+  FormFieldTypeDto({
+    this.id,
+    this.title,
+  });
+
+  final int? id;
+  final String? title;
+
+  factory FormFieldTypeDto.fromJson(String str) => FormFieldTypeDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory FormFieldTypeDto.fromMap(Map<String, dynamic> json) => FormFieldTypeDto(
+        id: json["id"] == null ? null : json["id"],
+        title: json["androidLatestVersion"] == null ? null : json["androidLatestVersion"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id == null ? null : id,
+        "title": title == null ? null : title,
+      };
+}
