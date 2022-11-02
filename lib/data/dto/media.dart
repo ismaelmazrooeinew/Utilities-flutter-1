@@ -146,7 +146,7 @@ class Chat {
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
   List<String> getImages({final String? useCase}) =>
       this
-          ?.where((final MediaReadDto e) => e.url.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
+          ?.where((final MediaReadDto e) => (e.url.isImageFileName||e.url.isVectorFileName) && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.url,
           )
@@ -155,7 +155,7 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
   List<String> getImagesUrl({final String? useCase}) =>
       this
-          ?.where((final MediaReadDto e) => e.url.isImageFileName && (useCase != null ? (e.useCase == useCase) : true))
+          ?.where((final MediaReadDto e) => (e.url.isImageFileName||e.url.isVectorFileName) && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.url,
           )
@@ -166,7 +166,7 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
   String getAvatar() {
     List<String> list = this!
-        .where((final MediaReadDto e) => e.url.isImageFileName && ((e.useCase == 'avatar')))
+        .where((final MediaReadDto e) => (e.url.isImageFileName) && ((e.useCase == 'avatar')))
         .map(
           (final MediaReadDto e) => e.url,
         )
