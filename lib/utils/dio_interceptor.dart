@@ -66,21 +66,12 @@ Future<void> httpPost({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
-   final VoidCallback? failure,
+  final VoidCallback? failure,
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
 }) async =>
-    request(
-      url,
-      EHttpMethod.post,
-      action,
-      error,
-      body: body,
-      encodeBody: encodeBody,
-      headers: headers,
-      failure: failure
-    );
+    request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers, failure: failure);
 
 Future<void> httpPut({
   required final String url,
@@ -124,6 +115,7 @@ Future<void> httpDelete({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
+  final VoidCallback? failure,
   final Map<String, String>? headers,
 }) async =>
     request(
@@ -132,6 +124,7 @@ Future<void> httpDelete({
       action,
       error,
       headers: headers,
+      failure: failure,
     );
 
 extension HTTP on Response<dynamic> {
