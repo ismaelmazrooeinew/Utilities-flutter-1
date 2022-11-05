@@ -108,7 +108,7 @@ class CategoryReadDto {
   final String? link;
   final String? useCase;
   final String? type;
-  final CategoryReadDto? parent;
+   CategoryReadDto? parent;
   final List<CategoryReadDto>? children;
   final String? parentId;
   final List<MediaReadDto>? media;
