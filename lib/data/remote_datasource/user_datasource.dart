@@ -164,12 +164,14 @@ class UserDataSource {
     required final VerifyMobileForLoginDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
+    final Function(Object error)? failure2,
   }) async =>
       httpPost(
         url: "$baseUrl/user/VerifyCodeForLogin",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure2: (Object error) => failure2!,
       );
 
   Future<void> getProfile({

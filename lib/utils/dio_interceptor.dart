@@ -11,6 +11,7 @@ Future<void> request(
   final Function(Response<dynamic> response) action,
   final Function(Response<dynamic> response) error, {
   final VoidCallback? failure,
+  final Function(Object error)? failure2,
   final dynamic body,
   final bool encodeBody = true,
   final Map<String, String>? headers,
@@ -41,6 +42,7 @@ Future<void> request(
     }
   } catch (e) {
     if (failure != null) failure();
+    if (failure2 != null) failure2(e);
   }
 
   response.log();
@@ -67,11 +69,12 @@ Future<void> httpPost({
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
   final VoidCallback? failure,
+  final Function(Object e)? failure2,
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
 }) async =>
-    request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers, failure: failure);
+    request(url, EHttpMethod.post, action, error, body: body, encodeBody: encodeBody, headers: headers, failure: failure, failure2: failure2);
 
 Future<void> httpPut({
   required final String url,
