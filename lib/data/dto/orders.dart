@@ -121,7 +121,7 @@ class OrderDetail {
     price: json["price"] == null ? null : json["price"],
     count: json["count"] == null ? null : json["count"],
     id: json["id"] == null ? null : json["id"],
-    product: json["product"] == null ? null : ProductReadDto.fromMap(json["user"]),
+    product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
     createdAt: json["createdAt"] == null ? null : json["createdAt"],
     updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
   );
