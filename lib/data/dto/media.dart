@@ -244,7 +244,7 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
       this
           ?.where((final MediaReadDto e) => e.url.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
-            (final MediaReadDto e) => e.url,
+            (final MediaReadDto e) => e.url
           )
           .toList() ??
       <String>[];

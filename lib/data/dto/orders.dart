@@ -3,6 +3,10 @@ import 'dart:convert';
 class OrdersReadDto {
   OrdersReadDto({
     this.description,
+    this.showProducts,
+    this.showForms,
+    this.showCategories,
+    this.showMedia,
     this.discountCode,
     this.userId,
     this.orderDetails,
@@ -18,6 +22,10 @@ class OrdersReadDto {
     this.receivedDate,
   });
 
+  final bool? showProducts;
+  final bool? showMedia;
+  final bool? showForms;
+  final bool? showCategories;
   final String? description;
   final String? discountCode;
   final String? userId;
@@ -39,6 +47,10 @@ class OrdersReadDto {
 
   factory OrdersReadDto.fromMap(Map<String, dynamic> json) => OrdersReadDto(
         description: json["description"] == null ? null : json["description"],
+        showProducts: json["showProducts"] == null ? null : json["showProducts"],
+        showMedia: json["showMedia"] == null ? null : json["showMedia"],
+        showForms: json["showForms"] == null ? null : json["showForms"],
+        showCategories: json["showCategories"] == null ? null : json["showCategories"],
         discountCode: json["discountCode"] == null ? null : json["discountCode"],
         userId: json["userId"] == null ? null : json["userId"],
         id: json["id"] == null ? null : json["id"],
@@ -57,6 +69,10 @@ class OrdersReadDto {
   Map<String, dynamic> toMap() => {
         "description": description == null ? null : description,
         "discountCode": discountCode == null ? null : discountCode,
+        "showProducts": showProducts == null ? null : showProducts,
+        "showMedia": showMedia == null ? null : showMedia,
+        "showForms": showForms == null ? null : showForms,
+        "showCategories": showCategories == null ? null : showCategories,
         "userId": userId == null ? null : userId,
         "orderDetails": orderDetails == null ? [] : List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
         "id": id == null ? null : id,
