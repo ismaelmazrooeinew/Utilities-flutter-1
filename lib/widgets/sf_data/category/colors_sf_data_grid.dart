@@ -121,12 +121,16 @@ class DataSource2 extends DataGridSource {
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.red,
             child: image(AppIcons.edit2, width: 16, height: 16),
-          ).onTap(onEditTap(value!)),
+          ).onTap(() {
+            onEditTap(value!);
+          }),
           CircleAvatar(
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.red,
             child: image(AppIcons.trash, width: 16, height: 16),
-          ).onTap(onDeleteTap(value)),
+          ).onTap(() {
+            onDeleteTap(value!);
+          }),
         ],
       ));
 }
