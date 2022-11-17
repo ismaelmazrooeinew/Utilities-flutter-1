@@ -43,3 +43,13 @@ Future<File> getCompressImageFile({required final File file, final int quality =
 
   return result ?? File("--");
 }
+
+Color hexStringToColor(final String hexString) {
+  if (hexString.isEmpty) return Colors.transparent;
+  final StringBuffer buffer = StringBuffer();
+  if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
+  buffer.write(hexString.replaceFirst('#', ''));
+  return Color(int.parse(buffer.toString(), radix: 16));
+}
+
+String stringToHexColor(final Color color) => '#${color.value.toRadixString(16)}';
