@@ -38,6 +38,20 @@ dependencies:
   flutter_image_compress: ^1.1.2
   dio: ^4.0.6
 
+  syncfusion_localizations: ^20.3.47
+  syncfusion_flutter_datagrid_export: ^20.3.47-beta
+  syncfusion_flutter_calendar: ^20.3.47
+  syncfusion_flutter_datepicker: ^20.3.47
+  syncfusion_flutter_charts: ^20.3.47
+  syncfusion_flutter_gauges: ^20.3.47
+  syncfusion_flutter_sliders: ^20.3.47
+  syncfusion_flutter_pdf: ^20.3.47
+  syncfusion_flutter_barcodes: ^20.3.47
+  syncfusion_officechart: ^20.3.47-beta
+  syncfusion_flutter_maps: ^20.3.47
+  syncfusion_flutter_signaturepad: ^20.3.47
+  syncfusion_flutter_treemap: ^20.3.47-beta
+
 
 flutter:
   uses-material-design: true
