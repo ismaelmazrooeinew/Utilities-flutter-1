@@ -9,8 +9,8 @@ class ColorsSfDataGrid2 extends StatefulWidget {
   ColorsSfDataGrid2({required this.lists, required this.columns, required this.onEditTap, required this.onDeleteTap, final Key? key}) : super(key: key);
   List<CategoryReadDto> lists;
   List<GridColumn> columns;
-  final GestureTapCallback? onEditTap;
-  final GestureTapCallback? onDeleteTap;
+  final Function(CategoryReadDto categoryReadDto) onEditTap;
+  final Function(CategoryReadDto categoryReadDto) onDeleteTap;
 
   @override
   State<ColorsSfDataGrid2> createState() => _ColorsSfDataGrid2State();
@@ -21,7 +21,15 @@ class _ColorsSfDataGrid2State extends State<ColorsSfDataGrid2> {
 
   @override
   Widget build(final BuildContext context) {
-    dataSource = DataSource2(widget.lists, widget.onEditTap, widget.onDeleteTap);
+    dataSource = DataSource2(
+      widget.lists,
+      onEditTap: (categoryReadDto) {
+        widget.onEditTap(categoryReadDto);
+      },
+      onDeleteTap: (categoryReadDto) {
+        widget.onDeleteTap(categoryReadDto);
+      },
+    );
     return SfDataGrid(
       source: dataSource,
       columns: widget.columns,
@@ -30,11 +38,11 @@ class _ColorsSfDataGrid2State extends State<ColorsSfDataGrid2> {
 }
 
 class DataSource2 extends DataGridSource {
-  DataSource2(this.lists, this.onEditTap, this.onDeleteTap);
+  DataSource2(this.lists, {required this.onEditTap, required this.onDeleteTap});
 
   final List<CategoryReadDto> lists;
-  final GestureTapCallback? onEditTap;
-  final GestureTapCallback? onDeleteTap;
+  final Function(CategoryReadDto categoryReadDto) onEditTap;
+  final Function(CategoryReadDto categoryReadDto) onDeleteTap;
 
   @override
   List<DataGridRow> get rows => lists
@@ -61,11 +69,11 @@ class DataSource2 extends DataGridSource {
       getRowColor(param.color ?? '#ff067e19'),
       getEditRow(
         param,
-        onEditTap: () {
-          onEditTap;
+        onEditTap: (categoryReadDto) {
+          onEditTap(categoryReadDto);
         },
-        onDeleteTap: () {
-          onDeleteTap;
+        onDeleteTap: (categoryReadDto) {
+          onDeleteTap(categoryReadDto);
         },
       ),
     ]);
@@ -102,8 +110,8 @@ class DataSource2 extends DataGridSource {
 
   Widget getEditRow(
     final CategoryReadDto? value, {
-    required final GestureTapCallback onEditTap,
-    required final GestureTapCallback onDeleteTap,
+    required final Function(CategoryReadDto categoryReadDto) onEditTap,
+    required final Function(CategoryReadDto categoryReadDto) onDeleteTap,
   }) =>
       Center(
           child: Row(
@@ -113,12 +121,12 @@ class DataSource2 extends DataGridSource {
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.red,
             child: image(AppIcons.edit2, width: 16, height: 16),
-          ).onTap(onEditTap),
+          ).onTap(onEditTap(value!)),
           CircleAvatar(
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.red,
             child: image(AppIcons.trash, width: 16, height: 16),
-          ).onTap(onDeleteTap),
+          ).onTap(onDeleteTap(value)),
         ],
       ));
 }
