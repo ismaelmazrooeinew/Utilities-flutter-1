@@ -28,6 +28,7 @@ export 'data/data.dart';
 export 'data/dto/dto.dart';
 export 'utils/utils.dart';
 export 'view_models/view_models.dart';
+export 'package:utilities/utils/enums.dart';
 
 
 
