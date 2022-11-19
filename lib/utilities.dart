@@ -29,7 +29,7 @@ export 'data/dto/dto.dart';
 export 'utils/utils.dart';
 export 'view_models/view_models.dart';
 export 'package:utilities/utils/enums.dart';
-// export 'package:utilities/widgets/grid.dart';
+export 'package:utilities/widgets/grid.dart';
 
 
 
