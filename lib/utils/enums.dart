@@ -130,6 +130,8 @@ enum UseCaseProduct {
   consultant("consultant"),
   company("company"),
   tutorial("tutorial"),
+  product("product"),
+  story("story"),
   magazine("magazine");
 
   const UseCaseProduct(this.title);
