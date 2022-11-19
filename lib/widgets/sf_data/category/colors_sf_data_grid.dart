@@ -67,7 +67,7 @@ class DataSource2 extends DataGridSource {
       getRow(param.title ?? ''),
       getRow(param.titleTr1 ?? ''),
       getRowColor(param.color ?? '#ff067e19'),
-      getEditRow(
+      getRowCategoryEdit(
         param,
         onEditTap: (categoryReadDto) {
           onEditTap(categoryReadDto);

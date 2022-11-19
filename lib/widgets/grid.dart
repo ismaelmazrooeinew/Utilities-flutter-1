@@ -33,7 +33,7 @@ Widget getRowColor(final String value) => Center(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: hexStringToColor(value)),
     ));
 
-Widget getEditRow(
+Widget getRowCategoryEdit(
   final CategoryReadDto? value, {
   required final Function(CategoryReadDto categoryReadDto) onEditTap,
   required final Function(CategoryReadDto categoryReadDto) onDeleteTap,
@@ -58,6 +58,36 @@ Widget getEditRow(
         }),
       ],
     ));
+
+
+
+Widget getRowUserEdit(
+  final UserReadDto? value, {
+  required final Function(UserReadDto userReadDto) onEditTap,
+  required final Function(UserReadDto userReadDto) onDeleteTap,
+}) =>
+    Center(
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        CircleAvatar(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.red,
+          child: image(AppIcons.edit2, width: 16, height: 16),
+        ).onTap(() {
+          onEditTap(value!);
+        }),
+        CircleAvatar(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.red,
+          child: image(AppIcons.trash, width: 16, height: 16),
+        ).onTap(() {
+          onDeleteTap(value!);
+        }),
+      ],
+    ));
+
+
 
 Widget getRowCategoryTitle(final CategoryReadDto? value, final String? imageUseCase) {
   String? _image = AppIcons.image;
@@ -84,7 +114,7 @@ Widget getRowCategoryTitle(final CategoryReadDto? value, final String? imageUseC
   ));
 }
 
-Widget getRowUserTitle(final UserReadDto? value, final String? imageUseCase) {
+Widget getRowUserTitle({final UserReadDto? value, final String? imageUseCase}) {
   String? _image = AppIcons.profile;
   if (imageUseCase != null) {
     _image = value?.media?.getImage(useCase: imageUseCase) != "--" ? value?.media?.getImage(useCase: imageUseCase) : _image;
