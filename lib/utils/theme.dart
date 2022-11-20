@@ -134,39 +134,3 @@ class AppThemes {
   );
 }
 
-class AppImages {
-  static const String _base = "lib/assets/images";
-  static const String shapeLogIn = "$_base/shape_log_in.png";
-  static const String slider = "$_base/slider.svg";
-  static const String backImage = "$_base/back_image.jpg";
-}
-
-class AppIcons {
-  static const String _base = "lib/assets/icons";
-  // static const String close = "$_base/close.svg";
-  static const String profile = "$_base/profile.svg";
-  // static const String arrowRight = "$_base/arrow_right.svg";
-  // static const String email = "$_base/email.svg";
-  // static const String expansionArrow = "$_base/expansion_arrow.svg";
-  static const String image = "$_base/image.svg";
-  // static const String singlePost = "$_base/single_post.svg";
-  // static const String whatsapp = "$_base/whatsapp.svg";
-  // static const String success = "$_base/success.svg";
-  // static const String warning = "$_base/warning.svg";
-  static const String edit2 = "$_base/edit2.svg";
-  static const String trash = "$_base/trash.svg";
-  // static const String info = "$_base/info.svg";
-  // static const String woman = "$_base/woman.svg";
-  // static const String man = "$_base/man.svg";
-  // static const String team = "$_base/team.svg";
-  // static const String company = "$_base/company.svg";
-  // static const String culture = "$_base/culture.svg";
-  // static const String union = "$_base/union.svg";
-  // static const String ngo = "$_base/ngo.svg";
-  // static const String closeCircleRed = "$_base/close_circle_red.svg";
-  // static const String tickCircleGreen = "$_base/tick_circle_green.svg";
-  // static const String search = "$_base/search.svg";
-  //
-
-
-}
