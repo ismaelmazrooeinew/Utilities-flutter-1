@@ -1,165 +1,101 @@
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
-import 'package:utilities/utils/theme.dart';
 
-Widget gridHeader(final String title) => Center(child: Text(title, textAlign: TextAlign.center).headline3());
+class AdminGradeWidget {
+  static Widget gridHeader(final String title, {final double? fontSize}) => Center(
+    child: Text(title, textAlign: TextAlign.center).headline3(fontSize: fontSize ?? 14),
+  );
 
-Widget gridRow(final String title) => Container(
-      alignment: Alignment.center,
-      child: Text(title, textAlign: TextAlign.center).bodyText1(),
-    );
+  static Widget gridRow(final String title) => Container(
+    alignment: Alignment.center,
+    child: Text(title, textAlign: TextAlign.center).bodyText1(),
+  );
 
-Widget gridSwipeButton({
-  required final String title,
-  required final VoidCallback onTap,
-  required final Color backgroundColor,
-}) =>
-    GestureDetector(
-      onTap: onTap,
-      child: Container(
-        alignment: Alignment.center,
-        color: backgroundColor,
-        padding: const EdgeInsets.only(left: 16, right: 16),
-        child: Text(title, style: const TextStyle(color: Colors.white, fontSize: 15)),
-      ),
-    );
-
-Widget getRow(final String value) => Center(child: Text(value));
-
-Widget getRowColor(final String value) => Center(
+  static Widget gridSwipeButton({
+    required final String title,
+    required final VoidCallback onTap,
+    required final Color backgroundColor,
+  }) =>
+      GestureDetector(
+        onTap: onTap,
         child: Container(
-      width: 36,
-      height: 36,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: hexStringToColor(value)),
-    ));
+          alignment: Alignment.center,
+          color: backgroundColor,
+          padding: const EdgeInsets.only(left: 16, right: 16),
+          child: Text(title, style: const TextStyle(color: Colors.white, fontSize: 15)),
+        ),
+      );
 
-Widget getRowCategoryEdit(
-  final CategoryReadDto? value, {
-  required final Function(CategoryReadDto categoryReadDto) onEditTap,
-  required final Function(CategoryReadDto categoryReadDto) onDeleteTap,
-}) =>
-    Center(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        CircleAvatar(
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.red,
-          child: image(AppIcons.edit2, width: 16, height: 16),
-        ).onTap(() {
-          onEditTap(value!);
-        }),
-        CircleAvatar(
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.red,
-          child: image(AppIcons.trash, width: 16, height: 16),
-        ).onTap(() {
-          onDeleteTap(value!);
-        }),
-      ],
-    ));
+  static Widget getRow(final String value, {final double? fontSize, final Color? textColor, final AlignmentGeometry? alignment, final FontWeight? fontWeight}) => Container(
+    alignment: alignment ?? Alignment.centerLeft,
+    child: Text(value ).bodyText1(fontSize: fontSize ?? 12, color: textColor ?? Colors.black87, fontWeight: fontWeight ?? FontWeight.w500),
+  );
 
+  static Widget getRowImage({
+    required final String imageUrl,
+    final Widget? imageDefault,
+    final double imageRadius = 32,
+    final Color? backgroundColor,
+  }) =>
+      Center(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: Container(
+            color: backgroundColor??const Color(0xff6898ff),
+            child: imageUrl != "--"
+                ? image(imageUrl, width: imageRadius, height: imageRadius)
+                : Container(
+              width: imageRadius,
+              height: imageRadius,
+              padding: const EdgeInsets.all(4),
+              child: imageDefault ?? Icon(Icons.image_outlined, size: imageRadius - 8, color: Colors.white),
+            ),
+          ),
+        ),
+        // child: Container(
+        //   width: imageRadius ?? 32,
+        //   height: imageRadius ?? 32,
+        //   padding: const EdgeInsets.all(4),
+        //   decoration: BoxDecoration(
+        //     color: backgroundColor ?? const Color(0xff64b5f6),
+        //     borderRadius: BorderRadius.circular(100),
+        //   ),
+        //   child: Center(
+        //       child: imageDefault ??
+        //           SizedBox(
+        //             child: imageUrl != "--" ? image(imageUrl, width: imageRadius ?? 32, height: imageRadius ?? 32) : const Icon(Icons.image_outlined, size:  32,color: Colors.white,),
+        //           )),
+        // ),
+      );
 
+  static Widget getRowColor(final String value, {final double? radius}) => Center(
+      child: Container(
+        width: radius ?? 36,
+        height: radius ?? 36,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: hexStringToColor(value)),
+      ));
 
-Widget getRowUserEdit(
-  final UserReadDto? value, {
-  required final Function(UserReadDto userReadDto) onEditTap,
-  required final Function(UserReadDto userReadDto) onDeleteTap,
-}) =>
-    Center(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        CircleAvatar(
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.red,
-          child: image(AppIcons.edit2, width: 16, height: 16),
-        ).onTap(() {
-          onEditTap(value!);
-        }),
-        CircleAvatar(
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.red,
-          child: image(AppIcons.trash, width: 16, height: 16),
-        ).onTap(() {
-          onDeleteTap(value!);
-        }),
-      ],
-    ));
-
-
-
-Widget getRowCategoryTitle(final CategoryReadDto? value, final String? imageUseCase) {
-  String? _image = AppIcons.image;
-  if (imageUseCase != null) {
-    _image = value?.media?.getImage(useCase: imageUseCase) != "--" ? value?.media?.getImage(useCase: imageUseCase) : _image;
-  }
-  return Center(
-      child: Row(
-    children: <Widget>[
-      imageUseCase != null
-          ? Container(
-              width: 32,
-              height: 32,
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: AppColors.blueLight,
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Center(child: image(_image ?? AppIcons.image, width: 16, height: 16, color: AppColors.card)),
-            ).marginSymmetric(horizontal: 16)
-          : Container(),
-      Text(value?.title ?? '').subtitle1(),
-    ],
-  ));
-}
-
-Widget getRowUserTitle({final UserReadDto? value, final String? imageUseCase}) {
-  String? _image = AppIcons.profile;
-  if (imageUseCase != null) {
-    _image = value?.media?.getImage(useCase: imageUseCase) != "--" ? value?.media?.getImage(useCase: imageUseCase) : _image;
-  }
-  return Center(
-      child: Row(
-    children: <Widget>[
-      imageUseCase != null
-          ? Container(
-              width: 32,
-              height: 32,
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: AppColors.blueLight,
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Center(child: image(_image ?? AppIcons.image, width: 16, height: 16, color: AppColors.card)),
-            ).marginSymmetric(horizontal: 16)
-          : Container(),
-      Text(value?.userName ?? '').subtitle1(),
-    ],
-  ));
-}
-
-Widget getRowProductTitle(final ProductReadDto? value, final String? imageUseCase) {
-  String? _image = AppIcons.image;
-  if (imageUseCase != null) {
-    _image = value?.media?.getImage(useCase: imageUseCase) != "--" ? value?.media?.getImage(useCase: imageUseCase) : _image;
-  }
-  return Center(
-      child: Row(
-    children: <Widget>[
-      imageUseCase != null
-          ? Container(
-              width: 32,
-              height: 32,
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: AppColors.blueLight,
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Center(child: image(_image ?? AppIcons.image, width: 16, height: 16, color: AppColors.card)),
-            ).marginSymmetric(horizontal: 16)
-          : Container(),
-      Text(value?.title ?? '').subtitle1(),
-    ],
-  ));
+  static Widget getRowEdit({
+    required final GestureTapCallback onEditTap,
+    required final GestureTapCallback onDeleteTap,
+    final Widget? editWidgetDefault,
+    final Widget? deleteWidgetDefault,
+    final double? iconSize,
+  }) =>
+      Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircleAvatar(
+                backgroundColor: Colors.transparent,
+                foregroundColor: Colors.green,
+                child: editWidgetDefault ?? Icon(Icons.edit, size: iconSize),
+              ).onTap(onEditTap),
+              CircleAvatar(
+                backgroundColor: Colors.transparent,
+                foregroundColor: Colors.red,
+                child: deleteWidgetDefault ?? Icon(Icons.delete, size: iconSize),
+              ).onTap(onDeleteTap),
+            ],
+          ));
 }
