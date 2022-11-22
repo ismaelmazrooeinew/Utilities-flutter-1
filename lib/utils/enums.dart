@@ -209,3 +209,30 @@ enum UseCaseNotification {
   String toString() => name;
   final String title;
 }
+
+
+
+enum ProductType {
+  highlight("highlight");
+
+  const ProductType(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
+
+enum SizeType {
+  square("square"),
+  horizontal45("horizontal45"),
+  vertical45("vertical45"),
+  vertical169("vertical169"),
+  horizontal169("horizontal169");
+
+  const SizeType(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
