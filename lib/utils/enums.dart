@@ -11,6 +11,25 @@ enum BackResult {
   final String title;
 }
 
+enum CategoryType {
+  brand("brand"),
+  reference("reference"),
+  company("company"),
+  category("category"),
+  function("function"),
+  country("country"),
+  city("city"),
+  province("province"),
+  model("model"),
+  speciality("speciality");
+
+  const CategoryType(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
 enum Currency {
   rial("100"),
   dolor("101"),
@@ -34,25 +53,6 @@ enum CreateProductStatus {
   final int title;
 }
 
-enum CategoryType {
-  brand("brand"),
-  reference("reference"),
-  company("company"),
-  category("category"),
-  function("function"),
-  country("country"),
-  city("city"),
-  province("province"),
-  model("model"),
-  speciality("speciality");
-
-  const CategoryType(this.title);
-
-  @override
-  String toString() => name;
-  final String title;
-}
-
 enum DialogMessage { info, warning, success }
 
 enum FilterType { history, text, username, hashtag, location }
@@ -62,6 +62,16 @@ enum NotificationType { vote, comment, join, phopx }
 enum PostMediaType { audio, video, image, text }
 
 enum PostType { all, text, voice, video, image, unknown }
+
+enum ProductType {
+  highlight("highlight");
+
+  const ProductType(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
 
 enum SortLists {
   atoZ("0"),
@@ -73,6 +83,20 @@ enum SortLists {
   orderByVotes("6");
 
   const SortLists(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
+enum SizeType {
+  square("square"),
+  horizontal45("horizontal45"),
+  vertical45("vertical45"),
+  vertical169("vertical169"),
+  horizontal169("horizontal169");
+
+  const SizeType(this.title);
 
   @override
   String toString() => name;
@@ -212,27 +236,5 @@ enum UseCaseNotification {
 
 
 
-enum ProductType {
-  highlight("highlight");
-
-  const ProductType(this.title);
-
-  @override
-  String toString() => name;
-  final String title;
-}
 
 
-enum SizeType {
-  square("square"),
-  horizontal45("horizontal45"),
-  vertical45("vertical45"),
-  vertical169("vertical169"),
-  horizontal169("horizontal169");
-
-  const SizeType(this.title);
-
-  @override
-  String toString() => name;
-  final String title;
-}
