@@ -20,7 +20,7 @@ class ShoppingCartDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> update({
@@ -34,7 +34,7 @@ class ShoppingCartDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> read({
@@ -46,7 +46,7 @@ class ShoppingCartDataSource {
         url: "$baseUrl/ShoppingCart",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> readById({
@@ -59,7 +59,7 @@ class ShoppingCartDataSource {
         url: "$baseUrl/ShoppingCart/$id",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> delete({
@@ -73,6 +73,6 @@ class ShoppingCartDataSource {
         url: "$baseUrl/ShoppingCart/$id/$itemId",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 }

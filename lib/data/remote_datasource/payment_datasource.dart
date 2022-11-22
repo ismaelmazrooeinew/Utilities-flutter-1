@@ -25,7 +25,7 @@ class PaymentDataSource {
         },
         action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.data, fromMap: PaymentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
    Future<void> buyProduct({
@@ -41,7 +41,7 @@ class PaymentDataSource {
         },
         action: (Response response) => onResponse(GenericResponse<PaymentReadDto>.fromJson(response.data, fromMap: PaymentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
 }

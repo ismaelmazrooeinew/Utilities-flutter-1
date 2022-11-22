@@ -20,6 +20,6 @@ class GlobalSearchDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<GlobalSearchReadDto>.fromJson(response.data, fromMap: GlobalSearchReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 }

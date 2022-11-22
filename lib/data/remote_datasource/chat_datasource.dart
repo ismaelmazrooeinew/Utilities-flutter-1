@@ -20,7 +20,7 @@ class ChatDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.data, fromMap: ChatReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> read({
@@ -32,7 +32,7 @@ class ChatDataSource {
         url: "$baseUrl/Chat",
         action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.data, fromMap: ChatReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> readByUserId({
@@ -45,6 +45,6 @@ class ChatDataSource {
         url: "$baseUrl/Chat/$userId",
         action: (Response response) => onResponse(GenericResponse<ChatReadDto>.fromJson(response.data, fromMap: ChatReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 }

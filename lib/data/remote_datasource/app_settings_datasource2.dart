@@ -22,7 +22,7 @@ class AppSettingsDataSource2 {
         url: "$baseUrl/AppSettings",
         action: (Response<dynamic> response) => onResponse(GenericResponse<AppSettingsDto2>.fromJson(response.data, fromMap: AppSettingsDto2.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDto.fromMap)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
   Future<void> readAppSettings2({
     required final String url,
@@ -34,7 +34,7 @@ class AppSettingsDataSource2 {
         url: "$baseUrl/AppSettings",
         action: (Response response) => onResponse(GenericResponse<AppSettingsDto2>.fromJson(response.data, fromMap: AppSettingsDto2.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDto2.fromMap)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> readLocation({
@@ -47,6 +47,6 @@ class AppSettingsDataSource2 {
         url: "$baseUrl/AppSettings/ReadLocation",
         action: (Response response) => onResponse(GenericResponse<LocationReadDto>.fromJson(response.data, fromMap: LocationReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDto2.fromMap)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 }

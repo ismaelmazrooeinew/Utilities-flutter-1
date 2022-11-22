@@ -18,7 +18,7 @@ class BlockDataSource {
         url: "$baseUrl/Block?userId=$userId",
         action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.data)),
         error: (Response response) => onError(GenericResponse()),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> read({
@@ -30,7 +30,7 @@ class BlockDataSource {
         url: "$baseUrl/Block",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> readMine({
@@ -42,6 +42,6 @@ class BlockDataSource {
         url: "$baseUrl/Block/ReadMine",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 }

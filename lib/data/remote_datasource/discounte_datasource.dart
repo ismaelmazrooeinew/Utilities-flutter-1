@@ -20,7 +20,7 @@ class DiscountDataSource {
         url: "$baseUrl/Discount/$code",
         action: (Response response) => onResponse(GenericResponse<DiscountReadDto>.fromJson(response.data, fromMap: DiscountReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
 }

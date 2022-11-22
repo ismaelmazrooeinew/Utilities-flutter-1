@@ -21,7 +21,7 @@ class FormDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> readByCategoryId({
@@ -34,7 +34,7 @@ class FormDataSource {
         url: "$baseUrl/Form/$categoryId",
         action: (Response response) => onResponse(GenericResponse<FormFieldReadDto>.fromJson(response.data, fromMap: FormFieldReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> delete({
@@ -47,7 +47,7 @@ class FormDataSource {
         url: "$baseUrl/Form/$id",
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> createFormField({
@@ -61,7 +61,7 @@ class FormDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> updateFormField({
@@ -75,7 +75,7 @@ class FormDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 
   Future<void> deleteFormField({
@@ -88,6 +88,6 @@ class FormDataSource {
         url: "$baseUrl/DeleteFormField/$id",
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
+        failure:(Object error)=> failure!,
       );
 }
