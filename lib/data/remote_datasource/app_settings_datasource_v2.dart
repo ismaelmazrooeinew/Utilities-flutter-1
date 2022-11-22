@@ -32,7 +32,6 @@ class AppSettingsDataSourceV2 {
         url: "$baseUrl/AppSettings",
         action: (Response response) => onResponse(GenericResponse<AppSettingsDtoV2>.fromJson(response.data, fromMap: AppSettingsDtoV2.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDtoV2.fromMap)),
-        failure:(Object error)=> failure!,
       );
 
   Future<void> readLocation({
