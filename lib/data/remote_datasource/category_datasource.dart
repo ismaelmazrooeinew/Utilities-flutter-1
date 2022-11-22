@@ -1,6 +1,4 @@
-
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:utilities/data/dto/category.dart';
 import 'package:utilities/data/dto/generic_response.dart';
 import 'package:utilities/utils/dio_interceptor.dart';
@@ -14,43 +12,47 @@ class CategoryDataSource {
     required final CategoryCreateUpdateDto dto,
     required final Function(GenericResponse<CategoryReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
+    final Function(Object error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Category",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
       );
 
   Future<void> update({
     required final CategoryCreateUpdateDto dto,
     required final Function(GenericResponse<CategoryReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(GenericResponse response)? unAuthorize,
+    final Function(Object error)? failure,
   }) async =>
       httpPut(
         url: "$baseUrl/Category",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
       );
 
   Future<void> read({
     required final Function(GenericResponse<CategoryReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(GenericResponse response)? unAuthorize,
+    final Function(Object error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Category",
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
       );
 
   Future<void> delete({
     required final String id,
     required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
-    final VoidCallback? failure,
+    final Function(Object error)? failure,
   }) async =>
       httpDelete(
         url: "$baseUrl/Category/$id",

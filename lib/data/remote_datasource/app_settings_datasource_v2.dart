@@ -13,32 +13,38 @@ class AppSettingsDataSourceV2 {
     required final String url,
     required final Function(GenericResponse<AppSettingsDtoV2>) onResponse,
     required final Function(GenericResponse response) onError,
+    final Function(Object error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/AppSettings",
         action: (Response<dynamic> response) => onResponse(GenericResponse<AppSettingsDtoV2>.fromJson(response.data, fromMap: AppSettingsDtoV2.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDtoV2.fromMap)),
+        failure: failure,
       );
 
   Future<void> readAppSettings2({
     required final String url,
     required final Function(GenericResponse<AppSettingsDtoV2>) onResponse,
     required final Function(GenericResponse response) onError,
+    final Function(Object error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/AppSettings",
         action: (Response response) => onResponse(GenericResponse<AppSettingsDtoV2>.fromJson(response.data, fromMap: AppSettingsDtoV2.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDtoV2.fromMap)),
+        failure: failure,
       );
 
   Future<void> readLocation({
     required final String url,
     required final Function(GenericResponse<LocationReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
+    final Function(Object error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/AppSettings/ReadLocation",
         action: (Response response) => onResponse(GenericResponse<LocationReadDto>.fromJson(response.data, fromMap: LocationReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDtoV2.fromMap)),
+        failure: failure,
       );
 }

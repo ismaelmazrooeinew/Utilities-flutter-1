@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:utilities/data/dto/generic_response.dart';
 import 'package:utilities/data/dto/payment.dart';
-import 'package:utilities/data/dto/user.dart';
 import 'package:utilities/utils/constants.dart';
 import 'package:utilities/utils/dio_interceptor.dart';
 
@@ -17,6 +16,7 @@ class PaymentDataSource {
     required final String amount,
     required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
+    final Function(Object error)? failure,
   }) async =>
       httpGet(
         url: "${baseUrl}Payment/IncreaseWalletBalance/$amount",
@@ -25,12 +25,14 @@ class PaymentDataSource {
         },
         action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.data, fromMap: PaymentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.data)),
+        failure: failure,
       );
 
    Future<void> buyProduct({
     required final String productId,
     required final Function(GenericResponse<PaymentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
+     final Function(Object error)? failure,
   }) async =>
       httpGet(
         url: "${baseUrl}Payment/BuyProduct/$productId",
@@ -39,6 +41,7 @@ class PaymentDataSource {
         },
         action: (Response response) => onResponse(GenericResponse<PaymentReadDto>.fromJson(response.data, fromMap: PaymentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
       );
 
 }
