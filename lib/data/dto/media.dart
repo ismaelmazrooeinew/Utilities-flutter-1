@@ -31,7 +31,7 @@ class MediaReadDto {
   final String? file;
   final String? fileName;
   final String? fileType;
-  final String title;
+  final String? title;
   final String? notificationId;
   final String? categoryId;
   final String? contentId;
