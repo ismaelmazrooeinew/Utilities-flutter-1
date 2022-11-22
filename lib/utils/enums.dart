@@ -1,4 +1,3 @@
-
 enum AccountType { free, pro, unlimited, unknown }
 
 enum BackResult {
@@ -145,7 +144,19 @@ enum UseCaseCategory {
   colors("colors"),
   specialty("specialty"),
   specializedArt("specializedArt"),
-  tag("tag");
+  tag("tag"),
+  ad("ad"),
+  dailyPrice("dailyPrice"),
+  tender("tender"),
+  auction("auction"),
+  project("project"),
+  service("service"),
+  consultant("consultant"),
+  company("company"),
+  learn("learn"),
+  user("user"),
+  tutorial("tutorial"),
+  magazine("magazine");
 
   const UseCaseCategory(this.title);
 
