@@ -90,6 +90,20 @@ enum TenderType {
   final String title;
 }
 
+enum TypeMedia {
+  image("image"),
+  all("all"),
+  audio("audio"),
+  video("video"),
+  text("text");
+
+  const TypeMedia(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
 enum UseCaseBime {
   bime("bime");
 
