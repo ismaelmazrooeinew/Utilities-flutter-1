@@ -48,12 +48,12 @@ class MediaReadDto {
   String toJson() => json.encode(toMap());
 
   factory MediaReadDto.fromMap(Map<String, dynamic> json) => MediaReadDto(
-        id: json["id"] ?? "-1",
-        type: json["type"] ?? -1,
-        useCase: json["useCase"] ?? "-1",
-        link: json["link"] ?? "-1",
-        url: json["url"] ?? "-1",
-        title: json["title"] ?? "-1",
+        id: json["id"] == null ? null : json["id"],
+        type: json["type"] == null ? null : json["type"],
+        useCase: json["useCase"] == null ? null : json["useCase"],
+        link: json["link"] == null ? null : json["link"],
+        url: json["url"] == null ? null : json["url"],
+        title: json["title"] == null ? null : json["title"],
         file: json["file"] == null ? null : json["file"],
         fileName: json["fileName"] == null ? null : json["fileName"],
         fileType: json["fileName"] == null ? null : json["fileName"].toString().split('.')[1],
@@ -70,12 +70,12 @@ class MediaReadDto {
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id,
-        "type": type,
-        "useCase": useCase,
-        "link": link,
-        "url": url,
-        "title": title,
+        "id": id == null ? null : id,
+        "type": type == null ? null : type,
+        "useCase": useCase == null ? null : useCase,
+        "link": link == null ? null : link,
+        "url": url == null ? null : url,
+        "title": title == null ? null : title,
         "file": file == null ? null : file,
         "fileName": fileName == null ? null : fileName,
         "notificationId": notificationId == null ? null : notificationId,
