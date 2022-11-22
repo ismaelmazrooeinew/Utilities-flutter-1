@@ -16,6 +16,7 @@ export 'extensions/string_extension.dart';
 export 'extensions/text_extension.dart';
 export 'extensions/widget_extension.dart';
 export 'file.dart';
+export 'enums.dart';
 export 'file_downloader.dart';
 export 'get.dart';
 export 'dio_interceptor.dart';
