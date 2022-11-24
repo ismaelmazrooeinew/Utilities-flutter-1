@@ -108,7 +108,7 @@ class CategoryReadDto {
   final String? link;
   final String? useCase;
   final String? type;
-   CategoryReadDto? parent;
+  final CategoryReadDto? parent;
   final List<CategoryReadDto>? children;
   final String? parentId;
   final List<MediaReadDto>? media;
@@ -130,7 +130,7 @@ class CategoryReadDto {
         parent: json["parent"] == null ? null : CategoryReadDto.fromMap(json["parent"]),
         children: json["children"] == null ? null : List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
         parentId: json["parentId"] == null ? null : json["parentId"],
-        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+        // media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -146,6 +146,6 @@ class CategoryReadDto {
         "parent": parent == null ? null : parent!.toMap(),
         "children": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
         "parentId": parentId == null ? null : parentId,
-        "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
+        // "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
       };
 }
