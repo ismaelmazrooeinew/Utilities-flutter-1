@@ -194,6 +194,7 @@ enum UseCaseCategory {
   company("company"),
   learn("learn"),
   user("user"),
+  insurance("insurance"),
   tutorial("tutorial"),
   magazine("magazine");
 
