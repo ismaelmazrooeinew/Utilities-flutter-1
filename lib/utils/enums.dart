@@ -21,6 +21,7 @@ enum CategoryType {
   city("city"),
   province("province"),
   model("model"),
+  insurance("insurance");
   speciality("speciality");
 
   const CategoryType(this.title);
@@ -233,6 +234,37 @@ enum UseCaseNotification {
   String toString() => name;
   final String title;
 }
+
+enum UseCaseBime {
+  bime("bime");
+
+  const UseCaseBime(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
+enum UseCaseSlider {
+  sliderBime("sliderBime");
+
+  const UseCaseSlider(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
+enum UseCasePaymentBime {
+  paymentBime("paymentBime");
+
+  const UseCasePaymentBime(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
 
 
 
