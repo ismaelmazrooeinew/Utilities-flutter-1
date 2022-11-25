@@ -47,7 +47,9 @@ class MediaReadDto {
 
   String toJson() => json.encode(toMap());
 
-  factory MediaReadDto.fromMap(Map<String, dynamic> json) => MediaReadDto(
+  factory MediaReadDto.fromMap(Map<String, dynamic> json){
+    try{
+      return MediaReadDto(
         id: json["id"] == null ? null : json["id"],
         type: json["type"] == null ? null : json["type"],
         useCase: json["useCase"] == null ? null : json["useCase"],
@@ -68,6 +70,13 @@ class MediaReadDto {
         chatId: json["chatId"] == null ? null : json["chatId"],
         createdAt: json["createdAt"] == null ? null : json["createdAt"],
       );
+
+
+    }catch(e){
+      print(e.toString());
+      return MediaReadDto();
+    }
+  }
 
   Map<String, dynamic> toMap() => {
         "id": id == null ? null : id,
@@ -118,7 +127,9 @@ class Chat {
 
   String toJson() => json.encode(toMap());
 
-  factory Chat.fromMap(Map<String, dynamic> json) => Chat(
+  factory Chat.fromMap(Map<String, dynamic> json){
+    try{
+      return Chat(
         fromUserId: json["fromUserId"] == null ? null : json["fromUserId"],
         fromUser: json["fromUser"] == null ? null : UserReadDto.fromMap(json["fromUser"]),
         toUserId: json["toUserId"] == null ? null : json["toUserId"],
@@ -129,6 +140,11 @@ class Chat {
         createdAt: json["createdAt"] == null ? null : json["createdAt"],
         updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
       );
+    }catch(e){
+      print(e.toString());
+      return Chat();
+    }
+  }
 
   Map<String, dynamic> toMap() => {
         "fromUserId": fromUserId == null ? null : fromUserId,
