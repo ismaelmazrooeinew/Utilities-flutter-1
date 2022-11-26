@@ -13,11 +13,12 @@ Future<void> request(
   final bool encodeBody = true,
   final Map<String, String>? headers,
 }) async {
-  final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
+  final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? "",'Accept': "application/json",
+    'Content-Type': 'application/json',};
 
   if (headers != null) header.addAll(headers);
   final Dio dio = Dio();
-  Response response = Response(requestOptions: RequestOptions(path: '', headers: header));
+  Response response = Response(requestOptions: RequestOptions(path: '', headers: header),);
   try {
     dynamic params;
     if (body != null) {
