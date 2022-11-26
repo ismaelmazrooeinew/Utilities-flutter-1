@@ -21,7 +21,7 @@ class AppSettingsDto {
     this.appSettings,
   });
 
-  final List<FormFieldType>? formFieldType;
+  final List<FormFieldTypeDto>? formFieldType;
   final List<TransactionStatuses>? transactionStatuses;
   final List<UtilitiesStatusCodes>? utilitiesStatusCodes;
   final List<OtpResult>? otpResult;
@@ -42,7 +42,7 @@ class AppSettingsDto {
   String toJson() => json.encode(toMap());
 
   factory AppSettingsDto.fromMap(Map<String, dynamic> json) => AppSettingsDto(
-        formFieldType: json["formFieldType"] == null ? null : List<FormFieldType>.from(json["formFieldType"].map((x) => FormFieldType.fromMap(x))),
+        formFieldType: json["formFieldType"] == null ? null : List<FormFieldTypeDto>.from(json["formFieldType"].map((x) => FormFieldTypeDto.fromMap(x))),
         transactionStatuses: json["transactionStatuses"] == null ? null : List<TransactionStatuses>.from(json["transactionStatuses"].map((x) => TransactionStatuses.fromMap(x))),
         utilitiesStatusCodes: json["utilitiesStatusCodes"] == null ? null : List<UtilitiesStatusCodes>.from(json["utilitiesStatusCodes"].map((x) => UtilitiesStatusCodes.fromMap(x))),
         otpResult: json["otpResult"] == null ? null : List<OtpResult>.from(json["otpResult"].map((x) => OtpResult.fromMap(x))),
@@ -78,8 +78,8 @@ class AppSettingsDto {
       };
 }
 
-class FormFieldType {
-  FormFieldType({
+class FormFieldTypeDto {
+  FormFieldTypeDto({
     this.id,
     this.title,
   });
@@ -87,11 +87,11 @@ class FormFieldType {
   final int? id;
   final String? title;
 
-  factory FormFieldType.fromJson(String str) => FormFieldType.fromMap(json.decode(str));
+  factory FormFieldTypeDto.fromJson(String str) => FormFieldTypeDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory FormFieldType.fromMap(Map<String, dynamic> json) => FormFieldType(
+  factory FormFieldTypeDto.fromMap(Map<String, dynamic> json) => FormFieldTypeDto(
         id: json["id"],
         title: json["title"],
       );
