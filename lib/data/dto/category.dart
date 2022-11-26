@@ -121,18 +121,18 @@ class CategoryReadDto {
     try {
       return CategoryReadDto(
         id: json["id"] == null ? null : json["id"],
-        // title: json["title"] == null ? null : json["title"],
-        // titleTr1: json["titleTr1"] == null ? null : json["titleTr1"],
-        // titleTr2: json["titleTr2"] == null ? null : json["titleTr2"],
-        // subtitle: json["subtitle"] == null ? null : json["subtitle"],
-        // color: json["color"] == null ? null : json["color"],
-        // link: json["link"] == null ? null : json["link"],
-        // useCase: json["useCase"] == null ? null : json["useCase"],
-        // type: json["type"] == null ? null : json["type"],
-        // parent: json["parent"] == null ? null : CategoryReadDto.fromMap(json["parent"]),
-        // children: json["children"] == null ? null : List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
-        // parentId: json["parentId"] == null ? null : json["parentId"],
-        // media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+        title: json["title"] == null ? null : json["title"],
+        titleTr1: json["titleTr1"] == null ? null : json["titleTr1"],
+        titleTr2: json["titleTr2"] == null ? null : json["titleTr2"],
+        subtitle: json["subtitle"] == null ? null : json["subtitle"],
+        color: json["color"] == null ? null : json["color"],
+        link: json["link"] == null ? null : json["link"],
+        useCase: json["useCase"] == null ? null : json["useCase"],
+        type: json["type"] == null ? null : json["type"],
+        parent: json["parent"] == null ? null : CategoryReadDto.fromMap(json["parent"]),
+        children: json["children"] == null ? null : List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
+        parentId: json["parentId"] == null ? null : json["parentId"],
+        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
     } catch (e) {
       print(e.toString());
