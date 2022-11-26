@@ -1,13 +1,15 @@
+
+
 import 'package:dio/dio.dart';
 import 'package:utilities/data/dto/app_settings.dart';
 import 'package:utilities/data/dto/generic_response.dart';
 import 'package:utilities/data/dto/location.dart';
 import 'package:utilities/utils/dio_interceptor.dart';
 
-class AppSettingsDataSourceV2 {
+class AppSettingsDataSource {
   final String baseUrl;
 
-  AppSettingsDataSourceV2({required this.baseUrl});
+  AppSettingsDataSource({required this.baseUrl});
 
   Future<void> readAppSettings({
     required final String url,

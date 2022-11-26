@@ -13,7 +13,7 @@ class ShoppingCartDataSource {
     required final ShoppingCartReadDto dto,
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/ShoppingCart",
@@ -27,7 +27,7 @@ class ShoppingCartDataSource {
     required final ShoppingCartReadDto dto,
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpPut(
         url: "$baseUrl/ShoppingCart",
@@ -40,7 +40,7 @@ class ShoppingCartDataSource {
   Future<void> read({
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/ShoppingCart",
