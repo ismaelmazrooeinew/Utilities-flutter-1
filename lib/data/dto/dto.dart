@@ -15,3 +15,4 @@ export 'shopping_cart.dart';
 export 'transaction.dart';
 export 'user.dart';
 export 'vote.dart';
+export 'app_settings.dart';
