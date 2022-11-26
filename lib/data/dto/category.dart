@@ -108,7 +108,7 @@ class CategoryReadDto {
   final String? link;
   final String? useCase;
   final String? type;
-  final CategoryReadDto? parent;
+  CategoryReadDto? parent;
   final List<CategoryReadDto>? children;
   final String? parentId;
   final List<MediaReadDto>? media;
@@ -117,8 +117,8 @@ class CategoryReadDto {
 
   String toJson() => json.encode(toMap());
 
-  factory CategoryReadDto.fromMap(Map<String, dynamic> json){
-    try{
+  factory CategoryReadDto.fromMap(Map<String, dynamic> json) {
+    try {
       return CategoryReadDto(
         id: json["id"] == null ? null : json["id"],
         title: json["title"] == null ? null : json["title"],
@@ -134,13 +134,10 @@ class CategoryReadDto {
         parentId: json["parentId"] == null ? null : json["parentId"],
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
-
-
-    }catch(e){
+    } catch (e) {
       print(e.toString());
       return CategoryReadDto();
     }
-
   }
 
   Map<String, dynamic> toMap() => {
