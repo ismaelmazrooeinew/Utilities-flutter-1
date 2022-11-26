@@ -13,91 +13,91 @@ class ProductDataSource {
     required final ProductCreateUpdateDto dto,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Product",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:failure!,
       );
 
   Future<void> update({
     required final ProductCreateUpdateDto dto,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpPut(
         url: "$baseUrl/Product",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:failure!,
       );
 
   Future<void> read({
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Product",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:failure!,
       );
 
   Future<void> readById({
     required final String id,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Product/$id",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:failure!,
       );
 
   Future<void> delete({
     required final String id,
     required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpDelete(
         url: "$baseUrl/Product/$id",
         action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:failure!,
       );
 
   Future<void> filter({
     required final ProductFilterDto filter,
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Product/Filter",
         body: filter,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) {},
-        failure:(Object error)=> failure!,
+        failure:failure!,
       );
 
   Future<void> readMine({
     required final Function(GenericResponse<ProductReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Product/Mine",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:failure!,
       );
 }

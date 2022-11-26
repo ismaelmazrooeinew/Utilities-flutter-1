@@ -12,36 +12,36 @@ class BlockDataSource {
     required final String userId,
     required final Function(GenericResponse<dynamic>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Block?userId=$userId",
         action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.data)),
         error: (Response response) => onError(GenericResponse()),
-        failure:(Object error)=> failure!,
+        failure:failure!,
       );
 
   Future<void> read({
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Block",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:failure!,
       );
 
   Future<void> readMine({
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Block/ReadMine",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:failure!,
       );
 }
