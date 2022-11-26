@@ -8,17 +8,16 @@ Future<void> request(
   final EHttpMethod httpMethod,
   final Function(Response<dynamic> response) action,
   final Function(Response<dynamic> response) error, {
-  final Function? failure,
+  final Function(Object error)? failure,
   final dynamic body,
   final bool encodeBody = true,
   final Map<String, String>? headers,
 }) async {
-  final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? "",'Accept': "application/json",
-    'Content-Type': 'application/json',};
+  final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
 
   if (headers != null) header.addAll(headers);
   final Dio dio = Dio();
-  Response response = Response(requestOptions: RequestOptions(path: '', headers: header),);
+  Response response = Response(requestOptions: RequestOptions(path: '', headers: header));
   try {
     dynamic params;
     if (body != null) {
@@ -49,7 +48,7 @@ Future<void> httpGet({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
-  final Function? failure,
+  final Function(Object error)? failure,
   final Map<String, String>? headers,
 }) async =>
     request(
@@ -58,14 +57,14 @@ Future<void> httpGet({
       action,
       error,
       headers: headers,
-      failure:failure!,
+      failure:(Object error)=> failure!,
     );
 
 Future<void> httpPost({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
-  final Function? failure,
+  final Function(Object error)? failure,
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
@@ -76,7 +75,7 @@ Future<void> httpPut({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
-  final Function? failure,
+  final Function(Object error)? failure,
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
@@ -89,14 +88,14 @@ Future<void> httpPut({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
-      failure:failure!,
+      failure:(Object error)=> failure!,
     );
 
 Future<void> patch({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
-  final Function? failure,
+  final Function(Object error)? failure,
   final Map<String, String>? headers,
   final dynamic body,
   final bool encodeBody = true,
@@ -109,14 +108,14 @@ Future<void> patch({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
-      failure:failure!,
+      failure:(Object error)=> failure!,
     );
 
 Future<void> httpDelete({
   required final String url,
   required final Function(Response<dynamic> response) action,
   required final Function(Response<dynamic> response) error,
-  final Function? failure,
+  final Function(Object error)? failure,
   final Map<String, String>? headers,
 }) async =>
     request(
@@ -125,7 +124,7 @@ Future<void> httpDelete({
       action,
       error,
       headers: headers,
-      failure:failure!,
+      failure:(Object error)=> failure!,
     );
 
 extension HTTP on Response<dynamic> {

@@ -13,13 +13,13 @@ class GlobalSearchDataSource {
     required final GlobalSearchCreateDto dto,
     required final Function(GenericResponse<GlobalSearchReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function? failure,
+    final Function(Object error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/GlobalSearch",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<GlobalSearchReadDto>.fromJson(response.data, fromMap: GlobalSearchReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.data)),
-        failure:failure!,
+        failure:(Object error)=> failure!,
       );
 }
