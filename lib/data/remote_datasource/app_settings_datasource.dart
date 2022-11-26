@@ -1,5 +1,3 @@
-
-
 import 'package:dio/dio.dart';
 import 'package:utilities/data/dto/app_settings.dart';
 import 'package:utilities/data/dto/generic_response.dart';
