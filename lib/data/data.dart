@@ -1,8 +1,6 @@
 export 'local_datasource/local_datasource.dart';
 export 'remote_datasource/user_datasource.dart';
 export 'remote_datasource/user_datasource.dart';
-export 'remote_datasource/app_settings_datasource.dart';
-export 'remote_datasource/app_settings_datasource.dart';
 export 'remote_datasource/block_datasource.dart';
 export 'remote_datasource/category_datasource.dart';
 export 'remote_datasource/category_datasource.dart';

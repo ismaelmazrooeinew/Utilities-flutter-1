@@ -1,4 +1,3 @@
-export 'app_settings.dart';
 export 'category.dart';
 export 'chat.dart';
 export 'comment.dart';

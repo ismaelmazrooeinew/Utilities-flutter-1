@@ -1,5 +1,3 @@
-
-
 import 'package:dio/dio.dart';
 import 'package:utilities/data/dto/app_settings.dart';
 import 'package:utilities/data/dto/generic_response.dart';
@@ -23,6 +21,7 @@ class AppSettingsDataSource {
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDto.fromMap)),
         failure:(Object error)=> failure!,
       );
+
   Future<void> readAppSettings2({
     required final String url,
     required final Function(GenericResponse<AppSettingsDto>) onResponse,
@@ -33,7 +32,6 @@ class AppSettingsDataSource {
         url: "$baseUrl/AppSettings",
         action: (Response response) => onResponse(GenericResponse<AppSettingsDto>.fromJson(response.data, fromMap: AppSettingsDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDto.fromMap)),
-        failure:(Object error)=> failure!,
       );
 
   Future<void> readLocation({
