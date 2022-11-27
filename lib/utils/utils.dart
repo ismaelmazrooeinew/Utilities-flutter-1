@@ -17,7 +17,6 @@ export 'extensions/text_extension.dart';
 export 'extensions/widget_extension.dart';
 export 'file.dart';
 export 'enums.dart';
-export 'file_downloader.dart';
 export 'get.dart';
 export 'dio_interceptor.dart';
 export 'launch.dart';
@@ -28,10 +27,6 @@ void delay(final int milliseconds, final VoidCallback action) async => Future<dy
       Duration(milliseconds: milliseconds),
       () async => action(),
     );
-
-void validateForm({required final GlobalKey<FormState> key, required final VoidCallback action}) {
-  if (key.currentState!.validate()) action();
-}
 
 Future<File> getCompressImageFile({required final File file, final int quality = 70}) async {
   final Directory dir = Directory.systemTemp;
@@ -44,74 +39,6 @@ Future<File> getCompressImageFile({required final File file, final int quality =
 
   return result ?? File("--");
 }
-
-// void deleteUser() {
-//   showYesCancelDialog(
-//     title: s.delete,
-//     description: s.areYouSureToDeleteThisItem,
-//     onYesButtonTap: () {
-//       showLoading();
-//       final UserDataSource userDataSource = UserDataSource(baseUrl: AppConstants.baseUrl);
-//       userDataSource.delete(
-//         id: userReadDto.id ?? "",
-//         onResponse: (final GenericResponse<dynamic> response) {
-//           dismissLoading();
-//           setState(() {});
-//         },
-//         onError: (final GenericResponse<dynamic> errorResponse) {
-//           dismissLoading();
-//           setState(() {});
-//         },
-//       );
-//       back();
-//     },
-//   );
-// }
-//
-// Widget button({
-//   required final VoidCallback onTap,
-//   final String title = "",
-//   final EdgeInsets margin = EdgeInsets.zero,
-//   final EdgeInsets padding = const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-//   final Widget trailing = const SizedBox(),
-//   final Widget leading = const SizedBox(),
-//   final double width = 150,
-//   final double height = 50,
-//   final Widget? titleWidget,
-//   final Color? backgroundColor,
-//   final double? borderRadius = 10,
-//   final TextStyle? textStyle,
-//   final bool maxWidth = false,
-//   final Color? borderColor,
-//   final Color? titleColor,
-// }) =>
-//     Container(
-//       width: maxWidth ? Get.width : width,
-//       height: height,
-//       padding: margin,
-//       child: ElevatedButton(
-//         onPressed: onTap,
-//         style: ButtonStyle(
-//           padding: MaterialStateProperty.all(padding),
-//           backgroundColor: MaterialStateProperty.all(backgroundColor),
-//           shape: borderRadius == null
-//               ? null
-//               : MaterialStateProperty.all(
-//                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius), side: BorderSide(color: borderColor ?? Colors.transparent)),
-//                 ),
-//         ),
-//         child: row(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           mainAxisSize: MainAxisSize.min,
-//           children: <Widget>[
-//             leading,
-//             titleWidget ?? Text(title, style: textStyle?.copyWith(color: titleColor ?? Colors.white) ?? context.textTheme.headline6!.copyWith(color: titleColor ?? Colors.white)),
-//             trailing,
-//           ],
-//         ),
-//       ),
-//     );
-//
 
 Color hexStringToColor(final String hexString) {
   if (hexString.isEmpty) return Colors.transparent;

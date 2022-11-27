@@ -56,29 +56,29 @@ class CategoryCreateUpdateDto {
   String toJson() => json.encode(toMap());
 
   factory CategoryCreateUpdateDto.fromMap(Map<String, dynamic> json) => CategoryCreateUpdateDto(
-        id: json["id"] == null ? null : json["id"],
-        parentId: json["parentId"] == null ? null : json["parentId"],
-        title: json["title"] == null ? null : json["title"],
-        titleTr1: json["titleTr1"] == null ? null : json["titleTr1"],
-        titleTr2: json["titleTr2"] == null ? null : json["titleTr2"],
-        subtitle: json["subtitle"] == null ? null : json["subtitle"],
-        link: json["link"] == null ? null : json["link"],
-        color: json["color"] == null ? null : json["color"],
-        useCase: json["useCase"] == null ? null : json["useCase"],
-        type: json["type"] == null ? null : json["type"],
+        id: json["id"],
+        parentId: json["parentId"],
+        title: json["title"],
+        titleTr1: json["titleTr1"],
+        titleTr2: json["titleTr2"],
+        subtitle: json["subtitle"],
+        link: json["link"],
+        color: json["color"],
+        useCase: json["useCase"],
+        type: json["type"],
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id == null ? null : id,
-        "parentId": parentId == null ? null : parentId,
-        "title": title == null ? null : title,
-        "titleTr1": titleTr1 == null ? null : titleTr1,
-        "titleTr2": titleTr2 == null ? null : titleTr2,
-        "subtitle": subtitle == null ? null : subtitle,
-        "link": link == null ? null : link,
-        "color": color == null ? null : color,
-        "useCase": useCase == null ? null : useCase,
-        "type": type == null ? null : type,
+        "id": id,
+        "parentId": parentId,
+        "title": title,
+        "titleTr1": titleTr1,
+        "titleTr2": titleTr2,
+        "subtitle": subtitle,
+        "link": link,
+        "color": color,
+        "useCase": useCase,
+        "type": type,
       };
 }
 
@@ -120,19 +120,19 @@ class CategoryReadDto {
   factory CategoryReadDto.fromMap(Map<String, dynamic> json) {
     try {
       return CategoryReadDto(
-        id: json["id"] == null ? null : json["id"],
-        title: json["title"] == null ? null : json["title"],
-        titleTr1: json["titleTr1"] == null ? null : json["titleTr1"],
-        titleTr2: json["titleTr2"] == null ? null : json["titleTr2"],
-        subtitle: json["subtitle"] == null ? null : json["subtitle"],
-        color: json["color"] == null ? null : json["color"],
-        link: json["link"] == null ? null : json["link"],
-        useCase: json["useCase"] == null ? null : json["useCase"],
-        type: json["type"] == null ? null : json["type"],
-        parent: json["parent"] == null ? null : CategoryReadDto.fromMap(json["parent"]),
-        children: json["children"] == null ? null : List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
-        parentId: json["parentId"] == null ? null : json["parentId"],
-        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+        id: json["id"],
+        title: json["title"],
+        titleTr1: json["titleTr1"],
+        titleTr2: json["titleTr2"],
+        subtitle: json["subtitle"],
+        color: json["color"],
+        link: json["link"],
+        useCase: json["useCase"],
+        type: json["type"],
+        parent: CategoryReadDto.fromMap(json["parent"]),
+        children: List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
+        parentId: json["parentId"],
+        media: List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
     } catch (e) {
       print(e.toString());
@@ -141,18 +141,18 @@ class CategoryReadDto {
   }
 
   Map<String, dynamic> toMap() => {
-        "id": id == null ? null : id,
-        "title": title == null ? null : title,
-        "titleTr1": titleTr1 == null ? null : titleTr1,
-        "titleTr2": titleTr2 == null ? null : titleTr2,
-        "subtitle": subtitle == null ? null : subtitle,
-        "color": color == null ? null : color,
-        "link": link == null ? null : link,
-        "useCase": useCase == null ? null : useCase,
-        "type": type == null ? null : type,
-        "parent": parent == null ? null : parent!.toMap(),
-        "children": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
-        "parentId": parentId == null ? null : parentId,
-        "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
+        "id": id,
+        "title": title,
+        "titleTr1": titleTr1,
+        "titleTr2": titleTr2,
+        "subtitle": subtitle,
+        "color": color,
+        "link": link,
+        "useCase": useCase,
+        "type": type,
+        "parent": parent!.toMap(),
+        "children": List<dynamic>.from(children!.map((x) => x.toMap())),
+        "parentId": parentId,
+        "media": List<dynamic>.from(media!.map((x) => x.toMap())),
       };
 }

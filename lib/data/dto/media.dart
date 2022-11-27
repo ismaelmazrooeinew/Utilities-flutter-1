@@ -47,56 +47,54 @@ class MediaReadDto {
 
   String toJson() => json.encode(toMap());
 
-  factory MediaReadDto.fromMap(Map<String, dynamic> json){
-    try{
+  factory MediaReadDto.fromMap(Map<String, dynamic> json) {
+    try {
       return MediaReadDto(
-        id: json["id"] == null ? null : json["id"],
-        type: json["type"] == null ? null : json["type"],
-        useCase: json["useCase"] == null ? null : json["useCase"],
-        link: json["link"] == null ? null : json["link"],
-        url: json["url"] == null ? null : json["url"],
-        title: json["title"] == null ? null : json["title"],
-        file: json["file"] == null ? null : json["file"],
-        fileName: json["fileName"] == null ? null : json["fileName"],
-        fileType: json["fileName"] == null ? null : json["fileName"].toString().split('.')[1],
-        notificationId: json["notificationId"] == null ? null : json["notificationId"],
-        categoryId: json["categoryId"] == null ? null : json["categoryId"],
-        contentId: json["contentId"] == null ? null : json["contentId"],
-        productId: json["productId"] == null ? null : json["productId"],
-        visibility: json["visibility"] == null ? null : json["visibility"],
-        userId: json["userId"] == null ? null : json["userId"],
-        size: json["size"] == null ? null : json["size"],
-        chat: json["chat"] == null ? null : Chat.fromMap(json["chat"]),
-        chatId: json["chatId"] == null ? null : json["chatId"],
-        createdAt: json["createdAt"] == null ? null : json["createdAt"],
+        id: json["id"],
+        type: json["type"],
+        useCase: json["useCase"],
+        link: json["link"],
+        url: json["url"],
+        title: json["title"],
+        file: json["file"],
+        fileName: json["fileName"],
+        fileType: json["fileName"].toString().split('.')[1],
+        notificationId: json["notificationId"],
+        categoryId: json["categoryId"],
+        contentId: json["contentId"],
+        productId: json["productId"],
+        visibility: json["visibility"],
+        userId: json["userId"],
+        size: json["size"],
+        chat: Chat.fromMap(json["chat"]),
+        chatId: json["chatId"],
+        createdAt: json["createdAt"],
       );
-
-
-    }catch(e){
+    } catch (e) {
       print(e.toString());
       return MediaReadDto();
     }
   }
 
   Map<String, dynamic> toMap() => {
-        "id": id == null ? null : id,
-        "type": type == null ? null : type,
-        "useCase": useCase == null ? null : useCase,
-        "link": link == null ? null : link,
-        "url": url == null ? null : url,
-        "title": title == null ? null : title,
-        "file": file == null ? null : file,
-        "fileName": fileName == null ? null : fileName,
-        "notificationId": notificationId == null ? null : notificationId,
-        "categoryId": categoryId == null ? null : categoryId,
-        "contentId": contentId == null ? null : contentId,
-        "productId": productId == null ? null : productId,
-        "visibility": visibility == null ? null : visibility,
-        "chat": chat == null ? null : chat!.toMap(),
-        "chatId": chatId == null ? null : chatId,
-        "createdAt": createdAt == null ? null : createdAt,
-        "userId": userId == null ? null : userId,
-        "size": size == null ? null : size,
+        "id": id,
+        "type": type,
+        "useCase": useCase,
+        "link": link,
+        "url": url,
+        "title": title,
+        "file": file,
+        "fileName": fileName,
+        "notificationId": notificationId,
+        "categoryId": categoryId,
+        "contentId": contentId,
+        "productId": productId,
+        "visibility": visibility,
+        "chat": chat!.toMap(),
+        "chatId": chatId,
+        "createdAt": createdAt,
+        "userId": userId,
+        "size": size,
       };
 }
 
@@ -127,35 +125,35 @@ class Chat {
 
   String toJson() => json.encode(toMap());
 
-  factory Chat.fromMap(Map<String, dynamic> json){
-    try{
+  factory Chat.fromMap(Map<String, dynamic> json) {
+    try {
       return Chat(
-        fromUserId: json["fromUserId"] == null ? null : json["fromUserId"],
-        fromUser: json["fromUser"] == null ? null : UserReadDto.fromMap(json["fromUser"]),
-        toUserId: json["toUserId"] == null ? null : json["toUserId"],
-        toUser: json["toUser"] == null ? null : UserReadDto.fromMap(json["toUser"]),
-        messageText: json["messageText"] == null ? null : json["messageText"],
-        readMessage: json["readMessage"] == null ? null : json["readMessage"],
-        id: json["id"] == null ? null : json["id"],
-        createdAt: json["createdAt"] == null ? null : json["createdAt"],
-        updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
+        fromUserId: json["fromUserId"],
+        fromUser: UserReadDto.fromMap(json["fromUser"]),
+        toUserId: json["toUserId"],
+        toUser: UserReadDto.fromMap(json["toUser"]),
+        messageText: json["messageText"],
+        readMessage: json["readMessage"],
+        id: json["id"],
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
       );
-    }catch(e){
+    } catch (e) {
       print(e.toString());
       return Chat();
     }
   }
 
   Map<String, dynamic> toMap() => {
-        "fromUserId": fromUserId == null ? null : fromUserId,
-        "fromUser": fromUser == null ? null : fromUser!.toMap(),
-        "toUserId": toUserId == null ? null : toUserId,
-        "toUser": toUser == null ? null : toUser!.toMap(),
-        "messageText": messageText == null ? null : messageText,
-        "readMessage": readMessage == null ? null : readMessage,
-        "id": id == null ? null : id,
-        "createdAt": createdAt == null ? null : createdAt,
-        "updatedAt": updatedAt == null ? null : updatedAt,
+        "fromUserId": fromUserId,
+        "fromUser": fromUser!.toMap(),
+        "toUserId": toUserId,
+        "toUser": toUser!.toMap(),
+        "messageText": messageText,
+        "readMessage": readMessage,
+        "id": id,
+        "createdAt": createdAt,
+        "updatedAt": updatedAt,
       };
 }
 
@@ -199,16 +197,6 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
         .toList();
     return list.isNotEmpty ? list.first : "--";
   }
-
-  // List<MediaReadDto> getByUseCase({final String? useCase}) {
-  //   List<MediaReadDto> list = this!
-  //       .where((final MediaReadDto e) => (e.useCase == useCase))
-  //       .map(
-  //         (final MediaReadDto e) => e,
-  //       )
-  //       .toList();
-  //   return list.isNotEmpty ? list : [];
-  // }
 
   List<MediaReadDto> getByUseCase({final String? useCase, final String? exception}) {
     List<MediaReadDto> list = this!
