@@ -27,6 +27,7 @@ export 'components/components.dart';
 export 'data/data.dart';
 export 'data/dto/dto.dart';
 export 'utils/utils.dart';
+export 'utils/validators.dart';
 export 'view_models/view_models.dart';
 export 'package:utilities/utils/enums.dart';
 export 'package:utilities/widgets/grid.dart';
