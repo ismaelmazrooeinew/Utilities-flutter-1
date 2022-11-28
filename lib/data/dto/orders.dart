@@ -48,46 +48,46 @@ class OrdersReadDto {
   String toJson() => json.encode(toMap());
 
   factory OrdersReadDto.fromMap(Map<String, dynamic> json) => OrdersReadDto(
-    description: json["description"] == null ? null : json["description"],
-    showProducts: json["showProducts"] == null ? null : json["showProducts"],
-    showMedia: json["showMedia"] == null ? null : json["showMedia"],
-    showForms: json["showForms"] == null ? null : json["showForms"],
-    showCategories: json["showCategories"] == null ? null : json["showCategories"],
-    discountCode: json["discountCode"] == null ? null : json["discountCode"],
-    userId: json["userId"] == null ? null : json["userId"],
-    id: json["id"] == null ? null : json["id"],
-    createdAt: json["createdAt"] == null ? null : json["createdAt"],
-    updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
-    status: json["status"] == null ? null : json["status"],
-    discountPercent: json["discountPercent"] == null ? null : json["discountPercent"],
-    sendPrice: json["sendPrice"] == null ? null : json["sendPrice"],
-    sendType: json["sendType"] == null ? null : json["sendType"],
-    payType: json["payType"] == null ? null : json["payType"],
-    payNumber: json["payNumber"] == null ? null : json["payNumber"],
-    receivedDate: json["receivedDate"] == null ? null : json["receivedDate"],
-    orderDetails: json["orderDetails"] == null ? [] : List<OrderDetail>.from(json["orderDetails"].map((x) => OrderDetail.fromMap(x))),
-  );
+        description: json["description"],
+        showProducts: json["showProducts"],
+        showMedia: json["showMedia"],
+        showForms: json["showForms"],
+        showCategories: json["showCategories"],
+        discountCode: json["discountCode"],
+        userId: json["userId"],
+        id: json["id"],
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
+        status: json["status"],
+        discountPercent: json["discountPercent"],
+        sendPrice: json["sendPrice"],
+        sendType: json["sendType"],
+        payType: json["payType"],
+        payNumber: json["payNumber"],
+        receivedDate: json["receivedDate"],
+        orderDetails: List<OrderDetail>.from(json["orderDetails"].map((x) => OrderDetail.fromMap(x))),
+      );
 
   Map<String, dynamic> toMap() => {
-    "description": description == null ? null : description,
-    "discountCode": discountCode == null ? null : discountCode,
-    "showProducts": showProducts == null ? null : showProducts,
-    "showMedia": showMedia == null ? null : showMedia,
-    "showForms": showForms == null ? null : showForms,
-    "showCategories": showCategories == null ? null : showCategories,
-    "userId": userId == null ? null : userId,
-    "orderDetails": orderDetails == null ? [] : List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
-    "id": id == null ? null : id,
-    "createdAt": createdAt == null ? null : createdAt,
-    "updatedAt": updatedAt == null ? null : updatedAt,
-    "status": status == null ? null : status,
-    "discountPercent": discountPercent == null ? null : discountPercent,
-    "sendPrice": sendPrice == null ? null : sendPrice,
-    "sendType": sendType == null ? null : sendType,
-    "payType": payType == null ? null : payType,
-    "payNumber": payNumber == null ? null : payNumber,
-    "receivedDate": receivedDate == null ? null : receivedDate,
-  };
+        "description": description,
+        "discountCode": discountCode,
+        "showProducts": showProducts,
+        "showMedia": showMedia,
+        "showForms": showForms,
+        "showCategories": showCategories,
+        "userId": userId == null ? null : userId,
+        "orderDetails": List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
+        "id": id,
+        "createdAt": createdAt,
+        "updatedAt": updatedAt,
+        "status": status,
+        "discountPercent": discountPercent,
+        "sendPrice": sendPrice,
+        "sendType": sendType,
+        "payType": payType,
+        "payNumber": payNumber,
+        "receivedDate": receivedDate,
+      };
 }
 
 class OrderDetail {
@@ -116,26 +116,26 @@ class OrderDetail {
   String toJson() => json.encode(toMap());
 
   factory OrderDetail.fromMap(Map<String, dynamic> json) => OrderDetail(
-    orderId: json["orderId"] == null ? null : json["orderId"],
-    productId: json["productId"] == null ? null : json["productId"],
-    price: json["price"] == null ? null : json["price"],
-    count: json["count"] == null ? null : json["count"],
-    id: json["id"] == null ? null : json["id"],
-    product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
-    createdAt: json["createdAt"] == null ? null : json["createdAt"],
-    updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
-  );
+        orderId: json["orderId"],
+        productId: json["productId"],
+        price: json["price"],
+        count: json["count"],
+        id: json["id"],
+        product: ProductReadDto.fromMap(json["product"]),
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "orderId": orderId == null ? null : orderId,
-    "productId": productId == null ? null : productId,
-    "price": price == null ? null : price,
-    "count": count == null ? null : count,
-    "id": id == null ? null : id,
-    "product": product == null ? null : product!.toMap(),
-    "createdAt": createdAt == null ? null : createdAt,
-    "updatedAt": updatedAt == null ? null : updatedAt,
-  };
+        "orderId": orderId,
+        "productId": productId,
+        "price": price,
+        "count": count,
+        "id": id,
+        "product": product!.toMap(),
+        "createdAt": createdAt,
+        "updatedAt": updatedAt,
+      };
 }
 
 class OrderCreateUpdateDto {
@@ -172,32 +172,32 @@ class OrderCreateUpdateDto {
   String toJson() => json.encode(toMap());
 
   factory OrderCreateUpdateDto.fromMap(Map<String, dynamic> json) => OrderCreateUpdateDto(
-    id: json["id"] == null ? null : json["id"],
-    description: json["description"] == null ? null : json["description"],
-    status: json["status"] == null ? null : json["status"],
-    receivedDate: json["receivedDate"] == null ? null : json["receivedDate"],
-    totalPrice: json["totalPrice"] == null ? null : json["totalPrice"],
-    discountPercent: json["discountPercent"] == null ? null : json["discountPercent"],
-    discountCode: json["discountCode"] == null ? null : json["discountCode"],
-    discountPrice: json["discountPrice"] == null ? null : json["discountPrice"],
-    sendPrice: json["sendPrice"] == null ? null : json["sendPrice"],
-    payType: json["payType"] == null ? null : json["payType"],
-    sendType: json["sendType"] == null ? null : json["sendType"],
-    orderDetails: List<OrderDetail>.from(json["orderDetails"].map((x) => OrderDetail.fromMap(x))),
-  );
+        id: json["id"],
+        description: json["description"],
+        status: json["status"],
+        receivedDate: json["receivedDate"],
+        totalPrice: json["totalPrice"],
+        discountPercent: json["discountPercent"],
+        discountCode: json["discountCode"],
+        discountPrice: json["discountPrice"],
+        sendPrice: json["sendPrice"],
+        payType: json["payType"],
+        sendType: json["sendType"],
+        orderDetails: List<OrderDetail>.from(json["orderDetails"].map((x) => OrderDetail.fromMap(x))),
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id == null ? null : id,
-    "description": description == null ? null : description,
-    "status": status == null ? null : status,
-    "receivedDate": receivedDate == null ? null : receivedDate,
-    "totalPrice": totalPrice == null ? null : totalPrice,
-    "discountPercent": discountPercent == null ? null : discountPercent,
-    "discountCode": discountCode == null ? null : discountCode,
-    "discountPrice": discountPrice == null ? null : discountPrice,
-    "sendPrice": sendPrice == null ? null : sendPrice,
-    "payType": payType == null ? null : payType,
-    "sendType": sendType == null ? null : sendType,
-    "orderDetails": orderDetails == null ? null : List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
-  };
+        "id": id,
+        "description": description,
+        "status": status,
+        "receivedDate": receivedDate,
+        "totalPrice": totalPrice,
+        "discountPercent": discountPercent,
+        "discountCode": discountCode,
+        "discountPrice": discountPrice,
+        "sendPrice": sendPrice,
+        "payType": payType,
+        "sendType": sendType,
+        "orderDetails": List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
+      };
 }

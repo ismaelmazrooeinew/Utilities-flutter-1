@@ -167,26 +167,7 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           .toList() ??
       <String>[];
 
-  List<String> getImagesUrl({final String? useCase}) =>
-      this
-          ?.where((final MediaReadDto e) => (e.url != null && (e.url!.isImageFileName || e.url!.isVectorFileName)) && (useCase != null ? (e.useCase == useCase) : true))
-          .map(
-            (final MediaReadDto e) => e.url ?? "--",
-          )
-          .toList() ??
-      <String>[];
-
   String getImageUrl() => this!.length > 0 ? this!.first.url ?? "--" : "--";
-
-  String getAvatar() {
-    List<String> list = this!
-        .where((final MediaReadDto e) => (e.url != null && e.url!.isImageFileName) && ((e.useCase == 'avatar')))
-        .map(
-          (final MediaReadDto e) => e.url ?? "--",
-        )
-        .toList();
-    return list.isNotEmpty ? list.first : "--";
-  }
 
   String getFile() {
     List<String> list = this!
@@ -199,19 +180,22 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
   }
 
   List<MediaReadDto> getByUseCase({final String? useCase, final String? exception}) {
-    List<MediaReadDto> list = this!
-        .where((final MediaReadDto e) => (e.useCase == useCase))
-        .map(
-          (final MediaReadDto e) => e,
-        )
-        .toList();
+    List<MediaReadDto> list = this
+            ?.where((final MediaReadDto e) => (e.useCase == useCase))
+            .map(
+              (final MediaReadDto e) => e,
+            )
+            .toList() ??
+        <MediaReadDto>[];
+
     if (exception != null) {
-      list = this!
-          .where((final MediaReadDto e) => (e.useCase != exception))
-          .map(
-            (final MediaReadDto e) => e,
-          )
-          .toList();
+      list = this
+              ?.where((final MediaReadDto e) => (e.useCase != exception))
+              .map(
+                (final MediaReadDto e) => e,
+              )
+              .toList() ??
+          <MediaReadDto>[];
     }
 
     return list.isNotEmpty ? list : [];
