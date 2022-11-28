@@ -120,19 +120,19 @@ class CategoryReadDto {
   factory CategoryReadDto.fromMap(Map<String, dynamic> json) {
     try {
       return CategoryReadDto(
-        id: json["id"],
-        title: json["title"],
-        titleTr1: json["titleTr1"],
-        titleTr2: json["titleTr2"],
-        subtitle: json["subtitle"],
-        color: json["color"],
-        link: json["link"],
-        useCase: json["useCase"],
-        type: json["type"],
-        parent: CategoryReadDto.fromMap(json["parent"]),
-        children: List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
-        parentId: json["parentId"],
-        media: List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+        // id: json["id"],
+        // title: json["title"],
+        // titleTr1: json["titleTr1"],
+        // titleTr2: json["titleTr2"],
+        // subtitle: json["subtitle"],
+        // color: json["color"],
+        // link: json["link"],
+        // useCase: json["useCase"],
+        // type: json["type"],
+        // parent: CategoryReadDto.fromMap(json["parent"]),
+        // children: List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
+        // parentId: json["parentId"],
+        // media: List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
     } catch (e) {
       print(e.toString());
