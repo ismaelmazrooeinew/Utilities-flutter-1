@@ -39,8 +39,8 @@ class GenericResponse<T> {
     );
   }
 
-  final int status;
-  final String message;
+  final int? status;
+  final String? message;
   final T? result;
   final List<T>? resultList;
   final int? pageSize;
