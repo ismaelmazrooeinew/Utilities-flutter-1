@@ -52,20 +52,7 @@ class AdminGradeWidget {
             ),
           ),
         ),
-        // child: Container(
-        //   width: imageRadius ?? 32,
-        //   height: imageRadius ?? 32,
-        //   padding: const EdgeInsets.all(4),
-        //   decoration: BoxDecoration(
-        //     color: backgroundColor ?? const Color(0xff64b5f6),
-        //     borderRadius: BorderRadius.circular(100),
-        //   ),
-        //   child: Center(
-        //       child: imageDefault ??
-        //           SizedBox(
-        //             child: imageUrl != "--" ? image(imageUrl, width: imageRadius ?? 32, height: imageRadius ?? 32) : const Icon(Icons.image_outlined, size:  32,color: Colors.white,),
-        //           )),
-        // ),
+
       );
 
   static Widget getRowColor(final String value, {final double? radius}) => Center(
