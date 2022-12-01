@@ -30,7 +30,7 @@ export 'utils/utils.dart';
 export 'utils/validators.dart';
 export 'view_models/view_models.dart';
 export 'package:utilities/utils/enums.dart';
-export 'package:utilities/widgets/grid.dart';
+export 'package:utilities/components/grid.dart';
 
 
 
