@@ -20,6 +20,7 @@ export 'flip_cart/flip_card.dart';
 export 'flip_cart/flip_card_controller.dart';
 export 'file.dart';
 export 'enums.dart';
+export 'qr_code.dart';
 export 'get.dart';
 export 'dio_interceptor.dart';
 export 'launch.dart';
