@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
-import 'package:utilities/utils/get.dart';
 
 Widget scaffold({
   required final Widget body,
@@ -168,15 +167,19 @@ Widget iconTextHorizontal({
   required final Widget leading,
   required final Widget trailing,
   final EdgeInsets margin = EdgeInsets.zero,
-  final VoidCallback? onTap,
   final double spaceBetween = 6,
   final MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
   final CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
   final MainAxisSize mainAxisSize = MainAxisSize.min,
+  final VoidCallback? onTap,
+  final double? width,
+  final double? height,
 }) =>
     GestureDetector(
       onTap: onTap,
       child: row(
+        width: width,
+        height: height,
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
         mainAxisSize: mainAxisSize,
@@ -189,15 +192,19 @@ Widget iconTextVertical({
   required final Widget leading,
   required final Widget trailing,
   final EdgeInsets margin = EdgeInsets.zero,
-  final VoidCallback? onTap,
   final double spaceBetween = 6,
   final MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
   final CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
   final MainAxisSize mainAxisSize = MainAxisSize.min,
+  final VoidCallback? onTap,
+  final double? width,
+  final double? height,
 }) =>
     GestureDetector(
       onTap: onTap,
       child: column(
+        width: width,
+        height: height,
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
         mainAxisSize: mainAxisSize,
