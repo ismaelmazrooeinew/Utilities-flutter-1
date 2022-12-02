@@ -1,7 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:utilities/utils/flip_cart/flip_card.dart';
+import 'package:utilities/utilities.dart';
 
 class FlipCardController {
   FlipCardState? state;
