@@ -56,6 +56,7 @@ dependencies:
   syncfusion_flutter_signaturepad: ^20.3.47
   syncfusion_flutter_pdfviewer: ^20.3.47-beta
   syncfusion_flutter_treemap: ^20.3.47-beta
+  mobile_scanner: ^2.1.0
 
 
 
