@@ -289,7 +289,7 @@ class UserReadDto {
         genderTr1: json["genderTr1"],
         growthRate: GrowthRateReadDto.fromMap(json["growthRate"]),
         media: List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
-        locations: List<LocationReadDto>.from(json["location"].map((x) => LocationReadDto.fromMap(x))),
+        locations: List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))),
         categories: List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
         products: List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
         countFollowers: json["countFollowers"],
