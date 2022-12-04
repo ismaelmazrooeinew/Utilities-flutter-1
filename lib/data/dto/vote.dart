@@ -138,24 +138,24 @@ class VoteReadDto {
   String toJson() => json.encode(toMap());
 
   factory VoteReadDto.fromMap(Map<String, dynamic> json) => VoteReadDto(
-    id: json["id"] == null ? null : json["id"],
-    createdAt: json["createdAt"] == null ? null : json["createdAt"],
-    updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
-    productId: json["productId"] == null ? null : json["productId"],
-    score: json["score"] == null ? null : json["score"],
-    userId: json["userId"] == null ? null : json["userId"],
-    voteFieldId: json["voteFieldId"] == null ? null : json["voteFieldId"],
-    voteField: json["voteField"] == null ? null : VoteField.fromMap(json["voteField"]),
-  );
+        id: json["id"] == null ? null : json["id"],
+        createdAt: json["createdAt"] == null ? null : json["createdAt"],
+        updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
+        productId: json["productId"] == null ? null : json["productId"],
+        score: json["score"] == null ? null : json["score"],
+        userId: json["userId"] == null ? null : json["userId"],
+        voteFieldId: json["voteFieldId"] == null ? null : json["voteFieldId"],
+        voteField: json["voteField"] == null ? null : VoteField.fromMap(json["voteField"]),
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id == null ? null : id,
-    "createdAt": createdAt == null ? null : createdAt,
-    "updatedAt": updatedAt == null ? null : updatedAt,
-    "productId": productId == null ? null : productId,
-    "score": score == null ? null : score,
-    "userId": userId == null ? null : userId,
-    "voteFieldId": voteFieldId == null ? null : voteFieldId,
-    "voteField": voteField == null ? null : voteField!.toMap(),
-  };
+        "id": id == null ? null : id,
+        "createdAt": createdAt == null ? null : createdAt,
+        "updatedAt": updatedAt == null ? null : updatedAt,
+        "productId": productId == null ? null : productId,
+        "score": score == null ? null : score,
+        "userId": userId == null ? null : userId,
+        "voteFieldId": voteFieldId == null ? null : voteFieldId,
+        "voteField": voteField == null ? null : voteField!.toMap(),
+      };
 }

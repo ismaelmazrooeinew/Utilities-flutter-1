@@ -18,7 +18,7 @@ class GenericResponse<T> {
         pageCount: json["pageCount"],
         totalCount: json["totalCount"],
         status: json["status"],
-        message: json["message"]??'',
+        message: json["message"] ?? '',
       );
     if (json["result"] is String)
       return GenericResponse<T>(
@@ -27,7 +27,7 @@ class GenericResponse<T> {
         pageCount: json["pageCount"],
         totalCount: json["totalCount"],
         status: json["status"],
-        message: json["message"]??'',
+        message: json["message"] ?? '',
       );
     return GenericResponse<T>(
       result: json["result"] != null ? fromMap(json["result"]) : '',
@@ -35,7 +35,7 @@ class GenericResponse<T> {
       pageCount: json["pageCount"],
       totalCount: json["totalCount"],
       status: json["status"],
-      message: json["message"]??'',
+      message: json["message"] ?? '',
     );
   }
 

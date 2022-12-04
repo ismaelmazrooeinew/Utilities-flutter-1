@@ -130,9 +130,9 @@ class CategoryReadDto {
         useCase: json["useCase"],
         type: json["type"],
         parent: CategoryReadDto.fromMap(json["parent"]),
-        children: List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
+        children: json["children"] == null ? null : List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
         parentId: json["parentId"],
-        media: List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
     } catch (e) {
       print(e.toString());

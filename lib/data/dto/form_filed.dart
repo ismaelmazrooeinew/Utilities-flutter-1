@@ -25,21 +25,21 @@ class FormFieldReadDto {
 
   factory FormFieldReadDto.fromMap(Map<String, dynamic> json) => FormFieldReadDto(
         id: json["id"],
-        label:  json["label"],
-        title:  json["title"],
-        isRequired:  json["isRequired"],
+        label: json["label"],
+        title: json["title"],
+        isRequired: json["isRequired"],
         optionList: json["optionList"],
         type: json["type"],
-        categoryId:json["categoryId"],
+        categoryId: json["categoryId"],
       );
 
   Map<String, dynamic> toMap() => {
         "id": id,
-        "label":  label,
-        "title":  title,
-        "isRequired":  isRequired,
+        "label": label,
+        "title": title,
+        "isRequired": isRequired,
         "optionList": optionList,
-        "type":  type,
+        "type": type,
         "categoryId": categoryId,
       };
 }

@@ -17,15 +17,15 @@ class FormReadDto {
   String toJson() => json.encode(toMap());
 
   factory FormReadDto.fromMap(Map<String, dynamic> json) => FormReadDto(
-        id:  json["id"],
-        title:json["title"],
+        id: json["id"],
+        title: json["title"],
         formField: FormFieldReadDto.fromMap(json["formField"]),
       );
 
   Map<String, dynamic> toMap() => {
-        "id":  id,
-        "title":  title,
-        "formField":  formField!.toMap(),
+        "id": id,
+        "title": title,
+        "formField": formField!.toMap(),
       };
 }
 
@@ -47,17 +47,17 @@ class FormCreateUpdateDto {
   String toJson() => json.encode(toMap());
 
   factory FormCreateUpdateDto.fromMap(Map<String, dynamic> json) => FormCreateUpdateDto(
-        userId:json["userId"],
+        userId: json["userId"],
         productId: json["productId"],
-        orderDetailId:  json["orderDetailId"],
-        forms:  List<FormReadDto>.from(json["form"].map((x) => FormReadDto.fromMap(x))),
+        orderDetailId: json["orderDetailId"],
+        forms: json["form"] == null ? null : List<FormReadDto>.from(json["form"].map((x) => FormReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
         "userId": userId,
         "productId": productId,
         "orderDetailId": orderDetailId,
-        "form":  List<dynamic>.from(forms!.map((x) => x.toMap())),
+        "form": List<dynamic>.from(forms!.map((x) => x.toMap())),
       };
 }
 
@@ -85,22 +85,22 @@ class FormFieldCreateUpdateDto {
   String toJson() => json.encode(toMap());
 
   factory FormFieldCreateUpdateDto.fromMap(Map<String, dynamic> json) => FormFieldCreateUpdateDto(
-        id:  json["id"],
-        label:  json["label"],
+        id: json["id"],
+        label: json["label"],
         title: json["title"],
-        isRequired:  json["isRequired"],
-        optionList:  json["optionList"],
-        type:  json["type"],
-        categoryId:  json["categoryId"],
+        isRequired: json["isRequired"],
+        optionList: json["optionList"],
+        type: json["type"],
+        categoryId: json["categoryId"],
       );
 
   Map<String, dynamic> toMap() => {
-        "id":  id,
-        "label":  label,
-        "title":  title,
-        "isRequired":  isRequired,
-        "optionList":  optionList,
-        "type":  type,
-        "categoryId":  categoryId,
+        "id": id,
+        "label": label,
+        "title": title,
+        "isRequired": isRequired,
+        "optionList": optionList,
+        "type": type,
+        "categoryId": categoryId,
       };
 }

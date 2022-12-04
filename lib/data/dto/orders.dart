@@ -65,7 +65,7 @@ class OrdersReadDto {
         payType: json["payType"],
         payNumber: json["payNumber"],
         receivedDate: json["receivedDate"],
-        orderDetails: List<OrderDetail>.from(json["orderDetails"].map((x) => OrderDetail.fromMap(x))),
+        orderDetails: json["orderDetails"] == null ? null : List<OrderDetail>.from(json["orderDetails"].map((x) => OrderDetail.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -121,7 +121,7 @@ class OrderDetail {
         price: json["price"],
         count: json["count"],
         id: json["id"],
-        product: ProductReadDto.fromMap(json["product"]),
+        product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
         createdAt: json["createdAt"],
         updatedAt: json["updatedAt"],
       );
@@ -183,7 +183,7 @@ class OrderCreateUpdateDto {
         sendPrice: json["sendPrice"],
         payType: json["payType"],
         sendType: json["sendType"],
-        orderDetails: List<OrderDetail>.from(json["orderDetails"].map((x) => OrderDetail.fromMap(x))),
+        orderDetails: json["orderDetails"] == null ? null : List<OrderDetail>.from(json["orderDetails"].map((x) => OrderDetail.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
