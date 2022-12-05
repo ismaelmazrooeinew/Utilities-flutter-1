@@ -5,25 +5,25 @@ extension CategoryReadDtoExtension on List<CategoryReadDto>? {
       this
           ?.where(
             (final CategoryReadDto e) => e.type == type && e.useCase == useCase,
-          )
+      )
           .toList() ??
-      <CategoryReadDto>[];
+          <CategoryReadDto>[];
 
   List<CategoryReadDto> getByType({required final type}) =>
       this
           ?.where(
             (final CategoryReadDto e) => e.type == type,
-          )
+      )
           .toList() ??
-      <CategoryReadDto>[];
+          <CategoryReadDto>[];
 
   List<CategoryReadDto> getByUseCase({required final useCase}) =>
       this
           ?.where(
             (final CategoryReadDto e) => e.useCase == useCase,
-          )
+      )
           .toList() ??
-      <CategoryReadDto>[];
+          <CategoryReadDto>[];
 }
 
 class CategoryCreateUpdateDto {
@@ -55,7 +55,8 @@ class CategoryCreateUpdateDto {
 
   String toJson() => json.encode(toMap());
 
-  factory CategoryCreateUpdateDto.fromMap(Map<String, dynamic> json) => CategoryCreateUpdateDto(
+  factory CategoryCreateUpdateDto.fromMap(Map<String, dynamic> json) =>
+      CategoryCreateUpdateDto(
         id: json["id"],
         parentId: json["parentId"],
         title: json["title"],
@@ -68,7 +69,8 @@ class CategoryCreateUpdateDto {
         type: json["type"],
       );
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toMap() =>
+      {
         "id": id,
         "parentId": parentId,
         "title": title,
@@ -129,7 +131,7 @@ class CategoryReadDto {
         link: json["link"],
         useCase: json["useCase"],
         type: json["type"],
-        parent: CategoryReadDto.fromMap(json["parent"]),
+        parent: json["parent"] == null ? null : CategoryReadDto.fromMap(json["parent"]),
         children: json["children"] == null ? null : List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
         parentId: json["parentId"],
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
@@ -140,7 +142,8 @@ class CategoryReadDto {
     }
   }
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toMap() =>
+      {
         "id": id,
         "title": title,
         "titleTr1": titleTr1,

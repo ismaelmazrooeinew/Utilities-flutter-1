@@ -66,7 +66,7 @@ class MediaReadDto {
         visibility: json["visibility"],
         userId: json["userId"],
         size: json["size"],
-        chat: Chat.fromMap(json["chat"]),
+        chat:json["chat"] == null ? null : Chat.fromMap(json["chat"]),
         chatId: json["chatId"],
         createdAt: json["createdAt"],
       );
@@ -129,9 +129,9 @@ class Chat {
     try {
       return Chat(
         fromUserId: json["fromUserId"],
-        fromUser: UserReadDto.fromMap(json["fromUser"]),
+        fromUser:json["fromUser"] == null ? null : UserReadDto.fromMap(json["fromUser"]),
         toUserId: json["toUserId"],
-        toUser: UserReadDto.fromMap(json["toUser"]),
+        toUser:json["toUser"] == null ? null : UserReadDto.fromMap(json["toUser"]),
         messageText: json["messageText"],
         readMessage: json["readMessage"],
         id: json["id"],
