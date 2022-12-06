@@ -13,7 +13,7 @@ Widget dottedBorder({
 }) =>
     Container(
         margin: margin ?? const EdgeInsets.only(top: 16),
-        padding: padding ?? const EdgeInsets.all(8),
+        padding: padding ?? const EdgeInsets.all(16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius ?? 6),
           color: foregroundColor ?? Color(0xffFFFFFF),
