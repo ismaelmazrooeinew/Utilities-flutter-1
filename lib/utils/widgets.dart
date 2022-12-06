@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:utilities/components/dotted_border.dart';
 import 'package:utilities/utils/get.dart';
 Widget dottedBorder({
-  required final BuildContext context,
   required final Widget child,
   final EdgeInsetsGeometry? margin,
   final EdgeInsetsGeometry? padding,
