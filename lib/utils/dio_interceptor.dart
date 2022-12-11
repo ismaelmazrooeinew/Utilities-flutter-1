@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:utilities/utils/constants.dart';
 import 'package:utilities/utils/http_interceptor.dart';
@@ -15,6 +17,7 @@ Future<void> request(
 }) async {
   final Map<String, String> header = <String, String>{"Authorization": getString(UtilitiesConstants.token) ?? ""};
 
+  log(url);
   if (headers != null) header.addAll(headers);
   final Dio dio = Dio();
   Response response = Response(requestOptions: RequestOptions(path: '', headers: header));
