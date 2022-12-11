@@ -113,8 +113,8 @@ class UserCreateUpdateDto {
         birthDate: json["birthDate"],
         gender: json["gender"],
         genderTr1: json["genderTr1"],
-        categories: List<String>.from(json["categories"].map((x) => x)),
-        locations: List<int>.from(json["locations"].map((x) => x)),
+        categories: json["categories"] == null ? null : List<String>.from(json["categories"].map((x) => x)),
+        locations: json["locations"] == null ? null : List<int>.from(json["locations"].map((x) => x)),
       );
 
   Map<String, dynamic> toMap() => {
@@ -151,8 +151,8 @@ class UserCreateUpdateDto {
         "birthDate": birthDate,
         "gender": gender,
         "genderTr1": genderTr1,
-        "categories": List<dynamic>.from(categories!.map((x) => x)),
-        "locations": List<dynamic>.from(locations!.map((x) => x)),
+        "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
+        "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
       };
 }
 
@@ -334,16 +334,16 @@ class UserReadDto {
         "birthdate": birthDate,
         "gender": gender,
         "genderTr1": genderTr1,
-        "media": List<dynamic>.from(media!.map((x) => x.toMap())),
-        "locations": List<dynamic>.from(locations!.map((x) => x.toMap())),
-        "categories": List<dynamic>.from(categories!.map((x) => x.toMap())),
-        "products": List<dynamic>.from(products!.map((x) => x.toMap())),
+        "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
+        "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
+        "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
+        "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
         "countFollowers": countFollowers,
         "countFollowing": countFollowing,
         "countProducts": countProducts,
         "color": color,
         "isFollowing": isFollowing,
-        "bookmarkFolders": List<dynamic>.from(bookmarkFolders!.map((x) => x.toMap())),
+        "bookmarkFolders": bookmarkFolders == null ? null : List<dynamic>.from(bookmarkFolders!.map((x) => x.toMap())),
       };
 }
 
