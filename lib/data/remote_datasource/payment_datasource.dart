@@ -19,7 +19,7 @@ class PaymentDataSource {
     final Function(Object error)? failure,
   }) async =>
       httpGet(
-        url: "${baseUrl}Payment/IncreaseWalletBalance/$amount",
+        url: "${baseUrl}/Payment/IncreaseWalletBalance/$amount",
         headers: <String, String>{
           "Authorization": "${getString(UtilitiesConstants.token)}",
         },
@@ -35,7 +35,7 @@ class PaymentDataSource {
      final Function(Object error)? failure,
   }) async =>
       httpGet(
-        url: "${baseUrl}Payment/BuyProduct/$productId",
+        url: "${baseUrl}/Payment/BuyProduct/$productId",
         headers: <String, String>{
           "Authorization": "${getString(UtilitiesConstants.token)}",
         },
