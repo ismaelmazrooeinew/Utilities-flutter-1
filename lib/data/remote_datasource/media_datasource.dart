@@ -411,7 +411,7 @@ class MediaDataSource {
 
   Future<void> delete({
     required final String id,
-    required final Function(GenericResponse) onResponse,
+    required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpDelete(
