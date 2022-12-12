@@ -30,7 +30,7 @@ class PaymentDataSource {
 
    Future<void> buyProduct({
     required final String productId,
-    required final Function(GenericResponse<PaymentReadDto>) onResponse,
+    required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
      final Function(Object error)? failure,
   }) async =>
