@@ -23,8 +23,8 @@ class PaymentDataSource {
         headers: <String, String>{
           "Authorization": "${getString(UtilitiesConstants.token)}",
         },
-        action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.data, fromMap: PaymentReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.data)),
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: PaymentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure:(Object error)=> failure!,
       );
 
