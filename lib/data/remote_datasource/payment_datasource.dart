@@ -30,7 +30,7 @@ class PaymentDataSource {
 
    Future<void> buyProduct({
     required final String productId,
-    required final Function(GenericResponse response) onResponse,
+    required final Function(GenericResponse<PaymentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
      final Function(Object error)? failure,
   }) async =>
@@ -39,7 +39,7 @@ class PaymentDataSource {
         headers: <String, String>{
           "Authorization": "${getString(UtilitiesConstants.token)}",
         },
-        action: (Response response) => onResponse(GenericResponse.fromJson(response.data)),
+        action: (Response response) => onResponse(GenericResponse<PaymentReadDto>.fromJson(response.data, fromMap: PaymentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure:(Object error)=> failure!,
       );
