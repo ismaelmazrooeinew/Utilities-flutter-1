@@ -76,7 +76,7 @@ class OrdersReadDto {
         "showForms": showForms,
         "showCategories": showCategories,
         "userId": userId == null ? null : userId,
-        "orderDetails": List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
+        "orderDetails": orderDetails == null ? null : List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
         "id": id,
         "createdAt": createdAt,
         "updatedAt": updatedAt,
@@ -198,6 +198,6 @@ class OrderCreateUpdateDto {
         "sendPrice": sendPrice,
         "payType": payType,
         "sendType": sendType,
-        "orderDetails": sendType == null ? null : List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
+        "orderDetails": sendType == null ? null : List<dynamic>.from(orderDetails!.map((x) => x)),
       };
 }
