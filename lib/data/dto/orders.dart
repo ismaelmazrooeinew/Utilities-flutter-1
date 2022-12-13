@@ -132,7 +132,7 @@ class OrderDetail {
         "price": price,
         "count": count,
         "id": id,
-        "product": product!.toMap(),
+        "product": product == null ? null : product!.toMap(),
         "createdAt": createdAt,
         "updatedAt": updatedAt,
       };
@@ -198,6 +198,6 @@ class OrderCreateUpdateDto {
         "sendPrice": sendPrice,
         "payType": payType,
         "sendType": sendType,
-        "orderDetails": List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
+        "orderDetails": sendType == null ? null : List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
       };
 }
