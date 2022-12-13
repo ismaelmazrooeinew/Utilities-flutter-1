@@ -158,28 +158,7 @@ class Chat {
 }
 
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
-  List<String> getImages({final String? useCase}) =>
-      this
-          ?.where((final MediaReadDto e) => (e.url != null && (e.url!.isImageFileName || e.url!.isVectorFileName)) && (useCase != null ? (e.useCase == useCase) : true))
-          .map(
-            (final MediaReadDto e) => e.url ?? "--",
-          )
-          .toList() ??
-      <String>[];
-
-  String getImageUrl() => this!.length > 0 ? this!.first.url ?? "--" : "--";
-
-  String getFile() {
-    List<String> list = this!
-        .where((final MediaReadDto e) => e.url != null && e.url!.isImageFileName && ((e.useCase == 'file')))
-        .map(
-          (final MediaReadDto e) => e.url ?? "--",
-        )
-        .toList();
-    return list.isNotEmpty ? list.first : "--";
-  }
-
-  List<MediaReadDto> getByUseCase({final String? useCase, final String? exception}) {
+  List<MediaReadDto> getByUseCase({required final String useCase, final String? exception}) {
     List<MediaReadDto> list = this
             ?.where((final MediaReadDto e) => (e.useCase == useCase))
             .map(
@@ -198,8 +177,17 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           <MediaReadDto>[];
     }
 
-    return list.isNotEmpty ? list : [];
+    return list;
   }
+
+  List<String> getImages({final String? useCase}) =>
+      this
+          ?.where((final MediaReadDto e) => (e.url != null && (e.url!.isImageFileName || e.url!.isVectorFileName)) && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.url ?? "--",
+          )
+          .toList() ??
+      <String>[];
 
   List<String> getAudios({final String? useCase}) =>
       this
@@ -237,6 +225,16 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           .toList() ??
       <String>[];
 
+  String getFile() {
+    List<String> list = this!
+        .where((final MediaReadDto e) => e.url != null && e.url!.isImageFileName && ((e.useCase == 'file')))
+        .map(
+          (final MediaReadDto e) => e.url ?? "--",
+        )
+        .toList();
+    return list.isNotEmpty ? list.first : "--";
+  }
+
   String getImage({final String? useCase}) => getImages(useCase: useCase).getFirstIfExist() ?? "--";
 
   String getVideo({final String? useCase}) => getVideos(useCase: useCase).getFirstIfExist() ?? "--";
@@ -249,6 +247,26 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 }
 
 extension MediaResponseExtension on List<MediaReadDto> {
+  List<MediaReadDto> getByUseCase({required final String useCase, final String? exception}) {
+    List<MediaReadDto> list = this
+        .where((final MediaReadDto e) => (e.useCase == useCase))
+        .map(
+          (final MediaReadDto e) => e,
+        )
+        .toList();
+
+    if (exception != null) {
+      list = this
+          .where((final MediaReadDto e) => (e.useCase != exception))
+          .map(
+            (final MediaReadDto e) => e,
+          )
+          .toList();
+    }
+
+    return list;
+  }
+
   List<String> getImages({final String? useCase}) => this
       .where((final MediaReadDto e) => (e.url != null && (e.url!.isImageFileName || e.url!.isVectorFileName)) && (useCase != null ? (e.useCase == useCase) : true))
       .map(
@@ -283,6 +301,16 @@ extension MediaResponseExtension on List<MediaReadDto> {
         (final MediaReadDto e) => e.url ?? "--",
       )
       .toList();
+
+  String getFile() {
+    List<String> list = this
+        .where((final MediaReadDto e) => e.url != null && e.url!.isImageFileName && ((e.useCase == 'file')))
+        .map(
+          (final MediaReadDto e) => e.url ?? "--",
+    )
+        .toList();
+    return list.isNotEmpty ? list.first : "--";
+  }
 
   String getImage({final String? useCase}) => getImages(useCase: useCase).getFirstIfExist() ?? "--";
 
