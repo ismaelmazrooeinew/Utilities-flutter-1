@@ -198,6 +198,6 @@ class OrderCreateUpdateDto {
         "sendPrice": sendPrice,
         "payType": payType,
         "sendType": sendType,
-        "orderDetails": sendType == null ? null : List<dynamic>.from(orderDetails!.map((x) => x)),
+        "orderDetails": orderDetails == null ? null : List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
       };
 }
