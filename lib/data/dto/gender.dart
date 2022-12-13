@@ -16,14 +16,14 @@ class Gender {
   String toJson() => json.encode(toMap());
 
   factory Gender.fromMap(Map<String, dynamic> json) => Gender(
-        id: json["id"] == null ? null : json["id"],
-        title: json["title"] == null ? null : json["title"],
-        titleTr1: json["titleTr1"] == null ? null : json["titleTr1"],
+        id: json["id"],
+        title: json["title"],
+        titleTr1: json["titleTr1"],
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id == null ? null : id,
-        "title": title == null ? null : title,
-        "titleTr1": titleTr1 == null ? null : titleTr1,
+        "id": id,
+        "title": title,
+        "titleTr1": titleTr1,
       };
 }

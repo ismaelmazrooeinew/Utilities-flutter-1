@@ -15,11 +15,11 @@ class LocationReadDto {
   final num? id;
   final String? title;
   final int? parentId;
-  final LocationReadDto? parent;
-  final List<LocationReadDto>? children;
   final num? latitude;
   final num? longitude;
   final int? type;
+  final LocationReadDto? parent;
+  final List<LocationReadDto>? children;
 
   factory LocationReadDto.fromJson(String str) => LocationReadDto.fromMap(json.decode(str));
 
@@ -29,10 +29,10 @@ class LocationReadDto {
         id: json["i"],
         title: json["n"],
         parentId: json["pi"],
-        parent: json["p"] == null ? null : LocationReadDto.fromMap(json["p"]),
         latitude: json["lat"],
         longitude: json["lon"],
         type: json["t"],
+        parent: json["p"] == null ? null : LocationReadDto.fromMap(json["p"]),
         children: json["ch"] == null ? null : List<LocationReadDto>.from(json["ch"].map((x) => LocationReadDto.fromMap(x))),
       );
 
@@ -40,10 +40,10 @@ class LocationReadDto {
         "i": id,
         "n": title,
         "pi": parentId,
-        "p": parent == null ? null : parent!.toMap(),
         "lat": latitude,
         "lon": longitude,
         "t": type,
+        "p": parent == null ? null : parent!.toMap(),
         "ch": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
       };
 }

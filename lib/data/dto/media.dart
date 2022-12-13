@@ -66,9 +66,9 @@ class MediaReadDto {
         visibility: json["visibility"],
         userId: json["userId"],
         size: json["size"],
-        chat:json["chat"] == null ? null : Chat.fromMap(json["chat"]),
         chatId: json["chatId"],
         createdAt: json["createdAt"],
+        chat: json["chat"] == null ? null : Chat.fromMap(json["chat"]),
       );
     } catch (e) {
       print(e.toString());
@@ -90,11 +90,11 @@ class MediaReadDto {
         "contentId": contentId,
         "productId": productId,
         "visibility": visibility,
-        "chat": chat!.toMap(),
         "chatId": chatId,
         "createdAt": createdAt,
         "userId": userId,
         "size": size,
+        "chat": chat == null ? null : chat!.toMap(),
       };
 }
 
@@ -112,14 +112,14 @@ class Chat {
   });
 
   final String? fromUserId;
-  final UserReadDto? fromUser;
   final String? toUserId;
-  final UserReadDto? toUser;
   final String? messageText;
   final bool? readMessage;
   final String? id;
   final String? createdAt;
   final String? updatedAt;
+  final UserReadDto? toUser;
+  final UserReadDto? fromUser;
 
   factory Chat.fromJson(String str) => Chat.fromMap(json.decode(str));
 
@@ -128,15 +128,15 @@ class Chat {
   factory Chat.fromMap(Map<String, dynamic> json) {
     try {
       return Chat(
+        id: json["id"],
         fromUserId: json["fromUserId"],
-        fromUser:json["fromUser"] == null ? null : UserReadDto.fromMap(json["fromUser"]),
         toUserId: json["toUserId"],
-        toUser:json["toUser"] == null ? null : UserReadDto.fromMap(json["toUser"]),
         messageText: json["messageText"],
         readMessage: json["readMessage"],
-        id: json["id"],
         createdAt: json["createdAt"],
         updatedAt: json["updatedAt"],
+        fromUser: json["fromUser"] == null ? null : UserReadDto.fromMap(json["fromUser"]),
+        toUser: json["toUser"] == null ? null : UserReadDto.fromMap(json["toUser"]),
       );
     } catch (e) {
       print(e.toString());
@@ -145,15 +145,15 @@ class Chat {
   }
 
   Map<String, dynamic> toMap() => {
+        "id": id,
         "fromUserId": fromUserId,
-        "fromUser": fromUser!.toMap(),
         "toUserId": toUserId,
-        "toUser": toUser!.toMap(),
         "messageText": messageText,
         "readMessage": readMessage,
-        "id": id,
         "createdAt": createdAt,
         "updatedAt": updatedAt,
+        "fromUser": fromUser!.toMap(),
+        "toUser": toUser!.toMap(),
       };
 }
 

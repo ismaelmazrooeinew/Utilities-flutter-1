@@ -131,9 +131,9 @@ class CategoryReadDto {
         link: json["link"],
         useCase: json["useCase"],
         type: json["type"],
+        parentId: json["parentId"],
         parent: json["parent"] == null ? null : CategoryReadDto.fromMap(json["parent"]),
         children: json["children"] == null ? null : List<CategoryReadDto>.from(json["children"].map((x) => CategoryReadDto.fromMap(x))),
-        parentId: json["parentId"],
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
     } catch (e) {
@@ -153,9 +153,9 @@ class CategoryReadDto {
         "link": link,
         "useCase": useCase,
         "type": type,
-        "parent": parent!.toMap(),
-        "children": List<dynamic>.from(children!.map((x) => x.toMap())),
         "parentId": parentId,
-        "media": List<dynamic>.from(media!.map((x) => x.toMap())),
+        "parent":parent==null?null: parent!.toMap(),
+        "children":children==null?null: List<dynamic>.from(children!.map((x) => x.toMap())),
+        "media":media==null?null: List<dynamic>.from(media!.map((x) => x.toMap())),
       };
 }

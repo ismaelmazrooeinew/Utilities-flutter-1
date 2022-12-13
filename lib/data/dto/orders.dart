@@ -4,6 +4,7 @@ import 'package:utilities/data/dto/product.dart';
 
 class OrdersReadDto {
   OrdersReadDto({
+    this.id,
     this.description,
     this.showProducts,
     this.showForms,
@@ -11,8 +12,6 @@ class OrdersReadDto {
     this.showMedia,
     this.discountCode,
     this.userId,
-    this.orderDetails,
-    this.id,
     this.createdAt,
     this.updatedAt,
     this.status,
@@ -22,8 +21,10 @@ class OrdersReadDto {
     this.payType,
     this.payNumber,
     this.receivedDate,
+    this.orderDetails,
   });
 
+  final String? id;
   final bool? showProducts;
   final bool? showMedia;
   final bool? showForms;
@@ -31,8 +32,6 @@ class OrdersReadDto {
   final String? description;
   final String? discountCode;
   final String? userId;
-  final List<OrderDetail>? orderDetails;
-  final String? id;
   final String? createdAt;
   final String? updatedAt;
   final int? status;
@@ -42,6 +41,7 @@ class OrdersReadDto {
   final int? payType;
   final String? payNumber;
   final String? receivedDate;
+  final List<OrderDetail>? orderDetails;
 
   factory OrdersReadDto.fromJson(String str) => OrdersReadDto.fromMap(json.decode(str));
 
@@ -69,6 +69,7 @@ class OrdersReadDto {
       );
 
   Map<String, dynamic> toMap() => {
+        "id": id,
         "description": description,
         "discountCode": discountCode,
         "showProducts": showProducts,
@@ -76,8 +77,6 @@ class OrdersReadDto {
         "showForms": showForms,
         "showCategories": showCategories,
         "userId": userId == null ? null : userId,
-        "orderDetails": orderDetails == null ? null : List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
-        "id": id,
         "createdAt": createdAt,
         "updatedAt": updatedAt,
         "status": status,
@@ -87,26 +86,27 @@ class OrdersReadDto {
         "payType": payType,
         "payNumber": payNumber,
         "receivedDate": receivedDate,
+        "orderDetails": orderDetails == null ? null : List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
       };
 }
 
 class OrderDetail {
   OrderDetail({
+    this.id,
     this.orderId,
     this.productId,
     this.price,
     this.count,
-    this.id,
     this.product,
     this.createdAt,
     this.updatedAt,
   });
 
+  final String? id;
   final String? orderId;
   final String? productId;
   final double? price;
   final int? count;
-  final String? id;
   final String? createdAt;
   final String? updatedAt;
   final ProductReadDto? product;
@@ -116,14 +116,14 @@ class OrderDetail {
   String toJson() => json.encode(toMap());
 
   factory OrderDetail.fromMap(Map<String, dynamic> json) => OrderDetail(
+        id: json["id"],
         orderId: json["orderId"],
         productId: json["productId"],
         price: json["price"],
         count: json["count"],
-        id: json["id"],
-        product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
         createdAt: json["createdAt"],
         updatedAt: json["updatedAt"],
+        product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -132,9 +132,9 @@ class OrderDetail {
         "price": price,
         "count": count,
         "id": id,
-        "product": product == null ? null : product!.toMap(),
         "createdAt": createdAt,
         "updatedAt": updatedAt,
+        "product": product == null ? null : product!.toMap(),
       };
 }
 

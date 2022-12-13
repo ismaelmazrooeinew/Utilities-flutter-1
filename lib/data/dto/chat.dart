@@ -32,30 +32,30 @@ class ChatReadDto {
   String toJson() => json.encode(toMap());
 
   factory ChatReadDto.fromMap(Map<String, dynamic> json) => ChatReadDto(
-        id: json["id"] == null ? null : json["id"],
-        userId: json["userId"] == null ? null : json["userId"],
-        messageText: json["messageText"] == null ? null : json["messageText"],
-        fullName: json["fullName"] == null ? null : json["fullName"],
-        phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
-        unReadMessages: json["unReadMessages"] == null ? null : json["unReadMessages"],
-        dateTime: json["dateTime"] == null ? null : json["dateTime"],
+        id: json["id"],
+        userId: json["userId"],
+        messageText: json["messageText"],
+        fullName: json["fullName"],
+        phoneNumber: json["phoneNumber"],
+        unReadMessages: json["unReadMessages"],
+        dateTime: json["dateTime"],
+        profileImage: json["profileImage"],
+        send: json["send"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
-        profileImage: json["profileImage"] == null ? null : json["profileImage"],
-        send: json["send"] == null ? null : json["send"],
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id == null ? null : id,
-        "userId": userId == null ? null : userId,
-        "messageText": messageText == null ? null : messageText,
-        "fullName": fullName == null ? null : fullName,
-        "phoneNumber": phoneNumber == null ? null : phoneNumber,
-        "unReadMessages": unReadMessages == null ? null : unReadMessages,
-        "dateTime": dateTime == null ? null : dateTime,
+        "id": id,
+        "userId": userId,
+        "messageText": messageText,
+        "fullName": fullName,
+        "phoneNumber": phoneNumber,
+        "unReadMessages": unReadMessages,
+        "dateTime": dateTime,
+        "send": send,
         "user": user == null ? null : user!.toMap(),
         "profileImage": profileImage == null ? null : profileImage,
-        "send": send == null ? null : send,
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
       };
 }
@@ -76,14 +76,14 @@ class ChatCreateDto {
   String toJson() => json.encode(toMap());
 
   factory ChatCreateDto.fromMap(Map<String, dynamic> json) => ChatCreateDto(
-        userId: json["userId"] == null ? null : json["userId"],
-        messageId: json["messageId"] == null ? null : json["messageId"],
-        messageText: json["messageText"] == null ? null : json["messageText"],
+        userId: json["userId"],
+        messageId: json["messageId"],
+        messageText: json["messageText"],
       );
 
   Map<String, dynamic> toMap() => {
-        "userId": userId == null ? null : userId,
-        "messageId": messageId == null ? null : messageId,
-        "messageText": messageText == null ? null : messageText,
+        "userId": userId,
+        "messageId": messageId,
+        "messageText": messageText,
       };
 }

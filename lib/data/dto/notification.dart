@@ -30,27 +30,27 @@ class NotificationReadDto {
   String toJson() => json.encode(toMap());
 
   factory NotificationReadDto.fromMap(Map<String, dynamic> json) => NotificationReadDto(
-        id: json["id"] == null ? null : json["id"],
-        title: json["title"] == null ? null : json["title"],
-        message: json["message"] == null ? null : json["message"],
-        createdAt: json["createdAt"] == null ? null : json["createdAt"],
-        visited: json["visited"] == null ? null : json["visited"],
-        link: json["link"] == null ? null : json["link"],
-        seenStatus: json["seenStatus"] == null ? null : json["seenStatus"],
-        useCase: json["useCase"] == null ? null : json["useCase"],
+        id: json["id"],
+        title: json["title"],
+        message: json["message"],
+        createdAt: json["createdAt"],
+        visited: json["visited"],
+        link: json["link"],
+        seenStatus: json["seenStatus"],
+        useCase: json["useCase"],
         creatorUser: json["creatorUser"] == null ? null : UserReadDto.fromMap(json["creatorUser"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id == null ? null : id,
-        "title": title == null ? null : title,
-        "message": message == null ? null : message,
-        "createdAt": createdAt == null ? null : createdAt,
-        "visited": visited == null ? null : visited,
-        "link": link == null ? null : link,
-        "seenStatus": seenStatus == null ? null : seenStatus,
-        "useCase": useCase == null ? null : useCase,
+        "id": id,
+        "title": title,
+        "message": message,
+        "createdAt": createdAt,
+        "visited": visited,
+        "link": link,
+        "seenStatus": seenStatus,
+        "useCase": useCase,
         "creatorUser": creatorUser == null ? null : creatorUser!.toMap(),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
       };

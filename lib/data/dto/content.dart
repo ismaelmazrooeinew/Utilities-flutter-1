@@ -30,27 +30,27 @@ class ContentReadDto {
   String toJson() => json.encode(toMap());
 
   factory ContentReadDto.fromMap(Map<String, dynamic> json) => ContentReadDto(
-        id: json["id"] == null ? null : json["id"],
-        createdAt: json["createdAt"] == null ? null : json["createdAt"],
-        updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
-        deletedAt: json["deletedAt"] == null ? null : json["deletedAt"],
-        title: json["title"] == null ? null : json["title"],
-        subTitle: json["subTitle"] == null ? null : json["subTitle"],
-        description: json["description"] == null ? null : json["description"],
-        useCase: json["useCase"] == null ? null : json["useCase"],
+        id: json["id"],
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
+        deletedAt: json["deletedAt"],
+        title: json["title"],
+        subTitle: json["subTitle"],
+        description: json["description"],
+        useCase: json["useCase"],
         contactInformation: json["contactInformation"] == null ? null : List<ContactInformationReadDto>.from(json["contactInformation"].map((x) => ContactInformationReadDto.fromMap(x))),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id == null ? null : id,
-        "createdAt": createdAt == null ? null : createdAt,
-        "updatedAt": updatedAt == null ? null : updatedAt,
-        "deletedAt": deletedAt == null ? null : deletedAt,
-        "title": title == null ? null : title,
-        "subTitle": subTitle == null ? null : subTitle,
-        "description": description == null ? null : description,
-        "useCase": useCase == null ? null : useCase,
+        "id": id,
+        "createdAt": createdAt,
+        "updatedAt": updatedAt,
+        "deletedAt": deletedAt,
+        "title": title,
+        "subTitle": subTitle,
+        "description": description,
+        "useCase": useCase,
         "contactInformation": contactInformation == null ? null : List<dynamic>.from(contactInformation!.map((x) => x.toMap())),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
       };
@@ -80,22 +80,22 @@ class ContentCreateUpdateDto {
   String toJson() => json.encode(toMap());
 
   factory ContentCreateUpdateDto.fromMap(Map<String, dynamic> json) => ContentCreateUpdateDto(
-        id: json["id"] == null ? null : json["id"],
-        title: json["title"] == null ? null : json["title"],
-        subTitle: json["subTitle"] == null ? null : json["subTitle"],
-        description: json["description"] == null ? null : json["description"],
-        useCase: json["useCase"] == null ? null : json["useCase"],
-        approvalStatus: json["approvalStatus"] == null ? null : json["approvalStatus"],
+        id: json["id"],
+        title: json["title"],
+        subTitle: json["subTitle"],
+        description: json["description"],
+        useCase: json["useCase"],
+        approvalStatus: json["approvalStatus"],
         contactInformations: json["contactInformations"] == null ? null : List<ContactInformationReadDto>.from(json["contactInformations"].map((x) => ContactInformationReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id == null ? null : id,
-        "title": title == null ? null : title,
-        "subTitle": subTitle == null ? null : subTitle,
-        "description": description == null ? null : description,
-        "useCase": useCase == null ? null : useCase,
-        "approvalStatus": approvalStatus == null ? null : approvalStatus,
+        "id": id,
+        "title": title,
+        "subTitle": subTitle,
+        "description": description,
+        "useCase": useCase,
+        "approvalStatus": approvalStatus,
         "contactInformations": contactInformations == null ? null : List<dynamic>.from(contactInformations!.map((x) => x.toMap())),
       };
 }

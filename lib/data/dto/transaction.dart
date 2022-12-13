@@ -26,24 +26,24 @@ class TransactionReadDto {
   String toJson() => json.encode(toMap());
 
   factory TransactionReadDto.fromMap(Map<String, dynamic> json) => TransactionReadDto(
-        id: json["id"] == null ? null : json["id"],
-        userId: json["userId"] == null ? null : json["userId"],
-        amount: json["amount"] == null ? null : json["amount"],
-        descriptions: json["descriptions"] == null ? null : json["descriptions"],
-        statusId: json["statusId"] == null ? null : json["statusId"],
-        paymentId: json["paymentId"] == null ? null : json["paymentId"],
-        createdAt: json["createdAt"] == null ? null : json["createdAt"],
-        updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
+        id: json["id"],
+        userId: json["userId"],
+        amount: json["amount"],
+        descriptions: json["descriptions"],
+        statusId: json["statusId"],
+        paymentId: json["paymentId"],
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id == null ? null : id,
-        "userId": userId == null ? null : userId,
-        "amount": amount == null ? null : amount,
-        "descriptions": descriptions == null ? null : descriptions,
-        "statusId": statusId == null ? null : statusId,
-        "paymentId": paymentId == null ? null : paymentId,
-        "createdAt": createdAt == null ? null : createdAt,
-        "updatedAt": updatedAt == null ? null : updatedAt,
+        "id": id,
+        "userId": userId,
+        "amount": amount,
+        "descriptions": descriptions,
+        "statusId": statusId,
+        "paymentId": paymentId,
+        "createdAt": createdAt,
+        "updatedAt": updatedAt,
       };
 }

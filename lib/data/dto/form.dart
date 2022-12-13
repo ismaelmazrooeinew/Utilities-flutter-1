@@ -19,13 +19,13 @@ class FormReadDto {
   factory FormReadDto.fromMap(Map<String, dynamic> json) => FormReadDto(
         id: json["id"],
         title: json["title"],
-        formField: FormFieldReadDto.fromMap(json["formField"]),
+        formField: json["formField"] == null ? null : FormFieldReadDto.fromMap(json["formField"]),
       );
 
   Map<String, dynamic> toMap() => {
         "id": id,
         "title": title,
-        "formField": formField!.toMap(),
+        "formField": formField == null ? null : formField!.toMap(),
       };
 }
 
@@ -57,7 +57,7 @@ class FormCreateUpdateDto {
         "userId": userId,
         "productId": productId,
         "orderDetailId": orderDetailId,
-        "form": List<dynamic>.from(forms!.map((x) => x.toMap())),
+        "form": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
       };
 }
 

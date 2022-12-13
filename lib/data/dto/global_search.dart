@@ -18,7 +18,6 @@ class GlobalSearchCreateDto {
   });
 
   final String? title;
-  final List<String>? categories;
   final int? pageSize;
   final int? pageNumber;
   final bool? newest;
@@ -30,41 +29,42 @@ class GlobalSearchCreateDto {
   final bool? isBookmark;
   final bool? isMine;
   final bool? minimal;
+  final List<String>? categories;
 
   factory GlobalSearchCreateDto.fromJson(String str) => GlobalSearchCreateDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory GlobalSearchCreateDto.fromMap(Map<String, dynamic> json) => GlobalSearchCreateDto(
-        title: json["title"] == null ? null : json["title"],
+        title: json["title"],
+        pageSize: json["pageSize"],
+        pageNumber: json["pageNumber"],
+        newest: json["newest"],
+        oldest: json["oldest"],
+        reputation: json["reputation"],
+        user: json["user"],
+        product: json["product"],
+        category: json["category"],
+        isBookmark: json["isBookmark"],
+        isMine: json["isMine"],
+        minimal: json["minimal"],
         categories: json["categories"] == null ? null : json["categories"],
-        pageSize: json["pageSize"] == null ? null : json["pageSize"],
-        pageNumber: json["pageNumber"] == null ? null : json["pageNumber"],
-        newest: json["newest"] == null ? null : json["newest"],
-        oldest: json["oldest"] == null ? null : json["oldest"],
-        reputation: json["reputation"] == null ? null : json["reputation"],
-        user: json["user"] == null ? null : json["user"],
-        product: json["product"] == null ? null : json["product"],
-        category: json["category"] == null ? null : json["category"],
-        isBookmark: json["isBookmark"] == null ? null : json["isBookmark"],
-        isMine: json["isMine"] == null ? null : json["isMine"],
-        minimal: json["minimal"] == null ? null : json["minimal"],
       );
 
   Map<String, dynamic> toMap() => {
-        "title": title == null ? null : title,
+        "title": title,
+        "pageSize": pageSize,
+        "pageNumber": pageNumber,
+        "newest": newest,
+        "oldest": oldest,
+        "reputation": reputation,
+        "user": user,
+        "product": product,
+        "category": category,
+        "isBookmark": isBookmark,
+        "isMine": isMine,
+        "minimal": minimal,
         "categories": categories == null ? null : categories,
-        "pageSize": pageSize == null ? null : pageSize,
-        "pageNumber": pageNumber == null ? null : pageNumber,
-        "newest": newest == null ? null : newest,
-        "oldest": oldest == null ? null : oldest,
-        "reputation": reputation == null ? null : reputation,
-        "user": user == null ? null : user,
-        "product": product == null ? null : product,
-        "category": category == null ? null : category,
-        "isBookmark": isBookmark == null ? null : isBookmark,
-        "isMine": isMine == null ? null : isMine,
-        "minimal": minimal == null ? null : minimal,
       };
 }
 

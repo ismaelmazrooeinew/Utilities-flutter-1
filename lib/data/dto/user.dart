@@ -238,15 +238,15 @@ class UserReadDto {
   final String? birthDate;
   final String? gender;
   final String? genderTr1;
+  final int? countFollowers;
+  final int? countFollowing;
+  final int? countProducts;
+  final String? color;
   final GrowthRateReadDto? growthRate;
   final List<MediaReadDto>? media;
   final List<LocationReadDto>? locations;
   final List<CategoryReadDto>? categories;
   final List<ProductReadDto>? products;
-  final int? countFollowers;
-  final int? countFollowing;
-  final int? countProducts;
-  final String? color;
   final List<BookmarkFolder>? bookmarkFolders;
 
   factory UserReadDto.fromJson(String str) => UserReadDto.fromMap(json.decode(str));
@@ -287,16 +287,16 @@ class UserReadDto {
         birthDate: json["birthdate"],
         gender: json["gender"],
         genderTr1: json["genderTr1"],
-        growthRate: json["growthRate"] == null ? null : GrowthRateReadDto.fromMap(json["growthRate"]),
-        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
-        locations: json["locations"] != null ? List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))) : null,
-        categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
-        products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
         countFollowers: json["countFollowers"],
         countFollowing: json["countFollowing"],
         countProducts: json["countProducts"],
         color: json["color"],
         isFollowing: json["isFollowing"],
+        growthRate: json["growthRate"] == null ? null : GrowthRateReadDto.fromMap(json["growthRate"]),
+        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+        locations: json["locations"] != null ? List<LocationReadDto>.from(json["locations"].map((x) => LocationReadDto.fromMap(x))) : null,
+        categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
+        products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
         bookmarkFolders: json["bookmarkFolders"] == null ? null : List<BookmarkFolder>.from(json["bookmarkFolders"].map((x) => BookmarkFolder.fromMap(x))),
       );
 
@@ -334,15 +334,16 @@ class UserReadDto {
         "birthdate": birthDate,
         "gender": gender,
         "genderTr1": genderTr1,
-        "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
-        "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
-        "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
-        "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
         "countFollowers": countFollowers,
         "countFollowing": countFollowing,
         "countProducts": countProducts,
         "color": color,
         "isFollowing": isFollowing,
+        "growthRate": growthRate == null ? null : growthRate!.toMap(),
+        "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
+        "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x.toMap())),
+        "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
+        "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
         "bookmarkFolders": bookmarkFolders == null ? null : List<dynamic>.from(bookmarkFolders!.map((x) => x.toMap())),
       };
 }
