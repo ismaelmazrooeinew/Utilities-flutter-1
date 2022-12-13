@@ -180,6 +180,15 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
     return list;
   }
 
+  List<String> getAll({final String? useCase}) =>
+      this
+          ?.where((final MediaReadDto e) => e.url != null && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.url ?? "--",
+      )
+          .toList() ??
+          <String>[];
+
   List<String> getImages({final String? useCase}) =>
       this
           ?.where((final MediaReadDto e) => (e.url != null && (e.url!.isImageFileName || e.url!.isVectorFileName)) && (useCase != null ? (e.useCase == useCase) : true))
@@ -239,6 +248,8 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
 
   String getVideo({final String? useCase}) => getVideos(useCase: useCase).getFirstIfExist() ?? "--";
 
+  String getFirst({final String? useCase}) => getAll(useCase: useCase).getFirstIfExist() ?? "--";
+
   String getDoc({final String? useCase}) => getDocs(useCase: useCase).getFirstIfExist() ?? "--";
 
   String getPdf({final String? useCase}) => getPdfs(useCase: useCase).getFirstIfExist() ?? "--";
@@ -266,6 +277,13 @@ extension MediaResponseExtension on List<MediaReadDto> {
 
     return list;
   }
+
+  List<String> getAll({final String? useCase}) => this
+      .where((final MediaReadDto e) => e.url != null && (useCase != null ? (e.useCase == useCase) : true))
+      .map(
+        (final MediaReadDto e) => e.url ?? "--",
+      )
+      .toList();
 
   List<String> getImages({final String? useCase}) => this
       .where((final MediaReadDto e) => (e.url != null && (e.url!.isImageFileName || e.url!.isVectorFileName)) && (useCase != null ? (e.useCase == useCase) : true))
@@ -307,7 +325,7 @@ extension MediaResponseExtension on List<MediaReadDto> {
         .where((final MediaReadDto e) => e.url != null && e.url!.isImageFileName && ((e.useCase == 'file')))
         .map(
           (final MediaReadDto e) => e.url ?? "--",
-    )
+        )
         .toList();
     return list.isNotEmpty ? list.first : "--";
   }
@@ -317,6 +335,8 @@ extension MediaResponseExtension on List<MediaReadDto> {
   String getVideo({final String? useCase}) => getVideos(useCase: useCase).getFirstIfExist() ?? "--";
 
   String getDoc({final String? useCase}) => getDocs(useCase: useCase).getFirstIfExist() ?? "--";
+
+  String getFirst({final String? useCase}) => getAll(useCase: useCase).getFirstIfExist() ?? "--";
 
   String getPdf({final String? useCase}) => getPdfs(useCase: useCase).getFirstIfExist() ?? "--";
 
