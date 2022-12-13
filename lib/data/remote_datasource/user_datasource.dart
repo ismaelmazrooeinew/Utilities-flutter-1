@@ -21,23 +21,10 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> checkUsername({
-    required final String userName,
-    required final VoidCallback onResponse,
-    required final Function(String statusCode) onError,
-    final Function(Object error)? failure,
-  }) async =>
-      httpPost(
-        url: "$baseUrl/user/CheckUserName/$userName",
-        action: (Response response) => onResponse(),
-        error: (Response response) => onError(response.statusCode.toString()),
-        failure:(Object error)=> failure!,
-      );
-
-  Future<void> checkUsername2({
     required final String userName,
     required final VoidCallback onResponse,
     required final Function(GenericResponse response) onError,
@@ -47,7 +34,7 @@ class UserDataSource {
         url: "$baseUrl/user/CheckUserName/$userName",
         action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> update({
@@ -61,7 +48,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> read({
@@ -73,23 +60,10 @@ class UserDataSource {
         url: "$baseUrl/user",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> readById({
-    required final String id,
-    required final Function(GenericResponse<UserReadDto>) onResponse,
-    required final Function(String statusCode) onError,
-    final Function(Object error)? failure,
-  }) async =>
-      httpGet(
-        url: "$baseUrl/user/$id",
-        action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
-        error: (Response response) => onError(response.statusCode.toString()),
-        failure:(Object error)=> failure!,
-      );
-
-  Future<void> readById2({
     required final String id,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
@@ -99,7 +73,7 @@ class UserDataSource {
         url: "$baseUrl/user/$id",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> delete({
@@ -112,7 +86,7 @@ class UserDataSource {
         url: "$baseUrl/user/$id",
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> deleteFromTeam({
@@ -125,7 +99,7 @@ class UserDataSource {
         url: "$baseUrl/user/DeleteFromTeam/$teamId",
         action: (Response response) => onResponse(),
         error: (Response response) => onError(),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> activeMobile({
@@ -139,7 +113,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> getVerificationCodeForLogin({
@@ -153,7 +127,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> loginWithEmail({
@@ -167,7 +141,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> loginWithPassword({
@@ -181,7 +155,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> verifyCodeForLogin({
@@ -195,7 +169,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> getProfile({
@@ -207,7 +181,7 @@ class UserDataSource {
         url: "$baseUrl/user/GetProfile",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> getGrowthRate({
@@ -219,7 +193,7 @@ class UserDataSource {
         url: "$baseUrl/user/GrowthRate",
         action: (Response response) => onResponse(GenericResponse<GrowthRateReadDto>.fromJson(response.data, fromMap: GrowthRateReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> getProfileByUserName({
@@ -232,7 +206,7 @@ class UserDataSource {
         url: "$baseUrl/user/GetProfileByUsername/$userName",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> updateProfile({
@@ -246,7 +220,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 
   Future<void> filter({
@@ -260,6 +234,6 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: (Object error) => failure!,
       );
 }
