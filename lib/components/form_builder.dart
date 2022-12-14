@@ -196,7 +196,6 @@ class _FormBuilderState extends State<FormBuilder> {
       Column(
         crossAxisAlignment: widget.crossAxisAlignment,
         children: <Widget>[
-          Text(widget.childrenText),
           iconTextVertical(
             crossAxisAlignment: widget.crossAxisAlignment,
             leading: Text(field.label ?? "--", style: widget.labelStyle),
@@ -228,6 +227,7 @@ class _FormBuilderState extends State<FormBuilder> {
               ),
             ),
           ),
+          Text(widget.childrenText,style: widget.labelStyle),
           field.children != null && field.children!.isNotEmpty ? _itemSwitcher(items: field.children!) : const SizedBox()
         ],
       );
