@@ -199,10 +199,10 @@ class _FormBuilderState extends State<FormBuilder> {
           Text(widget.childrenText),
           iconTextVertical(
             crossAxisAlignment: widget.crossAxisAlignment,
-            leading: Text(field.label!, style: widget.labelStyle),
+            leading: Text(field.label ?? "--", style: widget.labelStyle),
             trailing: TextFormField(
               keyboardType: field.type == 5 ? TextInputType.number : TextInputType.text,
-              validator: field.isRequired! ? validateNotEmpty() : null,
+              validator: field.isRequired ?? false ? validateNotEmpty() : null,
               onChanged: (final String value) {
                 if (value != "") {
                   forms.removeWhere((final FormReadDto e) => e.id == field.id);
