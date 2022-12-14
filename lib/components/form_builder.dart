@@ -21,6 +21,8 @@ class FormBuilder extends StatefulWidget {
     this.spaceBetween,
     this.textFieldPadding = const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
     this.requiredText = "* This field is required",
+    this.childrenText = "Children: ",
+    this.crossAxisAlignment = CrossAxisAlignment.start,
     final Key? key,
   }) : super(key: key);
   final List<FormFieldReadDto> formFields;
@@ -39,6 +41,8 @@ class FormBuilder extends StatefulWidget {
   final double? spaceBetween;
   final EdgeInsets textFieldPadding;
   final String requiredText;
+  final String childrenText;
+  final CrossAxisAlignment crossAxisAlignment;
 
   @override
   _FormBuilderState createState() => _FormBuilderState();
@@ -48,10 +52,17 @@ class _FormBuilderState extends State<FormBuilder> {
   List<FormReadDto> forms = <FormReadDto>[];
 
   @override
-  Widget build(final BuildContext context) => column(
-        isScrollable: widget.isScrollable,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: widget.formFields.map((final FormFieldReadDto field) {
+  Widget build(final BuildContext context) => _itemSwitcher(items: widget.formFields, isChildren: false);
+
+  Widget _itemSwitcher({
+    required final List<FormFieldReadDto> items,
+    final bool isScrollable = false,
+    final bool isChildren = true,
+  }) =>
+      column(
+        isScrollable: isScrollable,
+        crossAxisAlignment: widget.crossAxisAlignment,
+        children: items.map((final FormFieldReadDto field) {
           switch (field.type) {
             case 0:
               return _textField(field: field).marginSymmetric(vertical: widget.spaceBetween ?? 4);
@@ -127,10 +138,10 @@ class _FormBuilderState extends State<FormBuilder> {
             radioValue.value = value!;
             if (radioValue.value) {
               forms.removeWhere((final FormReadDto e) => e.id == field.id);
-              forms.add(FormReadDto(id: field.id, title: "true",formField: field));
+              forms.add(FormReadDto(id: field.id, title: "true", formField: field));
             } else {
               forms.removeWhere((final FormReadDto e) => e.id == field.id);
-              forms.add(FormReadDto(id: field.id, title: "false",formField: field));
+              forms.add(FormReadDto(id: field.id, title: "false", formField: field));
             }
           },
         ),
@@ -144,7 +155,7 @@ class _FormBuilderState extends State<FormBuilder> {
     final List<String> selectedItems = <String>[];
     String result = "";
     return iconTextVertical(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: widget.crossAxisAlignment,
         leading: Text(field.label!, style: widget.labelStyle),
         trailing: GroupButton<String>(
           controller: controller,
@@ -166,7 +177,7 @@ class _FormBuilderState extends State<FormBuilder> {
             result = selectedItems.join(",");
             if (selectedItems.isNotEmpty) {
               forms.removeWhere((final FormReadDto e) => e.id == field.id);
-              forms.add(FormReadDto(id: field.id, title: result,formField: field));
+              forms.add(FormReadDto(id: field.id, title: result, formField: field));
             } else {
               forms.removeWhere((final FormReadDto e) => e.id == field.id);
             }
@@ -182,36 +193,43 @@ class _FormBuilderState extends State<FormBuilder> {
     required final FormFieldReadDto field,
     final int maxLine = 1,
   }) =>
-      iconTextVertical(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        leading: Text(field.label!, style: widget.labelStyle),
-        trailing: TextFormField(
-          keyboardType: field.type == 5 ? TextInputType.number : TextInputType.text,
-          validator: field.isRequired! ? validateNotEmpty() : null,
-          onChanged: (final String value) {
-            if (value != "") {
-              forms.removeWhere((final FormReadDto e) => e.id == field.id);
-              forms.add(FormReadDto(id: field.id, title: value,formField: field));
-              widget.onFormChanged(forms);
-            } else {
-              forms.removeWhere((final FormReadDto e) => e.id == field.id);
-              widget.onFormChanged(forms);
-            }
-          },
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          maxLines: maxLine,
-          decoration: InputDecoration(
-            counter: const SizedBox(),
-            fillColor: widget.textFieldFillColor,
-            hintStyle: context.textTheme.subtitle2!.copyWith(color: context.theme.hintColor),
-            filled: true,
-            contentPadding: widget.textFieldPadding,
-            focusedBorder: widget.focusedBorder,
-            enabledBorder: widget.enabledBorder,
-            errorBorder: widget.errorBorder,
-            focusedErrorBorder: widget.focusedErrorBorder,
+      Column(
+        crossAxisAlignment: widget.crossAxisAlignment,
+        children: <Widget>[
+          Text(widget.childrenText),
+          iconTextVertical(
+            crossAxisAlignment: widget.crossAxisAlignment,
+            leading: Text(field.label!, style: widget.labelStyle),
+            trailing: TextFormField(
+              keyboardType: field.type == 5 ? TextInputType.number : TextInputType.text,
+              validator: field.isRequired! ? validateNotEmpty() : null,
+              onChanged: (final String value) {
+                if (value != "") {
+                  forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                  forms.add(FormReadDto(id: field.id, title: value, formField: field));
+                  widget.onFormChanged(forms);
+                } else {
+                  forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                  widget.onFormChanged(forms);
+                }
+              },
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              maxLines: maxLine,
+              decoration: InputDecoration(
+                counter: const SizedBox(),
+                fillColor: widget.textFieldFillColor,
+                hintStyle: context.textTheme.subtitle2!.copyWith(color: context.theme.hintColor),
+                filled: true,
+                contentPadding: widget.textFieldPadding,
+                focusedBorder: widget.focusedBorder,
+                enabledBorder: widget.enabledBorder,
+                errorBorder: widget.errorBorder,
+                focusedErrorBorder: widget.focusedErrorBorder,
+              ),
+            ),
           ),
-        ),
+          field.children != null && field.children!.isNotEmpty ? _itemSwitcher(items: field.children!) : const SizedBox()
+        ],
       );
 
   void validateForm({required final GlobalKey<FormState> key, required final VoidCallback action}) {
