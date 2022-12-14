@@ -227,7 +227,7 @@ class _FormBuilderState extends State<FormBuilder> {
               ),
             ),
           ),
-          Text(widget.childrenText,style: widget.labelStyle),
+          field.children != null && field.children!.isNotEmpty ? Text(widget.childrenText, style: widget.labelStyle) : const SizedBox(),
           field.children != null && field.children!.isNotEmpty ? _itemSwitcher(items: field.children!) : const SizedBox()
         ],
       );
