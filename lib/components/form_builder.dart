@@ -201,6 +201,7 @@ class _FormBuilderState extends State<FormBuilder> {
                 itemCount: items.length,
                 itemBuilder: (final _, final int index) => TextButton(
                   onPressed: () {
+                    back();
                     setter(() {
                       if (field.type == 3) {
                         selectedItems.clear();
@@ -232,7 +233,7 @@ class _FormBuilderState extends State<FormBuilder> {
                   },
                   child: Text(items[index], style: widget.labelStyle),
                 ).alignAtCenter().marginSymmetric(vertical: 10, horizontal: 15),
-              ).expanded(),
+              ),
             ),
           ),
           child: Container(
@@ -257,7 +258,7 @@ class _FormBuilderState extends State<FormBuilder> {
             itemCount: selectedItems.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (final _, final int index) => Container(
-              margin: const EdgeInsets.all(6),
+              padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
                 border: Border.all(),
                 borderRadius: BorderRadius.circular(5),
