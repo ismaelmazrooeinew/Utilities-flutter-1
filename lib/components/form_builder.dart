@@ -232,14 +232,14 @@ class _FormBuilderState extends State<FormBuilder> {
                   },
                   child: Text(items[index], style: widget.labelStyle),
                 ).alignAtCenter().marginSymmetric(vertical: 10, horizontal: 15),
-              ),
+              ).expanded(),
             ),
           ),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             alignment: Alignment.center,
             width: screenWidth,
-            height: 80,
+            height: 70,
             decoration: widget.selectDialogDecoration ??
                 BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -251,42 +251,47 @@ class _FormBuilderState extends State<FormBuilder> {
             ),
           ),
         ),
-        trailing: ListView.builder(
-          itemBuilder: (final _, final int index) => Container(
-            margin: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              border: Border.all(),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: iconTextHorizontal(
-              spaceBetween: 4,
-              leading: Text(selectedItems[index], style: widget.labelStyle),
-              trailing: Icon(Icons.clear),
-            ),
-          ).onTap(
-            () {
-              if (selectedItems.isNotEmpty) setter(() => selectedItems.removeAt(index));
-              // update forms:
-              result = selectedItems.join(",");
-              if (selectedItems.isNotEmpty) {
-                if (isChildren) {
-                  children.removeWhere((final FormReadDto e) => e.id == field.id);
-                  children.add(FormReadDto(id: field.id, title: result, formField: field));
+        trailing: SizedBox(
+          height: 50,
+          child: ListView.builder(
+            itemCount: selectedItems.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (final _, final int index) => Container(
+              margin: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: iconTextHorizontal(
+                spaceBetween: 4,
+                leading: Text(selectedItems[index], style: widget.labelStyle),
+                trailing: Icon(Icons.clear),
+              ),
+            ).onTap(
+              () {
+                if (selectedItems.isNotEmpty) setter(() => selectedItems.removeAt(index));
+                // update forms:
+                result = selectedItems.join(",");
+                if (selectedItems.isNotEmpty) {
+                  if (isChildren) {
+                    children.removeWhere((final FormReadDto e) => e.id == field.id);
+                    children.add(FormReadDto(id: field.id, title: result, formField: field));
+                  } else {
+                    forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                    forms.add(FormReadDto(id: field.id, title: result, formField: field));
+                  }
                 } else {
-                  forms.removeWhere((final FormReadDto e) => e.id == field.id);
-                  forms.add(FormReadDto(id: field.id, title: result, formField: field));
+                  if (isChildren) {
+                    children.removeWhere((final FormReadDto e) => e.id == field.id);
+                  } else {
+                    forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                  }
                 }
-              } else {
-                if (isChildren) {
-                  children.removeWhere((final FormReadDto e) => e.id == field.id);
-                } else {
-                  forms.removeWhere((final FormReadDto e) => e.id == field.id);
-                }
-              }
-              forms.singleWhere((e) => e.id == field.id).children = children;
-              // finish
-              widget.onFormChanged(forms);
-            },
+                forms.singleWhere((e) => e.id == field.id).children = children;
+                // finish
+                widget.onFormChanged(forms);
+              },
+            ),
           ),
         ),
       ),
