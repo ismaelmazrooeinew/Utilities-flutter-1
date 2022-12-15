@@ -65,28 +65,31 @@ class _FormBuilderState extends State<FormBuilder> {
         children: items.map((final FormFieldReadDto field) {
           switch (field.type) {
             case 0:
-              return _textField(field: field).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+              return _textField(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 1:
-              return _textField(field: field, maxLine: 5).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+              return _textField(field: field, maxLine: 5, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 2:
-              return _groupButton(field: field).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+              return _groupButton(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 3:
-              return _groupButton(field: field).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+              return _groupButton(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 4:
-              return _radio(field: field).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+              return _radio(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 5:
-              return _textField(field: field).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+              return _textField(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 6:
-              return _filePicker(field: field).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+              return _filePicker(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 7:
-              return _imagePicker(field: field).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+              return _imagePicker(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             default:
               return const SizedBox();
           }
         }).toList(),
       );
 
-  Widget _filePicker({required final FormFieldReadDto field}) {
+  Widget _filePicker({
+    required final FormFieldReadDto field,
+    final bool isChildren = true,
+  }) {
     File selectedFile = File("");
     return StatefulBuilder(
       builder: (final _, final StateSetter setter) => iconTextVertical(
@@ -106,7 +109,10 @@ class _FormBuilderState extends State<FormBuilder> {
     );
   }
 
-  Widget _imagePicker({required final FormFieldReadDto field}) {
+  Widget _imagePicker({
+    required final FormFieldReadDto field,
+    final bool isChildren = true,
+  }) {
     File selectedFile = File("");
     return StatefulBuilder(
       builder: (final _, final StateSetter setter) => iconTextVertical(
@@ -126,7 +132,10 @@ class _FormBuilderState extends State<FormBuilder> {
     );
   }
 
-  Widget _radio({required final FormFieldReadDto field}) {
+  Widget _radio({
+    required final FormFieldReadDto field,
+    final bool isChildren = true,
+  }) {
     final RxBool radioValue = false.obs;
     return Obx(
       () => iconTextHorizontal(
@@ -137,11 +146,21 @@ class _FormBuilderState extends State<FormBuilder> {
           onChanged: (final bool? value) {
             radioValue.value = value!;
             if (radioValue.value) {
-              forms.removeWhere((final FormReadDto e) => e.id == field.id);
-              forms.add(FormReadDto(id: field.id, title: "true", formField: field));
+              if (isChildren) {
+                forms.singleWhere((element) => element.id == field.id).children!.removeWhere((e) => e.id == field.id);
+                forms.singleWhere((element) => element.id == field.id).children!.add(FormReadDto(id: field.id, title: "true", formField: field));
+              } else {
+                forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                forms.add(FormReadDto(id: field.id, title: "true", formField: field));
+              }
             } else {
-              forms.removeWhere((final FormReadDto e) => e.id == field.id);
-              forms.add(FormReadDto(id: field.id, title: "false", formField: field));
+              if (isChildren) {
+                forms.singleWhere((element) => element.id == field.id).children!.removeWhere((e) => e.id == field.id);
+                forms.singleWhere((element) => element.id == field.id).children!.add(FormReadDto(id: field.id, title: "false", formField: field));
+              } else {
+                forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                forms.add(FormReadDto(id: field.id, title: "false", formField: field));
+              }
             }
           },
         ),
@@ -149,7 +168,10 @@ class _FormBuilderState extends State<FormBuilder> {
     );
   }
 
-  Widget _groupButton({required final FormFieldReadDto field}) {
+  Widget _groupButton({
+    required final FormFieldReadDto field,
+    final bool isChildren = true,
+  }) {
     final GroupButtonController controller = GroupButtonController();
     final List<String> items = field.optionList!.split(",");
     final List<String> selectedItems = <String>[];
@@ -176,10 +198,19 @@ class _FormBuilderState extends State<FormBuilder> {
             }
             result = selectedItems.join(",");
             if (selectedItems.isNotEmpty) {
-              forms.removeWhere((final FormReadDto e) => e.id == field.id);
-              forms.add(FormReadDto(id: field.id, title: result, formField: field));
+              if (isChildren) {
+                forms.singleWhere((element) => element.id == field.id).children!.removeWhere((final FormReadDto e) => e.id == field.id);
+                forms.singleWhere((element) => element.id == field.id).children!.add(FormReadDto(id: field.id, title: result, formField: field));
+              } else {
+                forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                forms.add(FormReadDto(id: field.id, title: result, formField: field));
+              }
             } else {
-              forms.removeWhere((final FormReadDto e) => e.id == field.id);
+              if (isChildren) {
+                forms.singleWhere((element) => element.id == field.id).children!.removeWhere((final FormReadDto e) => e.id == field.id);
+              } else {
+                forms.removeWhere((final FormReadDto e) => e.id == field.id);
+              }
             }
             widget.onFormChanged(forms);
           },
@@ -192,6 +223,7 @@ class _FormBuilderState extends State<FormBuilder> {
   Widget _textField({
     required final FormFieldReadDto field,
     final int maxLine = 1,
+    final bool isChildren = true,
   }) =>
       Column(
         crossAxisAlignment: widget.crossAxisAlignment,
@@ -204,11 +236,20 @@ class _FormBuilderState extends State<FormBuilder> {
               validator: field.isRequired ?? false ? validateNotEmpty() : null,
               onChanged: (final String value) {
                 if (value != "") {
-                  forms.removeWhere((final FormReadDto e) => e.id == field.id);
-                  forms.add(FormReadDto(id: field.id, title: value, formField: field));
+                  if (isChildren) {
+                    forms.singleWhere((element) => element.id == field.id).children!.removeWhere((final FormReadDto e) => e.id == field.id);
+                    forms.singleWhere((element) => element.id == field.id).children!.add(FormReadDto(id: field.id, title: value, formField: field));
+                  } else {
+                    forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                    forms.add(FormReadDto(id: field.id, title: value, formField: field));
+                  }
                   widget.onFormChanged(forms);
                 } else {
-                  forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                  if (isChildren) {
+                    forms.singleWhere((element) => element.id == field.id).children!.removeWhere((final FormReadDto e) => e.id == field.id);
+                  } else {
+                    forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                  }
                   widget.onFormChanged(forms);
                 }
               },
