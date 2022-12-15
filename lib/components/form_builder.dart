@@ -136,7 +136,7 @@ class _FormBuilderState extends State<FormBuilder> {
     required final FormFieldReadDto field,
     final bool isChildren = true,
   }) {
-    List<FormReadDto> children = forms.singleWhere((e) => e.id == field.id).children;
+    List<FormReadDto> children = forms.isNotEmpty ? forms.singleWhere((e) => e.id == field.id).children : [];
     final RxBool radioValue = false.obs;
     return Obx(
       () => iconTextHorizontal(
@@ -173,7 +173,7 @@ class _FormBuilderState extends State<FormBuilder> {
     required final FormFieldReadDto field,
     final bool isChildren = true,
   }) {
-    List<FormReadDto> children = forms.singleWhere((e) => e.id == field.id).children;
+    List<FormReadDto> children = forms.isNotEmpty ? forms.singleWhere((e) => e.id == field.id).children : [];
     final GroupButtonController controller = GroupButtonController();
     final List<String> items = field.optionList!.split(",");
     final List<String> selectedItems = <String>[];
@@ -227,7 +227,7 @@ class _FormBuilderState extends State<FormBuilder> {
     final int maxLine = 1,
     final bool isChildren = true,
   }) {
-    List<FormReadDto> children = forms.singleWhere((e) => e.id == field.id).children;
+    List<FormReadDto> children = forms.isNotEmpty ? forms.singleWhere((e) => e.id == field.id).children : [];
     return Column(
       crossAxisAlignment: widget.crossAxisAlignment,
       children: <Widget>[
@@ -240,7 +240,7 @@ class _FormBuilderState extends State<FormBuilder> {
             onChanged: (final String value) {
               if (value != "") {
                 if (isChildren) {
-                  if(children.isNotEmpty) children.removeWhere((final FormReadDto e) => e.id == field.id);
+                  if (children.isNotEmpty) children.removeWhere((final FormReadDto e) => e.id == field.id);
                   children.add(FormReadDto(id: field.id, title: value, formField: field));
                 } else {
                   forms.removeWhere((final FormReadDto e) => e.id == field.id);
@@ -249,7 +249,7 @@ class _FormBuilderState extends State<FormBuilder> {
                 widget.onFormChanged(forms);
               } else {
                 if (isChildren) {
-                  if(children.isNotEmpty) children.removeWhere((final FormReadDto e) => e.id == field.id);
+                  if (children.isNotEmpty) children.removeWhere((final FormReadDto e) => e.id == field.id);
                 } else {
                   forms.removeWhere((final FormReadDto e) => e.id == field.id);
                 }
