@@ -136,6 +136,7 @@ class _FormBuilderState extends State<FormBuilder> {
     required final FormFieldReadDto field,
     final bool isChildren = true,
   }) {
+    List<FormReadDto> children = forms.singleWhere((e) => e.id == field.id).children;
     final RxBool radioValue = false.obs;
     return Obx(
       () => iconTextHorizontal(
@@ -148,15 +149,15 @@ class _FormBuilderState extends State<FormBuilder> {
             if (radioValue.value) {
               if (isChildren) {
                 forms.singleWhere((element) => element.id == field.id).children.removeWhere((e) => e.id == field.id);
-                forms.singleWhere((e) => e.id == field.id).children.add(FormReadDto(id: field.id, title: "true", formField: field));
+                children.add(FormReadDto(id: field.id, title: "true", formField: field));
               } else {
                 forms.removeWhere((final FormReadDto e) => e.id == field.id);
                 forms.add(FormReadDto(id: field.id, title: "true", formField: field));
               }
             } else {
               if (isChildren) {
-                forms.singleWhere((e) => e.id == field.id).children.removeWhere((e) => e.id == field.id);
-                forms.singleWhere((e) => e.id == field.id).children.add(FormReadDto(id: field.id, title: "false", formField: field));
+                children.removeWhere((e) => e.id == field.id);
+                children.add(FormReadDto(id: field.id, title: "false", formField: field));
               } else {
                 forms.removeWhere((final FormReadDto e) => e.id == field.id);
                 forms.add(FormReadDto(id: field.id, title: "false", formField: field));
@@ -172,6 +173,7 @@ class _FormBuilderState extends State<FormBuilder> {
     required final FormFieldReadDto field,
     final bool isChildren = true,
   }) {
+    List<FormReadDto> children = forms.singleWhere((e) => e.id == field.id).children;
     final GroupButtonController controller = GroupButtonController();
     final List<String> items = field.optionList!.split(",");
     final List<String> selectedItems = <String>[];
@@ -199,15 +201,15 @@ class _FormBuilderState extends State<FormBuilder> {
             result = selectedItems.join(",");
             if (selectedItems.isNotEmpty) {
               if (isChildren) {
-                forms.singleWhere((e) => e.id == field.id).children.removeWhere((final FormReadDto e) => e.id == field.id);
-                forms.singleWhere((e) => e.id == field.id).children.add(FormReadDto(id: field.id, title: result, formField: field));
+                children.removeWhere((final FormReadDto e) => e.id == field.id);
+                children.add(FormReadDto(id: field.id, title: result, formField: field));
               } else {
                 forms.removeWhere((final FormReadDto e) => e.id == field.id);
                 forms.add(FormReadDto(id: field.id, title: result, formField: field));
               }
             } else {
               if (isChildren) {
-                forms.singleWhere((e) => e.id == field.id).children.removeWhere((final FormReadDto e) => e.id == field.id);
+                children.removeWhere((final FormReadDto e) => e.id == field.id);
               } else {
                 forms.removeWhere((final FormReadDto e) => e.id == field.id);
               }
@@ -224,54 +226,56 @@ class _FormBuilderState extends State<FormBuilder> {
     required final FormFieldReadDto field,
     final int maxLine = 1,
     final bool isChildren = true,
-  }) =>
-      Column(
-        crossAxisAlignment: widget.crossAxisAlignment,
-        children: <Widget>[
-          iconTextVertical(
-            crossAxisAlignment: widget.crossAxisAlignment,
-            leading: Text(field.label ?? "--", style: widget.labelStyle),
-            trailing: TextFormField(
-              keyboardType: field.type == 5 ? TextInputType.number : TextInputType.text,
-              validator: field.isRequired ?? false ? validateNotEmpty() : null,
-              onChanged: (final String value) {
-                if (value != "") {
-                  if (isChildren) {
-                    if(forms.singleWhere((e) => e.id == field.id).children.isNotEmpty) forms.singleWhere((e) => e.id == field.id).children.removeWhere((final FormReadDto e) => e.id == field.id);
-                    forms.singleWhere((e) => e.id == field.id).children.add(FormReadDto(id: field.id, title: value, formField: field));
-                  } else {
-                    forms.removeWhere((final FormReadDto e) => e.id == field.id);
-                    forms.add(FormReadDto(id: field.id, title: value, formField: field));
-                  }
-                  widget.onFormChanged(forms);
+  }) {
+    List<FormReadDto> children = forms.singleWhere((e) => e.id == field.id).children;
+    return Column(
+      crossAxisAlignment: widget.crossAxisAlignment,
+      children: <Widget>[
+        iconTextVertical(
+          crossAxisAlignment: widget.crossAxisAlignment,
+          leading: Text(field.label ?? "--", style: widget.labelStyle),
+          trailing: TextFormField(
+            keyboardType: field.type == 5 ? TextInputType.number : TextInputType.text,
+            validator: field.isRequired ?? false ? validateNotEmpty() : null,
+            onChanged: (final String value) {
+              if (value != "") {
+                if (isChildren) {
+                  if(children.isNotEmpty) children.removeWhere((final FormReadDto e) => e.id == field.id);
+                  children.add(FormReadDto(id: field.id, title: value, formField: field));
                 } else {
-                  if (isChildren) {
-                    if(forms.singleWhere((e) => e.id == field.id).children.isNotEmpty) forms.singleWhere((e) => e.id == field.id).children.removeWhere((final FormReadDto e) => e.id == field.id);
-                  } else {
-                    forms.removeWhere((final FormReadDto e) => e.id == field.id);
-                  }
-                  widget.onFormChanged(forms);
+                  forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                  forms.add(FormReadDto(id: field.id, title: value, formField: field));
                 }
-              },
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              maxLines: maxLine,
-              decoration: InputDecoration(
-                counter: const SizedBox(),
-                fillColor: widget.textFieldFillColor,
-                hintStyle: context.textTheme.subtitle2!.copyWith(color: context.theme.hintColor),
-                filled: true,
-                contentPadding: widget.textFieldPadding,
-                focusedBorder: widget.focusedBorder,
-                enabledBorder: widget.enabledBorder,
-                errorBorder: widget.errorBorder,
-                focusedErrorBorder: widget.focusedErrorBorder,
-              ),
+                widget.onFormChanged(forms);
+              } else {
+                if (isChildren) {
+                  if(children.isNotEmpty) children.removeWhere((final FormReadDto e) => e.id == field.id);
+                } else {
+                  forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                }
+                widget.onFormChanged(forms);
+              }
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            maxLines: maxLine,
+            decoration: InputDecoration(
+              counter: const SizedBox(),
+              fillColor: widget.textFieldFillColor,
+              hintStyle: context.textTheme.subtitle2!.copyWith(color: context.theme.hintColor),
+              filled: true,
+              contentPadding: widget.textFieldPadding,
+              focusedBorder: widget.focusedBorder,
+              enabledBorder: widget.enabledBorder,
+              errorBorder: widget.errorBorder,
+              focusedErrorBorder: widget.focusedErrorBorder,
             ),
           ),
-          field.children != null && field.children!.isNotEmpty ? Text(widget.childrenText, style: widget.labelStyle) : const SizedBox(),
-          field.children != null && field.children!.isNotEmpty ? _itemSwitcher(items: field.children!, isChildren: true).marginSymmetric(horizontal: 10) : const SizedBox()
-        ],
-      );
+        ),
+        field.children != null && field.children!.isNotEmpty ? Text(widget.childrenText, style: widget.labelStyle) : const SizedBox(),
+        field.children != null && field.children!.isNotEmpty ? _itemSwitcher(items: field.children!, isChildren: true).marginSymmetric(horizontal: 10) : const SizedBox()
+      ],
+    );
+  }
 
   void validateForm({required final GlobalKey<FormState> key, required final VoidCallback action}) {
     if (key.currentState!.validate()) action();
