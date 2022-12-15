@@ -147,16 +147,16 @@ class _FormBuilderState extends State<FormBuilder> {
             radioValue.value = value!;
             if (radioValue.value) {
               if (isChildren) {
-                forms.singleWhere((element) => element.id == field.id).children!.removeWhere((e) => e.id == field.id);
-                forms.singleWhere((element) => element.id == field.id).children!.add(FormReadDto(id: field.id, title: "true", formField: field));
+                forms.singleWhere((element) => element.id == field.id).children?.removeWhere((e) => e.id == field.id);
+                forms.singleWhere((element) => element.id == field.id).children?.add(FormReadDto(id: field.id, title: "true", formField: field));
               } else {
                 forms.removeWhere((final FormReadDto e) => e.id == field.id);
                 forms.add(FormReadDto(id: field.id, title: "true", formField: field));
               }
             } else {
               if (isChildren) {
-                forms.singleWhere((element) => element.id == field.id).children!.removeWhere((e) => e.id == field.id);
-                forms.singleWhere((element) => element.id == field.id).children!.add(FormReadDto(id: field.id, title: "false", formField: field));
+                forms.singleWhere((element) => element.id == field.id).children?.removeWhere((e) => e.id == field.id);
+                forms.singleWhere((element) => element.id == field.id).children?.add(FormReadDto(id: field.id, title: "false", formField: field));
               } else {
                 forms.removeWhere((final FormReadDto e) => e.id == field.id);
                 forms.add(FormReadDto(id: field.id, title: "false", formField: field));
@@ -199,15 +199,15 @@ class _FormBuilderState extends State<FormBuilder> {
             result = selectedItems.join(",");
             if (selectedItems.isNotEmpty) {
               if (isChildren) {
-                forms.singleWhere((element) => element.id == field.id).children!.removeWhere((final FormReadDto e) => e.id == field.id);
-                forms.singleWhere((element) => element.id == field.id).children!.add(FormReadDto(id: field.id, title: result, formField: field));
+                forms.singleWhere((element) => element.id == field.id).children?.removeWhere((final FormReadDto e) => e.id == field.id);
+                forms.singleWhere((element) => element.id == field.id).children?.add(FormReadDto(id: field.id, title: result, formField: field));
               } else {
                 forms.removeWhere((final FormReadDto e) => e.id == field.id);
                 forms.add(FormReadDto(id: field.id, title: result, formField: field));
               }
             } else {
               if (isChildren) {
-                forms.singleWhere((element) => element.id == field.id).children!.removeWhere((final FormReadDto e) => e.id == field.id);
+                forms.singleWhere((element) => element.id == field.id).children?.removeWhere((final FormReadDto e) => e.id == field.id);
               } else {
                 forms.removeWhere((final FormReadDto e) => e.id == field.id);
               }
@@ -237,8 +237,8 @@ class _FormBuilderState extends State<FormBuilder> {
               onChanged: (final String value) {
                 if (value != "") {
                   if (isChildren) {
-                    forms.singleWhere((element) => element.id == field.id).children!.removeWhere((final FormReadDto e) => e.id == field.id);
-                    forms.singleWhere((element) => element.id == field.id).children!.add(FormReadDto(id: field.id, title: value, formField: field));
+                    forms.singleWhere((element) => element.id == field.id).children?.removeWhere((final FormReadDto e) => e.id == field.id);
+                    forms.singleWhere((element) => element.id == field.id).children?.add(FormReadDto(id: field.id, title: value, formField: field));
                   } else {
                     forms.removeWhere((final FormReadDto e) => e.id == field.id);
                     forms.add(FormReadDto(id: field.id, title: value, formField: field));
@@ -246,7 +246,7 @@ class _FormBuilderState extends State<FormBuilder> {
                   widget.onFormChanged(forms);
                 } else {
                   if (isChildren) {
-                    forms.singleWhere((element) => element.id == field.id).children!.removeWhere((final FormReadDto e) => e.id == field.id);
+                    forms.singleWhere((element) => element.id == field.id).children?.removeWhere((final FormReadDto e) => e.id == field.id);
                   } else {
                     forms.removeWhere((final FormReadDto e) => e.id == field.id);
                   }
@@ -269,7 +269,7 @@ class _FormBuilderState extends State<FormBuilder> {
             ),
           ),
           field.children != null && field.children!.isNotEmpty ? Text(widget.childrenText, style: widget.labelStyle) : const SizedBox(),
-          field.children != null && field.children!.isNotEmpty ? _itemSwitcher(items: field.children!).marginSymmetric(horizontal: 10) : const SizedBox()
+          field.children != null && field.children!.isNotEmpty ? _itemSwitcher(items: field.children!, isChildren: true).marginSymmetric(horizontal: 10) : const SizedBox()
         ],
       );
 
