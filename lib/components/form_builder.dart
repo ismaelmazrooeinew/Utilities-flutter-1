@@ -23,7 +23,9 @@ class FormBuilder extends StatefulWidget {
     this.requiredText = "* This field is required",
     this.childrenText = "Children: ",
     this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.selectDialogDecoration,
     final Key? key,
+    this.selectDialogText,
   }) : super(key: key);
   final List<FormFieldReadDto> formFields;
   final Function(List<FormReadDto> forms) onFormChanged;
@@ -43,6 +45,8 @@ class FormBuilder extends StatefulWidget {
   final String requiredText;
   final String childrenText;
   final CrossAxisAlignment crossAxisAlignment;
+  final BoxDecoration? selectDialogDecoration;
+  final String? selectDialogText;
 
   @override
   _FormBuilderState createState() => _FormBuilderState();
@@ -69,9 +73,9 @@ class _FormBuilderState extends State<FormBuilder> {
             case 1:
               return _textField(field: field, maxLine: 5, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 2:
-              return _groupButton(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+              return _selectDialog(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 3:
-              return _groupButton(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+              return _selectDialog(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 4:
               return _radio(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 5:
@@ -169,6 +173,126 @@ class _FormBuilderState extends State<FormBuilder> {
     );
   }
 
+  Widget _selectDialog({
+    required final FormFieldReadDto field,
+    final bool isChildren = true,
+  }) {
+    final List<String> items = field.optionList!.split(",");
+    final List<String> selectedItems = <String>[];
+    List<FormReadDto> children = forms.isNotEmpty ? forms.singleWhere((e) => e.id == field.id).children : [];
+    String result = "";
+    return StatefulBuilder(
+      builder: (final _, StateSetter setter) => iconTextVertical(
+        leading: GestureDetector(
+          onTap: () => showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            clipBehavior: Clip.hardEdge,
+            backgroundColor: Colors.transparent,
+            builder: (final BuildContext context) => Container(
+              margin: MediaQuery.of(context).viewInsets,
+              height: 300,
+              decoration: BoxDecoration(
+                color: context.theme.backgroundColor.withOpacity(0.9),
+                borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+              ),
+              padding: const EdgeInsets.all(20),
+              child: ListView.builder(
+                itemCount: items.length,
+                itemBuilder: (final _, final int index) => TextButton(
+                  onPressed: () {
+                    setter(() {
+                      if (field.type == 3) {
+                        selectedItems.clear();
+                        selectedItems.add(items[index]);
+                      } else {
+                        selectedItems.add(items[index]);
+                      }
+                    });
+                    // update forms:
+                    result = selectedItems.join(",");
+                    if (selectedItems.isNotEmpty) {
+                      if (isChildren) {
+                        children.removeWhere((final FormReadDto e) => e.id == field.id);
+                        children.add(FormReadDto(id: field.id, title: result, formField: field));
+                      } else {
+                        forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                        forms.add(FormReadDto(id: field.id, title: result, formField: field));
+                      }
+                    } else {
+                      if (isChildren) {
+                        children.removeWhere((final FormReadDto e) => e.id == field.id);
+                      } else {
+                        forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                      }
+                    }
+                    forms.singleWhere((e) => e.id == field.id).children = children;
+                    // finish
+                    widget.onFormChanged(forms);
+                  },
+                  child: Text(items[index], style: widget.labelStyle),
+                ).alignAtCenter().marginSymmetric(vertical: 10, horizontal: 15),
+              ),
+            ),
+          ),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            alignment: Alignment.center,
+            width: screenWidth,
+            height: 80,
+            decoration: widget.selectDialogDecoration ??
+                BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: context.theme.primaryColor),
+                ),
+            child: iconTextHorizontal(
+              leading: Text(widget.selectDialogText ?? "Select item", style: widget.labelStyle).alignAtCenterLeft().expanded(),
+              trailing: Icon(Icons.keyboard_arrow_down),
+            ),
+          ),
+        ),
+        trailing: ListView.builder(
+          itemBuilder: (final _, final int index) => Container(
+            margin: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: iconTextHorizontal(
+              spaceBetween: 4,
+              leading: Text(selectedItems[index], style: widget.labelStyle),
+              trailing: Icon(Icons.clear),
+            ),
+          ).onTap(
+            () {
+              if (selectedItems.isNotEmpty) setter(() => selectedItems.removeAt(index));
+              // update forms:
+              result = selectedItems.join(",");
+              if (selectedItems.isNotEmpty) {
+                if (isChildren) {
+                  children.removeWhere((final FormReadDto e) => e.id == field.id);
+                  children.add(FormReadDto(id: field.id, title: result, formField: field));
+                } else {
+                  forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                  forms.add(FormReadDto(id: field.id, title: result, formField: field));
+                }
+              } else {
+                if (isChildren) {
+                  children.removeWhere((final FormReadDto e) => e.id == field.id);
+                } else {
+                  forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                }
+              }
+              forms.singleWhere((e) => e.id == field.id).children = children;
+              // finish
+              widget.onFormChanged(forms);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _groupButton({
     required final FormFieldReadDto field,
     final bool isChildren = true,
@@ -214,6 +338,7 @@ class _FormBuilderState extends State<FormBuilder> {
                 forms.removeWhere((final FormReadDto e) => e.id == field.id);
               }
             }
+            forms.singleWhere((e) => e.id == field.id).children = children;
             widget.onFormChanged(forms);
           },
           buttons: items,
@@ -273,8 +398,18 @@ class _FormBuilderState extends State<FormBuilder> {
             ),
           ),
         ),
-        field.children != null && field.children!.isNotEmpty ? Text(widget.childrenText, style: widget.labelStyle) : const SizedBox(),
-        field.children != null && field.children!.isNotEmpty ? _itemSwitcher(items: field.children!, isChildren: true).marginSymmetric(horizontal: 10) : const SizedBox()
+        field.children != null && field.children!.isNotEmpty
+            ? Text(
+                widget.childrenText,
+                style: widget.labelStyle,
+              )
+            : const SizedBox(),
+        field.children != null && field.children!.isNotEmpty
+            ? _itemSwitcher(
+                items: field.children!,
+                isChildren: true,
+              ).marginSymmetric(horizontal: 10)
+            : const SizedBox()
       ],
     );
   }
