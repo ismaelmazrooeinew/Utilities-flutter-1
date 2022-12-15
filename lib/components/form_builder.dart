@@ -259,6 +259,7 @@ class _FormBuilderState extends State<FormBuilder> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (final _, final int index) => Container(
               padding: const EdgeInsets.all(6),
+              margin: const EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
                 border: Border.all(),
                 borderRadius: BorderRadius.circular(5),
