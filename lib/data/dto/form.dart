@@ -12,7 +12,7 @@ class FormReadDto {
   final String? id;
   final String? title;
   final FormFieldReadDto? formField;
-  final List<FormReadDto> children;
+  List<FormReadDto> children;
 
   factory FormReadDto.fromJson(String str) => FormReadDto.fromMap(json.decode(str));
 
