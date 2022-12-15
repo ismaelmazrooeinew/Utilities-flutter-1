@@ -6,13 +6,13 @@ class FormReadDto {
     this.id,
     this.title,
     this.formField,
-    this.children,
+    this.children = const <FormReadDto>[],
   });
 
   final String? id;
   final String? title;
   final FormFieldReadDto? formField;
-  final List<FormReadDto>? children;
+  final List<FormReadDto> children;
 
   factory FormReadDto.fromJson(String str) => FormReadDto.fromMap(json.decode(str));
 
@@ -22,14 +22,14 @@ class FormReadDto {
         id: json["id"],
         title: json["title"],
         formField: json["formField"] == null ? null : FormFieldReadDto.fromMap(json["formField"]),
-        children: json["children"] == null ? null : List<FormReadDto>.from(json["children"].map((x) => FormReadDto.fromMap(x))),
+        children: json["children"] == null ? [] : List<FormReadDto>.from(json["children"].map((x) => FormReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
         "id": id,
         "title": title,
         "formField": formField == null ? null : formField!.toMap(),
-        "children": children == null ? null : List<dynamic>.from(children!.map((e) => e.toMap())),
+        "children": List<dynamic>.from(children.map((e) => e.toMap())),
       };
 }
 
