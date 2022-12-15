@@ -246,6 +246,7 @@ class _FormBuilderState extends State<FormBuilder> {
                   forms.removeWhere((final FormReadDto e) => e.id == field.id);
                   forms.add(FormReadDto(id: field.id, title: value, formField: field));
                 }
+                forms.singleWhere((e) => e.id == field.id).children = children;
                 widget.onFormChanged(forms);
               } else {
                 if (isChildren) {
@@ -253,6 +254,7 @@ class _FormBuilderState extends State<FormBuilder> {
                 } else {
                   forms.removeWhere((final FormReadDto e) => e.id == field.id);
                 }
+                forms.singleWhere((e) => e.id == field.id).children = children;
                 widget.onFormChanged(forms);
               }
             },
