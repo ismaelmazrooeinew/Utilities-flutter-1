@@ -22,6 +22,8 @@ enum CategoryType {
   province("province"),
   model("model"),
   insurance("insurance"),
+  active("active"),
+  archive("archive"),
   speciality("speciality");
 
   const CategoryType(this.title);
