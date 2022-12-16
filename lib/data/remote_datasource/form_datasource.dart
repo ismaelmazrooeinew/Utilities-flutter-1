@@ -81,13 +81,13 @@ class FormDataSource {
 
   Future<void> deleteFormField({
     required final String id,
-    required final Function(GenericResponse) onResponse,
+    required final VoidCallback onResponse,
     required final Function(GenericResponse response) onError,
     final Function(Object error)? failure,
   }) async =>
       httpDelete(
         url: "$baseUrl/Form/DeleteFormField/$id",
-        action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
+        action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure:(Object error)=> failure!,
       );
