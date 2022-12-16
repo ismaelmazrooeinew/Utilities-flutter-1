@@ -86,7 +86,7 @@ class FormDataSource {
     final Function(Object error)? failure,
   }) async =>
       httpDelete(
-        url: "$baseUrl/DeleteFormField/$id",
+        url: "$baseUrl/Form/DeleteFormField/$id",
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure:(Object error)=> failure!,
