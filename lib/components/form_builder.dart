@@ -26,6 +26,9 @@ class FormBuilder extends StatefulWidget {
     this.selectDialogDecoration,
     final Key? key,
     this.selectDialogText,
+    this.selectDateDecoration,
+    this.selectDateText,
+    this.selectTimeText,
   }) : super(key: key);
   final List<FormFieldReadDto> formFields;
   final Function(List<FormReadDto> forms) onFormChanged;
@@ -47,6 +50,9 @@ class FormBuilder extends StatefulWidget {
   final CrossAxisAlignment crossAxisAlignment;
   final BoxDecoration? selectDialogDecoration;
   final String? selectDialogText;
+  final String? selectDateText;
+  final String? selectTimeText;
+  final BoxDecoration? selectDateDecoration;
 
   @override
   _FormBuilderState createState() => _FormBuilderState();
@@ -84,11 +90,78 @@ class _FormBuilderState extends State<FormBuilder> {
               return _filePicker(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 7:
               return _imagePicker(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+            case 8:
+              return _textField(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+            case 9:
+              return _textField(field: field, isChildren: isChildren).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+            case 10:
+              return _textField(field: field, isChildren: isChildren, obscureText: true).marginSymmetric(vertical: widget.spaceBetween ?? 4);
+            case 11:
+              return _dateTimePicker(field: field);
+            case 12:
+              return _dateTimePicker(field: field);
+            case 13:
+              return _dateTimePicker(field: field);
             default:
               return const SizedBox();
           }
         }).toList(),
       );
+
+  Widget _dateTimePicker({required final FormFieldReadDto field}) {
+    List<FormReadDto> children = forms.isNotEmpty ? forms.singleWhere((e) => e.id == field.id).children : [];
+    String dateText = widget.selectDateText ?? "Select Date";
+    String timeText = widget.selectTimeText ?? "Select Time";
+    String dateTimeText = widget.selectTimeText ?? "Select Date Time";
+    DateTime? date = DateTime.now();
+    TimeOfDay? time = TimeOfDay(hour: 12, minute: 00);
+    return iconTextVertical(
+      leading: Text(field.label!, style: widget.labelStyle),
+      trailing: StatefulBuilder(
+        builder: (final _, final StateSetter setter) => Container(
+          width: screenWidth,
+          height: 55,
+          decoration: widget.selectDateDecoration ??
+              BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: context.theme.primaryColor,
+              ),
+          child: Center(
+            child: Text(field.type == 11
+                    ? dateText
+                    : field.type == 12
+                        ? timeText
+                        : dateTimeText)
+                .bodyText1(),
+          ),
+        ).onTap(() async {
+          if (field.type == 11) {
+            date = await showDatePicker(
+              context: context,
+              initialDate: DateTime.now(),
+              firstDate: DateTime.now(),
+              lastDate: DateTime(DateTime.now().year + 5),
+            );
+            setter(() => dateText = "${date!.year} / ${date!.month} / ${date!.day}");
+            forms.singleWhere((element) => element.id == field.id).children.removeWhere((e) => e.id == field.id);
+            children.add(FormReadDto(id: field.id, title: dateText, formField: field));
+            forms.singleWhere((e) => e.id == field.id).children = children;
+            widget.onFormChanged(forms);
+          } else if (field.type == 12) {
+            time = await showTimePicker(
+              context: context,
+              initialTime: TimeOfDay(hour: 12, minute: 00),
+            );
+            setter(() => timeText = "${time!.hour} : ${time!.minute}}");
+            forms.singleWhere((element) => element.id == field.id).children.removeWhere((e) => e.id == field.id);
+            children.add(FormReadDto(id: field.id, title: timeText, formField: field));
+            forms.singleWhere((e) => e.id == field.id).children = children;
+            widget.onFormChanged(forms);
+          }
+        }),
+      ),
+    );
+  }
 
   Widget _filePicker({
     required final FormFieldReadDto field,
@@ -358,6 +431,7 @@ class _FormBuilderState extends State<FormBuilder> {
     required final FormFieldReadDto field,
     final int maxLine = 1,
     final bool isChildren = true,
+    final bool obscureText = false,
   }) {
     List<FormReadDto> children = forms.isNotEmpty ? forms.singleWhere((e) => e.id == field.id).children : [];
     return Column(
@@ -367,7 +441,11 @@ class _FormBuilderState extends State<FormBuilder> {
           crossAxisAlignment: widget.crossAxisAlignment,
           leading: Text(field.label ?? "--", style: widget.labelStyle),
           trailing: TextFormField(
-            keyboardType: field.type == 5 ? TextInputType.number : TextInputType.text,
+            keyboardType: field.type == 5
+                ? TextInputType.number
+                : field.type == 9
+                    ? TextInputType.phone
+                    : TextInputType.text,
             validator: field.isRequired ?? false ? validateNotEmpty() : null,
             onChanged: (final String value) {
               if (value != "") {
@@ -390,6 +468,7 @@ class _FormBuilderState extends State<FormBuilder> {
                 widget.onFormChanged(forms);
               }
             },
+            obscureText: obscureText,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             maxLines: maxLine,
             decoration: InputDecoration(
