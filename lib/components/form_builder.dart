@@ -97,18 +97,18 @@ class _FormBuilderState extends State<FormBuilder> {
             case 10:
               return _textField(field: field, isChildren: isChildren, obscureText: true).marginSymmetric(vertical: widget.spaceBetween ?? 4);
             case 11:
-              return _dateTimePicker(field: field);
+              return _dateTimePicker(field: field, isChildren: isChildren);
             case 12:
-              return _dateTimePicker(field: field);
+              return _dateTimePicker(field: field, isChildren: isChildren);
             case 13:
-              return _dateTimePicker(field: field);
+              return _dateTimePicker(field: field, isChildren: isChildren);
             default:
               return const SizedBox();
           }
         }).toList(),
       );
 
-  Widget _dateTimePicker({required final FormFieldReadDto field}) {
+  Widget _dateTimePicker({required final FormFieldReadDto field, final bool isChildren = true}) {
     List<FormReadDto> children = forms.isNotEmpty ? forms.singleWhere((e) => e.id == field.id).children : [];
     String dateText = widget.selectDateText ?? "Select Date";
     String timeText = widget.selectTimeText ?? "Select Time";
@@ -144,9 +144,14 @@ class _FormBuilderState extends State<FormBuilder> {
               lastDate: DateTime(DateTime.now().year + 5),
             );
             setter(() => dateText = "${date!.day} / ${date!.month} / ${date!.year}");
-            children.removeWhere((e) => e.id == field.id);
-            children.add(FormReadDto(id: field.id, title: dateText, formField: field));
-            forms.singleWhere((e) => e.id == field.id).children = children;
+            if (isChildren) {
+              children.removeWhere((e) => e.id == field.id);
+              children.add(FormReadDto(id: field.id, title: dateText, formField: field));
+              forms.singleWhere((e) => e.id == field.id).children = children;
+            } else {
+              forms.removeWhere((final FormReadDto e) => e.id == field.id);
+              forms.add(FormReadDto(id: field.id, title: dateText, formField: field));
+            }
             widget.onFormChanged(forms);
           } else if (field.type == 12) {
             time = await showTimePicker(
@@ -154,9 +159,14 @@ class _FormBuilderState extends State<FormBuilder> {
               initialTime: TimeOfDay(hour: 12, minute: 00),
             );
             setter(() => timeText = "${time!.minute} : ${time!.hour}");
-            children.removeWhere((e) => e.id == field.id);
-            children.add(FormReadDto(id: field.id, title: timeText, formField: field));
-            forms.singleWhere((e) => e.id == field.id).children = children;
+            if (isChildren) {
+              children.removeWhere((e) => e.id == field.id);
+              children.add(FormReadDto(id: field.id, title: timeText, formField: field));
+              forms.singleWhere((e) => e.id == field.id).children = children;
+            } else {
+              forms.removeWhere((final FormReadDto e) => e.id == field.id);
+              forms.add(FormReadDto(id: field.id, title: timeText, formField: field));
+            }
             widget.onFormChanged(forms);
           }
         }),
