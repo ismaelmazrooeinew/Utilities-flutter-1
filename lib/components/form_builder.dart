@@ -29,6 +29,7 @@ class FormBuilder extends StatefulWidget {
     this.selectDateDecoration,
     this.selectDateText,
     this.selectTimeText,
+    this.selectDateTimeTextColor,
   }) : super(key: key);
   final List<FormFieldReadDto> formFields;
   final Function(List<FormReadDto> forms) onFormChanged;
@@ -53,6 +54,7 @@ class FormBuilder extends StatefulWidget {
   final String? selectDateText;
   final String? selectTimeText;
   final BoxDecoration? selectDateDecoration;
+  final Color? selectDateTimeTextColor;
 
   @override
   _FormBuilderState createState() => _FormBuilderState();
@@ -117,7 +119,7 @@ class _FormBuilderState extends State<FormBuilder> {
     TimeOfDay? time = TimeOfDay(hour: 12, minute: 00);
     return iconTextVertical(
       crossAxisAlignment: widget.crossAxisAlignment,
-      leading: Text(field.label!, style: widget.labelStyle),
+      leading: Text(field.label!, style: widget.labelStyle?.copyWith(color: widget.selectDateTimeTextColor)),
       trailing: StatefulBuilder(
         builder: (final _, final StateSetter setter) => Container(
           width: screenWidth,
@@ -128,12 +130,14 @@ class _FormBuilderState extends State<FormBuilder> {
                 color: context.theme.primaryColor,
               ),
           child: Center(
-            child: Text(field.type == 11
-                    ? dateText
-                    : field.type == 12
-                        ? timeText
-                        : dateTimeText)
-                .bodyText1(),
+            child: Text(
+              field.type == 11
+                  ? dateText
+                  : field.type == 12
+                      ? timeText
+                      : dateTimeText,
+              style: widget.labelStyle,
+            ).bodyText1(),
           ),
         ).onTap(() async {
           if (field.type == 11) {
@@ -267,118 +271,121 @@ class _FormBuilderState extends State<FormBuilder> {
     final List<String> selectedItems = <String>[];
     List<FormReadDto> children = forms.isNotEmpty ? forms.singleWhere((e) => e.id == field.id).children : [];
     String result = "";
-    return StatefulBuilder(
-      builder: (final _, StateSetter setter) => iconTextVertical(
-        leading: GestureDetector(
-          onTap: () => showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            clipBehavior: Clip.hardEdge,
-            backgroundColor: Colors.transparent,
-            builder: (final BuildContext context) => Container(
-              margin: MediaQuery.of(context).viewInsets,
-              height: 300,
-              decoration: BoxDecoration(
-                color: context.theme.backgroundColor.withOpacity(0.9),
-                borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-              ),
-              padding: const EdgeInsets.all(20),
-              child: ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (final _, final int index) => TextButton(
-                  onPressed: () {
-                    back();
-                    setter(() {
-                      if (field.type == 3) {
-                        selectedItems.clear();
-                        selectedItems.add(items[index]);
-                      } else {
-                        selectedItems.add(items[index]);
-                      }
-                    });
-                    // update forms:
-                    result = selectedItems.join(",");
-                    if (selectedItems.isNotEmpty) {
-                      if (isChildren) {
-                        children.removeWhere((final FormReadDto e) => e.id == field.id);
-                        children.add(FormReadDto(id: field.id, title: result, formField: field));
-                      } else {
-                        forms.removeWhere((final FormReadDto e) => e.id == field.id);
-                        forms.add(FormReadDto(id: field.id, title: result, formField: field));
-                      }
-                    } else {
-                      if (isChildren) {
-                        children.removeWhere((final FormReadDto e) => e.id == field.id);
-                      } else {
-                        forms.removeWhere((final FormReadDto e) => e.id == field.id);
-                      }
-                    }
-                    forms.singleWhere((e) => e.id == field.id).children = children;
-                    // finish
-                    widget.onFormChanged(forms);
-                  },
-                  child: Text(items[index], style: widget.labelStyle),
-                ).alignAtCenter().marginSymmetric(vertical: 10, horizontal: 15),
-              ),
-            ),
-          ),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            alignment: Alignment.center,
-            width: screenWidth,
-            height: 70,
-            decoration: widget.selectDialogDecoration ??
-                BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: context.theme.primaryColor),
+    return iconTextVertical(
+      leading: Text(field.label!, style: widget.labelStyle),
+      trailing: StatefulBuilder(
+        builder: (final _, StateSetter setter) => iconTextVertical(
+          leading: GestureDetector(
+            onTap: () => showModalBottomSheet(
+              isScrollControlled: true,
+              context: context,
+              clipBehavior: Clip.hardEdge,
+              backgroundColor: Colors.transparent,
+              builder: (final BuildContext context) => Container(
+                margin: MediaQuery.of(context).viewInsets,
+                height: 300,
+                decoration: BoxDecoration(
+                  color: context.theme.backgroundColor.withOpacity(0.9),
+                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
                 ),
-            child: iconTextHorizontal(
-              leading: Text(widget.selectDialogText ?? "Select item", style: widget.labelStyle).alignAtCenterLeft().expanded(),
-              trailing: Icon(Icons.keyboard_arrow_down),
+                padding: const EdgeInsets.all(20),
+                child: ListView.builder(
+                  itemCount: items.length,
+                  itemBuilder: (final _, final int index) => TextButton(
+                    onPressed: () {
+                      back();
+                      setter(() {
+                        if (field.type == 3) {
+                          selectedItems.clear();
+                          selectedItems.add(items[index]);
+                        } else {
+                          selectedItems.add(items[index]);
+                        }
+                      });
+                      // update forms:
+                      result = selectedItems.join(",");
+                      if (selectedItems.isNotEmpty) {
+                        if (isChildren) {
+                          children.removeWhere((final FormReadDto e) => e.id == field.id);
+                          children.add(FormReadDto(id: field.id, title: result, formField: field));
+                        } else {
+                          forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                          forms.add(FormReadDto(id: field.id, title: result, formField: field));
+                        }
+                      } else {
+                        if (isChildren) {
+                          children.removeWhere((final FormReadDto e) => e.id == field.id);
+                        } else {
+                          forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                        }
+                      }
+                      forms.singleWhere((e) => e.id == field.id).children = children;
+                      // finish
+                      widget.onFormChanged(forms);
+                    },
+                    child: Text(items[index], style: widget.labelStyle),
+                  ).alignAtCenter().marginSymmetric(vertical: 10, horizontal: 15),
+                ),
+              ),
+            ),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              alignment: Alignment.center,
+              width: screenWidth,
+              height: 70,
+              decoration: widget.selectDialogDecoration ??
+                  BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: context.theme.primaryColor),
+                  ),
+              child: iconTextHorizontal(
+                leading: Text(widget.selectDialogText ?? "Select item", style: widget.labelStyle).alignAtCenterLeft().expanded(),
+                trailing: Icon(Icons.keyboard_arrow_down),
+              ),
             ),
           ),
-        ),
-        trailing: SizedBox(
-          height: 50,
-          child: ListView.builder(
-            itemCount: selectedItems.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (final _, final int index) => Container(
-              padding: const EdgeInsets.all(6),
-              margin: const EdgeInsets.symmetric(horizontal: 8),
-              decoration: BoxDecoration(
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: iconTextHorizontal(
-                spaceBetween: 4,
-                leading: Text(selectedItems[index], style: widget.labelStyle),
-                trailing: Icon(Icons.clear),
-              ),
-            ).onTap(
-              () {
-                if (selectedItems.isNotEmpty) setter(() => selectedItems.removeAt(index));
-                // update forms:
-                result = selectedItems.join(",");
-                if (selectedItems.isNotEmpty) {
-                  if (isChildren) {
-                    children.removeWhere((final FormReadDto e) => e.id == field.id);
-                    children.add(FormReadDto(id: field.id, title: result, formField: field));
+          trailing: SizedBox(
+            height: 50,
+            child: ListView.builder(
+              itemCount: selectedItems.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (final _, final int index) => Container(
+                padding: const EdgeInsets.all(6),
+                margin: const EdgeInsets.symmetric(horizontal: 8),
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: iconTextHorizontal(
+                  spaceBetween: 4,
+                  leading: Text(selectedItems[index], style: widget.labelStyle),
+                  trailing: Icon(Icons.clear),
+                ),
+              ).onTap(
+                () {
+                  if (selectedItems.isNotEmpty) setter(() => selectedItems.removeAt(index));
+                  // update forms:
+                  result = selectedItems.join(",");
+                  if (selectedItems.isNotEmpty) {
+                    if (isChildren) {
+                      children.removeWhere((final FormReadDto e) => e.id == field.id);
+                      children.add(FormReadDto(id: field.id, title: result, formField: field));
+                    } else {
+                      forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                      forms.add(FormReadDto(id: field.id, title: result, formField: field));
+                    }
                   } else {
-                    forms.removeWhere((final FormReadDto e) => e.id == field.id);
-                    forms.add(FormReadDto(id: field.id, title: result, formField: field));
+                    if (isChildren) {
+                      children.removeWhere((final FormReadDto e) => e.id == field.id);
+                    } else {
+                      forms.removeWhere((final FormReadDto e) => e.id == field.id);
+                    }
                   }
-                } else {
-                  if (isChildren) {
-                    children.removeWhere((final FormReadDto e) => e.id == field.id);
-                  } else {
-                    forms.removeWhere((final FormReadDto e) => e.id == field.id);
-                  }
-                }
-                forms.singleWhere((e) => e.id == field.id).children = children;
-                // finish
-                widget.onFormChanged(forms);
-              },
+                  forms.singleWhere((e) => e.id == field.id).children = children;
+                  // finish
+                  widget.onFormChanged(forms);
+                },
+              ),
             ),
           ),
         ),
