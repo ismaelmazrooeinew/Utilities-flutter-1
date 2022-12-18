@@ -19,7 +19,7 @@ class AppSettingsDataSource {
         url: "$baseUrl/AppSettings",
         action: (Response<dynamic> response) => onResponse(GenericResponse<AppSettingsDto>.fromJson(response.data, fromMap: AppSettingsDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDto.fromMap)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> readAppSettings2({
