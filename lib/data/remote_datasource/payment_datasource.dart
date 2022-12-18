@@ -16,7 +16,7 @@ class PaymentDataSource {
     required final String amount,
     required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "${baseUrl}Payment/IncreaseWalletBalance/$amount",
@@ -32,7 +32,7 @@ class PaymentDataSource {
     required final String productId,
     required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
-     final Function(Object error)? failure,
+     final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "${baseUrl}Payment/BuyProduct/$productId",

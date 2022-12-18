@@ -13,7 +13,7 @@ class GlobalSearchDataSource {
     required final GlobalSearchCreateDto dto,
     required final Function(GenericResponse<GlobalSearchReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/GlobalSearch",

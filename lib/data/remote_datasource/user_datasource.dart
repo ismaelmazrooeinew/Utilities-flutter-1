@@ -14,141 +14,141 @@ class UserDataSource {
     required final UserCreateUpdateDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/user",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (Object error) => failure!,
+        failure: (String error) => failure!,
       );
 
   Future<void> checkUsername({
     required final String userName,
     required final VoidCallback onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/user/CheckUserName/$userName",
         action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (Object error) => failure!,
+        failure: (String error) => failure!,
       );
 
   Future<void> update({
     required final UserCreateUpdateDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPut(
         url: "$baseUrl/user",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (Object error) => failure!,
+        failure: (String error) => failure!,
       );
 
   Future<void> read({
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/user",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (Object error) => failure!,
+        failure: (String error) => failure!,
       );
 
   Future<void> readById({
     required final String id,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/user/$id",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (Object error) => failure!,
+        failure: (String error) => failure!,
       );
 
   Future<void> delete({
     required final String id,
     required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpDelete(
         url: "$baseUrl/user/$id",
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (Object error) => failure!,
+        failure: (String error) => failure!,
       );
 
   Future<void> deleteFromTeam({
     required final String teamId,
     required final VoidCallback onResponse,
     required final VoidCallback onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpDelete(
         url: "$baseUrl/user/DeleteFromTeam/$teamId",
         action: (Response response) => onResponse(),
         error: (Response response) => onError(),
-        failure: (Object error) => failure!,
+        failure: (String error) => failure!,
       );
 
   Future<void> activeMobile({
     required final ActiveMobileDto dto,
     required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/user/ActiveMobile",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (Object error) => failure!,
+        failure: (String error) => failure!,
       );
 
   Future<void> getVerificationCodeForLogin({
     required final GetMobileVerificationCodeForLoginDto dto,
     required final Function(GenericResponse<String>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/user/GetVerificationCodeForLogin",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (Object error) => failure!,
+        failure: (String error) => failure!,
       );
 
   Future<void> loginWithEmail({
     required final LoginWithEmail dto,
     required final Function(GenericResponse<String>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/user/LoginWithEmail",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (Object error) => failure!,
+        failure: (String error) => failure!,
       );
 
   Future<void> loginWithPassword({
     required final LoginWithPassword dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/user/LoginWithPassword",
@@ -162,7 +162,7 @@ class UserDataSource {
     required final VerifyMobileForLoginDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/user/VerifyCodeForLogin",
@@ -175,7 +175,7 @@ class UserDataSource {
   Future<void> getProfile({
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/user/GetProfile",
@@ -187,7 +187,7 @@ class UserDataSource {
   Future<void> getGrowthRate({
     required final Function(GenericResponse<GrowthRateReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/user/GrowthRate",
@@ -200,7 +200,7 @@ class UserDataSource {
     required final String userName,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/user/GetProfileByUsername/$userName",
@@ -213,7 +213,7 @@ class UserDataSource {
     required final UserCreateUpdateDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPut(
         url: "$baseUrl/user/UpdateProfile",
@@ -227,7 +227,7 @@ class UserDataSource {
     required final UserFilterDto dto,
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/user/Filter",

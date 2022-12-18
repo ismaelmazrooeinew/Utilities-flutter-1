@@ -12,7 +12,7 @@ class BlockDataSource {
     required final String userId,
     required final Function(GenericResponse<dynamic>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Block?userId=$userId",
@@ -24,7 +24,7 @@ class BlockDataSource {
   Future<void> read({
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Block",
@@ -36,7 +36,7 @@ class BlockDataSource {
   Future<void> readMine({
     required final Function(GenericResponse<UserReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Block/ReadMine",

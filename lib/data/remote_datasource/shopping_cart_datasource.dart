@@ -20,7 +20,7 @@ class ShoppingCartDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:(String error)=> failure!,
       );
 
   Future<void> update({
@@ -34,7 +34,7 @@ class ShoppingCartDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:(String error)=> failure!,
       );
 
   Future<void> read({
@@ -46,20 +46,20 @@ class ShoppingCartDataSource {
         url: "$baseUrl/ShoppingCart",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:(String error)=> failure!,
       );
 
   Future<void> readById({
     required final String id,
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/ShoppingCart/$id",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:(String error)=> failure!,
       );
 
   Future<void> delete({
@@ -67,12 +67,12 @@ class ShoppingCartDataSource {
     required final String itemId,
     required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpDelete(
         url: "$baseUrl/ShoppingCart/$id/$itemId",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:(String error)=> failure!,
       );
 }

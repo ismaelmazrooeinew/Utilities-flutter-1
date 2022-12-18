@@ -13,7 +13,7 @@ class ChatDataSource {
     required final ChatCreateDto dto,
     required final Function(GenericResponse<ChatReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Chat",
@@ -26,7 +26,7 @@ class ChatDataSource {
   Future<void> read({
     required final Function(GenericResponse<ChatReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Chat",
@@ -39,7 +39,7 @@ class ChatDataSource {
     required final String userId,
     required final Function(GenericResponse<ChatReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Chat/$userId",

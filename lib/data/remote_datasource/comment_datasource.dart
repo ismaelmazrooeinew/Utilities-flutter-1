@@ -13,7 +13,7 @@ class CommentDataSource {
     required final CommentCreateUpdateDto dto,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Comment",
@@ -27,7 +27,7 @@ class CommentDataSource {
     required final String commentId,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Comment/ToggleLikeComment/$commentId",
@@ -41,7 +41,7 @@ class CommentDataSource {
     required final CommentCreateUpdateDto dto,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPut(
         url: "$baseUrl/Comment?id=$id",
@@ -55,7 +55,7 @@ class CommentDataSource {
     required final String id,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Comment/$id",
@@ -68,7 +68,7 @@ class CommentDataSource {
     required final String id,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Comment/ReadByProductId/$id",
@@ -81,7 +81,7 @@ class CommentDataSource {
     required final String id,
     required final Function(String) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpDelete(
         url: "$baseUrl/Comment?id=$id",
