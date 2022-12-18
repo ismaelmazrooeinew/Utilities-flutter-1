@@ -42,7 +42,7 @@ Future<void> request(
     }
   } catch (e) {
     if (failure != null) {
-      failure(e.toString());
+      failure('error');
     }
   }
 
