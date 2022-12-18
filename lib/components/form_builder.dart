@@ -143,7 +143,7 @@ class _FormBuilderState extends State<FormBuilder> {
               firstDate: DateTime.now(),
               lastDate: DateTime(DateTime.now().year + 5),
             );
-            setter(() => dateText = "${date!.year} / ${date!.month} / ${date!.day}");
+            setter(() => dateText = "${date!.day} / ${date!.month} / ${date!.year}");
             forms.singleWhere((element) => element.id == field.id).children.removeWhere((e) => e.id == field.id);
             children.add(FormReadDto(id: field.id, title: dateText, formField: field));
             forms.singleWhere((e) => e.id == field.id).children = children;
@@ -153,7 +153,7 @@ class _FormBuilderState extends State<FormBuilder> {
               context: context,
               initialTime: TimeOfDay(hour: 12, minute: 00),
             );
-            setter(() => timeText = "${time!.hour} : ${time!.minute}}");
+            setter(() => timeText = "${time!.minute} : ${time!.hour}");
             forms.singleWhere((element) => element.id == field.id).children.removeWhere((e) => e.id == field.id);
             children.add(FormReadDto(id: field.id, title: timeText, formField: field));
             forms.singleWhere((e) => e.id == field.id).children = children;
