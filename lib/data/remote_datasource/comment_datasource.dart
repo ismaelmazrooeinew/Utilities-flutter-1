@@ -13,27 +13,27 @@ class CommentDataSource {
     required final CommentCreateUpdateDto dto,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Comment",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: failure,
       );
 
   Future<void> toggleLike({
     required final String commentId,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Comment/ToggleLikeComment/$commentId",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: failure,
       );
 
   Future<void> update({
@@ -41,52 +41,52 @@ class CommentDataSource {
     required final CommentCreateUpdateDto dto,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPut(
         url: "$baseUrl/Comment?id=$id",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: failure,
       );
 
   Future<void> readById({
     required final String id,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Comment/$id",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: failure,
       );
 
   Future<void> readByProductId({
     required final String id,
     required final Function(GenericResponse<CommentReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/Comment/ReadByProductId/$id",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: failure,
       );
 
   Future<void> delete({
     required final String id,
     required final Function(String) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function(Object error)? failure,
+    final Function(String error)? failure,
   }) async =>
       httpDelete(
         url: "$baseUrl/Comment?id=$id",
         action: (Response response) => onResponse(response.statusCode.toString()),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure: failure,
       );
 }
