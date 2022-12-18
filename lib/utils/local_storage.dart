@@ -9,7 +9,7 @@ String? getString(final String key) => GetStorage().read(key);
 
 bool? getBool(final String key) => GetStorage().read(key);
 
-bool? isLogin() => GetStorage().read(UtilitiesConstants.userLogin);
+bool isLogin() => GetStorage().read(UtilitiesConstants.userLogin) ?? false;
 
 double? getDouble(final String key) => GetStorage().read(key);
 
