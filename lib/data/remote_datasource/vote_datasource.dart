@@ -20,7 +20,7 @@ class VoteDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: Vote.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> createVoteField({
@@ -34,7 +34,7 @@ class VoteDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<VoteField>.fromJson(response.data, fromMap: VoteField.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> read({
@@ -47,6 +47,6 @@ class VoteDataSource {
         url: "$baseUrl/VoteField/$id",
         action: (Response response) => onResponse(GenericResponse<VoteField>.fromJson(response.data, fromMap: VoteField.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 }

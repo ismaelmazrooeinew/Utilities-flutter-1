@@ -24,6 +24,6 @@ class TransactionDataSource {
         },
         action: (Response response) => onResponse(GenericResponse<TransactionReadDto>.fromJson(response.data, fromMap: TransactionReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 }

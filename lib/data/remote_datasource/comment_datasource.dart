@@ -20,7 +20,7 @@ class CommentDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> toggleLike({
@@ -33,7 +33,7 @@ class CommentDataSource {
         url: "$baseUrl/Comment/ToggleLikeComment/$commentId",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> update({
@@ -48,7 +48,7 @@ class CommentDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> readById({
@@ -61,7 +61,7 @@ class CommentDataSource {
         url: "$baseUrl/Comment/$id",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> readByProductId({
@@ -74,7 +74,7 @@ class CommentDataSource {
         url: "$baseUrl/Comment/ReadByProductId/$id",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> delete({
@@ -87,6 +87,6 @@ class CommentDataSource {
         url: "$baseUrl/Comment?id=$id",
         action: (Response response) => onResponse(response.statusCode.toString()),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 }

@@ -20,7 +20,7 @@ class NotificationDataSource {
         url: "$baseUrl/Notification",
         action: (Response response) => onResponse(GenericResponse<NotificationReadDto>.fromJson(response.data, fromMap: NotificationReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> updateSeenStatus({
@@ -36,6 +36,6 @@ class NotificationDataSource {
         body: notificationIds,
         action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 }

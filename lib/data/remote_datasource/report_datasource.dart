@@ -20,7 +20,7 @@ class ReportDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.data, fromMap: ReportReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> readById({
@@ -33,7 +33,7 @@ class ReportDataSource {
         url: "$baseUrl/Report/$id",
         action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.data, fromMap: ReportReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> delete({
@@ -46,7 +46,7 @@ class ReportDataSource {
         url: "$baseUrl/Report/$id",
         action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.data, fromMap: ReportReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> filter({
@@ -60,6 +60,6 @@ class ReportDataSource {
         body: filter,
         action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.data, fromMap: ReportReadDto.fromMap)),
         error: (Response response) {},
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 }

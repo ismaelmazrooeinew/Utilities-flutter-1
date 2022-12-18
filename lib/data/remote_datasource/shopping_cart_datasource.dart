@@ -13,40 +13,40 @@ class ShoppingCartDataSource {
     required final ShoppingCartReadDto dto,
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/ShoppingCart",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> update({
     required final ShoppingCartReadDto dto,
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function? failure,
+    final Function(String error)? failure,
   }) async =>
       httpPut(
         url: "$baseUrl/ShoppingCart",
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> read({
     required final Function(GenericResponse<ShoppingCartReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
-    final Function? failure,
+    final Function(String error)? failure,
   }) async =>
       httpGet(
         url: "$baseUrl/ShoppingCart",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> readById({
@@ -59,7 +59,7 @@ class ShoppingCartDataSource {
         url: "$baseUrl/ShoppingCart/$id",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 
   Future<void> delete({
@@ -73,6 +73,6 @@ class ShoppingCartDataSource {
         url: "$baseUrl/ShoppingCart/$id/$itemId",
         action: (Response response) => onResponse(GenericResponse<ShoppingCartReadDto>.fromJson(response.data, fromMap: ShoppingCartReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(String error)=> failure!,
+        failure: failure!,
       );
 }

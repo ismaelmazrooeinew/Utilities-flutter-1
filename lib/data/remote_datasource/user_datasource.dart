@@ -21,7 +21,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> checkUsername({
@@ -34,7 +34,7 @@ class UserDataSource {
         url: "$baseUrl/user/CheckUserName/$userName",
         action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> update({
@@ -48,7 +48,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> read({
@@ -60,7 +60,7 @@ class UserDataSource {
         url: "$baseUrl/user",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> readById({
@@ -73,7 +73,7 @@ class UserDataSource {
         url: "$baseUrl/user/$id",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> delete({
@@ -86,7 +86,7 @@ class UserDataSource {
         url: "$baseUrl/user/$id",
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> deleteFromTeam({
@@ -99,7 +99,7 @@ class UserDataSource {
         url: "$baseUrl/user/DeleteFromTeam/$teamId",
         action: (Response response) => onResponse(),
         error: (Response response) => onError(),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> activeMobile({
@@ -113,7 +113,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> getVerificationCodeForLogin({
@@ -127,7 +127,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> loginWithEmail({
@@ -141,7 +141,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> loginWithPassword({
@@ -193,7 +193,7 @@ class UserDataSource {
         url: "$baseUrl/user/GrowthRate",
         action: (Response response) => onResponse(GenericResponse<GrowthRateReadDto>.fromJson(response.data, fromMap: GrowthRateReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> getProfileByUserName({
@@ -206,7 +206,7 @@ class UserDataSource {
         url: "$baseUrl/user/GetProfileByUsername/$userName",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> updateProfile({
@@ -220,7 +220,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> filter({
@@ -234,6 +234,6 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 }

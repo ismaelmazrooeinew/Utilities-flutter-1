@@ -62,7 +62,7 @@ Future<void> httpGet({
       action,
       error,
       headers: headers,
-      failure: (String error) => failure!,
+      failure: failure!,
     );
 
 Future<void> httpPost({
@@ -93,7 +93,7 @@ Future<void> httpPut({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
-      failure: (String error) => failure!,
+      failure: failure!,
     );
 
 Future<void> patch({
@@ -113,7 +113,7 @@ Future<void> patch({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
-      failure: (String error) => failure!,
+      failure: failure!,
     );
 
 Future<void> httpDelete({
@@ -129,7 +129,7 @@ Future<void> httpDelete({
       action,
       error,
       headers: headers,
-      failure: (String error) => failure!,
+      failure: failure!,
     );
 
 extension HTTP on Response<dynamic> {
