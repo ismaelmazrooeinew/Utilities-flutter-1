@@ -169,7 +169,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:failure!,
+        failure: failure,
       );
 
   Future<void> getProfile({
