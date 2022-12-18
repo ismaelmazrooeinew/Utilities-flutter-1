@@ -48,7 +48,7 @@ class FormDataSource {
         url: "$baseUrl/Form/$id",
         action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:(String error)=> failure!,
       );
 
   Future<void> createFormField({
@@ -62,7 +62,7 @@ class FormDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<FormReadDto>.fromJson(response.data, fromMap: FormReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:(String error)=> failure!,
       );
 
   Future<void> updateFormField({
@@ -76,7 +76,7 @@ class FormDataSource {
         body: dto,
         action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure:(Object error)=> failure!,
+        failure:(String error)=> failure!,
       );
 
   Future<void> deleteFormField({

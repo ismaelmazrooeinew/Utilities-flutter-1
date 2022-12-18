@@ -73,7 +73,7 @@ class FollowBookmarkDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>()),
         error: (Response response) => onError(GenericResponse()),
-        failure:(Object error)=> failure!,
+        failure:(String error)=> failure!,
       );
 
   Future<void> toggleFollow({
@@ -87,6 +87,6 @@ class FollowBookmarkDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>()),
         error: (Response response) => onError(GenericResponse()),
-        failure:(Object error)=> failure!,
+        failure:(String error)=> failure!,
       );
 }

@@ -71,7 +71,7 @@ Future<void> httpGet({
       action,
       error,
       headers: headers,
-      failure: (Object error) => failure!,
+      failure: (String error) => failure!,
     );
 
 Future<void> httpPost({
@@ -103,7 +103,7 @@ Future<void> httpPut({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
-      failure: (Object error) => failure!,
+      failure: (String error) => failure!,
     );
 
 Future<void> patch({
@@ -123,7 +123,7 @@ Future<void> patch({
       body: body,
       encodeBody: encodeBody,
       headers: headers,
-      failure: (Object error) => failure!,
+      failure: (String error) => failure!,
     );
 
 Future<void> httpDelete({
