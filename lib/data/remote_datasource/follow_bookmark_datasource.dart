@@ -19,7 +19,7 @@ class FollowBookmarkDataSource {
         url: "$baseUrl/FollowBookmark/ReadBookmarks",
         action: (Response response) => onResponse(GenericResponse<BookmarkReadDto>.fromJson(response.data, fromMap: BookmarkReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> readFollowers({
@@ -32,7 +32,7 @@ class FollowBookmarkDataSource {
         url: "$baseUrl/FollowBookmark/ReadFollowers/$userId",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse()),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> readFollowings({
@@ -45,7 +45,7 @@ class FollowBookmarkDataSource {
         url: "$baseUrl/FollowBookmark/ReadFollowings/$userId",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse()),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> removeFollowing({
@@ -59,7 +59,7 @@ class FollowBookmarkDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>()),
         error: (Response response) => onError(GenericResponse()),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> toggleBookmark({
@@ -73,7 +73,7 @@ class FollowBookmarkDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>()),
         error: (Response response) => onError(GenericResponse()),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> toggleFollow({
@@ -87,6 +87,6 @@ class FollowBookmarkDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<String>()),
         error: (Response response) => onError(GenericResponse()),
-        failure: failure!,
+        failure: failure,
       );
 }

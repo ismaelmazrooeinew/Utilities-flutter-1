@@ -20,7 +20,7 @@ class ContentDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.data, fromMap: ContentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> update({
@@ -34,7 +34,7 @@ class ContentDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.data, fromMap: ContentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> read({
@@ -46,7 +46,7 @@ class ContentDataSource {
         url: "$baseUrl/Content",
         action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.data, fromMap: ContentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> readById({
@@ -59,7 +59,7 @@ class ContentDataSource {
         url: "$baseUrl/Content/$id",
         action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.data, fromMap: ContentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> delete({
@@ -72,6 +72,6 @@ class ContentDataSource {
         url: "$baseUrl/Content/$id",
         action: (Response response) => onResponse(GenericResponse<ContentReadDto>.fromJson(response.data, fromMap: ContentReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 }

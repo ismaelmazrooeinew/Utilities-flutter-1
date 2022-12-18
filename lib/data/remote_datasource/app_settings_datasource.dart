@@ -44,6 +44,6 @@ class AppSettingsDataSource {
         url: "$baseUrl/AppSettings/ReadLocation",
         action: (Response response) => onResponse(GenericResponse<LocationReadDto>.fromJson(response.data, fromMap: LocationReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data, fromMap: AppSettingsDto.fromMap)),
-        failure: failure!,
+        failure: failure,
       );
 }

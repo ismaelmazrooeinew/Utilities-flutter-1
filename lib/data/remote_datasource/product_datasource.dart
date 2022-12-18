@@ -20,7 +20,7 @@ class ProductDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> update({
@@ -34,7 +34,7 @@ class ProductDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> read({
@@ -46,7 +46,7 @@ class ProductDataSource {
         url: "$baseUrl/ProductV2",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> readById({
@@ -59,7 +59,7 @@ class ProductDataSource {
         url: "$baseUrl/ProductV2/$id",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> delete({
@@ -72,7 +72,7 @@ class ProductDataSource {
         url: "$baseUrl/ProductV2/$id",
         action: (Response response) => onResponse(GenericResponse<dynamic>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse<dynamic>.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> filter({
@@ -86,7 +86,7 @@ class ProductDataSource {
         body: filter,
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> readMine({
@@ -99,6 +99,6 @@ class ProductDataSource {
         url: "$baseUrl/ProductV2/Mine",
         action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.data, fromMap: ProductReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 }

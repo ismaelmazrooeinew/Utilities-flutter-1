@@ -20,7 +20,7 @@ class CategoryDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> update({
@@ -34,7 +34,7 @@ class CategoryDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> read({
@@ -46,7 +46,7 @@ class CategoryDataSource {
         url: "$baseUrl/Category",
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 
   Future<void> delete({
@@ -59,6 +59,6 @@ class CategoryDataSource {
         url: "$baseUrl/Category/$id",
         action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure!,
+        failure: failure,
       );
 }
