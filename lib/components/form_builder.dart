@@ -119,7 +119,7 @@ class _FormBuilderState extends State<FormBuilder> {
     TimeOfDay? time = TimeOfDay(hour: 12, minute: 00);
     return iconTextVertical(
       crossAxisAlignment: widget.crossAxisAlignment,
-      leading: Text(field.label!, style: widget.labelStyle?.copyWith(color: widget.selectDateTimeTextColor)),
+      leading: Text(field.label!, style: widget.labelStyle),
       trailing: StatefulBuilder(
         builder: (final _, final StateSetter setter) => Container(
           width: screenWidth,
@@ -136,7 +136,7 @@ class _FormBuilderState extends State<FormBuilder> {
                   : field.type == 12
                       ? timeText
                       : dateTimeText,
-              style: widget.labelStyle,
+              style: widget.labelStyle?.copyWith(color: widget.selectDateTimeTextColor),
             ).bodyText1(),
           ),
         ).onTap(() async {
