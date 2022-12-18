@@ -62,7 +62,7 @@ Future<void> httpGet({
       action,
       error,
       headers: headers,
-      failure: failure!,
+      failure: failure,
     );
 
 Future<void> httpPost({
