@@ -33,7 +33,7 @@ class MediaDataSource {
   }) async {
     Dio dio = Dio();
     files?.forEach((final File file) async {
-      final Response<dynamic> i = await dio.post(
+       await dio.post(
         '$baseUrl/Media',
         data: FormData.fromMap({
           'Files': await MultipartFile.fromFile(file.path, filename: 'image.jpg'),
@@ -47,24 +47,13 @@ class MediaDataSource {
           'NotificationId': notificationId,
           'Size': size,
         }),
-        //  {
-        //   'Files': await MultipartFile.fromFile(file.path, filename: 'image.jpg'),
-        //   // 'Files': <MultipartFile>[await MultipartFile(file.path, filename: file.path)],
-        //   'UseCase': useCase,
-        //   'CategoryId': categoryId,
-        //   'ContentId': contentId,
-        //   'ProductId': productId,
-        //   'UserId': userId,
-        //   'NotificationId': notificationId,
-        //   'Size': size,
-        // },
         options: Options(headers: <String, String>{
           "Authorization": getString(UtilitiesConstants.token) ?? "",
         }),
       );
     });
     links?.forEach((final String link) async {
-      final Response<dynamic> i = await dio.post(
+       await dio.post(
         '$baseUrl/Media',
         data: {
           'Links': <String>[link],
@@ -86,21 +75,20 @@ class MediaDataSource {
   }
 
   Future<void> createServer({
-    final List<File>? files,
-    final List<String>? links,
     required final String useCase,
     required final VoidCallback action,
+    required final Function(GenericResponse response) onError,
+    final ProgressCallback? onSendProgress,
+    final List<File>? files,
+    final List<String>? links,
     final String? categoryId,
     final String? contentId,
     final String? productId,
     final String? userId,
     final String? chatId,
     final String? notificationId,
-    ProgressCallback? onSendProgress,
     final String? size,
     Duration? timeout,
-    required final Function(GenericResponse, bool isEnd) onResponse,
-    required final Function(GenericResponse response) onError,
   }) async {
     Dio dio = Dio();
     for (int i = 0; i < files!.length; i++) {
@@ -133,28 +121,6 @@ class MediaDataSource {
           onError(GenericResponse.fromJson(response.data));
         }
       }
-
-      // httpPost(
-      //   url: "$baseUrl/Media",
-      //   body: FormData(
-      //     <String, dynamic>{
-      //       'Files': <MultipartFile>[MultipartFile(file, filename: file.path)],
-      //       'UseCase': useCase,
-      //       'CategoryId': categoryId,
-      //       'ContentId': contentId,
-      //       'ProductId': productId,
-      //       'UserId': userId,
-      //       'NotificationId': notificationId,
-      //       'Size': size,
-      //     },
-      //   ),
-      //   // action: (Response response) => onResponse(GenericResponse<ProductReadDto>.fromJson(response.body, fromMap: ProductReadDto.fromMap), i == files.length - 1),
-      //   action: (Response response) => i == files.length - 1 ? action() : null,
-      //   error: (Response response) => onError(GenericResponse.fromJson(response.body)),
-      //   headers: <String, String>{
-      //     "Authorization": getString(UtilitiesConstants.token) ?? "",
-      //   },
-      // );
     }
   }
 
@@ -255,7 +221,7 @@ class MediaDataSource {
     if (links != null) {
       Dio dio = Dio();
       links.forEach((final String link) async {
-        final Response<dynamic> i = await dio.post(
+         await dio.post(
           '$baseUrl/Media',
           data: {
             'Links': <String>[link],
@@ -343,7 +309,7 @@ class MediaDataSource {
     if (links != null) {
       Dio dio = Dio();
       links.forEach((final String link) async {
-        final Response<dynamic> i = await dio.post(
+         await dio.post(
           '$baseUrl/Media',
           data: {
             'Links': <String>[link],
