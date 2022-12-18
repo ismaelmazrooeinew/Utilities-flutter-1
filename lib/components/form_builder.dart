@@ -137,7 +137,7 @@ class _FormBuilderState extends State<FormBuilder> {
                       ? timeText
                       : dateTimeText,
               style: widget.labelStyle?.copyWith(color: widget.selectDateTimeTextColor),
-            ).bodyText1(),
+            ),
           ),
         ).onTap(() async {
           if (field.type == 11) {
