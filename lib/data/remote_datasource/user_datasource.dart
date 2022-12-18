@@ -155,7 +155,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> verifyCodeForLogin({
@@ -169,7 +169,7 @@ class UserDataSource {
         body: dto,
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure:failure!,
       );
 
   Future<void> getProfile({
@@ -181,7 +181,7 @@ class UserDataSource {
         url: "$baseUrl/user/GetProfile",
         action: (Response response) => onResponse(GenericResponse<UserReadDto>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: (String error) => failure!,
+        failure: failure!,
       );
 
   Future<void> getGrowthRate({
