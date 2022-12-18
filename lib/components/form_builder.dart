@@ -116,6 +116,7 @@ class _FormBuilderState extends State<FormBuilder> {
     DateTime? date = DateTime.now();
     TimeOfDay? time = TimeOfDay(hour: 12, minute: 00);
     return iconTextVertical(
+      crossAxisAlignment: widget.crossAxisAlignment,
       leading: Text(field.label!, style: widget.labelStyle),
       trailing: StatefulBuilder(
         builder: (final _, final StateSetter setter) => Container(
@@ -170,6 +171,7 @@ class _FormBuilderState extends State<FormBuilder> {
     File selectedFile = File("");
     return StatefulBuilder(
       builder: (final _, final StateSetter setter) => iconTextVertical(
+        crossAxisAlignment: widget.crossAxisAlignment,
         leading: Text(field.label!, style: widget.labelStyle),
         trailing: selectedFile == File("")
             ? GestureDetector(
@@ -193,6 +195,7 @@ class _FormBuilderState extends State<FormBuilder> {
     File selectedFile = File("");
     return StatefulBuilder(
       builder: (final _, final StateSetter setter) => iconTextVertical(
+        crossAxisAlignment: widget.crossAxisAlignment,
         leading: Text(field.label!, style: widget.labelStyle),
         trailing: selectedFile == File("")
             ? GestureDetector(
