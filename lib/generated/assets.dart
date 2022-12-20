@@ -74,6 +74,7 @@ class Assets {
   static const String flipCartFlipCard = 'lib/utils/flip_cart/flip_card.dart';
   static const String flipCartFlipCardController = 'lib/utils/flip_cart/flip_card_controller.dart';
   static const String flutterSwitchFlutterSwitch = 'lib/utils/flutter_switch/flutter_switch.dart';
+  static const String generatedAssets = 'lib/generated/assets.dart';
   static const String gregorianGregorianDate = 'lib/utils/shamsi_date/src/gregorian/gregorian_date.dart';
   static const String gregorianGregorianFormatter = 'lib/utils/shamsi_date/src/gregorian/gregorian_formatter.dart';
   static const String jalaliJalaliDate = 'lib/utils/shamsi_date/src/jalali/jalali_date.dart';
@@ -139,6 +140,9 @@ class Assets {
   static const String utilsUtils = 'lib/utils/utils.dart';
   static const String utilsValidators = 'lib/utils/validators.dart';
   static const String utilsWidgets = 'lib/utils/widgets.dart';
+  static const String videoPlayerWidgetVideoPlayerControls = 'lib/widgets/video_player_widget/video_player_controls.dart';
+  static const String videoPlayerWidgetVideoPlayerDataManager = 'lib/widgets/video_player_widget/video_player_data_manager.dart';
+  static const String videoPlayerWidgetVideoPlayerWidget = 'lib/widgets/video_player_widget/video_player_widget.dart';
   static const String viewModelsKeyValueViewModel = 'lib/view_models/key_value_view_model.dart';
   static const String viewModelsMediaViewModel = 'lib/view_models/media_view_model.dart';
   static const String viewModelsViewModels = 'lib/view_models/view_models.dart';
