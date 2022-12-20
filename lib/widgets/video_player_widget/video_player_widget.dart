@@ -27,7 +27,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
           urls[0],
         ),
         onVideoEnd: () {
-          dataManager.skipToNextVideo(Duration(seconds: 5));
+          dataManager.skipToNextVideo(const Duration(seconds: 5));
         });
 
     dataManager = DataManager(flickManager: flickManager, urls: urls);
@@ -70,6 +70,20 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
               ),
             ),
           ),
+          Positioned(
+            top: 0,
+            right: 0,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: const [
+                  Text("videoName", style: TextStyle(color: Colors.white, fontSize: 18)),
+                  SizedBox(width: 8,),
+                  Icon(Icons.arrow_forward_rounded, color: Colors.white,size: 32,),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

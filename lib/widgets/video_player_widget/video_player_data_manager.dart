@@ -31,6 +31,7 @@ class DataManager {
           VideoPlayerController.network(urls[currentPlaying + 1]),
           videoChangeDuration: duration);
 
+      print(urls[currentPlaying + 1]);
       currentPlaying++;
     }
   }
