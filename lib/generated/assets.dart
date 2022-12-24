@@ -2,6 +2,8 @@
 class Assets {
   Assets._();
 
+  static const String audioPlayerSoundPlayers = 'lib/widgets/audioPlayer/sound_players.dart';
+  static const String audioPlayerWidgets = 'lib/widgets/audioPlayer/widgets.dart';
   static const String componentsBadges = 'lib/components/badges.dart';
   static const String componentsBottomSheet = 'lib/components/bottom_sheet.dart';
   static const String componentsCarouselSlider = 'lib/components/carousel_slider.dart';

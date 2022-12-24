@@ -29,6 +29,7 @@ export 'data/dto/dto.dart';
 export 'utils/utils.dart';
 export 'utils/validators.dart';
 export 'package:utilities/widgets/video_player_widget/video_player_widget.dart';
+export 'package:utilities/widgets/audioPlayer/sound_players.dart';
 export 'view_models/view_models.dart';
 export 'package:utilities/utils/enums.dart';
 export 'package:utilities/components/grid.dart';
