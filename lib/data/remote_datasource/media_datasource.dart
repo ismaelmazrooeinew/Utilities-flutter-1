@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:utilities/data/dto/generic_response.dart';
@@ -68,62 +69,6 @@ class MediaDataSource {
   }
 
 
-  Future<void> createWeb({
-    required final List<Uint8List> fileBytes,
-    required final String useCase, //media
-    required final VoidCallback action,
-    final Function(int statusCode)? error,
-    final String? categoryId,
-    final String? contentId,
-    final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
-    final String? userId,
-    final String? chatId,
-    final String? notificationId,
-    final String? size,
-  }) async {
-    // int i = 0;
-
-    for (int i = 0; i < fileBytes.length; i++) {
-      Uint8List file = fileBytes[i];
-      final List<int> _selectedFile = file;
-      final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
-      request.fields['UseCase'] = useCase;
-      if (categoryId != null) {
-        request.fields['CategoryId'] = categoryId;
-      }
-
-      if (productId != null) {
-        request.fields['ProductId'] = productId;
-      }
-      if (chatId != null) {
-        request.fields['ChatId'] = chatId;
-      }
-
-      if (userId != null) {
-        request.fields['UserId'] = userId;
-      }
-      if (notificationId != null) {
-        request.fields['NotificationId'] = notificationId;
-      }
-      if (size != null) {
-        request.fields['Size'] = size;
-      }
-
-      request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
-
-      request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: "file111.png"));
-
-      await request.send().then((final http.StreamedResponse response) {
-        if (i == fileBytes.length - 1) {
-          if (response.statusCode == 200) {
-            action();
-          } else {
-            error!(response.statusCode);
-          }
-        }
-      });
-    }
-  }
 
   Future<void> createLink({
     required List<String> links,
@@ -171,6 +116,70 @@ class MediaDataSource {
       }
     }
   }
+
+  Future<void> createWeb({
+    required final List<PlatformFile> files,
+    required final String useCase, //media
+    required final VoidCallback action,
+    final Function(int statusCode)? error,
+    final List<String>? links,
+    final String? categoryId,
+    final String? contentId,
+    final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
+    final String? userId,
+    final String? chatId,
+    final String? notificationId,
+    final String? size,
+  }) async {
+    // int i = 0;
+
+    for (int i = 0; i < files.length; i++) {
+      PlatformFile platformFile = files[i];
+      Uint8List? uint8list = platformFile.bytes;
+      final List<int> _selectedFile = uint8list!;
+      String fileName = platformFile.name;
+      final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
+      request.fields['UseCase'] = useCase;
+      if (categoryId != null) {
+        request.fields['CategoryId'] = categoryId;
+      }
+
+      if (productId != null) {
+        request.fields['ProductId'] = productId;
+      }
+      if (userId != null) {
+        request.fields['UserId'] = userId;
+      }
+
+      if (chatId != null) {
+        request.fields['ChatId'] = chatId;
+      }
+
+      if (notificationId != null) {
+        request.fields['NotificationId'] = notificationId;
+      }
+      if (size != null) {
+        request.fields['Size'] = size;
+      }
+
+      request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
+
+      request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: fileName));
+
+      await request.send().then((final http.StreamedResponse response) {
+        if (response.statusCode == 200) {
+          if (i == files.length - 1) {
+            action();
+          }
+        } else {
+          if (i == files.length - 1) {
+            error!(response.statusCode);
+          }
+        }
+      });
+    }
+  }
+
 
 
   Future<void> delete({
