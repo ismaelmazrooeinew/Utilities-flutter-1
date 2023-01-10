@@ -352,9 +352,11 @@ class GetMobileVerificationCodeForLoginDto {
   GetMobileVerificationCodeForLoginDto({
     this.mobile,
     this.sendSms,
+    this.token,
   });
 
   final String? mobile;
+  final String? token;
   final bool? sendSms;
 
   factory GetMobileVerificationCodeForLoginDto.fromJson(String str) => GetMobileVerificationCodeForLoginDto.fromMap(json.decode(str));
@@ -364,11 +366,13 @@ class GetMobileVerificationCodeForLoginDto {
   factory GetMobileVerificationCodeForLoginDto.fromMap(Map<String, dynamic> json) => GetMobileVerificationCodeForLoginDto(
         mobile: json["mobile"],
         sendSms: json["sendSMS"],
+        token: json["token"],
       );
 
   Map<String, dynamic> toMap() => {
         "mobile": mobile,
         "sendSMS": sendSms,
+        "token": token,
       };
 }
 
