@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:utilities/utils/constants.dart';
-import 'package:utilities/utils/get.dart';
 import 'package:utilities/utils/http_interceptor.dart';
 import 'package:utilities/utils/local_storage.dart';
 
@@ -35,22 +34,16 @@ Future<void> request(
     if (httpMethod == EHttpMethod.delete) response = await dio.delete(url, options: Options(headers: header));
     if (response.isSuccessful()) {
       action(response);
-      if (isDebugMode) {
-        print("DONE");
-        print("${httpMethod.toString()}\n$url\n${response.statusCode}\n$body\n${response.data}");
-      }
     } else {
       error(response);
-      if (isDebugMode) {
-        print("ERROR");
-        print("${httpMethod.toString()}\n$url\n${response.statusCode}\n$body\n${response.data}");
-      }
     }
   } catch (e) {
     if (failure != null) {
       failure(e.toString());
     }
   }
+
+  print("${httpMethod.toString()}\n$url\n${response.statusCode}\n$body\n${response.data}");
 }
 
 Future<void> httpGet({
