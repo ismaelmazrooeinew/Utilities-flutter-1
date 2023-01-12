@@ -43,7 +43,11 @@ Future<void> request(
     }
   }
 
-  print("${httpMethod.toString()}\n$url\n${response.statusCode}\n$body\n${response.data}");
+  print("${httpMethod.toString()}\n$url\n${response.statusCode}");
+  try {
+    print(body.toJson());
+  } catch (e) {}
+  print(response.data);
 }
 
 Future<void> httpGet({
