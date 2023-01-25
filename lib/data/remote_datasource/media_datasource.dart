@@ -24,7 +24,6 @@ class MediaDataSource {
     required final Function(GenericResponse response) onError,
     final ProgressCallback? onSendProgress,
     final List<File>? files,
-    final List<String>? links,
     final String? categoryId,
     final String? contentId,
     final String? productId,
@@ -122,7 +121,6 @@ class MediaDataSource {
     required final String useCase, //media
     required final VoidCallback action,
     final Function(int statusCode)? error,
-    final List<String>? links,
     final String? categoryId,
     final String? contentId,
     final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f

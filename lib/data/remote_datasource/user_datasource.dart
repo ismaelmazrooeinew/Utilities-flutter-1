@@ -156,6 +156,32 @@ class UserDataSource {
       failure: failure,
     );
   }
+  Future<void> getVerificationCodeForLoginSafe({
+    required final GetMobileVerificationCodeForLoginDto dto,
+    required final Function(GenericResponse<String>) onResponse,
+    required final Function(GenericResponse response) onError,
+    final Function(String error)? failure,
+  }) async {
+    String salt = "${DateTime.now().year}${DateTime.now().month}${DateTime.now().day}${DateTime.now().hour}${DateTime.now().minute}SinaMN75";
+    var bytes = utf8.encode(salt);
+
+    var digest = md5.convert(bytes);
+    print(digest.toString());
+    GetMobileVerificationCodeForLoginDto d = GetMobileVerificationCodeForLoginDto(
+      mobile: dto.mobile,
+      sendSms: dto.sendSms,
+      token: digest.toString(),
+    );
+
+    return httpPost(
+      url: "$baseUrl/user/GetVerificationCodeForLoginSafe",
+      body: d,
+      action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: UserReadDto.fromMap)),
+      error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+      failure: failure,
+    );
+  }
+
 
   Future<void> loginWithEmail({
     required final LoginWithEmail dto,
