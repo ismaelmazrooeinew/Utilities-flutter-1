@@ -3,12 +3,12 @@ import 'package:utilities/utilities.dart';
 
 class AdminGradeWidget {
   static Widget gridHeader(final String title, {final double? fontSize}) => Center(
-    child: Text(title, textAlign: TextAlign.center).headline3(fontSize: fontSize ?? 14),
+    child: Text(title, textAlign: TextAlign.center).displaySmall(fontSize: fontSize ?? 14),
   );
 
   static Widget gridRow(final String title) => Container(
     alignment: Alignment.center,
-    child: Text(title, textAlign: TextAlign.center).bodyText1(),
+    child: Text(title, textAlign: TextAlign.center).bodyLarge(),
   );
 
   static Widget gridSwipeButton({
@@ -28,7 +28,7 @@ class AdminGradeWidget {
 
   static Widget getRow(final String value, {final double? fontSize, final Color? textColor, final AlignmentGeometry? alignment, final FontWeight? fontWeight}) => Container(
     alignment: alignment ?? Alignment.centerLeft,
-    child: Text(value ).bodyText1(fontSize: fontSize ?? 12, color: textColor ?? Colors.black87, fontWeight: fontWeight ?? FontWeight.w500),
+    child: Text(value ).bodyLarge(fontSize: fontSize ?? 12, color: textColor ?? Colors.black87, fontWeight: fontWeight ?? FontWeight.w500),
   );
 
   static Widget getRowImage({
