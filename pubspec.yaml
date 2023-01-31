@@ -36,6 +36,7 @@ dependencies:
   intl_phone_number_input: ^0.7.0+2
   flutter_image_compress: ^1.1.2
   dio: ^4.0.6
+  dio_smart_retry: ^1.4.0
   custom_sliding_segmented_control: ^1.7.3
   local_auth: ^2.1.2
   local_auth_android: ^1.0.15

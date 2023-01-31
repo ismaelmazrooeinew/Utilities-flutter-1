@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:utilities/utils/constants.dart';
 import 'package:utilities/utils/http_interceptor.dart';
 import 'package:utilities/utils/local_storage.dart';
@@ -17,6 +18,18 @@ Future<void> request(
 
   if (headers != null) header.addAll(headers);
   final Dio dio = Dio();
+
+  dio.interceptors.add(RetryInterceptor(
+    dio: dio,
+    logPrint: (message) => print('RetryPolicy >> $message'),
+    retries: 2, // retry count (optional)
+    retryDelays: const [
+      // set delays between retries (optional)
+      Duration(seconds: 1),
+      Duration(seconds: 2),
+    ],
+  ));
+
   Response response = Response(requestOptions: RequestOptions(path: '', headers: header));
   try {
     dynamic params;

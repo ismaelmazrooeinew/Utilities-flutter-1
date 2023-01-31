@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
+import 'package:intl/intl.dart' as intl;
 
 export 'dart:async';
 export 'dart:convert';
