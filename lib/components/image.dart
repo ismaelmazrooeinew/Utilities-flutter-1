@@ -150,7 +150,7 @@ Widget imageNetwork(
                     progressIndicatorBuilder: progressIndicatorBuilder,
                     errorWidget: placeholder == null
                         ? null
-                        : (final _, final __, final ___) => imageAsset(
+                        : (final _, final __, final ___) => image(
                               placeholder,
                               color: color,
                               width: width,
@@ -160,7 +160,7 @@ Widget imageNetwork(
                             ),
                     placeholder: placeholder == null
                         ? null
-                        : (final _, final __) => imageAsset(
+                        : (final _, final __) => image(
                               placeholder,
                               color: color,
                               width: width,
