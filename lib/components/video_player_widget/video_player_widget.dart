@@ -2,8 +2,8 @@ import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:video_player/video_player.dart';
-import 'package:utilities/widgets/video_player_widget/video_player_controls.dart';
-import 'package:utilities/widgets/video_player_widget/video_player_data_manager.dart';
+import 'package:utilities/components/video_player_widget/video_player_controls.dart';
+import 'package:utilities/components/video_player_widget/video_player_data_manager.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
   VideoPlayerWidget({required this.urls, Key? key}) : super(key: key);

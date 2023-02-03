@@ -430,14 +430,14 @@ packages:
     source: hosted
     version: "2.1.3"
   local_auth_android:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: local_auth_android
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.17"
   local_auth_ios:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: local_auth_ios
       url: "https://pub.dartlang.org"
