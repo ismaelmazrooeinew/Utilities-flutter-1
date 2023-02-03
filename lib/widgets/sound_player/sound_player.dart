@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:utilities/widgets/audioPlayer/widgets.dart';
+import 'package:utilities/widgets/sound_player/widgets.dart';
 
 class SoundPlayers extends StatefulWidget {
   SoundPlayers({required this.list, Key? key}) : super(key: key);
@@ -37,6 +37,25 @@ class _SoundPlayersState extends State<SoundPlayers> with Widgets {
     player.play();
   }
 
+  String getTime(Duration? duration) {
+    String d = duration.toString();
+    String res = '';
+    if (duration != null && d.contains(":")) {
+      String h = d.split(":")[0];
+      String m = d.split(":")[1];
+      String s = d.split(":")[2].split(".")[0];
+      if (h != "0") {
+        res = '$h:$m:$s';
+      } else {
+        res = '$m:$s';
+      }
+    } else {
+      res = "00:00";
+    }
+
+    return res;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,7 +72,7 @@ class _SoundPlayersState extends State<SoundPlayers> with Widgets {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     speedPlay(listSpeed: [0.25, 0.50, 0.75, 1.0, 1.25, 1.50, 1.75]),
-                    fileNAme(),
+                    fileName(list: widget.list),
                   ],
                 ),
               ),
@@ -77,8 +96,20 @@ class _SoundPlayersState extends State<SoundPlayers> with Widgets {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        position(),
-                        duration(),
+                        StreamBuilder<PositionData>(
+                          stream: positionDataStream,
+                          builder: (context, snapshot) {
+                            final positionData = snapshot.data;
+                            return Text(getTime(positionData?.position ?? Duration.zero), style: const TextStyle(fontSize: 18, color: Colors.white));
+                          },
+                        ),
+                        StreamBuilder<PositionData>(
+                          stream: positionDataStream,
+                          builder: (context, snapshot) {
+                            final positionData = snapshot.data;
+                            return Text(getTime(positionData?.duration ?? Duration.zero), style: const TextStyle(fontSize: 18, color: Colors.white));
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -89,27 +120,6 @@ class _SoundPlayersState extends State<SoundPlayers> with Widgets {
         ],
       ),
     );
-  }
-
-  Widget fileNAme() {
-    return StreamBuilder<Duration?>(
-      stream: player.durationStream,
-      builder: (context, snapshot) {
-        return Container(
-          width: 300,
-          height: 50,
-          child: ListView.builder(
-            itemCount: 3,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => Text(
-              widget.list[player.currentIndex ?? 0].split("/")[widget.list[player.currentIndex ?? 0].split("/").length - 1].replaceAll("%20", " "),
-              style: const TextStyle(color: Colors.white),
-            ),
-          ),
-        );
-      },
-    );
-
   }
 }
 
