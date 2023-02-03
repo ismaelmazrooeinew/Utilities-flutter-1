@@ -1,19 +1,19 @@
-import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:visibility_detector/visibility_detector.dart';
+import 'package:flick_video_player/flick_video_player.dart';
 import 'package:video_player/video_player.dart';
-import 'package:utilities/components/video_player_widget/video_player_controls.dart';
-import 'package:utilities/components/video_player_widget/video_player_data_manager.dart';
+import 'package:visibility_detector/visibility_detector.dart';
+import 'package:utilities/components/video_player/video_player_controls.dart';
+import 'package:utilities/components/video_player/video_player_data_manager.dart';
 
-class VideoPlayerWidget extends StatefulWidget {
-  VideoPlayerWidget({required this.urls, Key? key}) : super(key: key);
+class CustomVideoPlayer extends StatefulWidget {
+  CustomVideoPlayer({required this.urls, Key? key}) : super(key: key);
   List<String> urls;
 
   @override
-  _VideoPlayerWidgetState createState() => _VideoPlayerWidgetState();
+  _CustomVideoPlayerState createState() => _CustomVideoPlayerState();
 }
 
-class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
+class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   late FlickManager flickManager;
   late DataManager dataManager;
   late List<String> urls;
