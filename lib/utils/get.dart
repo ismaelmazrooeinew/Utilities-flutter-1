@@ -104,7 +104,7 @@ Future<void> offAll(
 
 void off(final Widget page) => Get.off(page);
 
-void back({final Function(dynamic result)? argument}) => Get.back(result: argument);
+void back({final dynamic argument}) => Get.back(result: argument);
 
 Future<void> showEasyLoading() => EasyLoading.show();
 
