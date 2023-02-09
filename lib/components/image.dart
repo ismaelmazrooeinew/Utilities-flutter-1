@@ -13,6 +13,7 @@ Widget image(
   final double borderRadius = 1,
   final EdgeInsets margin = EdgeInsets.zero,
   final String? placeholder,
+  final ProgressIndicatorBuilder? progressIndicatorBuilder,
   final VoidCallback? onTap,
 }) {
   if (source.length <= 10) {
@@ -42,6 +43,7 @@ Widget image(
         borderRadius: borderRadius,
         color: color,
         onTap: onTap,
+        progressIndicatorBuilder: progressIndicatorBuilder,
         placeholder: placeholder,
       );
     else
@@ -102,6 +104,7 @@ Widget imageNetwork(
   final EdgeInsets margin = EdgeInsets.zero,
   final VoidCallback? onTap,
   final String? placeholder,
+  final ProgressIndicatorBuilder? progressIndicatorBuilder,
 }) =>
     GestureDetector(
       onTap: onTap,
@@ -144,9 +147,10 @@ Widget imageNetwork(
                     width: width,
                     height: height,
                     fit: fit,
+                    progressIndicatorBuilder: progressIndicatorBuilder,
                     errorWidget: placeholder == null
                         ? null
-                        : (final _, final __, final ___) => imageAsset(
+                        : (final _, final __, final ___) => image(
                               placeholder,
                               color: color,
                               width: width,
@@ -156,7 +160,7 @@ Widget imageNetwork(
                             ),
                     placeholder: placeholder == null
                         ? null
-                        : (final _, final __) => imageAsset(
+                        : (final _, final __) => image(
                               placeholder,
                               color: color,
                               width: width,

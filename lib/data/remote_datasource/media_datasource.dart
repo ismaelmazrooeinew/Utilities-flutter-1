@@ -29,6 +29,7 @@ class MediaDataSource {
     final String? productId,
     final String? userId,
     final String? chatId,
+    final String? title,
     final String? notificationId,
     final String? size,
     Duration? timeout,
@@ -36,7 +37,9 @@ class MediaDataSource {
     Dio dio = Dio();
     for (int i = 0; i < files!.length; i++) {
       File file = files[i];
-      String fileName = file.path.split('/')[file.path.split('/').length - 1];
+      String fileName = file.path.split('/')[file.path
+          .split('/')
+          .length - 1];
       final Response<dynamic> response = await dio.post(
         '$baseUrl/Media',
         onSendProgress: onSendProgress,
@@ -49,6 +52,7 @@ class MediaDataSource {
           'ProductId': productId,
           'UserId': userId,
           'ChatId': chatId,
+          'Title': title ?? fileName,
           'NotificationId': notificationId,
           'Size': size,
         }),
@@ -66,7 +70,6 @@ class MediaDataSource {
       }
     }
   }
-
 
 
   Future<void> createLink({
@@ -177,7 +180,6 @@ class MediaDataSource {
       });
     }
   }
-
 
 
   Future<void> delete({

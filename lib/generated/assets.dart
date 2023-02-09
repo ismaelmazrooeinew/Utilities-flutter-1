@@ -2,8 +2,6 @@
 class Assets {
   Assets._();
 
-  static const String audioPlayerSoundPlayers = 'lib/widgets/audioPlayer/sound_players.dart';
-  static const String audioPlayerWidgets = 'lib/widgets/audioPlayer/widgets.dart';
   static const String componentsBadges = 'lib/components/badges.dart';
   static const String componentsBottomSheet = 'lib/components/bottom_sheet.dart';
   static const String componentsCarouselSlider = 'lib/components/carousel_slider.dart';
@@ -122,6 +120,8 @@ class Assets {
   static const String remoteDatasourceVoteDatasource = 'lib/data/remote_datasource/vote_datasource.dart';
   static const String shamsiDateShamsiDate = 'lib/utils/shamsi_date/shamsi_date.dart';
   static const String smoothPageIndicatorSmoothPageIndicator = 'lib/components/smooth_page_indicator/smooth_page_indicator.dart';
+  static const String soundPlayerSoundPlayer = 'lib/components/sound_player/sound_player.dart';
+  static const String soundPlayerWidgets = 'lib/components/sound_player/widgets.dart';
   static const String srcDate = 'lib/utils/shamsi_date/src/date.dart';
   static const String srcDateException = 'lib/utils/shamsi_date/src/date_exception.dart';
   static const String srcDateFormatter = 'lib/utils/shamsi_date/src/date_formatter.dart';
@@ -142,9 +142,9 @@ class Assets {
   static const String utilsUtils = 'lib/utils/utils.dart';
   static const String utilsValidators = 'lib/utils/validators.dart';
   static const String utilsWidgets = 'lib/utils/widgets.dart';
-  static const String videoPlayerWidgetVideoPlayerControls = 'lib/widgets/video_player_widget/video_player_controls.dart';
-  static const String videoPlayerWidgetVideoPlayerDataManager = 'lib/widgets/video_player_widget/video_player_data_manager.dart';
-  static const String videoPlayerWidgetVideoPlayerWidget = 'lib/widgets/video_player_widget/video_player_widget.dart';
+  static const String videoPlayerVideoPlayerControls = 'lib/components/video_player/video_player_controls.dart';
+  static const String videoPlayerVideoPlayerDataManager = 'lib/components/video_player/video_player_data_manager.dart';
+  static const String videoPlayerVideoPlayerWidget = 'lib/components/video_player/video_player_widget.dart';
   static const String viewModelsKeyValueViewModel = 'lib/view_models/key_value_view_model.dart';
   static const String viewModelsMediaViewModel = 'lib/view_models/media_view_model.dart';
   static const String viewModelsViewModels = 'lib/view_models/view_models.dart';
