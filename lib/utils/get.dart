@@ -46,12 +46,14 @@ Future<String> appBuildNumber() async {
   final PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.buildNumber;
 }
+
 //
 Future<void> push(
   final Widget page, {
   final bool dialog = false,
   final Transition transition = Transition.cupertino,
   final bool backFirst = false,
+  final dynamic arguments,
   final bool preventDuplicates = true,
   final int milliSecondDelay = 1,
 }) async {
@@ -61,6 +63,7 @@ Future<void> push(
     milliSecondDelay,
     () => Get.to(
       _page,
+      arguments: arguments,
       fullscreenDialog: dialog,
       popGesture: true,
       opaque: dialog ? false : true,
@@ -101,7 +104,7 @@ Future<void> offAll(
 
 void off(final Widget page) => Get.off(page);
 
-void back() => Get.back();
+void back({final Function(dynamic result)? result}) => Get.back(result: result);
 
 Future<void> showEasyLoading() => EasyLoading.show();
 
