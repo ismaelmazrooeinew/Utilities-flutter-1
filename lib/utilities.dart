@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
-import 'package:intl/intl.dart' as intl;
 
 export 'dart:async';
 export 'dart:convert';
@@ -23,14 +22,15 @@ export 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:video_player/video_player.dart';
 export 'package:webviewx/webviewx.dart';
+export 'package:cached_network_image/cached_network_image.dart';
 
 export 'components/components.dart';
 export 'data/data.dart';
 export 'data/dto/dto.dart';
 export 'utils/utils.dart';
 export 'utils/validators.dart';
-export 'package:utilities/widgets/video_player_widget/video_player_widget.dart';
-export 'package:utilities/widgets/audioPlayer/sound_players.dart';
+export 'package:utilities/components/sound_player/sound_player.dart';
+export 'package:utilities/components/video_player/video_player_widget.dart';
 export 'view_models/view_models.dart';
 export 'package:utilities/utils/enums.dart';
 export 'package:utilities/components/grid.dart';
