@@ -2,7 +2,6 @@ import 'package:utilities/data/dto/report.dart';
 import 'package:utilities/data/dto/team.dart';
 import 'package:utilities/utilities.dart';
 
-
 extension ProductReadDtoExtension on ProductReadDto {
   ProductReadDto sample() => ProductReadDto(
         id: "id",
@@ -90,6 +89,7 @@ class ProductCreateUpdateDto {
     this.value4,
     this.value5,
     this.value6,
+    this.productInsight,
   });
 
   final String? id;
@@ -132,6 +132,7 @@ class ProductCreateUpdateDto {
   final int? status;
   final int? currency;
   final UserReadDto? user;
+  final ProductInsight? productInsight;
   final List<int>? locations;
   final List<MediaReadDto>? media;
   final List<String>? categories;
@@ -185,6 +186,7 @@ class ProductCreateUpdateDto {
         status: json["status"],
         currency: json["currency"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
+        productInsight: json["productInsight"] == null ? null : ProductInsight.fromMap(json["productInsight"]),
         locations: json["locations"] == null ? null : List<int>.from(json["locations"].map((x) => x)),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<String>.from(json["categories"].map((x) => x)),
@@ -235,6 +237,7 @@ class ProductCreateUpdateDto {
         "status": status,
         "currency": currency,
         "user": user == null ? null : user!.toMap(),
+        "productInsight": productInsight?.toMap(),
         "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
@@ -242,6 +245,30 @@ class ProductCreateUpdateDto {
         "forms": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toMap())),
         "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x)),
+      };
+}
+
+class ProductInsight {
+  ProductInsight({
+    this.reaction,
+    this.userId,
+  });
+
+  final int? reaction;
+  final String? userId;
+
+  factory ProductInsight.fromJson(String str) => ProductInsight.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ProductInsight.fromMap(Map<String, dynamic> json) => ProductInsight(
+        reaction: json["reaction"],
+        userId: json["userId"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "reaction": reaction,
+        "userId": userId,
       };
 }
 
@@ -293,6 +320,7 @@ class ProductReadDto {
     this.reports,
     this.votes,
     this.voteCount,
+    this.productInsights,
     this.value1,
     this.value2,
     this.value3,
@@ -350,6 +378,7 @@ class ProductReadDto {
   final List<VoteField>? myVotes;
   final List<VoteReadDto>? votes;
   final List<FormReadDto>? forms;
+  final List<ProductInsightDto>? productInsights;
   final List<CommentReadDto>? comments;
   final List<TeamReadDto>? teams;
   final List<Report>? reports;
@@ -415,6 +444,7 @@ class ProductReadDto {
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
         teams: json["teams"] == null ? null : List<TeamReadDto>.from(json["teams"].map((x) => TeamReadDto.fromMap(x))),
         reports: json["reports"] == null ? null : List<Report>.from(json["reports"].map((x) => Report.fromMap(x))),
+        productInsights: json["productInsights"] == null ? [] : List<ProductInsightDto>.from(json["productInsights"]!.map((x) => ProductInsightDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -470,6 +500,58 @@ class ProductReadDto {
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toMap())),
         "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x.toMap())),
         "reports": reports == null ? null : List<dynamic>.from(reports!.map((x) => x.toMap())),
+      };
+}
+
+class ProductInsightDto {
+  ProductInsightDto({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+    this.reaction,
+    this.user,
+    this.userId,
+    this.productEntity,
+    this.productId,
+  });
+
+  final String? id;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final DateTime? deletedAt;
+  final int? reaction;
+  final UserReadDto? user;
+  final String? userId;
+  final String? productEntity;
+  final String? productId;
+
+  factory ProductInsightDto.fromJson(String str) => ProductInsightDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ProductInsightDto.fromMap(Map<String, dynamic> json) => ProductInsightDto(
+        id: json["id"],
+        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+        updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+        deletedAt: json["deletedAt"] == null ? null : DateTime.parse(json["deletedAt"]),
+        reaction: json["reaction"],
+        user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
+        userId: json["userId"],
+        productEntity: json["productEntity"],
+        productId: json["productId"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
+        "deletedAt": deletedAt?.toIso8601String(),
+        "reaction": reaction,
+        "user": user?.toMap(),
+        "userId": userId,
+        "productEntity": productEntity,
+        "productId": productId,
       };
 }
 
