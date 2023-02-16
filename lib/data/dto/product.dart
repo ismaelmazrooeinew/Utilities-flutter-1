@@ -71,6 +71,7 @@ class ProductCreateUpdateDto {
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
+    this.expireDate,
     this.user,
     this.status,
     this.currency,
@@ -123,6 +124,7 @@ class ProductCreateUpdateDto {
   final String? createdAt;
   final String? updatedAt;
   final String? deletedAt;
+  final String? expireDate;
   final String? value1;
   final String? value2;
   final String? value3;
@@ -183,6 +185,7 @@ class ProductCreateUpdateDto {
         createdAt: json["createdAt"],
         updatedAt: json["updatedAt"],
         deletedAt: json["deletedAt"],
+        expireDate: json["expireDate"],
         status: json["status"],
         currency: json["currency"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
@@ -234,6 +237,7 @@ class ProductCreateUpdateDto {
         "createdAt": createdAt,
         "updatedAt": updatedAt,
         "deletedAt": deletedAt,
+        "expireDate": expireDate,
         "status": status,
         "currency": currency,
         "user": user == null ? null : user!.toMap(),
