@@ -18,6 +18,7 @@ class Assets {
   static const String componentsPlusMinus = 'lib/components/plus_minus.dart';
   static const String componentsRadarChart = 'lib/components/radar_chart.dart';
   static const String componentsRatingBar = 'lib/components/rating_bar.dart';
+  static const String componentsScrollingText = 'lib/components/scrolling_text.dart';
   static const String componentsStoryView = 'lib/components/story_view.dart';
   static const String componentsTextFieldCountry = 'lib/components/text_field_country.dart';
   static const String cropImageCropImage = 'lib/components/custom_gallery_display/src/custom_packages/crop_image/crop_image.dart';
