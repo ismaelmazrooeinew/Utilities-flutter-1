@@ -5,13 +5,26 @@ void showFilePicker({
   required final Function(List<File> file) action,
   final FileType fileType = FileType.image,
   final bool allowMultiple = false,
+  String? initialDirectory,
+  String? dialogTitle,
+  bool allowCompression = true,
+  bool withData = false,
+  bool withReadStream = false,
+  bool lockParentWindow = false,
   final List<String>? allowedExtensions,
 }) async {
   final FilePickerResult? result = await FilePicker.platform.pickFiles(
     type: fileType,
+    dialogTitle: dialogTitle,
+    initialDirectory: initialDirectory,
+    allowCompression: allowCompression,
+    withData: withData,
+    withReadStream: withReadStream,
+    lockParentWindow: lockParentWindow,
     allowMultiple: allowMultiple,
     allowedExtensions: allowedExtensions,
   );
+
   if (result != null) {
     if (allowMultiple) {
       final List<File> files = <File>[];
@@ -25,7 +38,6 @@ void showFilePicker({
     }
   }
 }
-
 
 void showMultiFilePicker({
   required final Function(List<File> file) action,
@@ -51,25 +63,22 @@ void showMultiFilePicker({
   }
 }
 
-
 void showFilePickerWeb({
   required final Function(PlatformFile file) action,
   final FileType fileType = FileType.image,
   final bool allowMultiple = false,
   final List<String>? allowedExtensions,
 }) async {
-
   final FilePickerResult? result = await FilePicker.platform.pickFiles(
     type: fileType,
     allowMultiple: allowMultiple,
     allowedExtensions: allowedExtensions,
   );
   if (result != null) {
-      PlatformFile file = await result.files[0] ;
-      action(file);
+    PlatformFile file = await result.files[0];
+    action(file);
   }
 }
-
 
 Future<CroppedFile?> cropImage({
   required final File file,
