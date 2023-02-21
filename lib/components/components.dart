@@ -4,6 +4,7 @@ export 'carousel_slider.dart';
 export 'container.dart';
 export 'dotted_border.dart';
 export 'image.dart';
+export 'scrolling_text.dart';
 export 'others.dart';
 export 'otp_field.dart';
 export 'percent_indicator.dart';
