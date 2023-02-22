@@ -57,6 +57,8 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
       child: Stack(
         children: <Widget>[
           Container(
+            width: double.infinity,
+            height: double.infinity,
             child: FlickVideoPlayer(
               flickManager: flickManager,
               flickVideoWithControls: FlickVideoWithControls(
