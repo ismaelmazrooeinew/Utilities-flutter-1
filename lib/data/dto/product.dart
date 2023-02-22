@@ -297,6 +297,7 @@ class ProductReadDto {
     this.unit,
     this.useCase,
     this.isForSale,
+    this.isSeen,
     this.enabled,
     this.isBookmarked,
     this.latitude,
@@ -352,6 +353,7 @@ class ProductReadDto {
   final String? unit;
   final String? useCase;
   final bool? isForSale;
+  final bool? isSeen;
   final bool? enabled;
   bool? isBookmarked;
   final double? latitude;
@@ -421,6 +423,7 @@ class ProductReadDto {
         unit: json["unit"],
         useCase: json["useCase"],
         isForSale: json["isForSale"],
+        isSeen: json["isSeen"],
         enabled: json["enabled"],
         isBookmarked: json["isBookmarked"],
         latitude: json["latitude"],
@@ -471,6 +474,7 @@ class ProductReadDto {
         "unit": unit,
         "useCase": useCase,
         "isForSale": isForSale,
+        "isSeen": isSeen,
         "enabled": enabled,
         "isBookmarked": isBookmarked,
         "latitude": latitude,
