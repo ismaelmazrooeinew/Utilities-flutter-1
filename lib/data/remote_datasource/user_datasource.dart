@@ -29,13 +29,13 @@ class UserDataSource {
 
   Future<void> checkUsername({
     required final String userName,
-    required final VoidCallback onResponse,
+    required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/user/CheckUserName/$userName",
-        action: (Response response) => onResponse(),
+        action: (Response response) => onResponse(GenericResponse.fromJson(response.data)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,
       );
