@@ -45,49 +45,51 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return VisibilityDetector(
-      key: ObjectKey(flickManager),
-      onVisibilityChanged: (visibility) {
-        if (visibility.visibleFraction == 0 && this.mounted) {
-          flickManager.flickControlManager?.autoPause();
-        } else if (visibility.visibleFraction == 1) {
-          flickManager.flickControlManager?.autoResume();
-        }
-      },
-      child: Stack(
-        children: <Widget>[
-          Container(
-            color: Colors.red,
-            width: double.infinity,
-            height: double.infinity,
-            child: FlickVideoPlayer(
-              flickManager: flickManager,
-              flickVideoWithControls: FlickVideoWithControls(
-                videoFit: BoxFit.contain,
-                controls: VideoPlayerControls(dataManager: dataManager),
-              ),
-              flickVideoWithControlsFullscreen: FlickVideoWithControls(
-                controls: FlickVideoWithControls(
+    return Scaffold(
+      body: VisibilityDetector(
+        key: ObjectKey(flickManager),
+        onVisibilityChanged: (visibility) {
+          if (visibility.visibleFraction == 0 && this.mounted) {
+            flickManager.flickControlManager?.autoPause();
+          } else if (visibility.visibleFraction == 1) {
+            flickManager.flickControlManager?.autoResume();
+          }
+        },
+        child: Stack(
+          children: <Widget>[
+            Container(
+              color: Colors.red,
+              width: double.infinity,
+              height: double.infinity,
+              child: FlickVideoPlayer(
+                flickManager: flickManager,
+                flickVideoWithControls: FlickVideoWithControls(
+                  videoFit: BoxFit.contain,
                   controls: VideoPlayerControls(dataManager: dataManager),
+                ),
+                flickVideoWithControlsFullscreen: FlickVideoWithControls(
+                  controls: FlickVideoWithControls(
+                    controls: VideoPlayerControls(dataManager: dataManager),
+                  ),
                 ),
               ),
             ),
-          ),
-          Positioned(
-            top: 0,
-            right: 0,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: const [
-                  Text("videoName", style: TextStyle(color: Colors.white, fontSize: 18)),
-                  SizedBox(width: 8,),
-                  Icon(Icons.arrow_forward_rounded, color: Colors.white,size: 32,),
-                ],
+            Positioned(
+              top: 0,
+              right: 0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: const [
+                    Text("videoName", style: TextStyle(color: Colors.white, fontSize: 18)),
+                    SizedBox(width: 8,),
+                    Icon(Icons.arrow_forward_rounded, color: Colors.white,size: 32,),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

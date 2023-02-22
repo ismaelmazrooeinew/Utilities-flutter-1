@@ -100,144 +100,142 @@ class _VideoPlayerControlsState extends State<VideoPlayerControls> {
   Widget build(BuildContext context) {
     FlickVideoManager flickVideoManager = Provider.of<FlickVideoManager>(context);
 
-    return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Positioned.fill(
-            child: FlickAutoHideChild(
-              child: Container(color: Colors.black38),
-            ),
+    return Stack(
+      children: <Widget>[
+        Positioned.fill(
+          child: FlickAutoHideChild(
+            child: Container(color: Colors.black38),
           ),
-          Positioned.fill(
-            child: FlickShowControlsAction(
-              child: FlickSeekVideoAction(
-                child: Center(
-                  child: flickVideoManager.nextVideoAutoPlayTimer != null
-                      ? FlickAutoPlayCircularProgress(
-                    colors: FlickAutoPlayTimerProgressColors(
-                      backgroundColor: Colors.white30,
-                      color: Colors.red,
-                    ),
-                  )
-                      : FlickAutoHideChild(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            iconPlay(
-                              icon: Icons.skip_previous,
-                              color: dataManager!.hasPreviousVideo() ? Colors.white : Colors.white38,
-                              onTap: () {
-                                dataManager!.skipToPreviousVideo();
-                              },
+        ),
+        Positioned.fill(
+          child: FlickShowControlsAction(
+            child: FlickSeekVideoAction(
+              child: Center(
+                child: flickVideoManager.nextVideoAutoPlayTimer != null
+                    ? FlickAutoPlayCircularProgress(
+                  colors: FlickAutoPlayTimerProgressColors(
+                    backgroundColor: Colors.white30,
+                    color: Colors.red,
+                  ),
+                )
+                    : FlickAutoHideChild(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          iconPlay(
+                            icon: Icons.skip_previous,
+                            color: dataManager!.hasPreviousVideo() ? Colors.white : Colors.white38,
+                            onTap: () {
+                              dataManager!.skipToPreviousVideo();
+                            },
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: FlickPlayToggle(
+                              size: 50,
+                              playChild: iconPlay(icon: Icons.play_arrow),
+                              pauseChild: iconPlay(icon: Icons.pause),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: FlickPlayToggle(
-                                size: 50,
-                                playChild: iconPlay(icon: Icons.play_arrow),
-                                pauseChild: iconPlay(icon: Icons.pause),
-                              ),
-                            ),
-                            iconPlay(
-                              icon: Icons.skip_next,
-                              color: dataManager!.hasNextVideo() ? Colors.white : Colors.white38,
-                              onTap: () {
-                                dataManager!.skipToNextVideo();
-                              },
-                            ),
+                          ),
+                          iconPlay(
+                            icon: Icons.skip_next,
+                            color: dataManager!.hasNextVideo() ? Colors.white : Colors.white38,
+                            onTap: () {
+                              dataManager!.skipToNextVideo();
+                            },
+                          ),
 
-                            // Padding(
-                            //   padding: const EdgeInsets.all(8.0),
-                            //   child: GestureDetector(
-                            //     onTap: () {
-                            //       dataManager!.skipToNextVideo();
-                            //     },
-                            //     child: Container(
-                            //       padding: EdgeInsets.all(8),
-                            //       decoration: BoxDecoration(
-                            //         shape: BoxShape.circle,
-                            //         border: Border.all(color: Colors.white, width: 2),
-                            //       ),
-                            //       child: Icon(
-                            //         Icons.skip_next,
-                            //         color: dataManager!.hasNextVideo() ? Colors.white : Colors.white38,
-                            //         size: 35,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // )
-                          ],
-                        ),
-                        const SizedBox(),
-                      ],
-                    ),
+                          // Padding(
+                          //   padding: const EdgeInsets.all(8.0),
+                          //   child: GestureDetector(
+                          //     onTap: () {
+                          //       dataManager!.skipToNextVideo();
+                          //     },
+                          //     child: Container(
+                          //       padding: EdgeInsets.all(8),
+                          //       decoration: BoxDecoration(
+                          //         shape: BoxShape.circle,
+                          //         border: Border.all(color: Colors.white, width: 2),
+                          //       ),
+                          //       child: Icon(
+                          //         Icons.skip_next,
+                          //         color: dataManager!.hasNextVideo() ? Colors.white : Colors.white38,
+                          //         size: 35,
+                          //       ),
+                          //     ),
+                          //   ),
+                          // )
+                        ],
+                      ),
+                      const SizedBox(),
+                    ],
                   ),
                 ),
               ),
             ),
           ),
-          Positioned.fill(
-            child: FlickAutoHideChild(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
+        ),
+        Positioned.fill(
+          child: FlickAutoHideChild(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
 
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Row(
-                        children: <Widget>[
-                          const FlickSoundToggle(),
-                          Expanded(
-                            child: Container(),
-                          ),
-                          FlickFullScreenToggle(
-                            size: iconSize,
-                          ),
-                        ],
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(
+                      children: <Widget>[
+                        const FlickSoundToggle(),
+                        Expanded(
+                          child: Container(),
+                        ),
+                        FlickFullScreenToggle(
+                          size: iconSize,
+                        ),
+                      ],
                     ),
-                    FlickVideoProgressBar(
-                      flickProgressBarSettings: FlickProgressBarSettings(
-                        height: 5,
-                        handleRadius: 5,
-                        curveRadius: 50,
-                        backgroundColor: Colors.white24,
-                        bufferedColor: Colors.white38,
-                        playedColor: Colors.red,
-                        handleColor: Colors.red,
-                      ),
+                  ),
+                  FlickVideoProgressBar(
+                    flickProgressBarSettings: FlickProgressBarSettings(
+                      height: 5,
+                      handleRadius: 5,
+                      curveRadius: 50,
+                      backgroundColor: Colors.white24,
+                      bufferedColor: Colors.white38,
+                      playedColor: Colors.red,
+                      handleColor: Colors.red,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Row(
-                        children: <Widget>[
-                          FlickCurrentPosition(
-                            fontSize: fontSize,
-                          ),
-                          Expanded(
-                            child: Container(),
-                          ),
-                          FlickTotalDuration(
-                            fontSize: fontSize,
-                          ),
-                        ],
-                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(
+                      children: <Widget>[
+                        FlickCurrentPosition(
+                          fontSize: fontSize,
+                        ),
+                        Expanded(
+                          child: Container(),
+                        ),
+                        FlickTotalDuration(
+                          fontSize: fontSize,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-          Positioned.fill(child: speedPlay(listSpeed: [0.25, 0.50, 0.75,1.0,1.25,1.50,1.75]),),
-        ],
-      ),
+        ),
+        Positioned.fill(child: speedPlay(listSpeed: [0.25, 0.50, 0.75,1.0,1.25,1.50,1.75]),),
+      ],
     );
   }
 
