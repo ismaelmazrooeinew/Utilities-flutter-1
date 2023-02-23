@@ -355,7 +355,7 @@ class ProductReadDto {
   final String? useCase;
   final bool? isForSale;
   final bool? isSeen;
-  final bool? expireDate;
+  final String? expireDate;
   final bool? enabled;
   bool? isBookmarked;
   final double? latitude;
