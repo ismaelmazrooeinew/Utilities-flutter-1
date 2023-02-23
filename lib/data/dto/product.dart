@@ -606,6 +606,7 @@ class ProductFilterDto {
     this.showCategories,
     this.showMedia,
     this.showTeams,
+    this.showExpired,
     this.userId,
     this.state,
     this.stateTr1,
@@ -645,6 +646,7 @@ class ProductFilterDto {
   final bool? showCategories;
   final bool? showMedia;
   final bool? showVotes;
+  final bool? showExpired;
   final int? visitsCount;
   final double? length;
   final double? width;
@@ -722,6 +724,7 @@ class ProductFilterDto {
         showCreator: json["showCreator"],
         showTeams: json["showTeams"],
         showVotes: json["showVotes"],
+        showExpired: json["showExpired"],
         showCategories: json["showCategories"],
         showMedia: json["showMedia"],
         orderByVotes: json["orderByVotes"],
@@ -779,6 +782,7 @@ class ProductFilterDto {
         "showCreator": showCreator,
         "showTeams": showTeams,
         "showVotes": showVotes,
+        "showExpired": showExpired,
         "showCategories": showCategories,
         "showMedia": showMedia,
         "orderByVotes": orderByVotes,
