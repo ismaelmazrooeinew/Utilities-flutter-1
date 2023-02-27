@@ -298,6 +298,7 @@ class ProductReadDto {
     this.useCase,
     this.isForSale,
     this.isSeen,
+    this.expireDate,
     this.enabled,
     this.isBookmarked,
     this.latitude,
@@ -356,6 +357,7 @@ class ProductReadDto {
   final String? useCase;
   final bool? isForSale;
   final bool? isSeen;
+  final String? expireDate;
   final bool? enabled;
   bool? isBookmarked;
   final double? latitude;
@@ -426,6 +428,7 @@ class ProductReadDto {
         useCase: json["useCase"],
         isForSale: json["isForSale"],
         isSeen: json["isSeen"],
+        expireDate: json["expireDate"],
         enabled: json["enabled"],
         isBookmarked: json["isBookmarked"],
         latitude: json["latitude"],
@@ -479,6 +482,7 @@ class ProductReadDto {
         "useCase": useCase,
         "isForSale": isForSale,
         "isSeen": isSeen,
+        "expireDate": expireDate,
         "enabled": enabled,
         "isBookmarked": isBookmarked,
         "latitude": latitude,
@@ -610,6 +614,7 @@ class ProductFilterDto {
     this.showCategories,
     this.showMedia,
     this.showTeams,
+    this.showExpired,
     this.userId,
     this.state,
     this.stateTr1,
@@ -649,6 +654,7 @@ class ProductFilterDto {
   final bool? showCategories;
   final bool? showMedia;
   final bool? showVotes;
+  final bool? showExpired;
   final int? visitsCount;
   final double? length;
   final double? width;
@@ -726,6 +732,7 @@ class ProductFilterDto {
         showCreator: json["showCreator"],
         showTeams: json["showTeams"],
         showVotes: json["showVotes"],
+        showExpired: json["showExpired"],
         showCategories: json["showCategories"],
         showMedia: json["showMedia"],
         orderByVotes: json["orderByVotes"],
@@ -783,6 +790,7 @@ class ProductFilterDto {
         "showCreator": showCreator,
         "showTeams": showTeams,
         "showVotes": showVotes,
+        "showExpired": showExpired,
         "showCategories": showCategories,
         "showMedia": showMedia,
         "orderByVotes": orderByVotes,
