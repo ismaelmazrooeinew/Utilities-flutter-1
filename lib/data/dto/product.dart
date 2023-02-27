@@ -314,6 +314,7 @@ class ProductReadDto {
     this.deletedAt,
     this.user,
     this.status,
+    this.seenUsers,
     this.currency,
     this.media,
     this.categories,
@@ -346,6 +347,7 @@ class ProductReadDto {
   final String? link;
   final String? website;
   final String? email;
+  final String? seenUsers;
   final String? state;
   final String? stateTr1;
   final String? stateTr2;
@@ -440,6 +442,7 @@ class ProductReadDto {
         updatedAt: json["updatedAt"],
         deletedAt: json["deletedAt"],
         status: json["status"],
+        seenUsers: json["seenUsers"],
         currency: json["currency"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
@@ -472,6 +475,7 @@ class ProductReadDto {
         "stateTr2": stateTr2,
         "type": type,
         "unit": unit,
+        "seenUsers": seenUsers,
         "useCase": useCase,
         "isForSale": isForSale,
         "isSeen": isSeen,
