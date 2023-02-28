@@ -165,6 +165,7 @@ enum UseCaseProduct {
   ad("ad"),
   dailyPrice("dailyPrice"),
   tender("tender"),
+  test("test"),
   project("project"),
   service("service"),
   consultant("consultant"),
