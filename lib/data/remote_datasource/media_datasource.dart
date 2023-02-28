@@ -37,9 +37,7 @@ class MediaDataSource {
     Dio dio = Dio();
     for (int i = 0; i < files!.length; i++) {
       File file = files[i];
-      String fileName = file.path.split('/')[file.path
-          .split('/')
-          .length - 1];
+      String fileName = file.path.split('/')[file.path.split('/').length - 1];
       final Response<dynamic> response = await dio.post(
         '$baseUrl/Media',
         onSendProgress: onSendProgress,
@@ -71,6 +69,22 @@ class MediaDataSource {
     }
   }
 
+  Future<void> update({
+    required final String mediaId,
+    final String? title,
+    final String? size,
+    final String? useCase,
+    required final Function(GenericResponse<MediaReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+    final Function(String error)? failure,
+  }) async =>
+      httpPut(
+        url: "$baseUrl/Media/$mediaId",
+        body: MediaReadDto(title: title, useCase: useCase, size: size),
+        action: (Response response) => onResponse(GenericResponse<MediaReadDto>.fromJson(response.data, fromMap: MediaReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
+      );
 
   Future<void> createLink({
     required List<String> links,
@@ -180,7 +194,6 @@ class MediaDataSource {
       });
     }
   }
-
 
   Future<void> delete({
     required final String id,
