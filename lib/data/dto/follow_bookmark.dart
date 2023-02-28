@@ -6,9 +6,11 @@ class BookmarkReadDto {
     this.folderName,
     this.media,
     this.id,
+    this.user,
   });
 
   final ProductReadDto? product;
+  final UserReadDto? user;
   final List<MediaReadDto>? media;
   final String? folderName;
   final String? id;
@@ -21,6 +23,7 @@ class BookmarkReadDto {
         folderName: json["folderName"],
         id: json["id"],
         product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
+        user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
 
@@ -28,6 +31,7 @@ class BookmarkReadDto {
         "folderName": folderName,
         "id": id,
         "product": product == null ? null : product!.toMap(),
+        "user": user == null ? null : user!.toMap(),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
       };
 }
