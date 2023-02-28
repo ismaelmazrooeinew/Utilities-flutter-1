@@ -65,14 +65,14 @@ class FollowBookmarkDataSource {
 
   Future<void> toggleBookmark({
     required final ToggleBookmark dto,
-    required final Function(GenericResponse response) onResponse,
+    required final Function(GenericResponse<BookmarkReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/FollowBookmark/ToggleBookmark",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<String>()),
+        action: (Response response) => onResponse(GenericResponse<BookmarkReadDto>.fromJson(response.data, fromMap: BookmarkReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse()),
         failure: failure,
       );
