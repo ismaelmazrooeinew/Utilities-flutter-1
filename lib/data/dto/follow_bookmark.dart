@@ -1,23 +1,5 @@
 import 'package:utilities/utilities.dart';
 
-class BookmarkReadParams {
-  BookmarkReadParams({this.userId});
-
-  final String? userId;
-
-  factory BookmarkReadParams.fromJson(String str) => BookmarkReadParams.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory BookmarkReadParams.fromMap(Map<String, dynamic> json) => BookmarkReadParams(
-        userId: json["userId"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "userId": userId,
-      };
-}
-
 class BookmarkReadDto {
   BookmarkReadDto({
     this.product,
