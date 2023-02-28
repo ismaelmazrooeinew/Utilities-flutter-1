@@ -5,11 +5,13 @@ class BookmarkReadDto {
     this.product,
     this.folderName,
     this.media,
+    this.id,
   });
 
   final ProductReadDto? product;
   final MediaReadDto? media;
   final String? folderName;
+  final String? id;
 
   factory BookmarkReadDto.fromJson(String str) => BookmarkReadDto.fromMap(json.decode(str));
 
@@ -17,12 +19,14 @@ class BookmarkReadDto {
 
   factory BookmarkReadDto.fromMap(Map<String, dynamic> json) => BookmarkReadDto(
         folderName: json["folderName"],
+        id: json["id"],
         product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
         media: json["media"] == null ? null : MediaReadDto.fromMap(json["media"]),
       );
 
   Map<String, dynamic> toMap() => {
         "folderName": folderName,
+        "id": id,
         "product": product == null ? null : product!.toMap(),
         "media": media == null ? null : media!.toMap(),
       };
