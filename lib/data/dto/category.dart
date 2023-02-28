@@ -38,6 +38,7 @@ class CategoryCreateUpdateDto {
     this.color,
     this.useCase,
     this.type,
+    this.isUnique,
   });
 
   final String? id;
@@ -50,6 +51,7 @@ class CategoryCreateUpdateDto {
   final String? color;
   final String? useCase;
   final String? type;
+  final bool? isUnique;
 
   factory CategoryCreateUpdateDto.fromJson(String str) => CategoryCreateUpdateDto.fromMap(json.decode(str));
 
@@ -67,6 +69,7 @@ class CategoryCreateUpdateDto {
         color: json["color"],
         useCase: json["useCase"],
         type: json["type"],
+        isUnique: json["isUnique"],
       );
 
   Map<String, dynamic> toMap() =>
@@ -81,6 +84,7 @@ class CategoryCreateUpdateDto {
         "color": color,
         "useCase": useCase,
         "type": type,
+        "isUnique": isUnique,
       };
 }
 
