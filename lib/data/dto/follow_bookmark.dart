@@ -9,7 +9,7 @@ class BookmarkReadDto {
   });
 
   final ProductReadDto? product;
-  final MediaReadDto? media;
+  final List<MediaReadDto>? media;
   final String? folderName;
   final String? id;
 
@@ -21,14 +21,14 @@ class BookmarkReadDto {
         folderName: json["folderName"],
         id: json["id"],
         product: json["product"] == null ? null : ProductReadDto.fromMap(json["product"]),
-        media: json["media"] == null ? null : MediaReadDto.fromMap(json["media"]),
+        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
         "folderName": folderName,
         "id": id,
         "product": product == null ? null : product!.toMap(),
-        "media": media == null ? null : media!.toMap(),
+        "media":media==null?null: List<dynamic>.from(media!.map((x) => x.toMap())),
       };
 }
 
