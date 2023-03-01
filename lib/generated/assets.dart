@@ -80,9 +80,8 @@ class Assets {
   static const String extensionsStringExtension = 'lib/utils/extensions/string_extension.dart';
   static const String extensionsTextExtension = 'lib/utils/extensions/text_extension.dart';
   static const String extensionsWidgetExtension = 'lib/utils/extensions/widget_extension.dart';
-  static const String flipCartFlipCard = 'lib/utils/flip_cart/flip_card.dart';
-  static const String flipCartFlipCardController = 'lib/utils/flip_cart/flip_card_controller.dart';
-  static const String flutterSwitchFlutterSwitch = 'lib/utils/flutter_switch/flutter_switch.dart';
+  static const String flipCartFlipCard = 'lib/components/flip_cart/flip_card.dart';
+  static const String flipCartFlipCardController = 'lib/components/flip_cart/flip_card_controller.dart';
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String gregorianGregorianDate = 'lib/utils/shamsi_date/src/gregorian/gregorian_date.dart';
   static const String gregorianGregorianFormatter = 'lib/utils/shamsi_date/src/gregorian/gregorian_formatter.dart';
@@ -161,7 +160,6 @@ class Assets {
   static const String utilsShare = 'lib/utils/share.dart';
   static const String utilsUtils = 'lib/utils/utils.dart';
   static const String utilsValidators = 'lib/utils/validators.dart';
-  static const String utilsWidgets = 'lib/utils/widgets.dart';
   static const String videoLayoutRecordCount = 'lib/components/custom_gallery_display/src/video_layout/record_count.dart';
   static const String videoLayoutRecordFadeAnimation = 'lib/components/custom_gallery_display/src/video_layout/record_fade_animation.dart';
   static const String videoPlayerVideoPlayerControls = 'lib/components/video_player/video_player_controls.dart';

@@ -2,6 +2,7 @@ library flip_card;
 
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:utilities/components/flip_cart/flip_card_controller.dart';
 import 'package:utilities/utilities.dart';
 
 enum FlipDirection {

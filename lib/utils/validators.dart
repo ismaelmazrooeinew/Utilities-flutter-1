@@ -10,8 +10,6 @@ export 'extensions/shimmer_extension.dart';
 export 'extensions/string_extension.dart';
 export 'extensions/text_extension.dart';
 export 'extensions/widget_extension.dart';
-export 'flip_cart/flip_card.dart';
-export 'flip_cart/flip_card_controller.dart';
 export 'file.dart';
 export 'enums.dart';
 export 'get.dart';
