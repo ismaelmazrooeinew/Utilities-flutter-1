@@ -15,6 +15,7 @@ class GlobalSearchCreateDto {
     this.pageSize,
     this.reputation,
     this.minimal,
+    this.isFollowing,
   });
 
   final String? title;
@@ -28,6 +29,7 @@ class GlobalSearchCreateDto {
   final bool? category;
   final bool? isBookmark;
   final bool? isMine;
+  final bool? isFollowing;
   final bool? minimal;
   final List<String>? categories;
 
@@ -47,6 +49,7 @@ class GlobalSearchCreateDto {
         category: json["category"],
         isBookmark: json["isBookmark"],
         isMine: json["isMine"],
+        isFollowing: json["isFollowing"],
         minimal: json["minimal"],
         categories: json["categories"] == null ? null : json["categories"],
       );
@@ -63,6 +66,7 @@ class GlobalSearchCreateDto {
         "category": category,
         "isBookmark": isBookmark,
         "isMine": isMine,
+        "isFollowing": isFollowing,
         "minimal": minimal,
         "categories": categories == null ? null : categories,
       };
