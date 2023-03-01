@@ -16,9 +16,11 @@ class GlobalSearchCreateDto {
     this.reputation,
     this.minimal,
     this.isFollowing,
+    this.query,
   });
 
   final String? title;
+  final String? query;
   final int? pageSize;
   final int? pageNumber;
   final bool? newest;
@@ -39,6 +41,7 @@ class GlobalSearchCreateDto {
 
   factory GlobalSearchCreateDto.fromMap(Map<String, dynamic> json) => GlobalSearchCreateDto(
         title: json["title"],
+        query: json["query"],
         pageSize: json["pageSize"],
         pageNumber: json["pageNumber"],
         newest: json["newest"],
@@ -56,6 +59,7 @@ class GlobalSearchCreateDto {
 
   Map<String, dynamic> toMap() => {
         "title": title,
+        "query": query,
         "pageSize": pageSize,
         "pageNumber": pageNumber,
         "newest": newest,
