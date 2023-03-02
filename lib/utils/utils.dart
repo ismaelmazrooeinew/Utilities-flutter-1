@@ -17,7 +17,6 @@ export 'extensions/text_extension.dart';
 export 'extensions/widget_extension.dart';
 export 'file.dart';
 export 'enums.dart';
-export 'qr_code.dart';
 export 'get.dart';
 export 'dio_interceptor.dart';
 export 'launch.dart';
