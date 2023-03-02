@@ -2,7 +2,6 @@ export 'badges.dart';
 export 'bottom_sheet.dart';
 export 'carousel_slider.dart';
 export 'container.dart';
-export 'dotted_border.dart';
 export 'image.dart';
 export 'scrolling_text.dart';
 export 'others.dart';
