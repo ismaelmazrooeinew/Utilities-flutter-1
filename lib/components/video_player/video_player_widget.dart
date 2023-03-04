@@ -6,8 +6,9 @@ import 'package:utilities/components/video_player/video_player_controls.dart';
 import 'package:utilities/components/video_player/video_player_data_manager.dart';
 
 class CustomVideoPlayer extends StatefulWidget {
-  CustomVideoPlayer({required this.urls, Key? key}) : super(key: key);
+  CustomVideoPlayer({required this.urls, this.position, Key? key}) : super(key: key);
   List<String> urls;
+  Duration? position;
 
   @override
   _CustomVideoPlayerState createState() => _CustomVideoPlayerState();
@@ -22,15 +23,21 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   void initState() {
     super.initState();
     urls = widget.urls;
+    VideoPlayerController controls = VideoPlayerController.network(
+      urls[0],
+    );
     flickManager = FlickManager(
-        videoPlayerController: VideoPlayerController.network(
-          urls[0],
-        ),
+        videoPlayerController: controls,
         onVideoEnd: () {
           dataManager.skipToNextVideo(const Duration(seconds: 5));
         });
 
     dataManager = DataManager(flickManager: flickManager, urls: urls);
+    controls.initialize().then(
+      (value) {
+        controls.seekTo(widget.position ?? Duration(milliseconds: 1));
+      },
+    );
   }
 
   @override
@@ -82,8 +89,14 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
                 child: Row(
                   children: const [
                     Text("videoName", style: TextStyle(color: Colors.white, fontSize: 18)),
-                    SizedBox(width: 8,),
-                    Icon(Icons.arrow_forward_rounded, color: Colors.white,size: 32,),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.white,
+                      size: 32,
+                    ),
                   ],
                 ),
               ),
