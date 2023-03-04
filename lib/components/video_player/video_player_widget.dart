@@ -53,8 +53,12 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Duration? position = await dataManager.flickManager.flickVideoManager?.videoPlayerController!.position;
-        Get.back(result: position);
+        if (dataManager.flickManager.flickVideoManager?.videoPlayerController != null) {
+          Duration? position = await dataManager.flickManager.flickVideoManager?.videoPlayerController!.position;
+          Get.back(result: position);
+        } else {
+          Get.back(result: Duration(milliseconds: 1));
+        }
         return false;
       },
       child: Scaffold(
