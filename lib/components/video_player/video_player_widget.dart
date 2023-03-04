@@ -37,14 +37,6 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
         });
 
     dataManager = DataManager(flickManager: flickManager, urls: urls);
-    controls.initialize().then(
-      (value) {
-        controls.addListener(() async {
-          position = await controls.position ?? Duration(milliseconds: 1);
-        });
-        controls.seekTo(widget.position ?? Duration(milliseconds: 1));
-      },
-    );
   }
 
   @override
@@ -61,6 +53,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        Duration? position = await dataManager.flickManager.flickVideoManager?.videoPlayerController!.position;
         Get.back(result: position);
         return false;
       },
