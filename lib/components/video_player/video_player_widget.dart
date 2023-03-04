@@ -26,6 +26,9 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   void initState() {
     super.initState();
     urls = widget.urls;
+    if (widget.position != null) {
+      position = widget.position ?? Duration(milliseconds: 1);
+    }
 
     VideoPlayerController controls = VideoPlayerController.network(
       urls[0],
