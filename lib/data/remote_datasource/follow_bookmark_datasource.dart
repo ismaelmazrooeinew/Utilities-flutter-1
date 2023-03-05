@@ -18,7 +18,7 @@ class FollowBookmarkDataSource {
     final Function(String error)? failure,
   }) async =>
       httpGet(
-        url: "$baseUrl/FollowBookmark/ReadBookmarksByFolderName/$folderName/$userId",
+        url: "$baseUrl/FollowBookmark/ReadBookmarksByFolderName?userId=$userId&folderName=$folderName",
         action: (Response response) => onResponse(GenericResponse<BookmarkReadDto>.fromJson(response.data, fromMap: BookmarkReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,
