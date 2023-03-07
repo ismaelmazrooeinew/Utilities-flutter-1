@@ -7,8 +7,29 @@ extension DateTimeExtensions on DateTime {
   String toTimeAgo({final bool numericDates = false, final bool persian = false}) {
     try {
       final Duration difference = DateTime.now().difference(this);
-      if (difference.inDays > 8)
-        return this.toIso8601String().substring(0, 10);
+
+      if ((difference.inDays / 365).floor() >= 2)
+        return persian ? '${difference.inDays.toString().persianNumber()} سال پیش' : '${(difference.inDays / 365).floor()}y';
+      else if ((difference.inDays / 365).floor() >= 1)
+        return persian
+            ? numericDates
+                ? '۱ سال پیش'
+                : 'سال پیش'
+            : numericDates
+                ? '1y'
+                : 'Last year';
+      else if ((difference.inDays / 30).floor() >= 2)
+        return persian ? '${difference.inDays.toString().persianNumber()} ماه پیش' : '${(difference.inDays / 30).floor()}M';
+      else if ((difference.inDays / 30).floor() >= 1)
+        return persian
+            ? numericDates
+                ? '۱ ماه پیش'
+                : 'ماه پیش'
+            : numericDates
+                ? '1M'
+                : 'Last month';
+      else if ((difference.inDays / 7).floor() >= 2)
+        return persian ? '${difference.inDays.toString().persianNumber()} روز پیش' : '${(difference.inDays / 7).floor()}w';
       else if ((difference.inDays / 7).floor() >= 1)
         return persian
             ? numericDates
