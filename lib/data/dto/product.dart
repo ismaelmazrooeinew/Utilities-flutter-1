@@ -612,6 +612,8 @@ class ProductFilterDto {
     this.isFollowing,
     this.showCreator,
     this.showCategories,
+    this.showUserCategories,
+    this.showCategoryMedia,
     this.showMedia,
     this.showTeams,
     this.showExpired,
@@ -628,6 +630,28 @@ class ProductFilterDto {
     this.orderByCreatedDate,
     this.orderByCreaedDateDecending,
     this.showVotes,
+    this.subtitle,
+    this.keyValues1,
+    this.keyValues2,
+    this.maxPrice,
+    this.minPrice,
+    this.responseTime,
+    this.onTimeDelivery,
+    this.hasDiscount,
+    this.showForms,
+    this.showFormFields,
+    this.showCategoriesFormFields,
+    this.showVoteFields,
+    this.showVisitProducts,
+    this.showReports,
+    this.showComments,
+    this.showOrders,
+    this.minValue,
+    this.maxValue,
+    this.hasComment,
+    this.hasOrder,
+    this.categoriesAnd,
+    this.query,
   });
 
   final String? title;
@@ -655,6 +679,8 @@ class ProductFilterDto {
   final bool? showMedia;
   final bool? showVotes;
   final bool? showExpired;
+  final bool? showCategoryMedia;
+  final bool? showUserCategories;
   final int? visitsCount;
   final double? length;
   final double? width;
@@ -685,6 +711,28 @@ class ProductFilterDto {
   final List<int>? locations;
   final List<String>? categories;
   final List<UserReadDto>? teams;
+  final String? subtitle;
+  final String? keyValues1;
+  final String? keyValues2;
+  final int? maxPrice;
+  final int? minPrice;
+  final int? responseTime;
+  final int? onTimeDelivery;
+  final bool? hasDiscount;
+  final bool? showForms;
+  final bool? showFormFields;
+  final bool? showCategoriesFormFields;
+  final bool? showVoteFields;
+  final bool? showVisitProducts;
+  final bool? showReports;
+  final bool? showComments;
+  final bool? showOrders;
+  final int? minValue;
+  final int? maxValue;
+  final bool? hasComment;
+  final bool? hasOrder;
+  final List<String>? categoriesAnd;
+  final String? query;
 
   factory ProductFilterDto.fromJson(String str) => ProductFilterDto.fromMap(json.decode(str));
 
@@ -733,6 +781,8 @@ class ProductFilterDto {
         showTeams: json["showTeams"],
         showVotes: json["showVotes"],
         showExpired: json["showExpired"],
+        showCategoryMedia: json["showCategoryMedia"],
+        showUserCategories: json["showUserCategories"],
         showCategories: json["showCategories"],
         showMedia: json["showMedia"],
         orderByVotes: json["orderByVotes"],
@@ -746,6 +796,28 @@ class ProductFilterDto {
         locations: json["locations"] == null ? null : json["locations"],
         categories: json["categories"] == null ? null : json["categories"],
         teams: json["teams"] == null ? null : List<UserReadDto>.from(json["teams"].map((x) => UserReadDto.fromMap(x))),
+        subtitle: json["subtitle"],
+        keyValues1: json["keyValues1"],
+        keyValues2: json["keyValues2"],
+        maxPrice: json["maxPrice"],
+        minPrice: json["minPrice"],
+        responseTime: json["responseTime"],
+        onTimeDelivery: json["onTimeDelivery"],
+        hasDiscount: json["hasDiscount"],
+        showForms: json["showForms"],
+        showFormFields: json["showFormFields"],
+        showCategoriesFormFields: json["showCategoriesFormFields"],
+        showVoteFields: json["showVoteFields"],
+        showVisitProducts: json["showVisitProducts"],
+        showReports: json["showReports"],
+        showComments: json["showComments"],
+        showOrders: json["showOrders"],
+        minValue: json["minValue"],
+        maxValue: json["maxValue"],
+        hasComment: json["hasComment"],
+        hasOrder: json["hasOrder"],
+        categoriesAnd: json["categoriesAnd"] == null ? [] : List<String>.from(json["categoriesAnd"]!.map((x) => x)),
+        query: json["query"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -791,6 +863,8 @@ class ProductFilterDto {
         "showTeams": showTeams,
         "showVotes": showVotes,
         "showExpired": showExpired,
+        "showCategoryMedia": showCategoryMedia,
+        "showUserCategories": showUserCategories,
         "showCategories": showCategories,
         "showMedia": showMedia,
         "orderByVotes": orderByVotes,
@@ -804,5 +878,27 @@ class ProductFilterDto {
         "categories": categories == null ? null : categories,
         "locations": locations == null ? null : locations,
         "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x.toMap())),
+        "subtitle": subtitle,
+        "keyValues1": keyValues1,
+        "keyValues2": keyValues2,
+        "maxPrice": maxPrice,
+        "minPrice": minPrice,
+        "responseTime": responseTime,
+        "onTimeDelivery": onTimeDelivery,
+        "hasDiscount": hasDiscount,
+        "showForms": showForms,
+        "showFormFields": showFormFields,
+        "showCategoriesFormFields": showCategoriesFormFields,
+        "showVoteFields": showVoteFields,
+        "showVisitProducts": showVisitProducts,
+        "showReports": showReports,
+        "showComments": showComments,
+        "showOrders": showOrders,
+        "minValue": minValue,
+        "maxValue": maxValue,
+        "hasComment": hasComment,
+        "hasOrder": hasOrder,
+        "categoriesAnd": categoriesAnd == null ? [] : List<dynamic>.from(categoriesAnd!.map((x) => x)),
+        "query": query,
       };
 }
