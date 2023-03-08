@@ -200,12 +200,12 @@ class MediaDataSource {
 
   Future<void> delete({
     required final String id,
-    required final VoidCallback onResponse,
+    required final Function(GenericResponse) onResponse,
     required final Function(GenericResponse response) onError,
   }) async =>
       httpDelete(
         url: "$baseUrl/Media/$id",
-        action: (Response response) => onResponse(),
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: MediaReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
       );
 }
