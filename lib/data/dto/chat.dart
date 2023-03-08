@@ -62,11 +62,13 @@ class ChatReadDto {
 
 class ChatCreateDto {
   ChatCreateDto({
+    this.id,
     this.userId,
     this.messageId,
     this.messageText,
   });
 
+  final String? id;
   final String? userId;
   final String? messageId;
   final String? messageText;
@@ -76,12 +78,14 @@ class ChatCreateDto {
   String toJson() => json.encode(toMap());
 
   factory ChatCreateDto.fromMap(Map<String, dynamic> json) => ChatCreateDto(
+    id: json["id"],
         userId: json["userId"],
         messageId: json["messageId"],
         messageText: json["messageText"],
       );
 
   Map<String, dynamic> toMap() => {
+        "id": id,
         "userId": userId,
         "messageId": messageId,
         "messageText": messageText,
