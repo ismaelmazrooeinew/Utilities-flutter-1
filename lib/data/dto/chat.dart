@@ -13,6 +13,7 @@ class ChatReadDto {
     this.user,
     this.phoneNumber,
     this.unReadMessages,
+    this.products,
   });
 
   final String? id;
@@ -26,6 +27,7 @@ class ChatReadDto {
   final bool? send;
   final UserReadDto? user;
   final List<MediaReadDto>? media;
+  final List<ProductReadDto>? products;
 
   factory ChatReadDto.fromJson(String str) => ChatReadDto.fromMap(json.decode(str));
 
@@ -43,6 +45,7 @@ class ChatReadDto {
         send: json["send"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
+        products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -57,6 +60,7 @@ class ChatReadDto {
         "user": user == null ? null : user!.toMap(),
         "profileImage": profileImage == null ? null : profileImage,
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
+        "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
       };
 }
 
@@ -64,30 +68,34 @@ class ChatCreateDto {
   ChatCreateDto({
     this.id,
     this.userId,
-    this.messageId,
     this.messageText,
+    this.products,
+    this.users,
   });
 
   final String? id;
   final String? userId;
-  final String? messageId;
   final String? messageText;
+  final List<String>? products;
+  final List<String>? users;
 
   factory ChatCreateDto.fromJson(String str) => ChatCreateDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory ChatCreateDto.fromMap(Map<String, dynamic> json) => ChatCreateDto(
-    id: json["id"],
+        id: json["id"],
         userId: json["userId"],
-        messageId: json["messageId"],
         messageText: json["messageText"],
+        products: json["products"],
+        users: json["users"],
       );
 
   Map<String, dynamic> toMap() => {
         "id": id,
         "userId": userId,
-        "messageId": messageId,
         "messageText": messageText,
+        "products": products,
+        "users": users,
       };
 }
