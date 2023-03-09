@@ -158,6 +158,7 @@ class Assets {
   static const String utilsLaunch = 'lib/utils/launch.dart';
   static const String utilsLocalStorage = 'lib/utils/local_storage.dart';
   static const String utilsShare = 'lib/utils/share.dart';
+  static const String utilsText = 'lib/utils/text.dart';
   static const String utilsUtils = 'lib/utils/utils.dart';
   static const String utilsValidators = 'lib/utils/validators.dart';
   static const String videoLayoutRecordCount = 'lib/components/custom_gallery_display/src/video_layout/record_count.dart';
