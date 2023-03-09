@@ -773,7 +773,7 @@ extension TextExtension on Text {
           shadows: shadows,
         ),
       );
-  TextDirection setDirection()=>getDirection(data ?? "");
+
 
   Text bodySmall({
     final Color? color,

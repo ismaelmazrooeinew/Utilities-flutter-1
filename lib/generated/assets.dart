@@ -50,6 +50,7 @@ class Assets {
   static const String dtoOrders = 'lib/data/dto/orders.dart';
   static const String dtoPayment = 'lib/data/dto/payment.dart';
   static const String dtoProduct = 'lib/data/dto/product.dart';
+  static const String dtoReaction = 'lib/data/dto/reaction.dart';
   static const String dtoReport = 'lib/data/dto/report.dart';
   static const String dtoServerLocation = 'lib/data/dto/server_location.dart';
   static const String dtoShoppingCart = 'lib/data/dto/shopping_cart.dart';
@@ -158,7 +159,6 @@ class Assets {
   static const String utilsLaunch = 'lib/utils/launch.dart';
   static const String utilsLocalStorage = 'lib/utils/local_storage.dart';
   static const String utilsShare = 'lib/utils/share.dart';
-  static const String utilsText = 'lib/utils/text.dart';
   static const String utilsUtils = 'lib/utils/utils.dart';
   static const String utilsValidators = 'lib/utils/validators.dart';
   static const String videoLayoutRecordCount = 'lib/components/custom_gallery_display/src/video_layout/record_count.dart';
