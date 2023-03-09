@@ -1,3 +1,4 @@
+import 'package:utilities/data/dto/reaction.dart';
 import 'package:utilities/utilities.dart';
 
 class CommentReadDto {
@@ -13,6 +14,7 @@ class CommentReadDto {
     this.likeComments,
     this.parentId,
     this.isLiked,
+    this.commentReacts,
   });
 
   final String? id;
@@ -26,6 +28,7 @@ class CommentReadDto {
   final UserReadDto? user;
   final List<CommentReadDto>? children;
   final List<CommentReadDto>? likeComments;
+  final List<ReactionReadDto>? commentReacts;
 
   factory CommentReadDto.fromJson(String str) => CommentReadDto.fromMap(json.decode(str));
 
@@ -43,6 +46,7 @@ class CommentReadDto {
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         children: json["children"] == null ? null : List<CommentReadDto>.from(json["children"].map((x) => CommentReadDto.fromMap(x))),
         likeComments: json["likeComments"] == null ? null : List<CommentReadDto>.from(json["likeComments"].map((x) => CommentReadDto.fromMap(x))),
+        commentReacts: json["commentReacts"] == null ? null : List<ReactionReadDto>.from(json["commentReacts"].map((x) => ReactionReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -57,6 +61,7 @@ class CommentReadDto {
         "user": user == null ? null : user!.toMap(),
         "children": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
         "likeComments": likeComments == null ? null : List<dynamic>.from(likeComments!.map((x) => x.toMap())),
+        "commentReacts": commentReacts == null ? null : List<dynamic>.from(commentReacts!.map((x) => x.toMap())),
       };
 }
 

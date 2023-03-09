@@ -1,4 +1,6 @@
+
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:utilities/data/dto/comment.dart';
 import 'package:utilities/data/dto/generic_response.dart';
 import 'package:utilities/utils/dio_interceptor.dart';
@@ -32,6 +34,20 @@ class CommentDataSource {
       httpPost(
         url: "$baseUrl/Comment/ToggleLikeComment/$commentId",
         action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
+      );
+
+  Future<void> addReaction({
+    required final String commentId,
+    required final int reactionCode,
+    required final VoidCallback onResponse,
+    required final Function(GenericResponse response) onError,
+    final Function(String error)? failure,
+  }) async =>
+      httpPost(
+        url: "$baseUrl/Comment/AddReactionToComment/$commentId/$reactionCode",
+        action: (Response response) => onResponse(),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,
       );
