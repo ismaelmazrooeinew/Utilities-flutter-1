@@ -28,13 +28,21 @@ void delay(final int milliseconds, final VoidCallback action) async => Future<dy
       () async => action(),
     );
 
-Future<File> getCompressImageFile({required final File file, final int quality = 70}) async {
+Future<File> getCompressImageFile({
+  required final File file,
+  final int quality = 70,
+  final bool advanceCompress = true,
+}) async {
+  int advanceQuality = 20;
+
+  advanceQuality = (100 - ((file.lengthSync() / 1000000) * 0.85)).toInt();
+
   final Directory dir = Directory.systemTemp;
   final String targetPath = "${dir.absolute.path}/temp.jpg";
   final File? result = await FlutterImageCompress.compressAndGetFile(
     file.absolute.path,
     targetPath,
-    quality: quality,
+    quality: advanceCompress ? advanceQuality : quality,
   );
 
   return result ?? File("--");
