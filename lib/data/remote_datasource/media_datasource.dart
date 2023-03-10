@@ -98,6 +98,7 @@ class MediaDataSource {
     final String? categoryId,
     final String? contentId,
     final String? productId,
+    final String? commentId,
     final String? userId,
     final String? chatId,
     final String? notificationId,
@@ -115,6 +116,7 @@ class MediaDataSource {
           'UseCase': useCase,
           'CategoryId': categoryId,
           'ContentId': contentId,
+          'CommentId': commentId,
           'ProductId': productId,
           'UserId': userId,
           'ChatId': chatId,
@@ -143,6 +145,7 @@ class MediaDataSource {
     final Function(int statusCode)? error,
     final String? categoryId,
     final String? contentId,
+    final String? commentId,
     final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
     final String? userId,
     final String? chatId,
@@ -167,6 +170,9 @@ class MediaDataSource {
       }
       if (userId != null) {
         request.fields['UserId'] = userId;
+      }
+      if (commentId != null) {
+        request.fields['CommentId'] = commentId;
       }
 
       if (chatId != null) {
