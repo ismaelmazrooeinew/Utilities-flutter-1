@@ -35,7 +35,7 @@ Future<File> getCompressImageFile({
 }) async {
   int advanceQuality = 20;
 
-  advanceQuality = (100 - ((file.lengthSync() * 1000000) * 0.85)).toInt();
+  advanceQuality = (100 - ((file.lengthSync() / 1000000) * 0.85)).toInt();
 
   final Directory dir = Directory.systemTemp;
   final String targetPath = "${dir.absolute.path}/temp.jpg";
