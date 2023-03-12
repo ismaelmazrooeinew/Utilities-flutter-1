@@ -62,19 +62,31 @@ class ChatGroupDataSource {
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,
       );
+  Future<void> readGroupChatById({
+    required String id,
+    required final Function(GenericResponse<ChatGroupReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+    final Function(String error)? failure,
+  }) async =>
+      httpGet(
+        url: "$baseUrl/Chat/ReadGroupChatById/$id",
+        action: (Response response) => onResponse(GenericResponse<ChatGroupReadDto>.fromJson(response.data, fromMap: ChatGroupReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
+      );
 
-  // Future<void> readGroupChatMessages({
-  //   required String id,
-  //   required final Function(GenericResponse<ChatGroupReadDto>) onResponse,
-  //   required final Function(GenericResponse response) onError,
-  //   final Function(String error)? failure,
-  // }) async =>
-  //     httpGet(
-  //       url: "$baseUrl/Chat/ReadGroupChatMessages/$id",
-  //       action: (Response response) => onResponse(GenericResponse<ChatGroupReadDto>.fromJson(response.data, fromMap: ChatGroupReadDto.fromMap)),
-  //       error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-  //       failure: failure,
-  //     );
+  Future<void> readGroupChatMessages({
+    required String id,
+    required final Function(GenericResponse<ChatGroupMessageReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+    final Function(String error)? failure,
+  }) async =>
+      httpGet(
+        url: "$baseUrl/Chat/ReadGroupChatMessages/$id",
+        action: (Response response) => onResponse(GenericResponse<ChatGroupMessageReadDto>.fromJson(response.data, fromMap: ChatGroupMessageReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
+      );
 
   Future<void> readByUserId({
     required final String userId,

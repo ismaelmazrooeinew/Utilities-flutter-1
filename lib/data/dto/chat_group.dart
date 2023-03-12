@@ -39,7 +39,8 @@ class ChatGroupReadDto {
   Map<String, dynamic> toMap() => {
         "title": title,
         "description": description,
-        "users": users == null ? [] : List<String>.from(users!.map((x) => x.toMap())),
+        "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
+        "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
         "products": products == null ? [] : List<String>.from(products!.map((x) => x)),
         "id": id,
         "createdAt": createdAt?.toIso8601String(),
@@ -143,4 +144,57 @@ class CreateGroupMessage {
     "groupChatId": groupChatId,
   };
 }
+
+
+
+class ChatGroupMessageReadDto {
+  ChatGroupMessageReadDto({
+    this.message,
+    this.groupChatId,
+    this.user,
+    this.userId,
+    this.media,
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  final String? message;
+  final String? groupChatId;
+  final UserReadDto? user;
+  final String? userId;
+  final List<MediaReadDto>? media;
+  final String? id;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+
+  factory ChatGroupMessageReadDto.fromJson(String str) => ChatGroupMessageReadDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ChatGroupMessageReadDto.fromMap(Map<String, dynamic> json) => ChatGroupMessageReadDto(
+    message: json["message"],
+    groupChatId: json["groupChatId"],
+    user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
+    media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
+    userId: json["userId"],
+    id: json["id"],
+    createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+  );
+
+  Map<String, dynamic> toMap() => {
+    "message": message,
+    "groupChatId": groupChatId,
+    "user": user?.toMap(),
+    "userId": userId,
+    "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x)),
+    "id": id,
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+  };
+}
+
+
+
 
