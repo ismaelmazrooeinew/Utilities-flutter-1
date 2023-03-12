@@ -76,7 +76,8 @@ class MediaReadDto {
     }
   }
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toMap() =>
+      {
         "id": id,
         "type": type,
         "useCase": useCase,
@@ -144,7 +145,8 @@ class Chat {
     }
   }
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toMap() =>
+      {
         "id": id,
         "fromUserId": fromUserId,
         "toUserId": toUserId,
@@ -157,23 +159,90 @@ class Chat {
       };
 }
 
+class CreateOrUpdateGroupChat {
+  CreateOrUpdateGroupChat({
+    this.id,
+    this.title,
+    this.description,
+    this.value,
+    this.type,
+    this.useCase,
+    this.department,
+    this.readIfExist,
+    this.chatStatus,
+    this.priority,
+    this.userIds,
+    this.productIds,
+  });
+
+  final String? id;
+  final String? title;
+  final String? description;
+  final String? value;
+  final String? type;
+  final String? useCase;
+  final String? department;
+  final bool? readIfExist;
+  final int? chatStatus;
+  final int? priority;
+  final List<String>? userIds;
+  final List<String>? productIds;
+
+  factory CreateOrUpdateGroupChat.fromJson(String str) => CreateOrUpdateGroupChat.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory CreateOrUpdateGroupChat.fromMap(Map<String, dynamic> json) =>
+      CreateOrUpdateGroupChat(
+        id: json["id"],
+        title: json["title"],
+        description: json["description"],
+        value: json["value"],
+        type: json["type"],
+        useCase: json["useCase"],
+        department: json["department"],
+        readIfExist: json["readIfExist"],
+        chatStatus: json["chatStatus"],
+        priority: json["priority"],
+        userIds: json["userIds"] == null ? [] : List<String>.from(json["userIds"]!.map((x) => x)),
+        productIds: json["productIds"] == null ? [] : List<String>.from(json["productIds"]!.map((x) => x)),
+      );
+
+  Map<String, dynamic> toMap() =>
+      {
+        "id": id,
+        "title": title,
+        "description": description,
+        "value": value,
+        "type": type,
+        "useCase": useCase,
+        "department": department,
+        "readIfExist": readIfExist,
+        "chatStatus": chatStatus,
+        "priority": priority,
+        "userIds": userIds == null ? [] : List<String>.from(userIds!.map((x) => x)),
+        "productIds": productIds == null ? [] : List<String>.from(productIds!.map((x) => x)),
+      };
+}
+
+
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
   List<MediaReadDto> getByUseCase({required final String useCase, final String? exception}) {
     List<MediaReadDto> list = this
-            ?.where((final MediaReadDto e) => (e.useCase == useCase))
-            .map(
-              (final MediaReadDto e) => e,
-            )
-            .toList() ??
+        ?.where((final MediaReadDto e) => (e.useCase == useCase))
+        .map(
+          (final MediaReadDto e) => e,
+    )
+        .toList() ??
         <MediaReadDto>[];
 
     if (exception != null) {
       list = this
-              ?.where((final MediaReadDto e) => (e.useCase != exception))
-              .map(
-                (final MediaReadDto e) => e,
-              )
-              .toList() ??
+          ?.where((final MediaReadDto e) => (e.useCase != exception))
+          .map(
+            (final MediaReadDto e) => e,
+      )
+          .toList() ??
           <MediaReadDto>[];
     }
 
@@ -194,52 +263,52 @@ extension NullableMediaResponseExtension on List<MediaReadDto>? {
           ?.where((final MediaReadDto e) => (e.url != null && (e.url!.isImageFileName || e.url!.isVectorFileName)) && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.url ?? "--",
-          )
+      )
           .toList() ??
-      <String>[];
+          <String>[];
 
   List<String> getAudios({final String? useCase}) =>
       this
           ?.where((final MediaReadDto e) => e.url != null && e.url!.isAudioFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.url ?? "--",
-          )
+      )
           .toList() ??
-      <String>[];
+          <String>[];
 
   List<String> getVideos({final String? useCase}) =>
       this
           ?.where((final MediaReadDto e) => e.url != null && e.url!.isVideoFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.url ?? "--",
-          )
+      )
           .toList() ??
-      <String>[];
+          <String>[];
 
   List<String> getPdfs({final String? useCase}) =>
       this
           ?.where((final MediaReadDto e) => e.url != null && e.url!.isPDFFileName && (useCase != null ? (e.useCase == useCase) : true))
           .map(
             (final MediaReadDto e) => e.url ?? "--",
-          )
+      )
           .toList() ??
-      <String>[];
+          <String>[];
 
   List<String> getDocs({final String? useCase}) =>
       this
           ?.where(
             (final MediaReadDto e) => e.url != null && e.url!.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true),
-          )
+      )
           .map((final MediaReadDto e) => e.url ?? "--")
           .toList() ??
-      <String>[];
+          <String>[];
 
   String getFile() {
     List<String> list = this!
         .where((final MediaReadDto e) => e.url != null && e.url!.isImageFileName && ((e.useCase == 'file')))
         .map(
           (final MediaReadDto e) => e.url ?? "--",
-        )
+    )
         .toList();
     return list.isNotEmpty ? list.first : "--";
   }
@@ -263,7 +332,7 @@ extension MediaResponseExtension on List<MediaReadDto> {
         .where((final MediaReadDto e) => (e.useCase == useCase))
         .map(
           (final MediaReadDto e) => e,
-        )
+    )
         .toList();
 
     if (exception != null) {
@@ -271,61 +340,67 @@ extension MediaResponseExtension on List<MediaReadDto> {
           .where((final MediaReadDto e) => (e.useCase != exception))
           .map(
             (final MediaReadDto e) => e,
-          )
+      )
           .toList();
     }
 
     return list;
   }
 
-  List<String> getAll({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.url != null && (useCase != null ? (e.useCase == useCase) : true))
-      .map(
-        (final MediaReadDto e) => e.url ?? "--",
+  List<String> getAll({final String? useCase}) =>
+      this
+          .where((final MediaReadDto e) => e.url != null && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.url ?? "--",
       )
-      .toList();
+          .toList();
 
-  List<String> getImages({final String? useCase}) => this
-      .where((final MediaReadDto e) => (e.url != null && (e.url!.isImageFileName || e.url!.isVectorFileName)) && (useCase != null ? (e.useCase == useCase) : true))
-      .map(
-        (final MediaReadDto e) => e.url ?? "--",
+  List<String> getImages({final String? useCase}) =>
+      this
+          .where((final MediaReadDto e) => (e.url != null && (e.url!.isImageFileName || e.url!.isVectorFileName)) && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.url ?? "--",
       )
-      .toList();
+          .toList();
 
-  List<String> getAudios({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.url != null && e.url!.isAudioFileName && (useCase != null ? (e.useCase == useCase) : true))
-      .map(
-        (final MediaReadDto e) => e.url ?? "--",
+  List<String> getAudios({final String? useCase}) =>
+      this
+          .where((final MediaReadDto e) => e.url != null && e.url!.isAudioFileName && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.url ?? "--",
       )
-      .toList();
+          .toList();
 
-  List<String> getVideos({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.url != null && e.url!.isVideoFileName && (useCase != null ? (e.useCase == useCase) : true))
-      .map(
-        (final MediaReadDto e) => e.url ?? "--",
+  List<String> getVideos({final String? useCase}) =>
+      this
+          .where((final MediaReadDto e) => e.url != null && e.url!.isVideoFileName && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.url ?? "--",
       )
-      .toList();
+          .toList();
 
-  List<String> getPdfs({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.url != null && e.url!.isPDFFileName && (useCase != null ? (e.useCase == useCase) : true))
-      .map(
-        (final MediaReadDto e) => e.url ?? "--",
+  List<String> getPdfs({final String? useCase}) =>
+      this
+          .where((final MediaReadDto e) => e.url != null && e.url!.isPDFFileName && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.url ?? "--",
       )
-      .toList();
+          .toList();
 
-  List<String> getDocs({final String? useCase}) => this
-      .where((final MediaReadDto e) => e.url != null && e.url!.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true))
-      .map(
-        (final MediaReadDto e) => e.url ?? "--",
+  List<String> getDocs({final String? useCase}) =>
+      this
+          .where((final MediaReadDto e) => e.url != null && e.url!.isDocumentFileName && (useCase != null ? (e.useCase == useCase) : true))
+          .map(
+            (final MediaReadDto e) => e.url ?? "--",
       )
-      .toList();
+          .toList();
 
   String getFile() {
     List<String> list = this
         .where((final MediaReadDto e) => e.url != null && e.url!.isImageFileName && ((e.useCase == 'file')))
         .map(
           (final MediaReadDto e) => e.url ?? "--",
-        )
+    )
         .toList();
     return list.isNotEmpty ? list.first : "--";
   }
