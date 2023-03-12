@@ -1,5 +1,6 @@
 export 'category.dart';
 export 'chat.dart';
+export 'chat_group.dart';
 export 'comment.dart';
 export 'contact_information.dart';
 export 'content.dart';
