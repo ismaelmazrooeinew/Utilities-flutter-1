@@ -74,6 +74,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
                 ),
                 flickVideoWithControlsFullscreen: FlickVideoWithControls(
                   videoFit: BoxFit.contain,
+                  willVideoPlayerControllerChange: true,
 
                   controls: FlickVideoWithControls(
                     controls: VideoPlayerControls(dataManager: dataManager),
