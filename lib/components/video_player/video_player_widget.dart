@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flick_video_player/flick_video_player.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:utilities/components/video_player/video_player_controls.dart';
@@ -21,6 +22,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   @override
   void initState() {
     super.initState();
+
     urls = widget.urls;
     flickManager = FlickManager(
         videoPlayerController: VideoPlayerController.network(
@@ -31,11 +33,20 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
         });
 
     dataManager = DataManager(flickManager: flickManager, urls: urls);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
   }
 
   @override
   void dispose() {
     flickManager.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     super.dispose();
   }
 

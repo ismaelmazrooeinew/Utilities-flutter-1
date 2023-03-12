@@ -26,15 +26,16 @@ class _VideoPlayerControlsState extends State<VideoPlayerControls> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.portraitDown,
-      DeviceOrientation.portraitUp,
-    ]);
+
 
     dataManager!.flickManager.flickVideoManager?.videoPlayerController!.setPlaybackSpeed(1);
 
+  }
+
+  @override
+  void dispose() {
+
+    super.dispose();
   }
 
   Widget iconPlay({required IconData icon, Color? color, VoidCallback? onTap}) {
@@ -206,6 +207,7 @@ class _VideoPlayerControlsState extends State<VideoPlayerControls> {
                           child: Container(),
                         ),
                         FlickFullScreenToggle(
+
                           size: iconSize,
                         ),
                       ],
