@@ -33,12 +33,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
         });
 
     dataManager = DataManager(flickManager: flickManager, urls: urls);
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
+
   }
 
   @override
@@ -75,10 +70,11 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
               child: FlickVideoPlayer(
                 flickManager: flickManager,
                 flickVideoWithControls: FlickVideoWithControls(
-                  videoFit: BoxFit.contain,
                   controls: VideoPlayerControls(dataManager: dataManager),
                 ),
                 flickVideoWithControlsFullscreen: FlickVideoWithControls(
+                  videoFit: BoxFit.contain,
+
                   controls: FlickVideoWithControls(
                     controls: VideoPlayerControls(dataManager: dataManager),
                   ),
