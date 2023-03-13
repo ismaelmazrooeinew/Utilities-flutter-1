@@ -31,6 +31,7 @@ class MediaDataSource {
     final String? commentId,
     final String? chatId,
     final String? groupChatId,
+    final String? groupChatMessageId,
     final String? bookmarkId,
     final String? title,
     final String? notificationId,
@@ -52,6 +53,7 @@ class MediaDataSource {
           'CategoryId': categoryId,
           'ContentId': contentId,
           'GroupChatId': groupChatId,
+          'GroupChatMessageId': groupChatMessageId,
           'ProductId': productId,
           'UserId': userId,
           'CommentId': commentId,
@@ -150,6 +152,8 @@ class MediaDataSource {
     final String? categoryId,
     final String? contentId,
     final String? commentId,
+    final String? groupChatMessageId,
+    final String? groupChatId,
     final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
     final String? userId,
     final String? chatId,
@@ -177,6 +181,12 @@ class MediaDataSource {
       }
       if (commentId != null) {
         request.fields['CommentId'] = commentId;
+      }
+      if (groupChatMessageId != null) {
+        request.fields['GroupChatMessageId'] = groupChatMessageId;
+      }
+      if (groupChatId != null) {
+        request.fields['GroupChatId'] = groupChatId;
       }
 
       if (chatId != null) {
