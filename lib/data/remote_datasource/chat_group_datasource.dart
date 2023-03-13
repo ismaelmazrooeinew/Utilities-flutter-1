@@ -23,7 +23,7 @@ class ChatGroupDataSource {
         failure: failure,
       );
 
-  Future<void> CreateMessage({
+  Future<void> createMessage({
     required final CreateGroupMessage dto,
     required final Function(GenericResponse<ChatGroupReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
