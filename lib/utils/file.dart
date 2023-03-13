@@ -29,11 +29,15 @@ void showFilePicker({
     if (allowMultiple) {
       final List<File> files = <File>[];
       result.files.forEach((final PlatformFile i) {
-        if (i.path != null) files.add(File(i.path!));
+        if(isWeb){
+          if (i.bytes != null) files.add(File.fromRawPath(i.bytes!));
+        }else{
+          if (i.path != null) files.add(File(i.path!));
+        }
       });
       action(files);
     } else {
-      final File file = File(result.files.single.path!);
+      final File file = isWeb ? File.fromRawPath(result.files.single.bytes!) : File(result.files.single.path!);
       action(<File>[file]);
     }
   }
