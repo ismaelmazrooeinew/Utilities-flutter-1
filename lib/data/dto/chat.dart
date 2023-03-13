@@ -70,12 +70,14 @@ class ChatCreateDto {
     this.userId,
     this.messageText,
     this.products,
+    this.parentId,
     this.users,
   });
 
   final String? id;
   final String? userId;
   final String? messageText;
+  final String? parentId;
   final List<String>? products;
   final List<String>? users;
 
@@ -87,6 +89,7 @@ class ChatCreateDto {
         id: json["id"],
         userId: json["userId"],
         messageText: json["messageText"],
+        parentId: json["parentId"],
         products: json["products"],
         users: json["users"],
       );
@@ -95,6 +98,7 @@ class ChatCreateDto {
         "id": id,
         "userId": userId,
         "messageText": messageText,
+        "parentId": parentId,
         "products": products,
         "users": users,
       };
