@@ -16,7 +16,7 @@ class ChatGroupReadDto {
   final String? description;
   final List<UserReadDto>? users;
   final List<MediaReadDto>? media;
-  final List<String>? products;
+  final List<ProductReadDto>? products;
   final String? id;
   final DateTime? createdAt;
   final DateTime? updatedAt;
@@ -30,7 +30,7 @@ class ChatGroupReadDto {
         description: json["description"],
         users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
         media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
-        products: json["products"] == null ? [] : List<String>.from(json["products"]!.map((x) => x)),
+        products: json["products"] == null ? [] : List<ProductReadDto>.from(json["products"]!.map((x) => ProductReadDto.fromMap(x))),
         id: json["id"],
         createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
         updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
@@ -41,7 +41,7 @@ class ChatGroupReadDto {
         "description": description,
         "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
         "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
-        "products": products == null ? [] : List<String>.from(products!.map((x) => x)),
+        "products": products == null ? [] : List<ProductReadDto>.from(products!.map((x) => x.toMap())),
         "id": id,
         "createdAt": createdAt?.toIso8601String(),
         "updatedAt": updatedAt?.toIso8601String(),
@@ -112,7 +112,6 @@ class ChatGroupCreateUpdateDto {
       };
 }
 
-
 class CreateGroupMessage {
   CreateGroupMessage({
     this.message,
@@ -131,21 +130,19 @@ class CreateGroupMessage {
   String toJson() => json.encode(toMap());
 
   factory CreateGroupMessage.fromMap(Map<String, dynamic> json) => CreateGroupMessage(
-    message: json["message"],
-    type: json["type"],
-    useCase: json["useCase"],
-    groupChatId: json["groupChatId"],
-  );
+        message: json["message"],
+        type: json["type"],
+        useCase: json["useCase"],
+        groupChatId: json["groupChatId"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "message": message,
-    "type": type,
-    "useCase": useCase,
-    "groupChatId": groupChatId,
-  };
+        "message": message,
+        "type": type,
+        "useCase": useCase,
+        "groupChatId": groupChatId,
+      };
 }
-
-
 
 class ChatGroupMessageReadDto {
   ChatGroupMessageReadDto({
@@ -173,28 +170,24 @@ class ChatGroupMessageReadDto {
   String toJson() => json.encode(toMap());
 
   factory ChatGroupMessageReadDto.fromMap(Map<String, dynamic> json) => ChatGroupMessageReadDto(
-    message: json["message"],
-    groupChatId: json["groupChatId"],
-    user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
-    media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
-    userId: json["userId"],
-    id: json["id"],
-    createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
-    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
-  );
+        message: json["message"],
+        groupChatId: json["groupChatId"],
+        user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
+        media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
+        userId: json["userId"],
+        id: json["id"],
+        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+        updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+      );
 
   Map<String, dynamic> toMap() => {
-    "message": message,
-    "groupChatId": groupChatId,
-    "user": user?.toMap(),
-    "userId": userId,
-    "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x)),
-    "id": id,
-    "createdAt": createdAt?.toIso8601String(),
-    "updatedAt": updatedAt?.toIso8601String(),
-  };
+        "message": message,
+        "groupChatId": groupChatId,
+        "user": user?.toMap(),
+        "userId": userId,
+        "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x)),
+        "id": id,
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
+      };
 }
-
-
-
-
