@@ -5,12 +5,16 @@ class ReportCreateUpdateDto {
     this.title,
     this.description,
     this.productId,
+    this.commentId,
+    this.chatId,
     this.userId,
   });
 
   final String? title;
   final String? description;
   final String? productId;
+  final String? commentId;
+  final String? chatId;
   final String? userId;
 
   factory ReportCreateUpdateDto.fromJson(String str) => ReportCreateUpdateDto.fromMap(json.decode(str));
@@ -21,13 +25,16 @@ class ReportCreateUpdateDto {
         title: json["title"],
         description: json["description"],
         productId: json["productId"],
-        userId: json["userId"],
+        commentId: json["commentId"],
+        chatId: json["chatId"],
       );
 
   Map<String, dynamic> toMap() => {
         "title": title,
         "description": description,
         "productId": productId,
+        "commentId": commentId,
+        "chatId": chatId,
         "userId": userId,
       };
 }

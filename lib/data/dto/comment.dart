@@ -11,6 +11,7 @@ class CommentReadDto {
     this.userId,
     this.user,
     this.children,
+    this.media,
     this.likeComments,
     this.parentId,
     this.isLiked,
@@ -27,6 +28,7 @@ class CommentReadDto {
   final bool? isLiked;
   final UserReadDto? user;
   final List<CommentReadDto>? children;
+  final List<MediaReadDto>? media;
   final List<CommentReadDto>? likeComments;
   final List<ReactionReadDto>? commentReacts;
 
@@ -45,6 +47,7 @@ class CommentReadDto {
         isLiked: json["isLiked"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         children: json["children"] == null ? null : List<CommentReadDto>.from(json["children"].map((x) => CommentReadDto.fromMap(x))),
+        media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         likeComments: json["likeComments"] == null ? null : List<CommentReadDto>.from(json["likeComments"].map((x) => CommentReadDto.fromMap(x))),
         commentReacts: json["commentReacts"] == null ? null : List<ReactionReadDto>.from(json["commentReacts"].map((x) => ReactionReadDto.fromMap(x))),
       );
@@ -59,6 +62,7 @@ class CommentReadDto {
         "userId": userId,
         "parentId": parentId,
         "user": user == null ? null : user!.toMap(),
+        "media": media == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
         "children": children == null ? null : List<dynamic>.from(children!.map((x) => x.toMap())),
         "likeComments": likeComments == null ? null : List<dynamic>.from(likeComments!.map((x) => x.toMap())),
         "commentReacts": commentReacts == null ? null : List<dynamic>.from(commentReacts!.map((x) => x.toMap())),
