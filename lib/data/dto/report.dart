@@ -7,6 +7,8 @@ class ReportCreateUpdateDto {
     this.productId,
     this.commentId,
     this.chatId,
+    this.groupChatId,
+    this.groupChatMessageId,
     this.userId,
   });
 
@@ -14,6 +16,8 @@ class ReportCreateUpdateDto {
   final String? description;
   final String? productId;
   final String? commentId;
+  final String? groupChatId;
+  final String? groupChatMessageId;
   final String? chatId;
   final String? userId;
 
@@ -26,6 +30,8 @@ class ReportCreateUpdateDto {
         description: json["description"],
         productId: json["productId"],
         commentId: json["commentId"],
+        groupChatId: json["groupChatId"],
+        groupChatMessageId: json["groupChatMessageId"],
         chatId: json["chatId"],
       );
 
@@ -35,6 +41,8 @@ class ReportCreateUpdateDto {
         "productId": productId,
         "commentId": commentId,
         "chatId": chatId,
+        "groupChatId": groupChatId,
+        "groupChatMessageId": groupChatMessageId,
         "userId": userId,
       };
 }
