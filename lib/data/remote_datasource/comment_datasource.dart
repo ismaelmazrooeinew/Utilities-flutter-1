@@ -55,14 +55,14 @@ class CommentDataSource {
   Future<void> update({
     required final String id,
     required final CommentCreateUpdateDto dto,
-    required final Function(GenericResponse<CommentReadDto>) onResponse,
+    required final Function(String) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
       httpPut(
         url: "$baseUrl/Comment?id=$id",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<CommentReadDto>.fromJson(response.data, fromMap: CommentReadDto.fromMap)),
+        action: (Response response) => onResponse(response.statusCode.toString()),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,
       );
