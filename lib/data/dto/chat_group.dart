@@ -114,12 +114,14 @@ class ChatGroupCreateUpdateDto {
 
 class CreateGroupMessage {
   CreateGroupMessage({
+    this.id,
     this.message,
     this.type,
     this.useCase,
     this.groupChatId,
   });
 
+  final String? id;
   final String? message;
   final String? type;
   final String? useCase;
@@ -130,6 +132,7 @@ class CreateGroupMessage {
   String toJson() => json.encode(toMap());
 
   factory CreateGroupMessage.fromMap(Map<String, dynamic> json) => CreateGroupMessage(
+        id: json["id"],
         message: json["message"],
         type: json["type"],
         useCase: json["useCase"],
@@ -137,6 +140,7 @@ class CreateGroupMessage {
       );
 
   Map<String, dynamic> toMap() => {
+        "id": id,
         "message": message,
         "type": type,
         "useCase": useCase,
