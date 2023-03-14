@@ -39,14 +39,14 @@ class ChatGroupDataSource {
 
     Future<void> updateMessage({
     required final CreateGroupMessage dto,
-    required final Function(GenericResponse<ChatGroupReadDto>) onResponse,
+    required final Function(GenericResponse<ChatGroupMessageReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
       httpPut(
         url: "$baseUrl/Chat/UpdateGroupChatMessage",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<ChatGroupReadDto>.fromJson(response.data, fromMap: ChatGroupReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<ChatGroupMessageReadDto>.fromJson(response.data, fromMap: ChatGroupMessageReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,
       );
