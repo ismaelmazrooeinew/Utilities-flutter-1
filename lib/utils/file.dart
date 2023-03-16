@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 void showFilePicker({
@@ -29,18 +30,12 @@ void showFilePicker({
     if (allowMultiple) {
       final List<File> files = <File>[];
       result.files.forEach((final PlatformFile i) {
-        if (isWeb) {
-          if (i.bytes != null) files.add(File.fromRawPath(i.bytes!));
-        } else {
-          if (i.path != null) files.add(File(i.path!));
-        }
+        if (i.path != null) files.add(File(i.path!));
       });
       action(files);
     } else {
       File file = File("--");
-      if (isWeb && result.files.single.bytes != null) {
-        file = File.fromRawPath(result.files.single.bytes!);
-      } else if (result.files.single.path != null) {
+      if (result.files.single.path != null) {
         file = File(result.files.single.path!);
       }
       action(<File>[file]);
@@ -98,6 +93,7 @@ Future<CroppedFile?> cropImage({
   final CropAspectRatio cropAspectRatio = const CropAspectRatio(ratioX: 3, ratioY: 1.2),
   final ImageCompressFormat imageCompressFormat = ImageCompressFormat.png,
   final AndroidUiSettings? androidUiSettings,
+  final WebUiSettings? webUiSettings,
   final IOSUiSettings? iOSUiSettings,
   final List<CropAspectRatioPreset> aspectRatioPresets = const <CropAspectRatioPreset>[
     CropAspectRatioPreset.original,
@@ -137,6 +133,15 @@ Future<CroppedFile?> cropImage({
             aspectRatioLockDimensionSwapEnabled: true,
             aspectRatioLockEnabled: true,
             hidesNavigationBar: true,
+          ),
+      webUiSettings ??
+          WebUiSettings(
+            context: context,
+            enableZoom: true,
+            enableResize: true,
+            enforceBoundary: true,
+            showZoomer: false,
+            presentStyle: CropperPresentStyle.page,
           ),
     ],
   );
