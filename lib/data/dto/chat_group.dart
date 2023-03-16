@@ -116,6 +116,7 @@ class CreateGroupMessage {
   CreateGroupMessage({
     this.id,
     this.message,
+    this.products,
     this.type,
     this.useCase,
     this.groupChatId,
@@ -126,6 +127,7 @@ class CreateGroupMessage {
   final String? type;
   final String? useCase;
   final String? groupChatId;
+  final List<String>? products;
 
   factory CreateGroupMessage.fromJson(String str) => CreateGroupMessage.fromMap(json.decode(str));
 
@@ -136,6 +138,7 @@ class CreateGroupMessage {
         message: json["message"],
         type: json["type"],
         useCase: json["useCase"],
+        products: json["products"],
         groupChatId: json["groupChatId"],
       );
 
@@ -144,6 +147,7 @@ class CreateGroupMessage {
         "message": message,
         "type": type,
         "useCase": useCase,
+        "products": products,
         "groupChatId": groupChatId,
       };
 }
@@ -158,6 +162,7 @@ class ChatGroupMessageReadDto {
     this.id,
     this.createdAt,
     this.updatedAt,
+    this.products,
   });
 
   final String? message;
@@ -168,6 +173,7 @@ class ChatGroupMessageReadDto {
   final String? id;
   final DateTime? createdAt;
   final DateTime? updatedAt;
+  final List<ProductReadDto>? products;
 
   factory ChatGroupMessageReadDto.fromJson(String str) => ChatGroupMessageReadDto.fromMap(json.decode(str));
 
@@ -182,6 +188,7 @@ class ChatGroupMessageReadDto {
         id: json["id"],
         createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
         updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+        products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -193,5 +200,6 @@ class ChatGroupMessageReadDto {
         "id": id,
         "createdAt": createdAt?.toIso8601String(),
         "updatedAt": updatedAt?.toIso8601String(),
+        "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
       };
 }
