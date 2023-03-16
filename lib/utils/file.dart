@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:utilities/utilities.dart';
 
 void showFilePicker({
@@ -138,8 +139,15 @@ Future<CroppedFile?> cropImage({
             context: context,
             enableZoom: true,
             enableResize: true,
-            showZoomer: true,
             barrierColor: context.theme.primaryColor,
+            enforceBoundary: true,
+            customDialogBuilder: (final Widget cropper, final _, final __) => Dialog(
+              child: SizedBox(
+                width: 250,
+                height: screenHeight,
+                child: cropper,
+              ),
+            ),
           ),
     ],
   );
