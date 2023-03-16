@@ -25,7 +25,7 @@ class ChatGroupDataSource {
 
   Future<void> createMessage({
     required final CreateGroupMessage dto,
-    required final Function(GenericResponse<ChatGroupReadDto>) onResponse,
+    required final Function(GenericResponse<ChatGroupReadDto> response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
@@ -39,7 +39,7 @@ class ChatGroupDataSource {
 
     Future<void> updateMessage({
     required final CreateGroupMessage dto,
-    required final Function(GenericResponse<ChatGroupMessageReadDto>) onResponse,
+    required final Function(GenericResponse<ChatGroupMessageReadDto> response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
@@ -55,7 +55,7 @@ class ChatGroupDataSource {
 
   Future<void> update({
     required final ChatGroupCreateUpdateDto dto,
-    required final Function(GenericResponse<ChatGroupReadDto>) onResponse,
+    required final Function(GenericResponse<ChatGroupReadDto> response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
@@ -68,7 +68,7 @@ class ChatGroupDataSource {
       );
 
   Future<void> readMyGroupChats({
-    required final Function(GenericResponse<ChatGroupReadDto>) onResponse,
+    required final Function(GenericResponse<ChatGroupReadDto> response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
@@ -80,7 +80,7 @@ class ChatGroupDataSource {
       );
   Future<void> readGroupChatById({
     required String id,
-    required final Function(GenericResponse<ChatGroupReadDto>) onResponse,
+    required final Function(GenericResponse<ChatGroupReadDto> response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
@@ -93,7 +93,7 @@ class ChatGroupDataSource {
 
   Future<void> readGroupChatMessages({
     required String id,
-    required final Function(GenericResponse<ChatGroupMessageReadDto>) onResponse,
+    required final Function(GenericResponse<ChatGroupMessageReadDto> response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
@@ -106,7 +106,7 @@ class ChatGroupDataSource {
 
   Future<void> readByUserId({
     required final String userId,
-    required final Function(GenericResponse<ChatReadDto>) onResponse,
+    required final Function(GenericResponse<ChatReadDto> response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
@@ -119,7 +119,7 @@ class ChatGroupDataSource {
 
   Future<void> delete({
     required final String chatId,
-    required final Function(GenericResponse) onResponse,
+    required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
@@ -133,7 +133,7 @@ class ChatGroupDataSource {
 
   Future<void> deleteMessage({
     required final String chatId,
-    required final Function(GenericResponse) onResponse,
+    required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
