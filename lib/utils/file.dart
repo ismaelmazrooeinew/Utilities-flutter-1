@@ -142,6 +142,7 @@ Future<CroppedFile?> cropImage({
             enforceBoundary: true,
             showZoomer: false,
             presentStyle: CropperPresentStyle.page,
+            viewPort: CroppieViewPort(width: 90,height: 160)
           ),
     ],
   );
