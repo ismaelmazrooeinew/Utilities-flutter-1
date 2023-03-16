@@ -140,8 +140,8 @@ Future<CroppedFile?> cropImage({
             enableZoom: true,
             enableResize: true,
             enforceBoundary: true,
-            boundary: CroppieBoundary(width: 250, height: 250),
-            viewPort: CroppieViewPort(width: 200, height: 200),
+            showZoomer: false,
+            presentStyle: CropperPresentStyle.page,
           ),
     ],
   );
