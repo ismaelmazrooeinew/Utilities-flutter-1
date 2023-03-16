@@ -139,15 +139,9 @@ Future<CroppedFile?> cropImage({
             context: context,
             enableZoom: true,
             enableResize: true,
-            barrierColor: context.theme.primaryColor,
             enforceBoundary: true,
-            customDialogBuilder: (final Widget cropper, final _, final __) => Dialog(
-              child: SizedBox(
-                width: 250,
-                height: screenHeight,
-                child: cropper,
-              ),
-            ),
+            boundary: CroppieBoundary(width: 250, height: 250),
+            viewPort: CroppieViewPort(width: 200, height: 200),
           ),
     ],
   );
