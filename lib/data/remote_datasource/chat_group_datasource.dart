@@ -123,7 +123,7 @@ class ChatGroupDataSource {
     final Function(String error)? failure,
   }) async =>
       httpDelete(
-        url: "$baseUrl/Chat/DeleteGroupChatMessage?id=$chatId",
+        url: "$baseUrl/Chat/DeleteGroupChatMessage/$chatId",
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: ChatReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,
