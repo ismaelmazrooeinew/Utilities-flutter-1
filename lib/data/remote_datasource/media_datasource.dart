@@ -24,6 +24,7 @@ class MediaDataSource {
     required final Function(GenericResponse response) onError,
     final ProgressCallback? onSendProgress,
     final List<File>? files,
+    final List<Uint8List>? bytes,
     final String? categoryId,
     final String? contentId,
     final String? productId,
@@ -39,40 +40,78 @@ class MediaDataSource {
     Duration? timeout,
   }) async {
     Dio dio = Dio();
-    for (int i = 0; i < files!.length; i++) {
-      File file = files[i];
-      String fileName = file.path.split('/')[file.path.split('/').length - 1];
+    if (Platform.isAndroid || Platform.isIOS) {
+      for (int i = 0; i < files!.length; i++) {
+        File file = files[i];
+        String fileName = file.path.split('/')[file.path.split('/').length - 1];
 
-      final Response<dynamic> response = await dio.post(
-        '$baseUrl/Media',
-        onSendProgress: onSendProgress,
-        data: FormData.fromMap({
-          'Files': await MultipartFile.fromFile(file.path, filename: fileName),
+        final Response<dynamic> response = await dio.post(
+          '$baseUrl/Media',
+          onSendProgress: onSendProgress,
+          data: FormData.fromMap({
+            'Files': await MultipartFile.fromFile(file.path, filename: fileName),
+            'UseCase': useCase,
+            'CategoryId': categoryId,
+            'ContentId': contentId,
+            'GroupChatId': groupChatId,
+            'GroupChatMessageId': groupChatMessageId,
+            'ProductId': productId,
+            'UserId': userId,
+            'CommentId': commentId,
+            'BookmarkId': bookmarkId,
+            'ChatId': chatId,
+            'Title': title ?? fileName,
+            'NotificationId': notificationId,
+            'Size': size,
+          }),
+          options: Options(headers: <String, String>{
+            "Authorization": getString(UtilitiesConstants.token) ?? "",
+          }),
+        );
 
-          'UseCase': useCase,
-          'CategoryId': categoryId,
-          'ContentId': contentId,
-          'GroupChatId': groupChatId,
-          'GroupChatMessageId': groupChatMessageId,
-          'ProductId': productId,
-          'UserId': userId,
-          'CommentId': commentId,
-          'BookmarkId': bookmarkId,
-          'ChatId': chatId,
-          'Title': title ?? fileName,
-          'NotificationId': notificationId,
-          'Size': size,
-        }),
-        options: Options(headers: <String, String>{
-          "Authorization": getString(UtilitiesConstants.token) ?? "",
-        }),
-      );
+        if (response.isSuccessful()) {
+          if (i == files.length - 1) {
+            action();
+          } else {
+            onError(GenericResponse.fromJson(response.data));
+          }
+        }
+      }
+    } else {
+      for (int i = 0; i < bytes!.length; i++) {
+        Uint8List byte = bytes[i];
+        String fileName = "sample.png";
 
-      if (response.isSuccessful()) {
-        if (i == files.length - 1) {
-          action();
-        } else {
-          onError(GenericResponse.fromJson(response.data));
+        final Response<dynamic> response = await dio.post(
+          '$baseUrl/Media',
+          onSendProgress: onSendProgress,
+          data: FormData.fromMap({
+            'Files': MultipartFile.fromBytes(byte),
+            'UseCase': useCase,
+            'CategoryId': categoryId,
+            'ContentId': contentId,
+            'GroupChatId': groupChatId,
+            'GroupChatMessageId': groupChatMessageId,
+            'ProductId': productId,
+            'UserId': userId,
+            'CommentId': commentId,
+            'BookmarkId': bookmarkId,
+            'ChatId': chatId,
+            'Title': title ?? fileName,
+            'NotificationId': notificationId,
+            'Size': size,
+          }),
+          options: Options(headers: <String, String>{
+            "Authorization": getString(UtilitiesConstants.token) ?? "",
+          }),
+        );
+
+        if (response.isSuccessful()) {
+          if (i == bytes.length - 1) {
+            action();
+          } else {
+            onError(GenericResponse.fromJson(response.data));
+          }
         }
       }
     }
