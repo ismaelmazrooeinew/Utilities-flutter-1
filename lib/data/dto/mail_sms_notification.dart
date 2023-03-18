@@ -4,12 +4,18 @@ class CreateMailSmsNotificationDto {
   CreateMailSmsNotificationDto({
     this.userIds,
     this.title,
-    this.message,
+    this.content,
+    this.bigContent,
+    this.url,
+    this.actionType,
   });
 
   final List<String>? userIds;
   final String? title;
-  final String? message;
+  final String? content;
+  final String? bigContent;
+  final String? url;
+  final String? actionType;
 
   factory CreateMailSmsNotificationDto.fromJson(String str) => CreateMailSmsNotificationDto.fromMap(json.decode(str));
 
@@ -18,12 +24,18 @@ class CreateMailSmsNotificationDto {
   factory CreateMailSmsNotificationDto.fromMap(Map<String, dynamic> json) => CreateMailSmsNotificationDto(
         userIds: json["userIds"] == null ? [] : List<String>.from(json["userIds"]!.map((x) => x)),
         title: json["title"],
-        message: json["message"],
+        content: json["content"],
+        bigContent: json["bigContent"],
+        url: json["url"],
+        actionType: json["actionType"],
       );
 
   Map<String, dynamic> toMap() => {
         "userIds": userIds == null ? [] : List<String>.from(userIds!.map((x) => x)),
         "title": title,
-        "message": message,
+        "content": content,
+        "bigContent": bigContent,
+        "url": url,
+        "actionType": actionType,
       };
 }

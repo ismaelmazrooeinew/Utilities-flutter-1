@@ -46,7 +46,7 @@ class Assets {
   static const String dtoGenericResponse = 'lib/data/dto/generic_response.dart';
   static const String dtoGlobalSearch = 'lib/data/dto/global_search.dart';
   static const String dtoLocation = 'lib/data/dto/location.dart';
-  static const String dtoMailSmsNotification = 'lib/data/dto/mail_sms_notification_datasource.dart';
+  static const String dtoMailSmsNotification = 'lib/data/dto/mail_sms_notification.dart';
   static const String dtoMedia = 'lib/data/dto/media.dart';
   static const String dtoNotification = 'lib/data/dto/notification.dart';
   static const String dtoOrders = 'lib/data/dto/orders.dart';
@@ -54,6 +54,7 @@ class Assets {
   static const String dtoProduct = 'lib/data/dto/product.dart';
   static const String dtoReaction = 'lib/data/dto/reaction.dart';
   static const String dtoReport = 'lib/data/dto/report.dart';
+  static const String dtoReport2 = 'lib/data/dto/report2.dart';
   static const String dtoServerLocation = 'lib/data/dto/server_location.dart';
   static const String dtoShoppingCart = 'lib/data/dto/shopping_cart.dart';
   static const String dtoTeam = 'lib/data/dto/team.dart';
@@ -121,7 +122,7 @@ class Assets {
   static const String remoteDatasourceFollowBookmarkDatasource = 'lib/data/remote_datasource/follow_bookmark_datasource.dart';
   static const String remoteDatasourceFormDatasource = 'lib/data/remote_datasource/form_datasource.dart';
   static const String remoteDatasourceGlobalSearchDatasource = 'lib/data/remote_datasource/global_search_datasource.dart';
-  static const String remoteDatasourceMailSmsNotification = 'lib/data/remote_datasource/mail_sms_notification_datasource.dart';
+  static const String remoteDatasourceMailSmsNotificationDatasource = 'lib/data/remote_datasource/mail_sms_notification_datasource.dart';
   static const String remoteDatasourceMediaDatasource = 'lib/data/remote_datasource/media_datasource.dart';
   static const String remoteDatasourceNotificationDatasource = 'lib/data/remote_datasource/notification_datasource.dart';
   static const String remoteDatasourceOrdersDatasource = 'lib/data/remote_datasource/orders_datasource.dart';

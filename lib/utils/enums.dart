@@ -11,10 +11,10 @@ enum BackResult {
   final String title;
 }
 
-enum TypeChats {
+enum TypeChat {
   chat("chat"),
   group("group");
-  const TypeChats(this.title);
+  const TypeChat(this.title);
 
   @override
   String toString() => name;
