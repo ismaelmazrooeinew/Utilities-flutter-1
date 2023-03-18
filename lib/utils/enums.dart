@@ -10,7 +10,18 @@ enum BackResult {
   String toString() => name;
   final String title;
 }
-enum TypeChat { chat, group}
+
+enum TypeChat {
+  chat("chat"),
+  group("group");
+
+  const TypeChat(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
 enum CategoryType {
   brand("brand"),
   reference("reference"),
@@ -238,12 +249,3 @@ enum UseCaseNotification {
   String toString() => name;
   final String title;
 }
-
-
-
-
-
-
-
-
-
