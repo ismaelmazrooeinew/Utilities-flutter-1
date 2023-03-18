@@ -48,7 +48,6 @@ class MediaDataSource {
         onSendProgress: onSendProgress,
         data: FormData.fromMap({
           'Files': await MultipartFile.fromFile(file.path, filename: fileName),
-
           'UseCase': useCase,
           'CategoryId': categoryId,
           'ContentId': contentId,
