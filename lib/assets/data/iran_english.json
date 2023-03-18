@@ -1,5 +1,10 @@
 [
   {
+    "id": 0,
+    "name": "همه ایران",
+    "slug": "All iran"
+  },
+  {
     "id": 1,
     "name": "آذربایجان شرقی",
     "slug": "East Azerbaijan"
