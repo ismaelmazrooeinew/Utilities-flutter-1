@@ -10,7 +10,7 @@ enum BackResult {
   String toString() => name;
   final String title;
 }
-
+enum TypeChat { chat, group}
 enum CategoryType {
   brand("brand"),
   reference("reference"),

@@ -11,7 +11,7 @@ class MailSmsNotificationDataSource {
 
   Future<void> create({
     required final CreateMailSmsNotificationDto dto,
-    required final Function(GenericResponse) onResponse,
+    required final Function(GenericResponse response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
