@@ -73,4 +73,8 @@ class ChatDataSource {
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,
       );
+
+  String toJ(ChatReadDto chatReadDto){
+    return chatReadDto.toJson();
+  }
 }
