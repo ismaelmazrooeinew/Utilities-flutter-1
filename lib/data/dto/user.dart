@@ -253,7 +253,7 @@ class UserReadDto {
 
   String toJson() => json.encode(toMap());
 
-  ChatReadDto ff(Map<String, dynamic> _json) => ChatReadDto.fromMap(_json);
+  static ChatReadDto ff(Map<String,dynamic> _json)=>ChatReadDto.fromMap(_json);
 
   factory UserReadDto.fromMap(Map<String, dynamic> json) => UserReadDto(
         token: json["token"],
