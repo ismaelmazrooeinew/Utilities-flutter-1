@@ -3,6 +3,7 @@ export 'bottom_sheet.dart';
 export 'carousel_slider.dart';
 export 'container.dart';
 export 'image.dart';
+export 'image_thumbnail.dart';
 export 'scrolling_text.dart';
 export 'others.dart';
 export 'otp_field.dart';

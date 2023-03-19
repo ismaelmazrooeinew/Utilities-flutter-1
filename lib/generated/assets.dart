@@ -12,6 +12,7 @@ class Assets {
   static const String componentsFormBuilder = 'lib/components/form_builder.dart';
   static const String componentsGrid = 'lib/components/grid.dart';
   static const String componentsImage = 'lib/components/image.dart';
+  static const String componentsImageThumbnail = 'lib/components/image_thumbnail.dart';
   static const String componentsOthers = 'lib/components/others.dart';
   static const String componentsOtpField = 'lib/components/otp_field.dart';
   static const String componentsPercentIndicator = 'lib/components/percent_indicator.dart';
