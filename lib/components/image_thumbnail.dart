@@ -15,7 +15,7 @@ class ThumbnailRequest {
   final int timeMs;
   final int quality;
 
-  const ThumbnailRequest({ required this.video, this.thumbnailPath, this.imageFormat=ImageFormat.JPEG, this.maxHeight=230, this.maxWidth=230, this.timeMs=10000, this.quality=50});
+  const ThumbnailRequest({required this.video, this.thumbnailPath, this.imageFormat = ImageFormat.JPEG, this.maxHeight = 230, this.maxWidth = 230, this.timeMs = 10000, this.quality = 50});
 }
 
 class ThumbnailResult {
@@ -63,7 +63,7 @@ Future<ThumbnailResult> genThumbnail(ThumbnailRequest r) async {
         quality: r.quality);
   }
 
-  int _imageDataSize = bytes?.length??0;
+  int _imageDataSize = bytes?.length ?? 0;
   print("image size: $_imageDataSize");
 
   final _image = Image.memory(bytes!);
@@ -104,13 +104,9 @@ class _GenThumbnailImageState extends State<GenThumbnailImage> {
             ),
           );
         } else {
-          return Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
-            Text("Generating the thumbnail for: ${widget.thumbnailRequest.video}..."),
-            SizedBox(
-              height: 10.0,
-            ),
-            CircularProgressIndicator(),
-          ]);
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         }
       },
     );
