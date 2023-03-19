@@ -11,6 +11,7 @@ class ChatReadDto {
     this.send,
     this.media,
     this.user,
+    this.parent,
     this.phoneNumber,
     this.unReadMessages,
     this.products,
@@ -26,6 +27,7 @@ class ChatReadDto {
   int? unReadMessages;
   final bool? send;
   final UserReadDto? user;
+  final ChatReadDto? parent;
   final List<MediaReadDto>? media;
   final List<ProductReadDto>? products;
 
@@ -44,6 +46,7 @@ class ChatReadDto {
         profileImage: json["profileImage"],
         send: json["send"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
+        parent: json["parent"] == null ? null : ChatReadDto.fromMap(json["parent"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
       );
@@ -58,6 +61,7 @@ class ChatReadDto {
         "dateTime": dateTime,
         "send": send,
         "user": user == null ? null : user!.toMap(),
+        "parent": parent == null ? null : parent!.toMap(),
         "profileImage": profileImage == null ? null : profileImage,
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
