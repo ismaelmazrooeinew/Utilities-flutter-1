@@ -129,6 +129,7 @@ class Assets {
   static const String remoteDatasourceOrdersDatasource = 'lib/data/remote_datasource/orders_datasource.dart';
   static const String remoteDatasourcePaymentDatasource = 'lib/data/remote_datasource/payment_datasource.dart';
   static const String remoteDatasourceProductDatasource = 'lib/data/remote_datasource/product_datasource.dart';
+  static const String remoteDatasourceProductDatasource2 = 'lib/data/remote_datasource/product_datasource2.dart';
   static const String remoteDatasourceReportDatasource = 'lib/data/remote_datasource/report_datasource.dart';
   static const String remoteDatasourceShoppingCartDatasource = 'lib/data/remote_datasource/shopping_cart_datasource.dart';
   static const String remoteDatasourceTransactionDatasource = 'lib/data/remote_datasource/transaction_datasource.dart';

@@ -55,6 +55,7 @@ dependencies:
   camera: ^0.10.0+1
   image: ^3.2.0
   image_picker: ^0.8.5+3
+  fl_chart: ^0.61.0
 
   syncfusion_localizations: ^20.3.47
   syncfusion_flutter_datagrid_export: ^20.3.47-beta
