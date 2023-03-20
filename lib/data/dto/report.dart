@@ -127,10 +127,16 @@ class ReportFilterDto {
   ReportFilterDto({
     this.user,
     this.product,
+    this.chat,
+    this.groupChat,
+    this.groupChatMessage,
   });
 
   final bool? user;
   final bool? product;
+  final bool? chat;
+  final bool? groupChat;
+  final bool? groupChatMessage;
 
   factory ReportFilterDto.fromJson(String str) => ReportFilterDto.fromMap(json.decode(str));
 
@@ -139,10 +145,16 @@ class ReportFilterDto {
   factory ReportFilterDto.fromMap(Map<String, dynamic> json) => ReportFilterDto(
         user: json["user"],
         product: json["product"],
+        chat: json["chat"],
+        groupChat: json["groupChat"],
+        groupChatMessage: json["groupChatMessage"],
       );
 
   Map<String, dynamic> toMap() => {
         "user": user,
         "product": product,
+        "chat": chat,
+        "groupChat": groupChat,
+        "groupChatMessage": groupChatMessage,
       };
 }
