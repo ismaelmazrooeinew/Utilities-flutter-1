@@ -23,6 +23,19 @@ class ReportDataSource {
         failure: failure,
       );
 
+  Future<void> delete({
+    required final String id,
+    required final Function(String) onResponse,
+    required final Function(GenericResponse response) onError,
+    final Function(String error)? failure,
+  }) async =>
+      httpDelete(
+        url: "$baseUrl/Report?id=$id",
+        action: (Response response) => onResponse(response.statusCode.toString()),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
+      );
+
   Future<void> readById({
     required final String id,
     required final Function(GenericResponse<ReportReadDto>) onResponse,
@@ -36,18 +49,18 @@ class ReportDataSource {
         failure: failure,
       );
 
-  Future<void> delete({
-    required final String id,
-    required final Function(GenericResponse) onResponse,
-    required final Function(GenericResponse response) onError,
-    final Function(String error)? failure,
-  }) async =>
-      httpDelete(
-        url: "$baseUrl/Report/$id",
-        action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.data, fromMap: ReportReadDto.fromMap)),
-        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
-        failure: failure,
-      );
+  // Future<void> delete({
+  //   required final String id,
+  //   required final Function(GenericResponse) onResponse,
+  //   required final Function(GenericResponse response) onError,
+  //   final Function(String error)? failure,
+  // }) async =>
+  //     httpDelete(
+  //       url: "$baseUrl/Report/$id",
+  //       action: (Response response) => onResponse(GenericResponse<ReportReadDto>.fromJson(response.data, fromMap: ReportReadDto.fromMap)),
+  //       error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+  //       failure: failure,
+  //     );
 
   Future<void> filter({
     required final ReportFilterDto filter,
