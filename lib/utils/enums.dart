@@ -65,6 +65,7 @@ enum CreateProductStatus {
 
   final int title;
 }
+enum ReportType { user, product, chat, groupChatMessage, groupChat }
 
 enum DialogMessage { info, warning, success }
 
