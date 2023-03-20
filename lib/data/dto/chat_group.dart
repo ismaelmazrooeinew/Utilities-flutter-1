@@ -122,6 +122,7 @@ class CreateGroupMessage {
     this.message,
     this.products,
     this.type,
+    this.parentId,
     this.useCase,
     this.groupChatId,
   });
@@ -130,6 +131,7 @@ class CreateGroupMessage {
   final String? message;
   final String? type;
   final String? useCase;
+  final String? parentId;
   final String? groupChatId;
   final List<String>? products;
 
@@ -142,6 +144,7 @@ class CreateGroupMessage {
         message: json["message"],
         type: json["type"],
         useCase: json["useCase"],
+        parentId: json["parentId"],
         products: json["products"],
         groupChatId: json["groupChatId"],
       );
@@ -151,6 +154,7 @@ class CreateGroupMessage {
         "message": message,
         "type": type,
         "useCase": useCase,
+        "parentId": parentId,
         "products": products,
         "groupChatId": groupChatId,
       };
