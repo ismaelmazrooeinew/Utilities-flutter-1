@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 import 'package:video_box/video_box.dart';
 
 class ItemVideo extends StatefulWidget {
-  ItemVideo({required this.address, this.setLooping, this.aspectRatio, Key? key}) : super(key: key);
+  ItemVideo({required this.address, this.setLooping,required this.videoAspectRatio, this.aspectRatio, Key? key}) : super(key: key);
   String address;
   bool? setLooping;
   double? aspectRatio;
+  Function(double aspectRatio) videoAspectRatio;
 
   @override
   createState() => _ItemVideoState();
@@ -24,6 +25,7 @@ class _ItemVideoState extends State<ItemVideo> {
     vc.setSource(VideoPlayerController.network(widget.address));
     vc.initialize().then((_) {
       isInit(true);
+      widget.videoAspectRatio(vc.value.size.aspectRatio);
       setState(() {});
     });
     setState(() {});
