@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_box/video_box.dart';
 
-
 class ItemVideo extends StatefulWidget {
   ItemVideo({required this.address, this.setLooping, this.aspectRatio, Key? key}) : super(key: key);
   String address;
@@ -17,6 +16,7 @@ class _ItemVideoState extends State<ItemVideo> {
   late VideoController vc;
 
   RxBool isInit = false.obs;
+  RxBool init = true.obs;
 
   void setIndex() {
     vc.autoplay = true;
@@ -46,10 +46,12 @@ class _ItemVideoState extends State<ItemVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => AspectRatio(
-          aspectRatio: widget.aspectRatio ?? (isInit.value && vc.value.size.aspectRatio > 0 ? vc.value.size.aspectRatio : 1),
-          child: VideoBox(controller: vc),
-        ));
+    return Obx(() => init.value
+        ? AspectRatio(
+            aspectRatio: widget.aspectRatio ?? (isInit.value && vc.value.size.aspectRatio > 0 ? vc.value.size.aspectRatio : 1),
+            child: VideoBox(controller: vc),
+          )
+        : const SizedBox());
   }
 }
 
