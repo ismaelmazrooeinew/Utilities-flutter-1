@@ -13,6 +13,7 @@ class Assets {
   static const String componentsGrid = 'lib/components/grid.dart';
   static const String componentsImage = 'lib/components/image.dart';
   static const String componentsImageThumbnail = 'lib/components/image_thumbnail.dart';
+  static const String componentsItemVideo = 'lib/components/item_video.dart';
   static const String componentsOthers = 'lib/components/others.dart';
   static const String componentsOtpField = 'lib/components/otp_field.dart';
   static const String componentsPercentIndicator = 'lib/components/percent_indicator.dart';
@@ -40,6 +41,7 @@ class Assets {
   static const String dtoContent = 'lib/data/dto/content.dart';
   static const String dtoDiscount = 'lib/data/dto/discount.dart';
   static const String dtoDto = 'lib/data/dto/dto.dart';
+  static const String dtoFfff = 'lib/data/dto/ffff.dart';
   static const String dtoFollowBookmark = 'lib/data/dto/follow_bookmark.dart';
   static const String dtoForm = 'lib/data/dto/form.dart';
   static const String dtoFormFiled = 'lib/data/dto/form_filed.dart';
