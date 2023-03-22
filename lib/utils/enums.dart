@@ -239,6 +239,18 @@ enum UseCaseMedia {
   final String title;
 }
 
+enum UseCaseContent {
+  news("news"),
+  onBoarding("onBoarding"),
+  paymentBime("paymentBime");
+
+  const UseCaseContent(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
 enum UseCaseNotification {
   success("success"),
   error("error"),
