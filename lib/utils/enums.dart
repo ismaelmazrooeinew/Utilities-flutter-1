@@ -199,6 +199,7 @@ enum UseCaseCategory {
   specializedArt("specializedArt"),
   tag("tag"),
   ad("ad"),
+  brand("brand"),
   dailyPrice("dailyPrice"),
   tender("tender"),
   auction("auction"),
