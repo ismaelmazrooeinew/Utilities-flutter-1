@@ -192,6 +192,10 @@ class MediaDataSource {
         request.fields['ChatId'] = chatId;
       }
 
+      if (contentId != null) {
+        request.fields['ContentId'] = contentId;
+      }
+
       if (notificationId != null) {
         request.fields['NotificationId'] = notificationId;
       }
