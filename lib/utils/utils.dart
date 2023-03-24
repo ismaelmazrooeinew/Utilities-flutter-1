@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
@@ -46,6 +47,21 @@ Future<File> getCompressImageFile({
   );
 
   return result ?? File("--");
+}
+
+Future<Uint8List> getCompressImageFileWeb({
+  required final Uint8List bytes,
+  final int quality = 70,
+  final bool advanceCompress = true,
+}) async {
+  int advanceQuality = 20;
+
+  final Uint8List result = await FlutterImageCompress.compressWithList(
+    bytes,
+    quality: advanceCompress ? advanceQuality : quality,
+  );
+
+  return result;
 }
 
 Color hexStringToColor(final String hexString) {
