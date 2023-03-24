@@ -50,7 +50,7 @@ dependencies:
 
   crypto: ^3.0.2
 
-  photo_manager: ^2.2.1
+  photo_manager: any
   shimmer: ^2.0.0
   image_crop: ^0.4.1
   camera: ^0.10.0+1
