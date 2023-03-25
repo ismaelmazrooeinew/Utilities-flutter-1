@@ -21,9 +21,9 @@ class MediaDataSource {
   Future<void> create({
     required final String useCase,
     required final VoidCallback action,
-    required final Function(List<ResponseMediaDto> list)? onResponse,
     required final Function(GenericResponse response) onError,
     final ProgressCallback? onSendProgress,
+    final Function(List<ResponseMediaDto> list)? onResponse,
     final List<File>? files,
     final String? categoryId,
     final String? contentId,
@@ -212,7 +212,6 @@ class MediaDataSource {
       }
 
       request.fields['Title'] = title ?? fileName;
-
 
       request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
 
