@@ -158,6 +158,7 @@ class MediaDataSource {
     final String? chatId,
     final String? notificationId,
     final String? size,
+    final String? title,
   }) async {
     // int i = 0;
 
@@ -202,6 +203,9 @@ class MediaDataSource {
       if (size != null) {
         request.fields['Size'] = size;
       }
+
+      request.fields['Title'] = title ?? fileName;
+      
 
       request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
 
