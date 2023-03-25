@@ -205,7 +205,7 @@ class MediaDataSource {
       }
 
       request.fields['Title'] = title ?? fileName;
-      
+
 
       request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
 
