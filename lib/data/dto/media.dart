@@ -226,6 +226,44 @@ class CreateOrUpdateGroupChat {
 }
 
 
+class ResponseMediaDto {
+  ResponseMediaDto({
+    this.fileName,
+    this.useCase,
+    this.url,
+    this.id,
+    this.createdAt,
+  });
+
+  final String? fileName;
+  final String? useCase;
+  final String? url;
+  final String? id;
+  final DateTime? createdAt;
+
+  factory ResponseMediaDto.fromJson(String str) => ResponseMediaDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ResponseMediaDto.fromMap(Map<String, dynamic> json) => ResponseMediaDto(
+    fileName: json["fileName"],
+    useCase: json["useCase"],
+    url: json["url"],
+    id: json["id"],
+    createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+  );
+
+  Map<String, dynamic> toMap() => {
+    "fileName": fileName,
+    "useCase": useCase,
+    "url": url,
+    "id": id,
+    "createdAt": createdAt?.toIso8601String(),
+  };
+}
+
+
+
 extension NullableMediaResponseExtension on List<MediaReadDto>? {
   List<MediaReadDto> getByUseCase({required final String useCase, final String? exception}) {
     List<MediaReadDto> list = this

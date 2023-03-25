@@ -21,6 +21,7 @@ class MediaDataSource {
   Future<void> create({
     required final String useCase,
     required final VoidCallback action,
+    required final Function(List<ResponseMediaDto> list)? onResponse,
     required final Function(GenericResponse response) onError,
     final ProgressCallback? onSendProgress,
     final List<File>? files,
@@ -39,6 +40,7 @@ class MediaDataSource {
     Duration? timeout,
   }) async {
     Dio dio = Dio();
+    List<ResponseMediaDto> mediResponseList = <ResponseMediaDto>[];
     for (int i = 0; i < files!.length; i++) {
       File file = files[i];
       String fileName = file.path.split('/')[file.path.split('/').length - 1];
@@ -68,8 +70,13 @@ class MediaDataSource {
       );
 
       if (response.isSuccessful()) {
+        List<ResponseMediaDto> l1 = List<ResponseMediaDto>.from(response.data['result'].cast<Map<String, dynamic>>().map(ResponseMediaDto.fromMap));
+        mediResponseList.add(l1.first);
         if (i == files.length - 1) {
           action();
+          if (onResponse != null) {
+            onResponse(mediResponseList);
+          }
         } else {
           onError(GenericResponse.fromJson(response.data));
         }
