@@ -171,6 +171,8 @@ class ChatGroupMessageReadDto {
     this.createdAt,
     this.updatedAt,
     this.products,
+    this.parentId,
+    this.parent,
   });
 
   final String? message;
@@ -181,6 +183,8 @@ class ChatGroupMessageReadDto {
   final String? id;
   final DateTime? createdAt;
   final DateTime? updatedAt;
+  final String? parentId;
+  final ChatGroupMessageReadDto? parent;
   final List<ProductReadDto>? products;
 
   factory ChatGroupMessageReadDto.fromJson(String str) => ChatGroupMessageReadDto.fromMap(json.decode(str));
@@ -193,9 +197,11 @@ class ChatGroupMessageReadDto {
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
         userId: json["userId"],
+        parentId: json["parentId"],
         id: json["id"],
         createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
         updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+        parent: json["parent"] == null ? null : ChatGroupMessageReadDto.fromMap(json["parent"]),
         products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
       );
 
@@ -206,8 +212,10 @@ class ChatGroupMessageReadDto {
         "userId": userId,
         "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x)),
         "id": id,
+        "parentId": parentId,
         "createdAt": createdAt?.toIso8601String(),
         "updatedAt": updatedAt?.toIso8601String(),
+        "parent": parent == null ? null : parent!.toMap(),
         "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
       };
 }
