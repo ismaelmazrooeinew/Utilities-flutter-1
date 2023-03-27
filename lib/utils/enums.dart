@@ -184,6 +184,8 @@ enum UseCaseProduct {
   tutorial("tutorial"),
   product("product"),
   story("story"),
+  physicalProduct("physicalProduct"),
+  digitalProduct("digitalProduct"),
   magazine("magazine");
 
   const UseCaseProduct(this.title);
@@ -242,6 +244,12 @@ enum UseCaseMedia {
 enum UseCaseContent {
   news("news"),
   onBoarding("onBoarding"),
+  aboutUs("aboutUs"),
+  terms("terms"),
+  qa("qa"),
+  homeTop("homeTop"),
+  banner1("banner1"),
+  banner2("banner2"),
   paymentBime("paymentBime");
 
   const UseCaseContent(this.title);
