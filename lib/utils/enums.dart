@@ -248,6 +248,7 @@ enum UseCaseContent {
   terms("terms"),
   qa("qa"),
   homeTop("homeTop"),
+  banner("banner"),
   banner1("banner1"),
   banner2("banner2"),
   paymentBime("paymentBime");
