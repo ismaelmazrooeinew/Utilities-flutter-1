@@ -253,7 +253,7 @@ class UserReadDto {
 
   String toJson() => json.encode(toMap());
 
-  static ChatReadDto ff(Map<String,dynamic> _json)=>ChatReadDto.fromMap(_json);
+  static ChatReadDto ff(Map<String, dynamic> _json) => ChatReadDto.fromMap(_json);
 
   factory UserReadDto.fromMap(Map<String, dynamic> json) => UserReadDto(
         token: json["token"],
@@ -598,6 +598,8 @@ class UserFilterDto {
   UserFilterDto({
     this.userId,
     this.userName,
+    this.query,
+    this.phoneNumber,
     this.showCategories,
     this.showFollowings,
     this.showForms,
@@ -610,6 +612,8 @@ class UserFilterDto {
 
   final String? userId;
   final String? userName;
+  final String? query;
+  final String? phoneNumber;
   final bool? showGender;
   final bool? showMedia;
   final bool? showCategories;
@@ -626,6 +630,8 @@ class UserFilterDto {
   factory UserFilterDto.fromMap(Map<String, dynamic> json) => UserFilterDto(
         userId: json["userId"],
         userName: json["userName"],
+        query: json["query"],
+    phoneNumber: json["phoneNumber"],
         showGender: json["showGender"],
         showMedia: json["showMedia"],
         showCategories: json["showCategories"],
@@ -639,6 +645,8 @@ class UserFilterDto {
   Map<String, dynamic> toMap() => {
         "userId": userId,
         "userName": userName,
+        "query": query,
+        "phoneNumber": phoneNumber,
         "showGender": showGender,
         "showMedia": showMedia,
         "showCategories": showCategories,
