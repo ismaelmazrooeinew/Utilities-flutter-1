@@ -1,5 +1,4 @@
 import 'package:utilities/data/dto/report.dart';
-import 'package:utilities/data/dto/team.dart';
 import 'package:utilities/utilities.dart';
 
 extension ProductReadDtoExtension on ProductReadDto {
@@ -390,7 +389,7 @@ class ProductReadDto {
   final List<FormReadDto>? forms;
   final List<ProductInsightDto>? productInsights;
   final List<CommentReadDto>? comments;
-  final List<TeamReadDto>? teams;
+  final String? teams;
   final List<Report>? reports;
 
   void setIsBookmark(bool _isBookmark) {
@@ -455,7 +454,7 @@ class ProductReadDto {
         myVotes: json["myVotes"] == null ? null : List<VoteField>.from(json["myVotes"].map((x) => VoteField.fromMap(x))),
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
-        teams: json["teams"] == null ? null : List<TeamReadDto>.from(json["teams"].map((x) => TeamReadDto.fromMap(x))),
+        teams: json["teams"] ,
         reports: json["reports"] == null ? null : List<Report>.from(json["reports"].map((x) => Report.fromMap(x))),
         productInsights: json["productInsights"] == null ? [] : List<ProductInsightDto>.from(json["productInsights"]!.map((x) => ProductInsightDto.fromMap(x))),
       );
@@ -514,7 +513,7 @@ class ProductReadDto {
         "myVotes": myVotes == null ? null : List<dynamic>.from(myVotes!.map((x) => x.toMap())),
         "forms": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toMap())),
-        "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x.toMap())),
+        "teams": teams,
         "reports": reports == null ? null : List<dynamic>.from(reports!.map((x) => x.toMap())),
       };
 }
