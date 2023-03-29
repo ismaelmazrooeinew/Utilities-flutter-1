@@ -163,3 +163,63 @@ class CategoryReadDto {
         "media":media==null?null: List<dynamic>.from(media!.map((x) => x.toMap())),
       };
 }
+
+class CategoryFilterDto {
+  CategoryFilterDto({
+    this.id,
+    this.title,
+    this.titleTr1,
+    this.titleTr2,
+    this.useCase,
+    this.type,
+    this.parentId,
+    this.showMedia,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+  });
+
+  final String? id;
+  final String? title;
+  final String? titleTr1;
+  final String? titleTr2;
+  final String? useCase;
+  final String? type;
+  final String? parentId;
+  final bool? showMedia;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final DateTime? deletedAt;
+
+  factory CategoryFilterDto.fromJson(String str) => CategoryFilterDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory CategoryFilterDto.fromMap(Map<String, dynamic> json) => CategoryFilterDto(
+    id: json["id"],
+    title: json["title"],
+    titleTr1: json["titleTr1"],
+    titleTr2: json["titleTr2"],
+    useCase: json["useCase"],
+    type: json["type"],
+    parentId: json["parentId"],
+    showMedia: json["showMedia"],
+    createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+    deletedAt: json["deletedAt"] == null ? null : DateTime.parse(json["deletedAt"]),
+  );
+
+  Map<String, dynamic> toMap() => {
+    "id": id,
+    "title": title,
+    "titleTr1": titleTr1,
+    "titleTr2": titleTr2,
+    "useCase": useCase,
+    "type": type,
+    "parentId": parentId,
+    "showMedia": showMedia,
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "deletedAt": deletedAt?.toIso8601String(),
+  };
+}

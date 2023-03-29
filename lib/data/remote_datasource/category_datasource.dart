@@ -37,13 +37,15 @@ class CategoryDataSource {
         failure: failure,
       );
 
-  Future<void> read({
+  Future<void> filter({
+    required final CategoryFilterDto dto,
     required final Function(GenericResponse<CategoryReadDto>) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
-      httpGet(
-        url: "$baseUrl/Category",
+      httpPost(
+        url: "$baseUrl/Category/Filter",
+        body: dto,
         action: (Response response) => onResponse(GenericResponse<CategoryReadDto>.fromJson(response.data, fromMap: CategoryReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,

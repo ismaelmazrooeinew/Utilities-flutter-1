@@ -598,6 +598,7 @@ class UserFilterDto {
   UserFilterDto({
     this.userId,
     this.userName,
+    this.userNameExact,
     this.query,
     this.phoneNumber,
     this.showCategories,
@@ -608,10 +609,13 @@ class UserFilterDto {
     this.showMedia,
     this.showProducts,
     this.showTransactions,
+    this.pageSize,
+    this.pageNumber,
   });
 
   final String? userId;
   final String? userName;
+  final String? userNameExact;
   final String? query;
   final String? phoneNumber;
   final bool? showGender;
@@ -622,6 +626,8 @@ class UserFilterDto {
   final bool? showProducts;
   final bool? showTransactions;
   final bool? showFollowings;
+  final int? pageSize;
+  final int? pageNumber;
 
   factory UserFilterDto.fromJson(String str) => UserFilterDto.fromMap(json.decode(str));
 
@@ -630,8 +636,9 @@ class UserFilterDto {
   factory UserFilterDto.fromMap(Map<String, dynamic> json) => UserFilterDto(
         userId: json["userId"],
         userName: json["userName"],
+        userNameExact: json["userNameExact"],
         query: json["query"],
-    phoneNumber: json["phoneNumber"],
+        phoneNumber: json["phoneNumber"],
         showGender: json["showGender"],
         showMedia: json["showMedia"],
         showCategories: json["showCategories"],
@@ -640,11 +647,14 @@ class UserFilterDto {
         showProducts: json["showProducts"],
         showTransactions: json["showTransactions"],
         showFollowings: json["showFollowings"],
+        pageSize: json["pageSize"],
+        pageNumber: json["pageNumber"],
       );
 
   Map<String, dynamic> toMap() => {
         "userId": userId,
         "userName": userName,
+        "userNameExact": userNameExact,
         "query": query,
         "phoneNumber": phoneNumber,
         "showGender": showGender,
@@ -655,5 +665,7 @@ class UserFilterDto {
         "showProducts": showProducts,
         "showTransactions": showTransactions,
         "showFollowings": showFollowings,
+        "pageSize": pageSize,
+        "pageNumber": pageNumber,
       };
 }

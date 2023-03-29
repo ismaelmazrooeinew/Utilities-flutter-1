@@ -20,7 +20,6 @@ extension ProductReadDtoExtension on ProductReadDto {
         useCase: "useCase",
         isForSale: true,
         enabled: true,
-        isBookmarked: true,
         latitude: 35,
         longitude: 55,
         visitsCount: 100,
@@ -299,7 +298,6 @@ class ProductReadDto {
     this.isSeen,
     this.expireDate,
     this.enabled,
-    this.isBookmarked,
     this.latitude,
     this.longitude,
     this.visitsCount,
@@ -358,7 +356,6 @@ class ProductReadDto {
   final bool? isSeen;
   final String? expireDate;
   final bool? enabled;
-  bool? isBookmarked;
   final double? latitude;
   final double? longitude;
   final int? visitsCount;
@@ -392,9 +389,6 @@ class ProductReadDto {
   final String? teams;
   final List<Report>? reports;
 
-  void setIsBookmark(bool _isBookmark) {
-    this.isBookmarked = _isBookmark; //
-  }
 
   factory ProductReadDto.fromJson(String str) => ProductReadDto.fromMap(json.decode(str));
 
@@ -429,7 +423,6 @@ class ProductReadDto {
         isSeen: json["isSeen"],
         expireDate: json["expireDate"],
         enabled: json["enabled"],
-        isBookmarked: json["isBookmarked"],
         latitude: json["latitude"],
         longitude: json["longitude"],
         visitsCount: json["visitsCount"],
@@ -483,7 +476,6 @@ class ProductReadDto {
         "isSeen": isSeen,
         "expireDate": expireDate,
         "enabled": enabled,
-        "isBookmarked": isBookmarked,
         "latitude": latitude,
         "longitude": longitude,
         "visitsCount": visitsCount,
