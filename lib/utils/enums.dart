@@ -14,6 +14,7 @@ enum BackResult {
 enum TypeChat {
   chat("chat"),
   group("group");
+
   const TypeChat(this.title);
 
   @override
@@ -65,6 +66,7 @@ enum CreateProductStatus {
 
   final int title;
 }
+
 enum ReportType { user, product, chat, groupChatMessage, groupChat }
 
 enum DialogMessage { info, warning, success }
@@ -235,6 +237,18 @@ enum UseCaseMedia {
   text("text");
 
   const UseCaseMedia(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
+enum UseCaseChat {
+  group("group"),
+  chat("chat"),
+  chanel("chanel");
+
+  const UseCaseChat(this.title);
 
   @override
   String toString() => name;
