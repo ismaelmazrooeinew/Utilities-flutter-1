@@ -610,6 +610,7 @@ class UserFilterDto {
     this.showProducts,
     this.showTransactions,
     this.pageSize,
+    this.userIds,
     this.pageNumber,
   });
 
@@ -628,6 +629,7 @@ class UserFilterDto {
   final bool? showFollowings;
   final int? pageSize;
   final int? pageNumber;
+  final List<String>? userIds;
 
   factory UserFilterDto.fromJson(String str) => UserFilterDto.fromMap(json.decode(str));
 
@@ -649,6 +651,7 @@ class UserFilterDto {
         showFollowings: json["showFollowings"],
         pageSize: json["pageSize"],
         pageNumber: json["pageNumber"],
+        userIds: json["userIds"] == null ? null : List<String>.from(json["userIds"].map((x) => x)),
       );
 
   Map<String, dynamic> toMap() => {
@@ -667,5 +670,6 @@ class UserFilterDto {
         "showFollowings": showFollowings,
         "pageSize": pageSize,
         "pageNumber": pageNumber,
+        "userIds": userIds == null ? null : List<dynamic>.from(userIds!.map((x) => x)),
       };
 }
