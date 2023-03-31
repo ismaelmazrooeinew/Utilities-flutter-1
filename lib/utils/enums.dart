@@ -203,6 +203,7 @@ enum UseCaseCategory {
   specializedArt("specializedArt"),
   tag("tag"),
   ad("ad"),
+  amnbekhar("amnbekhar"),
   brand("brand"),
   dailyPrice("dailyPrice"),
   tender("tender"),
