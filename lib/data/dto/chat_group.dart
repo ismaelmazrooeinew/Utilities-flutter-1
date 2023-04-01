@@ -5,6 +5,7 @@ class ChatGroupReadDto {
     this.id,
     this.creatorUserId,
     this.title,
+    this.useCase,
     this.description,
     this.users,
     this.media,
@@ -15,6 +16,7 @@ class ChatGroupReadDto {
 
   final String? id;
   final String? creatorUserId;
+  final String? useCase;
   final String? title;
   final String? description;
   final List<UserReadDto>? users;
@@ -31,6 +33,7 @@ class ChatGroupReadDto {
         id: json["id"],
         creatorUserId: json["creatorUserId"],
         title: json["title"],
+        useCase: json["useCase"],
         description: json["description"],
         users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
         media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
@@ -43,6 +46,7 @@ class ChatGroupReadDto {
         "id": id,
         "creatorUserId": creatorUserId,
         "title": title,
+        "useCase": useCase,
         "description": description,
         "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
         "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
