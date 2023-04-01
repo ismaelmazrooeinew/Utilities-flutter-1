@@ -55,6 +55,7 @@ class Assets {
   static const String dtoOrders = 'lib/data/dto/orders.dart';
   static const String dtoPayment = 'lib/data/dto/payment.dart';
   static const String dtoProduct = 'lib/data/dto/product.dart';
+  static const String dtoPushe = 'lib/data/dto/pushe.dart';
   static const String dtoReaction = 'lib/data/dto/reaction.dart';
   static const String dtoReport = 'lib/data/dto/report.dart';
   static const String dtoReport2 = 'lib/data/dto/report2.dart';
@@ -132,6 +133,7 @@ class Assets {
   static const String remoteDatasourcePaymentDatasource = 'lib/data/remote_datasource/payment_datasource.dart';
   static const String remoteDatasourceProductDatasource = 'lib/data/remote_datasource/product_datasource.dart';
   static const String remoteDatasourceProductDatasource2 = 'lib/data/remote_datasource/product_datasource2.dart';
+  static const String remoteDatasourcePusheDatasource = 'lib/data/remote_datasource/pushe_datasource.dart';
   static const String remoteDatasourceReportDatasource = 'lib/data/remote_datasource/report_datasource.dart';
   static const String remoteDatasourceShoppingCartDatasource = 'lib/data/remote_datasource/shopping_cart_datasource.dart';
   static const String remoteDatasourceTransactionDatasource = 'lib/data/remote_datasource/transaction_datasource.dart';
