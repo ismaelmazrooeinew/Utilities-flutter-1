@@ -5,7 +5,6 @@ import 'package:utilities/data/dto/pushe.dart';
 import 'package:utilities/utils/dio_interceptor.dart';
 
 class PusheDataSource {
-
   PusheDataSource();
 
   Future<void> create({
@@ -14,7 +13,7 @@ class PusheDataSource {
     required final String title,
     required final String content,
     required final List<String> userIds,
-    required final Function(PusheReadDto pusheReadDto) response,
+    required final Function(PusheReadDto pusheReadDto) onResponse,
     required final VoidCallback error,
     final String? bigTitle,
     final String? bigContent,
@@ -22,7 +21,6 @@ class PusheDataSource {
     final bool? isDraft,
     final String? url,
     final String? actionType,
-
     Duration? timeout,
   }) async {
     Dio dio = Dio();
@@ -43,12 +41,11 @@ class PusheDataSource {
         isDraft: isDraft ?? false,
         filter: PusheFilter(
           customId: userIds,
-        )
-    );
+        ));
     Response response = await dio.post('https://api.pushe.co/v2/messaging/notifications/', data: dto.toJson(), options: Options(headers: header));
 
     if (response.isSuccessful()) {
-      PusheReadDto.fromMap(response.data);
+      onResponse(PusheReadDto.fromMap(response.data));
     } else {
       error();
     }

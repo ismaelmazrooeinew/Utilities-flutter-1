@@ -84,6 +84,67 @@ class MediaDataSource {
     }
   }
 
+  Future<void> upload({
+    required final File file,
+    required final String useCase,
+    required final VoidCallback action,
+    required final Function(GenericResponse response) onError,
+    final Function(List<ResponseMediaDto> list)? onResponse,
+    final ProgressCallback? onSendProgress,
+    final String? categoryId,
+    final String? contentId,
+    final String? productId,
+    final String? userId,
+    final String? commentId,
+    final String? chatId,
+    final String? groupChatId,
+    final String? groupChatMessageId,
+    final String? bookmarkId,
+    final String? title,
+    final String? notificationId,
+    final String? size,
+    Duration? timeout,
+  }) async {
+    Dio dio = Dio();
+    String fileName = file.path.split('/').last;
+
+    final Response<dynamic> response = await dio.post(
+      '$baseUrl/Media',
+      onSendProgress: onSendProgress,
+      data: FormData.fromMap({
+        'Files': await MultipartFile.fromFile(file.path, filename: fileName),
+        'UseCase': useCase,
+        'CategoryId': categoryId,
+        'ContentId': contentId,
+        'GroupChatId': groupChatId,
+        'GroupChatMessageId': groupChatMessageId,
+        'ProductId': productId,
+        'UserId': userId,
+        'CommentId': commentId,
+        'BookmarkId': bookmarkId,
+        'ChatId': chatId,
+        'Title': title ?? fileName,
+        'NotificationId': notificationId,
+        'Size': size,
+      }),
+      options: Options(headers: <String, String>{
+        "Authorization": getString(UtilitiesConstants.token) ?? "",
+      }),
+    );
+
+    List<ResponseMediaDto> mediaResponseList = <ResponseMediaDto>[];
+    if (response.isSuccessful()) {
+      List<ResponseMediaDto> l1 = List<ResponseMediaDto>.from(response.data['result'].cast<Map<String, dynamic>>().map(ResponseMediaDto.fromMap));
+      mediaResponseList.add(l1.first);
+      action();
+      if (onResponse != null) {
+        onResponse(mediaResponseList);
+      }
+    } else {
+      onError(GenericResponse.fromJson(response.data));
+    }
+  }
+
   Future<void> update({
     required final String mediaId,
     final String? title,
@@ -217,7 +278,6 @@ class MediaDataSource {
 
       request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: fileName));
 
-
       await request.send().then((final http.StreamedResponse response) {
         if (response.statusCode == 200) {
           if (i == files.length - 1) {
@@ -230,6 +290,80 @@ class MediaDataSource {
         }
       });
     }
+  }
+
+  Future<void> uploadWeb({
+    required final PlatformFile platformFile,
+    required final String useCase, //media
+    required final VoidCallback action,
+    final Function(int statusCode)? error,
+    final String? categoryId,
+    final String? contentId,
+    final String? commentId,
+    final String? groupChatMessageId,
+    final String? groupChatId,
+    final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
+    final String? userId,
+    final String? chatId,
+    final String? notificationId,
+    final String? size,
+    final String? title,
+  }) async {
+    // int i = 0;
+
+    Uint8List? uint8list = platformFile.bytes;
+    final List<int> _selectedFile = uint8list!;
+    String fileName = platformFile.name;
+    final http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Media'));
+    request.fields['UseCase'] = useCase;
+    if (categoryId != null) {
+      request.fields['CategoryId'] = categoryId;
+    }
+
+    if (productId != null) {
+      request.fields['ProductId'] = productId;
+    }
+    if (userId != null) {
+      request.fields['UserId'] = userId;
+    }
+    if (commentId != null) {
+      request.fields['CommentId'] = commentId;
+    }
+    if (groupChatMessageId != null) {
+      request.fields['GroupChatMessageId'] = groupChatMessageId;
+    }
+    if (groupChatId != null) {
+      request.fields['GroupChatId'] = groupChatId;
+    }
+
+    if (chatId != null) {
+      request.fields['ChatId'] = chatId;
+    }
+
+    if (contentId != null) {
+      request.fields['ContentId'] = contentId;
+    }
+
+    if (notificationId != null) {
+      request.fields['NotificationId'] = notificationId;
+    }
+    if (size != null) {
+      request.fields['Size'] = size;
+    }
+
+    request.fields['Title'] = title ?? fileName;
+
+    request.headers['Authorization'] = getString(UtilitiesConstants.token) ?? "";
+
+    request.files.add(http.MultipartFile.fromBytes('Files', _selectedFile, filename: fileName));
+
+    await request.send().then((final http.StreamedResponse response) {
+      if (response.statusCode == 200) {
+        action();
+      } else {
+        error!(response.statusCode);
+      }
+    });
   }
 
   Future<void> delete({
