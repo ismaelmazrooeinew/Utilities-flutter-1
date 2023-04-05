@@ -31,6 +31,9 @@ class MediaDataSource {
     final String? userId,
     final String? commentId,
     final String? chatId,
+    final String? time,
+    final String? artist,
+    final String? album,
     final String? groupChatId,
     final String? groupChatMessageId,
     final String? bookmarkId,
@@ -57,6 +60,9 @@ class MediaDataSource {
           'GroupChatMessageId': groupChatMessageId,
           'ProductId': productId,
           'UserId': userId,
+          'Time': time,
+          'Artist': artist,
+          'Album': album,
           'CommentId': commentId,
           'BookmarkId': bookmarkId,
           'ChatId': chatId,
@@ -95,6 +101,9 @@ class MediaDataSource {
     final String? contentId,
     final String? productId,
     final String? userId,
+    final String? time,
+    final String? artist,
+    final String? album,
     final String? commentId,
     final String? chatId,
     final String? groupChatId,
@@ -116,6 +125,9 @@ class MediaDataSource {
         'UseCase': useCase,
         'CategoryId': categoryId,
         'ContentId': contentId,
+        'Time': time,
+        'Artist': artist,
+        'Album': album,
         'GroupChatId': groupChatId,
         'GroupChatMessageId': groupChatMessageId,
         'ProductId': productId,
@@ -173,6 +185,9 @@ class MediaDataSource {
     final String? productId,
     final String? commentId,
     final String? userId,
+    final String? time,
+    final String? artist,
+    final String? album,
     final String? chatId,
     final String? notificationId,
     final String? size,
@@ -191,6 +206,9 @@ class MediaDataSource {
           'ContentId': contentId,
           'CommentId': commentId,
           'ProductId': productId,
+          'Time': time,
+          'Artist': artist,
+          'Album': album,
           'UserId': userId,
           'ChatId': chatId,
           'NotificationId': notificationId,
@@ -224,6 +242,9 @@ class MediaDataSource {
     final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
     final String? userId,
     final String? chatId,
+    final String? time,
+    final String? artist,
+    final String? album,
     final String? notificationId,
     final String? size,
     final String? title,
@@ -244,9 +265,21 @@ class MediaDataSource {
       if (productId != null) {
         request.fields['ProductId'] = productId;
       }
+
       if (userId != null) {
         request.fields['UserId'] = userId;
       }
+
+      if (time != null) {
+        request.fields['Time'] = time;
+      }
+      if (artist != null) {
+        request.fields['Artist'] = artist;
+      }
+      if (album != null) {
+        request.fields['Album'] = album;
+      }
+
       if (commentId != null) {
         request.fields['CommentId'] = commentId;
       }
@@ -305,6 +338,9 @@ class MediaDataSource {
     final String? productId, //8f11171f-c0a4-4a70-7fe2-08da91550c6f
     final String? userId,
     final String? chatId,
+    final String? time,
+    final String? artist,
+    final String? album,
     final String? notificationId,
     final String? size,
     final String? title,
@@ -331,6 +367,16 @@ class MediaDataSource {
     }
     if (groupChatMessageId != null) {
       request.fields['GroupChatMessageId'] = groupChatMessageId;
+    }
+
+    if (time != null) {
+      request.fields['Time'] = time;
+    }
+    if (artist != null) {
+      request.fields['Artist'] = artist;
+    }
+    if (album != null) {
+      request.fields['Album'] = album;
     }
     if (groupChatId != null) {
       request.fields['GroupChatId'] = groupChatId;

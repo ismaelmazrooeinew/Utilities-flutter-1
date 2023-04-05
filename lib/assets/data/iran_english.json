@@ -25,6 +25,17 @@
     "slug": "Isfahan"
   },
   {
+    "id": 32,
+    "name": "بهارستان",
+    "slug": "Baharestan",
+    "parentId": 4
+  },
+  {
+    "id": 4,
+    "name": "اصفهان",
+    "slug": "Isfahan"
+  },
+  {
     "id": 5,
     "name": "البرز",
     "slug": "Alborz"
