@@ -11,6 +11,7 @@ class ChatGroupReadDto {
     this.media,
     this.useCase,
     this.type,
+    this.forwardedFromUserId,
     this.products,
     this.createdAt,
     this.updatedAt,
@@ -22,6 +23,7 @@ class ChatGroupReadDto {
   final String? description;
   final String? useCase;
   final String? type;
+  final UserReadDto? forwardedFromUserId;
   final List<UserReadDto>? users;
   final List<MediaReadDto>? media;
   final List<ProductReadDto>? products;
@@ -39,6 +41,7 @@ class ChatGroupReadDto {
     useCase: json["useCase"],
     type: json["type"],
     description: json["description"],
+    forwardedFromUserId: json["forwardedFromUserId"] == null ? null : UserReadDto.fromMap(json["forwardedFromUserId"]),
     users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
     media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
     products: json["products"] == null ? [] : List<ProductReadDto>.from(json["products"]!.map((x) => ProductReadDto.fromMap(x))),
@@ -53,6 +56,7 @@ class ChatGroupReadDto {
     "useCase": useCase,
     "type": type,
     "description": description,
+    "forwardedFromUserId": forwardedFromUserId == null ? null : forwardedFromUserId!.toMap(),
     "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
     "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
     "products": products == null ? [] : List<ProductReadDto>.from(products!.map((x) => x.toMap())),
