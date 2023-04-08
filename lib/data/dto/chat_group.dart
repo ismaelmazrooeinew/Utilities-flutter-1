@@ -35,36 +35,35 @@ class ChatGroupReadDto {
   String toJson() => json.encode(toMap());
 
   factory ChatGroupReadDto.fromMap(Map<String, dynamic> json) => ChatGroupReadDto(
-    id: json["id"],
-    creatorUserId: json["creatorUserId"],
-    title: json["title"],
-    useCase: json["useCase"],
-    type: json["type"],
-    description: json["description"],
-    forwardedFromUserId: json["forwardedFromUserId"] == null ? null : UserReadDto.fromMap(json["forwardedFromUserId"]),
-    users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
-    media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
-    products: json["products"] == null ? [] : List<ProductReadDto>.from(json["products"]!.map((x) => ProductReadDto.fromMap(x))),
-    createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
-    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
-  );
+        id: json["id"],
+        creatorUserId: json["creatorUserId"],
+        title: json["title"],
+        useCase: json["useCase"],
+        type: json["type"],
+        description: json["description"],
+        forwardedFromUserId: json["forwardedFromUserId"] == null ? null : UserReadDto.fromMap(json["forwardedFromUserId"]),
+        users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
+        media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
+        products: json["products"] == null ? [] : List<ProductReadDto>.from(json["products"]!.map((x) => ProductReadDto.fromMap(x))),
+        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+        updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id,
-    "creatorUserId": creatorUserId,
-    "title": title,
-    "useCase": useCase,
-    "type": type,
-    "description": description,
-    "forwardedFromUserId": forwardedFromUserId == null ? null : forwardedFromUserId!.toMap(),
-    "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
-    "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
-    "products": products == null ? [] : List<ProductReadDto>.from(products!.map((x) => x.toMap())),
-    "createdAt": createdAt?.toIso8601String(),
-    "updatedAt": updatedAt?.toIso8601String(),
-  };
+        "id": id,
+        "creatorUserId": creatorUserId,
+        "title": title,
+        "useCase": useCase,
+        "type": type,
+        "description": description,
+        "forwardedFromUserId": forwardedFromUserId == null ? null : forwardedFromUserId!.toMap(),
+        "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
+        "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
+        "products": products == null ? [] : List<ProductReadDto>.from(products!.map((x) => x.toMap())),
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
+      };
 }
-
 
 class GroupChat {
   GroupChat({
@@ -255,6 +254,7 @@ class ChatGroupMessageReadDto {
     this.products,
     this.parentId,
     this.parent,
+    this.messageSeenBy,
   });
 
   final String? message;
@@ -268,6 +268,7 @@ class ChatGroupMessageReadDto {
   final String? parentId;
   final ChatGroupMessageReadDto? parent;
   final List<ProductReadDto>? products;
+  final List<UserReadDto>? messageSeenBy;
 
   factory ChatGroupMessageReadDto.fromJson(String str) => ChatGroupMessageReadDto.fromMap(json.decode(str));
 
@@ -285,6 +286,7 @@ class ChatGroupMessageReadDto {
         updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
         parent: json["parent"] == null ? null : ChatGroupMessageReadDto.fromMap(json["parent"]),
         products: json["products"] == null ? null : List<ProductReadDto>.from(json["products"].map((x) => ProductReadDto.fromMap(x))),
+        messageSeenBy: json["messageSeenBy"] == null ? null : List<UserReadDto>.from(json["messageSeenBy"].map((x) => UserReadDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -299,5 +301,6 @@ class ChatGroupMessageReadDto {
         "updatedAt": updatedAt?.toIso8601String(),
         "parent": parent == null ? null : parent!.toMap(),
         "products": products == null ? null : List<dynamic>.from(products!.map((x) => x.toMap())),
+        "messageSeenBy": messageSeenBy == null ? null : List<dynamic>.from(messageSeenBy!.map((x) => x.toMap())),
       };
 }
