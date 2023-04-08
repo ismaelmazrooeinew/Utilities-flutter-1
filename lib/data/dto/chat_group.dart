@@ -3,27 +3,56 @@ import 'dart:convert';
 
 class ChatGroupReadDto {
   ChatGroupReadDto({
-    this.groupChat,
-    this.countOfUnreadMessages,
+    this.id,
+    this.creatorUserId,
+    this.title,
+    this.description,
+    this.users,
+    this.media,
+    this.products,
+    this.createdAt,
+    this.updatedAt,
   });
 
-  final GroupChat? groupChat;
-  final int? countOfUnreadMessages;
+  final String? id;
+  final String? creatorUserId;
+  final String? title;
+  final String? description;
+  final List<UserReadDto>? users;
+  final List<MediaReadDto>? media;
+  final List<ProductReadDto>? products;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
   factory ChatGroupReadDto.fromJson(String str) => ChatGroupReadDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory ChatGroupReadDto.fromMap(Map<String, dynamic> json) => ChatGroupReadDto(
-        groupChat: json["groupChat"] == null ? null : GroupChat.fromMap(json["groupChat"]),
-        countOfUnreadMessages: json["countOfUnreadMessages"],
-      );
+    id: json["id"],
+    creatorUserId: json["creatorUserId"],
+    title: json["title"],
+    description: json["description"],
+    users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
+    media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
+    products: json["products"] == null ? [] : List<ProductReadDto>.from(json["products"]!.map((x) => ProductReadDto.fromMap(x))),
+    createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+  );
 
   Map<String, dynamic> toMap() => {
-        "groupChat": groupChat?.toMap(),
-        "countOfUnreadMessages": countOfUnreadMessages,
-      };
+    "id": id,
+    "creatorUserId": creatorUserId,
+    "title": title,
+    "description": description,
+    "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
+    "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
+    "products": products == null ? [] : List<ProductReadDto>.from(products!.map((x) => x.toMap())),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+  };
 }
+
 
 class GroupChat {
   GroupChat({
