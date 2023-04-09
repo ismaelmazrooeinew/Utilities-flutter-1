@@ -11,8 +11,6 @@ class ChatGroupReadDto {
     this.media,
     this.useCase,
     this.type,
-    this.forwardedFromUser,
-    this.forwardedFromUserId,
     this.products,
     this.createdAt,
     this.updatedAt,
@@ -24,8 +22,6 @@ class ChatGroupReadDto {
   final String? description;
   final String? useCase;
   final String? type;
-  final UserReadDto? forwardedFromUser;
-  final String? forwardedFromUserId;
   final List<UserReadDto>? users;
   final List<MediaReadDto>? media;
   final List<ProductReadDto>? products;
@@ -43,8 +39,6 @@ class ChatGroupReadDto {
         useCase: json["useCase"],
         type: json["type"],
         description: json["description"],
-        forwardedFromUser: json["forwardedFromUser"] == null ? null : UserReadDto.fromMap(json["forwardedFromUser"]),
-        forwardedFromUserId: json["forwardedFromUserId"],
         users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
         media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
         products: json["products"] == null ? [] : List<ProductReadDto>.from(json["products"]!.map((x) => ProductReadDto.fromMap(x))),
@@ -59,8 +53,6 @@ class ChatGroupReadDto {
         "useCase": useCase,
         "type": type,
         "description": description,
-        "forwardedFromUser": forwardedFromUser == null ? null : forwardedFromUser!.toMap(),
-        "forwardedFromUserId": forwardedFromUserId ,
         "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
         "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
         "products": products == null ? [] : List<ProductReadDto>.from(products!.map((x) => x.toMap())),
@@ -204,6 +196,7 @@ class CreateGroupMessage {
     this.products,
     this.type,
     this.parentId,
+    this.forwardedFromUser,
     this.forwardedFromUserId,
     this.useCase,
     this.groupChatId,
@@ -216,6 +209,7 @@ class CreateGroupMessage {
   final String? parentId;
   final String? groupChatId;
   final String? forwardedFromUserId;
+  final UserReadDto? forwardedFromUser;
   final List<String>? products;
 
   factory CreateGroupMessage.fromJson(String str) => CreateGroupMessage.fromMap(json.decode(str));
@@ -230,6 +224,7 @@ class CreateGroupMessage {
         parentId: json["parentId"],
         products: json["products"],
         forwardedFromUserId: json["forwardedFromUserId"],
+        forwardedFromUser: json["forwardedFromUser"] == null ? null : UserReadDto.fromMap(json["forwardedFromUser"]),
         groupChatId: json["groupChatId"],
       );
 
@@ -240,6 +235,7 @@ class CreateGroupMessage {
         "useCase": useCase,
         "parentId": parentId,
         "products": products,
+        "forwardedFromUser": forwardedFromUser == null ? null : forwardedFromUser!.toMap(),
         "forwardedFromUserId": forwardedFromUserId,
         "groupChatId": groupChatId,
       };
