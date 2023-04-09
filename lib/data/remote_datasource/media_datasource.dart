@@ -198,7 +198,7 @@ class MediaDataSource {
       httpPost(
         url: "$baseUrl/Media",
         body: <String, dynamic>{
-          'Links': <String>[link],
+          'Links': link,
           'UseCase': useCase,
           'CategoryId': categoryId,
           'ContentId': contentId,
