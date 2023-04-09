@@ -197,7 +197,7 @@ class MediaDataSource {
   }) async =>
       httpPost(
         url: "$baseUrl/Media",
-        body: FormData.fromMap({
+        body: <String, dynamic>{
           'Links': <String>[link],
           'UseCase': useCase,
           'CategoryId': categoryId,
@@ -213,7 +213,7 @@ class MediaDataSource {
           'ChatId': chatId,
           'NotificationId': notificationId,
           'Size': size,
-        }),
+        },
         action: (Response response) => onResponse(GenericResponse<ResponseMediaDto>.fromJson(response.data, fromMap: ResponseMediaDto.fromMap)),
         encodeBody: false,
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
