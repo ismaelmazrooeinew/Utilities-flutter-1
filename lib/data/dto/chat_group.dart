@@ -25,7 +25,7 @@ class ChatGroupReadDto {
   final String? useCase;
   final String? type;
   final UserReadDto? forwardedFromUser;
-  final List<String>? forwardedFromUserId;
+  final String? forwardedFromUserId;
   final List<UserReadDto>? users;
   final List<MediaReadDto>? media;
   final List<ProductReadDto>? products;
@@ -44,7 +44,7 @@ class ChatGroupReadDto {
         type: json["type"],
         description: json["description"],
         forwardedFromUser: json["forwardedFromUser"] == null ? null : UserReadDto.fromMap(json["forwardedFromUser"]),
-        forwardedFromUserId: json["forwardedFromUserId"] == null ? [] : List<String>.from(json["forwardedFromUserId"]!.map((x) => x)),
+        forwardedFromUserId: json["forwardedFromUserId"],
         users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
         media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
         products: json["products"] == null ? [] : List<ProductReadDto>.from(json["products"]!.map((x) => ProductReadDto.fromMap(x))),
@@ -60,7 +60,7 @@ class ChatGroupReadDto {
         "type": type,
         "description": description,
         "forwardedFromUser": forwardedFromUser == null ? null : forwardedFromUser!.toMap(),
-        "forwardedFromUserId": forwardedFromUserId == null ? [] : List<String>.from(forwardedFromUserId!.map((x) => x)),
+        "forwardedFromUserId": forwardedFromUserId ,
         "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
         "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
         "products": products == null ? [] : List<ProductReadDto>.from(products!.map((x) => x.toMap())),
