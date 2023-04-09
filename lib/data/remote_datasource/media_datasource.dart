@@ -175,10 +175,10 @@ class MediaDataSource {
       );
 
   Future<void> createLink({
-    required final String useCase,
+    required String link,
     required final Function(GenericResponse<ResponseMediaDto> responseMedia) onResponse,
     required final Function(GenericResponse response) onError,
-    required String link,
+    final String? useCase,
     final String? categoryId,
     final String? contentId,
     final String? productId,
