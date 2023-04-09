@@ -175,11 +175,10 @@ class MediaDataSource {
       );
 
   Future<void> createLink({
-    required List<String> links,
     required final String useCase,
-    required final VoidCallback action,
+    required final Function(GenericResponse<ResponseMediaDto> responseMedia) onResponse,
     required final Function(GenericResponse response) onError,
-    final ProgressCallback? onSendProgress,
+    required String link,
     final String? categoryId,
     final String? contentId,
     final String? productId,
@@ -193,15 +192,12 @@ class MediaDataSource {
     final String? chatId,
     final String? notificationId,
     final String? size,
+    final Function(String error)? failure,
     Duration? timeout,
-  }) async {
-    Dio dio = Dio();
-    for (int i = 0; i < links.length; i++) {
-      final String link = links[i];
-      final Response<dynamic> response = await dio.post(
-        '$baseUrl/Media',
-        onSendProgress: onSendProgress,
-        data: FormData.fromMap({
+  }) async =>
+      httpPost(
+        url: "$baseUrl/ProductV2",
+        body: FormData.fromMap({
           'Links': <String>[link],
           'UseCase': useCase,
           'CategoryId': categoryId,
@@ -218,20 +214,69 @@ class MediaDataSource {
           'NotificationId': notificationId,
           'Size': size,
         }),
-        options: Options(headers: <String, String>{
-          "Authorization": getString(UtilitiesConstants.token) ?? "",
-        }),
+        action: (Response response) => onResponse(GenericResponse<ResponseMediaDto>.fromJson(response.data, fromMap: ResponseMediaDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
       );
 
-      if (response.isSuccessful()) {
-        if (i == links.length - 1) {
-          action();
-        } else {
-          onError(GenericResponse.fromJson(response.data));
-        }
-      }
-    }
-  }
+  // Future<void> createLink({
+  //   required List<String> links,
+  //   required final String useCase,
+  //   required final VoidCallback action,
+  //   required final Function(GenericResponse response) onError,
+  //   final ProgressCallback? onSendProgress,
+  //   final String? categoryId,
+  //   final String? contentId,
+  //   final String? productId,
+  //   final String? groupChatId,
+  //   final String? groupChatMessageId,
+  //   final String? commentId,
+  //   final String? userId,
+  //   final String? time,
+  //   final String? artist,
+  //   final String? album,
+  //   final String? chatId,
+  //   final String? notificationId,
+  //   final String? size,
+  //   Duration? timeout,
+  // }) async {
+  //   Dio dio = Dio();
+  //   for (int i = 0; i < links.length; i++) {
+  //     final String link = links[i];
+  //     final Response<dynamic> response = await dio.post(
+  //       '$baseUrl/Media',
+  //       onSendProgress: onSendProgress,
+  //       data: FormData.fromMap({
+  //         'Links': <String>[link],
+  //         'UseCase': useCase,
+  //         'CategoryId': categoryId,
+  //         'ContentId': contentId,
+  //         'CommentId': commentId,
+  //         'ProductId': productId,
+  //         'GroupChatId': groupChatId,
+  //         'GroupChatMessageId': groupChatMessageId,
+  //         'Time': time,
+  //         'Artist': artist,
+  //         'Album': album,
+  //         'UserId': userId,
+  //         'ChatId': chatId,
+  //         'NotificationId': notificationId,
+  //         'Size': size,
+  //       }),
+  //       options: Options(headers: <String, String>{
+  //         "Authorization": getString(UtilitiesConstants.token) ?? "",
+  //       }),
+  //     );
+  //
+  //     if (response.isSuccessful()) {
+  //       if (i == links.length - 1) {
+  //         action();
+  //       } else {
+  //         onError(GenericResponse.fromJson(response.data));
+  //       }
+  //     }
+  //   }
+  // }
 
   Future<void> createWeb({
     required final List<PlatformFile> files,
