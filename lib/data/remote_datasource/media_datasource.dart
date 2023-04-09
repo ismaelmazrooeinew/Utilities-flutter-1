@@ -215,6 +215,7 @@ class MediaDataSource {
           'Size': size,
         }),
         action: (Response response) => onResponse(GenericResponse<ResponseMediaDto>.fromJson(response.data, fromMap: ResponseMediaDto.fromMap)),
+        encodeBody: false,
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,
       );
