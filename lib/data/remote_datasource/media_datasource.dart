@@ -196,7 +196,7 @@ class MediaDataSource {
     Duration? timeout,
   }) async =>
       httpPost(
-        url: "$baseUrl/ProductV2",
+        url: "$baseUrl/Media",
         body: FormData.fromMap({
           'Links': <String>[link],
           'UseCase': useCase,
