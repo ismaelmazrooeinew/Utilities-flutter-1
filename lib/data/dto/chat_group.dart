@@ -1,5 +1,4 @@
 import 'package:utilities/utilities.dart';
-import 'dart:convert';
 
 class ChatGroupReadDto {
   ChatGroupReadDto({
@@ -60,6 +59,7 @@ class ChatGroupReadDto {
         "updatedAt": updatedAt?.toIso8601String(),
       };
 }
+
 class ChatGroupCreateUpdateDto {
   ChatGroupCreateUpdateDto({
     this.id,
@@ -94,34 +94,34 @@ class ChatGroupCreateUpdateDto {
   String toJson() => json.encode(toMap());
 
   factory ChatGroupCreateUpdateDto.fromMap(Map<String, dynamic> json) => ChatGroupCreateUpdateDto(
-    id: json["id"],
-    title: json["title"],
-    description: json["description"],
-    value: json["value"],
-    type: json["type"],
-    useCase: json["useCase"],
-    department: json["department"],
-    readIfExist: json["readIfExist"],
-    chatStatus: json["chatStatus"],
-    priority: json["priority"],
-    userIds: json["userIds"] == null ? [] : List<String>.from(json["userIds"]!.map((x) => x)),
-    productIds: json["productIds"] == null ? [] : List<String>.from(json["productIds"]!.map((x) => x)),
-  );
+        id: json["id"],
+        title: json["title"],
+        description: json["description"],
+        value: json["value"],
+        type: json["type"],
+        useCase: json["useCase"],
+        department: json["department"],
+        readIfExist: json["readIfExist"],
+        chatStatus: json["chatStatus"],
+        priority: json["priority"],
+        userIds: json["userIds"] == null ? [] : List<String>.from(json["userIds"]!.map((x) => x)),
+        productIds: json["productIds"] == null ? [] : List<String>.from(json["productIds"]!.map((x) => x)),
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id,
-    "title": title,
-    "description": description,
-    "value": value,
-    "type": type,
-    "useCase": useCase,
-    "department": department,
-    "readIfExist": readIfExist,
-    "chatStatus": chatStatus,
-    "priority": priority,
-    "userIds": userIds == null ? [] : List<String>.from(userIds!.map((x) => x)),
-    "productIds": productIds == null ? [] : List<String>.from(productIds!.map((x) => x)),
-  };
+        "id": id,
+        "title": title,
+        "description": description,
+        "value": value,
+        "type": type,
+        "useCase": useCase,
+        "department": department,
+        "readIfExist": readIfExist,
+        "chatStatus": chatStatus,
+        "priority": priority,
+        "userIds": userIds == null ? [] : List<String>.from(userIds!.map((x) => x)),
+        "productIds": productIds == null ? [] : List<String>.from(productIds!.map((x) => x)),
+      };
 }
 
 class ChatGroupMessageReadDto {
@@ -136,8 +136,8 @@ class ChatGroupMessageReadDto {
     this.updatedAt,
     this.products,
     this.parentId,
-    this.forwardedFromUserId,
-    this.forwardedFromUser,
+    this.forwardedMessageId,
+    this.forwardedMessage,
     this.parent,
     this.messageSeenBy,
   });
@@ -151,8 +151,8 @@ class ChatGroupMessageReadDto {
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final String? parentId;
-  final String? forwardedFromUserId;
-  final UserReadDto? forwardedFromUser;
+  final String? forwardedMessageId;
+  final ChatGroupMessageReadDto? forwardedMessage;
   final ChatGroupMessageReadDto? parent;
   final List<ProductReadDto>? products;
   final List<UserReadDto>? messageSeenBy;
@@ -165,8 +165,8 @@ class ChatGroupMessageReadDto {
         message: json["message"],
         groupChatId: json["groupChatId"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
-        forwardedFromUser: json["forwardedFromUser"] == null ? null : UserReadDto.fromMap(json["forwardedFromUser"]),
-        forwardedFromUserId: json["forwardedFromUserId"],
+        forwardedMessageId: json["forwardedMessageId"],
+        forwardedMessage: json["forwardedMessage"] == null ? null : ChatGroupMessageReadDto.fromMap(json["forwardedMessage"]),
         media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
         userId: json["userId"],
         parentId: json["parentId"],
@@ -182,8 +182,8 @@ class ChatGroupMessageReadDto {
         "message": message,
         "groupChatId": groupChatId,
         "user": user?.toMap(),
-        "forwardedFromUser": forwardedFromUser?.toMap(),
-        "forwardedFromUserId": forwardedFromUserId,
+        "forwardedMessageId": forwardedMessageId,
+        "forwardedMessage": forwardedMessage == null ? null : forwardedMessage!.toMap(),
         "userId": userId,
         "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x)),
         "id": id,
@@ -203,7 +203,7 @@ class CreateGroupMessage {
     this.products,
     this.type,
     this.parentId,
-    this.forwardedFromUserId,
+    this.forwardedMessageId,
     this.useCase,
     this.groupChatId,
   });
@@ -214,7 +214,7 @@ class CreateGroupMessage {
   final String? useCase;
   final String? parentId;
   final String? groupChatId;
-  final String? forwardedFromUserId;
+  final String? forwardedMessageId;
   final List<String>? products;
 
   factory CreateGroupMessage.fromJson(String str) => CreateGroupMessage.fromMap(json.decode(str));
@@ -222,27 +222,28 @@ class CreateGroupMessage {
   String toJson() => json.encode(toMap());
 
   factory CreateGroupMessage.fromMap(Map<String, dynamic> json) => CreateGroupMessage(
-    id: json["id"],
-    message: json["message"],
-    type: json["type"],
-    useCase: json["useCase"],
-    parentId: json["parentId"],
-    products: json["products"],
-    forwardedFromUserId: json["forwardedFromUserId"],
-    groupChatId: json["groupChatId"],
-  );
+        id: json["id"],
+        message: json["message"],
+        type: json["type"],
+        useCase: json["useCase"],
+        parentId: json["parentId"],
+        products: json["products"],
+        forwardedMessageId: json["forwardedMessageId"],
+        groupChatId: json["groupChatId"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id,
-    "message": message,
-    "type": type,
-    "useCase": useCase,
-    "parentId": parentId,
-    "products": products,
-    "forwardedFromUserId": forwardedFromUserId,
-    "groupChatId": groupChatId,
-  };
+        "id": id,
+        "message": message,
+        "type": type,
+        "useCase": useCase,
+        "parentId": parentId,
+        "products": products,
+        "forwardedMessageId": forwardedMessageId,
+        "groupChatId": groupChatId,
+      };
 }
+
 class GroupChat {
   GroupChat({
     this.title,
@@ -306,7 +307,3 @@ class GroupChat {
         "priority": priority,
       };
 }
-
-
-
-
