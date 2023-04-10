@@ -10,6 +10,7 @@ class ChatGroupReadDto {
     this.media,
     this.useCase,
     this.type,
+    this.isPrivateChat,
     this.products,
     this.createdAt,
     this.updatedAt,
@@ -21,6 +22,7 @@ class ChatGroupReadDto {
   final String? description;
   final String? useCase;
   final String? type;
+  final bool? isPrivateChat;
   final List<UserReadDto>? users;
   final List<MediaReadDto>? media;
   final List<ProductReadDto>? products;
@@ -38,6 +40,7 @@ class ChatGroupReadDto {
         useCase: json["useCase"],
         type: json["type"],
         description: json["description"],
+        isPrivateChat: json["isPrivateChat"],
         users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
         media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
         products: json["products"] == null ? [] : List<ProductReadDto>.from(json["products"]!.map((x) => ProductReadDto.fromMap(x))),
@@ -52,6 +55,7 @@ class ChatGroupReadDto {
         "useCase": useCase,
         "type": type,
         "description": description,
+        "isPrivateChat": isPrivateChat,
         "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
         "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
         "products": products == null ? [] : List<ProductReadDto>.from(products!.map((x) => x.toMap())),
@@ -70,6 +74,7 @@ class ChatGroupCreateUpdateDto {
     this.useCase,
     this.department,
     this.readIfExist,
+    this.isPrivateChat,
     this.chatStatus,
     this.priority,
     this.userIds,
@@ -84,6 +89,7 @@ class ChatGroupCreateUpdateDto {
   final String? useCase;
   final String? department;
   final bool? readIfExist;
+  final bool? isPrivateChat;
   final int? chatStatus;
   final int? priority;
   final List<String>? userIds;
@@ -102,6 +108,7 @@ class ChatGroupCreateUpdateDto {
         useCase: json["useCase"],
         department: json["department"],
         readIfExist: json["readIfExist"],
+        isPrivateChat: json["isPrivateChat"],
         chatStatus: json["chatStatus"],
         priority: json["priority"],
         userIds: json["userIds"] == null ? [] : List<String>.from(json["userIds"]!.map((x) => x)),
@@ -117,6 +124,7 @@ class ChatGroupCreateUpdateDto {
         "useCase": useCase,
         "department": department,
         "readIfExist": readIfExist,
+        "isPrivateChat": isPrivateChat,
         "chatStatus": chatStatus,
         "priority": priority,
         "userIds": userIds == null ? [] : List<String>.from(userIds!.map((x) => x)),
