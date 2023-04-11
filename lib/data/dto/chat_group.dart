@@ -139,6 +139,8 @@ class ChatGroupMessageReadDto {
     this.user,
     this.userId,
     this.media,
+    this.useCase,
+    this.type,
     this.id,
     this.createdAt,
     this.updatedAt,
@@ -154,6 +156,8 @@ class ChatGroupMessageReadDto {
   final String? groupChatId;
   final UserReadDto? user;
   final String? userId;
+  final String? useCase;
+  final String? type;
   final List<MediaReadDto>? media;
   final String? id;
   final DateTime? createdAt;
@@ -172,6 +176,8 @@ class ChatGroupMessageReadDto {
   factory ChatGroupMessageReadDto.fromMap(Map<String, dynamic> json) => ChatGroupMessageReadDto(
         message: json["message"],
         groupChatId: json["groupChatId"],
+        useCase: json["useCase"],
+        type: json["type"],
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         forwardedMessageId: json["forwardedMessageId"],
         forwardedMessage: json["forwardedMessage"] == null ? null : ChatGroupMessageReadDto.fromMap(json["forwardedMessage"]),
@@ -189,6 +195,8 @@ class ChatGroupMessageReadDto {
   Map<String, dynamic> toMap() => {
         "message": message,
         "groupChatId": groupChatId,
+        "useCase": useCase,
+        "type": type,
         "user": user?.toMap(),
         "forwardedMessageId": forwardedMessageId,
         "forwardedMessage": forwardedMessage == null ? null : forwardedMessage!.toMap(),
