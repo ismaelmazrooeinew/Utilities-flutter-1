@@ -8,7 +8,8 @@ class ChatGroupReadDto {
     this.description,
     this.users,
     this.media,
-    this.useCase,
+    this.chatStatus,
+    this.priority,
     this.type,
     this.isPrivateChat,
     this.products,
@@ -20,8 +21,9 @@ class ChatGroupReadDto {
   final String? creatorUserId;
   final String? title;
   final String? description;
-  final String? useCase;
-  final String? type;
+  final int? chatStatus;
+  final int? priority;
+  final int? type;
   final bool? isPrivateChat;
   final List<UserReadDto>? users;
   final List<MediaReadDto>? media;
@@ -37,7 +39,8 @@ class ChatGroupReadDto {
         id: json["id"],
         creatorUserId: json["creatorUserId"],
         title: json["title"],
-        useCase: json["useCase"],
+        chatStatus: json["chatStatus"],
+        priority: json["priority"],
         type: json["type"],
         description: json["description"],
         isPrivateChat: json["isPrivateChat"],
@@ -52,7 +55,8 @@ class ChatGroupReadDto {
         "id": id,
         "creatorUserId": creatorUserId,
         "title": title,
-        "useCase": useCase,
+        "chatStatus": chatStatus,
+        "priority": priority,
         "type": type,
         "description": description,
         "isPrivateChat": isPrivateChat,
@@ -71,7 +75,6 @@ class ChatGroupCreateUpdateDto {
     this.description,
     this.value,
     this.type,
-    this.useCase,
     this.department,
     this.readIfExist,
     this.isPrivateChat,
@@ -85,8 +88,7 @@ class ChatGroupCreateUpdateDto {
   final String? title;
   final String? description;
   final String? value;
-  final String? type;
-  final String? useCase;
+  final int? type;
   final String? department;
   final bool? readIfExist;
   final bool? isPrivateChat;
@@ -105,7 +107,6 @@ class ChatGroupCreateUpdateDto {
         description: json["description"],
         value: json["value"],
         type: json["type"],
-        useCase: json["useCase"],
         department: json["department"],
         readIfExist: json["readIfExist"],
         isPrivateChat: json["isPrivateChat"],
@@ -121,7 +122,6 @@ class ChatGroupCreateUpdateDto {
         "description": description,
         "value": value,
         "type": type,
-        "useCase": useCase,
         "department": department,
         "readIfExist": readIfExist,
         "isPrivateChat": isPrivateChat,
