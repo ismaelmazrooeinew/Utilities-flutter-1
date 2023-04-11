@@ -249,17 +249,17 @@ enum UseCaseMedia {
   final String title;
 }
 
-enum UseCaseChat {
-  group("group"),
-  chat("chat"),
-  chanel("chanel");
-
-  const UseCaseChat(this.title);
-
-  @override
-  String toString() => name;
-  final String title;
-}
+// enum UseCaseChat {
+//   group("group"),
+//   chat("chat"),
+//   chanel("chanel");
+//
+//   const UseCaseChat(this.title);
+//
+//   @override
+//   String toString() => name;
+//   final String title;
+// }
 
 enum UseCaseContent {
   news("news"),
