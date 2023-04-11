@@ -10,7 +10,7 @@ class ChatGroupReadDto {
     this.media,
     this.chatStatus,
     this.priority,
-    this.type,
+    this.typeChat,
     this.isPrivateChat,
     this.products,
     this.createdAt,
@@ -23,7 +23,7 @@ class ChatGroupReadDto {
   final String? description;
   final int? chatStatus;
   final int? priority;
-  final int? type;
+  final int? typeChat;
   final bool? isPrivateChat;
   final List<UserReadDto>? users;
   final List<MediaReadDto>? media;
@@ -41,7 +41,7 @@ class ChatGroupReadDto {
         title: json["title"],
         chatStatus: json["chatStatus"],
         priority: json["priority"],
-        type: json["type"],
+        typeChat: json["type"],
         description: json["description"],
         isPrivateChat: json["isPrivateChat"],
         users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
@@ -57,7 +57,7 @@ class ChatGroupReadDto {
         "title": title,
         "chatStatus": chatStatus,
         "priority": priority,
-        "type": type,
+        "type": typeChat,
         "description": description,
         "isPrivateChat": isPrivateChat,
         "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
@@ -74,7 +74,7 @@ class ChatGroupCreateUpdateDto {
     this.title,
     this.description,
     this.value,
-    this.type,
+    this.typeChat,
     this.department,
     this.readIfExist,
     this.isPrivateChat,
@@ -88,7 +88,7 @@ class ChatGroupCreateUpdateDto {
   final String? title;
   final String? description;
   final String? value;
-  final int? type;
+  final int? typeChat;
   final String? department;
   final bool? readIfExist;
   final bool? isPrivateChat;
@@ -106,7 +106,7 @@ class ChatGroupCreateUpdateDto {
         title: json["title"],
         description: json["description"],
         value: json["value"],
-        type: json["type"],
+        typeChat: json["type"],
         department: json["department"],
         readIfExist: json["readIfExist"],
         isPrivateChat: json["isPrivateChat"],
@@ -121,7 +121,7 @@ class ChatGroupCreateUpdateDto {
         "title": title,
         "description": description,
         "value": value,
-        "type": type,
+        "type": typeChat,
         "department": department,
         "readIfExist": readIfExist,
         "isPrivateChat": isPrivateChat,
