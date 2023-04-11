@@ -225,6 +225,20 @@ enum UseCaseCategory {
   final String title;
 }
 
+enum UseChatType {
+  Private(100),
+  PublicGroup(101),
+  PrivateGroup(102),
+  PublicChannel(103),
+  PrivateChannel(104);
+
+  const UseChatType(this.title);
+
+  @override
+  String toString() => name;
+  final int title;
+}
+
 enum UseCaseMedia {
   image("image"),
   all("all"),
