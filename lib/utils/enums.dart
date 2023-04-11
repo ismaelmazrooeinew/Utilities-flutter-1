@@ -11,16 +11,7 @@ enum BackResult {
   final String title;
 }
 
-enum TypeChat {
-  chat("chat"),
-  group("group");
 
-  const TypeChat(this.title);
-
-  @override
-  String toString() => name;
-  final String title;
-}
 
 enum CategoryType {
   brand("brand"),
@@ -225,14 +216,14 @@ enum UseCaseCategory {
   final String title;
 }
 
-enum UseChatType {
+enum TypeChat {
   Private(100),
   PublicGroup(101),
   PrivateGroup(102),
   PublicChannel(103),
   PrivateChannel(104);
 
-  const UseChatType(this.title);
+  const TypeChat(this.title);
 
   @override
   String toString() => name;
