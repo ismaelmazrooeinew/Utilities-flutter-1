@@ -221,7 +221,8 @@ enum TypeChat {
   PublicGroup(101),
   PrivateGroup(102),
   PublicChannel(103),
-  PrivateChannel(104);
+  PrivateChannel(104),
+  GroupAndChannel(110);
 
   const TypeChat(this.title);
 
