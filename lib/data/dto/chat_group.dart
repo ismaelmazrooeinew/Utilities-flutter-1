@@ -10,6 +10,7 @@ class ChatGroupReadDto {
     this.media,
     this.chatStatus,
     this.priority,
+    this.countOfUnreadMessages,
     this.typeChat,
     this.isPrivateChat,
     this.products,
@@ -23,6 +24,7 @@ class ChatGroupReadDto {
   final String? description;
   final int? chatStatus;
   final int? priority;
+  final int? countOfUnreadMessages;
   final int? typeChat;
   final bool? isPrivateChat;
   final List<UserReadDto>? users;
@@ -44,6 +46,7 @@ class ChatGroupReadDto {
         typeChat: json["type"],
         description: json["description"],
         isPrivateChat: json["isPrivateChat"],
+        countOfUnreadMessages: json["countOfUnreadMessages"],
         users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
         media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
         products: json["products"] == null ? [] : List<ProductReadDto>.from(json["products"]!.map((x) => ProductReadDto.fromMap(x))),
@@ -60,6 +63,7 @@ class ChatGroupReadDto {
         "type": typeChat,
         "description": description,
         "isPrivateChat": isPrivateChat,
+        "countOfUnreadMessages": countOfUnreadMessages,
         "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
         "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
         "products": products == null ? [] : List<ProductReadDto>.from(products!.map((x) => x.toMap())),
