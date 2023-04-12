@@ -42,14 +42,14 @@ class ChatGroupDataSource {
 
   Future<void> createMessage({
     required final CreateGroupMessage dto,
-    required final Function(GenericResponse<ChatGroupReadDto> response) onResponse,
+    required final Function(GenericResponse<ChatGroupMessageReadDto> response) onResponse,
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
       httpPost(
         url: "$baseUrl/Chat/CreateGroupChatMessage",
         body: dto,
-        action: (Response response) => onResponse(GenericResponse<ChatGroupReadDto>.fromJson(response.data, fromMap: ChatGroupReadDto.fromMap)),
+        action: (Response response) => onResponse(GenericResponse<ChatGroupMessageReadDto>.fromJson(response.data, fromMap: ChatGroupMessageReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,
       );
