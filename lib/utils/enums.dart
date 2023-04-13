@@ -11,8 +11,6 @@ enum BackResult {
   final String title;
 }
 
-
-
 enum CategoryType {
   brand("brand"),
   reference("reference"),
@@ -210,6 +208,17 @@ enum UseCaseCategory {
   magazine("magazine");
 
   const UseCaseCategory(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+
+enum TypeCategory {
+  Explore('Explore'),
+  Digital('Digital'),
+  Physical('Physical');
+  const TypeCategory(this.title);
 
   @override
   String toString() => name;
