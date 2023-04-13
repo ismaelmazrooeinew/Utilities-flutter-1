@@ -133,6 +133,19 @@ class ChatGroupDataSource {
         failure: failure,
       );
 
+  Future<void> exitFromGroup({
+    required final String groupId,
+    required final Function(GenericResponse response) onResponse,
+    required final Function(GenericResponse response) onError,
+    final Function(String error)? failure,
+  }) async =>
+      httpDelete(
+        url: "$baseUrl/Chat/ExitFromGroup/$groupId",
+        action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: ChatReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
+      );
+
   Future<void> deleteMessage({
     required final String chatId,
     required final Function(GenericResponse response) onResponse,
