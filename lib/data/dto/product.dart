@@ -377,7 +377,7 @@ class ProductReadDto {
   final String? value4;
   final String? value5;
   final String? value6;
-  final UserReadDto? user;
+  UserReadDto? user;
   final List<MediaReadDto>? media;
   final List<CategoryReadDto>? categories;
   final List<VoteField>? voteFields;
@@ -388,7 +388,6 @@ class ProductReadDto {
   final List<CommentReadDto>? comments;
   final String? teams;
   final List<Report>? reports;
-
 
   factory ProductReadDto.fromJson(String str) => ProductReadDto.fromMap(json.decode(str));
 
@@ -447,7 +446,7 @@ class ProductReadDto {
         myVotes: json["myVotes"] == null ? null : List<VoteField>.from(json["myVotes"].map((x) => VoteField.fromMap(x))),
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
-        teams: json["teams"] ,
+        teams: json["teams"],
         reports: json["reports"] == null ? null : List<Report>.from(json["reports"].map((x) => Report.fromMap(x))),
         productInsights: json["productInsights"] == null ? [] : List<ProductInsightDto>.from(json["productInsights"]!.map((x) => ProductInsightDto.fromMap(x))),
       );
