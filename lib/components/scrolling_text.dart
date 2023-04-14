@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class ScrollingText extends StatefulWidget {
   final String text;
   final TextStyle? textStyle;
+  final int maxLengthForScrolling;
   final Axis scrollAxis;
   final Color? color;
   final double ratioOfBlankToScreen;
@@ -12,6 +13,7 @@ class ScrollingText extends StatefulWidget {
   ScrollingText({
     required this.text,
     this.textStyle,
+    this.maxLengthForScrolling = 10,
     this.color,
     this.scrollAxis: Axis.horizontal,
     this.ratioOfBlankToScreen: 0.25,
@@ -111,17 +113,23 @@ class ScrollingTextState extends State<ScrollingText> with SingleTickerProviderS
   Widget build(final BuildContext context) {
     return Container(
       color: widget.color,
-      child: ListView(
-        key: _key,
-        scrollDirection: widget.scrollAxis,
-        controller: scrollController,
-        physics: NeverScrollableScrollPhysics(),
-        children: <Widget>[
-          getBothEndsChild(),
-          getCenterChild(),
-          getBothEndsChild(),
-        ],
-      ),
+      child: widget.text.length > widget.maxLengthForScrolling
+          ? ListView(
+              key: _key,
+              scrollDirection: widget.scrollAxis,
+              controller: scrollController,
+              physics: NeverScrollableScrollPhysics(),
+              children: <Widget>[
+                getBothEndsChild(),
+                getCenterChild(),
+                getBothEndsChild(),
+              ],
+            )
+          : Text(
+              widget.text,
+              style: widget.textStyle,
+              textAlign: TextAlign.center,
+            ),
     );
   }
 }
