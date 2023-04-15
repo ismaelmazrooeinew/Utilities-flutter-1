@@ -185,6 +185,8 @@ class UserReadDto {
     this.suspend,
     this.birthDate,
     this.gender,
+    this.followingUsers,
+    this.followedUsers,
     this.media,
     this.locations,
     this.categories,
@@ -238,6 +240,8 @@ class UserReadDto {
   final String? birthDate;
   final String? gender;
   final String? genderTr1;
+  final String? followingUsers;
+  final String? followedUsers;
   final int? countFollowers;
   final int? countFollowing;
   final int? countProducts;
@@ -272,6 +276,8 @@ class UserReadDto {
         lastName: json["lastName"],
         headline: json["headline"],
         website: json["website"],
+        followingUsers: json["followingUsers"],
+        followedUsers: json["followedUsers"],
         instagram: json["instagram"],
         telegram: json["telegram"],
         whatsapp: json["whatsApp"],
@@ -313,6 +319,8 @@ class UserReadDto {
         "appPhoneNumber": appPhoneNumber,
         "appEmail": appEmail,
         "type": type,
+        "followingUsers": followingUsers,
+        "followedUsers": followedUsers,
         "firstName": firstName,
         "lastName": lastName,
         "headline": headline,
