@@ -139,7 +139,7 @@ class ChatGroupDataSource {
     required final Function(GenericResponse response) onError,
     final Function(String error)? failure,
   }) async =>
-      httpDelete(
+      httpPost(
         url: "$baseUrl/Chat/ExitFromGroup/$groupId",
         action: (Response response) => onResponse(GenericResponse<String>.fromJson(response.data, fromMap: ChatReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
