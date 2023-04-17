@@ -5,7 +5,6 @@ import 'package:utilities/data/dto/generic_response.dart';
 import 'package:utilities/data/dto/notification.dart';
 import 'package:utilities/utils/dio_interceptor.dart';
 
-
 class NotificationDataSource {
   final String baseUrl;
 
@@ -18,6 +17,33 @@ class NotificationDataSource {
   }) async =>
       httpGet(
         url: "$baseUrl/Notification",
+        action: (Response response) => onResponse(GenericResponse<NotificationReadDto>.fromJson(response.data, fromMap: NotificationReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
+      );
+
+  Future<void> readById({
+    required final String id,
+    required final Function(GenericResponse<NotificationReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+    final Function(String error)? failure,
+  }) async =>
+      httpGet(
+        url: "$baseUrl/Notification/$id",
+        action: (Response response) => onResponse(GenericResponse<NotificationReadDto>.fromJson(response.data, fromMap: NotificationReadDto.fromMap)),
+        error: (Response response) => onError(GenericResponse.fromJson(response.data)),
+        failure: failure,
+      );
+
+  Future<void> filter({
+    required final NotificationFilterReadDto filter,
+    required final Function(GenericResponse<NotificationReadDto>) onResponse,
+    required final Function(GenericResponse response) onError,
+    final Function(String error)? failure,
+  }) async =>
+      httpPost(
+        url: "$baseUrl/Notification/Filter",
+        body: filter,
         action: (Response response) => onResponse(GenericResponse<NotificationReadDto>.fromJson(response.data, fromMap: NotificationReadDto.fromMap)),
         error: (Response response) => onError(GenericResponse.fromJson(response.data)),
         failure: failure,

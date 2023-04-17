@@ -55,3 +55,47 @@ class NotificationReadDto {
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
       };
 }
+
+class NotificationFilterReadDto {
+  NotificationFilterReadDto({
+    this.title,
+    this.userId,
+    this.creatorUserId,
+    this.message,
+    this.useCase,
+    this.pageSize,
+    this.pageNumber,
+  });
+
+  final String? title;
+  final String? userId;
+  final String? creatorUserId;
+  final String? message;
+  final String? useCase;
+  final int? pageSize;
+  final int? pageNumber;
+
+  factory NotificationFilterReadDto.fromJson(String str) => NotificationFilterReadDto.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory NotificationFilterReadDto.fromMap(Map<String, dynamic> json) => NotificationFilterReadDto(
+        title: json["title"],
+        userId: json["userId"],
+        creatorUserId: json["creatorUserId"],
+        message: json["message"],
+        useCase: json["useCase"],
+        pageSize: json["pageSize"],
+        pageNumber: json["pageNumber"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "title": title,
+        "userId": userId,
+        "creatorUserId": creatorUserId,
+        "message": message,
+        "useCase": useCase,
+        "pageSize": pageSize,
+        "pageNumber": pageNumber,
+      };
+}
