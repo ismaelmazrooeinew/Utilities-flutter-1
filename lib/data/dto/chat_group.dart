@@ -16,6 +16,7 @@ class ChatGroupReadDto {
     this.products,
     this.createdAt,
     this.updatedAt,
+    this.groupChatMessage,
   });
 
   final String? id;
@@ -32,6 +33,7 @@ class ChatGroupReadDto {
   final List<ProductReadDto>? products;
   final DateTime? createdAt;
   final DateTime? updatedAt;
+  final List<ChatGroupMessageReadDto>? groupChatMessage;
 
   factory ChatGroupReadDto.fromJson(String str) => ChatGroupReadDto.fromMap(json.decode(str));
 
@@ -48,6 +50,7 @@ class ChatGroupReadDto {
         isPrivateChat: json["isPrivateChat"],
         countOfUnreadMessages: json["countOfUnreadMessages"],
         users: json["users"] == null ? [] : List<UserReadDto>.from(json["users"]!.map((x) => UserReadDto.fromMap(x))),
+        groupChatMessage: json["groupChatMessage"] == null ? [] : List<ChatGroupMessageReadDto>.from(json["groupChatMessage"]!.map((x) => ChatGroupMessageReadDto.fromMap(x))),
         media: json["media"] == null ? [] : List<MediaReadDto>.from(json["media"]!.map((x) => MediaReadDto.fromMap(x))),
         products: json["products"] == null ? [] : List<ProductReadDto>.from(json["products"]!.map((x) => ProductReadDto.fromMap(x))),
         createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
@@ -64,6 +67,7 @@ class ChatGroupReadDto {
         "description": description,
         "isPrivateChat": isPrivateChat,
         "countOfUnreadMessages": countOfUnreadMessages,
+        "groupChatMessage": groupChatMessage == null ? [] : List<ChatGroupMessageReadDto>.from(groupChatMessage!.map((x) => x.toMap())),
         "users": users == null ? [] : List<UserReadDto>.from(users!.map((x) => x.toMap())),
         "media": media == null ? [] : List<MediaReadDto>.from(media!.map((x) => x.toMap())),
         "products": products == null ? [] : List<ProductReadDto>.from(products!.map((x) => x.toMap())),
