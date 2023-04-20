@@ -76,7 +76,6 @@ class ProductCreateUpdateDto {
     this.locations,
     this.media,
     this.categories,
-    this.voteFields,
     this.forms,
     this.comments,
     this.teams,
@@ -136,7 +135,6 @@ class ProductCreateUpdateDto {
   final List<int>? locations;
   final List<MediaReadDto>? media;
   final List<String>? categories;
-  final List<VoteField>? voteFields;
   final List<FormReadDto>? forms;
   final List<CommentReadDto>? comments;
   final List<String>? teams;
@@ -191,7 +189,6 @@ class ProductCreateUpdateDto {
         locations: json["locations"] == null ? null : List<int>.from(json["locations"].map((x) => x)),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<String>.from(json["categories"].map((x) => x)),
-        voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
         teams: json["teams"] == null ? null : List<String>.from(json["teams"].map((x) => x)),
@@ -243,7 +240,6 @@ class ProductCreateUpdateDto {
         "locations": locations == null ? null : List<dynamic>.from(locations!.map((x) => x)),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x)),
-        "voteFields": voteFields == null ? null : List<dynamic>.from(voteFields!.map((x) => x.toMap())),
         "forms": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toMap())),
         "teams": teams == null ? null : List<dynamic>.from(teams!.map((x) => x)),
@@ -316,13 +312,10 @@ class ProductReadDto {
     this.currency,
     this.media,
     this.categories,
-    this.voteFields,
     this.forms,
     this.comments,
     this.teams,
-    this.myVotes,
     this.reports,
-    this.votes,
     this.voteCount,
     this.productInsights,
     this.value1,
@@ -380,9 +373,6 @@ class ProductReadDto {
   UserReadDto? user;
   final List<MediaReadDto>? media;
   final List<CategoryReadDto>? categories;
-  final List<VoteField>? voteFields;
-  final List<VoteField>? myVotes;
-  final List<VoteReadDto>? votes;
   final List<FormReadDto>? forms;
   final List<ProductInsightDto>? productInsights;
   final List<CommentReadDto>? comments;
@@ -441,9 +431,6 @@ class ProductReadDto {
         user: json["user"] == null ? null : UserReadDto.fromMap(json["user"]),
         media: json["media"] == null ? null : List<MediaReadDto>.from(json["media"].map((x) => MediaReadDto.fromMap(x))),
         categories: json["categories"] == null ? null : List<CategoryReadDto>.from(json["categories"].map((x) => CategoryReadDto.fromMap(x))),
-        votes: json["votes"] == null ? null : List<VoteReadDto>.from(json["votes"].map((x) => VoteReadDto.fromMap(x))),
-        voteFields: json["voteFields"] == null ? null : List<VoteField>.from(json["voteFields"].map((x) => VoteField.fromMap(x))),
-        myVotes: json["myVotes"] == null ? null : List<VoteField>.from(json["myVotes"].map((x) => VoteField.fromMap(x))),
         forms: json["forms"] == null ? null : List<FormReadDto>.from(json["forms"].map((x) => FormReadDto.fromMap(x))),
         comments: json["comments"] == null ? null : List<CommentReadDto>.from(json["comments"].map((x) => CommentReadDto.fromMap(x))),
         teams: json["teams"],
@@ -499,9 +486,6 @@ class ProductReadDto {
         "user": user == null ? null : user!.toMap(),
         "media": media == null ? null : List<dynamic>.from(media!.map((x) => x.toMap())),
         "categories": categories == null ? null : List<dynamic>.from(categories!.map((x) => x.toMap())),
-        "votes": votes == null ? null : List<dynamic>.from(votes!.map((x) => x.toMap())),
-        "voteFields": voteFields == null ? null : List<dynamic>.from(voteFields!.map((x) => x.toMap())),
-        "myVotes": myVotes == null ? null : List<dynamic>.from(myVotes!.map((x) => x.toMap())),
         "forms": forms == null ? null : List<dynamic>.from(forms!.map((x) => x.toMap())),
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toMap())),
         "teams": teams,

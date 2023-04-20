@@ -15,5 +15,4 @@ export 'product.dart';
 export 'shopping_cart.dart';
 export 'transaction.dart';
 export 'user.dart';
-export 'vote.dart';
 export 'mail_sms_notification.dart';

@@ -21,4 +21,3 @@ export 'remote_datasource/report_datasource.dart';
 export 'remote_datasource/shopping_cart_datasource.dart';
 export 'remote_datasource/transaction_datasource.dart';
 export 'remote_datasource/user_datasource.dart';
-export 'remote_datasource/vote_datasource.dart';
