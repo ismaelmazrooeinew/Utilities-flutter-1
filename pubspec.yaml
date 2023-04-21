@@ -50,12 +50,12 @@ dependencies:
 
   crypto: ^3.0.2
 
-  photo_manager: ^2.6.0
-  shimmer: ^2.0.0
-#  image_crop: ^0.4.1
-  camera: ^0.10.0+1
-  image: ^3.2.0
-  image_picker: ^0.8.5+3
+#  photo_manager: ^2.6.0
+#  shimmer: ^2.0.0
+##  image_crop: ^0.4.1
+#  camera: ^0.10.0+1
+#  image: ^3.2.0
+#  image_picker: ^0.8.5+3
   fl_chart: ^0.61.0
 
   syncfusion_localizations: ^20.3.47
