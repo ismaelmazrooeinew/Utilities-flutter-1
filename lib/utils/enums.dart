@@ -64,7 +64,7 @@ enum FilterType { history, text, username, hashtag, location }
 
 enum NotificationType { vote, comment, join, phopx }
 
-enum PostMediaType { audio, video, image, text }
+enum PostMediaType { audio, video, image, pdf, text }
 
 enum PostType { all, text, voice, video, image, unknown }
 
