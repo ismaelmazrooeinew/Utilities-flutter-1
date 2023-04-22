@@ -16,13 +16,13 @@ dependencies:
 
   url_launcher: ^6.0.15
   get: ^4.6.3
-  package_info_plus: ^1.4.3+1
-  share_plus: ^4.0.10
+  package_info_plus: ^3.1.0
+  share_plus: ^6.3.2
   file_picker: ^5.2.4
   intl: ^0.17.0
   webviewx: ^0.2.1
   get_storage: ^2.0.3
-  flutter_svg: ^1.1.1+1
+  flutter_svg: ^2.0.5
   persian_tools: ^1.0.1
   group_button: ^5.2.0
   image_cropper: ^3.0.0
@@ -30,22 +30,22 @@ dependencies:
   video_player: ^2.4.6
   just_audio: ^0.9.27
   path_provider: ^2.0.11
-  flutter_local_notifications: ^9.8.0+1
+  flutter_local_notifications: ^14.0.0-dev.5
   flutter_easyloading: ^3.0.5
   pin_code_fields: ^7.4.0
   intl_phone_number_input: ^0.7.0+2
   flutter_image_compress: ^1.1.2
-  dio: ^4.0.6
-  dio_smart_retry: ^1.4.0
+  dio: ^5.1.1
+  dio_smart_retry: ^5.0.0
   local_auth: ^2.1.6
-  local_auth_android: ^1.0.21
+#  local_auth_android: ^1.0.21
   local_auth_ios: ^1.1.1
   video_thumbnail: ^0.5.3
   video_box: ^0.17.0
 
 #  Vide_player
   flick_video_player: ^0.5.0
-  visibility_detector: ^0.3.3
+  visibility_detector: ^0.4.0+2
   provider: ^6.0.5
 
   crypto: ^3.0.2
@@ -56,22 +56,23 @@ dependencies:
 #  camera: ^0.10.0+1
 #  image: ^3.2.0
 #  image_picker: ^0.8.5+3
-  fl_chart: ^0.61.0
 
-  syncfusion_localizations: ^20.3.47
-  syncfusion_flutter_datagrid_export: ^20.3.47-beta
-  syncfusion_flutter_calendar: ^20.3.47
-  syncfusion_flutter_datepicker: ^20.3.47
-  syncfusion_flutter_charts: ^20.3.47
-  syncfusion_flutter_gauges: ^20.3.47
-  syncfusion_flutter_sliders: ^20.3.47
-  syncfusion_flutter_pdf: ^20.3.47
-  syncfusion_flutter_barcodes: ^20.3.47
-  syncfusion_officechart: ^20.3.47-beta
-  syncfusion_flutter_maps: ^20.3.47
-  syncfusion_flutter_signaturepad: ^20.3.47
-  syncfusion_flutter_pdfviewer: ^20.3.47-beta
-  syncfusion_flutter_treemap: ^20.3.47-beta
+  fl_chart: ^0.62.0
+
+  syncfusion_localizations: ^21.1.41
+  syncfusion_flutter_datagrid_export: ^21.1.41
+  syncfusion_flutter_calendar: ^21.1.41
+  syncfusion_flutter_datepicker: ^21.1.41
+  syncfusion_flutter_charts: ^21.1.41
+  syncfusion_flutter_gauges: ^21.1.41
+  syncfusion_flutter_sliders: ^21.1.41
+  syncfusion_flutter_pdf: ^21.1.41
+  syncfusion_flutter_barcodes: ^21.1.41
+  syncfusion_officechart: ^21.1.41
+  syncfusion_flutter_maps: ^21.1.41
+  syncfusion_flutter_signaturepad: ^21.1.41
+  syncfusion_flutter_pdfviewer: ^21.1.41
+  syncfusion_flutter_treemap: ^21.1.41
 
 
 
