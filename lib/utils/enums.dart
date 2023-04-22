@@ -64,7 +64,6 @@ enum FilterType { history, text, username, hashtag, location }
 
 enum NotificationType { vote, comment, join, phopx }
 
-enum PostMediaType { audio, video, image, pdf, text }
 
 enum PostType { all, text, voice, video, image, unknown }
 
@@ -127,6 +126,20 @@ enum TypeMedia {
   text("text");
 
   const TypeMedia(this.title);
+
+  @override
+  String toString() => name;
+  final String title;
+}
+enum PostMediaType {
+  all("all"),
+  image("image"),
+  audio("audio"),
+  video("video"),
+  pdf("pdf"),
+  text("text");
+
+  const PostMediaType(this.title);
 
   @override
   String toString() => name;
