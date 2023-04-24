@@ -30,7 +30,6 @@ export 'data/dto/dto.dart';
 export 'utils/utils.dart';
 export 'utils/validators.dart';
 export 'components/sound_player/sound_player.dart';
-export 'components/video_player/video_player_widget.dart';
 export 'view_models/view_models.dart';
 export 'utils/enums.dart';
 export 'components/grid.dart';

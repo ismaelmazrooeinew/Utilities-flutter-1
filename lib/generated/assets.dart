@@ -151,9 +151,6 @@ class Assets {
   static const String utilsShare = 'lib/utils/share.dart';
   static const String utilsUtils = 'lib/utils/utils.dart';
   static const String utilsValidators = 'lib/utils/validators.dart';
-  static const String videoPlayerVideoPlayerControls = 'lib/components/video_player/video_player_controls.dart';
-  static const String videoPlayerVideoPlayerDataManager = 'lib/components/video_player/video_player_data_manager.dart';
-  static const String videoPlayerVideoPlayerWidget = 'lib/components/video_player/video_player_widget.dart';
   static const String viewModelsKeyValueViewModel = 'lib/view_models/key_value_view_model.dart';
   static const String viewModelsMediaViewModel = 'lib/view_models/media_view_model.dart';
   static const String viewModelsViewModels = 'lib/view_models/view_models.dart';
