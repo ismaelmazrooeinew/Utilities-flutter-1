@@ -8,6 +8,7 @@ class ScrollingText extends StatefulWidget {
   final int maxLengthForScrolling;
   final Axis scrollAxis;
   final Color? color;
+  final double? height;
   final double ratioOfBlankToScreen;
 
   ScrollingText({
@@ -15,6 +16,7 @@ class ScrollingText extends StatefulWidget {
     this.textStyle,
     this.maxLengthForScrolling = 10,
     this.color,
+    this.height,
     this.scrollAxis: Axis.horizontal,
     this.ratioOfBlankToScreen: 0.25,
   }) : assert(
@@ -112,6 +114,7 @@ class ScrollingTextState extends State<ScrollingText> with SingleTickerProviderS
   @override
   Widget build(final BuildContext context) {
     return Container(
+      height: widget.height??30,
       color: widget.color,
       child: widget.text.length > widget.maxLengthForScrolling
           ? ListView(
