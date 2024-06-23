@@ -33,7 +33,9 @@ class CDialog extends StatelessWidget {
 
   final Widget? child;
 
-  static const RoundedRectangleBorder _defaultDialogShape = RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(2.0)));
+  static const RoundedRectangleBorder _defaultDialogShape =
+      RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(2.0)));
   static const double _defaultElevation = 24.0;
 
   @override
@@ -53,8 +55,11 @@ class CDialog extends StatelessWidget {
           child: Container(
             width: 320,
             child: Material(
-              color: backgroundColor ?? dialogTheme.backgroundColor ?? Theme.of(context).dialogBackgroundColor,
-              elevation: elevation ?? dialogTheme.elevation ?? _defaultElevation,
+              color: backgroundColor ??
+                  dialogTheme.backgroundColor ??
+                  Theme.of(context).dialogBackgroundColor,
+              elevation:
+                  elevation ?? dialogTheme.elevation ?? _defaultElevation,
               shape: shape ?? dialogTheme.shape ?? _defaultDialogShape,
               type: MaterialType.card,
               child: child,
@@ -119,9 +124,12 @@ class CAlertDialog extends StatelessWidget {
 
     if (title != null) {
       children.add(Padding(
-        padding: titlePadding ?? EdgeInsets.fromLTRB(24.0, 24.0, 24.0, content == null ? 20.0 : 0.0),
+        padding: titlePadding ??
+            EdgeInsets.fromLTRB(24.0, 24.0, 24.0, content == null ? 20.0 : 0.0),
         child: DefaultTextStyle(
-          style: titleTextStyle ?? dialogTheme.titleTextStyle ?? theme.textTheme.headline1!,
+          style: titleTextStyle ??
+              dialogTheme.titleTextStyle ??
+              theme.textTheme.bodyMedium!,
           child: Semantics(
             child: title,
             namesRoute: true,
@@ -136,7 +144,8 @@ class CAlertDialog extends StatelessWidget {
           break;
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
-          label = semanticLabel ?? MaterialLocalizations.of(context).alertDialogLabel;
+          label = semanticLabel ??
+              MaterialLocalizations.of(context).alertDialogLabel;
           break;
 
         case TargetPlatform.linux:
@@ -151,7 +160,9 @@ class CAlertDialog extends StatelessWidget {
         child: Padding(
           padding: contentPadding,
           child: DefaultTextStyle(
-            style: contentTextStyle ?? dialogTheme.contentTextStyle ?? theme.textTheme.headline2!,
+            style: contentTextStyle ??
+                dialogTheme.contentTextStyle ??
+                theme.textTheme.bodyMedium!,
             child: content!,
           ),
         ),
@@ -255,7 +266,7 @@ class SimpleDialog extends StatelessWidget {
       body.add(Padding(
         padding: titlePadding,
         child: DefaultTextStyle(
-          style: Theme.of(context).textTheme.headline1!,
+          style: Theme.of(context).textTheme.bodyMedium!,
           child: Semantics(namesRoute: true, child: title),
         ),
       ));
@@ -266,7 +277,8 @@ class SimpleDialog extends StatelessWidget {
           break;
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
-          label = semanticLabel ?? MaterialLocalizations.of(context).dialogLabel;
+          label =
+              semanticLabel ?? MaterialLocalizations.of(context).dialogLabel;
           break;
         case TargetPlatform.linux:
         case TargetPlatform.windows:
@@ -311,7 +323,11 @@ class SimpleDialog extends StatelessWidget {
   }
 }
 
-Widget _buildMaterialDialogTransitions(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+Widget _buildMaterialDialogTransitions(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child) {
   return FadeTransition(
     opacity: CurvedAnimation(
       parent: animation,
@@ -321,10 +337,11 @@ Widget _buildMaterialDialogTransitions(BuildContext context, Animation<double> a
   );
 }
 
-Future<T?> showCDialog<T>({
+FutureOr<T?> showCDialog<T>({
   required BuildContext context,
   bool barrierDismissible = true,
-  @Deprecated('Instead of using the "child" argument, return the child from a closure '
+  @Deprecated(
+      'Instead of using the "child" argument, return the child from a closure '
       'provided to the "builder" argument. This will ensure that the BuildContext '
       'is appropriate for components built in the dialog.')
       Widget? child,
@@ -336,10 +353,13 @@ Future<T?> showCDialog<T>({
   final ThemeData theme = Theme.of(context);
   return showGeneralDialog(
     context: context,
-    pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
+    pageBuilder: (BuildContext buildContext, Animation<double> animation,
+        Animation<double> secondaryAnimation) {
       final Widget pageChild = child ?? Builder(builder: builder!);
       return SafeArea(
-        child: Builder(builder: (BuildContext context) => Theme(data: theme, child: pageChild)),
+        child: Builder(
+            builder: (BuildContext context) =>
+                Theme(data: theme, child: pageChild)),
       );
     },
     barrierDismissible: barrierDismissible,

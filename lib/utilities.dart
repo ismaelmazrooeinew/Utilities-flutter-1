@@ -34,8 +34,6 @@ export 'view_models/view_models.dart';
 export 'utils/enums.dart';
 export 'components/grid.dart';
 
-
-
 void initUtilities() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();

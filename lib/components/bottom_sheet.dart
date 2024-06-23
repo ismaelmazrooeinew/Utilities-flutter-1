@@ -9,7 +9,8 @@ class CancelAction {
 
   final TextStyle? textStyle;
 
-  CancelAction({required final this.title, final this.onPressed, final this.textStyle});
+  CancelAction(
+      {required final this.title, final this.onPressed, final this.textStyle});
 }
 
 class BottomSheetAction {
@@ -19,7 +20,10 @@ class BottomSheetAction {
 
   final TextStyle? textStyle;
 
-  BottomSheetAction({required final this.title, required final this.onPressed, final this.textStyle});
+  BottomSheetAction(
+      {required final this.title,
+      required final this.onPressed,
+      final this.textStyle});
 }
 
 Future<T?> showAdaptiveActionSheet<T>({
@@ -30,9 +34,11 @@ Future<T?> showAdaptiveActionSheet<T>({
   final Color? barrierColor,
   final Color? bottomSheetColor,
 }) async {
-  assert(barrierColor != Colors.transparent, 'The barrier color cannot be transparent.');
+  assert(barrierColor != Colors.transparent,
+      'The barrier color cannot be transparent.');
 
-  return _show<T>(context, title, actions, cancelAction, barrierColor, bottomSheetColor);
+  return _show<T>(
+      context, title, actions, cancelAction, barrierColor, bottomSheetColor);
 }
 
 Future<T?> _show<T>(
@@ -72,23 +78,27 @@ Future<T?> _showCupertinoBottomSheet<T>(
         builder: (final BuildContext context) => CupertinoActionSheet(
               title: title,
               actions: actions
-                  .map((final BottomSheetAction action) => CupertinoActionSheetAction(
-                      onPressed: action.onPressed,
-                      child: Text(
-                        action.title,
-                        style: action.textStyle ?? theme.textTheme.headline6,
-                      )))
+                  .map((final BottomSheetAction action) =>
+                      CupertinoActionSheetAction(
+                          onPressed: action.onPressed,
+                          child: Text(
+                            action.title,
+                            style:
+                                action.textStyle ?? theme.textTheme.titleLarge,
+                          )))
                   .toList(),
               cancelButton: cancelAction != null
                   ? CupertinoActionSheetAction(
-                      onPressed: cancelAction.onPressed ?? () => Navigator.of(context).pop(),
+                      onPressed: cancelAction.onPressed ??
+                          () => Navigator.of(context).pop(),
                       child: Text(
                         cancelAction.title,
-                        style: cancelAction.textStyle ?? theme.textTheme.headline6!.copyWith(color: Colors.lightBlue),
+                        style: cancelAction.textStyle ??
+                            theme.textTheme.titleLarge!
+                                .copyWith(color: Colors.lightBlue),
                       ))
                   : null,
             ));
-
 
 Future<T?> _showMaterialBottomSheet<T>(
   final BuildContext context,
@@ -102,21 +112,29 @@ Future<T?> _showMaterialBottomSheet<T>(
         context: context,
         elevation: 0,
         isScrollControlled: true,
-        backgroundColor: bottomSheetColor ?? theme.bottomSheetTheme.modalBackgroundColor ?? theme.bottomSheetTheme.backgroundColor,
+        backgroundColor: bottomSheetColor ??
+            theme.bottomSheetTheme.modalBackgroundColor ??
+            theme.bottomSheetTheme.backgroundColor,
         barrierColor: barrierColor,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30), topRight: Radius.circular(30)),
         ),
         builder: (final BuildContext context) {
           final double screenHeight = MediaQuery.of(context).size.height;
           return ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: screenHeight - (screenHeight / 10)),
+            constraints:
+                BoxConstraints(maxHeight: screenHeight - (screenHeight / 10)),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  if (title != null) ...<Widget>[Padding(padding: const EdgeInsets.all(16), child: Center(child: title))],
+                  if (title != null) ...<Widget>[
+                    Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Center(child: title))
+                  ],
                   ...actions
                       .map<Widget>(
                         (final BottomSheetAction action) => InkWell(
@@ -125,7 +143,8 @@ Future<T?> _showMaterialBottomSheet<T>(
                             padding: const EdgeInsets.all(16),
                             child: Text(
                               action.title,
-                              style: action.textStyle ?? theme.textTheme.headline6,
+                              style: action.textStyle ??
+                                  theme.textTheme.titleLarge,
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -134,13 +153,16 @@ Future<T?> _showMaterialBottomSheet<T>(
                       .toList(),
                   if (cancelAction != null)
                     InkWell(
-                      onTap: cancelAction.onPressed ?? () => Navigator.of(context).pop(),
+                      onTap: cancelAction.onPressed ??
+                          () => Navigator.of(context).pop(),
                       child: Center(
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text(
                             cancelAction.title,
-                            style: cancelAction.textStyle ?? theme.textTheme.headline6!.copyWith(color: Colors.lightBlue),
+                            style: cancelAction.textStyle ??
+                                theme.textTheme.titleLarge!
+                                    .copyWith(color: Colors.lightBlue),
                           ),
                         ),
                       ),

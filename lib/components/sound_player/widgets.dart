@@ -10,11 +10,13 @@ mixin Widgets {
   String speed = '1.1X';
   bool isShowSpeed = false;
 
-  Stream<PositionData> get positionDataStream => Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
+  Stream<PositionData> get positionDataStream =>
+      Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
         player.positionStream,
         player.bufferedPositionStream,
         player.durationStream,
-        (position, bufferedPosition, duration) => PositionData(position, bufferedPosition, duration ?? Duration.zero),
+        (position, bufferedPosition, duration) =>
+            PositionData(position, bufferedPosition, duration ?? Duration.zero),
       );
 
   void showSliderDialog({
@@ -42,7 +44,11 @@ mixin Widgets {
             height: 100.0,
             child: Column(
               children: [
-                Text('${snapshot.data?.toStringAsFixed(1)}$valueSuffix', style: const TextStyle(fontFamily: 'Fixed', fontWeight: FontWeight.bold, fontSize: 24.0)),
+                Text('${snapshot.data?.toStringAsFixed(1)}$valueSuffix',
+                    style: const TextStyle(
+                        fontFamily: 'Fixed',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24.0)),
                 Slider(
                   divisions: divisions,
                   min: min,
@@ -69,7 +75,9 @@ mixin Widgets {
           border: Border.all(color: Colors.white),
         ),
         child: IconButton(
-          icon: Text("${snapshot.data?.toStringAsFixed(1)}x", style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+          icon: Text("${snapshot.data?.toStringAsFixed(1)}x",
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.white)),
           onPressed: () {
             showSliderDialog(
               context: context,
@@ -107,9 +115,11 @@ mixin Widgets {
       stream: player.playerStateStream,
       builder: (context, snapshot) {
         if (player.hasPrevious) {
-          return iconPlay(icon: Icons.skip_previous, onTap: () => player.seekToPrevious());
+          return iconPlay(
+              icon: Icons.skip_previous, onTap: () => player.seekToPrevious());
         } else {
-          return iconPlay(icon: Icons.skip_previous, color: Colors.white.withOpacity(0.5));
+          return iconPlay(
+              icon: Icons.skip_previous, color: Colors.white.withOpacity(0.5));
         }
       },
     );
@@ -120,9 +130,11 @@ mixin Widgets {
       stream: player.playerStateStream,
       builder: (context, snapshot) {
         if (player.hasNext) {
-          return iconPlay(icon: Icons.skip_next, onTap: () => player.seekToNext());
+          return iconPlay(
+              icon: Icons.skip_next, onTap: () => player.seekToNext());
         } else {
-          return iconPlay(icon: Icons.skip_next, color: Colors.white.withOpacity(0.5));
+          return iconPlay(
+              icon: Icons.skip_next, color: Colors.white.withOpacity(0.5));
         }
       },
     );
@@ -135,14 +147,20 @@ mixin Widgets {
         final playerState = snapshot.data;
         final processingState = playerState?.processingState;
         final playing = playerState?.playing;
-        if (processingState == ProcessingState.loading || processingState == ProcessingState.buffering) {
-          return Container(margin: const EdgeInsets.all(8.0), width: 48.0, height: 48.0, child: const CircularProgressIndicator());
+        if (processingState == ProcessingState.loading ||
+            processingState == ProcessingState.buffering) {
+          return Container(
+              margin: const EdgeInsets.all(8.0),
+              width: 48.0,
+              height: 48.0,
+              child: const CircularProgressIndicator());
         } else if (playing != true) {
           return iconPlay(icon: Icons.play_arrow, onTap: player.play);
         } else if (processingState != ProcessingState.completed) {
           return iconPlay(icon: Icons.pause, onTap: player.pause);
         } else {
-          return iconPlay(icon: Icons.replay, onTap: () => player.seek(Duration.zero));
+          return iconPlay(
+              icon: Icons.replay, onTap: () => player.seek(Duration.zero));
         }
       },
     );
@@ -161,7 +179,10 @@ mixin Widgets {
             itemCount: 3,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => Text(
-              list[player.currentIndex ?? 0].split("/")[list[player.currentIndex ?? 0].split("/").length - 1].replaceAll("%20", " "),
+              list[player.currentIndex ?? 0]
+                  .split(
+                      "/")[list[player.currentIndex ?? 0].split("/").length - 1]
+                  .replaceAll("%20", " "),
               style: const TextStyle(color: Colors.white),
             ),
           ),
@@ -188,8 +209,8 @@ mixin Widgets {
       ),
     );
   }
-
 }
+
 class SeekBar extends StatefulWidget {
   final Duration duration;
   final Duration position;
@@ -209,7 +230,6 @@ class SeekBar extends StatefulWidget {
   @override
   SeekBarState createState() => SeekBarState();
 }
-
 
 class SeekBarState extends State<SeekBar> {
   double? _dragValue;
@@ -237,7 +257,8 @@ class SeekBarState extends State<SeekBar> {
             child: Slider(
               min: 0.0,
               max: widget.duration.inMilliseconds.toDouble(),
-              value: min(widget.bufferedPosition.inMilliseconds.toDouble(), widget.duration.inMilliseconds.toDouble()),
+              value: min(widget.bufferedPosition.inMilliseconds.toDouble(),
+                  widget.duration.inMilliseconds.toDouble()),
               onChanged: (value) {
                 setState(() {
                   _dragValue = value;
@@ -262,7 +283,8 @@ class SeekBarState extends State<SeekBar> {
           child: Slider(
             min: 0.0,
             max: widget.duration.inMilliseconds.toDouble(),
-            value: min(_dragValue ?? widget.position.inMilliseconds.toDouble(), widget.duration.inMilliseconds.toDouble()),
+            value: min(_dragValue ?? widget.position.inMilliseconds.toDouble(),
+                widget.duration.inMilliseconds.toDouble()),
             onChanged: (value) {
               setState(() {
                 _dragValue = value;
@@ -282,7 +304,12 @@ class SeekBarState extends State<SeekBar> {
         Positioned(
           right: 16.0,
           bottom: 0.0,
-          child: Text(RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$').firstMatch("$_remaining")?.group(1) ?? '$_remaining', style: Theme.of(context).textTheme.caption),
+          child: Text(
+              RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
+                      .firstMatch("$_remaining")
+                      ?.group(1) ??
+                  '$_remaining',
+              style: Theme.of(context).textTheme.bodySmall),
         ),
       ],
     );

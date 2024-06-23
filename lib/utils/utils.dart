@@ -24,12 +24,13 @@ export 'launch.dart';
 export 'local_storage.dart';
 export 'share.dart';
 
-void delay(final int milliseconds, final VoidCallback action) async => Future<dynamic>.delayed(
+void delay(final int milliseconds, final VoidCallback action) async =>
+    Future<dynamic>.delayed(
       Duration(milliseconds: milliseconds),
       () async => action(),
     );
 
-Future<File> getCompressImageFile({
+Future<XFile> getCompressImageFile({
   required final File file,
   final int quality = 70,
   final bool advanceCompress = true,
@@ -40,13 +41,13 @@ Future<File> getCompressImageFile({
 
   final Directory dir = Directory.systemTemp;
   final String targetPath = "${dir.absolute.path}/temp.jpg";
-  final File? result = await FlutterImageCompress.compressAndGetFile(
+  final XFile? result = await FlutterImageCompress.compressAndGetFile(
     file.absolute.path,
     targetPath,
     quality: advanceCompress ? advanceQuality : quality,
   );
 
-  return result ?? File("--");
+  return result ?? XFile("--");
 }
 
 Future<Uint8List> getCompressImageFileWeb({
@@ -72,4 +73,5 @@ Color hexStringToColor(final String hexString) {
   return Color(int.parse(buffer.toString(), radix: 16));
 }
 
-String stringToHexColor(final Color color) => '#${color.value.toRadixString(16)}';
+String stringToHexColor(final Color color) =>
+    '#${color.value.toRadixString(16)}';

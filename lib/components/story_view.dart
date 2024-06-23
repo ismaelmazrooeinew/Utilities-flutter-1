@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utilities/utilities.dart';
+import 'package:utilities/utilities.dart' as util;
 
 class StoryView extends StatefulWidget {
   const StoryView({
@@ -10,7 +10,7 @@ class StoryView extends StatefulWidget {
     this.appbar,
   }) : super(key: key);
 
-  final List<MediaViewModel> data;
+  final List<util.MediaViewModel> data;
   final Widget? footer;
   final PreferredSizeWidget? appbar;
   final Widget? header;
@@ -20,51 +20,59 @@ class StoryView extends StatefulWidget {
 }
 
 class _StoryViewState extends State<StoryView> {
-  CarouselController buttonCarouselController = CarouselController();
+  // CarouselController buttonCarouselController = utilities.CarouselController();
+  util.CarouselController buttonCarouselController = util.CarouselController();
 
   @override
-  Widget build(final BuildContext context) => scaffold(
+  Widget build(final BuildContext context) => util.scaffold(
         appBar: widget.appbar,
-        body: CarouselSlider(
+        body: util.CarouselSlider(
           carouselController: buttonCarouselController,
-          options: CarouselOptions(height: screenHeight, viewportFraction: 1),
-          items: widget.data.map((final MediaViewModel item) {
+          options: util.CarouselOptions(
+              height: util.screenHeight, viewportFraction: 1),
+          items: widget.data.map((final util.MediaViewModel item) {
             Widget result = Container();
             switch (item.type) {
-              case MediaType.svg:
+              case util.MediaType.svg:
                 result = _showImage(context, item.link);
                 break;
-              case MediaType.video:
+              case util.MediaType.video:
                 result = VideoPlayerScreen(url: item.link);
                 break;
-              case MediaType.pdf:
+              case util.MediaType.pdf:
                 result = _showPdf(context, item.link);
                 break;
-              case MediaType.voice:
+              case util.MediaType.voice:
                 result = ShowVoice(url: item.link);
                 break;
-              case MediaType.link:
+              case util.MediaType.link:
                 result = _showWeb(context, item.link);
                 break;
-              case MediaType.image:
+              case util.MediaType.image:
                 result = _showImage(context, item.link);
                 break;
             }
             return Stack(
               children: <Widget>[
                 result,
-                Positioned(top: 0, left: 0, right: 0, child: widget.header ?? Container()),
-                item.type != MediaType.link
+                Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    child: widget.header ?? Container()),
+                item.type != util.MediaType.link
                     ? Positioned(
                         bottom: 0,
                         left: 0,
                         right: 0,
-                        child: widget.footer == null ? _footer(item.link, context) : widget.footer!,
+                        child: widget.footer == null
+                            ? _footer(item.link, context)
+                            : widget.footer!,
                       )
                     : Container(),
-                isWeb
+                util.isWeb
                     ? Positioned(
-                        top: screenHeight / 2,
+                        top: util.screenHeight / 2,
                         right: 10,
                         child: InkWell(
                           onTap: () => buttonCarouselController.nextPage(
@@ -74,15 +82,18 @@ class _StoryViewState extends State<StoryView> {
                           child: Container(
                             height: 40,
                             width: 40,
-                            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
-                            child: const Icon(Icons.arrow_right, color: Colors.blueAccent),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(100)),
+                            child: const Icon(Icons.arrow_right,
+                                color: Colors.blueAccent),
                           ),
                         ),
                       )
                     : Container(),
-                isWeb
+                util.isWeb
                     ? Positioned(
-                        top: screenHeight / 2,
+                        top: util.screenHeight / 2,
                         left: 10,
                         child: InkWell(
                           onTap: () => buttonCarouselController.previousPage(
@@ -92,8 +103,11 @@ class _StoryViewState extends State<StoryView> {
                           child: Container(
                             height: 40,
                             width: 40,
-                            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
-                            child: const Icon(Icons.arrow_left, color: Colors.blueAccent),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(100)),
+                            child: const Icon(Icons.arrow_left,
+                                color: Colors.blueAccent),
                           ),
                         ),
                       )
@@ -112,11 +126,13 @@ class _StoryViewState extends State<StoryView> {
           children: <Widget>[
             const Spacer(),
             InkWell(
-              onTap: () => shareText(url),
+              onTap: () => util.shareText(url),
               child: Container(
                 height: 40,
                 width: 40,
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(100)),
                 child: const Icon(Icons.share, color: Colors.blueAccent),
               ),
             ),
@@ -125,8 +141,11 @@ class _StoryViewState extends State<StoryView> {
               child: Container(
                 height: 40,
                 width: 40,
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(100)),
-                child: const Icon(Icons.downloading_outlined, color: Colors.blueAccent),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(100)),
+                child: const Icon(Icons.downloading_outlined,
+                    color: Colors.blueAccent),
               ),
             ),
           ],
@@ -134,23 +153,26 @@ class _StoryViewState extends State<StoryView> {
       );
 
   Widget _showImage(final BuildContext context, final String url) => Center(
-        child: image(url, height: screenHeight, width: screenWidth),
+        child:
+            util.image(url, height: util.screenHeight, width: util.screenWidth),
       );
 
   Widget _showPdf(final BuildContext context, final String url) => SizedBox(
-        height: screenHeight,
-        child: SfPdfViewer.network(url),
+        height: util.screenHeight,
+        child: util.SfPdfViewer.network(url),
       );
 
-  Widget _showWeb(final BuildContext context, final String url) => WebViewX(
+  Widget _showWeb(final BuildContext context, final String url) =>
+      util.WebViewX(
         initialContent: url,
-        height: screenHeight,
-        width: screenWidth,
+        height: util.screenHeight,
+        width: util.screenWidth,
       );
 }
 
 class VideoPlayerScreen extends StatefulWidget {
-  const VideoPlayerScreen({required this.url, final Key? key}) : super(key: key);
+  const VideoPlayerScreen({required this.url, final Key? key})
+      : super(key: key);
   final String url;
 
   @override
@@ -158,13 +180,13 @@ class VideoPlayerScreen extends StatefulWidget {
 }
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-  late VideoPlayerController _controller;
+  late util.VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(widget.url);
+    _controller = util.VideoPlayerController.network(widget.url);
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.play();
   }
@@ -177,12 +199,14 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(final BuildContext context) => SizedBox(
-        height: screenHeight,
+        height: util.screenHeight,
         child: FutureBuilder<dynamic>(
           future: _initializeVideoPlayerFuture,
           builder: (final BuildContext context, final dynamic snapshot) {
             if (snapshot.connectionState == ConnectionState.done)
-              return AspectRatio(aspectRatio: _controller.value.aspectRatio, child: VideoPlayer(_controller));
+              return AspectRatio(
+                  aspectRatio: _controller.value.aspectRatio,
+                  child: util.VideoPlayer(_controller));
             else
               return const Center(child: CircularProgressIndicator());
           },
@@ -199,7 +223,7 @@ class ShowVoice extends StatefulWidget {
 }
 
 class _ShowVoiceState extends State<ShowVoice> {
-  final AudioPlayer player = AudioPlayer();
+  final util.AudioPlayer player = util.AudioPlayer();
 
   @override
   void initState() {
