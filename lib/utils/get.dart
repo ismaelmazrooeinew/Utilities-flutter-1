@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:package_info_plus/package_info_plus.dart';
+// import 'package:package_info_plus/package_info_plus.dart';
 import 'package:utilities/utilities.dart';
 
 bool isAndroid = GetPlatform.isAndroid;
@@ -27,25 +27,25 @@ bool isDebugMode = kDebugMode;
 
 void updateLocale(final Locale locale) => Get.updateLocale(locale);
 
-Future<String> appName() async {
-  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  return packageInfo.appName;
-}
+// Future<String> appName() async {
+//   final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+//   return packageInfo.appName;
+// }
 
-Future<String> appPackageName() async {
-  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  return packageInfo.packageName;
-}
+// Future<String> appPackageName() async {
+//   final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+//   return packageInfo.packageName;
+// }
 
-Future<String> appVersion() async {
-  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  return packageInfo.version;
-}
+// Future<String> appVersion() async {
+//   final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+//   return packageInfo.version;
+// }
 
-Future<String> appBuildNumber() async {
-  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  return packageInfo.buildNumber;
-}
+// Future<String> appBuildNumber() async {
+//   final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+//   return packageInfo.buildNumber;
+// }
 //
 Future<void> push(
   final Widget page, {
@@ -77,7 +77,8 @@ Future<void> dialog(
 }) async {
   final Widget _page = await Future<Widget>.microtask(() => page);
 
-  await Get.dialog(_page, useSafeArea: true).then((final _) => onDismiss != null ? onDismiss() : null);
+  await Get.dialog(_page, useSafeArea: true)
+      .then((final _) => onDismiss != null ? onDismiss() : null);
 }
 
 Future<void> offAll(
