@@ -13,7 +13,8 @@ Widget scaffold({
   final BoxDecoration? decoration,
   final bool resizeToAvoidBottomInset = false,
   final bool extendBodyBehindAppBar = false,
-  final FloatingActionButtonLocation floatingActionButtonLocation = FloatingActionButtonLocation.endFloat,
+  final FloatingActionButtonLocation floatingActionButtonLocation =
+      FloatingActionButtonLocation.endFloat,
   final BoxConstraints? constraints,
   final Alignment? alignment,
 }) =>
@@ -38,7 +39,8 @@ Widget scaffold({
       ),
     );
 
-Widget radius({required final Widget child, required final double radius}) => ClipRRect(
+Widget radius({required final Widget child, required final double radius}) =>
+    ClipRRect(
       borderRadius: BorderRadius.circular(radius),
       child: child,
     );
@@ -156,7 +158,8 @@ Widget defaultTabBar({
             height: height,
             child: TabBarView(
               physics: const NeverScrollableScrollPhysics(),
-              children: tabs.map((final TabBarViewModel view) => view.view).toList(),
+              children:
+                  tabs.map((final TabBarViewModel view) => view.view).toList(),
             ),
           )
         ],
