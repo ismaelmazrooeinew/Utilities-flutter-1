@@ -25,12 +25,12 @@ export 'package:url_launcher/url_launcher.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 
 export 'components/components.dart';
-export 'data/data.dart';
-export 'data/dto/dto.dart';
+// export 'data/data.dart';
+// export 'data/dto/dto.dart';
 export 'utils/utils.dart';
 export 'utils/validators.dart';
-export 'components/sound_player/sound_player.dart';
-export 'view_models/view_models.dart';
+// export 'components/sound_player/sound_player.dart';
+// export 'view_models/view_models.dart';
 export 'utils/enums.dart';
 export 'components/grid.dart';
 
