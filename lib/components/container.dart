@@ -123,6 +123,7 @@ Widget row({
               ),
             )
           : GestureDetector(
+              behavior: HitTestBehavior.opaque,
               onTap: onTap,
               child: Row(
                 mainAxisAlignment: mainAxisAlignment,
