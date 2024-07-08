@@ -79,6 +79,7 @@ Widget column({
               ),
             )
           : GestureDetector(
+              behavior: HitTestBehavior.opaque,
               onTap: onTap,
               child: Column(
                 mainAxisAlignment: mainAxisAlignment,
