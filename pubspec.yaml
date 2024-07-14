@@ -17,7 +17,7 @@ dependencies:
   url_launcher: ^6.0.15
   get: ^4.6.3
   package_info_plus: ^4.2.0
-  share_plus: ^9.0.0
+  # share_plus: ^9.0.0
   file_picker: ^8.0.5
   
   # webviewx: ^0.2.1
