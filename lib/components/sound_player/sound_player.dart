@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
+// import 'package:just_audio/just_audio.dart';
 import 'package:utilities/components/sound_player/widgets.dart';
 
 class SoundPlayer extends StatefulWidget {
@@ -25,13 +25,13 @@ class _SoundPlayerState extends State<SoundPlayer> with Widgets {
   }
 
   void setPlayer() async {
-    var playlist = ConcatenatingAudioSource(
-      useLazyPreparation: true,
-      shuffleOrder: DefaultShuffleOrder(),
-      children: widget.list.map((e) => AudioSource.uri(Uri.parse(e))).toList(),
-    );
+    // var playlist = ConcatenatingAudioSource(
+    //   useLazyPreparation: true,
+    //   shuffleOrder: DefaultShuffleOrder(),
+    //   children: widget.list.map((e) => AudioSource.uri(Uri.parse(e))).toList(),
+    // );
 
-    player.setAudioSource(playlist, initialIndex: 0, initialPosition: Duration.zero);
+    // player.setAudioSource(playlist, initialIndex: 0, initialPosition: Duration.zero);
     player.play();
   }
 
