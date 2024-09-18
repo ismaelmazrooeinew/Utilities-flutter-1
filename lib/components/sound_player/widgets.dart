@@ -6,7 +6,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:utilities/components/sound_player/sound_player.dart';
 
 mixin Widgets {
-  // late AudioPlayer player = AudioPlayer();
+  late AudioPlayer player = AudioPlayer();
   String speed = '1.1X';
   bool isShowSpeed = false;
 
