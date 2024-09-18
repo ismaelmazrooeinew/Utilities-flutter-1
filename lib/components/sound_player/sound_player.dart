@@ -15,25 +15,25 @@ class _SoundPlayerState extends State<SoundPlayer> with Widgets {
   @override
   void initState() {
     super.initState();
-    setPlayer();
+    // setPlayer();
   }
 
   @override
   void dispose() {
     super.dispose();
-    player.dispose();
+    // player.dispose();
   }
 
-  void setPlayer() async {
-    // var playlist = ConcatenatingAudioSource(
-    //   useLazyPreparation: true,
-    //   shuffleOrder: DefaultShuffleOrder(),
-    //   children: widget.list.map((e) => AudioSource.uri(Uri.parse(e))).toList(),
-    // );
+  // void setPlayer() async {
+  //   var playlist = ConcatenatingAudioSource(
+  //     useLazyPreparation: true,
+  //     shuffleOrder: DefaultShuffleOrder(),
+  //     children: widget.list.map((e) => AudioSource.uri(Uri.parse(e))).toList(),
+  //   );
 
-    // player.setAudioSource(playlist, initialIndex: 0, initialPosition: Duration.zero);
-    player.play();
-  }
+  //   player.setAudioSource(playlist, initialIndex: 0, initialPosition: Duration.zero);
+  //   player.play();
+  // }
 
   String getTime(Duration? duration) {
     String d = duration.toString();
