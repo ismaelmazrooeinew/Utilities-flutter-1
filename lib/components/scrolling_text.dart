@@ -17,8 +17,8 @@ class ScrollingText extends StatefulWidget {
     this.maxLengthForScrolling = 10,
     this.color,
     this.height,
-    this.scrollAxis: Axis.horizontal,
-    this.ratioOfBlankToScreen: 0.25,
+    this.scrollAxis = Axis.horizontal,
+    this.ratioOfBlankToScreen = 0.25,
   }) : assert(
           text != null,
         );
@@ -29,7 +29,8 @@ class ScrollingText extends StatefulWidget {
   }
 }
 
-class ScrollingTextState extends State<ScrollingText> with SingleTickerProviderStateMixin {
+class ScrollingTextState extends State<ScrollingText>
+    with SingleTickerProviderStateMixin {
   late ScrollController scrollController;
   double? screenWidth;
   double? screenHeight;
@@ -50,22 +51,37 @@ class ScrollingTextState extends State<ScrollingText> with SingleTickerProviderS
 
   void startTimer() {
     if (_key.currentContext != null) {
-      double widgetWidth = _key.currentContext!.findRenderObject()!.paintBounds.size.width;
-      double widgetHeight = _key.currentContext!.findRenderObject()!.paintBounds.size.height;
+      double widgetWidth =
+          _key.currentContext!.findRenderObject()!.paintBounds.size.width;
+      double widgetHeight =
+          _key.currentContext!.findRenderObject()!.paintBounds.size.height;
 
       timer = Timer.periodic(Duration(milliseconds: _timerRest), (timer) {
         double maxScrollExtent = scrollController.position.maxScrollExtent;
         double pixels = scrollController.position.pixels;
         if (pixels + _moveDistance >= maxScrollExtent) {
           if (widget.scrollAxis == Axis.horizontal) {
-            position = (maxScrollExtent - screenWidth! * widget.ratioOfBlankToScreen + widgetWidth) / 2 - widgetWidth + pixels - maxScrollExtent;
+            position = (maxScrollExtent -
+                        screenWidth! * widget.ratioOfBlankToScreen +
+                        widgetWidth) /
+                    2 -
+                widgetWidth +
+                pixels -
+                maxScrollExtent;
           } else {
-            position = (maxScrollExtent - screenHeight! * widget.ratioOfBlankToScreen + widgetHeight) / 2 - widgetHeight + pixels - maxScrollExtent;
+            position = (maxScrollExtent -
+                        screenHeight! * widget.ratioOfBlankToScreen +
+                        widgetHeight) /
+                    2 -
+                widgetHeight +
+                pixels -
+                maxScrollExtent;
           }
           scrollController.jumpTo(position);
         }
         position += _moveDistance;
-        scrollController.animateTo(position, duration: Duration(milliseconds: _timerRest), curve: Curves.linear);
+        scrollController.animateTo(position,
+            duration: Duration(milliseconds: _timerRest), curve: Curves.linear);
       });
     }
   }
@@ -114,7 +130,7 @@ class ScrollingTextState extends State<ScrollingText> with SingleTickerProviderS
   @override
   Widget build(final BuildContext context) {
     return Container(
-      height: widget.height??30,
+      height: widget.height ?? 30,
       color: widget.color,
       child: widget.text.length > widget.maxLengthForScrolling
           ? ListView(

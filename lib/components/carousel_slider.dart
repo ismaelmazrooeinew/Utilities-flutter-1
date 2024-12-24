@@ -31,10 +31,12 @@ class CarouselState {
 
   Function(CarouselPageChangedReason) changeMode;
 
-  CarouselState(this.options, this.onResetTimer, this.onResumeTimer, this.changeMode);
+  CarouselState(
+      this.options, this.onResetTimer, this.onResumeTimer, this.changeMode);
 }
 
-typedef Widget ExtendedIndexedWidgetBuilder(BuildContext context, int index, int realIndex);
+typedef Widget ExtendedIndexedWidgetBuilder(
+    BuildContext context, int index, int realIndex);
 
 class CarouselSlider extends StatefulWidget {
   final CarouselOptions options;
@@ -47,22 +49,36 @@ class CarouselSlider extends StatefulWidget {
 
   final int? itemCount;
 
-  CarouselSlider({required this.items, required this.options, CarouselController? carouselController, Key? key})
+  CarouselSlider(
+      {required this.items,
+      required this.options,
+      CarouselController? carouselController,
+      Key? key})
       : itemBuilder = null,
         itemCount = items != null ? items.length : 0,
-        _carouselController = carouselController != null ? carouselController as CarouselControllerImpl : CarouselController() as CarouselControllerImpl,
+        _carouselController = carouselController != null
+            ? carouselController as CarouselControllerImpl
+            : CarouselController() as CarouselControllerImpl,
         super(key: key);
 
-  CarouselSlider.builder({required this.itemCount, required this.itemBuilder, required this.options, CarouselController? carouselController, Key? key})
+  CarouselSlider.builder(
+      {required this.itemCount,
+      required this.itemBuilder,
+      required this.options,
+      CarouselController? carouselController,
+      Key? key})
       : items = null,
-        _carouselController = carouselController != null ? carouselController as CarouselControllerImpl : CarouselController() as CarouselControllerImpl,
+        _carouselController = carouselController != null
+            ? carouselController as CarouselControllerImpl
+            : CarouselController() as CarouselControllerImpl,
         super(key: key);
 
   @override
   CarouselSliderState createState() => CarouselSliderState(_carouselController);
 }
 
-class CarouselSliderState extends State<CarouselSlider> with TickerProviderStateMixin {
+class CarouselSliderState extends State<CarouselSlider>
+    with TickerProviderStateMixin {
   final CarouselControllerImpl carouselController;
   Timer? timer;
 
@@ -99,12 +115,15 @@ class CarouselSliderState extends State<CarouselSlider> with TickerProviderState
   @override
   void initState() {
     super.initState();
-    carouselState = CarouselState(this.options, clearTimer, resumeTimer, this.changeMode);
+    carouselState =
+        CarouselState(this.options, clearTimer, resumeTimer, this.changeMode);
 
     carouselState!.itemCount = widget.itemCount;
     carouselController.state = carouselState;
     carouselState!.initialPage = widget.options.initialPage;
-    carouselState!.realPage = options.enableInfiniteScroll ? carouselState!.realPage + carouselState!.initialPage : carouselState!.initialPage;
+    carouselState!.realPage = options.enableInfiniteScroll
+        ? carouselState!.realPage + carouselState!.initialPage
+        : carouselState!.initialPage;
     handleAutoPlay();
 
     pageController = PageController(
@@ -128,7 +147,8 @@ class CarouselSliderState extends State<CarouselSlider> with TickerProviderState
             int nextPage = carouselState!.pageController!.page!.round() + 1;
             int itemCount = widget.itemCount ?? widget.items!.length;
 
-            if (nextPage >= itemCount && widget.options.enableInfiniteScroll == false) {
+            if (nextPage >= itemCount &&
+                widget.options.enableInfiniteScroll == false) {
               if (widget.options.pauseAutoPlayInFiniteScroll) {
                 clearTimer();
                 return;
@@ -136,7 +156,11 @@ class CarouselSliderState extends State<CarouselSlider> with TickerProviderState
               nextPage = 0;
             }
 
-            carouselState!.pageController!.animateToPage(nextPage, duration: widget.options.autoPlayAnimationDuration, curve: widget.options.autoPlayCurve).then((_) => changeMode(previousReason));
+            carouselState!.pageController!
+                .animateToPage(nextPage,
+                    duration: widget.options.autoPlayAnimationDuration,
+                    curve: widget.options.autoPlayCurve)
+                .then((_) => changeMode(previousReason));
           })
         : null;
   }
@@ -170,12 +194,16 @@ class CarouselSliderState extends State<CarouselSlider> with TickerProviderState
     if (widget.options.height != null) {
       wrapper = Container(height: widget.options.height, child: child);
     } else {
-      wrapper = AspectRatio(aspectRatio: widget.options.aspectRatio, child: child);
+      wrapper =
+          AspectRatio(aspectRatio: widget.options.aspectRatio, child: child);
     }
 
     return RawGestureDetector(
       gestures: {
-        _MultipleGestureRecognizer: GestureRecognizerFactoryWithHandlers<_MultipleGestureRecognizer>(() => _MultipleGestureRecognizer(), (_MultipleGestureRecognizer instance) {
+        _MultipleGestureRecognizer:
+            GestureRecognizerFactoryWithHandlers<_MultipleGestureRecognizer>(
+                () => _MultipleGestureRecognizer(),
+                (_MultipleGestureRecognizer instance) {
           instance.onStart = (_) {
             onStart();
           };
@@ -192,7 +220,8 @@ class CarouselSliderState extends State<CarouselSlider> with TickerProviderState
       },
       child: NotificationListener(
         onNotification: (Notification notification) {
-          if (widget.options.onScrolled != null && notification is ScrollUpdateNotification) {
+          if (widget.options.onScrolled != null &&
+              notification is ScrollUpdateNotification) {
             widget.options.onScrolled!(carouselState!.pageController!.page);
           }
           return false;
@@ -211,11 +240,14 @@ class CarouselSliderState extends State<CarouselSlider> with TickerProviderState
     return Center(child: child);
   }
 
-  Widget getEnlargeWrapper(Widget? child, {double? width, double? height, double? scale}) {
+  Widget getEnlargeWrapper(Widget? child,
+      {double? width, double? height, double? scale}) {
     if (widget.options.enlargeStrategy == CenterPageEnlargeStrategy.height) {
       return SizedBox(child: child, width: width, height: height);
     }
-    return Transform.scale(scale: scale!, child: Container(child: child, width: width, height: height));
+    return Transform.scale(
+        scale: scale!,
+        child: Container(child: child, width: width, height: height));
   }
 
   void onStart() {
@@ -260,48 +292,66 @@ class CarouselSliderState extends State<CarouselSlider> with TickerProviderState
       itemCount: widget.options.enableInfiniteScroll ? null : widget.itemCount,
       key: widget.options.pageViewKey,
       onPageChanged: (int index) {
-        int currentPage = getRealIndex(index + carouselState!.initialPage, carouselState!.realPage, widget.itemCount);
+        int currentPage = getRealIndex(index + carouselState!.initialPage,
+            carouselState!.realPage, widget.itemCount);
         if (widget.options.onPageChanged != null) {
           widget.options.onPageChanged!(currentPage, mode);
         }
       },
       itemBuilder: (BuildContext context, int idx) {
-        final int index = getRealIndex(idx + carouselState!.initialPage, carouselState!.realPage, widget.itemCount);
+        final int index = getRealIndex(idx + carouselState!.initialPage,
+            carouselState!.realPage, widget.itemCount);
 
         return AnimatedBuilder(
           animation: carouselState!.pageController!,
-          child: (widget.items != null) ? (widget.items!.length > 0 ? widget.items![index] : Container()) : widget.itemBuilder!(context, index, idx),
+          child: (widget.items != null)
+              ? (widget.items!.length > 0 ? widget.items![index] : Container())
+              : widget.itemBuilder!(context, index, idx),
           builder: (BuildContext context, child) {
             double distortionValue = 1.0;
 
-            if (widget.options.enlargeCenterPage != null && widget.options.enlargeCenterPage == true) {
+            if (widget.options.enlargeCenterPage != null &&
+                widget.options.enlargeCenterPage == true) {
               double itemOffset = 0;
               var position = carouselState?.pageController?.position;
-              if (position != null && position.hasPixels && position.hasContentDimensions) {
+              if (position != null &&
+                  position.hasPixels &&
+                  position.hasContentDimensions) {
                 var _page = carouselState?.pageController?.page;
                 if (_page != null) {
                   itemOffset = _page - idx;
                 }
               } else {
-                BuildContext storageContext = carouselState!.pageController!.position.context.storageContext;
-                final double? previousSavedPosition = PageStorage.of(storageContext)?.readState(storageContext) as double?;
+                BuildContext storageContext = carouselState!
+                    .pageController!.position.context.storageContext;
+                final double? previousSavedPosition =
+                    PageStorage.of(storageContext)?.readState(storageContext)
+                        as double?;
                 if (previousSavedPosition != null) {
                   itemOffset = previousSavedPosition - idx.toDouble();
                 } else {
-                  itemOffset = carouselState!.realPage.toDouble() - idx.toDouble();
+                  itemOffset =
+                      carouselState!.realPage.toDouble() - idx.toDouble();
                 }
               }
 
-              final num distortionRatio = (1 - (itemOffset.abs() * 0.3)).clamp(0.0, 1.0);
-              distortionValue = Curves.easeOut.transform(distortionRatio as double);
+              final num distortionRatio =
+                  (1 - (itemOffset.abs() * 0.3)).clamp(0.0, 1.0);
+              distortionValue =
+                  Curves.easeOut.transform(distortionRatio as double);
             }
 
-            final double height = widget.options.height ?? MediaQuery.of(context).size.width * (1 / widget.options.aspectRatio);
+            final double height = widget.options.height ??
+                MediaQuery.of(context).size.width *
+                    (1 / widget.options.aspectRatio);
 
             if (widget.options.scrollDirection == Axis.horizontal) {
-              return getCenterWrapper(getEnlargeWrapper(child, height: distortionValue * height, scale: distortionValue));
+              return getCenterWrapper(getEnlargeWrapper(child,
+                  height: distortionValue * height, scale: distortionValue));
             } else {
-              return getCenterWrapper(getEnlargeWrapper(child, width: distortionValue * MediaQuery.of(context).size.width, scale: distortionValue));
+              return getCenterWrapper(getEnlargeWrapper(child,
+                  width: distortionValue * MediaQuery.of(context).size.width,
+                  scale: distortionValue));
             }
           },
         );
@@ -344,7 +394,8 @@ class CarouselControllerImpl implements CarouselController {
     }
   }
 
-  void _setModeController() => _state!.changeMode(CarouselPageChangedReason.controller);
+  void _setModeController() =>
+      _state!.changeMode(CarouselPageChangedReason.controller);
 
   @override
   bool get ready => _state != null;
@@ -352,7 +403,9 @@ class CarouselControllerImpl implements CarouselController {
   @override
   Future<Null> get onReady => _readyCompleter.future;
 
-  Future<void> nextPage({Duration? duration = const Duration(milliseconds: 300), Curve? curve = Curves.linear}) async {
+  Future<void> nextPage(
+      {Duration? duration = const Duration(milliseconds: 300),
+      Curve? curve = Curves.linear}) async {
     final bool isNeedResetTimer = _state!.options.pauseAutoPlayOnManualNavigate;
     if (isNeedResetTimer) {
       _state!.onResetTimer();
@@ -364,34 +417,44 @@ class CarouselControllerImpl implements CarouselController {
     }
   }
 
-  Future<void> previousPage({Duration? duration = const Duration(milliseconds: 300), Curve? curve = Curves.linear}) async {
+  Future<void> previousPage(
+      {Duration? duration = const Duration(milliseconds: 300),
+      Curve? curve = Curves.linear}) async {
     final bool isNeedResetTimer = _state!.options.pauseAutoPlayOnManualNavigate;
     if (isNeedResetTimer) {
       _state!.onResetTimer();
     }
     _setModeController();
-    await _state!.pageController!.previousPage(duration: duration!, curve: curve!);
+    await _state!.pageController!
+        .previousPage(duration: duration!, curve: curve!);
     if (isNeedResetTimer) {
       _state!.onResumeTimer();
     }
   }
 
   void jumpToPage(int page) {
-    final index = getRealIndex(_state!.pageController!.page!.toInt(), _state!.realPage - _state!.initialPage, _state!.itemCount);
+    final index = getRealIndex(_state!.pageController!.page!.toInt(),
+        _state!.realPage - _state!.initialPage, _state!.itemCount);
 
     _setModeController();
     final int pageToJump = _state!.pageController!.page!.toInt() + page - index;
     return _state!.pageController!.jumpToPage(pageToJump);
   }
 
-  Future<void> animateToPage(int page, {Duration? duration = const Duration(milliseconds: 300), Curve? curve = Curves.linear}) async {
+  Future<void> animateToPage(int page,
+      {Duration? duration = const Duration(milliseconds: 300),
+      Curve? curve = Curves.linear}) async {
     final bool isNeedResetTimer = _state!.options.pauseAutoPlayOnManualNavigate;
     if (isNeedResetTimer) {
       _state!.onResetTimer();
     }
-    final index = getRealIndex(_state!.pageController!.page!.toInt(), _state!.realPage - _state!.initialPage, _state!.itemCount);
+    final index = getRealIndex(_state!.pageController!.page!.toInt(),
+        _state!.realPage - _state!.initialPage, _state!.itemCount);
     _setModeController();
-    await _state!.pageController!.animateToPage(_state!.pageController!.page!.toInt() + page - index, duration: duration!, curve: curve!);
+    await _state!.pageController!.animateToPage(
+        _state!.pageController!.page!.toInt() + page - index,
+        duration: duration!,
+        curve: curve!);
     if (isNeedResetTimer) {
       _state!.onResumeTimer();
     }
@@ -461,32 +524,57 @@ class CarouselOptions {
 
   CarouselOptions({
     this.height,
-    this.aspectRatio: 16 / 9,
-    this.viewportFraction: 0.8,
-    this.initialPage: 0,
-    this.enableInfiniteScroll: true,
-    this.reverse: false,
-    this.autoPlay: false,
-    this.autoPlayInterval: const Duration(seconds: 4),
+    this.aspectRatio = 16 / 9,
+    this.viewportFraction = 0.8,
+    this.initialPage = 0,
+    this.enableInfiniteScroll = true,
+    this.reverse = false,
+    this.autoPlay = false,
+    this.autoPlayInterval = const Duration(seconds: 4),
     this.autoPlayAnimationDuration = const Duration(milliseconds: 800),
-    this.autoPlayCurve: Curves.fastOutSlowIn,
+    this.autoPlayCurve = Curves.fastOutSlowIn,
     this.enlargeCenterPage = false,
     this.onPageChanged,
     this.onScrolled,
     this.scrollPhysics,
     this.pageSnapping = true,
-    this.scrollDirection: Axis.horizontal,
-    this.pauseAutoPlayOnTouch: true,
-    this.pauseAutoPlayOnManualNavigate: true,
-    this.pauseAutoPlayInFiniteScroll: false,
+    this.scrollDirection = Axis.horizontal,
+    this.pauseAutoPlayOnTouch = true,
+    this.pauseAutoPlayOnManualNavigate = true,
+    this.pauseAutoPlayInFiniteScroll = false,
     this.pageViewKey,
-    this.enlargeStrategy: CenterPageEnlargeStrategy.scale,
-    this.disableCenter: false,
+    this.enlargeStrategy = CenterPageEnlargeStrategy.scale,
+    this.disableCenter = false,
     this.padEnds = true,
-    this.clipBehavior: Clip.hardEdge,
+    this.clipBehavior = Clip.hardEdge,
   });
 
-  CarouselOptions copyWith({double? height, double? aspectRatio, double? viewportFraction, int? initialPage, bool? enableInfiniteScroll, bool? reverse, bool? autoPlay, Duration? autoPlayInterval, Duration? autoPlayAnimationDuration, Curve? autoPlayCurve, bool? enlargeCenterPage, Function(int index, CarouselPageChangedReason reason)? onPageChanged, ValueChanged<double?>? onScrolled, ScrollPhysics? scrollPhysics, bool? pageSnapping, Axis? scrollDirection, bool? pauseAutoPlayOnTouch, bool? pauseAutoPlayOnManualNavigate, bool? pauseAutoPlayInFiniteScroll, PageStorageKey? pageViewKey, CenterPageEnlargeStrategy? enlargeStrategy, bool? disableCenter, Clip? clipBehavior, bool? padEnds}) => CarouselOptions(
+  CarouselOptions copyWith(
+          {double? height,
+          double? aspectRatio,
+          double? viewportFraction,
+          int? initialPage,
+          bool? enableInfiniteScroll,
+          bool? reverse,
+          bool? autoPlay,
+          Duration? autoPlayInterval,
+          Duration? autoPlayAnimationDuration,
+          Curve? autoPlayCurve,
+          bool? enlargeCenterPage,
+          Function(int index, CarouselPageChangedReason reason)? onPageChanged,
+          ValueChanged<double?>? onScrolled,
+          ScrollPhysics? scrollPhysics,
+          bool? pageSnapping,
+          Axis? scrollDirection,
+          bool? pauseAutoPlayOnTouch,
+          bool? pauseAutoPlayOnManualNavigate,
+          bool? pauseAutoPlayInFiniteScroll,
+          PageStorageKey? pageViewKey,
+          CenterPageEnlargeStrategy? enlargeStrategy,
+          bool? disableCenter,
+          Clip? clipBehavior,
+          bool? padEnds}) =>
+      CarouselOptions(
         height: height ?? this.height,
         aspectRatio: aspectRatio ?? this.aspectRatio,
         viewportFraction: viewportFraction ?? this.viewportFraction,
@@ -495,7 +583,8 @@ class CarouselOptions {
         reverse: reverse ?? this.reverse,
         autoPlay: autoPlay ?? this.autoPlay,
         autoPlayInterval: autoPlayInterval ?? this.autoPlayInterval,
-        autoPlayAnimationDuration: autoPlayAnimationDuration ?? this.autoPlayAnimationDuration,
+        autoPlayAnimationDuration:
+            autoPlayAnimationDuration ?? this.autoPlayAnimationDuration,
         autoPlayCurve: autoPlayCurve ?? this.autoPlayCurve,
         enlargeCenterPage: enlargeCenterPage ?? this.enlargeCenterPage,
         onPageChanged: onPageChanged ?? this.onPageChanged,
@@ -504,8 +593,10 @@ class CarouselOptions {
         pageSnapping: pageSnapping ?? this.pageSnapping,
         scrollDirection: scrollDirection ?? this.scrollDirection,
         pauseAutoPlayOnTouch: pauseAutoPlayOnTouch ?? this.pauseAutoPlayOnTouch,
-        pauseAutoPlayOnManualNavigate: pauseAutoPlayOnManualNavigate ?? this.pauseAutoPlayOnManualNavigate,
-        pauseAutoPlayInFiniteScroll: pauseAutoPlayInFiniteScroll ?? this.pauseAutoPlayInFiniteScroll,
+        pauseAutoPlayOnManualNavigate:
+            pauseAutoPlayOnManualNavigate ?? this.pauseAutoPlayOnManualNavigate,
+        pauseAutoPlayInFiniteScroll:
+            pauseAutoPlayInFiniteScroll ?? this.pauseAutoPlayInFiniteScroll,
         pageViewKey: pageViewKey ?? this.pageViewKey,
         enlargeStrategy: enlargeStrategy ?? this.enlargeStrategy,
         disableCenter: disableCenter ?? this.disableCenter,
