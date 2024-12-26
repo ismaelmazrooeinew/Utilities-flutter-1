@@ -40,7 +40,7 @@ class CDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DialogTheme dialogTheme = DialogTheme.of(context);
+    final DialogTheme dialogTheme = DialogTheme();
     return AnimatedPadding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 24.0),
       duration: insetAnimationDuration,
@@ -118,7 +118,7 @@ class CAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterialLocalizations(context));
     final ThemeData theme = Theme.of(context);
-    final DialogTheme dialogTheme = DialogTheme.of(context);
+    final DialogTheme dialogTheme = DialogTheme();
     final List<Widget> children = <Widget>[];
     String? label = semanticLabel;
 
@@ -344,7 +344,7 @@ FutureOr<T?> showCDialog<T>({
       'Instead of using the "child" argument, return the child from a closure '
       'provided to the "builder" argument. This will ensure that the BuildContext '
       'is appropriate for components built in the dialog.')
-      Widget? child,
+  Widget? child,
   WidgetBuilder? builder,
 }) {
   assert(child == null || builder == null);
