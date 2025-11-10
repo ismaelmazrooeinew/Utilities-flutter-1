@@ -22,7 +22,7 @@ dependencies:
   
   # webviewx: ^0.2.1
   get_storage: ^2.0.3
-  flutter_svg: ^2.0.5
+  flutter_svg: ^2.2.2
   persian_tools: ^1.0.1
   # group_button: ^5.2.0
   # image_cropper: ^8.0.2
