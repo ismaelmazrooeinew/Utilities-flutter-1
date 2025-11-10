@@ -7,7 +7,6 @@ export 'dart:convert';
 // export 'package:collection/collection.dart';
 // export 'package:file_picker/file_picker.dart';
 // export 'package:flutter_local_notifications/flutter_local_notifications.dart';
-export 'package:flutter_svg/flutter_svg.dart';
 export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
 // export 'package:group_button/group_button.dart';
